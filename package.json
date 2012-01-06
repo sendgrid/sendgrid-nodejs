@@ -1,0 +1,18 @@
+{
+  "author": "SendGrid <info@sendgrid.com> (sendgrid.com)",
+  "name": "sendgrid",
+  "description": "A NodeJS implementation of the SendGrid Api",
+  "version": "0.0.1",
+  "homepage": "sendgrid.com",
+  "repository": {
+    "url": ""
+  },
+  "engines": {
+    "node": "~0.6.6"
+  },
+  "dependencies": {
+    "nodemailer": ">= 0.1.22",
+    "mime": ">= 1.2.2"
+  },
+  "devDependencies": {}
+}
