@@ -5,10 +5,10 @@ exports.main = function() {
   h = new header.Header();
   h.addTo('example@example.com');
   assert.ok(h.toJson() == '{"to": ["example@example.com"]}');
-  
+
   h.addTo(['example1@example.com', 'example2@example.com']);
   assert.ok(h.toJson() == '{"to": ["example@example.com","example1@example.com","example2@example.com"]}');
-  
+
   h.addSubVal('[name]', ['Name 1', 'Name 2']);
   assert.ok(h.toJson() == '{"to": ["example@example.com","example1@example.com","example2@example.com"],"sub":{"[name]":["Name 1","Name 2"]}}');
 
