@@ -1,0 +1,21 @@
+{
+  "author": "SendGrid <info@sendgrid.com> (sendgrid.com)",
+  "name": "sendgrid",
+  "description": "A NodeJS implementation of the SendGrid Api.",
+  "version": "0.0.0",
+  "homepage": "sendgrid.com",
+  "repository": {
+    "url": ""
+  },
+  "engines": {
+    "node": "~0.6.6"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "jasmine-node" : ">= 1.0.13",
+    "should"       : ">= 0.4.2"
+  },
+  "scripts": {
+    "test": "jasmine-node spec"
+  }
+}
