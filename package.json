@@ -10,6 +10,9 @@
   "engines": {
     "node": "~0.6.6"
   },
-  "dependencies": {},
+  "dependencies": {
+    "nodemailer": ">= 0.1.22",
+    "mime": ">= 1.2.2"
+  },
   "devDependencies": {}
 }
