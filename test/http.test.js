@@ -60,4 +60,18 @@ describe('Sendgrid', function() {
         sg.disableBcc();
         sg.getHeader().toJson().should.equal('{"filters": {"Bcc":{"settings":{"email":"example@example.com","enable":0}}}}');
     });
+
+    it('should be able to send emails with attachments', function() {
+        sg.addTo({'example3@example.com': 'Name 1', 'example4@example.com': 'name 4'});
+        sg.addAttachment('logo.png', './test/assets/logoinvoice.png');
+        sg.addAttachment('index.js', './test/assets/index.js');
+        sg.setReplyTo('reply@sendgrid.com');
+        sg.setFromName('from@sendgrid.com');
+        sg.addHeader('x-test', 'from@sendgrid.com');
+
+
+        sg.deliver({from_address:'from@example.com', to: null, subject:'subject 1', html:'<b>Html 1</b>',}, function(err, message){
+            if (err) should.fail('There was an error in the delivery: ' + err);
+        });
+    });
 });
