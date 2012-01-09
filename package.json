@@ -14,5 +14,8 @@
     "nodemailer": ">= 0.1.22",
     "mime": ">= 1.2.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*"
+  }
 }
