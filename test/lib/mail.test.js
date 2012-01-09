@@ -35,6 +35,14 @@ describe('Mail', function () {
     });
 
     describe('instance', function() {
+        it('should allow attributes to be set in the constuctor', function() {
+            var mail = new Mail(text_params);
+
+            for (var key in text_params) {
+                text_params[key].should.eql(mail[key]);
+            }
+
+        });
         it('should be able to send text messages', function() {
             var mail = new Mail(text_params);
             mail.send(function(success, message) {
