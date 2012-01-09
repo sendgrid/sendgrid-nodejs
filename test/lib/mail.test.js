@@ -1,3 +1,4 @@
+var Mail = require('../../lib/mail').Mail;
 describe('Mail', function () {
     it("should be able to send mail", function () {
         var mail = new Mail();
