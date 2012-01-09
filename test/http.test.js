@@ -1,10 +1,10 @@
-var Sendgrid = require('../lib/sendgrid').Sendgrid
-  , Http     = require('../lib/http').Http
-  , should   = require('should');
+var Sendgrid = require('../lib/sendgrid').Sendgrid;
+var Http = require('../lib/http').Http;
+var should = require('should');
 
 describe('Sendgrid', function() {
-    var transport
-      , sg;
+    var transport;
+    var sg;
 
     beforeEach(function() {
         transport = new Http('isaac@sendgrid.com', 'testing');

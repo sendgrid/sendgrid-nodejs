@@ -1,10 +1,9 @@
-var Smtp     = require('../lib/smtp').Smtp
-  , Sendgrid = require('../lib/sendgrid').Sendgrid
-  , should   = require('should');
+var Smtp = require('../lib/smtp').Smtp;
+var Sendgrid = require('../lib/sendgrid').Sendgrid;
+var should = require('should');
 
 describe('Smtp', function() {
     var sg;
-
     beforeEach(function() {
         var transport = new Smtp('isaac@sendgrid.com', 'testing');
         sg = new Sendgrid(transport);
