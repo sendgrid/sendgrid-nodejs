@@ -17,7 +17,7 @@ describe('Smtp', function() {
         sg.setFromName('from@sendgrid.com');
         sg.addHeader('x-test', 'from@sendgrid.com');
 
-        sg.deliver({from_address:'from@example.com', to: null, subject:'subject 1', html:'<b>Html 1</b>',}, function(err, message) {
+        sg.deliver({from_address:'from@example.com', to: null, subject:'subject 1', html:'<b>Html 1</b>'}, function(err, message) {
             if (err) should.fail('There was an error in the delivery: ' + err);
         });
     });
