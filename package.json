@@ -1,8 +1,8 @@
 {
   "author": "SendGrid <info@sendgrid.com> (sendgrid.com)",
   "name": "sendgrid",
-  "description": "A NodeJS implementation of the SendGrid Api",
-  "version": "0.0.1",
+  "description": "A NodeJS implementation of the SendGrid Api.",
+  "version": "0.0.0",
   "homepage": "sendgrid.com",
   "repository": {
     "url": ""
@@ -11,11 +11,14 @@
     "node": "~0.6.6"
   },
   "dependencies": {
-    "nodemailer": ">= 0.1.22",
-    "mime": ">= 1.2.2"
+    "underscore": ">=1.2.4",
+    "nodemailer": "*"
   },
   "devDependencies": {
-    "mocha": "*",
-    "should": "*"
+    "mocha": ">= 0.9.0",
+    "should": ">= 0.4.2"
+  },
+  "scripts": {
+    "test": "jasmine-node spec"
   }
 }

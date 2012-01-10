@@ -1,7 +1,5 @@
-var should = require('should');
-
-describe('index', function() {
-  it('should have a sendgrid object', function() {
-    should.exist(require('../index').Sendgrid);
+describe("index.js", function () {
+  it("should exist", function () {
+    require('../index').should.not.be.undefined;
   });
-})
+});
