@@ -41,19 +41,21 @@ describe('Mail', function () {
             for (var key in text_params) {
                 text_params[key].should.eql(mail[key]);
             }
-
         });
-        it('should be able to send text messages', function() {
+
+        it('should be able to send text messages', function(done) {
             var mail = new Mail(text_params);
             mail.send(function(success, message) {
                 if (!success) should.fail(message);
+                done();
             });
         });
 
-        it('should be able to send html messages', function() {
+        it('should be able to send html messages', function(done) {
             var mail = new Mail(html_params);
             mail.send(function(success, message) {
                 if (!success) should.fail(message);
+                done();
             });
         });
     });
