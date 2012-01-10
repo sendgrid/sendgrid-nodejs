@@ -10,10 +10,12 @@
   "engines": {
     "node": "~0.6.6"
   },
-  "dependencies": {},
+  "dependencies": {
+    "underscore": ">=1.2.4"
+  },
   "devDependencies": {
-    "mocha" : ">= 0.9.0",
-    "should" : ">= 0.4.2"
+    "mocha": ">= 0.9.0",
+    "should": ">= 0.4.2"
   },
   "scripts": {
     "test": "jasmine-node spec"

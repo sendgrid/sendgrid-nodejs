@@ -1,19 +1,20 @@
 var Mail = require('../../lib/mail').Mail;
 var should = require('should');
 
+var credentials = {
+  username: 'kylep',
+  password: 'testing'
+}
+
 var text_params = {
-    username: 'kylep',
-    password: 'testing',
-    to: 'kyle.partridge@sendgrid.com',
+    to: 'david.tomberlin@sendgrid.com',
     from: 'kyle.partridge@sendgrid.com',
     subject: 'Subject',
     text: 'This is an email.'
 };
 
 var html_params = {
-    username: 'kylep',
-    password: 'testing',
-    to: 'kyle.partridge@sendgrid.com',
+    to: 'david.tomberlin@sendgrid.com',
     from: 'kyle.partridge@sendgrid.com',
     subject: 'Subject',
     html: '<b>This is an email.</b>'
@@ -36,24 +37,24 @@ describe('Mail', function () {
 
     describe('instance', function() {
         it('should allow attributes to be set in the constuctor', function() {
-            var mail = new Mail(text_params);
+            var mail = new Mail(credentials, text_params);
 
             for (var key in text_params) {
-                text_params[key].should.eql(mail[key]);
+                text_params[key].should.eql(mail.mailOptions[key]);
             }
         });
 
         it('should be able to send text messages', function(done) {
-            var mail = new Mail(text_params);
-            mail.send(function(success, message) {
+            var mail = new Mail(credentials, text_params);
+            mail.send({}, function(success, message) {
                 if (!success) should.fail(message);
                 done();
             });
         });
 
         it('should be able to send html messages', function(done) {
-            var mail = new Mail(html_params);
-            mail.send(function(success, message) {
+            var mail = new Mail(credentials, html_params);
+            mail.send({}, function(success, message) {
                 if (!success) should.fail(message);
                 done();
             });
