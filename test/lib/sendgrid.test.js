@@ -28,6 +28,13 @@ var smtp_params = {
   text: 'This is an email.'
 };
 
+var unicode_params = {
+  to: 'kyle.partridge@sendgrid.com',
+  from: 'kyle.partridge@sendgrid.com',
+  subject: 'Unicode Email!',
+  text: 'I can haz unicode? ✔'
+};
+
 describe('SendGrid', function () {
   var sendgrid;
   beforeEach(function() {
@@ -62,6 +69,14 @@ describe('SendGrid', function () {
   describe('Smtp Api', function() {
     it('should send an email', function(done) {
       var mail = new Email(smtp_params);
+      sendgrid.smtp(mail, function(success, message) {
+        if (!success) should.fail(message);
+        done();
+      });
+    });
+
+    it('should allow unicode in emails', function(done) {
+      var mail = new Email(unicode_params);
       sendgrid.smtp(mail, function(success, message) {
         if (!success) should.fail(message);
         done();
