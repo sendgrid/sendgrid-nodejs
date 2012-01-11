@@ -2,7 +2,7 @@
   "author": "SendGrid <info@sendgrid.com> (sendgrid.com)",
   "name": "sendgrid",
   "description": "A NodeJS implementation of the SendGrid Api.",
-  "version": "0.0.0",
+  "version": "0.0.0-1",
   "homepage": "sendgrid.com",
   "repository": {
     "url": ""
