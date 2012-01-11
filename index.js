@@ -1,2 +1,2 @@
-module.exports.Sendgrid = require('./lib/Sendgrid');
+module.exports.SendGrid = require('./lib/sendgrid');
 module.exports.Email = require('./lib/email');
