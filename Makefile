@@ -1,6 +1,4 @@
-TESTS = $(find test -name "*.test.js")
-
 test:
-	mocha $(TESTS) --require should
+	find test -name "*.test.js" | xargs mocha --require should
 
 .PHONY: test
