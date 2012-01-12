@@ -47,8 +47,8 @@ describe('SmtpapiHeader', function() {
       header.unique_args.secret_test.should.eql('rawr');
     });
 
-    it('should overwrite unique_args when calling the method twice', function() {
-      header.setUniqueArgs(unique_args);
+    it('should overwrite when calling the with a value that already exists', function() {
+      header.addUniqueArgs(unique_args);
       header.unique_args.should.eql(unique_args);
       header.addUniqueArgs({apple: 'pie'});
       header.unique_args.should.not.eql(unique_args);
