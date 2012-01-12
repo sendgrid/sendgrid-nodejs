@@ -133,5 +133,27 @@ describe('SmtpapiHeader', function() {
 
       assert(!_.isEmpty(JSON.parse(json).filters), 'should be empty');
     });
+
+    it('should not remove any parameters on this object', function() {
+      header.addTo('kyle.partridge@sendgrid.com');
+      header.addTo(['david.tomberlin@sendgrid.com']);
+      header.addUniqueArgs({foo: 'bar'});
+      header.addFilterSetting('footer', 'enable', 1);
+      header.addFilterSetting('footer', 'text/html', '<b>boo</b>');
+
+      // call the json method to test if it removed anything
+      header.toJson();
+
+      header.to.should.eql(['kyle.partridge@sendgrid.com', 'david.tomberlin@sendgrid.com']);
+      header.unique_args.should.eql({foo: 'bar'});
+      header.filters.should.eql({
+        footer: {
+          settings: {
+            enable: 1,
+            'text/html': '<b>boo</b>'
+          }
+        }
+      });
+    });
   });
 });
