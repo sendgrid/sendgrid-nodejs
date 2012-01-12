@@ -106,7 +106,6 @@ describe('SmtpapiHeader', function() {
     it('should not include the "to" parameter when there are none', function() {
       header.setCategory('nothing');
       var json = header.toJson();
-      console.log("value of to: %s ", JSON.parse(json).to);
       assert(_.isUndefined(JSON.parse(json).to), 'should be empty');
     });
 

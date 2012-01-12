@@ -98,5 +98,37 @@ describe('SendGrid', function () {
       });
     });
   });
+
+  describe('x-smtpapi', function(done) {
+    it('should be able to send an email to mutiple recipients through the Web Api', function() {
+      var mail = new Email({
+        from: 'kyle.partridge@sendgrid.com',
+        to: 'rawr',
+        subject: 'Multiple Recipients with headers',
+        text: 'Multiple recipients through x-smtpapi test'
+      });
+      mail.addTo('kyle.partridge@sendgrid.com');
+      mail.addTo('david.tomberlin@sendgrid.com');
+      sendgrid.send(mail, function(success, message) {
+        if (!success) should.fail(message);
+        done();
+      });
+    });
+
+    it('should be able to send an email to mutiple recipients through the Smtp Api', function() {
+      var mail = new Email({
+        from: 'kyle.partridge@sendgrid.com',
+        to: 'rawr',
+        subject: 'Multiple Recipients with headers',
+        text: 'Multiple recipients through x-smtpapi test'
+      });
+      mail.addTo('kyle.partridge@sendgrid.com');
+      mail.addTo('david.tomberlin@sendgrid.com');
+      sendgrid.smtp(mail, function(success, message) {
+        if (!success) assert.fail(message);
+        done();
+      });
+    });
+  })
 });
 
