@@ -6,10 +6,27 @@ describe('Smtpapiheader', function() {
     header = new SmtpapiHeaders();
   });
 
-  it('should allow multiple to addresses', function() {
-    header.addTo('kyle.partridge@sendgrid.com');
-    header.addTo('david.tomberlin@sendgrid.com');
-    header.data.to.should.eql(['kyle.partridge@sendgrid.com', 'david.tomberlin@sendgrid.com']);
+  describe('recipients', function() {
+    it('should allow multiple to addresses', function() {
+      header.addTo('kyle.partridge@sendgrid.com');
+      header.data.to.should.eql(['kyle.partridge@sendgrid.com']);
+      header.addTo('david.tomberlin@sendgrid.com');
+      header.data.to.should.eql(['kyle.partridge@sendgrid.com', 'david.tomberlin@sendgrid.com']);
+    });
+
+    it('should allow multiple cc addresses', function() {
+      header.addCc('kyle.partridge@sendgrid.com');
+      header.data.cc.should.eql(['kyle.partridge@sendgrid.com']);
+      header.addCc('david.tomberlin@sendgrid.com');
+      header.data.cc.should.eql(['kyle.partridge@sendgrid.com', 'david.tomberlin@sendgrid.com']);
+    });
+
+    it('should allow multiple bcc addresses', function() {
+      header.addBcc('kyle.partridge@sendgrid.com');
+      header.data.bcc.should.eql(['kyle.partridge@sendgrid.com']);
+      header.addBcc('david.tomberlin@sendgrid.com');
+      header.data.bcc.should.eql(['kyle.partridge@sendgrid.com', 'david.tomberlin@sendgrid.com']);
+    });
   });
 
   describe('unique_args', function() {
