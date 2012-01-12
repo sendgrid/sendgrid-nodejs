@@ -4,7 +4,7 @@ var should = require('should');
 
 var credentials = {
   api_user: 'kylep',
-  api_key: 'testing'
+  api_key: 'nope'
 }
 
 var text_params = {
