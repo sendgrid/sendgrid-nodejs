@@ -1,6 +1,5 @@
 var SendGrid = require('../../lib/sendgrid');
 var Email = require('../../lib/email');
-var should = require('should');
 
 var credentials = {
   api_user: 'kylep',

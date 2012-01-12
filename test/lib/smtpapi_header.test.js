@@ -1,5 +1,4 @@
 var SmtpapiHeaders = require('../../lib/smtpapi_headers');
-var assert = require('assert');
 
 describe('SmtpapiHeader', function() {
   var header;
@@ -101,10 +100,38 @@ describe('SmtpapiHeader', function() {
     });
 
     it('should not include the "to" parameter when there are none', function() {
-      header.setCategory('your_face');
-      var json = JSON.stringify(header.toJson());
+      header.setCategory('nothing');
+      var json = header.toJson();
 
-      assert(JSON.parse(json).to !== undefined);
+      assert(!_.isEmpty(JSON.parse(json).to), 'should be empty');
+    });
+
+    it('should not include the "sub" parameter when there are none', function() {
+      header.setCategory('nothing');
+      var json = header.toJson();
+
+      assert(!_.isEmpty(JSON.parse(json).sub), 'should be empty');
+    });
+
+    it('should not include the "unique_args" parameter when there are none', function() {
+      header.setCategory('nothing');
+      var json = header.toJson();
+
+      assert(!_.isEmpty(JSON.parse(json).unique_args), 'should be empty');
+    });
+
+    it('should not include the "category" parameter when there are none', function() {
+      header.addUniqueArgs({food: 'bar'});
+      var json = header.toJson();
+
+      assert(!_.isEmpty(JSON.parse(json).category), 'should be empty');
+    });
+
+    it('should not include the "filters" parameter when there are none', function() {
+      header.addUniqueArgs({food: 'bar'});
+      var json = header.toJson();
+
+      assert(!_.isEmpty(JSON.parse(json).filters), 'should be empty');
     });
   });
 });
