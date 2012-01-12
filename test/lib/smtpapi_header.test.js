@@ -43,6 +43,16 @@ describe('Smtpapiheader', function() {
         header.addUniqueArgs(args);
       }
       header.data.unique_args.should.eql(unique_args);
+      header.addUniqueArgs({secret_test: 'rawr'});
+      header.data.unique_args.secret_test.should.eql('rawr');
+    });
+
+    it('should overwrite unique_args when calling the method twice', function() {
+      header.setUniqueArgs(unique_args);
+      header.data.unique_args.should.eql(unique_args);
+      header.addUniqueArgs({apple: 'pie'});
+      header.data.unique_args.should.not.eql(unique_args);
+      header.data.unique_args.apple.should.eql('pie');
     });
   });
 
