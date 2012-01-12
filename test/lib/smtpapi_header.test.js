@@ -96,7 +96,11 @@ describe('SmtpapiHeader', function() {
       header.addUniqueArgs({foo: 'bar'});
       header.addFilterSetting('footer', 'enable', 1);
       header.addFilterSetting('footer', 'text/html', '<b>boo</b>');
-      JSON.parse(header.toJson()).should.eql(header);
+
+      var parse = JSON.parse(header.toJson());
+      parse.to.should.eql(header.to);
+      parse.unique_args.should.eql(header.unique_args);
+      parse.filters.should.eql(header.filters);
     });
 
     it('should not include the "to" parameter when there are none', function() {
