@@ -50,4 +50,32 @@ describe('Smtpapiheader', function() {
       header.data.category.should.eql(categories);
     });
   });
+
+  describe('filters', function() {
+    it('should be able to set basic filters', function() {
+      header.addFilterSetting('footer', 'enable', 1);
+      header.addFilterSetting('footer', 'text/html', '<b>boo</b>');
+      header.data.filters.should.eql({
+        'footer': {
+          'settings': {
+            'enable': 1,
+            'text/html': '<b>boo</b>'
+          }
+        }
+      });
+    });
+
+    it('should accept filter settings as a straight up object literal', function() {
+      var filters = {
+        'footer': {
+          'setting': {
+            'enable': 1,
+            'text/plain': 'You can haz footers!'
+          }
+        }
+      }
+      header.setFilterSetting(filters);
+      header.data.filters.should.eql(filters);
+    });
+  });
 });
