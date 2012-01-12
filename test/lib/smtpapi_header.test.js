@@ -88,4 +88,15 @@ describe('SmtpapiHeader', function() {
       header.filters.should.eql(filters);
     });
   });
+
+  describe('json', function() {
+    it('should produce valid json', function() {
+      header.addTo('kyle.partridge@sendgrid.com');
+      header.addTo(['david.tomberlin@sendgrid.com']);
+      header.addUniqueArgs({foo: 'bar'});
+      header.addFilterSetting('footer', 'enable', 1);
+      header.addFilterSetting('footer', 'text/html', '<b>boo</b>');
+      JSON.parse(header.toJson()).should.eql(header);
+    });
+  });
 });
