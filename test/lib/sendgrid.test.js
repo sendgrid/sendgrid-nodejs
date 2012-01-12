@@ -63,6 +63,14 @@ describe('SendGrid', function () {
         done();
       });
     });
+
+    it('should be able to send to multiple recipients', function(done) {
+      text_params.to = ['kyle.partridge@sendgrid.com', 'david.tomberlin@sendgrid.com'];
+      sendgrid.send(text_params, function(success, message) {
+        if (!success) should.fail(message);
+        done();
+      });
+    });
   });
 
   describe('Smtp Api', function() {
