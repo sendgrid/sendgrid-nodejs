@@ -1,6 +1,6 @@
 var SmtpapiHeaders = require('../../lib/smtpapi_headers');
 
-describe('Smtpapiheader', function() {
+describe('SmtpapiHeader', function() {
   var header;
   beforeEach(function() {
     header = new SmtpapiHeaders();
@@ -55,7 +55,6 @@ describe('Smtpapiheader', function() {
       header.data.unique_args.apple.should.eql('pie');
     });
   });
-
 
   describe('categories', function() {
     var categories = ['azure', 'dreams'];
