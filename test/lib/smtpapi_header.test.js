@@ -98,5 +98,40 @@ describe('SmtpapiHeader', function() {
       header.addFilterSetting('footer', 'text/html', '<b>boo</b>');
       JSON.parse(header.toJson()).should.eql(header);
     });
+
+    it('should not include the "to" parameter when there are none', function() {
+      header.setCategory('nothing');
+      var json = header.toJson();
+
+      assert(!_.isEmpty(JSON.parse(json).to), 'should be empty');
+    });
+
+    it('should not include the "sub" parameter when there are none', function() {
+      header.setCategory('nothing');
+      var json = header.toJson();
+
+      assert(!_.isEmpty(JSON.parse(json).sub), 'should be empty');
+    });
+
+    it('should not include the "unique_args" parameter when there are none', function() {
+      header.setCategory('nothing');
+      var json = header.toJson();
+
+      assert(!_.isEmpty(JSON.parse(json).unique_args), 'should be empty');
+    });
+
+    it('should not include the "category" parameter when there are none', function() {
+      header.addUniqueArgs({food: 'bar'});
+      var json = header.toJson();
+
+      assert(!_.isEmpty(JSON.parse(json).category), 'should be empty');
+    });
+
+    it('should not include the "filters" parameter when there are none', function() {
+      header.addUniqueArgs({food: 'bar'});
+      var json = header.toJson();
+
+      assert(!_.isEmpty(JSON.parse(json).filters), 'should be empty');
+    });
   });
 });

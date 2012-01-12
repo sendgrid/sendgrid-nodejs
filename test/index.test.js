@@ -10,4 +10,7 @@ describe("index.js", function () {
   it('should export the Email object', function() {
     index.Email.should.not.be.undefined;
   });
+  it('should export the SmtpapiHeaders object', function() {
+    index.SmtpapiHeaders.should.not.be.undefined;
+  });
 });
