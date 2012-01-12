@@ -16,6 +16,12 @@ describe('Email', function () {
     }
   });
 
+  it('should allow to field to be set via addTo', function() {
+    var mail = new Email(text_params);
+    mail.addTo('siyegen@gmail.com');
+    mail.
+  });
+
   describe('validation', function() {
     it('should invalidate when there are no parameters', function() {
       var mail = new Email();

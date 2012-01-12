@@ -6,8 +6,8 @@ console.log(Email);
 
 var sender = new SendGrid({api_user: 'siyegen', api_key: 'supermailsforus'});
 var email = new Email({
+  to: "whatever@whatmoorawr.com",
   from: 'testy@testerson.com',
-  to: 'david.tomberlin@sendgrid.com',
   subject: 'Simple mailer ',
   text: 'oh yeah man, for real  ✔ 3 tests complete (',
   html: '<b>oh</b> yeah man, for <i>reaaaaaaal</i>  ✔ 3 tests complete ('
@@ -26,7 +26,7 @@ email.params["x-smtpapi"].filters = {
     }
   }
 };
-console.dir(email.params['x-smtpapi']);
+// console.dir(email.params['x-smtpapi']);
 console.log(email);
 
 sender.smtp(email, function(success, err) {
