@@ -1,4 +1,5 @@
 var SmtpapiHeaders = require('../../lib/smtpapi_headers');
+var assert = require('assert');
 
 describe('SmtpapiHeader', function() {
   var header;
@@ -97,6 +98,13 @@ describe('SmtpapiHeader', function() {
       header.addFilterSetting('footer', 'enable', 1);
       header.addFilterSetting('footer', 'text/html', '<b>boo</b>');
       JSON.parse(header.toJson()).should.eql(header);
+    });
+
+    it('should not include the "to" parameter when there are none', function() {
+      header.setCategory('your_face');
+      var json = JSON.stringify(header.toJson());
+
+      assert(JSON.parse(json).to !== undefined);
     });
   });
 });
