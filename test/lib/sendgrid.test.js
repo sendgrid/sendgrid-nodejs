@@ -96,6 +96,30 @@ describe('SendGrid', function () {
       });
     });
 
+    it('should support substitution values', function(done) {
+      var mail = new Email(smtp_params);
+      mail.addTo(['david.tomberlin@sendgrid.com']);
+      mail.addSubVal('-name-',['Panda', 'Cow']);
+      mail.html = 'You are a <strong>-name-</strong>';
+      sendgrid.send(mail, function(success, message) {
+        if (!success) should.fail(message);
+        done();
+      });
+    });
+
+    it('should support sections being set in the email', function(done) {
+      var mail = new Email(smtp_params);
+      mail.addTo(['kyle.partridge@sendgrid.com', 'david.tomberlin@sendgrid.com']);
+      mail.addSubVal('-name-', ['Kyle', 'David']);
+      mail.addSubVal('-meme-', ['-kyleSection-', '-davidSection-']);
+      mail.addSection({'-kyleSection-': 'I heard you liked batman so I killed your parents'});
+      mail.addSection({'-davidSection-': 'Metal gear?!!?!!!!eleven'});
+      mail.html = "Yo -name-!<br /> Here's a meme for you:<br /> -meme-";
+      sendgrid.send(mail, function(success, message) {
+        done();
+      });
+    });
+
     it('should report errors to the user', function(done) {
       var mail = new Email({});
       sendgrid.send(mail, function(success, message) {
@@ -151,6 +175,30 @@ describe('SendGrid', function () {
       mail.addFilterSetting('footer', 'text/plain', 'This is mah footer with a ✔ in it!');
       sendgrid.smtp(mail, function(success, message) {
         if (!success) should.fail(message);
+        done();
+      });
+    });
+
+    it('should support substitution values', function(done) {
+      var mail = new Email(smtp_params);
+      mail.addTo(['david.tomberlin@sendgrid.com']);
+      mail.addSubVal('-name-',['Panda', 'Cow']);
+      mail.html = 'You are a <strong>-name-</strong>';
+      sendgrid.smtp(mail, function(success, message) {
+        if (!success) should.fail(message);
+        done();
+      });
+    });
+
+    it('should support sections being set in the email', function(done) {
+      var mail = new Email(smtp_params);
+      mail.addTo(['kyle.partridge@sendgrid.com', 'david.tomberlin@sendgrid.com']);
+      mail.addSubVal('-name-', ['Kyle', 'David']);
+      mail.addSubVal('-meme-', ['-kyleSection-', '-davidSection-']);
+      mail.addSection({'-kyleSection-': 'I heard you liked batman so I killed your parents'});
+      mail.addSection({'-davidSection-': 'Metal gear?!!?!!!!eleven'});
+      mail.html = "Yo -name-!<br /> Here's a meme for you:<br /> -meme-";
+      sendgrid.smtp(mail, function(success, message) {
         done();
       });
     });
