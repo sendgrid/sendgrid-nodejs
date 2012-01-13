@@ -90,6 +90,15 @@ describe('SendGrid', function () {
       });
     });
 
+    it('should support the reply_to field', function(done) {
+      var mail = new Email(smtp_params);
+      mail.subject += ' Reply To Test';
+      sendgrid.smtp(mail, function(success, message) {
+        if (!success) should.fail(message);
+        done();
+      });
+    });
+
     it('should report errors back to the user', function(done) {
       var mail = new Email({});
       sendgrid.smtp(mail, function(success, message) {
