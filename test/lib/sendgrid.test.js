@@ -65,8 +65,9 @@ describe('SendGrid', function () {
     });
 
     it('should be able to send to multiple recipients', function(done) {
-      text_params.to = ['kyle.partridge@sendgrid.com', 'david.tomberlin@sendgrid.com'];
-      sendgrid.send(text_params, function(success, message) {
+      var params = _.clone(text_params);
+      params.to = ['kyle.partridge@sendgrid.com', 'david.tomberlin@sendgrid.com'];
+      sendgrid.send(params, function(success, message) {
         if (!success) should.fail(message);
         done();
       });
