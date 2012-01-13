@@ -130,6 +130,7 @@ describe('SendGrid', function () {
 
       return mail;
     }
+
     it('should be able to send an email to mutiple recipients through the Web Api', function(done) {
       var mail = setupEmail();
       mail.subject = '(Web) ' + mail.subject;
