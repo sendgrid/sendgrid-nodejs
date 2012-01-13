@@ -117,8 +117,6 @@ describe('SmtpapiHeader', function() {
     });
   });
 
-
-
   describe('json', function() {
     it('should produce valid json', function() {
       header.addTo('kyle.partridge@sendgrid.com');
