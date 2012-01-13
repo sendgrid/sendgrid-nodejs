@@ -109,6 +109,29 @@ describe('SendGrid', function () {
       });
     });
 
+    it('should support filters', function(done) {
+      var mail = new Email(smtp_params);
+      mail.subject += ' filters';
+      mail.addFilterSetting('footer', 'enable', 1);
+      mail.addFilterSetting('footer', 'text/plain', 'This is mah footer!');
+      sendgrid.smtp(mail, function(success, message) {
+        if (!success) should.fail(message);
+        done();
+      });
+    });
+
+    // this test will most likely fail until node_modules is updated
+    it('should support filters with unicode parameters', function(done) {
+      var mail = new Email(smtp_params);
+      mail.support += ' filters w/ unicode ✔';
+      mail.addFilterSetting('footer', 'enable', 1);
+      mail.addFilterSetting('footer', 'text/plain', 'This is mah footer with a ✔ in it!');
+      sendgrid.smtp(mail, function(success, message) {
+        if (!success) should.fail(message);
+        done();
+      });
+    });
+
     it('should report errors to the user', function(done) {
       var mail = new Email({});
       sendgrid.smtp(mail, function(success, message) {
