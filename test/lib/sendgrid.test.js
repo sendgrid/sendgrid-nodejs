@@ -72,6 +72,14 @@ describe('SendGrid', function () {
         done();
       });
     });
+
+    it('should report errors to the user', function(done) {
+      var mail = new Email({});
+      sendgrid.send(mail, function(success, message) {
+        if (success) should.fail('An error should have been reported');
+        done();
+      });
+    });
   });
 
   describe('Smtp Api', function() {
@@ -101,7 +109,7 @@ describe('SendGrid', function () {
       });
     });
 
-    it('should report errors back to the user', function(done) {
+    it('should report errors to the user', function(done) {
       var mail = new Email({});
       sendgrid.smtp(mail, function(success, message) {
         if (success) should.fail('An error should have been reported');
