@@ -44,7 +44,7 @@ describe('SendGrid', function () {
     it('should be able to send text messages', function(done) {
       var mail = new Email(text_params);
       sendgrid.send(mail, function(success, message) {
-        if (!success) should.fail(message);
+        if (!success) assert.ok(false, message);
         done();
       });
     });
@@ -52,14 +52,14 @@ describe('SendGrid', function () {
     it('should be able to send html messages', function(done) {
       var mail = new Email(html_params);
       sendgrid.send(mail, function(success, message) {
-        if (!success) should.fail(message);
+        if (!success) assert.ok(false, message);
         done();
       });
     });
 
     it('should allow a user to easily send email', function(done) {
       sendgrid.send(text_params, function(success, message) {
-        if (!success) should.fail(message);
+        if (!success) assert.ok(false, message);
         done();
       });
     });
@@ -68,7 +68,7 @@ describe('SendGrid', function () {
       var params = _.clone(text_params);
       params.to = ['kyle.partridge@sendgrid.com', 'david.tomberlin@sendgrid.com'];
       sendgrid.send(params, function(success, message) {
-        if (!success) should.fail(message);
+        if (!success) assert.ok(false, message);
         done();
       });
     });
@@ -79,7 +79,7 @@ describe('SendGrid', function () {
       mail.addFilterSetting('footer', 'enable', 1);
       mail.addFilterSetting('footer', 'text/plain', 'This is mah footer!');
       sendgrid.send(mail, function(success, message) {
-        if (!success) should.fail(message);
+        if (!success) assert.ok(false, message);
         done();
       });
     });
@@ -91,7 +91,7 @@ describe('SendGrid', function () {
       mail.addFilterSetting('footer', 'enable', 1);
       mail.addFilterSetting('footer', 'text/plain', 'This is mah footer with a ✔ in it!');
       sendgrid.send(mail, function(success, message) {
-        if (!success) should.fail(message);
+        if (!success) assert.ok(false, message);
         done();
       });
     });
@@ -99,10 +99,10 @@ describe('SendGrid', function () {
     it('should support substitution values', function(done) {
       var mail = new Email(smtp_params);
       mail.addTo(['david.tomberlin@sendgrid.com']);
-      mail.addSubVal('-name-',['Panda', 'Cow']);
+      mail.addSubVal('-name-',['Panda']);
       mail.html = 'You are a <strong>-name-</strong>';
       sendgrid.send(mail, function(success, message) {
-        if (!success) should.fail(message);
+        if (!success) assert.ok(false, message);
         done();
       });
     });
@@ -116,6 +116,7 @@ describe('SendGrid', function () {
       mail.addSection({'-davidSection-': 'Metal gear?!!?!!!!eleven'});
       mail.html = "Yo -name-!<br /> Here's a meme for you:<br /> -meme-";
       sendgrid.send(mail, function(success, message) {
+        if (!success) assert.ok(false, message);
         done();
       });
     });
@@ -123,7 +124,7 @@ describe('SendGrid', function () {
     it('should report errors to the user', function(done) {
       var mail = new Email({});
       sendgrid.send(mail, function(success, message) {
-        if (success) should.fail('An error should have been reported');
+        if (success) assert.ok(false, 'An error should have been reported');
         done();
       });
     });
@@ -133,7 +134,7 @@ describe('SendGrid', function () {
     it('should send an email', function(done) {
       var mail = new Email(smtp_params);
       sendgrid.smtp(mail, function(success, message) {
-        if (!success) should.fail(message);
+        if (!success) assert.ok(false, message);
         done();
       });
     });
@@ -141,7 +142,7 @@ describe('SendGrid', function () {
     it('should allow unicode in emails', function(done) {
       var mail = new Email(unicode_params);
       sendgrid.smtp(mail, function(success, message) {
-        if (!success) should.fail(message);
+        if (!success) assert.ok(false, message);
         done();
       });
     });
@@ -151,7 +152,7 @@ describe('SendGrid', function () {
       mail.subject += ' Reply To Test';
       mail.replyto = 'noreply@sendgrid.com';
       sendgrid.smtp(mail, function(success, message) {
-        if (!success) should.fail(message);
+        if (!success) assert.ok(false, message);
         done();
       });
     });
@@ -162,7 +163,7 @@ describe('SendGrid', function () {
       mail.addFilterSetting('footer', 'enable', 1);
       mail.addFilterSetting('footer', 'text/plain', 'This is mah footer!');
       sendgrid.smtp(mail, function(success, message) {
-        if (!success) should.fail(message);
+        if (!success) assert.ok(false, message);
         done();
       });
     });
@@ -174,7 +175,7 @@ describe('SendGrid', function () {
       mail.addFilterSetting('footer', 'enable', 1);
       mail.addFilterSetting('footer', 'text/plain', 'This is mah footer with a ✔ in it!');
       sendgrid.smtp(mail, function(success, message) {
-        if (!success) should.fail(message);
+        if (!success) assert.ok(false, message);
         done();
       });
     });
@@ -185,7 +186,7 @@ describe('SendGrid', function () {
       mail.addSubVal('-name-',['Panda', 'Cow']);
       mail.html = 'You are a <strong>-name-</strong>';
       sendgrid.smtp(mail, function(success, message) {
-        if (!success) should.fail(message);
+        if (!success) assert.ok(false, message);
         done();
       });
     });
@@ -199,6 +200,7 @@ describe('SendGrid', function () {
       mail.addSection({'-davidSection-': 'Metal gear?!!?!!!!eleven'});
       mail.html = "Yo -name-!<br /> Here's a meme for you:<br /> -meme-";
       sendgrid.smtp(mail, function(success, message) {
+        if (!success) assert.ok(false, message);
         done();
       });
     });
@@ -206,7 +208,7 @@ describe('SendGrid', function () {
     it('should report errors to the user', function(done) {
       var mail = new Email({});
       sendgrid.smtp(mail, function(success, message) {
-        if (success) should.fail('An error should have been reported');
+        if (success) assert.ok(false, 'An error should have been reported');
         done();
       });
     });
