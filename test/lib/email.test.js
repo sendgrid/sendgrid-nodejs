@@ -1,4 +1,5 @@
 var Email = require('../../lib/email');
+var querystring = require('querystring')
 
 var text_params = {
   to: 'david.tomberlin@sendgrid.com',

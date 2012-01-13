@@ -12,7 +12,9 @@
   },
   "dependencies": {
     "underscore": ">=1.2.4",
-    "nodemailer": "*"
+    "nodemailer": "*",
+    "mime": "*",
+    "restler": "*"
   },
   "devDependencies": {
     "mocha": ">= 0.9.0",
