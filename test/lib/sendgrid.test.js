@@ -1,6 +1,5 @@
 var SendGrid = require('../../lib/sendgrid');
 var Email = require('../../lib/email');
-var should = require('should');
 
 var credentials = {
   api_user: 'kylep',
@@ -64,6 +63,46 @@ describe('SendGrid', function () {
         done();
       });
     });
+
+    it('should be able to send to multiple recipients', function(done) {
+      var params = _.clone(text_params);
+      params.to = ['kyle.partridge@sendgrid.com', 'david.tomberlin@sendgrid.com'];
+      sendgrid.send(params, function(success, message) {
+        if (!success) should.fail(message);
+        done();
+      });
+    });
+
+    it('should support filters', function(done) {
+      var mail = new Email(smtp_params);
+      mail.subject += ' filters (web)';
+      mail.addFilterSetting('footer', 'enable', 1);
+      mail.addFilterSetting('footer', 'text/plain', 'This is mah footer!');
+      sendgrid.send(mail, function(success, message) {
+        if (!success) should.fail(message);
+        done();
+      });
+    });
+
+    // this test will most likely fail until node_modules is updated
+    it('should support filters with unicode parameters', function(done) {
+      var mail = new Email(smtp_params);
+      mail.subject += ' filters w/ unicode ✔ (Web)';
+      mail.addFilterSetting('footer', 'enable', 1);
+      mail.addFilterSetting('footer', 'text/plain', 'This is mah footer with a ✔ in it!');
+      sendgrid.send(mail, function(success, message) {
+        if (!success) should.fail(message);
+        done();
+      });
+    });
+
+    it('should report errors to the user', function(done) {
+      var mail = new Email({});
+      sendgrid.send(mail, function(success, message) {
+        if (success) should.fail('An error should have been reported');
+        done();
+      });
+    });
   });
 
   describe('Smtp Api', function() {
@@ -83,7 +122,40 @@ describe('SendGrid', function () {
       });
     });
 
-    it('should report errors back to the user', function(done) {
+    it('should support the reply_to field', function(done) {
+      var mail = new Email(smtp_params);
+      mail.subject += ' Reply To Test';
+      mail.replyto = 'noreply@sendgrid.com';
+      sendgrid.smtp(mail, function(success, message) {
+        if (!success) should.fail(message);
+        done();
+      });
+    });
+
+    it('should support filters', function(done) {
+      var mail = new Email(smtp_params);
+      mail.subject += ' filters (Smtp)';
+      mail.addFilterSetting('footer', 'enable', 1);
+      mail.addFilterSetting('footer', 'text/plain', 'This is mah footer!');
+      sendgrid.smtp(mail, function(success, message) {
+        if (!success) should.fail(message);
+        done();
+      });
+    });
+
+    // this test will most likely fail until node_modules is updated
+    it('should support filters with unicode parameters', function(done) {
+      var mail = new Email(smtp_params);
+      mail.subject += ' filters w/ unicode ✔ (Smtp)';
+      mail.addFilterSetting('footer', 'enable', 1);
+      mail.addFilterSetting('footer', 'text/plain', 'This is mah footer with a ✔ in it!');
+      sendgrid.smtp(mail, function(success, message) {
+        if (!success) should.fail(message);
+        done();
+      });
+    });
+
+    it('should report errors to the user', function(done) {
       var mail = new Email({});
       sendgrid.smtp(mail, function(success, message) {
         if (success) should.fail('An error should have been reported');
@@ -91,5 +163,37 @@ describe('SendGrid', function () {
       });
     });
   });
+
+  describe('x-smtpapi', function(done) {
+    function setupEmail() {
+      var mail = new Email({
+        from: 'kyle.partridge@sendgrid.com',
+        subject: 'Multiple Recipients with headers',
+        text: 'Multiple recipients through x-smtpapi test'
+      });
+      mail.addTo('kyle.partridge@sendgrid.com');
+      mail.addTo('david.tomberlin@sendgrid.com');
+
+      return mail;
+    }
+
+    it('should be able to send an email to mutiple recipients through the Web Api', function(done) {
+      var mail = setupEmail();
+      mail.subject = '(Web) ' + mail.subject;
+      sendgrid.send(mail, function(success, message) {
+        if (!success) assert.ok(false, message);
+        done();
+      });
+    });
+
+    it('should be able to send an email to mutiple recipients through the Smtp Api', function(done) {
+      var mail = setupEmail();
+      mail.subject = '(SMTP) ' + mail.subject;
+      sendgrid.smtp(mail, function(success, message) {
+        if (!success) assert.ok(false, message);
+        done();
+      });
+    });
+  })
 });
 
