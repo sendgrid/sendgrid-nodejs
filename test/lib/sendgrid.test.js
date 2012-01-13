@@ -100,15 +100,20 @@ describe('SendGrid', function () {
   });
 
   describe('x-smtpapi', function(done) {
-    it('should be able to send an email to mutiple recipients through the Web Api', function(done) {
+    function setupEmail() {
       var mail = new Email({
         from: 'kyle.partridge@sendgrid.com',
-        to: 'rawr',
-        subject: '(Web) Multiple Recipients with headers',
+        subject: 'Multiple Recipients with headers',
         text: 'Multiple recipients through x-smtpapi test'
       });
       mail.addTo('kyle.partridge@sendgrid.com');
       mail.addTo('david.tomberlin@sendgrid.com');
+
+      return mail;
+    }
+    it('should be able to send an email to mutiple recipients through the Web Api', function(done) {
+      var mail = setupEmail();
+      mail.subject = '(Web) ' + mail.subject;
       sendgrid.send(mail, function(success, message) {
         if (!success) assert.ok(false, message);
         done();
@@ -116,13 +121,8 @@ describe('SendGrid', function () {
     });
 
     it('should be able to send an email to mutiple recipients through the Smtp Api', function(done) {
-      var mail = new Email({
-        from: 'kyle.partridge@sendgrid.com',
-        subject: '(Smtp) Multiple Recipients with headers',
-        text: 'Multiple recipients through x-smtpapi test'
-      });
-      mail.addTo('kyle.partridge@sendgrid.com');
-      mail.addTo('david.tomberlin@sendgrid.com');
+      var mail = setupEmail();
+      mail.subject = '(SMTP) ' + mail.subject;
       sendgrid.smtp(mail, function(success, message) {
         if (!success) assert.ok(false, message);
         done();
