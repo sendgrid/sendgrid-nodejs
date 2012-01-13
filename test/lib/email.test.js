@@ -41,10 +41,10 @@ describe('Email', function () {
 
   it('should support file attachments', function() {
     var email = new Email();
-    email.addFile(files[0]);
-    email.files.should.eql([files[0]]);
-    email.addFile(files[1]);
-    email.files.should.eql(files);
+    email.addFile('file1', files[0]);
+    email.files.should.eql({'file1': files[0]});
+    email.addFile('file2', files[1]);
+    email.files.should.eql({'file1': files[0], 'file2': files[1]});
   });
 
   describe('validation', function() {
