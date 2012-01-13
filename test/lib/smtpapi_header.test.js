@@ -31,7 +31,7 @@ describe('SmtpapiHeader', function() {
       header.unique_args.secret_test.should.eql('rawr');
     });
 
-    it('should overwrite when calling the with a value that already exists', function() {
+    it('should overwrite when calling addUniqueArgs with a value that already exists', function() {
       header.addUniqueArgs(unique_args);
       header.unique_args.should.eql(unique_args);
       header.addUniqueArgs({apple: 'pie'});
@@ -58,6 +58,34 @@ describe('SmtpapiHeader', function() {
       var categories = ['azure', 'dreams'];
       header.setCategory(categories);
       header.category.should.eql(categories);
+    });
+  });
+
+  describe('sections', function() {
+    var section_args = {'-sectionName1-': 'text 1', '-sectionName2-': 'text 2'};
+    it('should allow setting a single section', function() {
+      header.setSection(section_args);
+      header.section.should.eql(section_args);
+    });
+
+    it('should allow adding section args one at a time', function() {
+      for (var key in section_args) {
+        var args = {};
+        args[key] = section_args[key];
+        header.addSection(args);
+      }
+      header.section.should.eql(section_args);
+      header.addSection({cow: 'moo'});
+      header.section.should.not.eql(section_args);
+      header.section.cow.should.eql('moo');
+    });
+
+    it('should overwrite section when calling addSection with a value that already exists', function() {
+      header.addSection(section_args);
+      header.section.should.eql(section_args);
+      header.addSection({'-sectionName1-': 'cows are nice'});
+      header.section.should.not.eql(section_args);
+      header.section['-sectionName1-'].should.eql('cows are nice');
     });
   });
 
@@ -88,6 +116,8 @@ describe('SmtpapiHeader', function() {
       header.filters.should.eql(filters);
     });
   });
+
+
 
   describe('json', function() {
     it('should produce valid json', function() {
