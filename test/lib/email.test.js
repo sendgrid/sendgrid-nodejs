@@ -12,8 +12,26 @@ describe('Email', function () {
     var mail = new Email(text_params);
 
     for (var key in text_params) {
-      text_params[key].should.eql(mail.params[key]);
+      text_params[key].should.eql(mail[key]);
     }
+  });
+
+  it('should return a Web Api format as expected', function() {
+    var email = new Email(text_params);
+    var webFormat = email.toWebFormat();
+    webFormat.to.should.equal(text_params.to);
+    webFormat.from.should.equal(text_params.from);
+    webFormat.subject.should.equal(text_params.subject);
+    webFormat.text.should.equal(text_params.text);
+  });
+
+  it('should return an Smtp Api format as expected', function() {
+    var email = new Email(text_params);
+    var smtpFormat = email.toSmtpFormat();
+    smtpFormat.to.should.equal(text_params.to);
+    smtpFormat.sender.should.equal(text_params.from);
+    smtpFormat.subject.should.equal(text_params.subject);
+    smtpFormat.body.should.equal(text_params.text);
   });
 
   describe('validation', function() {
