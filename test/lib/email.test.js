@@ -7,6 +7,11 @@ var text_params = {
   text: 'This is an email.'
 };
 
+var files = [
+  __dirname + '/../assets/logo.png',
+  __dirname + '/../assets/sendgrid.txt'
+]
+
 describe('Email', function () {
   it('should allow attributes to be set in the constuctor', function() {
     var mail = new Email(text_params);
@@ -32,6 +37,14 @@ describe('Email', function () {
     smtpFormat.sender.should.equal(text_params.from);
     smtpFormat.subject.should.equal(text_params.subject);
     smtpFormat.body.should.equal(text_params.text);
+  });
+
+  it('should support file attachments', function() {
+    var email = new Email();
+    email.addFile(files[0]);
+    email.files.should.eql([files[0]]);
+    email.addFile(files[1]);
+    email.files.should.eql(files);
   });
 
   describe('validation', function() {
