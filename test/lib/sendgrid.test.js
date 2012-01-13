@@ -3,7 +3,7 @@ var Email = require('../../lib/email');
 
 var credentials = {
   api_user: 'kylep',
-  api_key: 'nope'
+  api_key: 'testing'
 }
 
 var text_params = {
