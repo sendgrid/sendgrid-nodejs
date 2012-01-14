@@ -1,15 +1,13 @@
 var SendGrid = require('../../lib/sendgrid');
 var Email = require('../../lib/Email');
 
-var credentials = {
-  api_user: 'kylep',
-  api_key: 'testing'
-}
+var api_user = 'kylep';
+var api_key = 'testing';
 
 describe('attachments', function(){
   var sendgrid;
   beforeEach(function() {
-    sendgrid = new SendGrid(credentials);
+    sendgrid = new SendGrid(api_user, api_key);
   });
 
   it('should be able to send files via web', function(done) {
