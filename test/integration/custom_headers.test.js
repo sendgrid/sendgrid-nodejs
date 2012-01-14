@@ -1,16 +1,14 @@
 var SendGrid = require('../../lib/sendgrid');
 var Email = require('../../lib/email');
 
-var credentials = {
-  api_user: 'kylep',
-  api_key: 'testing'
-}
+var api_user = 'kylep';
+var api_key = 'testing';
 
 describe('custom headers', function() {
   var sendgrid; 
   var custom_headers = {cow: 'moo', panda: 'brawr'};
   beforeEach(function() {
-    sendgrid = new SendGrid(credentials);
+    sendgrid = new SendGrid(api_user, api_key);
   });
 
   describe('Smtp', function() {

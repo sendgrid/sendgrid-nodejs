@@ -49,17 +49,9 @@ describe('Email', function () {
   });
 
   describe('validation', function() {
-    it('should invalidate when there are no parameters', function() {
-      var mail = new Email();
+    it('should invalidate when there are no parameters');
 
-      mail.validate().should.be.false;
-    });
-
-    it('should return true when the mail is valid', function() {
-      var mail = new Email(text_params);
-
-      mail.validate().should.be.true;
-    });
+    it('should return true when the mail is valid');
   });
 
   describe('custom headers', function() {
