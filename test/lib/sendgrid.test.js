@@ -1,10 +1,8 @@
 var SendGrid = require('../../lib/sendgrid');
 var Email = require('../../lib/email');
 
-var credentials = {
-  api_user: 'kylep',
-  api_key: 'testing'
-}
+var api_user = 'kylep';
+var api_key = 'testing';
 
 var text_params = {
   to: 'david.tomberlin@sendgrid.com',
@@ -37,7 +35,7 @@ var unicode_params = {
 describe('SendGrid', function () {
   var sendgrid;
   beforeEach(function() {
-    sendgrid = new SendGrid(credentials);
+    sendgrid = new SendGrid(api_user, api_key);
   });
 
   describe('Web Api', function() {
