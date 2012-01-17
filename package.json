@@ -1,11 +1,14 @@
 {
   "author": "SendGrid <info@sendgrid.com> (sendgrid.com)",
-  "name": "sendgrid",
+  "contributors": ['Kyle Partridge <kyle.partridge@sendgrid.com>',
+                  'David Tomberlin <david.tomberlin@sendgrid.com>'],
+  "name": "sendgrid-nodejs",
   "description": "A NodeJS implementation of the SendGrid Api.",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "homepage": "sendgrid.com",
   "repository": {
-    "url": ""
+    "type": "git",
+    "url": "https://github.com/sendgrid/sendgrid-nodejs"
   },
   "engines": {
     "node": "~0.6.0"
