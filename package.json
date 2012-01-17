@@ -1,7 +1,7 @@
 {
   "author": "SendGrid <info@sendgrid.com> (sendgrid.com)",
-  "contributors": ['Kyle Partridge <kyle.partridge@sendgrid.com>',
-                  'David Tomberlin <david.tomberlin@sendgrid.com>'],
+  "contributors": ["Kyle Partridge <kyle.partridge@sendgrid.com>",
+                  "David Tomberlin <david.tomberlin@sendgrid.com>"],
   "name": "sendgrid-nodejs",
   "description": "A NodeJS implementation of the SendGrid Api.",
   "version": "0.1.0",
