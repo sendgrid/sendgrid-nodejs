@@ -21,11 +21,11 @@ sendgrid.send({
 And you're done!
 
 ### Digging in ###
-There are two objects that you really need to know to get started:
+There are two objects that you need to know to get started:
 +   SendGrid
 +   Email
 
-#### Email ####
+### Email ###
 Email is the object that will help you easily perpare your message to be
 sent.
 To get started create an Email object
@@ -124,7 +124,36 @@ email.addFile('secret.txt', '/path/to/file');
 ```
 
 More examples can be find in the test
-
+
+### SendGrid ###
+The SendGrid object handles holding your credentials as well as sending your mail.
+Here's the things you'll need to know
+
+```javascript
+// Create a new SendGrid object with your credentials
+var sendgrid = new SendGrid(api_user, api_key);
+```
+When sending an email you can either use .send or .smtp to send via web-api or smtp.
+The email object you pass is in the same, the transport method you choose will handing 
+setting up the object and values accordingly, leaving less for you to worry about.
+If you'd rather not use the Email object then you can always pass in an simple object
+with the appropriate values set
+
+```javascript
+// Send an email via web api
+// email can be an Email object or a simple hash
+// with the info required
+sendgrid.send(email, function(success, message) {
+  // if success do something, or log the messsage
+});
+
+// Send via smtp
+// again, email can be the Email object or a simple hash
+sendgrid.smtp(email, function(success, message) {
+  // logic based on success
+});
+```
+
 ## Tests ##
 If you're interested in seeing some sample code or just want to run the
 test then here's what you need to know.
