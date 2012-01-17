@@ -34,7 +34,7 @@ describe('Email', function () {
   it('should not have a to address if there is no to or no smtpapi.to set via Web Api', function() {
     var email = new Email({from: 'test@test.com', subject: 'testing', text: 'testing'});
     var webFormat = email.toWebFormat();
-    expect(_.isEmpty(webFormat.to)).to.be.true;
+    expect(webFormat.to).to.be.empty;
   });
 
   it('should return an Smtp Api format as expected', function() {
