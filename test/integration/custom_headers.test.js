@@ -1,8 +1,10 @@
 var SendGrid = require('../../lib/sendgrid');
 var Email = require('../../lib/email');
 
-var api_user = 'kylep';
-var api_key = 'testing';
+var api_user = require('../test.setup').user;
+var api_key = require('../test.setup').pass;
+var single_to = require('../test.setup').single_to;
+var t_from = require('../test.setup').from;
 
 describe('custom headers', function() {
   var sendgrid; 
@@ -14,14 +16,14 @@ describe('custom headers', function() {
   describe('Smtp', function() {
     it('should allow an email with custom headers to be sent', function(done) {
       var mail = new Email({
-        to: 'kyle.partridge@sendgrid.com',
-        from: 'david.tomberlin@sendgrid.com',
+        to: single_to,
+        from: t_from,
         subject: '[SMTP]Testing custom headers',
         text: 'Custom headers in email'
       });
 
       mail.setHeaders(custom_headers);
-      mail.headers.should.eql(custom_headers);
+      expect(mail.headers).to.eql(custom_headers);
 
       sendgrid.send(mail, function(success, message) {
         expect(success).to.be.true;
@@ -33,14 +35,14 @@ describe('custom headers', function() {
   describe('Web', function() {
     it('should allow an email with custom headers to be sent', function(done) {
       var mail = new Email({
-        to: 'kyle.partridge@sendgrid.com',
-        from: 'david.tomberlin@sendgrid.com',
+        to: single_to,
+        from: t_from,
         subject: '[WEB]Testing custom headers',
         text: 'Custom headers in email'
       });
 
       mail.setHeaders(custom_headers);
-      mail.headers.should.eql(custom_headers);
+      expect(mail.headers).to.eql(custom_headers);
 
       sendgrid.smtp(mail, function(success, message) {
         expect(success).to.be.true;
