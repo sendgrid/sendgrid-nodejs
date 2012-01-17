@@ -2,6 +2,9 @@
 This nodejs module allows you to quickly and easily send emails through
 SendGrid using nodejs.
 
+## License ##
+Licensed under the MIT License.
+
 ## Install ##
 ```
 npm install sendgrid-nodejs
@@ -124,7 +127,7 @@ email.addFile('secret.txt', '/path/to/file');
 ```
 
 More examples can be find in the test
-
+
 ## Tests ##
 If you're interested in seeing some sample code or just want to run the
 test then here's what you need to know.
