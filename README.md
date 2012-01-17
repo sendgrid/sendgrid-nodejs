@@ -7,7 +7,7 @@ SendGrid using nodejs.
 npm install sendgrid-nodejs
 ```
 ## Usage ##
-#### It can be this easy####
+### It can be this easy ###
 ```javascript
 var SendGrid = require('sendgrid-nodejs').SendGrid;
 var sendgrid = new SendGrid(user, key);
