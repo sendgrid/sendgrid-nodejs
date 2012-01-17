@@ -4,7 +4,7 @@
                   "David Tomberlin <david.tomberlin@sendgrid.com>"],
   "name": "sendgrid-nodejs",
   "description": "A NodeJS implementation of the SendGrid Api.",
-  "version": "0.1.0",
+  "version": "0.1.0-1",
   "homepage": "sendgrid.com",
   "repository": {
     "type": "git",
@@ -16,8 +16,7 @@
   "dependencies": {
     "underscore": ">=1.2.4",
     "nodemailer": "*",
-    "mime": "*",
-    "restler": "*"
+    "mime": "*"
   },
   "devDependencies": {
     "mocha": ">= 0.9.0",
