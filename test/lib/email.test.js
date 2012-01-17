@@ -18,34 +18,40 @@ describe('Email', function () {
     var mail = new Email(text_params);
 
     for (var key in text_params) {
-      text_params[key].should.eql(mail[key]);
+      expect(text_params[key]).to.eql(mail[key]);
     }
   });
 
   it('should return a Web Api format as expected', function() {
     var email = new Email(text_params);
     var webFormat = email.toWebFormat();
-    webFormat.to.should.equal(text_params.to);
-    webFormat.from.should.equal(text_params.from);
-    webFormat.subject.should.equal(text_params.subject);
-    webFormat.text.should.equal(text_params.text);
+    expect(webFormat.to).to.equal(text_params.to);
+    expect(webFormat.from).to.equal(text_params.from);
+    expect(webFormat.subject).to.equal(text_params.subject);
+    expect(webFormat.text).to.equal(text_params.text);
+  });
+
+  it('should not have a to address if there is no to or no smtpapi.to set via Web Api', function() {
+    var email = new Email({from: 'test@test.com', subject: 'testing', text: 'testing'});
+    var webFormat = email.toWebFormat();
+    expect(webFormat.to).to.be.empty;
   });
 
   it('should return an Smtp Api format as expected', function() {
     var email = new Email(text_params);
     var smtpFormat = email.toSmtpFormat();
-    smtpFormat.to.should.equal(text_params.to);
-    smtpFormat.sender.should.equal(text_params.from);
-    smtpFormat.subject.should.equal(text_params.subject);
-    smtpFormat.body.should.equal(text_params.text);
+    expect(smtpFormat.to).to.equal(text_params.to);
+    expect(smtpFormat.sender).to.equal(text_params.from);
+    expect(smtpFormat.subject).to.equal(text_params.subject);
+    expect(smtpFormat.body).to.equal(text_params.text);
   });
 
   it('should support file attachments', function() {
     var email = new Email();
     email.addFile('file1', files[0]);
-    email.files.should.eql({'file1': files[0]});
+    expect(email.files).to.eql({'file1': files[0]});
     email.addFile('file2', files[1]);
-    email.files.should.eql({'file1': files[0], 'file2': files[1]});
+    expect(email.files).to.eql({'file1': files[0], 'file2': files[1]});
   });
 
   describe('validation', function() {
@@ -63,7 +69,7 @@ describe('Email', function () {
 
     it('should allow setting custom headers via setHeaders', function() {
       mail.setHeaders(custom_headers);
-      mail.headers.should.eql(custom_headers);
+      expect(mail.headers).to.eql(custom_headers);
     });
 
     it('should allow setting custom headers one at a time with addHeaders', function() {
@@ -73,17 +79,17 @@ describe('Email', function () {
         mail.addHeaders(args);
       }
 
-      mail.headers.should.eql(custom_headers);
+      expect(mail.headers).to.eql(custom_headers);
       mail.addHeaders({fox: 'hound'});
-      mail.headers.fox.should.eql('hound');
+      expect(mail.headers.fox).to.eql('hound');
     });
 
     it('should overwrite headers when calling addHeaders with the same value', function() {
       mail.addHeaders(custom_headers);
-      mail.headers.should.eql(custom_headers);
+      expect(mail.headers).to.eql(custom_headers);
       mail.addHeaders({cow: 'in my mind'});
-      mail.headers.should.not.eql(custom_headers);
-      mail.headers.cow.should.eql('in my mind');
+      expect(mail.headers).not.to.eql(custom_headers);
+      expect(mail.headers.cow).to.eql('in my mind');
     });
 
   });
