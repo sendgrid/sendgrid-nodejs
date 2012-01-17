@@ -1,18 +1,16 @@
 var SendGrid = require('../../../lib/sendgrid');
 var Email = require('../../../lib/email');
 
-var test = require('../../test.setup');
-
 describe('unsubscribe', function() {
   var sendgrid;
   beforeEach(function() {
-    sendgrid = new SendGrid(test.user, test.pass);
+    sendgrid = new SendGrid(setup.api_user, setup.api_key);
   });
 
   it('should send a message with unsubscribe', function(done) {
     var email = new Email({
-      to: test.single_to,
-      from: test.from,
+      to: setup.single_to,
+      from: setup.from,
       subject: 'Unsubscribe Test',
       html: '<h1>Hello</h1>',
       text: 'Hello'
