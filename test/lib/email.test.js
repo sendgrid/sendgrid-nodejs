@@ -46,6 +46,12 @@ describe('Email', function () {
     expect(smtpFormat.body).to.equal(text_params.text);
   });
 
+  it('should not have a to address if there is no to or no smtpapi.to set via Smtp Api', function() {
+    var email = new Email({from: 'test@test.com', subject: 'testing', text: 'testing'});
+    var smtpFormat = email.toSmtpFormat();
+    expect(smtpFormat.to).to.be.empty;
+  });
+
   it('should support file attachments', function() {
     var email = new Email();
     email.addFile('file1', files[0]);
