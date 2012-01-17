@@ -24,7 +24,7 @@ describe('custom headers', function() {
       mail.headers.should.eql(custom_headers);
 
       sendgrid.send(mail, function(success, message) {
-        if (!success) assert.ok(false, message);
+        expect(success).to.be.true;
         done();
       });
     });
@@ -43,7 +43,7 @@ describe('custom headers', function() {
       mail.headers.should.eql(custom_headers);
 
       sendgrid.smtp(mail, function(success, message) {
-        if (!success) assert.ok(false, message);
+        expect(success).to.be.true;
         done();
       });
     });

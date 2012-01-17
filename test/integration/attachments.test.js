@@ -23,7 +23,7 @@ describe('attachments', function(){
     });
 
     sendgrid.send(mail, function(success, message) {
-      if (!success) assert.ok(false, message);
+      expect(success).to.be.true;
       done();
     });
   });
@@ -41,7 +41,7 @@ describe('attachments', function(){
     });
 
     sendgrid.smtp(mail, function(success, message) {
-      if (!success) assert.ok(false, message);
+      expect(success).to.be.true;
       done();
     });
   });
