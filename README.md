@@ -75,7 +75,7 @@ var email = new Email({
 ```
 
 ##### Setting data #####
-Here is an example of all of the functions available on the email object. The comments to the right show the current state of the variables as the functions are called. If you have specific question, see the[SendGrid API Docs](http://docs.sendgrid.com/documentation/api/). Feel free to open an issue if you find bugs or missing features.
+Here is an example of all of the functions available on the email object. The comments to the right show the current state of the variables as the functions are called. If you have specific question, see the [SendGrid API Docs](http://docs.sendgrid.com/documentation/api/). Feel free to open an issue if you find bugs or missing features.
 
 ```javascript
 var email = new Email({
@@ -85,9 +85,12 @@ var email = new Email({
   text: 'Haved you tried turning it off and on again'
 });
 
+/** The following examples update the 'x-smtpapi' headers **/
+
 /* To Addresses */
-email.addTo('moo@cow.com');                           // to = ['moo@cow.com']
-email.addTo(['solid@snake.com', 'liquid@snake.com']); // to = ['moo@cow.com', 'solid@snake.com', 'liquid@snake.com']
+email.addTo('moo@cow.com');       // to = ['moo@cow.com']
+email.addTo(['solid@snake.com',
+            'liquid@snake.com']); // to = ['moo@cow.com', 'solid@snake.com', 'liquid@snake.com']
 
 /* Custom Email Headers */
 email.setHeaders({full: 'hearts'});   // headers = {full: 'hearts'}
@@ -130,19 +133,13 @@ email.addFilterSetting('footer', 'enable', 1);
 email.addFilterSetting('footer', 'text/hmtl', '<strong>boo</strong>');
 
 /* Attachments */
-// (this requires an absolute file)
-email.addFile('peter.txt', '/path/to/file');
+email.addFile('peter.txt', '/path/to/file'); // (this requires an absolute path to the file)
 ```
 
 ## Tests ##
 
-If you're interested in seeing some sample code or just want to run the
-test then here's what you need to know.
-Test written in the test/lib folder can be ran as in and should all
-pass.
-Test written in test/intergration need the values in test/test.setup to
-be set in order to run and will require a SendGrid account, as these
-test will send actual emails. 
+* Test written in the test/lib folder can be ran as-is and should all pass.
+* Test written in test/intergration need values in test/test.setup to be set in order to run. These require a valid SendGrid account. These tests send real emails, so be advised.
 
 `make test` will run all tests.
 
