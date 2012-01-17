@@ -1,0 +1,8 @@
+var test_env = {
+  user: '<your_username>',
+  pass: '<your_api-key>',
+  single_to: '<your-email>',
+  multi_to: ['<your-email>', '<another-email>'],
+  from: '<your-email>'
+}
+module.exports = test_env;

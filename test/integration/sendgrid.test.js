@@ -1,33 +1,36 @@
 var SendGrid = require('../../lib/sendgrid');
 var Email = require('../../lib/email');
 
-var api_user = 'kylep';
-var api_key = 'testing';
+var api_user = require('../test.setup').user;
+var api_key = require('../test.setup').pass;
+var single_to = require('../test.setup').single_to;
+var t_from = require('../test.setup').from;
+var multi_to = require('../test.setup').multi_to;
 
 var text_params = {
-  to: 'david.tomberlin@sendgrid.com',
-  from: 'kyle.partridge@sendgrid.com',
+  to: single_to,
+  from: t_from,
   subject: 'Subject',
   text: 'This is an email.'
 };
 
 var html_params = {
-  to: 'david.tomberlin@sendgrid.com',
-  from: 'kyle.partridge@sendgrid.com',
+  to: single_to,
+  from: t_from,
   subject: 'Subject',
   html: '<b>This is an email.</b>'
 };
 
 var smtp_params = {
-  to: 'kyle.partridge@sendgrid.com',
-  from: 'kyle.partridge@sendgrid.com',
+  to: single_to,
+  from: t_from,
   subject: 'Smtp Email',
   text: 'This is an email.'
 };
 
 var unicode_params = {
-  to: 'kyle.partridge@sendgrid.com',
-  from: 'kyle.partridge@sendgrid.com',
+  to: single_to,
+  from: t_from,
   subject: 'Unicode Email!',
   text: 'I can haz unicode? ✔'
 };
@@ -42,7 +45,7 @@ describe('SendGrid', function () {
     it('should be able to send text messages', function(done) {
       var mail = new Email(text_params);
       sendgrid.send(mail, function(success, message) {
-        if (!success) assert.ok(false, message);
+        expect(success).to.be.true;
         done();
       });
     });
@@ -50,23 +53,23 @@ describe('SendGrid', function () {
     it('should be able to send html messages', function(done) {
       var mail = new Email(html_params);
       sendgrid.send(mail, function(success, message) {
-        if (!success) assert.ok(false, message);
+        expect(success).to.be.true;
         done();
       });
     });
 
     it('should allow a user to easily send email', function(done) {
       sendgrid.send(text_params, function(success, message) {
-        if (!success) assert.ok(false, message);
+        expect(success).to.be.true;
         done();
       });
     });
 
     it('should be able to send to multiple recipients', function(done) {
       var params = _.clone(text_params);
-      params.to = ['kyle.partridge@sendgrid.com', 'david.tomberlin@sendgrid.com'];
+      params.to = multi_to;
       sendgrid.send(params, function(success, message) {
-        if (!success) assert.ok(false, message);
+        expect(success).to.be.true;
         done();
       });
     });
@@ -77,7 +80,7 @@ describe('SendGrid', function () {
       mail.addFilterSetting('footer', 'enable', 1);
       mail.addFilterSetting('footer', 'text/plain', 'This is mah footer!');
       sendgrid.send(mail, function(success, message) {
-        if (!success) assert.ok(false, message);
+        expect(success).to.be.true;
         done();
       });
     });
@@ -89,32 +92,32 @@ describe('SendGrid', function () {
       mail.addFilterSetting('footer', 'enable', 1);
       mail.addFilterSetting('footer', 'text/plain', 'This is mah footer with a ✔ in it!');
       sendgrid.send(mail, function(success, message) {
-        if (!success) assert.ok(false, message);
+        expect(success).to.be.true;
         done();
       });
     });
 
     it('should support substitution values', function(done) {
       var mail = new Email(smtp_params);
-      mail.addTo(['david.tomberlin@sendgrid.com']);
+      mail.addTo(single_to);
       mail.addSubVal('-name-',['Panda']);
       mail.html = 'You are a <strong>-name-</strong>';
       sendgrid.send(mail, function(success, message) {
-        if (!success) assert.ok(false, message);
+        expect(success).to.be.true;
         done();
       });
     });
 
     it('should support sections being set in the email', function(done) {
       var mail = new Email(smtp_params);
-      mail.addTo(['kyle.partridge@sendgrid.com', 'david.tomberlin@sendgrid.com']);
+      mail.addTo(multi_to);
       mail.addSubVal('-name-', ['Kyle', 'David']);
       mail.addSubVal('-meme-', ['-kyleSection-', '-davidSection-']);
       mail.addSection({'-kyleSection-': 'I heard you liked batman so I killed your parents'});
       mail.addSection({'-davidSection-': 'Metal gear?!!?!!!!eleven'});
       mail.html = "Yo -name-!<br /> Here's a meme for you:<br /> -meme-";
       sendgrid.send(mail, function(success, message) {
-        if (!success) assert.ok(false, message);
+        expect(success).to.be.true;
         done();
       });
     });
@@ -122,7 +125,7 @@ describe('SendGrid', function () {
     it('should report errors to the user', function(done) {
       var mail = new Email({});
       sendgrid.send(mail, function(success, message) {
-        if (success) assert.ok(false, 'An error should have been reported');
+        expect(success).to.be.false;
         done();
       });
     });
@@ -132,7 +135,7 @@ describe('SendGrid', function () {
     it('should send an email', function(done) {
       var mail = new Email(smtp_params);
       sendgrid.smtp(mail, function(success, message) {
-        if (!success) assert.ok(false, message);
+        expect(success).to.be.true;
         done();
       });
     });
@@ -140,7 +143,7 @@ describe('SendGrid', function () {
     it('should allow unicode in emails', function(done) {
       var mail = new Email(unicode_params);
       sendgrid.smtp(mail, function(success, message) {
-        if (!success) assert.ok(false, message);
+        expect(success).to.be.true;
         done();
       });
     });
@@ -150,7 +153,7 @@ describe('SendGrid', function () {
       mail.subject += ' Reply To Test';
       mail.replyto = 'noreply@sendgrid.com';
       sendgrid.smtp(mail, function(success, message) {
-        if (!success) assert.ok(false, message);
+        expect(success).to.be.true;
         done();
       });
     });
@@ -161,7 +164,7 @@ describe('SendGrid', function () {
       mail.addFilterSetting('footer', 'enable', 1);
       mail.addFilterSetting('footer', 'text/plain', 'This is mah footer!');
       sendgrid.smtp(mail, function(success, message) {
-        if (!success) assert.ok(false, message);
+        expect(success).to.be.true;
         done();
       });
     });
@@ -173,32 +176,32 @@ describe('SendGrid', function () {
       mail.addFilterSetting('footer', 'enable', 1);
       mail.addFilterSetting('footer', 'text/plain', 'This is mah footer with a ✔ in it!');
       sendgrid.smtp(mail, function(success, message) {
-        if (!success) assert.ok(false, message);
+        expect(success).to.be.true;
         done();
       });
     });
 
     it('should support substitution values', function(done) {
       var mail = new Email(smtp_params);
-      mail.addTo(['david.tomberlin@sendgrid.com']);
+      mail.addTo(single_to);
       mail.addSubVal('-name-',['Panda', 'Cow']);
       mail.html = 'You are a <strong>-name-</strong>';
       sendgrid.smtp(mail, function(success, message) {
-        if (!success) assert.ok(false, message);
+        expect(success).to.be.true;
         done();
       });
     });
 
     it('should support sections being set in the email', function(done) {
       var mail = new Email(smtp_params);
-      mail.addTo(['kyle.partridge@sendgrid.com', 'david.tomberlin@sendgrid.com']);
+      mail.addTo(multi_to);
       mail.addSubVal('-name-', ['Kyle', 'David']);
       mail.addSubVal('-meme-', ['-kyleSection-', '-davidSection-']);
       mail.addSection({'-kyleSection-': 'I heard you liked batman so I killed your parents'});
       mail.addSection({'-davidSection-': 'Metal gear?!!?!!!!eleven'});
       mail.html = "Yo -name-!<br /> Here's a meme for you:<br /> -meme-";
       sendgrid.smtp(mail, function(success, message) {
-        if (!success) assert.ok(false, message);
+        expect(success).to.be.true;
         done();
       });
     });
@@ -215,7 +218,7 @@ describe('SendGrid', function () {
   describe('x-smtpapi', function(done) {
     function setupEmail() {
       var mail = new Email({
-        from: 'kyle.partridge@sendgrid.com',
+        from: t_from,
         subject: 'Multiple Recipients with headers',
         text: 'Multiple recipients through x-smtpapi test'
       });
@@ -229,7 +232,7 @@ describe('SendGrid', function () {
       var mail = setupEmail();
       mail.subject = '(Web) ' + mail.subject;
       sendgrid.send(mail, function(success, message) {
-        if (!success) assert.ok(false, message);
+        expect(success).to.be.true;
         done();
       });
     });
@@ -238,7 +241,7 @@ describe('SendGrid', function () {
       var mail = setupEmail();
       mail.subject = '(SMTP) ' + mail.subject;
       sendgrid.smtp(mail, function(success, message) {
-        if (!success) assert.ok(false, message);
+        expect(success).to.be.true;
         done();
       });
     });

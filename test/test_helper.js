@@ -1,3 +1,2 @@
 global._ = require('underscore');
-global.should = require('should');
-global.assert = require('assert');
+global.expect = require('chai').expect;
