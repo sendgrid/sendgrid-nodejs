@@ -130,7 +130,7 @@ email.setFilterSetting({
 
 // Alternatively, you can add filter settings one at a time.
 email.addFilterSetting('footer', 'enable', 1);
-email.addFilterSetting('footer', 'text/hmtl', '<strong>boo</strong>');
+email.addFilterSetting('footer', 'text/html', '<strong>boo</strong>');
 
 /* Attachments */
 email.addFile('peter.txt', '/path/to/file'); // (this requires an absolute path to the file)
