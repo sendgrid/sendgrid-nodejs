@@ -41,7 +41,7 @@ To get started create an Email object:
 var email = new Email(optionalParams);
 ```
 
-You can pass in as much or as litle to optionalParams as you want, as
+You can pass in as much or as little to optionalParams as you want, as
 the email object has methods for manipulating all of the data.
 
 **params structure**
@@ -82,7 +82,7 @@ var email = new Email({
   to: 'denim@sample.com',
   from: 'roy@sample.com',
   subject: 'Listen',
-  text: 'Haved you tried turning it off and on again'
+  text: 'Have you tried turning it off and on again'
 });
 
 /** The following examples update the 'x-smtpapi' headers **/
