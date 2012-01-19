@@ -38,6 +38,7 @@ Email is the object that will help you easily perpare your message to be sent.
 To get started create an Email object:
 
 ```javascript
+var Email = require('sendgrid-nodejs').Email;
 var email = new Email(optionalParams);
 ```
 
