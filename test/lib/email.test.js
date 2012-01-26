@@ -1,5 +1,6 @@
 var Email = require('../../lib/email');
-var querystring = require('querystring')
+var querystring = require('querystring');
+var fs = require('fs');
 
 var text_params = {
   to: 'david.tomberlin@sendgrid.com',
@@ -52,12 +53,31 @@ describe('Email', function () {
     expect(smtpFormat.to).to.be.empty;
   });
 
-  it('should support file attachments', function() {
-    var email = new Email();
-    email.addFile('file1', files[0]);
-    expect(email.files).to.eql({'file1': files[0]});
-    email.addFile('file2', files[1]);
-    expect(email.files).to.eql({'file1': files[0], 'file2': files[1]});
+  describe('files', function() {
+    it('should support adding attachments via path', function() {
+      var email = new Email();
+      email.addFile({filename: 'path-image.png', path: files[0]});
+      expect(email.files[0].filename).to.equal('path-image.png');
+      expect(email.files[0].contentType).to.equal('image/png');
+    });
+
+    it('should support attachments via url', function() {
+      var email = new Email();
+      email.addFile({filename: 'url-image.jpg', url: 'http://i.imgur.com/2fDh8.jpg'});
+      expect(email.files[0].filename).to.equal('url-image.jpg');
+      expect(email.files[0].contentType).to.equal('image/jpeg');
+    });
+
+    it('should support attachments via content', function() {
+      var email = new Email();
+      fs.readFile(files[0], function(err, data) {
+        expect(err).to.not.be.ok;
+        console.log('buffer? %s', Buffer.isBuffer(data));
+        email.addFile({filename: 'content-image.png', content: data, contentType: 'image/png'});
+        expect(email.files[0].filename).to.equal('content-image.png');
+        expect(email.files[0].contentType).to.equal('image/png');
+      });
+    });
   });
 
   describe('validation', function() {
