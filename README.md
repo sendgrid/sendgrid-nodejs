@@ -15,7 +15,7 @@ npm install sendgrid-nodejs
 ### It can be this easy ###
 
 ```javascript
-var SendGrid = require('sendgrid-nodejs').SendGrid;
+var SendGrid = require('sendgrid').SendGrid;
 var sendgrid = new SendGrid(user, key);
 sendgrid.send({
   to: 'example@example.com',
