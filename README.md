@@ -6,13 +6,16 @@ SendGrid using nodejs.
 Licensed under the MIT License.
 
 ## Install ##
+
 ```
 npm install sendgrid-nodejs
 ```
+
 ## Usage ##
 ### It can be this easy ###
+
 ```javascript
-var SendGrid = require('sendgrid-nodejs').SendGrid;
+var SendGrid = require('sendgrid').SendGrid;
 var sendgrid = new SendGrid(user, key);
 sendgrid.send({
   to: 'example@example.com',
@@ -21,6 +24,7 @@ sendgrid.send({
   text: 'My first email through SendGrid'
 });
 ```
+
 And you're done!
 
 ### Digging in ###
@@ -29,14 +33,16 @@ There are two objects that you really need to know to get started:
 +   Email
 
 #### Email ####
-Email is the object that will help you easily perpare your message to be
-sent.
-To get started create an Email object
+Email is the object that will help you easily perpare your message to be sent.
+
+To get started create an Email object:
 
 ```javascript
+var Email = require('sendgrid-nodejs').Email;
 var email = new Email(optionalParams);
 ```
-You can pass in as much or as litle to optionalParams as you want, as
+
+You can pass in as much or as little to optionalParams as you want, as
 the email object has methods for manipulating all of the data.
 
 **params structure**
@@ -57,58 +63,63 @@ var default_mail_params = {
   headers: {}
 };
 ```
+
 Sample for using it:
 
 ```javascript
 var email = new Email({
-  to: 'sample@sample.com',
-  from: 'sample@sample.com',
+  to: 'walks.it.in@sample.com',
+  from: 'arsenal@sample.com',
   subject: 'Hey',
   text: 'Did you see that ludicrous display last night?'
 });
 ```
 
 ##### Setting data #####
-In general setting a value will override it while adding that value will
-add it to the existing values but will override existing keys with the
-new value.
+Here is an example of all of the functions available on the email object. The comments to the right show the current state of the variables as the functions are called. If you have specific question, see the [SendGrid API Docs](http://docs.sendgrid.com/documentation/api/). Feel free to open an issue if you find bugs or missing features.
 
 ```javascript
 var email = new Email({
-  to: 'sample@sample.com',
-  from: 'sample@sample.com',
+  to: 'denim@sample.com',
+  from: 'roy@sample.com',
   subject: 'Listen',
-  text: 'Haved you tried turning it off and on again'
+  text: 'Have you tried turning it off and on again'
 });
 
-// Add other to addresses
-email.addTo('moo@cow.com');
-// addTo also takes an array
-email.addTo(['solid@snake.com', 'liquid@snake.com']);
+/** The following examples update the 'x-smtpapi' headers **/
 
-// setHeaders will override any header values already set
-email.setHeaders({customHeader: 'some-value'});
-// addHeaders will add to existing headers, overriding existing keys
-email.addHeaders({customHeaderTwo: 'Another value'});
+/* To Addresses */
+email.addTo('moo@cow.com');       // to = ['moo@cow.com']
+email.addTo(['solid@snake.com',
+            'liquid@snake.com']); // to = ['moo@cow.com', 'solid@snake.com', 'liquid@snake.com']
 
-// Adding substitution values
-email.addSubVal('key', value);
+/* Custom Email Headers */
+email.setHeaders({full: 'hearts'});   // headers = {full: 'hearts'}
+email.addHeaders({spin: 'attack'});   // headers = {full: 'hearts', spin: 'attack'}
+email.setHeaders({mask: 'salesman'}); // headers = {mask: 'salesman'}
 
-// Setting unique args will override any values already set
-email.setUniqueArgs({cow: 'chicken'});
-// Adding unique args will add to existing values, overriding existing
-keys
-email.addUniqueArgs({cat: 'dog'});
+/* Substitution */
+email.addSubVal('keep', 'secret'); // sub = {keep: ['secret']}
+email.addSubVal('keep', 'safe');   // sub = {keep: ['secret', 'safe']}
 
-// Setting/Adding a category
-email.setCategory('tactics');
-email.setCategory('advanced');
+/* Section */
+email.setSection({'-charge-': 'This ship is useless.'}); // section = {'-charge-': 'This ship is useless.'}
+email.addSection({'-bomber-': 'Only for sad vikings.'}); // section = {'-charge-': 'This ship is useless.',
+                                                         //            '-bomber-': 'Only for sad vikings.'}
+email.setSection({'-beam-': 'The best is for first'});   // section = {'-beam-': 'The best is for first'}
 
-// Setting/Adding a Section
-email.setSection({'-section-': 'text name'});
-email.addSection({'-other-': 'person name'});
+/* Unique Args */
+email.setUniqueArgs({cow: 'chicken'}); // unique_args = {cow: 'chicken'}
+email.addUniqueArgs({cat: 'dog'});     // unique_args = {cow: 'chicken', cat: 'dog'}
+email.setUniqueArgs({dad: 'proud'});   // unique_args = {dad: 'proud'}
 
-// Setting a Filter, takes an object literal
+/* Category */
+email.setCategory('tactics');        // category = ['tactics']
+email.addCategory('advanced');       // category = ['tactics', 'advanced']
+email.setCategory('snowball-fight'); // category = ['snowball-fight']
+
+/* Filters */
+// You can set a filter using an object literal
 email.setFilterSetting({
   'footer': {
     'setting': {
@@ -117,37 +128,22 @@ email.setFilterSetting({
     }
   }
 });
-// Adding a filter via addFilterSetting
+
+// Alternatively, you can add filter settings one at a time.
 email.addFilterSetting('footer', 'enable', 1);
-email.addFilterSetting('footer', 'text/hmtl', '<strong>boo</strong>');
+email.addFilterSetting('footer', 'text/html', '<strong>boo</strong>');
 
-
-// Adding a file
-email.addFile('secret.txt', '/path/to/file');
+/* Attachments */
+email.addFile('peter.txt', '/path/to/file'); // (this requires an absolute path to the file)
 ```
-
-More examples can be find in the test
 
 ## Tests ##
-If you're interested in seeing some sample code or just want to run the
-test then here's what you need to know.
-Test written in the test/lib folder can be ran as in and should all
-pass.
-Test written in test/intergration need the values in test/test.setup to
-be set in order to run and will require a SendGrid account, as these
-test will send actual emails.
 
-Running 
+* Test written in the test/lib folder can be ran as-is and should all pass.
+* Test written in test/intergration need values in test/test.setup to be set in order to run. These require a valid SendGrid account. These tests send real emails, so be advised.
 
-```
-make test
-```
+`make test` will run all tests.
 
-will run all tests, otherwise you can run individual tests by running
+You can run individual tests with `mocha /path/to/test.test.js`
 
-```
-mocha /path/to/test.test.js
-```
-
-For information on how to use Sendgrid see:
-[SendGrid API Docs](http://docs.sendgrid.com/documentation/api/)
+For information on how to use Sendgrid see the [SendGrid API Docs](http://docs.sendgrid.com/documentation/api/)
