@@ -111,6 +111,25 @@ describe('attachments', function(){
 
       mail.subject = '(Smtp-content) File attachments';
       mail.addFile(file);
+      mail.addFile(file);
+      sendgrid.smtp(mail, function(success, message) {
+        expect(success).to.be.true;
+        done();
+      });
+    });
+
+    it('should be able to send multiple files via content', function(done) {
+      mail.subject = '(Smtp-content) File attachments';
+      mail.addFile({
+        filename: 'hello_snowman.txt',
+        content: new Buffer("Hello ☃, I hope you don't melt", 'utf-8'),
+        contentType: 'text/plain'
+      });
+      mail.addFile({
+        filename: 'hello_snowman2.txt',
+        content: new Buffer("Hello ☃, I hope you melt", 'utf-8'),
+        contentType: 'text/plain'
+      });
       sendgrid.smtp(mail, function(success, message) {
         expect(success).to.be.true;
         done();
