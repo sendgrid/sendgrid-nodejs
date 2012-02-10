@@ -1,5 +1,5 @@
 var SendGrid = require('../../lib/sendgrid');
-var Email = require('../../lib/Email');
+var Email = require('../../lib/email');
 
 describe('attachments', function(){
   var sendgrid;
