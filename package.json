@@ -16,7 +16,8 @@
   "dependencies": {
     "underscore": ">=1.2.4",
     "nodemailer": "*",
-    "mime": "*"
+    "mime": "*",
+    "step": ">= 0.0.5"
   },
   "devDependencies": {
     "mocha": ">= 0.9.0",

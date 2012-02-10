@@ -25,9 +25,7 @@ describe('attachments', function(){
 
       mail.subject = '(Web-path) File attachments';
       mail.addFile(file);
-      console.log('now sending');
       sendgrid.send(mail, function(success, message) {
-        console.log('message: %s', message);
         expect(success).to.be.true;
         done();
       });
@@ -82,7 +80,6 @@ describe('attachments', function(){
       mail.subject = '(Smtp-path) File attachments';
       mail.addFile(file);
       sendgrid.smtp(mail, function(success, message) {
-        console.log('message: %s', message);
         expect(success).to.be.true;
         done();
       });
@@ -132,6 +129,37 @@ describe('attachments', function(){
       });
       sendgrid.smtp(mail, function(success, message) {
         expect(success).to.be.true;
+        done();
+      });
+    });
+
+    it('should respond with an error when no content is given', function(done) {
+      mail.subject = '(Smtp-content) File attachments (failure expected)';
+      mail.addFile({
+        filename: 'hello_snowman.txt',
+        contentType: 'text/plain'
+      });
+      sendgrid.smtp(mail, function(success, message) {
+        expect(success).to.be.false;
+        expect(message).to.equal('File was not included');
+        done();
+      });
+    });
+
+    it('should respond with an error when no content is given, even if other files are successful', function(done) {
+      mail.subject = '(Smtp-content) File attachments (failure expected)';
+      mail.addFile({
+        filename: 'hello_snowman.txt',
+        contentType: 'text/plain'
+      });
+      mail.addFile({
+        filename: 'hello_snowman2.txt',
+        content: new Buffer("Hello ☃, I hope you melt", 'utf-8'),
+        contentType: 'text/plain'
+      });
+      sendgrid.smtp(mail, function(success, message) {
+        expect(success).to.be.false;
+        expect(message).to.equal('File was not included');
         done();
       });
     });
