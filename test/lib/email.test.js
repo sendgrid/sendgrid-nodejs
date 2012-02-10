@@ -72,7 +72,6 @@ describe('Email', function () {
       var email = new Email();
       fs.readFile(files[0], function(err, data) {
         expect(err).to.not.be.ok;
-        console.log('buffer? %s', Buffer.isBuffer(data));
         email.addFile({filename: 'content-image.png', content: data, contentType: 'image/png'});
         expect(email.files[0].filename).to.equal('content-image.png');
         expect(email.files[0].contentType).to.equal('image/png');
