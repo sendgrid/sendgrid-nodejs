@@ -51,18 +51,28 @@ the email object has methods for manipulating all of the data.
 **params structure**
 
 ```javascript
-  to: []
-  from: ''
-  smtpapi: new SmtpapiHeaders()
-  subject: ''
-  text: ''
-  html: ''
-  bcc: []
-  replyto: ''
-  date: new Date()
-  files: {}
-  file_data: {}
+var optionalParams = {
+  to: [],
+  from: '',
+  smtpapi: new SmtpapiHeaders(),
+  subject: '',
+  text: '',
+  html: '',
+  bcc: [],
+  replyto: '',
+  date: new Date(),
+  files: [
+    {
+      filename: '',    // required only if file.content is used.
+      contentType: '', // optional
+      path: '',        //
+      url: '',         // == One of these three options is required
+      content          //
+    }
+  ],
+  file_data: {},
   headers: {}
+};
 ```
 
 Sample for using it:
@@ -135,7 +145,35 @@ email.addFilterSetting('footer', 'enable', 1);
 email.addFilterSetting('footer', 'text/html', '<strong>boo</strong>');
 
 /* Attachments */
-email.addFile('peter.txt', '/path/to/file'); // (this requires an absolute path to the file)
+
+/*
+ * You can add files directly from content in memory.
+ *
+ * It will try to guess the contentType based on the filename.
+ */
+email.addFile({
+  filename: 'secret.txt',
+  content:  new Buffer('You will never know....')
+});
+
+/*
+ * You can add files directly from a url.
+ *
+ * It will try to guess the contentType based on the filename.
+ */
+email.addFile({
+  filename: 'icon.jpg',
+  url: 'http://i.imgur.com/2fDh8.jpg'
+});
+
+/*
+ * You can add files from a path on the filesystem.
+ *
+ * It will try to grap the filename and contentType from the path.
+ */
+email.addFile({
+  path: '../files/resume.txt'
+});
 ```
 
 ## Tests ##
