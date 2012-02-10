@@ -15,14 +15,15 @@ describe('FileHandler', function() {
   });
 
   it('should handle files on the filesystem', function() {
-    var path = '/usr/local/bin/vim';
+    var path = __dirname + '/../assets/secret.txt';
     var handler = new FileHandler({
-      filename: 'test',
       path: path
     });
 
     expect(handler.type).to.equal('path');
     expect(handler.path).to.equal(path);
+    expect(handler.filename).to.eql('secret.txt');
+    expect(handler.contentType).to.equal('text/plain');
   });
 
   it('should replace the contentType even if it is empty', function() {
@@ -34,8 +35,8 @@ describe('FileHandler', function() {
     });
 
     expect(handler.type).to.equal('url');
-    expect(handler.contentType).to.equal('image/png');
     expect(handler.url).to.equal(url);
+    expect(handler.contentType).to.equal('image/png');
   });
 
   it('should handle url files', function() {
@@ -47,6 +48,7 @@ describe('FileHandler', function() {
 
     expect(handler.type).to.equal('url');
     expect(handler.url).to.equal(url);
+    expect(handler.contentType).to.equal('image/png');
   });
 
   it('should handle empty files', function() {

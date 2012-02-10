@@ -118,4 +118,63 @@ describe('Email', function () {
     });
 
   });
+
+  describe('file handling the constructor', function() {
+    it('should be able to add content files easily', function(done) {
+      var file = {
+        filename: 'hello_snowman.txt',
+        content: new Buffer("Hello ☃, I hope you don't melt", 'utf-8')
+      };
+      var email = new Email({
+        files: [
+          file
+        ]
+      });
+
+      email.files[0].loadContent(function(error, message) {
+        expect(error).to.not.be.true;
+        expect(email.files[0].content).to.eql(file.content);
+        done();
+      });
+    });
+
+    it('should be able to add url files easily', function(done) {
+      var file = {
+        filename: 'icon.jpg',
+        url: 'http://i.imgur.com/2fDh8.jpg'
+      };
+      var email = new Email({
+        files: [
+          file
+        ]
+      });
+
+      expect(email.files[0].filename).to.equal(file.filename);
+      expect(email.files[0].content).to.eql(file.content);
+      expect(email.files[0].contentType).to.equal('image/jpeg');
+
+      email.files[0].loadContent(function(error, message) {
+        expect(error).to.not.be.true;
+        expect(email.files[0].content).to.not.be.undefined;
+        done();
+      });
+    });
+
+    it('should be able to add path files easily', function(done) {
+      var file = {
+        path: __dirname + '/../assets/secret.txt'
+      };
+      var email = new Email({
+        files: [
+          file
+        ]
+      });
+
+      email.files[0].loadContent(function(error, message) {
+        expect(error).to.not.be.true;
+        expect(email.files[0].content).to.not.be.undefined;
+        done();
+      });
+    });
+  });
 });
