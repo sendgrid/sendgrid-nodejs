@@ -35,6 +35,9 @@ There are two objects that you really need to know to get started:
 #### Email ####
 Email is the object that will help you easily perpare your message to be sent.
 
+NOTE: anything that is available in the Email constructor is available
+for use in both the `sendgrid.send` and `sendgrid.smtp` functions.
+
 To get started create an Email object:
 
 ```javascript
@@ -48,20 +51,18 @@ the email object has methods for manipulating all of the data.
 **params structure**
 
 ```javascript
-var default_mail_params = {
-  to: [],
-  from: '',
-  smtpapi: new SmtpapiHeaders(),
-  subject: '',
-  text: '',
-  html: '',
-  bcc: [],
-  replyto: '',
-  date: new Date(),
-  files: {},
-  file_data: {},
+  to: []
+  from: ''
+  smtpapi: new SmtpapiHeaders()
+  subject: ''
+  text: ''
+  html: ''
+  bcc: []
+  replyto: ''
+  date: new Date()
+  files: {}
+  file_data: {}
   headers: {}
-};
 ```
 
 Sample for using it:
@@ -70,7 +71,7 @@ Sample for using it:
 var email = new Email({
   to: 'walks.it.in@sample.com',
   from: 'arsenal@sample.com',
-  subject: 'Hey',
+  subject: 'What was Wenger thinking sending Walcott on that early?',
   text: 'Did you see that ludicrous display last night?'
 });
 ```
