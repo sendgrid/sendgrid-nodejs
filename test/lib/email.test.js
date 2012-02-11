@@ -1,5 +1,6 @@
 var Email = require('../../lib/email');
-var querystring = require('querystring')
+var querystring = require('querystring');
+var fs = require('fs');
 
 var text_params = {
   to: 'david.tomberlin@sendgrid.com',
@@ -52,12 +53,30 @@ describe('Email', function () {
     expect(smtpFormat.to).to.be.empty;
   });
 
-  it('should support file attachments', function() {
-    var email = new Email();
-    email.addFile('file1', files[0]);
-    expect(email.files).to.eql({'file1': files[0]});
-    email.addFile('file2', files[1]);
-    expect(email.files).to.eql({'file1': files[0], 'file2': files[1]});
+  describe('files', function() {
+    it('should support adding attachments via path', function() {
+      var email = new Email();
+      email.addFile({filename: 'path-image.png', path: files[0]});
+      expect(email.files[0].filename).to.equal('path-image.png');
+      expect(email.files[0].contentType).to.equal('image/png');
+    });
+
+    it('should support attachments via url', function() {
+      var email = new Email();
+      email.addFile({filename: 'url-image.jpg', url: 'http://i.imgur.com/2fDh8.jpg'});
+      expect(email.files[0].filename).to.equal('url-image.jpg');
+      expect(email.files[0].contentType).to.equal('image/jpeg');
+    });
+
+    it('should support attachments via content', function() {
+      var email = new Email();
+      fs.readFile(files[0], function(err, data) {
+        expect(err).to.not.be.ok;
+        email.addFile({filename: 'content-image.png', content: data, contentType: 'image/png'});
+        expect(email.files[0].filename).to.equal('content-image.png');
+        expect(email.files[0].contentType).to.equal('image/png');
+      });
+    });
   });
 
   describe('validation', function() {
@@ -98,5 +117,64 @@ describe('Email', function () {
       expect(mail.headers.cow).to.eql('in my mind');
     });
 
+  });
+
+  describe('file handling the constructor', function() {
+    it('should be able to add content files easily', function(done) {
+      var file = {
+        filename: 'hello_snowman.txt',
+        content: new Buffer("Hello ☃, I hope you don't melt", 'utf-8')
+      };
+      var email = new Email({
+        files: [
+          file
+        ]
+      });
+
+      email.files[0].loadContent(function(error, message) {
+        expect(error).to.not.be.true;
+        expect(email.files[0].content).to.eql(file.content);
+        done();
+      });
+    });
+
+    it('should be able to add url files easily', function(done) {
+      var file = {
+        filename: 'icon.jpg',
+        url: 'http://i.imgur.com/2fDh8.jpg'
+      };
+      var email = new Email({
+        files: [
+          file
+        ]
+      });
+
+      expect(email.files[0].filename).to.equal(file.filename);
+      expect(email.files[0].content).to.eql(file.content);
+      expect(email.files[0].contentType).to.equal('image/jpeg');
+
+      email.files[0].loadContent(function(error, message) {
+        expect(error).to.not.be.true;
+        expect(email.files[0].content).to.not.be.undefined;
+        done();
+      });
+    });
+
+    it('should be able to add path files easily', function(done) {
+      var file = {
+        path: __dirname + '/../assets/secret.txt'
+      };
+      var email = new Email({
+        files: [
+          file
+        ]
+      });
+
+      email.files[0].loadContent(function(error, message) {
+        expect(error).to.not.be.true;
+        expect(email.files[0].content).to.not.be.undefined;
+        done();
+      });
+    });
   });
 });
