@@ -63,11 +63,11 @@ var optionalParams = {
   date: new Date(),
   files: [
     {
-      filename: '',    // required only if file.content is used.
-      contentType: '', // optional
-      path: '',        //
-      url: '',         // == One of these three options is required
-      content: ''      //
+      filename: '',          // required only if file.content is used.
+      contentType: '',       // optional
+      path: '',              //
+      url: '',               // == One of these three options is required
+      content: ('' | Buffer) //
     }
   ],
   file_data: {},
