@@ -67,7 +67,7 @@ var optionalParams = {
       contentType: '', // optional
       path: '',        //
       url: '',         // == One of these three options is required
-      content          //
+      content: ''      //
     }
   ],
   file_data: {},
