@@ -13,7 +13,7 @@
     "url": "git://github.com/sendgrid/sendgrid-nodejs.git"
   },
   "engines": {
-    "node": "~0.6.0"
+    "node": ">= 0.4.7"
   },
   "dependencies": {
     "underscore": ">=1.2.4",
