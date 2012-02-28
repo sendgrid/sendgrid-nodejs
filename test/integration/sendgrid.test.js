@@ -1,5 +1,6 @@
 var SendGrid = require('../../lib/sendgrid');
 var Email = require('../../lib/email');
+var _ = require('underscore');
 
 var text_params = {
   to: setup.single_to,
