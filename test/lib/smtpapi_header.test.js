@@ -46,7 +46,7 @@ describe('SmtpapiHeader', function() {
 
     it('should allow setting a single category', function() {
       header.setCategory(categories[0]);
-      expect(header.category).to.equal(categories[0]);
+      expect(header.category).to.eql([categories[0]]);
     });
 
     it('should allow adding categories one at a time', function() {
