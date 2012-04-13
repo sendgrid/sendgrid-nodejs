@@ -83,6 +83,10 @@ var email = new Email({
   from: 'arsenal@sample.com',
   subject: 'What was Wenger thinking sending Walcott on that early?',
   text: 'Did you see that ludicrous display last night?'
+}, function(success, message) {
+  if (!success) {
+    console.log(message);
+  }
 });
 ```
 
