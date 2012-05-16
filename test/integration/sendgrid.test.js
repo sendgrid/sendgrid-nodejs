@@ -117,6 +117,18 @@ describe('SendGrid', function () {
       });
     });
 
+    it('should support toname and fromname', function(done) {
+      var mail = new Email(text_params);
+      mail.toname = 'toname test';
+      mail.fromname = 'from me';
+      mail.subject = 'testing to and from names';
+
+      sendgrid.send(mail, function(success, message) {
+        expect(success).to.be.true;
+        done();
+      });
+    });
+
     it('should report errors to the user', function(done) {
       var mail = new Email({});
       sendgrid.send(mail, function(success, message) {
