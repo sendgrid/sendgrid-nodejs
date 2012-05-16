@@ -52,7 +52,26 @@ describe('Email', function () {
     var smtpFormat = email.toSmtpFormat();
     expect(smtpFormat.to).to.be.empty;
   });
-
+  it("should not set a fromname if one isn't provided", function() {
+    var email = new Email({from: 'test@test.com', subject: 'testing', text: 'testing'});
+    var webFormat = email.toWebFormat();
+    expect(webFormat.fromname).to.be.empty;
+  });
+  it("should set a fromname if one is provided", function() {
+    var email = new Email({from: 'test@test.com', fromname:'Tester T. Testerson', subject: 'testing', text: 'testing'});
+    var webFormat = email.toWebFormat();
+    expect(webFormat.fromname).to.equal('Tester T. Testerson');
+  });
+  it("should not set a toname if one isn't provided", function() {
+    var email = new Email({from: 'test@test.com', subject: 'testing', text: 'testing'});
+    var webFormat = email.toWebFormat();
+    expect(webFormat.toname).to.be.empty;
+  });
+  it("should set a toname if one is provided", function() {
+    var email = new Email({from: 'test@test.com', toname:'Tester T. Testerson', subject: 'testing', text: 'testing'});
+    var webFormat = email.toWebFormat();
+    expect(webFormat.toname).to.equal('Tester T. Testerson');
+  });
   describe('files', function() {
     it('should support adding attachments via path', function() {
       var email = new Email();
