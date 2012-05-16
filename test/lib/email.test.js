@@ -52,7 +52,32 @@ describe('Email', function () {
     var smtpFormat = email.toSmtpFormat();
     expect(smtpFormat.to).to.be.empty;
   });
-
+  it("should not set a fromname if one isn't provided", function() {
+    var email = new Email({from: 'test@test.com', subject: 'testing', text: 'testing'});
+    var webFormat = email.toWebFormat();
+    expect(webFormat.fromname).to.be.empty;
+  });
+  it("should set a fromname if one is provided", function() {
+    var email = new Email({from: 'test@test.com', fromname:'Tester T. Testerson', subject: 'testing', text: 'testing'});
+    var webFormat = email.toWebFormat();
+    expect(webFormat.fromname).to.equal('Tester T. Testerson');
+  });
+  it("should not set a toname if one isn't provided", function() {
+    var email = new Email({from: 'test@test.com', subject: 'testing', text: 'testing'});
+    var webFormat = email.toWebFormat();
+    expect(webFormat.toname).to.be.empty;
+  });
+  it("should set a toname if one is provided", function() {
+    var email = new Email({from: 'test@test.com', to:'test@test.com', toname:'Tester T. Testerson', subject: 'testing', text: 'testing'});
+    var webFormat = email.toWebFormat();
+    expect(webFormat.toname).to.equal('Tester T. Testerson');
+  });
+  it("should set multiple tonames if several are provided", function() {
+    var email = new Email({from: 'test@test.com', to: ['test@test.com', 'test2@test.com'], toname:['Tester T. Testerson', 'Test2 M. Testerson'], subject: 'testing', text: 'testing'});
+    var webFormat = email.toWebFormat();
+    expect(webFormat.toname[0]).to.equal('Tester T. Testerson');
+    expect(webFormat.toname[1]).to.equal('Test2 M. Testerson');
+  });
   describe('files', function() {
     it('should support adding attachments via path', function() {
       var email = new Email();
