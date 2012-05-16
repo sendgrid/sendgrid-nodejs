@@ -1,4 +1,4 @@
-# sendgrid-nodejs #
+# sendgrid #
 This nodejs module allows you to quickly and easily send emails through
 SendGrid using nodejs.
 
@@ -8,7 +8,7 @@ Licensed under the MIT License.
 ## Install ##
 
 ```
-npm install sendgrid-nodejs
+npm install sendgrid
 ```
 
 ## Usage ##
