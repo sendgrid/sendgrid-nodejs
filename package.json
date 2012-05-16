@@ -6,7 +6,7 @@
   ],
   "name": "sendgrid",
   "description": "A NodeJS implementation of the SendGrid Api.",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "homepage": "sendgrid.com",
   "repository": {
     "type": "git",
@@ -27,5 +27,6 @@
   },
   "scripts": {
     "test": "make test"
-  }
+  },
+  "optionalDependencies": {}
 }

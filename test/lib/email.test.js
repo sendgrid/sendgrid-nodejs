@@ -109,6 +109,7 @@ describe('Email', function () {
       expect(smtpFormat.to[1]).to.equal('Test2 M. Testerson <test2@test.com>');
     });
   });
+
   describe('files', function() {
     it('should support adding attachments via path', function() {
       var email = new Email();
