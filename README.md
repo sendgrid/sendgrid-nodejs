@@ -11,6 +11,26 @@ Licensed under the MIT License.
 npm install sendgrid
 ```
 
+## Testing ##
+
+In order to run the integration tests, you'll need to update the config file with your valid SendGrid credentials.  Start by making a live copy of the sample:
+
+```
+cp test/config.sample.js test/config.js
+```
+
+Next, open up `test/config.js` and fill it in.  After you have updated the configuration file with your credentials, you can run the suite using the following command:
+
+```
+make test
+```
+
+You can run individual tests with the following command:
+
+```
+./node_modules/.bin/mocha [path to test].js
+```
+
 ## Usage ##
 ### It can be this easy ###
 
