@@ -1,4 +1,4 @@
 test:
-	find test -name "*.test.js" | xargs mocha
+	./node_modules/.bin/mocha test --recursive
 
 .PHONY: test
