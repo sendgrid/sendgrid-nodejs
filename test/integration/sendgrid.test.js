@@ -136,6 +136,16 @@ describe('SendGrid', function () {
         done();
       });
     });
+
+    it('has an optional callback', function(done) {
+      var mail = new Email(text_params)
+
+      expect(function() {
+        sendgrid.send(mail);
+      }).to.not.throw(Error);
+
+      done();
+    });
   });
 
   describe('Smtp Api', function() {
@@ -219,6 +229,16 @@ describe('SendGrid', function () {
         if (success) assert.ok(false, 'An error should have been reported');
         done();
       });
+    });
+
+    it('has an optional callback', function(done) {
+      var mail = new Email(text_params)
+
+      expect(function() {
+        sendgrid.smtp(mail);
+      }).to.not.throw(Error);
+
+      done();
     });
   });
 
