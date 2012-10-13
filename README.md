@@ -77,7 +77,9 @@ the email object has methods for manipulating all of the data.
 ```javascript
 var optionalParams = {
   to: [],
+  toname: [],
   from: '',
+  fromname: '',
   smtpapi: new SmtpapiHeaders(),
   subject: '',
   text: '',
