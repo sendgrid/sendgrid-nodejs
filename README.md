@@ -35,7 +35,7 @@ You can run individual tests with the following command:
 ### It can be this easy ###
 
 ```javascript
-var SendGrid = require('sendgrid').SendGrid;
+var SendGrid = require('sendgrid-nodejs').SendGrid;
 var sendgrid = new SendGrid(user, key);
 sendgrid.send({
   to: 'example@example.com',
@@ -65,7 +65,7 @@ for use in both the `sendgrid.send` and `sendgrid.smtp` functions.
 To get started create an Email object:
 
 ```javascript
-var Email = require('sendgrid').Email;
+var Email = require('sendgrid-nodejs').Email;
 var email = new Email(optionalParams);
 ```
 
