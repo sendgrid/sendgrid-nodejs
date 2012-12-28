@@ -1,7 +1,7 @@
 var SendGrid = require('../../../lib/sendgrid');
 var Email = require('../../../lib/email');
 
-describe('unsubscribe', function() {
+describe('unsubscribe #skip', function() {
   var sendgrid;
   beforeEach(function() {
     sendgrid = new SendGrid(setup.api_user, setup.api_key);
