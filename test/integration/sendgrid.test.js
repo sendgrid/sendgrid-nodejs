@@ -30,7 +30,7 @@ var unicode_params = {
   text: 'I can haz unicode? ✔'
 };
 
-describe('SendGrid', function () {
+describe('SendGrid #skip', function () {
   var sendgrid;
   beforeEach(function() {
     sendgrid = new SendGrid(setup.api_user, setup.api_key);

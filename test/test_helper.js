@@ -1,2 +1,7 @@
 global.expect = require('chai').expect;
-global.setup = require('./config');
+
+try {
+  global.setup = require('./config');
+} catch(e) {
+  global.setup = {};
+}

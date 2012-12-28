@@ -28,7 +28,8 @@
     "chai": ">= 0.1.6"
   },
   "scripts": {
-    "test": "make test"
+    "test": "./node_modules/.bin/mocha --grep '#skip' --invert",
+    "skipped": "./node_modules/.bin/mocha --grep '#skip'"
   },
   "optionalDependencies": {}
 }
