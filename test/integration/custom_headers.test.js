@@ -1,7 +1,7 @@
 var SendGrid = require('../../lib/sendgrid');
 var Email = require('../../lib/email');
 
-describe('custom headers', function() {
+describe('custom headers #skip', function() {
   var sendgrid;
   var custom_headers = {cow: 'moo', panda: 'brawr'};
   beforeEach(function() {
