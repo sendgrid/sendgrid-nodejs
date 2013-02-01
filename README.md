@@ -54,14 +54,17 @@ sendgrid.send({
    Or with a proxy
 
  ```javascript
-var SendGrid = require('sendgrid').SendGrid;
-var sendgrid = new SendGrid(user, key);
+var SendGrid = require('../').SendGrid;
+var user = "username"
+var key = "password";
+var options = { proxy: { host: 'localhost',port:'3128'}};
+var sendgrid = new SendGrid(user, key,options);
 sendgrid.send({
-  to: 'example@example.com',
-  from: 'other@example.com',
+  to: 'xxxx@gmail.com',
+  from: 'xxxx@email.com',
   subject: 'Hello World',
   text: 'My first email through SendGrid'
-},{ proxy: { host: 'proxy01.prod.myapp.com',port:'80'}}, function(success, message) {
+}, function(success, message) {
   if (!success) {
     console.log(message);
   }
