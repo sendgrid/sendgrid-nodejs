@@ -33,7 +33,7 @@ var unicode_params = {
 describe('SendGrid #skip', function () {
   var sendgrid;
   beforeEach(function() {
-    sendgrid = new SendGrid(setup.api_user, setup.api_key);
+    sendgrid = new SendGrid(setup.api_user, setup.api_key,setup.options);
   });
 
   describe('Web Api', function() {
