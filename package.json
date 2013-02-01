@@ -22,7 +22,7 @@
     "nodemailer": "*",
     "mime": "*",
     "step": ">= 0.0.5",
-    "tunnel": ">=0.0.2"
+    "tunnel": "*"
   },
   "devDependencies": {
     "mocha": ">= 0.9.0",
