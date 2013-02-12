@@ -59,6 +59,26 @@ describe('attachments #skip', function(){
         done();
       });
     });
+
+    it('should be able to send files as inline content', function(done) {
+      var file = {
+        cid: 'the_logo',
+        filename: 'logo.png',
+        path: __dirname + '/../assets/logo.png'
+      };
+
+      mail.subject = '(Web) File inline attachments'; 
+      mail.html = 'The inline image should appear between the arrows:'
+                  + '<br/>vvvvvvvvvvvvvvvvv<br/>'
+                  + '<img src="cid:the_logo">'
+                  + '<br/>^^^^^^^^^^^^^^<br/>'
+                  + '<br/>The image may also appear as an attachment below.<br/>',
+      mail.addFile(file);
+      sendgrid.send(mail, function(success, message) {
+        expect(success).to.be.true;
+        done();
+      });
+    });
   });
 
   describe('smtp', function() {
@@ -163,5 +183,26 @@ describe('attachments #skip', function(){
         done();
       });
     });
+
+    it('should be able to inline content', function(done) {
+      var file = {
+        cid: 'the_logo',
+        filename: 'logo.png',
+        path: __dirname + '/../assets/logo.png'
+      };
+
+      mail.subject = '(Smtp) Inline file attachment';
+      mail.html = 'The inline image should appear between the arrows:'
+                  + '<br/>vvvvvvvvvvvvvvvvv<br/>'
+                  + '<img src="cid:the_logo">'
+                  + '<br/>^^^^^^^^^^^^^^<br/>'
+                  + '<br/>The image may also appear as an attachment below.<br/>',
+      mail.addFile(file);
+      sendgrid.smtp(mail, function(success, message) {
+        expect(success).to.be.true;
+        done();
+      });
+    });
+
   });
 });
