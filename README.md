@@ -94,7 +94,7 @@ var optionalParams = {
     {
       filename: '',          // required only if file.content is used.
       contentType: '',       // optional
-      inline: '',            // optional, used to specify cid for inline content
+      cid: '',               // optional, used to specify cid for inline content
       path: '',              //
       url: '',               // == One of these three options is required
       content: ('' | Buffer) //
@@ -211,7 +211,7 @@ email.addFile({
  * It will mark the file for inline disposition using the specified "cid".
  */
 email.addFile({
-  inline: 'the_logo',         // should match cid value in html
+  cid: 'the_logo',           // should match cid value in html
   path: '../files/logo.png'
 });
 email.addHtml('<div>Our logo:<img src="cid:the_logo"></div>');

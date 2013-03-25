@@ -64,7 +64,7 @@ describe('FileHandler', function() {
     var buffer = new Buffer('File Content');
     var handler = new FileHandler({
       filename: 'test',
-      inline: 'testcid',
+      cid: 'testcid',
       content: buffer,
       contentType: 'image/jpeg'
     });
@@ -72,6 +72,6 @@ describe('FileHandler', function() {
     expect(handler.type).to.equal('content');
     expect(handler.content).to.equal(buffer);
     expect(handler.contentType).to.equal('image/jpeg');
-    expect(handler.inline).to.equal('testcid');
+    expect(handler.cid).to.equal('testcid');
   });
 });

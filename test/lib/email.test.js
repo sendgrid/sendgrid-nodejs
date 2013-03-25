@@ -113,8 +113,8 @@ describe('Email', function () {
       var email = new Email();
       fs.readFile(files[0], function(err, data) {
         expect(err).to.not.be.ok;
-        email.addFile({filename: 'content-image.png', content: data, contentType: 'image/png', inline: 'testcid'});
-        expect(email.files[0].inline).to.equal('testcid');
+        email.addFile({filename: 'content-image.png', content: data, contentType: 'image/png', cid: 'testcid'});
+        expect(email.files[0].cid).to.equal('testcid');
         expect(email.files[0].filename).to.equal('content-image.png');
         expect(email.files[0].contentType).to.equal('image/png');
       });
