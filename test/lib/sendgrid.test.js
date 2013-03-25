@@ -1,5 +1,6 @@
 var SendGrid = require('../../lib/sendgrid')
   , querystring = require('querystring')
+  , sinon = require('sinon')
   , nock = require('nock');
 
 describe('SendGrid', function () {
@@ -46,6 +47,29 @@ describe('SendGrid', function () {
       sendgrid.send({}, function(success, message) {
         expect(success).to.be.false;
         expect(message).to.equal("some error");
+        done();
+      });
+    });
+
+    it('reports http errors to the user', function(done) {
+      var https = require('https')
+        , realRequest = https.request
+        , stub;
+
+      function fakeRequest(options, cb) {
+        var req = realRequest(options, cb);
+        process.nextTick(function() {
+          req.emit('error', 'some http error');
+        });
+        return req;
+      }
+
+      stub = sinon.stub(https, 'request', fakeRequest);
+
+      sendgrid.send({}, function(success, message) {
+        expect(success).to.be.false;
+        expect(message).to.equal("some http error");
+        https.request.restore();
         done();
       });
     });

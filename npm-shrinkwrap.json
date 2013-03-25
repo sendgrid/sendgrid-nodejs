@@ -49,7 +49,25 @@
       "version": "0.0.5"
     },
     "nock": {
-      "version": "0.14.4"
+      "version": "0.16.0",
+      "dependencies": {
+        "propagate": {
+          "version": "0.2.2"
+        }
+      }
+    },
+    "sinon": {
+      "version": "1.6.0",
+      "dependencies": {
+        "buster-format": {
+          "version": "0.5.5",
+          "dependencies": {
+            "buster-core": {
+              "version": "0.6.4"
+            }
+          }
+        }
+      }
     },
     "chai": {
       "version": "1.5.0"
