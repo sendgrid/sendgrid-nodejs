@@ -1,6 +1,6 @@
 {
   "name": "sendgrid",
-  "version": "0.2.5",
+  "version": "0.2.7",
   "dependencies": {
     "underscore": {
       "version": "1.4.4"
@@ -48,6 +48,9 @@
     "step": {
       "version": "0.0.5"
     },
+    "chai": {
+      "version": "1.5.0"
+    },
     "nock": {
       "version": "0.16.0",
       "dependencies": {
@@ -56,24 +59,8 @@
         }
       }
     },
-    "sinon": {
-      "version": "1.6.0",
-      "dependencies": {
-        "buster-format": {
-          "version": "0.5.5",
-          "dependencies": {
-            "buster-core": {
-              "version": "0.6.4"
-            }
-          }
-        }
-      }
-    },
-    "chai": {
-      "version": "1.5.0"
-    },
     "mocha": {
-      "version": "1.8.2",
+      "version": "1.9.0",
       "dependencies": {
         "commander": {
           "version": "0.6.1"
@@ -100,6 +87,19 @@
         },
         "ms": {
           "version": "0.3.0"
+        }
+      }
+    },
+    "sinon": {
+      "version": "1.6.0",
+      "dependencies": {
+        "buster-format": {
+          "version": "0.5.5",
+          "dependencies": {
+            "buster-core": {
+              "version": "0.6.4"
+            }
+          }
         }
       }
     }
