@@ -25,7 +25,7 @@ cp test/config.sample.js test/config.js
 Next, open up `test/config.js` and fill it in.  After you have updated the configuration file with your credentials, you can run the suite using the following command:
 
 ```
-make test
+npm test
 ```
 
 You can run individual tests with the following command:
