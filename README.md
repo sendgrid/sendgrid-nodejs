@@ -216,14 +216,3 @@ email.addFile({
 });
 email.addHtml('<div>Our logo:<img src="cid:the_logo"></div>');
 ```
-
-## Tests ##
-
-* Test written in the test/lib folder can be ran as-is and should all pass.
-* Test written in test/intergration need values in test/test.setup to be set in order to run. These require a valid SendGrid account. These tests send real emails, so be advised.
-
-`make test` will run all tests.
-
-You can run individual tests with `mocha /path/to/test.test.js`
-
-For information on how to use Sendgrid see the [SendGrid API Docs](http://docs.sendgrid.com/documentation/api/)
