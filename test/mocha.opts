@@ -1,3 +1,4 @@
 --require test/test_helper.js
 --recursive
 --reporter spec
+--timeout 5000
