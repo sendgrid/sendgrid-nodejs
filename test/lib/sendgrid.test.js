@@ -1,28 +1,37 @@
+process.env.NODE_ENV = 'test';
+var dotenv = require('dotenv')();
+dotenv.load();
+
+var API_USER    = process.env.API_USER || 'some_sendgrid_username';
+var API_KEY     = process.env.API_KEY || 'some_sendgrid_password';
+var default_payload = {
+  to            : process.env.TO || "hello@example.com",
+  from          : process.env.FROM || "swift@sendgrid.com",
+  subject       : "[sendgrid-nodejs] ",
+  text          : "This is a text body",
+  html          : "<h2>This is an html body</h2>"
+}
+
 var SendGrid = require('../../lib/sendgrid')
+  , Email = require('../../lib/email')
   , querystring = require('querystring')
   , sinon = require('sinon')
   , nock = require('nock');
 
 describe('SendGrid', function () {
-  var sendgrid, defaults;
+  var sendgrid;
 
   beforeEach(function() {
-    sendgrid = new SendGrid('some_sendgrid_username', 'some_sendgrid_password');
-
-    defaults = {
-      to: "hello@example.com",
-      from: "swift@sendgrid.com",
-      subject: "Test subject",
-      text: "This is a text body",
-      html: "<p>This is an html body</p>"
-    };
+    sendgrid  = new SendGrid(API_USER, API_KEY);
   });
 
   describe('#send', function() {
-    var mock, webApi, postParams, postParamsString;
+    var payload, mock, webApi, postParams, postParamsString;
 
     beforeEach(function() {
-      webApi = nock('https://sendgrid.com:443')
+      payload = Object.create(default_payload);
+
+      webApi  = nock('https://sendgrid.com:443')
         .matchHeader('Content-Type', 'application/x-www-form-urlencoded')
         .filteringRequestBody(function(path) {
           postParamsString = path;
@@ -35,7 +44,7 @@ describe('SendGrid', function () {
 
     it('has an optional callback', function(done) {
       expect(function() {
-        sendgrid.send(defaults);
+        sendgrid.send(payload);
       }).to.not.throw(Error);
 
       done();
@@ -87,17 +96,17 @@ describe('SendGrid', function () {
     it('sends the basic message parameters', function(done) {
       mock = webApi.reply(200, { message: "success" });
 
-      sendgrid.send(defaults, function(success, message) {
+      sendgrid.send(payload, function(success, message) {
         expect(postParams).to.include.keys(['api_user', 'api_key', 'to', 'from', 'subject', 'text', 'html', 'x-smtpapi']);
         expect(postParams).not.to.include.keys(['toname', 'fromname']);
 
-        expect(postParams.api_user).to.equal('some_sendgrid_username');
-        expect(postParams.api_key).to.equal('some_sendgrid_password');
-        expect(postParams.to).to.equal('hello@example.com');
-        expect(postParams.from).to.equal('swift@sendgrid.com');
-        expect(postParams.subject).to.equal('Test subject');
-        expect(postParams.text).to.equal('This is a text body');
-        expect(postParams.html).to.equal('<p>This is an html body</p>');
+        expect(postParams.api_user).to.equal(API_USER);
+        expect(postParams.api_key).to.equal(API_KEY);
+        expect(postParams.to).to.equal(default_payload.to);
+        expect(postParams.from).to.equal(default_payload.from);
+        expect(postParams.subject).to.equal(default_payload.subject);
+        expect(postParams.text).to.equal(default_payload.text);
+        expect(postParams.html).to.equal(default_payload.html);
         expect(postParams['x-smtpapi']).to.equal('{}');
 
         done();
@@ -107,10 +116,10 @@ describe('SendGrid', function () {
     it('supports an optional toname and fromname', function(done) {
       mock = webApi.reply(200, { message: "success" });
 
-      defaults.toname = "to name";
-      defaults.fromname= "from name";
+      payload.toname = "to name";
+      payload.fromname= "from name";
 
-      sendgrid.send(defaults, function(success, message) {
+      sendgrid.send(payload, function(success, message) {
         expect(postParams).to.include.keys(['toname', 'fromname']);
 
         expect(postParams.toname).to.equal('to name');
@@ -123,9 +132,9 @@ describe('SendGrid', function () {
     it('encodes unicode strings in parameters', function(done) {
       mock = webApi.reply(200, { message: "success" });
 
-      defaults.subject = "A unicode ✔ subject";
+      payload.subject = "A unicode ✔ subject";
 
-      sendgrid.send(defaults, function(success, message) {
+      sendgrid.send(payload, function(success, message) {
         var encodedCheckmark = '%E2%9C%94';
 
         expect(postParamsString).to.include(encodedCheckmark);
