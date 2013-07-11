@@ -41,6 +41,7 @@ describe('Email', function () {
   it('should return an Smtp Api format as expected', function() {
     var email = new Email(text_params);
     var smtpFormat = email.toSmtpFormat();
+    console.log(smtpFormat);
     expect(smtpFormat.to).to.equal(text_params.to);
     expect(smtpFormat.sender).to.equal(text_params.from);
     expect(smtpFormat.subject).to.equal(text_params.subject);

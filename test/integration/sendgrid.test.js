@@ -1,131 +1,339 @@
-var SendGrid = require('../../lib/sendgrid');
-var Email = require('../../lib/email');
+process.env.NODE_ENV = 'test';
+var dotenv = require('dotenv')();
+dotenv.load();
 
-var text_params = {
-  to: setup.single_to,
-  from: setup.from,
-  subject: 'Subject',
-  text: 'This is an email.'
-};
+var API_USER    = process.env.API_USER || 'some_sendgrid_username';
+var API_KEY     = process.env.API_KEY || 'some_sendgrid_password';
+var default_payload = {
+  to            : process.env.TO || "hello@example.com",
+  from          : process.env.FROM || "swift@sendgrid.com",
+  subject       : "[sendgrid-nodejs] ",
+  text          : "This is a text body",
+  html          : "<h2>This is an html body</h2>"
+}
 
-var html_params = {
-  to: setup.single_to,
-  from: setup.from,
-  subject: 'Subject',
-  html: '<b>This is an email.</b>'
-};
-
-var smtp_params = {
-  to: setup.single_to,
-  from: setup.from,
-  subject: 'Smtp Email',
-  text: 'This is an email.'
-};
-
-var unicode_params = {
-  to: setup.single_to,
-  from: setup.from,
-  subject: 'Unicode Email!',
-  text: 'I can haz unicode? ✔'
-};
+var SendGrid = require('../../lib/sendgrid')
+  , Email = require('../../lib/email');
 
 describe('SendGrid #skip', function () {
   var sendgrid;
+
   beforeEach(function() {
-    sendgrid = new SendGrid(setup.api_user, setup.api_key);
+    sendgrid  = new SendGrid(API_USER, API_KEY);
   });
 
-  /* TODO: Figure out a way to mock this. */
-  describe('Smtp Api', function() {
-    it('should send an email', function(done) {
-      var mail = new Email(smtp_params);
-      sendgrid.smtp(mail, function(success, message) {
-        expect(success).to.be.true;
-        done();
-      });
-    });
+  describe('#send', function() {
+    var payload;
 
-    it('should allow unicode in emails', function(done) {
-      var mail = new Email(unicode_params);
-      sendgrid.smtp(mail, function(success, message) {
-        expect(success).to.be.true;
-        done();
-      });
-    });
-
-    it('should support the reply_to field', function(done) {
-      var mail = new Email(smtp_params);
-      mail.subject += ' Reply To Test';
-      mail.replyto = 'noreply@sendgrid.com';
-      sendgrid.smtp(mail, function(success, message) {
-        expect(success).to.be.true;
-        done();
-      });
-    });
-
-    it('should support filters', function(done) {
-      var mail = new Email(smtp_params);
-      mail.subject += ' filters (Smtp)';
-      mail.addFilterSetting('footer', 'enable', 1);
-      mail.addFilterSetting('footer', 'text/plain', 'This is mah footer!');
-      sendgrid.smtp(mail, function(success, message) {
-        expect(success).to.be.true;
-        done();
-      });
-    });
-
-    it('should support filters with unicode parameters', function(done) {
-      var mail = new Email(smtp_params);
-      mail.subject += ' filters w/ unicode ✔ (Smtp)';
-      mail.addFilterSetting('footer', 'enable', 1);
-      mail.addFilterSetting('footer', 'text/plain', 'This is mah footer with a ✔ in it!');
-      sendgrid.smtp(mail, function(success, message) {
-        expect(success).to.be.true;
-        done();
-      });
-    });
-
-    it('should support substitution values', function(done) {
-      var mail = new Email(smtp_params);
-      mail.addTo(setup.single_to);
-      mail.addSubVal('-name-',['Panda', 'Cow']);
-      mail.html = 'You are a <strong>-name-</strong>';
-      sendgrid.smtp(mail, function(success, message) {
-        expect(success).to.be.true;
-        done();
-      });
-    });
-
-    it('should support sections being set in the email', function(done) {
-      var mail = new Email(smtp_params);
-      mail.addTo(setup.multi_to);
-      mail.addSubVal('-name-', ['Kyle', 'David']);
-      mail.addSubVal('-meme-', ['-kyleSection-', '-davidSection-']);
-      mail.addSection({'-kyleSection-': 'I heard you liked batman so I killed your parents'});
-      mail.addSection({'-davidSection-': 'Metal gear?!!?!!!!eleven'});
-      mail.html = "Yo -name-!<br /> Here's a meme for you:<br /> -meme-";
-      sendgrid.smtp(mail, function(success, message) {
-        expect(success).to.be.true;
-        done();
-      });
-    });
-
-    it('should report errors to the user', function(done) {
-      var mail = new Email({});
-      sendgrid.smtp(mail, function(success, message) {
-        if (success) assert.ok(false, 'An error should have been reported');
-        done();
-      });
+    beforeEach(function() {
+      payload = Object.create(default_payload);
+      payload.subject += "rest ";
     });
 
     it('has an optional callback', function(done) {
-      var mail = new Email(text_params)
+      payload.subject += "has an optional callback";
 
       expect(function() {
-        sendgrid.smtp(mail);
+        sendgrid.send(payload);
       }).to.not.throw(Error);
 
       done();
+    });
+
+    it('handles content files', function(done) {
+      payload.subject   += "handles content files";
+      payload.files     = [
+        {filename: 'secret.txt', content: new Buffer("File Content")}
+      ];
+
+      sendgrid.send(payload, function(success, message) {
+        expect(success).to.be.true;
+
+        done();
+      });
+    });
+
+  });
+
+  describe('#smtp', function() {
+    var payload;
+
+    beforeEach(function() {
+      payload = Object.create(default_payload);
+      payload.subject += "smtp ";
+    });
+
+    it('has an optional callback', function(done) {
+      payload.subject += "has an optional callback";
+
+      expect(function() {
+        sendgrid.smtp(payload);
+      }).to.not.throw(Error);
+
+      done();
+    });
+
+    it('sends successfully', function(done) {
+      payload.subject += "sends successfully";
+
+      sendgrid.smtp(payload, function(success, message) {
+        expect(success).to.be.true;
+
+        done();
+      });
+    });
+
+    it('encodes unicode like ✔', function(done) {
+      payload.subject += "encodes unicode like ✔";
+
+      sendgrid.smtp(payload, function(success, message) {
+        expect(success).to.be.true;
+        
+        done();
+      });
+    });
+
+    it('with optional TO name and FROM name', function(done) {
+      payload.subject   += "with optional TO name and FROM name";
+      payload.toname    = "to name";
+      payload.fromname  = "from name";
+
+      sendgrid.smtp(payload, function(success, message) {
+        expect(success).to.be.true;
+
+        done();
+      });
+    });
+
+    it('handles content files', function(done) {
+      payload.subject   += "handles content files";
+      payload.files     = [
+        {filename: 'secret.txt', content: new Buffer("File Content")}
+      ];
+
+      sendgrid.smtp(payload, function(success, message) {
+        expect(success).to.be.true;
+
+        done();
+      });
+    });
+
+    it('handles content files addFile approach', function(done) {
+      payload.subject   += "handles content files addFile approach";
+      var email         = new Email(payload);
+      email.addFile({filename: 'secret.txt', content: new Buffer("File Content")});
+
+      sendgrid.smtp(email, function(success, message) {
+        expect(success).to.be.true;
+
+        done();
+      });
+    });
+
+    it('handles url files', function(done) {
+      payload.subject   += "handles url files";
+      payload.files     = [
+        {filename: 'icon.jpg', url: "http://i.imgur.com/2fDh8.jpg"}
+      ];
+
+      sendgrid.smtp(payload, function(success, message) {
+        expect(success).to.be.true;
+
+        done();
+      });
+    });
+
+    it('handles url files addFile approach', function(done) {
+      payload.subject   += "handles url files addFile approach";
+      var email         = new Email(payload);
+      email.addFile({filename: 'icon.jpg', url: "http://i.imgur.com/2fDh8.jpg"});
+
+      sendgrid.smtp(email, function(success, message) {
+        expect(success).to.be.true;
+
+        done();
+      });
+    });
+
+    it('handles path files', function(done) {
+      payload.subject   += "handles path files";
+      payload.files     = [
+        {path: __dirname + '/../assets/logo.png'}
+      ];
+
+      sendgrid.smtp(payload, function(success, message) {
+        expect(success).to.be.true;
+        
+        done();
+      });
+    });
+
+    it('handles path files addFile approach', function(done) {
+      payload.subject   += "handles path files addFile approach";
+      var email         = new Email(payload);
+      email.addFile({path: __dirname + '/../assets/logo.png'});
+
+      sendgrid.smtp(email, function(success, message) {
+        expect(success).to.be.true;
+        
+        done();
+      });
+    });
+
+    it('handles empty files', function(done) {
+      payload.subject   += "handles empty files";
+      payload.files     = [
+        {filename: 'empty-test'}
+      ]
+
+      sendgrid.smtp(payload, function(success, message) {
+        expect(success).to.be.true;
+        
+        done();
+      });
+    });
+
+    it('handles empty files addFile approach', function(done) {
+      payload.subject   += "handles empty files addFile approach";
+      var email         = new Email(payload);
+      email.addFile({filename: 'empty-test'});
+
+      sendgrid.smtp(email, function(success, message) {
+        expect(success).to.be.true;
+        
+        done();
+      });
+    });
+
+    it('handles inline content', function(done) {
+      payload.subject   += "handles inline content";
+      payload.files     = [
+        {
+          filename: 'icon.jpg', 
+          cid:      'photo1', 
+          url:      'http://i.imgur.com/2fDh8.jpg'
+        }
+      ]
+      payload.html      = "<img src='cid:photo1'/>";
+
+      sendgrid.smtp(payload, function(success, message) {
+        expect(success).to.be.true;
+
+        done();
+      });
+    });
+
+    it('handles inline content addFile approach', function(done) {
+      payload.subject   += "handles inline content addFile approach";
+      var email         = new Email(payload);
+      email.addFile({
+        filename: 'icon.jpg', 
+        cid:      'photo1', 
+        url:      'http://i.imgur.com/2fDh8.jpg'
+      }); 
+      payload.html      = "<img src='cid:photo1'/>";
+
+      sendgrid.smtp(email, function(success, message) {
+        expect(success).to.be.true;
+
+        done();
+      });
+    });
+
+    it('handles file even if contentType is empty', function(done) {
+      payload.subject   += "handles file even if contentType is empty";
+      payload.files     = [
+        {
+          filename:     'icon.jpg',
+          url:          'http://i.imgur.com/2fDh8.jpg',
+          contentType:  ''
+        }
+      ]
+ 
+      sendgrid.smtp(payload, function(success, message) {
+        expect(success).to.be.true;
+
+        done();
+      });
+    });
+
+    it('handles file even if contentType is empty addFile approach', function(done) {
+      payload.subject   += "handles file even if contentType is empty addFile approach";
+      var email         = new Email(payload);
+      email.addFile({
+        filename:     'icon.jpg',
+        url:          'http://i.imgur.com/2fDh8.jpg',
+        contentType:  ''
+      });      
+ 
+      sendgrid.smtp(email, function(success, message) {
+        expect(success).to.be.true;
+
+        done();
+      });
+    });
+
+    it('handles the reply_to field', function(done) {
+      payload.subject   += "handles the reply_to field";
+
+      var email         = new Email(payload);
+      email.replyto     = 'noreply@sendgrid.com';
+      sendgrid.smtp(email, function(success, message) {
+        expect(success).to.be.true;
+        done();
+      });
+    });
+
+    it('handles filters', function(done) {
+      payload.subject   += "handles filters";
+
+      var email = new Email(payload);
+      email.addFilterSetting('footer', 'enable', 1);
+      email.addFilterSetting('footer', 'text/plain', 'This is mah footer!');
+      sendgrid.smtp(email, function(success, message) {
+        expect(success).to.be.true;
+        done();
+      });
+    });
+
+    it('handles filters with unicode parameters', function(done) {
+      payload.subject   += "handles filters with unicode parameters";
+      
+      var email = new Email(payload);
+      email.addFilterSetting('footer', 'enable', 1);
+      email.addFilterSetting('footer', 'text/plain', 'This is mah footer with a ✔ in it!');
+      sendgrid.smtp(email, function(success, message) {
+        expect(success).to.be.true;
+        done();
+      });
+    });
+
+    it('handles substitution values', function(done) {
+      payload.subject   += "handles substitution values";
+      
+      var email = new Email(payload);
+      email.addSubVal('-name-',['Panda', 'Cow']);
+      email.html = 'You are a <strong>-name-</strong>';
+      sendgrid.smtp(email, function(success, message) {
+        expect(success).to.be.true;
+        done();
+      });
+    });
+
+    it('handles sections being set in the email', function(done) {
+      payload.subject   += "handles sections being set in the email";
+      
+      var email = new Email(payload);
+      //mail.addTo(setup.multi_to);
+      email.addSubVal('-name-', ['Kyle', 'David']);
+      email.addSubVal('-meme-', ['-kyleSection-', '-davidSection-']);
+      email.addSection({'-kyleSection-': 'I heard you liked batman so I killed your parents'});
+      email.addSection({'-davidSection-': 'Metal gear?!!?!!!!eleven'});
+      email.html = "Yo -name-!<br /> Here's a meme for you:<br /> -meme-";
+      sendgrid.smtp(email, function(success, message) {
+        expect(success).to.be.true;
+        done();
+      });
     });
   });
 });
