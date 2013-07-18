@@ -25,6 +25,10 @@ describe('SendGrid', function () {
     sendgrid  = new SendGrid(API_USER, API_KEY);
   });
 
+  it('version should be set', function() {
+    expect(sendgrid.version).to.equal("0.2.8");
+  });
+
   describe('#send', function() {
     var payload, mock, webApi, postParams, postParamsString;
 

@@ -4,11 +4,12 @@
     "Kyle Partridge <kyle.partridge@sendgrid.com>",
     "David Tomberlin <david.tomberlin@sendgrid.com>",
     "Swift <swift@sendgrid.com>",
-    "Brandon West <brandon.west@sendgrid.com>"
+    "Brandon West <brandon.west@sendgrid.com>",
+    "Scott Motte <scott.motte@sendgrid.com>"
   ],
   "name": "sendgrid",
   "description": "A NodeJS implementation of the SendGrid Api.",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "homepage": "http://sendgrid.com",
   "repository": {
     "type": "git",
