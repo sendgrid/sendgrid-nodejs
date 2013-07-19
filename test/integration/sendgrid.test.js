@@ -1,6 +1,4 @@
-process.env.NODE_ENV = 'test';
-var dotenv = require('dotenv')();
-dotenv.load();
+process.env.NODE_ENV = 'test'; var dotenv = require('dotenv')(); dotenv.load();
 
 var API_USER    = process.env.API_USER || 'some_sendgrid_username';
 var API_KEY     = process.env.API_KEY || 'some_sendgrid_password';
@@ -26,8 +24,6 @@ describe('SendGrid #skip', function () {
     var payload;
 
     beforeEach(function() {
-      sendgrid.SMTP = "SMTP"; // send it for real
-
       payload = Object.create(default_payload);
       payload.subject += "rest ";
     });
