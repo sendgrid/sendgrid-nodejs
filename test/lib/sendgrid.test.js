@@ -14,7 +14,6 @@ var default_payload = {
 
 var SendGrid = require('../../lib/sendgrid')
   , Email = require('../../lib/email')
-  , querystring = require('querystring')
   , sinon = require('sinon')
   , nock = require('nock');
 
@@ -26,7 +25,7 @@ describe('SendGrid', function () {
   });
 
   it('version should be set', function() {
-    expect(sendgrid.version).to.equal("0.2.8");
+    expect(sendgrid.version).to.equal("0.2.9");
   });
 
   describe('#send', function() {
@@ -35,16 +34,13 @@ describe('SendGrid', function () {
     beforeEach(function() {
       payload = Object.create(default_payload);
 
-      webApi  = nock('https://sendgrid.com:443')
-        .matchHeader('Content-Type', 'application/x-www-form-urlencoded')
+      webApi  = nock('https://sendgrid.com')
         .filteringRequestBody(function(path) {
           postParamsString = path;
-          postParams = querystring.parse(path);
           return '*';
         })
         .post('/api/mail.send.json', '*');
     });
-
 
     it('has an optional callback', function(done) {
       expect(function() {
@@ -101,17 +97,13 @@ describe('SendGrid', function () {
       mock = webApi.reply(200, { message: "success" });
 
       sendgrid.send(payload, function(success, message) {
-        expect(postParams).to.include.keys(['api_user', 'api_key', 'to', 'from', 'subject', 'text', 'html', 'x-smtpapi']);
-        expect(postParams).not.to.include.keys(['toname', 'fromname']);
-
-        expect(postParams.api_user).to.equal(API_USER);
-        expect(postParams.api_key).to.equal(API_KEY);
-        expect(postParams.to).to.equal(default_payload.to);
-        expect(postParams.from).to.equal(default_payload.from);
-        expect(postParams.subject).to.equal(default_payload.subject);
-        expect(postParams.text).to.equal(default_payload.text);
-        expect(postParams.html).to.equal(default_payload.html);
-        expect(postParams['x-smtpapi']).to.equal('{}');
+        expect(postParamsString).to.include(API_USER);
+        expect(postParamsString).to.include(API_KEY);
+        expect(postParamsString).to.include(default_payload.to);
+        expect(postParamsString).to.include(default_payload.from);
+        expect(postParamsString).to.include(default_payload.subject);
+        expect(postParamsString).to.include(default_payload.text);
+        expect(postParamsString).to.include(default_payload.html);
 
         done();
       });
@@ -124,10 +116,8 @@ describe('SendGrid', function () {
       payload.fromname= "from name";
 
       sendgrid.send(payload, function(success, message) {
-        expect(postParams).to.include.keys(['toname', 'fromname']);
-
-        expect(postParams.toname).to.equal('to name');
-        expect(postParams.fromname).to.equal('from name');
+        expect(postParamsString).to.include('to name');
+        expect(postParamsString).to.include('from name');
 
         done();
       });
@@ -139,7 +129,7 @@ describe('SendGrid', function () {
       payload.subject = "A unicode ✔ subject";
 
       sendgrid.send(payload, function(success, message) {
-        var encodedCheckmark = '%E2%9C%94';
+        var encodedCheckmark = '✔';
 
         expect(postParamsString).to.include(encodedCheckmark);
         done();

@@ -1,12 +1,11 @@
 var Email = require('../../lib/email');
-var querystring = require('querystring');
 var fs = require('fs');
 
-var text_params = {
-  to: 'david.tomberlin@sendgrid.com',
-  from: 'kyle.partridge@sendgrid.com',
-  subject: 'Subject',
-  text: 'This is an email.'
+var default_payload = {
+  to        : 'david.tomberlin@sendgrid.com',
+  from      : 'kyle.partridge@sendgrid.com',
+  subject   : 'Subject',
+  text      : 'This is an email.'
 };
 
 var files = [
@@ -15,73 +14,89 @@ var files = [
 ]
 
 describe('Email', function () {
-  it('should allow attributes to be set in the constuctor', function() {
-    var mail = new Email(text_params);
-
-    for (var key in text_params) {
-      expect(text_params[key]).to.eql(mail[key]);
+  it('should allow attributes to be set in the constructor', function() {
+    var payload     = Object.create(default_payload);
+    var email       = new Email(payload);
+    for (var key in payload) {
+      expect(payload[key]).to.eql(email[key]);
     }
   });
 
-  it('should return a Web Api format as expected', function() {
-    var email = new Email(text_params);
-    var webFormat = email.toWebFormat();
-    expect(webFormat.to).to.equal(text_params.to);
-    expect(webFormat.from).to.equal(text_params.from);
-    expect(webFormat.subject).to.equal(text_params.subject);
-    expect(webFormat.text).to.equal(text_params.text);
+  describe("#toWebFormat", function() {
+    it('should return a Web Api format as expected', function() {
+      var payload     = Object.create(default_payload);
+      var email       = new Email(payload);
+      var format      = email.toWebFormat();
+
+      expect(format.to).to.equal(payload.to);
+      expect(format.from).to.equal(payload.from);
+      expect(format.subject).to.equal(payload.subject);
+      expect(format.text).to.equal(payload.text);
+      expect(format.fromname).to.be.empty;
+      expect(format.toname).to.be.empty;
+    });
+
+    it('should not have a to address if there is no to or no smtpapi.', function() {
+      var payload     = Object.create(default_payload);
+      var email       = new Email({from: 'test@test.com', subject: 'testing', text: 'testing'});  
+      var format = email.toWebFormat();
+      expect(format.to).to.be.empty;
+    });
+
+    it('should have a to address if there is no to but there is an smtpapi to', function() {
+      var payload     = Object.create(default_payload);
+      payload.to      = "";
+      var email       = new Email(payload);
+      email.addTo("test@test.com");
+      var format = email.toWebFormat();
+
+      expect(JSON.parse(format['x-smtpapi']).to).to.not.be.empty;
+      expect(format.to).to.not.be.empty; 
+    });
+
+    it("should set a fromname if one is provided", function() {
+      var payload     = Object.create(default_payload);
+      var email       = new Email({from: 'test@test.com', fromname:'Tester T. Testerson', subject: 'testing', text: 'testing'});
+      var format = email.toWebFormat();
+
+      expect(format.fromname).to.equal('Tester T. Testerson');
+    });
+
+    it("should set a toname if one is provided", function() {
+      var payload     = Object.create(default_payload);
+      var email       = new Email({from: 'test@test.com', to:'test@test.com', toname:'Tester T. Testerson', subject: 'testing', text: 'testing'});
+      var format = email.toWebFormat();
+
+      expect(format.toname).to.equal('Tester T. Testerson');
+    });
+
+    it("should set multiple tonames if several are provided", function() {
+      var payload     = Object.create(default_payload);
+      var email       = new Email({from: 'test@test.com', to: ['test@test.com', 'test2@test.com'], toname:['Tester T. Testerson', 'Test2 M. Testerson'], subject: 'testing', text: 'testing'});
+      var format = email.toWebFormat();
+
+      expect(format.toname[0]).to.equal('Tester T. Testerson');
+      expect(format.toname[1]).to.equal('Test2 M. Testerson');
+    });
   });
 
-  it('should not have a to address if there is no to or no smtpapi.to set via Web Api', function() {
-    var email = new Email({from: 'test@test.com', subject: 'testing', text: 'testing'});
-    var webFormat = email.toWebFormat();
-    expect(webFormat.to).to.be.empty;
-  });
+  describe("#toSmtpFormat", function() {
+    it('should return an Smtp Api format as expected', function() {
+      var payload     = Object.create(default_payload);
+      var email       = new Email(payload);
+      var format      = email.toSmtpFormat();
 
-  it('should return an Smtp Api format as expected', function() {
-    var email = new Email(text_params);
-    var smtpFormat = email.toSmtpFormat();
-    expect(smtpFormat.to).to.equal(text_params.to);
-    expect(smtpFormat.sender).to.equal(text_params.from);
-    expect(smtpFormat.subject).to.equal(text_params.subject);
-    expect(smtpFormat.body).to.equal(text_params.text);
-  });
+      expect(format.to).to.equal(payload.to);
+      expect(format.sender).to.equal(payload.from);
+      expect(format.subject).to.equal(payload.subject);
+      expect(format.body).to.equal(payload.text);
+    });
 
-  it('should not have a to address if there is no to or no smtpapi.to set via Smtp Api', function() {
-    var email = new Email({from: 'test@test.com', subject: 'testing', text: 'testing'});
-    var smtpFormat = email.toSmtpFormat();
-    expect(smtpFormat.to).to.be.empty;
-  });
-
-  it("should not set a fromname if one isn't provided", function() {
-    var email = new Email({from: 'test@test.com', subject: 'testing', text: 'testing'});
-    var webFormat = email.toWebFormat();
-    expect(webFormat.fromname).to.be.empty;
-  });
-
-  it("should set a fromname if one is provided", function() {
-    var email = new Email({from: 'test@test.com', fromname:'Tester T. Testerson', subject: 'testing', text: 'testing'});
-    var webFormat = email.toWebFormat();
-    expect(webFormat.fromname).to.equal('Tester T. Testerson');
-  });
-
-  it("should not set a toname if one isn't provided", function() {
-    var email = new Email({from: 'test@test.com', subject: 'testing', text: 'testing'});
-    var webFormat = email.toWebFormat();
-    expect(webFormat.toname).to.be.empty;
-  });
-
-  it("should set a toname if one is provided", function() {
-    var email = new Email({from: 'test@test.com', to:'test@test.com', toname:'Tester T. Testerson', subject: 'testing', text: 'testing'});
-    var webFormat = email.toWebFormat();
-    expect(webFormat.toname).to.equal('Tester T. Testerson');
-  });
-
-  it("should set multiple tonames if several are provided", function() {
-    var email = new Email({from: 'test@test.com', to: ['test@test.com', 'test2@test.com'], toname:['Tester T. Testerson', 'Test2 M. Testerson'], subject: 'testing', text: 'testing'});
-    var webFormat = email.toWebFormat();
-    expect(webFormat.toname[0]).to.equal('Tester T. Testerson');
-    expect(webFormat.toname[1]).to.equal('Test2 M. Testerson');
+    it('should not have a to address if there is no to or no smtpapi.to set via Smtp Api', function() {
+      var email = new Email({from: 'test@test.com', subject: 'testing', text: 'testing'});
+      var format = email.toSmtpFormat();
+      expect(format.to).to.be.empty;
+    });
   });
 
   describe('files', function() {
@@ -119,12 +134,6 @@ describe('Email', function () {
         expect(email.files[0].contentType).to.equal('image/png');
       });
     });
-  });
-
-  describe('validation', function() {
-    it('should invalidate when there are no parameters');
-
-    it('should return true when the mail is valid');
   });
 
   describe('custom headers', function() {
