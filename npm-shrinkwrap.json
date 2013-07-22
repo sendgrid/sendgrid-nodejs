@@ -12,8 +12,7 @@
       "dependencies": {
         "mailcomposer": {
           "version": "0.1.34",
-          "from": "mailcomposer@0.1.34",
-          "resolved": "https://registry.npmjs.org/mailcomposer/-/mailcomposer-0.1.34.tgz",
+          "from": "mailcomposer@~0.1",
           "dependencies": {
             "mimelib": {
               "version": "0.2.12",
@@ -34,17 +33,12 @@
                   "from": "addressparser@~0.1"
                 }
               }
-            },
-            "mime": {
-              "version": "1.2.9",
-              "from": "mime@1.2.9"
             }
           }
         },
         "simplesmtp": {
           "version": "0.3.4",
-          "from": "simplesmtp@0.3.4",
-          "resolved": "https://registry.npmjs.org/simplesmtp/-/simplesmtp-0.3.4.tgz",
+          "from": "simplesmtp@~0.2 || ~0.3",
           "dependencies": {
             "rai": {
               "version": "0.1.7",
@@ -53,6 +47,32 @@
             "xoauth2": {
               "version": "0.1.8",
               "from": "xoauth2@~0.1"
+            }
+          }
+        }
+      }
+    },
+    "mailcomposer": {
+      "version": "0.2.1",
+      "from": "mailcomposer@0.2.1",
+      "dependencies": {
+        "mimelib": {
+          "version": "0.2.12",
+          "from": "mimelib@~0.2",
+          "dependencies": {
+            "encoding": {
+              "version": "0.1.6",
+              "from": "encoding@~0.1",
+              "dependencies": {
+                "iconv-lite": {
+                  "version": "0.2.7",
+                  "from": "iconv-lite@0.2.7"
+                }
+              }
+            },
+            "addressparser": {
+              "version": "0.1.3",
+              "from": "addressparser@~0.1"
             }
           }
         }
@@ -171,10 +191,6 @@
           }
         }
       }
-    },
-    "step": {
-      "version": "0.0.5",
-      "from": "step@0.0.5"
     }
   }
 }
