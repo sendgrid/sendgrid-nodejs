@@ -2,7 +2,8 @@
 This nodejs module allows you to quickly and easily send emails through
 SendGrid using nodejs.
 
-[![Build Status](https://travis-ci.org/sendgrid/sendgrid-nodejs.png?branch=sm-filehandler)](https://travis-ci.org/sendgrid/sendgrid-nodejs)
+[![Build
+Status](https://travis-ci.org/sendgrid/sendgrid-nodejs.png?branch=master)](https://travis-ci.org/sendgrid/sendgrid-nodejs)
 
 ## License ##
 Licensed under the MIT License.
