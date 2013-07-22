@@ -25,7 +25,7 @@ describe('SendGrid #skip', function () {
 
     beforeEach(function() {
       payload = Object.create(default_payload);
-      payload.subject += "rest ";
+      payload.subject += "web ";
     });
 
     it('has a blank send payload', function(done) {
@@ -34,8 +34,6 @@ describe('SendGrid #skip', function () {
         
         done();
       });
-
-      done();
     });
 
     it('has an optional callback', function(done) {
@@ -233,6 +231,33 @@ describe('SendGrid #skip', function () {
       });      
  
       sendgrid.send(email, function(success, message) {
+        expect(success).to.be.true;
+
+        done();
+      });
+    });
+
+    it('handles large files', function(done) {
+      payload.subject   += "handles large files";
+      payload.files     = [
+        {filename: 'rails.zip', url: "https://github.com/rails/rails/archive/master.zip"}
+      ];
+
+      sendgrid.send(payload, function(success, message) {
+        expect(success).to.be.true;
+
+        done();
+      });
+    });
+
+    it('handles multiple files', function(done) {
+      payload.subject   += "handles multiple files";
+      payload.files     = [
+        {filename: 'rails.zip', url: "https://github.com/rails/rails/archive/master.zip"},
+        {filename: 'icon.jpg', url: 'http://i.imgur.com/2fDh8.jpg'}
+      ];
+
+      sendgrid.send(payload, function(success, message) {
         expect(success).to.be.true;
 
         done();
