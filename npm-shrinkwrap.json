@@ -1,6 +1,6 @@
 {
   "name": "sendgrid",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "dependencies": {
     "underscore": {
       "version": "1.4.4",

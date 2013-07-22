@@ -25,7 +25,7 @@ describe('SendGrid', function () {
   });
 
   it('version should be set', function() {
-    expect(sendgrid.version).to.equal("0.2.9");
+    expect(sendgrid.version).to.equal("0.2.10");
   });
 
   describe('#send', function() {
