@@ -28,6 +28,16 @@ describe('SendGrid #skip', function () {
       payload.subject += "rest ";
     });
 
+    it('has a blank send payload', function(done) {
+      sendgrid.send({}, function(success, message) {
+        expect(success).to.be.false;
+        
+        done();
+      });
+
+      done();
+    });
+
     it('has an optional callback', function(done) {
       payload.subject += "has an optional callback";
 
