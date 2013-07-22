@@ -52,32 +52,6 @@
         }
       }
     },
-    "mailcomposer": {
-      "version": "0.2.1",
-      "from": "mailcomposer@0.2.1",
-      "dependencies": {
-        "mimelib": {
-          "version": "0.2.12",
-          "from": "mimelib@~0.2",
-          "dependencies": {
-            "encoding": {
-              "version": "0.1.6",
-              "from": "encoding@~0.1",
-              "dependencies": {
-                "iconv-lite": {
-                  "version": "0.2.7",
-                  "from": "iconv-lite@0.2.7"
-                }
-              }
-            },
-            "addressparser": {
-              "version": "0.1.3",
-              "from": "addressparser@~0.1"
-            }
-          }
-        }
-      }
-    },
     "mime": {
       "version": "1.2.9",
       "from": "mime@1.2.9"

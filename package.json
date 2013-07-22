@@ -21,7 +21,6 @@
   "dependencies": {
     "underscore": "1.4.4",
     "nodemailer": "0.4.4",
-    "mailcomposer": "0.2.1",
     "mime": "1.2.9",
     "request": "2.22.0"
   },
