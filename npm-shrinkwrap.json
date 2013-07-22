@@ -55,10 +55,6 @@
     "mime": {
       "version": "1.2.9",
       "from": "mime@1.2.9"
-    },
-    "step": {
-      "version": "0.0.5",
-      "from": "step@0.0.5"
     }
   }
 }
