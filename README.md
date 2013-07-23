@@ -5,8 +5,7 @@ This nodejs module allows you to quickly and easily send emails through SendGrid
 [![BuildStatus](https://travis-ci.org/sendgrid/sendgrid-nodejs.png?branch=master)](https://travis-ci.org/sendgrid/sendgrid-nodejs)
 
 ```javascript
-var SendGrid  = require('sendgrid').SendGrid;
-var sendgrid  = new SendGrid(user, key);
+var sendgrid  = require('sendgrid')(api_user, api_key);
 sendgrid.send({
   to:       'example@example.com',
   from:     'other@example.com',
@@ -20,7 +19,7 @@ sendgrid.send({
 
 ## Installation
 
-The following recommended installation required [npm](https://npmjs.org/). If you are unfamiliar with npm, see [npm docs](https://npmjs.org/doc/). Npm comes installed with Node.js since node version 0.8.x so likely you already have it.
+The following recommended installation requires [npm](https://npmjs.org/). If you are unfamiliar with npm, see the [npm docs](https://npmjs.org/doc/). Npm comes installed with Node.js since node version 0.8.x therefore you likely already have it.
 
 Add the following to your `package.json` file:
 
@@ -32,6 +31,7 @@ Add the following to your `package.json` file:
     "sendgrid": "0.3.0"
   }
 }
+```
 
 Install sendgrid-nodejs and its dependencies:
 
@@ -93,14 +93,14 @@ sendgrid.smtp(payload, function(err, json) {
 });
 ```
 
-### Power Usage
+## Power Usage
 
 There are two additioanl objects built into this library that will help you use this library as a power user.
 
 + Email
 + SmtpapiHeaders
 
-#### Email
+### Email
 
 Email helps you more powerfully prepare your message to be sent.
 
@@ -158,12 +158,14 @@ var email = new Email({
 });
 ```
 
-##### Setting data
+#### Setting data
 
 Here is an example of all of the functions available on the email object. The comments to the right show the current state of the variables as the functions are called. If you have a specific question, see the [SendGrid API Docs](http://docs.sendgrid.com/documentation/api/). Please open a [GitHub issue](https://github.com/sendgrid/sendgrid-nodejs/issues) if you find bugs or missing features.
 
 ```javascript
-var email = new Email({
+var sendgrid  = require('sendgrid')(api_user, api_key);
+var Email     = sendgrid.Email;
+var email     = new Email({
   to: 'denim@sample.com',
   from: 'roy@sample.com',
   subject: 'Listen',
