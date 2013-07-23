@@ -1,4 +1,6 @@
-process.env.NODE_ENV = 'test'; var dotenv = require('dotenv')(); dotenv.load();
+process.env.NODE_ENV = 'test'; 
+var dotenv = require('dotenv')(); 
+dotenv.load();
 
 var API_USER    = process.env.API_USER || 'some_sendgrid_username';
 var API_KEY     = process.env.API_KEY || 'some_sendgrid_password';
@@ -29,8 +31,8 @@ describe('SendGrid #skip', function () {
     });
 
     it('has a blank send payload', function(done) {
-      sendgrid.send({}, function(success, message) {
-        expect(success).to.be.false;
+      sendgrid.send({}, function(err, json) {
+        expect(err).to.equal("Missing destination email");
         
         done();
       });
@@ -49,8 +51,9 @@ describe('SendGrid #skip', function () {
     it('encodes unicode like ✔', function(done) {
       payload.subject += "encodes unicode like ✔";
 
-      sendgrid.send(payload, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.send(payload, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
         
         done();
       });
@@ -61,8 +64,9 @@ describe('SendGrid #skip', function () {
       payload.toname    = "to name";
       payload.fromname  = "from name";
 
-      sendgrid.send(payload, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.send(payload, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
 
         done();
       });
@@ -74,8 +78,9 @@ describe('SendGrid #skip', function () {
         {filename: 'secret.txt', content: new Buffer("File Content")}
       ];
 
-      sendgrid.send(payload, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.send(payload, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
 
         done();
       });
@@ -86,8 +91,9 @@ describe('SendGrid #skip', function () {
       var email         = new Email(payload);
       email.addFile({filename: 'secret.txt', content: new Buffer("File Content")});
 
-      sendgrid.send(email, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.send(email, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
 
         done();
       });
@@ -99,8 +105,9 @@ describe('SendGrid #skip', function () {
         {filename: 'icon.jpg', url: "http://i.imgur.com/2fDh8.jpg"}
       ];
 
-      sendgrid.send(payload, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.send(payload, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
 
         done();
       });
@@ -111,8 +118,9 @@ describe('SendGrid #skip', function () {
       var email         = new Email(payload);
       email.addFile({filename: 'icon.jpg', url: "http://i.imgur.com/2fDh8.jpg"});
 
-      sendgrid.send(email, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.send(email, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
 
         done();
       });
@@ -124,8 +132,9 @@ describe('SendGrid #skip', function () {
         {path: __dirname + '/../assets/logo.png'}
       ];
 
-      sendgrid.send(payload, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.send(payload, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
         
         done();
       });
@@ -136,8 +145,9 @@ describe('SendGrid #skip', function () {
       var email         = new Email(payload);
       email.addFile({path: __dirname + '/../assets/logo.png'});
 
-      sendgrid.send(email, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.send(email, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
         
         done();
       });
@@ -149,9 +159,9 @@ describe('SendGrid #skip', function () {
         {filename: 'empty-test'}
       ]
 
-      sendgrid.send(payload, function(success, message) {
-        console.log(message);
-        expect(success).to.be.true;
+      sendgrid.send(payload, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
         
         done();
       });
@@ -162,8 +172,9 @@ describe('SendGrid #skip', function () {
       var email         = new Email(payload);
       email.addFile({filename: 'empty-test'});
 
-      sendgrid.send(email, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.send(email, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
         
         done();
       });
@@ -180,8 +191,9 @@ describe('SendGrid #skip', function () {
       ]
       payload.html      = "<img src='cid:photo1'/>";
 
-      sendgrid.send(payload, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.send(payload, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
 
         done();
       });
@@ -197,8 +209,9 @@ describe('SendGrid #skip', function () {
       }); 
       email.html      = "<img src='cid:photo1'/>";
 
-      sendgrid.send(email, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.send(email, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
 
         done();
       });
@@ -214,8 +227,9 @@ describe('SendGrid #skip', function () {
         }
       ]
  
-      sendgrid.send(payload, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.send(payload, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
 
         done();
       });
@@ -230,35 +244,42 @@ describe('SendGrid #skip', function () {
         contentType:  ''
       });      
  
-      sendgrid.send(email, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.send(email, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
 
         done();
       });
     });
 
     it('handles large files', function(done) {
+      this.timeout(30000);
+
       payload.subject   += "handles large files";
       payload.files     = [
         {filename: 'rails.zip', url: "https://github.com/rails/rails/archive/master.zip"}
       ];
 
-      sendgrid.send(payload, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.send(payload, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
 
         done();
       });
     });
 
     it('handles multiple files', function(done) {
+      this.timeout(30000);
+
       payload.subject   += "handles multiple files";
       payload.files     = [
         {filename: 'rails.zip', url: "https://github.com/rails/rails/archive/master.zip"},
         {filename: 'icon.jpg', url: 'http://i.imgur.com/2fDh8.jpg'}
       ];
 
-      sendgrid.send(payload, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.send(payload, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
 
         done();
       });
@@ -269,8 +290,9 @@ describe('SendGrid #skip', function () {
 
       var email         = new Email(payload);
       email.replyto     = 'noreply@sendgrid.com';
-      sendgrid.send(email, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.send(email, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
         done();
       });
     });
@@ -281,8 +303,10 @@ describe('SendGrid #skip', function () {
       var email = new Email(payload);
       email.addFilterSetting('footer', 'enable', 1);
       email.addFilterSetting('footer', 'text/plain', 'This is mah footer!');
-      sendgrid.send(email, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.send(email, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
+
         done();
       });
     });
@@ -293,8 +317,10 @@ describe('SendGrid #skip', function () {
       var email = new Email(payload);
       email.addFilterSetting('footer', 'enable', 1);
       email.addFilterSetting('footer', 'text/plain', 'This is mah footer with a ✔ in it!');
-      sendgrid.send(email, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.send(email, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
+
         done();
       });
     });
@@ -305,8 +331,10 @@ describe('SendGrid #skip', function () {
       var email = new Email(payload);
       email.addSubVal('-name-',['Panda', 'Cow']);
       email.html = 'You are a <strong>-name-</strong>';
-      sendgrid.send(email, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.send(email, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
+
         done();
       });
     });
@@ -321,8 +349,10 @@ describe('SendGrid #skip', function () {
       email.addSection({'-kyleSection-': 'I heard you liked batman so I killed your parents'});
       email.addSection({'-davidSection-': 'Metal gear?!!?!!!!eleven'});
       email.html = "Yo -name-!<br /> Here's a meme for you:<br /> -meme-";
-      sendgrid.send(email, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.send(email, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
+
         done();
       });
     });
@@ -332,10 +362,18 @@ describe('SendGrid #skip', function () {
     var payload;
 
     beforeEach(function() {
-      sendgrid.SMTP = "STUB";
+      sendgrid.SMTP = "SMTP";
 
       payload = Object.create(default_payload);
       payload.subject += "smtp ";
+    });
+
+    it('has a blank send payload', function(done) {
+      sendgrid.smtp({}, function(err, json) {
+        expect(err).to.equal("501 Syntax error");
+        
+        done();
+      });
     });
 
     it('has an optional callback', function(done) {
@@ -351,8 +389,9 @@ describe('SendGrid #skip', function () {
     it('sends successfully', function(done) {
       payload.subject += "sends successfully";
 
-      sendgrid.smtp(payload, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.smtp(payload, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
 
         done();
       });
@@ -361,8 +400,9 @@ describe('SendGrid #skip', function () {
     it('encodes unicode like ✔', function(done) {
       payload.subject += "encodes unicode like ✔";
 
-      sendgrid.smtp(payload, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.smtp(payload, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
         
         done();
       });
@@ -373,8 +413,9 @@ describe('SendGrid #skip', function () {
       payload.toname    = "to name";
       payload.fromname  = "from name";
 
-      sendgrid.smtp(payload, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.smtp(payload, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
 
         done();
       });
@@ -386,8 +427,9 @@ describe('SendGrid #skip', function () {
         {filename: 'secret.txt', content: new Buffer("File Content")}
       ];
 
-      sendgrid.smtp(payload, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.smtp(payload, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
 
         done();
       });
@@ -398,8 +440,9 @@ describe('SendGrid #skip', function () {
       var email         = new Email(payload);
       email.addFile({filename: 'secret.txt', content: new Buffer("File Content")});
 
-      sendgrid.smtp(email, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.smtp(email, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
 
         done();
       });
@@ -411,8 +454,9 @@ describe('SendGrid #skip', function () {
         {filename: 'icon.jpg', url: "http://i.imgur.com/2fDh8.jpg"}
       ];
 
-      sendgrid.smtp(payload, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.smtp(payload, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
 
         done();
       });
@@ -423,8 +467,9 @@ describe('SendGrid #skip', function () {
       var email         = new Email(payload);
       email.addFile({filename: 'icon.jpg', url: "http://i.imgur.com/2fDh8.jpg"});
 
-      sendgrid.smtp(email, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.smtp(email, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
 
         done();
       });
@@ -436,8 +481,9 @@ describe('SendGrid #skip', function () {
         {path: __dirname + '/../assets/logo.png'}
       ];
 
-      sendgrid.smtp(payload, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.smtp(payload, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
         
         done();
       });
@@ -448,8 +494,9 @@ describe('SendGrid #skip', function () {
       var email         = new Email(payload);
       email.addFile({path: __dirname + '/../assets/logo.png'});
 
-      sendgrid.smtp(email, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.smtp(email, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
         
         done();
       });
@@ -461,8 +508,9 @@ describe('SendGrid #skip', function () {
         {filename: 'empty-test'}
       ]
 
-      sendgrid.smtp(payload, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.smtp(payload, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
         
         done();
       });
@@ -473,8 +521,9 @@ describe('SendGrid #skip', function () {
       var email         = new Email(payload);
       email.addFile({filename: 'empty-test'});
 
-      sendgrid.smtp(email, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.smtp(email, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
         
         done();
       });
@@ -491,8 +540,9 @@ describe('SendGrid #skip', function () {
       ]
       payload.html      = "<img src='cid:photo1'/>";
 
-      sendgrid.smtp(payload, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.smtp(payload, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
 
         done();
       });
@@ -508,8 +558,9 @@ describe('SendGrid #skip', function () {
       }); 
       email.html      = "<img src='cid:photo1'/>";
 
-      sendgrid.smtp(email, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.smtp(email, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
 
         done();
       });
@@ -525,8 +576,9 @@ describe('SendGrid #skip', function () {
         }
       ]
  
-      sendgrid.smtp(payload, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.smtp(payload, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
 
         done();
       });
@@ -541,8 +593,9 @@ describe('SendGrid #skip', function () {
         contentType:  ''
       });      
  
-      sendgrid.smtp(email, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.smtp(email, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
 
         done();
       });
@@ -553,8 +606,10 @@ describe('SendGrid #skip', function () {
 
       var email         = new Email(payload);
       email.replyto     = 'noreply@sendgrid.com';
-      sendgrid.smtp(email, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.smtp(email, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
+
         done();
       });
     });
@@ -565,8 +620,10 @@ describe('SendGrid #skip', function () {
       var email = new Email(payload);
       email.addFilterSetting('footer', 'enable', 1);
       email.addFilterSetting('footer', 'text/plain', 'This is mah footer!');
-      sendgrid.smtp(email, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.smtp(email, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
+
         done();
       });
     });
@@ -577,8 +634,10 @@ describe('SendGrid #skip', function () {
       var email = new Email(payload);
       email.addFilterSetting('footer', 'enable', 1);
       email.addFilterSetting('footer', 'text/plain', 'This is mah footer with a ✔ in it!');
-      sendgrid.smtp(email, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.smtp(email, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
+
         done();
       });
     });
@@ -589,8 +648,10 @@ describe('SendGrid #skip', function () {
       var email = new Email(payload);
       email.addSubVal('-name-',['Panda', 'Cow']);
       email.html = 'You are a <strong>-name-</strong>';
-      sendgrid.smtp(email, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.smtp(email, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
+
         done();
       });
     });
@@ -605,8 +666,10 @@ describe('SendGrid #skip', function () {
       email.addSection({'-kyleSection-': 'I heard you liked batman so I killed your parents'});
       email.addSection({'-davidSection-': 'Metal gear?!!?!!!!eleven'});
       email.html = "Yo -name-!<br /> Here's a meme for you:<br /> -meme-";
-      sendgrid.smtp(email, function(success, message) {
-        expect(success).to.be.true;
+      sendgrid.smtp(email, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
+
         done();
       });
     });

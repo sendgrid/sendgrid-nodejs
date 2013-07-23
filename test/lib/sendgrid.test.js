@@ -1,9 +1,3 @@
-process.env.NODE_ENV = 'test';
-var dotenv = require('dotenv')();
-dotenv.load();
-
-var API_USER    = process.env.API_USER || 'some_sendgrid_username';
-var API_KEY     = process.env.API_KEY || 'some_sendgrid_password';
 var default_payload = {
   to            : process.env.TO || "hello@example.com",
   from          : process.env.FROM || "swift@sendgrid.com",
@@ -12,20 +6,20 @@ var default_payload = {
   html          : "<h2>This is an html body</h2>"
 }
 
-var SendGrid = require('../../lib/sendgrid')
-  , Email = require('../../lib/email')
-  , sinon = require('sinon')
-  , nock = require('nock');
+var sinon = require('sinon')
+  , nock  = require('nock');
 
 describe('SendGrid', function () {
-  var sendgrid;
+  it('should export the Email object', function() {
+    expect(sendgrid.Email).to.not.be.undefined;
+  });
 
-  beforeEach(function() {
-    sendgrid  = new SendGrid(API_USER, API_KEY);
+  it('should export the SmtpapiHeaders object', function() {
+    expect(sendgrid.SmtpapiHeaders).to.not.be.undefined;
   });
 
   it('version should be set', function() {
-    expect(sendgrid.version).to.equal("0.2.11");
+    expect(sendgrid.version).to.equal("0.3.0-rc.1.0");
   });
 
   describe('#send', function() {
@@ -51,11 +45,10 @@ describe('SendGrid', function () {
     });
 
     it('reports errors to the user', function(done) {
-      mock = webApi.reply(500, { message: "error", errors: "some error" });
+      mock = webApi.reply(500, { message: "error", errors: ["some error"] });
 
-      sendgrid.send({}, function(success, message) {
-        expect(success).to.be.false;
-        expect(message).to.equal("some error");
+      sendgrid.send({}, function(err, json) {
+        expect(err).to.equal("some error");
         done();
       });
     });
@@ -75,9 +68,8 @@ describe('SendGrid', function () {
 
       stub = sinon.stub(https, 'request', fakeRequest);
 
-      sendgrid.send({}, function(success, message) {
-        expect(success).to.be.false;
-        expect(message).to.equal("some http error");
+      sendgrid.send({}, function(err, json) {
+        expect(err).to.equal("some http error");
         https.request.restore();
         done();
       });
@@ -86,9 +78,9 @@ describe('SendGrid', function () {
     it("returns success if message is 'success'", function(done) {
       mock = webApi.reply(200, { message: "success" });
 
-      sendgrid.send({}, function(success, message) {
-        expect(success).to.be.true;
-        expect(message).to.be.undefined;
+      sendgrid.send({}, function(err, json) {
+        expect(err).to.be.null;
+        expect(json['message']).to.equal('success');
         done();
       });
     });
@@ -96,7 +88,7 @@ describe('SendGrid', function () {
     it('sends the basic message parameters', function(done) {
       mock = webApi.reply(200, { message: "success" });
 
-      sendgrid.send(payload, function(success, message) {
+      sendgrid.send(payload, function(err, json) {
         expect(postParamsString).to.include(API_USER);
         expect(postParamsString).to.include(API_KEY);
         expect(postParamsString).to.include(default_payload.to);
@@ -115,7 +107,7 @@ describe('SendGrid', function () {
       payload.toname = "to name";
       payload.fromname= "from name";
 
-      sendgrid.send(payload, function(success, message) {
+      sendgrid.send(payload, function(err, json) {
         expect(postParamsString).to.include('to name');
         expect(postParamsString).to.include('from name');
 
@@ -128,7 +120,7 @@ describe('SendGrid', function () {
 
       payload.subject = "A unicode ✔ subject";
 
-      sendgrid.send(payload, function(success, message) {
+      sendgrid.send(payload, function(err, json) {
         var encodedCheckmark = '✔';
 
         expect(postParamsString).to.include(encodedCheckmark);
