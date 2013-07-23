@@ -1,6 +1,6 @@
 {
   "name": "sendgrid",
-  "version": "0.2.11",
+  "version": "0.3.0",
   "dependencies": {
     "underscore": {
       "version": "1.4.4",
@@ -19,6 +19,7 @@
             "mimelib": {
               "version": "0.2.12",
               "from": "mimelib@~0.2",
+              "resolved": "https://registry.npmjs.org/mimelib/-/mimelib-0.2.12.tgz",
               "dependencies": {
                 "encoding": {
                   "version": "0.1.6",
@@ -26,8 +27,7 @@
                   "dependencies": {
                     "iconv-lite": {
                       "version": "0.2.7",
-                      "from": "iconv-lite@0.2.7",
-                      "resolved": "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.2.7.tgz"
+                      "from": "iconv-lite@0.2.7"
                     }
                   }
                 },
@@ -45,8 +45,7 @@
           "dependencies": {
             "rai": {
               "version": "0.1.7",
-              "from": "rai@~0.1",
-              "resolved": "https://registry.npmjs.org/rai/-/rai-0.1.7.tgz"
+              "from": "rai@~0.1"
             },
             "xoauth2": {
               "version": "0.1.8",
@@ -85,6 +84,7 @@
         "http-signature": {
           "version": "0.10.0",
           "from": "http-signature@~0.10.0",
+          "resolved": "https://registry.npmjs.org/http-signature/-/http-signature-0.10.0.tgz",
           "dependencies": {
             "assert-plus": {
               "version": "0.1.2",
@@ -128,6 +128,7 @@
             "sntp": {
               "version": "0.2.4",
               "from": "sntp@0.2.x",
+              "resolved": "https://registry.npmjs.org/sntp/-/sntp-0.2.4.tgz",
               "dependencies": {
                 "hoek": {
                   "version": "0.9.1",
