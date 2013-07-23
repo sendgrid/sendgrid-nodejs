@@ -360,10 +360,18 @@ describe('SendGrid #skip', function () {
     var payload;
 
     beforeEach(function() {
-      sendgrid.SMTP = "STUB";
+      sendgrid.SMTP = "SMTP";
 
       payload = Object.create(default_payload);
       payload.subject += "smtp ";
+    });
+
+    it('has a blank send payload', function(done) {
+      sendgrid.smtp({}, function(err, json) {
+        expect(err).to.equal("501 Syntax error");
+        
+        done();
+      });
     });
 
     it('has an optional callback', function(done) {
