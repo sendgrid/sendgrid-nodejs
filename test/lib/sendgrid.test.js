@@ -1,9 +1,3 @@
-process.env.NODE_ENV = 'test';
-var dotenv = require('dotenv')();
-dotenv.load();
-
-var API_USER    = process.env.API_USER || 'some_sendgrid_username';
-var API_KEY     = process.env.API_KEY || 'some_sendgrid_password';
 var default_payload = {
   to            : process.env.TO || "hello@example.com",
   from          : process.env.FROM || "swift@sendgrid.com",
@@ -12,20 +6,20 @@ var default_payload = {
   html          : "<h2>This is an html body</h2>"
 }
 
-var SendGrid = require('../../lib/sendgrid')
-  , Email = require('../../lib/email')
-  , sinon = require('sinon')
-  , nock = require('nock');
+var sinon = require('sinon')
+  , nock  = require('nock');
 
 describe('SendGrid', function () {
-  var sendgrid;
+  it('should export the Email object', function() {
+    expect(sendgrid.Email).to.not.be.undefined;
+  });
 
-  beforeEach(function() {
-    sendgrid  = new SendGrid(API_USER, API_KEY);
+  it('should export the SmtpapiHeaders object', function() {
+    expect(sendgrid.SmtpapiHeaders).to.not.be.undefined;
   });
 
   it('version should be set', function() {
-    expect(sendgrid.version).to.equal("0.3.0");
+    expect(sendgrid.version).to.equal("0.3.0-rc.1.0");
   });
 
   describe('#send', function() {

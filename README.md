@@ -1,84 +1,126 @@
-# sendgrid #
-This nodejs module allows you to quickly and easily send emails through
-SendGrid using nodejs.
+# Sendgrid-nodejs
 
-[![Build
-Status](https://travis-ci.org/sendgrid/sendgrid-nodejs.png?branch=master)](https://travis-ci.org/sendgrid/sendgrid-nodejs)
+This nodejs module allows you to quickly and easily send emails through SendGrid using [nodejs](http://nodejs.org/).
 
-## License ##
-Licensed under the MIT License.
-
-## Install ##
-
-```
-npm install sendgrid
-```
-
-## Testing ##
-
-In order to run the integration tests, you'll need to update the config file with your valid SendGrid credentials.  Start by making a live copy of the sample:
-
-```
-cp test/config.sample.js test/config.js
-```
-
-Next, open up `test/config.js` and fill it in.  After you have updated the configuration file with your credentials, you can run the suite using the following command:
-
-```
-npm test
-```
-
-You can run individual tests with the following command:
-
-```
-./node_modules/.bin/mocha [path to test].js
-```
-
-## Usage ##
-### It can be this easy ###
+[![BuildStatus](https://travis-ci.org/sendgrid/sendgrid-nodejs.png?branch=master)](https://travis-ci.org/sendgrid/sendgrid-nodejs)
 
 ```javascript
-var SendGrid = require('sendgrid').SendGrid;
-var sendgrid = new SendGrid(user, key);
+var SendGrid  = require('sendgrid').SendGrid;
+var sendgrid  = new SendGrid(user, key);
 sendgrid.send({
-  to: 'example@example.com',
-  from: 'other@example.com',
-  subject: 'Hello World',
-  text: 'My first email through SendGrid'
-}, function(err, messages) {
-  if (err) {
-    return console.error(err);
-  }
+  to:       'example@example.com',
+  from:     'other@example.com',
+  subject:  'Hello World',
+  text:     'My first email through SendGrid.'
+}, function(err, json) {
+  if (err) { return console.error(err); }
+  console.log(json);
 });
 ```
 
-And you're done!
+## Installation
 
-### Digging in ###
-There are two objects that you really need to know to get started:
-+   SendGrid
-+   Email
+The following recommended installation required [npm](https://npmjs.org/). If you are unfamiliar with npm, see [npm docs](https://npmjs.org/doc/). Npm comes installed with Node.js since node version 0.8.x so likely you already have it.
 
-#### Email ####
-Email is the object that will help you easily perpare your message to be sent.
+Add the following to your `package.json` file:
 
-NOTE: anything that is available in the Email constructor is available
-for use in both the `sendgrid.send` and `sendgrid.smtp` functions.
+```json
+{
+  ...
+  "dependencies": {
+    ...
+    "sendgrid": "0.3.0"
+  }
+}
+
+Install sendgrid-nodejs and its dependencies:
+
+```bash
+npm install
+```
+
+### Alternative Installation
+
+You can also install sendgrid locally with the following command:
+
+```bash
+npm install sendgrid
+```
+
+## Usage ##
+
+To begin using this library, initialize the SendGrid object with your SendGrid credentials.
+
+```javascript
+var sendgrid  = require('sendgrid')(api_user, api_key);
+```
+
+Create a new JavaScript object with your message details.
+
+```javascript
+var payload   = {
+  to      : 'to@example.com',
+  from    : 'from@other.com',
+  subject : 'Saying Hi',
+  text    : 'This is my first email through SendGrid'
+}
+```
+
+Send it.
+
+```javascript
+sendgrid.send(payload, function(err, json) {
+  if (err) { console.error(err); }
+  console.log(json);
+});
+```
+
+**Alternatively you can send it explicitly via Web or SMTP.**
+
+```javascript
+sendgrid.web(payload, function(err, json) {
+  if (err) { console.error(err); }
+  console.log(json);
+});
+```
+
+Or
+
+```javascript
+sendgrid.smtp(payload, function(err, json) {
+  if (err) { console.error(err); }
+  console.log(json);
+});
+```
+
+### Power Usage
+
+There are two additioanl objects built into this library that will help you use this library as a power user.
+
++ Email
++ SmtpapiHeaders
+
+#### Email
+
+Email helps you more powerfully prepare your message to be sent.
+
+NOTE: anything that is available in the Email constructor is available for use in the `sendgrid.send`, `sendgrid.web`, and `sendgrid.smtp` functions.
 
 To get started create an Email object:
 
 ```javascript
-var Email = require('sendgrid').Email;
-var email = new Email(optionalParams);
+var sendgrid  = require('sendgrid')(api_user, api_key);
+var Email     = sendgrid.Email;
+var email     = new Email(params);
 ```
 
-You can pass in as much or as little to optionalParams as you want, as
+You can pass in as much or as little to `params` as you want, as
 the email object has methods for manipulating all of the data.
 
 **params structure**
 
 ```javascript
-var optionalParams = {
+var params = {
   to: [],
   toname: [],
   from: '',
@@ -105,7 +147,7 @@ var optionalParams = {
 };
 ```
 
-Sample for using it:
+Here is a sample for using it:
 
 ```javascript
 var email = new Email({
@@ -116,8 +158,9 @@ var email = new Email({
 });
 ```
 
-##### Setting data #####
-Here is an example of all of the functions available on the email object. The comments to the right show the current state of the variables as the functions are called. If you have specific question, see the [SendGrid API Docs](http://docs.sendgrid.com/documentation/api/). Feel free to open an issue if you find bugs or missing features.
+##### Setting data
+
+Here is an example of all of the functions available on the email object. The comments to the right show the current state of the variables as the functions are called. If you have a specific question, see the [SendGrid API Docs](http://docs.sendgrid.com/documentation/api/). Please open a [GitHub issue](https://github.com/sendgrid/sendgrid-nodejs/issues) if you find bugs or missing features.
 
 ```javascript
 var email = new Email({
@@ -216,3 +259,44 @@ email.addFile({
 });
 email.addHtml('<div>Our logo:<img src="cid:the_logo"></div>');
 ```
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Added some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
+
+## Running Tests
+
+The existing tests can be run using [Mocha](http://visionmedia.github.io/mocha/) with the following command:
+
+```bash
+npm test
+```
+
+You can run individual tests with the following command:
+
+```bash
+./node_modules/.bin/mocha [path to test].js
+```
+
+### Integration Tests
+
+In order to run the integration tests, you'll need to update the environment file with your valid SendGrid credentials. Start by making a live copy of the example:
+
+```bash
+cp .env.example .env.test
+```
+
+Next, open up `.env.test` and fill it in.  After you have updated the environment file with your credentials, you can run the suite using the following command:
+
+```bash
+npm test
+```
+
+## License
+
+Licensed under the MIT License.
+

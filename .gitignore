@@ -2,4 +2,8 @@ node_modules/
 npm-debug.log
 .DS_Store
 test/config.js
-.env*
+.env.test
+.env.development
+.env.production
+.env.staging
+.env
