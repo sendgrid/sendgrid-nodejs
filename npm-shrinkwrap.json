@@ -1,6 +1,6 @@
 {
   "name": "sendgrid",
-  "version": "0.3.0",
+  "version": "0.3.0-rc.1.0",
   "dependencies": {
     "underscore": {
       "version": "1.4.4",
@@ -19,7 +19,6 @@
             "mimelib": {
               "version": "0.2.12",
               "from": "mimelib@~0.2",
-              "resolved": "https://registry.npmjs.org/mimelib/-/mimelib-0.2.12.tgz",
               "dependencies": {
                 "encoding": {
                   "version": "0.1.6",
@@ -27,7 +26,8 @@
                   "dependencies": {
                     "iconv-lite": {
                       "version": "0.2.7",
-                      "from": "iconv-lite@0.2.7"
+                      "from": "iconv-lite@0.2.7",
+                      "resolved": "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.2.7.tgz"
                     }
                   }
                 },
@@ -42,6 +42,7 @@
         "simplesmtp": {
           "version": "0.3.4",
           "from": "simplesmtp@~0.2 || ~0.3",
+          "resolved": "https://registry.npmjs.org/simplesmtp/-/simplesmtp-0.3.4.tgz",
           "dependencies": {
             "rai": {
               "version": "0.1.7",
@@ -67,7 +68,8 @@
       "dependencies": {
         "qs": {
           "version": "0.6.5",
-          "from": "qs@~0.6.0"
+          "from": "qs@~0.6.0",
+          "resolved": "https://registry.npmjs.org/qs/-/qs-0.6.5.tgz"
         },
         "json-stringify-safe": {
           "version": "4.0.0",
@@ -84,7 +86,6 @@
         "http-signature": {
           "version": "0.10.0",
           "from": "http-signature@~0.10.0",
-          "resolved": "https://registry.npmjs.org/http-signature/-/http-signature-0.10.0.tgz",
           "dependencies": {
             "assert-plus": {
               "version": "0.1.2",
@@ -109,7 +110,8 @@
           "dependencies": {
             "hoek": {
               "version": "0.8.5",
-              "from": "hoek@0.8.x"
+              "from": "hoek@0.8.x",
+              "resolved": "https://registry.npmjs.org/hoek/-/hoek-0.8.5.tgz"
             },
             "boom": {
               "version": "0.4.2",
@@ -128,7 +130,6 @@
             "sntp": {
               "version": "0.2.4",
               "from": "sntp@0.2.x",
-              "resolved": "https://registry.npmjs.org/sntp/-/sntp-0.2.4.tgz",
               "dependencies": {
                 "hoek": {
                   "version": "0.9.1",
@@ -140,11 +141,13 @@
         },
         "aws-sign": {
           "version": "0.3.0",
-          "from": "aws-sign@~0.3.0"
+          "from": "aws-sign@~0.3.0",
+          "resolved": "https://registry.npmjs.org/aws-sign/-/aws-sign-0.3.0.tgz"
         },
         "oauth-sign": {
           "version": "0.3.0",
-          "from": "oauth-sign@~0.3.0"
+          "from": "oauth-sign@~0.3.0",
+          "resolved": "https://registry.npmjs.org/oauth-sign/-/oauth-sign-0.3.0.tgz"
         },
         "cookie-jar": {
           "version": "0.3.0",
