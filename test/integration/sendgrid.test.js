@@ -46,6 +46,28 @@ describe('SendGrid #skip', function () {
       done();
     });
 
+    it('has array of TOs', function(done) {
+      payload.subject += "has array of TOs";
+      payload.to = [process.env.TO]
+
+      sendgrid.send(payload, function(success, message) {
+        expect(success).to.be.true;
+
+        done();
+      });
+    });
+
+    it('has multiple array of TOs', function(done) {
+      payload.subject += "has multiple array of TOs";
+      payload.to = [process.env.TO, 'sendgrid-nodejs@mailinator.com']
+
+      sendgrid.send(payload, function(success, message) {
+        expect(success).to.be.true;
+
+        done();
+      });
+    });
+
     it('encodes unicode like ✔', function(done) {
       payload.subject += "encodes unicode like ✔";
 
