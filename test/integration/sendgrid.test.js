@@ -48,6 +48,28 @@ describe('SendGrid #skip', function () {
       done();
     });
 
+    it('has array of TOs', function(done) {
+      payload.subject += "has array of TOs";
+      payload.to = [process.env.TO]
+
+      sendgrid.send(payload, function(err, json) {
+        expect(err).to.be.null;
+
+        done();
+      });
+    });
+
+    it('has multiple array of TOs', function(done) {
+      payload.subject += "has multiple array of TOs";
+      payload.to = [process.env.TO, 'sendgrid-nodejs@mailinator.com']
+
+      sendgrid.send(payload, function(err, json) {
+        expect(err).to.be.null;
+
+        done();
+      });
+    });
+
     it('encodes unicode like ✔', function(done) {
       payload.subject += "encodes unicode like ✔";
 
@@ -392,6 +414,28 @@ describe('SendGrid #skip', function () {
       sendgrid.smtp(payload, function(err, json) {
         expect(err).to.be.null;
         expect(json.message).to.equal('success');
+
+        done();
+      });
+    });
+
+    it('has array of TOs', function(done) {
+      payload.subject += "has array of TOs";
+      payload.to = [process.env.TO]
+
+      sendgrid.smtp(payload, function(err, json) {
+        expect(err).to.be.null;
+
+        done();
+      });
+    });
+
+    it('has multiple array of TOs', function(done) {
+      payload.subject += "has multiple array of TOs";
+      payload.to = [process.env.TO, 'sendgrid-nodejs@mailinator.com']
+
+      sendgrid.smtp(payload, function(err, json) {
+        expect(err).to.be.null;
 
         done();
       });
