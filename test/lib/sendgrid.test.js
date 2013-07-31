@@ -48,7 +48,8 @@ describe('SendGrid', function () {
       mock = webApi.reply(500, { message: "error", errors: ["some error"] });
 
       sendgrid.send({}, function(err, json) {
-        expect(err).to.equal("some error");
+        expect(err.stack);
+        expect(err.message).to.equal("some error");
         done();
       });
     });
