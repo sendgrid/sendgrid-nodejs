@@ -8,7 +8,7 @@
     "Scott Motte <scott.motte@sendgrid.com>"
   ],
   "name": "sendgrid",
-  "description": "A NodeJS implementation of the SendGrid Api.",
+  "description": "A NodeJS implementation of the SendGrid API.",
   "version": "0.3.0-rc.1.1",
   "homepage": "http://sendgrid.com",
   "repository": {
