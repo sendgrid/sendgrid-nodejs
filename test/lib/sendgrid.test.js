@@ -19,7 +19,7 @@ describe('SendGrid', function () {
   });
 
   it('version should be set', function() {
-    expect(sendgrid.version).to.equal("0.3.0-rc.1.1");
+    expect(sendgrid.version).to.equal("0.3.0-rc.1.2");
   });
 
   describe('#send', function() {
