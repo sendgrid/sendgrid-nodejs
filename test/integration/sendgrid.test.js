@@ -32,7 +32,7 @@ describe('SendGrid #skip', function () {
 
     it('has a blank send payload', function(done) {
       sendgrid.send({}, function(err, json) {
-        expect(err).to.equal("Missing destination email");
+        expect(err.message).to.equal("Missing destination email");
         
         done();
       });
@@ -392,7 +392,7 @@ describe('SendGrid #skip', function () {
 
     it('has a blank send payload', function(done) {
       sendgrid.smtp({}, function(err, json) {
-        expect(err).to.equal("501 Syntax error");
+        expect(err.message).to.equal("501 Syntax error");
         
         done();
       });
