@@ -271,8 +271,11 @@ You can change the port to 465 if you prefer. After initializing simply code `se
 ```javascript
 var sendgrid  = require('sendgrid')('username', 'password');
 sendgrid.port = 465;
-sendgrid.send({
-  ...
+var payload   = {...};
+sendgrid.smtp(payload, function(err, json) {
+  if (err) { console.error(err); }
+  console.log(json);
+});
 ```
 
 ## Contributing
