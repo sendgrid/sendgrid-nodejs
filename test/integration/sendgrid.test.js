@@ -419,6 +419,18 @@ describe('SendGrid #skip', function () {
       });
     });
 
+    it('sends successfully over port 465', function(done) {
+      payload.subject += "sends successfully over port 465";
+
+      sendgrid.port = 465;
+      sendgrid.smtp(payload, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
+
+        done();
+      });
+    });
+
     it('has array of TOs', function(done) {
       payload.subject += "has array of TOs";
       payload.to = [process.env.TO]

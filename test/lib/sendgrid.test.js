@@ -19,7 +19,13 @@ describe('SendGrid', function () {
   });
 
   it('version should be set', function() {
-    expect(sendgrid.version).to.equal("0.3.0-rc.1.2");
+    expect(sendgrid.version).to.equal("0.3.0-rc.1.3");
+  });
+
+  it('SMTP_PORT should be set and settable', function() {
+    expect(sendgrid.port).to.equal(587);
+    sendgrid.port = 465;
+    expect(sendgrid.port).to.equal(465);
   });
 
   describe('#send', function() {
