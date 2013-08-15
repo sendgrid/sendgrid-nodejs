@@ -30,7 +30,7 @@ Add the following to your `package.json` file:
   ...
   "dependencies": {
     ...
-    "sendgrid": "0.3.0"
+    "sendgrid": "0.3.0-rc.1.3"
   }
 }
 ```
@@ -262,6 +262,17 @@ email.addFile({
   path: '../files/logo.png'
 });
 email.addHtml('<div>Our logo:<img src="cid:the_logo"></div>');
+```
+
+## SMTP options
+
+You can change the port to 465 if you prefer. After initializing simply code `sendgrid.port = 465`
+
+```javascript
+var sendgrid  = require('sendgrid')('username', 'password');
+sendgrid.port = 465;
+sendgrid.send({
+  ...
 ```
 
 ## Contributing
