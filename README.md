@@ -158,7 +158,6 @@ var email = new Email({
   subject: 'What was Wenger thinking sending Walcott on that early?',
   text: 'Did you see that ludicrous display last night?'
 });
-email.replyto = "noreply@sample.com";
 ```
 
 #### Setting data
