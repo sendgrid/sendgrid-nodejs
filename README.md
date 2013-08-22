@@ -282,6 +282,20 @@ sendgrid.smtp(payload, function(err, json) {
 });
 ```
 
+You can also pass some additional fields through the smtp to the underlying nodemailer. The list of these fields are [here](https://github.com/andris9/Nodemailer#e-mail-message-fields).
+
+```javascript
+var sendgrid            = require('sendgrid')('username', 'password');
+var payload             = {...};
+var nodeMailerOptions   = {
+  messageId: "some-message-id" 
+}
+sendgrid.smtp(payload, nodeMailerOptions, function(err, json) {
+  if (err) { console.error(err); }
+  console.log(json);
+}
+```
+
 ## Contributing
 
 1. Fork it
