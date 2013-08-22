@@ -158,6 +158,7 @@ var email = new Email({
   subject: 'What was Wenger thinking sending Walcott on that early?',
   text: 'Did you see that ludicrous display last night?'
 });
+email.replyto = "noreply@sample.com";
 ```
 
 #### Setting data
@@ -173,6 +174,10 @@ var email     = new Email({
   subject: 'Listen',
   text: 'Have you tried turning it off and on again'
 });
+
+/* Setting various params */
+email.replyto = "noreply@sample.com";
+email.subject = "This is a subject";
 
 /** The following examples update the 'x-smtpapi' headers **/
 
