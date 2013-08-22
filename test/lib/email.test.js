@@ -36,6 +36,39 @@ describe('Email', function () {
       expect(format.toname).to.be.empty;
     });
 
+    it('should not have a field for undefined file', function() {
+      var payload     = Object.create(default_payload);
+      var email       = new Email(payload);
+      var format      = email.toWebFormat();
+
+      expect(format.to).to.equal(payload.to);
+      expect(format.from).to.equal(payload.from);
+      expect(format.subject).to.equal(payload.subject);
+      expect(format.text).to.equal(payload.text);
+      expect(format.fromname).to.be.empty;
+      expect(format.toname).to.be.empty;
+      expect(format['files[undefined]']).to.be.undefined;
+    });
+
+    it('should not have a field for undefined file even with Array prototype overridden', function() {
+      
+      Array.prototype['testMethod'] = function() {
+        return 'testMethod';
+      };
+      
+      var payload     = Object.create(default_payload);
+      var email       = new Email(payload);
+      var format      = email.toWebFormat();
+
+      expect(format.to).to.equal(payload.to);
+      expect(format.from).to.equal(payload.from);
+      expect(format.subject).to.equal(payload.subject);
+      expect(format.text).to.equal(payload.text);
+      expect(format.fromname).to.be.empty;
+      expect(format.toname).to.be.empty;
+      expect(format['files[undefined]']).to.be.undefined;
+    });
+    
     it('should not have a to address if there is no to or no smtpapi.', function() {
       var payload     = Object.create(default_payload);
       var email       = new Email({from: 'test@test.com', subject: 'testing', text: 'testing'});  
