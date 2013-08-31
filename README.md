@@ -5,6 +5,7 @@ This nodejs module allows you to quickly and easily send emails through SendGrid
 Note: This module was recently upgraded from [0.2.x](https://github.com/sendgrid/sendgrid-nodejs/tree/v0.2.11) to 0.3.x. There were API breaking changes. For documentation on 0.2.x, please [go here](https://github.com/sendgrid/sendgrid-nodejs/tree/v0.2.11).
 
 [![BuildStatus](https://travis-ci.org/sendgrid/sendgrid-nodejs.png?branch=master)](https://travis-ci.org/sendgrid/sendgrid-nodejs)
+[![NPM version](https://badge.fury.io/js/sendgrid.png)](http://badge.fury.io/js/sendgrid)
 
 ```javascript
 var sendgrid  = require('sendgrid')(api_user, api_key);
