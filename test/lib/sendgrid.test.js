@@ -22,6 +22,10 @@ describe('SendGrid', function () {
     expect(sendgrid.version).to.equal("0.3.0-rc.1.6");
   });
 
+  it('should attach a options object to self', function() {
+    expect( typeof sendgrid.options).to.equal('object');
+  });
+
   it('SMTP_PORT should be set and settable', function() {
     expect(sendgrid.port).to.equal(587);
     sendgrid.port = 465;
