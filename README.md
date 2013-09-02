@@ -31,7 +31,7 @@ Add the following to your `package.json` file:
   ...
   "dependencies": {
     ...
-    "sendgrid": "0.3.0-rc.1.6"
+    "sendgrid": "0.3.0-rc.1.7"
   }
 }
 ```
@@ -78,22 +78,10 @@ sendgrid.send(payload, function(err, json) {
 });
 ```
 
-**Alternatively you can send it explicitly via Web or SMTP.**
+**Alternatively you can opt to send via SMTP rather than via the WEB API. Just initialize with the `api: 'smtp'` option.**
 
 ```javascript
-sendgrid.web(payload, function(err, json) {
-  if (err) { console.error(err); }
-  console.log(json);
-});
-```
-
-Or
-
-```javascript
-sendgrid.smtp(payload, function(err, json) {
-  if (err) { console.error(err); }
-  console.log(json);
-});
+var sendgrid  = require('sendgrid')(api_user, api_key, {api: 'smtp'});
 ```
 
 ## Power Usage
