@@ -95,7 +95,7 @@ There are two additioanl objects built into this library that will help you use 
 
 Email helps you more powerfully prepare your message to be sent.
 
-NOTE: anything that is available in the Email constructor is available for use in the `sendgrid.send`, `sendgrid.web`, and `sendgrid.smtp` functions.
+NOTE: anything that is available in the Email constructor is available for use in the `sendgrid.send` function.
 
 To get started create an Email object:
 
@@ -259,13 +259,12 @@ email.addHtml('<div>Our logo:<img src="cid:the_logo"></div>');
 
 ## SMTP options
 
-You can change the port to 465 if you prefer. After initializing simply code `sendgrid.port = 465`
+You can change the port to 465 if you prefer. When initializing with the smtp api, also initialize with the port. 
 
 ```javascript
-var sendgrid  = require('sendgrid')('username', 'password');
-sendgrid.port = 465;
+var sendgrid  = require('sendgrid')('username', 'password', {api: 'smtp', port: 465});
 var payload   = {...};
-sendgrid.smtp(payload, function(err, json) {
+sendgrid.send(payload, function(err, json) {
   if (err) { console.error(err); }
   console.log(json);
 });
