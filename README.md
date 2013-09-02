@@ -3,7 +3,7 @@
 This nodejs module allows you to quickly and easily send emails through SendGrid using [nodejs](http://nodejs.org/).
 
 WARNING: This module was recently upgraded from [0.2.x](https://github.com/sendgrid/sendgrid-nodejs/tree/v0.2.11) to 0.3.x. There were API breaking changes. 
-Callback function now acts as a normal Node callback, i.e., (error, reuslt). This means your logic in your callback handler should be REVERSED!
+Callback function now acts as a normal Node callback, i.e., (error, result). This means your logic in your callback handler should be REVERSED!
 For documentation on 0.2.x, please [go here](https://github.com/sendgrid/sendgrid-nodejs/tree/v0.2.11).
 
 [![BuildStatus](https://travis-ci.org/sendgrid/sendgrid-nodejs.png?branch=master)](https://travis-ci.org/sendgrid/sendgrid-nodejs)
