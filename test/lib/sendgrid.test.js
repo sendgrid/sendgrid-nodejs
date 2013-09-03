@@ -19,13 +19,23 @@ describe('SendGrid', function () {
   });
 
   it('version should be set', function() {
-    expect(sendgrid.version).to.equal("0.3.0-rc.1.6");
+    expect(sendgrid.version).to.equal("0.3.0-rc.1.7");
   });
 
-  it('SMTP_PORT should be set and settable', function() {
+  it('should attach a options object to self', function() {
+    expect( typeof sendgrid.options).to.equal('object');
+  });
+
+  it('port should be set and settable', function() {
     expect(sendgrid.port).to.equal(587);
     sendgrid.port = 465;
     expect(sendgrid.port).to.equal(465);
+  });
+
+  it('options.port should be set and settable', function() {
+    expect(sendgrid.options.port).to.equal(587);
+    var sendgrid2 = require('../../lib/sendgrid')('username', 'password', {api: 'smtp', port: 465}); 
+    expect(sendgrid2.options.port).to.equal(465);
   });
 
   describe('#send', function() {

@@ -31,7 +31,7 @@ Add the following to your `package.json` file:
   ...
   "dependencies": {
     ...
-    "sendgrid": "0.3.0-rc.1.6"
+    "sendgrid": "0.3.0-rc.1.7"
   }
 }
 ```
@@ -78,22 +78,10 @@ sendgrid.send(payload, function(err, json) {
 });
 ```
 
-**Alternatively you can send it explicitly via Web or SMTP.**
+**Alternatively you can opt to send via SMTP rather than via the WEB API. Just initialize with the `api: 'smtp'` option.**
 
 ```javascript
-sendgrid.web(payload, function(err, json) {
-  if (err) { console.error(err); }
-  console.log(json);
-});
-```
-
-Or
-
-```javascript
-sendgrid.smtp(payload, function(err, json) {
-  if (err) { console.error(err); }
-  console.log(json);
-});
+var sendgrid  = require('sendgrid')(api_user, api_key, {api: 'smtp'});
 ```
 
 ## Power Usage
@@ -107,7 +95,7 @@ There are two additioanl objects built into this library that will help you use 
 
 Email helps you more powerfully prepare your message to be sent.
 
-NOTE: anything that is available in the Email constructor is available for use in the `sendgrid.send`, `sendgrid.web`, and `sendgrid.smtp` functions.
+NOTE: anything that is available in the Email constructor is available for use in the `sendgrid.send` function.
 
 To get started create an Email object:
 
@@ -271,22 +259,21 @@ email.addHtml('<div>Our logo:<img src="cid:the_logo"></div>');
 
 ## SMTP options
 
-You can change the port to 465 if you prefer. After initializing simply code `sendgrid.port = 465`
+You can change the port to 465 if you prefer. When initializing with the smtp api, also initialize with the port. 
 
 ```javascript
-var sendgrid  = require('sendgrid')('username', 'password');
-sendgrid.port = 465;
+var sendgrid  = require('sendgrid')('username', 'password', {api: 'smtp', port: 465});
 var payload   = {...};
-sendgrid.smtp(payload, function(err, json) {
+sendgrid.send(payload, function(err, json) {
   if (err) { console.error(err); }
   console.log(json);
 });
 ```
 
-You can also pass some additional fields through the smtp to the underlying nodemailer. The list of these fields are [here](https://github.com/andris9/Nodemailer#e-mail-message-fields).
+You can also pass some additional fields through the smtp to the underlying nodemailer. The list of these fields are [here](https://github.com/andris9/Nodemailer#e-mail-message-fields). To do this, you have to use the underlying `.smtp` method. This is really for power users.
 
 ```javascript
-var sendgrid            = require('sendgrid')('username', 'password');
+var sendgrid            = require('sendgrid')('username', 'password', {api: 'smtp'});
 var payload             = {...};
 var nodeMailerOptions   = {
   messageId: "some-message-id" 
