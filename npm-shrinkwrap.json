@@ -1,6 +1,6 @@
 {
   "name": "sendgrid",
-  "version": "0.3.0-rc.1.6",
+  "version": "0.3.0-rc.1.7",
   "dependencies": {
     "underscore": {
       "version": "1.4.4",
@@ -20,7 +20,6 @@
             "mimelib": {
               "version": "0.2.12",
               "from": "mimelib@0.2.12",
-              "resolved": "https://registry.npmjs.org/mimelib/-/mimelib-0.2.12.tgz",
               "dependencies": {
                 "encoding": {
                   "version": "0.1.6",
@@ -187,8 +186,7 @@
               "dependencies": {
                 "delayed-stream": {
                   "version": "0.0.5",
-                  "from": "delayed-stream@0.0.5",
-                  "resolved": "https://registry.npmjs.org/delayed-stream/-/delayed-stream-0.0.5.tgz"
+                  "from": "delayed-stream@0.0.5"
                 }
               }
             },
