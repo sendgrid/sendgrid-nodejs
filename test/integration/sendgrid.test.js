@@ -390,7 +390,18 @@ describe('SendGrid #skip', function () {
 
     it('has a blank send payload', function(done) {
       sendgrid.send({}, function(err, json) {
-        expect(err.message).to.equal("501 Syntax error");
+        expect(err.message).to.equal("Mail from command failed - 501 Syntax error");
+        
+        done();
+      });
+    });
+
+    it('has a blank TO', function(done) {
+      payload.subject += "has a blank TO";
+      payload.to = "";
+
+      sendgrid.send(payload, function(err, json) {
+        expect(err.message).to.equal("Can't send mail - no recipients defined");
         
         done();
       });
