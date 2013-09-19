@@ -17,5 +17,14 @@
     "proto"         : false,
     "sub"           : true,
     "trailing"      : true,
-    "white"         : false
+    "white"         : false,
+    "predef": [
+      "describe",
+      "it",
+      "before",
+      "beforeEach",
+      "after",
+      "afterEach",
+      "expect"
+    ]
 }
