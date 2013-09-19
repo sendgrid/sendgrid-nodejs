@@ -1,5 +1,5 @@
 var SmtpapiHeaders = require('../../lib/smtpapi_headers');
-var _ = require('underscore');
+var _ = require('lodash');
 
 describe('SmtpapiHeader', function() {
   var header;
