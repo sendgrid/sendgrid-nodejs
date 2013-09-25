@@ -259,6 +259,29 @@ email.addFile({
 email.addHtml('<div>Our logo:<img src="cid:the_logo"></div>');
 ```
 
+## Web Options
+
+sendgrid-nodejs uses the node request modules, you can pass in options
+to be merged. This enables you to use your own https.Agent, node-tunnel
+or the request proxy url. Please note that sendgrid requires https.
+
+```javascript
+var sendgrid = require('sendgrid')('username', 'password', { web: {
+proxy: "http://localproxy:3128" } });
+```
+
+or
+
+```javascript
+var https = require('https');
+var agent = new https.Agent();
+// Set Max Sockets to 500
+agent.maxSockets = 500;
+
+var sendgrid = require('sendgrid')('username', 'password', { web: {
+pool: agent } });
+```
+
 ## SMTP options
 
 You can change the port to 465 if you prefer. When initializing with the smtp api, also initialize with the port. 

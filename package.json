@@ -19,10 +19,10 @@
     "node": ">= 0.4.7"
   },
   "dependencies": {
-    "underscore": "1.4.4",
     "nodemailer": "0.4.4",
     "mime": "1.2.9",
-    "request": "2.22.0"
+    "request": "2.22.0",
+    "lodash": "2.0.0"
   },
   "devDependencies": {
     "dotenv": "0.0.2",
