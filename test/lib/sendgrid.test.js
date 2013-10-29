@@ -26,6 +26,12 @@ describe('SendGrid', function () {
     expect( typeof sendgrid.options).to.equal('object');
   });
 
+  it('should have web options agent global', function() {
+    var options   = { web: { pool: global.http.globalAgent } };
+    var sendgrid2 = require('../../lib/sendgrid')(API_USER, API_KEY, options);
+    expect(sendgrid2.options.web.pool).to.equal(http.globalAgent);
+  });
+
   it('port should be set and settable', function() {
     expect(sendgrid.port).to.equal(587);
     sendgrid.port = 465;
