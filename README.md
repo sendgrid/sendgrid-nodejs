@@ -261,7 +261,7 @@ email.addHtml('<div>Our logo:<img src="cid:the_logo"></div>');
 
 ## Web Options
 
-sendgrid-nodejs uses the node request modules, you can pass in options
+sendgrid-nodejs uses the node request module. You can pass in options
 to be merged. This enables you to use your own https.Agent, node-tunnel
 or the request proxy url. Please note that sendgrid requires https.
 
