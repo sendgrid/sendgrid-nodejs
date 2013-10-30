@@ -336,10 +336,6 @@ email.addFile({
 email.addHtml('<div>Our logo:<img src="cid:the_logo"></div>');
 ```
 
-#### Setting data
-
-Here is an example of all of the functions available on the email object. The comments to the right show the current state of the variables as the functions are called. If you have a specific question, see the [SendGrid API Docs](http://docs.sendgrid.com/documentation/api/). Please open a [GitHub issue](https://github.com/sendgrid/sendgrid-nodejs/issues) if you find bugs or missing features.
-
 ## Web Options
 
 sendgrid-nodejs uses the node request module. You can pass in options
