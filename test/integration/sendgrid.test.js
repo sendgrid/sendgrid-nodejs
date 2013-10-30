@@ -67,6 +67,20 @@ describe('SendGrid #skip', function () {
       });
     });
 
+    it('has multiple array of TOs using addTo', function(done) {
+      payload.subject += "has multiple array of TOs using addTo";
+      payload.to = [process.env.TO, 'sendgrid-nodejs@mailinator.com']
+      var email  = new Email(payload);
+      email.addTo(payload.to[0]);
+      email.addTo(payload.to[1]);
+
+      sendgrid.send(email, function(err, json) {
+        expect(err).to.be.null;
+
+        done();
+      });
+    });
+
     it('encodes unicode like ✔', function(done) {
       payload.subject += "encodes unicode like ✔";
 
