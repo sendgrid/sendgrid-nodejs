@@ -33,7 +33,7 @@ Add the following to your `package.json` file:
   ...
   "dependencies": {
     ...
-    "sendgrid": "0.3.1"
+    "sendgrid": "0.3.2"
   }
 }
 ```
