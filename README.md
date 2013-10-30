@@ -172,9 +172,13 @@ email.subject = "This is a subject";
 /** The following examples update the 'x-smtpapi' headers **/
 
 /* To Addresses */
-email.addTo('moo@cow.com');       // to = ['moo@cow.com']
+email.addTo('moo@cow.com');       // x-smtpapi.to = ['moo@cow.com']
 email.addTo(['solid@snake.com',
-            'liquid@snake.com']); // to = ['moo@cow.com', 'solid@snake.com', 'liquid@snake.com']
+            'liquid@snake.com']); // x-smtpapi.to = ['moo@cow.com', 'solid@snake.com', 'liquid@snake.com']
+
+/** NOTE: use addTo to add multiple to addresses that only those individuals see. **/
+/** If you need to send to multiple tos in the traditional sense (everyone sees each to address) **/
+/** then use the new Email({to: ['one@one.com', 'two@two.com']}); **/
 
 /* Custom Email Headers */
 email.setHeaders({full: 'hearts'});   // headers = {full: 'hearts'}
