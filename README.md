@@ -97,7 +97,7 @@ sendgrid.send(payload, function(err, json) {
 var sendgrid  = require('sendgrid')(api_user, api_key, {api: 'smtp'});
 ```
 
-## Power Usage
+## Advanced Usage
 
 There are two additioanl objects built into this library that will help you use this library as a power user.
 
