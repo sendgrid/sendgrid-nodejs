@@ -222,7 +222,7 @@ sendgrid.send(email, function(err, json) { });
 ```javascript
 var email     = new Email();
 email.addSubVal('keep', 'secret'); // sub = {keep: ['secret']}
-email.addSubVal('keep', 'safe');   // sub = {keep: ['secret', 'safe']}
+email.addSubVal('other', ['one', 'two']);   // sub = {keep: ['secret'], other: ['one', 'two']}
 ```
 
 #### setSection 

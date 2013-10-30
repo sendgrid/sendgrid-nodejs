@@ -14,6 +14,27 @@ describe('SmtpapiHeader', function() {
     expect(header.to).to.eql(['kyle.partridge@sendgrid.com', 'david.tomberlin@sendgrid.com']);
   });
 
+  describe('sub', function() {
+    var sub = {};
+    
+    it('should allow adding a single sub value', function() {
+      header.addSubVal('keep', 'secret');
+      expect(header.sub).to.eql({keep: ['secret']});
+    });
+
+    it('should override a value if using the same key', function() {
+      header.addSubVal('keep', 'secret');
+      header.addSubVal('keep', 'two');
+      expect(header.sub).to.eql({keep: ['two']});
+    });
+
+    it('should allow adding multiple sub values if different keys', function() {
+      header.addSubVal('keep', 'secret');
+      header.addSubVal('other', ['one', 'two']);
+      expect(header.sub).to.eql({keep: ['secret'], other: ['one', 'two']});
+    });
+  });
+
   describe('unique_args', function() {
     var unique_args = { foo: 'bar', apple: 'sauce' };
     it('should allow setting unique args', function() {
