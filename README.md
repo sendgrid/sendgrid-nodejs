@@ -2,6 +2,8 @@
 
 This nodejs module allows you to quickly and easily send emails through SendGrid using [nodejs](http://nodejs.org/).
 
+WARNING2: This module was recently upgraded from [0.3.x](https://github.com/sendgrid/sendgrid-nodejs/tree/v0.3.2) to 0.4.x. There were API breaking changes related `to` key in the email object. Previously any array you passed to this `to` key was added to the smtpapi headers. Now it is not. To add to the smtpapi headers use `addTo`. The difference is that using the `to` key, the receivers will see everyone's emails listed in the `to` address, but using the addTo smtpapiheaders they will only see the `to` address of their own email. Generally, you will want to use `addTo`.
+
 WARNING: This module was recently upgraded from [0.2.x](https://github.com/sendgrid/sendgrid-nodejs/tree/v0.2.11) to 0.3.x. There were API breaking changes. 
 Callback function now acts as a normal Node callback, i.e., (error, result). This means your logic in your callback handler should be REVERSED!
 For documentation on 0.2.x, please [go here](https://github.com/sendgrid/sendgrid-nodejs/tree/v0.2.11).
