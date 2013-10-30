@@ -81,6 +81,17 @@ describe('SendGrid #skip', function () {
       });
     });
 
+    it('has array of BCCs', function(done) {
+      payload.subject += "has array of BCCs";
+      payload.bcc = ['sendgrid-nodejs@mailinator.com']
+
+      sendgrid.send(payload, function(err, json) {
+        expect(err).to.be.null;
+
+        done();
+      });
+    });
+
     it('encodes unicode like ✔', function(done) {
       payload.subject += "encodes unicode like ✔";
 
@@ -468,6 +479,17 @@ describe('SendGrid #skip', function () {
     it('has multiple array of TOs', function(done) {
       payload.subject += "has multiple array of TOs";
       payload.to = [process.env.TO, 'sendgrid-nodejs@mailinator.com']
+
+      sendgrid.send(payload, function(err, json) {
+        expect(err).to.be.null;
+
+        done();
+      });
+    });
+
+    it('has array of BCCs', function(done) {
+      payload.subject += "has array of BCCs";
+      payload.bcc = ['sendgrid-nodejs@mailinator.com']
 
       sendgrid.send(payload, function(err, json) {
         expect(err).to.be.null;

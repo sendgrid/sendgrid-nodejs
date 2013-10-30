@@ -57,6 +57,14 @@ describe('Email', function () {
       expect(format.to).to.equal(payload.from);
     });
 
+    it('should have multiple BCCs if as an array', function() {
+      var payload     = Object.create(default_payload);
+      payload.bcc     = ['david.tomberlin@sendgrid.com', 'otherguy@sendgrid.com'];
+      var email       = new Email(payload);
+      var format      = email.toWebFormat();
+
+      expect(format.bcc).to.equal(payload.bcc);
+    });
 
     it('should not have a field for undefined file', function() {
       var payload     = Object.create(default_payload);
@@ -167,6 +175,16 @@ describe('Email', function () {
 
       expect(format.to).to.equal(payload.from);
     });
+
+    it('should have multiple BCCs if as an array', function() {
+      var payload     = Object.create(default_payload);
+      payload.bcc     = ['david.tomberlin@sendgrid.com', 'otherguy@sendgrid.com'];
+      var email       = new Email(payload);
+      var format      = email.toSmtpFormat();
+
+      expect(format.bcc).to.equal(payload.bcc);
+    });
+
 
     it('should not have a to address if there is no to or no smtpapi.to set via Smtp Api', function() {
       var email = new Email({from: 'test@test.com', subject: 'testing', text: 'testing'});
