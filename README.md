@@ -54,7 +54,16 @@ You can also install sendgrid locally with the following command:
 npm install sendgrid
 ```
 
-## Usage ##
+## SendGrid APIs
+
+SendGrid provides two methods of sending email: the Web API, and SMTP API.  SendGrid recommends using the SMTP API for sending emails.
+For an explanation of the benefits of each, refer to http://docs.sendgrid.com/documentation/get-started/integrate/examples/smtp-vs-rest/.
+
+This library implements a common interface to make it very easy to use either API.
+
+Please open a [GitHub issue](https://github.com/sendgrid/sendgrid-nodejs/issues) if you find bugs or missing features.
+
+## Usage
 
 To begin using this library, initialize the SendGrid object with your SendGrid credentials.
 
@@ -99,9 +108,8 @@ There are two additioanl objects built into this library that will help you use 
 
 Email helps you more powerfully prepare your message to be sent.
 
-NOTE: anything that is available in the Email constructor is available for use in the `sendgrid.send` function.
 
-To get started create an Email object:
+To get started create an Email object where `params` is a javascript object. You can pass in as much or as little to `params` as you want.
 
 ```javascript
 var sendgrid  = require('sendgrid')(api_user, api_key);
@@ -109,106 +117,153 @@ var Email     = sendgrid.Email;
 var email     = new Email(params);
 ```
 
-You can pass in as much or as little to `params` as you want, as
-the email object has methods for manipulating all of the data.
+#### Sample
 
-**params structure**
-
-```javascript
-var params = {
-  to: [],
-  toname: [],
-  from: '',
-  fromname: '',
-  smtpapi: new SmtpapiHeaders(),
-  subject: '',
-  text: '',
-  html: '',
-  bcc: [],
-  replyto: '',
-  date: new Date(),
-  files: [
-    {
-      filename: '',          // required only if file.content is used.
-      contentType: '',       // optional
-      cid: '',               // optional, used to specify cid for inline content
-      path: '',              //
-      url: '',               // == One of these three options is required
-      content: ('' | Buffer) //
-    }
-  ],
-  file_data: {},
-  headers: {}
-};
-```
-
-Here is a sample for using it:
-
-```javascript
-var email = new Email({
-  to: 'walks.it.in@sample.com',
-  from: 'arsenal@sample.com',
-  subject: 'What was Wenger thinking sending Walcott on that early?',
-  text: 'Did you see that ludicrous display last night?'
-});
-```
-
-#### Setting data
-
-Here is an example of all of the functions available on the email object. The comments to the right show the current state of the variables as the functions are called. If you have a specific question, see the [SendGrid API Docs](http://docs.sendgrid.com/documentation/api/). Please open a [GitHub issue](https://github.com/sendgrid/sendgrid-nodejs/issues) if you find bugs or missing features.
+Here is a sample for using it.
 
 ```javascript
 var sendgrid  = require('sendgrid')(api_user, api_key);
 var Email     = sendgrid.Email;
 var email     = new Email({
-  to: 'denim@sample.com',
-  from: 'roy@sample.com',
-  subject: 'Listen',
-  text: 'Have you tried turning it off and on again'
+  to:       'person@somewhere.com',
+  from:     'you@yourself',
+  subject:  'What was Wenger thinking sending Walcott on that early?',
+  text:     'Did you see that ludicrous display last night?'
 });
+sendgrid.send(email, function(err, json) {
+  if (err) { return console.error(err); }
+  console.log(json);
+});
+```
 
-/* Setting various params */
-email.replyto = "noreply@sample.com";
+#### Available params
+
+```javascript
+var params = {
+  smtpapi:  new SmtpapiHeaders(),
+  to:       [],
+  toname:   [],
+  from:     '',
+  fromname: '',
+  subject:  '',
+  text:     '',
+  html:     '',
+  bcc:      [],
+  replyto:  '',
+  date:     new Date(),
+  files: [
+    {
+      filename:     '',           // required only if file.content is used.
+      contentType:  '',           // optional
+      cid:          '',           // optional, used to specify cid for inline content
+      path:         '',           //
+      url:          '',           // == One of these three options is required
+      content:      ('' | Buffer) //
+    }
+  ],
+  file_data:  {},
+  headers:    {}
+};
+```
+
+NOTE: anything that is available in the Email constructor is available for use in the `sendgrid.send` function.
+
+#### Setting params
+
+You can set params like you would for any standard JavaScript object.
+
+```javascript
+var sendgrid  = require('sendgrid')(api_user, api_key);
+var Email     = sendgrid.Email;
+var email     = new Email({to: 'person@email.com'});
+email.to      = "different@email.com";
+email.replyto = "reply-here@email.com";
 email.subject = "This is a subject";
+```
 
-/** The following examples update the 'x-smtpapi' headers **/
+#### addTo
 
-/* To Addresses */
-email.addTo('moo@cow.com');       // x-smtpapi.to = ['moo@cow.com']
-email.addTo(['solid@snake.com',
-            'liquid@snake.com']); // x-smtpapi.to = ['moo@cow.com', 'solid@snake.com', 'liquid@snake.com']
+You can add one or multiple TO addresses using `addTo`.
 
-/** NOTE: use addTo to add multiple to addresses that only those individuals see. **/
-/** If you need to send to multiple tos in the traditional sense (everyone sees each to address) **/
-/** then use the new Email({to: ['one@one.com', 'two@two.com']}); **/
+```javascript
+var email     = new Email(); 
+email.addTo('foo@bar.com');
+email.addTo('another@another.com');
+sendgrid.send(email, function(err, json) { });
+```
+
+NOTE: This is different than setting an array on `to`. The array on `to` will show everyone the to addresses it was sent to. Using addTo will not. Usually, you'll want to use `addTo`.  
 
 /* Custom Email Headers */
+
+#### setHeaders
+
+You can set custom headers. 
+
+```javascript
+var email     = new Email(); 
+email.setHeaders({full: 'hearts'});   // headers = {full: 'hearts'}
+email.setHeaders({mask: 'salesman'}); // headers = {mask: 'salesman'}
+sendgrid.send(email, function(err, json) { });
+```
+
+#### addHeaders
+
+You can add custom headers. This will ADD rather than SET headers.
+
+```javascript
+var email     = new Email(); 
 email.setHeaders({full: 'hearts'});   // headers = {full: 'hearts'}
 email.addHeaders({spin: 'attack'});   // headers = {full: 'hearts', spin: 'attack'}
-email.setHeaders({mask: 'salesman'}); // headers = {mask: 'salesman'}
+email.addHeaders({mask: 'salesman'}); // headers = {full: 'hearts', spin: 'attack', mask: 'salesman'}
+sendgrid.send(email, function(err, json) { });
+```
 
-/* Substitution */
+#### addSubVal
+
+```javascript
+var email     = new Email();
 email.addSubVal('keep', 'secret'); // sub = {keep: ['secret']}
 email.addSubVal('keep', 'safe');   // sub = {keep: ['secret', 'safe']}
+```
 
-/* Section */
+#### setSection 
+
+```javascript
+var email     = new Email();
+email.setSection({'-charge-': 'This ship is useless.'}); // section = {'-charge-': 'This ship is useless.'}
+```
+
+#### addSection
+
+```javascript
+var email     = new Email();
 email.setSection({'-charge-': 'This ship is useless.'}); // section = {'-charge-': 'This ship is useless.'}
 email.addSection({'-bomber-': 'Only for sad vikings.'}); // section = {'-charge-': 'This ship is useless.',
-                                                         //            '-bomber-': 'Only for sad vikings.'}
-email.setSection({'-beam-': 'The best is for first'});   // section = {'-beam-': 'The best is for first'}
+```
 
-/* Unique Args */
+#### setUniqueArgs
+
+```javascript
+var email     = new Email();
+email.setUniqueArgs({cow: 'chicken'}); // unique_args = {cow: 'chicken'}
+email.setUniqueArgs({dad: 'proud'});   // unique_args = {dad: 'proud'}
+```
+
+#### addUniqueArgs
+
+```javascript
+var email     = new Email();
 email.setUniqueArgs({cow: 'chicken'}); // unique_args = {cow: 'chicken'}
 email.addUniqueArgs({cat: 'dog'});     // unique_args = {cow: 'chicken', cat: 'dog'}
-email.setUniqueArgs({dad: 'proud'});   // unique_args = {dad: 'proud'}
+```
 
-/* Category */
-email.setCategory('tactics');        // category = ['tactics']
-email.addCategory('advanced');       // category = ['tactics', 'advanced']
-email.setCategory('snowball-fight'); // category = ['snowball-fight']
+#### setFilterSetting
 
-/* Filters */
-// You can set a filter using an object literal
+You can set a filter using an object literal.
+
+```javascript
+var email     = new Email();
 email.setFilterSetting({
   'footer': {
     'setting': {
@@ -217,53 +272,75 @@ email.setFilterSetting({
     }
   }
 });
+```
 
-// Alternatively, you can add filter settings one at a time.
+#### setCategory
+
+```javascript
+var email     = new Email();
+email.setCategory('tactics');        // category = ['tactics']
+email.setCategory('snowball-fight'); // category = ['snowball-fight']
+```
+
+#### addCategory
+
+```javascript
+var email     = new Email();
+email.setCategory('tactics');        // category = ['tactics']
+email.addCategory('advanced');       // category = ['tactics', 'advanced']
+```
+
+#### addFilterSetting
+
+Alternatively, you can add filter settings one at a time.
+
+```javascript
+var email     = new Email();
 email.addFilterSetting('footer', 'enable', 1);
 email.addFilterSetting('footer', 'text/html', '<strong>boo</strong>');
+```
 
-/* Attachments */
+#### addFile
 
-/*
- * You can add files directly from content in memory.
- *
- * It will try to guess the contentType based on the filename.
- */
+You can add files directly from content in memory. It will try to guess the contentType based on the filename.
+
+```javascript
 email.addFile({
   filename: 'secret.txt',
   content:  new Buffer('You will never know....')
 });
+```
 
-/*
- * You can add files directly from a url.
- *
- * It will try to guess the contentType based on the filename.
- */
+You can add files directly from a url. It will try to guess the contentType based on the filename.
+
+```javascript
 email.addFile({
   filename: 'icon.jpg',
   url: 'http://i.imgur.com/2fDh8.jpg'
 });
+```
 
-/*
- * You can add files from a path on the filesystem.
- *
- * It will try to grap the filename and contentType from the path.
- */
+You can add files from a path on the filesystem. It will try to grap the filename and contentType from the path.
+
+```javascript
 email.addFile({
   path: '../files/resume.txt'
 });
+```
 
-/*
- * You can tag files for use as inline HTML content.
- *
- * It will mark the file for inline disposition using the specified "cid".
- */
+You can tag files for use as inline HTML content. It will mark the file for inline disposition using the specified "cid".
+
+```javascript
 email.addFile({
   cid: 'the_logo',           // should match cid value in html
   path: '../files/logo.png'
 });
 email.addHtml('<div>Our logo:<img src="cid:the_logo"></div>');
 ```
+
+#### Setting data
+
+Here is an example of all of the functions available on the email object. The comments to the right show the current state of the variables as the functions are called. If you have a specific question, see the [SendGrid API Docs](http://docs.sendgrid.com/documentation/api/). Please open a [GitHub issue](https://github.com/sendgrid/sendgrid-nodejs/issues) if you find bugs or missing features.
 
 ## Web Options
 
