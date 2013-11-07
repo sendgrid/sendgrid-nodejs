@@ -140,7 +140,7 @@ sendgrid.send(email, function(err, json) {
 
 ```javascript
 var params = {
-  smtpapi:  new SmtpapiHeaders(),
+  smtpapi:  new sengrid.SmtpapiHeaders(),
   to:       [],
   toname:   [],
   from:     '',
