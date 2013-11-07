@@ -200,6 +200,28 @@ describe('Email', function () {
     expect(email.from).to.eql('kyle.partridge@sendgrid.com');
   });
 
+  it('should be possible to setSubject', function() {
+    var email = new Email();
+    expect(email.subject).to.be.empty;
+    email.setSubject('A subject');
+    expect(email.subject).to.eql('A subject');
+  });
+
+  it('should be possible to setText', function() {
+    var email = new Email();
+    expect(email.text).to.be.empty;
+    email.setText('Some text');
+    expect(email.text).to.eql('Some text');
+  });
+
+  it('should be possible to setHtml', function() {
+    var email = new Email();
+    expect(email.html).to.be.empty;
+    email.setHtml('<p>Some html</p>');
+    expect(email.html).to.eql('<p>Some html</p>');
+  });
+
+
   describe('files', function() {
     it('should support adding attachments via path', function() {
       var email = new Email();

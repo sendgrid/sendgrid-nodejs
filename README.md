@@ -35,7 +35,7 @@ Add the following to your `package.json` file:
   ...
   "dependencies": {
     ...
-    "sendgrid": "0.4.3"
+    "sendgrid": "0.4.4"
   }
 }
 ```
@@ -199,6 +199,30 @@ NOTE: This is different than setting an array on `to`. The array on `to` will sh
 ```javascript
 var email     = new Email(); 
 email.setFrom('foo@bar.com');
+sendgrid.send(email, function(err, json) { });
+```
+
+#### setSubject
+
+```javascript
+var email     = new Email(); 
+email.setFrom('foo@bar.com');
+sendgrid.send(email, function(err, json) { });
+```
+
+#### setText
+
+```javascript
+var email     = new Email(); 
+email.setText('Some text');
+sendgrid.send(email, function(err, json) { });
+```
+
+#### setHtml
+
+```javascript
+var email     = new Email(); 
+email.setHtml('<h1>Some html</h1>');
 sendgrid.send(email, function(err, json) { });
 ```
 
