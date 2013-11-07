@@ -193,6 +193,13 @@ describe('Email', function () {
     });
   });
 
+  it('should be possible to setFrom', function() {
+    var email = new Email();
+    expect(email.from).to.be.empty;
+    email.setFrom('kyle.partridge@sendgrid.com');
+    expect(email.from).to.eql('kyle.partridge@sendgrid.com');
+  });
+
   describe('files', function() {
     it('should support adding attachments via path', function() {
       var email = new Email();
