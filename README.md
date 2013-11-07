@@ -194,6 +194,14 @@ sendgrid.send(email, function(err, json) { });
 
 NOTE: This is different than setting an array on `to`. The array on `to` will show everyone the to addresses it was sent to. Using addTo will not. Usually, you'll want to use `addTo`.  
 
+#### setFrom
+
+```javascript
+var email     = new Email(); 
+email.setFrom('foo@bar.com');
+sendgrid.send(email, function(err, json) { });
+```
+
 #### setHeaders
 
 You can set custom headers. 
