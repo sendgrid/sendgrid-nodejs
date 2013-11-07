@@ -63,6 +63,10 @@ This library implements a common interface to make it very easy to use either AP
 
 Please open a [GitHub issue](https://github.com/sendgrid/sendgrid-nodejs/issues) if you find bugs or missing features.
 
+## Example App
+
+There is a [sendgrid-nodejs-example app](https://github.com/scottmotte/sendgrid-nodejs-example) to help jumpstart your development.
+
 ## Usage
 
 To begin using this library, initialize the SendGrid object with your SendGrid credentials.
