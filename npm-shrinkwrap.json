@@ -55,7 +55,6 @@
     "request": {
       "version": "2.22.0",
       "from": "request@2.22.0",
-      "resolved": "https://registry.npmjs.org/request/-/request-2.22.0.tgz",
       "dependencies": {
         "qs": {
           "version": "0.6.5",
