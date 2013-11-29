@@ -9,7 +9,7 @@
   ],
   "name": "sendgrid",
   "description": "A NodeJS implementation of the SendGrid Api.",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "homepage": "http://sendgrid.com",
   "repository": {
     "type": "git",
