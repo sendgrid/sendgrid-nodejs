@@ -210,7 +210,7 @@ sendgrid.send(email, function(err, json) { });
 
 ```javascript
 var email     = new Email(); 
-email.setFrom('foo@bar.com');
+email.setSubject('Some subject');
 sendgrid.send(email, function(err, json) { });
 ```
 
