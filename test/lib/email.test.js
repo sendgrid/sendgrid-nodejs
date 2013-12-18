@@ -143,56 +143,6 @@ describe('Email', function () {
     });
   });
 
-  describe("#toSmtpFormat", function() {
-    it('should return an Smtp Api format as expected', function() {
-      var payload     = Object.create(default_payload);
-      var email       = new Email(payload);
-      var format      = email.toSmtpFormat();
-
-      expect(format.to).to.equal(payload.to);
-      expect(format.sender).to.equal(payload.from);
-      expect(format.subject).to.equal(payload.subject);
-      expect(format.body).to.equal(payload.text);
-    });
-
-    it('should have multiple TOs if as an array', function() {
-      var payload     = Object.create(default_payload);
-      payload.to      = ['david.tomberlin@sendgrid.com', 'otherguy@sendgrid.com'];
-      var email       = new Email(payload);
-      var format      = email.toSmtpFormat();
-
-      expect(format.to).to.equal(payload.to);
-    });
-
-    it('should have not have multiple TOs if as an array but also set on smtp-api via addTo', function() {
-      var payload     = Object.create(default_payload);
-      payload.to      = ['david.tomberlin@sendgrid.com', 'otherguy@sendgrid.com'];
-      var email       = new Email(payload);
-      email.addTo(payload.to[0]);
-      email.addTo(payload.to[1]);
-
-      var format      = email.toSmtpFormat();
-
-      expect(format.to).to.equal(payload.from);
-    });
-
-    it('should have multiple BCCs if as an array', function() {
-      var payload     = Object.create(default_payload);
-      payload.bcc     = ['david.tomberlin@sendgrid.com', 'otherguy@sendgrid.com'];
-      var email       = new Email(payload);
-      var format      = email.toSmtpFormat();
-
-      expect(format.bcc).to.equal(payload.bcc);
-    });
-
-
-    it('should not have a to address if there is no to or no smtpapi.to set via Smtp Api', function() {
-      var email = new Email({from: 'test@test.com', subject: 'testing', text: 'testing'});
-      var format = email.toSmtpFormat();
-      expect(format.to).to.be.empty;
-    });
-  });
-
   it('should be possible to setFrom', function() {
     var email = new Email();
     expect(email.from).to.be.empty;
