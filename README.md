@@ -54,15 +54,6 @@ You can also install sendgrid locally with the following command:
 npm install sendgrid
 ```
 
-## SendGrid APIs
-
-SendGrid provides two methods of sending email: the Web API, and SMTP API.  SendGrid recommends using the SMTP API for sending emails.
-For an explanation of the benefits of each, refer to http://docs.sendgrid.com/documentation/get-started/integrate/examples/smtp-vs-rest/.
-
-This library implements a common interface to make it very easy to use either API.
-
-Please open a [GitHub issue](https://github.com/sendgrid/sendgrid-nodejs/issues) if you find bugs or missing features.
-
 ## Example App
 
 There is a [sendgrid-nodejs-example app](https://github.com/scottmotte/sendgrid-nodejs-example) to help jumpstart your development.
@@ -95,15 +86,9 @@ sendgrid.send(payload, function(err, json) {
 });
 ```
 
-**Alternatively you can opt to send via SMTP rather than via the WEB API. Just initialize with the `api: 'smtp'` option.**
-
-```javascript
-var sendgrid  = require('sendgrid')(api_user, api_key, {api: 'smtp'});
-```
-
 ## Advanced Usage
 
-There are two additioanl objects built into this library that will help you use this library as a power user.
+There are two additional objects built into this library that will help you use this library as a power user.
 
 + Email
 + SmtpapiHeaders
@@ -393,33 +378,6 @@ agent.maxSockets = 500;
 
 var sendgrid = require('sendgrid')('username', 'password', { web: {
 pool: agent } });
-```
-
-## SMTP options
-
-You can change the port to 465 if you prefer. When initializing with the smtp api, also initialize with the port. 
-
-```javascript
-var sendgrid  = require('sendgrid')('username', 'password', {api: 'smtp', port: 465});
-var payload   = {...};
-sendgrid.send(payload, function(err, json) {
-  if (err) { console.error(err); }
-  console.log(json);
-});
-```
-
-You can also pass some additional fields through the smtp to the underlying nodemailer. The list of these fields are [here](https://github.com/andris9/Nodemailer#e-mail-message-fields). To do this, you have to use the underlying `.smtp` method. This is really for power users.
-
-```javascript
-var sendgrid            = require('sendgrid')('username', 'password', {api: 'smtp'});
-var payload             = {...};
-var nodeMailerOptions   = {
-  messageId: "some-message-id" 
-}
-sendgrid.smtp(payload, nodeMailerOptions, function(err, json) {
-  if (err) { console.error(err); }
-  console.log(json);
-}
 ```
 
 ## Contributing
