@@ -1,0 +1,144 @@
+{
+  "name": "sendgrid",
+  "version": "1.0.0-rc.1.0",
+  "dependencies": {
+    "mime": {
+      "version": "1.2.9",
+      "from": "mime@1.2.9",
+      "resolved": "https://registry.npmjs.org/mime/-/mime-1.2.9.tgz"
+    },
+    "request": {
+      "version": "2.22.0",
+      "from": "request@2.22.0",
+      "resolved": "https://registry.npmjs.org/request/-/request-2.22.0.tgz",
+      "dependencies": {
+        "qs": {
+          "version": "0.6.6",
+          "from": "qs@~0.6.0"
+        },
+        "json-stringify-safe": {
+          "version": "4.0.0",
+          "from": "json-stringify-safe@~4.0.0"
+        },
+        "forever-agent": {
+          "version": "0.5.0",
+          "from": "forever-agent@~0.5.0"
+        },
+        "tunnel-agent": {
+          "version": "0.3.0",
+          "from": "tunnel-agent@~0.3.0"
+        },
+        "http-signature": {
+          "version": "0.10.0",
+          "from": "http-signature@~0.10.0",
+          "dependencies": {
+            "assert-plus": {
+              "version": "0.1.2",
+              "from": "assert-plus@0.1.2",
+              "resolved": "https://registry.npmjs.org/assert-plus/-/assert-plus-0.1.2.tgz"
+            },
+            "asn1": {
+              "version": "0.1.11",
+              "from": "asn1@0.1.11",
+              "resolved": "https://registry.npmjs.org/asn1/-/asn1-0.1.11.tgz"
+            },
+            "ctype": {
+              "version": "0.5.2",
+              "from": "ctype@0.5.2",
+              "resolved": "https://registry.npmjs.org/ctype/-/ctype-0.5.2.tgz"
+            }
+          }
+        },
+        "hawk": {
+          "version": "0.13.1",
+          "from": "hawk@~0.13.0",
+          "dependencies": {
+            "hoek": {
+              "version": "0.8.5",
+              "from": "hoek@0.8.x"
+            },
+            "boom": {
+              "version": "0.4.2",
+              "from": "boom@0.4.x",
+              "dependencies": {
+                "hoek": {
+                  "version": "0.9.1",
+                  "from": "hoek@0.9.x"
+                }
+              }
+            },
+            "cryptiles": {
+              "version": "0.2.2",
+              "from": "cryptiles@0.2.x"
+            },
+            "sntp": {
+              "version": "0.2.4",
+              "from": "sntp@0.2.x",
+              "dependencies": {
+                "hoek": {
+                  "version": "0.9.1",
+                  "from": "hoek@0.9.x"
+                }
+              }
+            }
+          }
+        },
+        "aws-sign": {
+          "version": "0.3.0",
+          "from": "aws-sign@~0.3.0"
+        },
+        "oauth-sign": {
+          "version": "0.3.0",
+          "from": "oauth-sign@~0.3.0"
+        },
+        "cookie-jar": {
+          "version": "0.3.0",
+          "from": "cookie-jar@~0.3.0"
+        },
+        "node-uuid": {
+          "version": "1.4.1",
+          "from": "node-uuid@~1.4.0"
+        },
+        "form-data": {
+          "version": "0.0.8",
+          "from": "form-data@0.0.8",
+          "resolved": "https://registry.npmjs.org/form-data/-/form-data-0.0.8.tgz",
+          "dependencies": {
+            "combined-stream": {
+              "version": "0.0.4",
+              "from": "combined-stream@~0.0.4",
+              "dependencies": {
+                "delayed-stream": {
+                  "version": "0.0.5",
+                  "from": "delayed-stream@0.0.5",
+                  "resolved": "https://registry.npmjs.org/delayed-stream/-/delayed-stream-0.0.5.tgz"
+                }
+              }
+            },
+            "async": {
+              "version": "0.2.9",
+              "from": "async@~0.2.7"
+            }
+          }
+        }
+      }
+    },
+    "lodash": {
+      "version": "2.0.0",
+      "from": "lodash@2.0.0",
+      "resolved": "https://registry.npmjs.org/lodash/-/lodash-2.0.0.tgz"
+    },
+    "smtpapi": {
+      "version": "0.0.1",
+      "from": "smtpapi@0.0.1",
+      "resolved": "https://registry.npmjs.org/smtpapi/-/smtpapi-0.0.1.tgz",
+      "dependencies": {
+        "lodash": {
+          "version": "2.4.1",
+          "from": "lodash@2.4.1",
+          "resolved": "https://registry.npmjs.org/lodash/-/lodash-2.4.1.tgz"
+        }
+      }
+    }
+  }
+}
