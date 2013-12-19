@@ -357,15 +357,15 @@ email.addFile({
 email.addHtml('<div>Our logo:<img src="cid:the_logo"></div>');
 ```
 
-## Web Options
+## Options
 
 sendgrid-nodejs uses the node request module. You can pass in options
 to be merged. This enables you to use your own https.Agent, node-tunnel
 or the request proxy url. Please note that sendgrid requires https.
 
 ```javascript
-var sendgrid = require('sendgrid')('username', 'password', { web: {
-proxy: "http://localproxy:3128" } });
+var sendgrid = require('sendgrid')('username', 'password', {
+proxy: "http://localproxy:3128" });
 ```
 
 or
