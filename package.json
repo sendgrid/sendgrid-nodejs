@@ -22,7 +22,7 @@
     "mime": "1.2.9",
     "request": "2.22.0",
     "lodash": "2.0.0",
-    "xsmtpapi": "0.0.1"
+    "smtpapi": "0.0.1"
   },
   "devDependencies": {
     "dotenv": "0.0.2",
