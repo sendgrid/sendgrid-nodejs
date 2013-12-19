@@ -14,10 +14,6 @@ describe('SendGrid', function () {
     expect(sendgrid.Email).to.not.be.undefined;
   });
 
-  it('should export the SmtpapiHeaders object', function() {
-    expect(sendgrid.SmtpapiHeaders).to.not.be.undefined;
-  });
-
   it('version should be set', function() {
     expect(sendgrid.version).to.equal("1.0.0");
   });
@@ -30,18 +26,6 @@ describe('SendGrid', function () {
     var options   = { web: { pool: global.http.globalAgent } };
     var sendgrid2 = require('../../lib/sendgrid')(API_USER, API_KEY, options);
     expect(sendgrid2.options.web.pool).to.equal(http.globalAgent);
-  });
-
-  it('port should be set and settable', function() {
-    expect(sendgrid.port).to.equal(587);
-    sendgrid.port = 465;
-    expect(sendgrid.port).to.equal(465);
-  });
-
-  it('options.port should be set and settable', function() {
-    expect(sendgrid.options.port).to.equal(587);
-    var sendgrid2 = require('../../lib/sendgrid')('username', 'password', {api: 'smtp', port: 465}); 
-    expect(sendgrid2.options.port).to.equal(465);
   });
 
   describe('#send', function() {
