@@ -2,8 +2,8 @@ process.env.NODE_ENV = 'test';
 var dotenv = require('dotenv')(); 
 dotenv.load();
 
-var API_USER    = process.env.API_USER || 'some_sendgrid_username';
-var API_KEY     = process.env.API_KEY || 'some_sendgrid_password';
+var API_USER    = process.env.SENDGRID_USERNAME || 'some_sendgrid_username';
+var API_KEY     = process.env.SENDGRID_PASSWORD || 'some_sendgrid_password';
 var default_payload = {
   to            : process.env.TO || "hello@example.com",
   from          : process.env.FROM || "swift@sendgrid.com",
@@ -345,8 +345,8 @@ describe('SendGrid #skip', function () {
       payload.subject   += "handles filters";
 
       var email = new Email(payload);
-      email.addFilterSetting('footer', 'enable', 1);
-      email.addFilterSetting('footer', 'text/plain', 'This is mah footer!');
+      email.addFilter('footer', 'enable', 1);
+      email.addFilter('footer', 'text/plain', 'This is mah footer!');
       sendgrid.send(email, function(err, json) {
         expect(err).to.be.null;
         expect(json.message).to.equal('success');
@@ -359,8 +359,8 @@ describe('SendGrid #skip', function () {
       payload.subject   += "handles filters with unicode parameters";
       
       var email = new Email(payload);
-      email.addFilterSetting('footer', 'enable', 1);
-      email.addFilterSetting('footer', 'text/plain', 'This is mah footer with a ✔ in it!');
+      email.addFilter('footer', 'enable', 1);
+      email.addFilter('footer', 'text/plain', 'This is mah footer with a ✔ in it!');
       sendgrid.send(email, function(err, json) {
         expect(err).to.be.null;
         expect(json.message).to.equal('success');
@@ -373,7 +373,7 @@ describe('SendGrid #skip', function () {
       payload.subject   += "handles substitution values";
       
       var email = new Email(payload);
-      email.addSubVal('-name-',['Panda', 'Cow']);
+      email.addSubstitution('-name-',['Panda', 'Cow']);
       email.html = 'You are a <strong>-name-</strong>';
       sendgrid.send(email, function(err, json) {
         expect(err).to.be.null;
@@ -388,8 +388,8 @@ describe('SendGrid #skip', function () {
       
       var email = new Email(payload);
       //mail.addTo(setup.multi_to);
-      email.addSubVal('-name-', ['Kyle', 'David']);
-      email.addSubVal('-meme-', ['-kyleSection-', '-davidSection-']);
+      email.addSubstitution('-name-', ['Kyle', 'David']);
+      email.addSubstitution('-meme-', ['-kyleSection-', '-davidSection-']);
       email.addSection({'-kyleSection-': 'I heard you liked batman so I killed your parents'});
       email.addSection({'-davidSection-': 'Metal gear?!!?!!!!eleven'});
       email.html = "Yo -name-!<br /> Here's a meme for you:<br /> -meme-";
