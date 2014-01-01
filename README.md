@@ -2,11 +2,7 @@
 
 This nodejs module allows you to quickly and easily send emails through SendGrid using [nodejs](http://nodejs.org/).
 
-WARNING2: This module was recently upgraded from [0.3.x](https://github.com/sendgrid/sendgrid-nodejs/tree/v0.3.2) to 0.4.x. There were API breaking changes for how `to` and `addTo` worked. See [the note under addTo](https://github.com/sendgrid/sendgrid-nodejs#addto) for more information.
-
-WARNING: This module was recently upgraded from [0.2.x](https://github.com/sendgrid/sendgrid-nodejs/tree/v0.2.11) to 0.3.x. There were API breaking changes. 
-Callback function now acts as a normal Node callback, i.e., (error, result). This means your logic in your callback handler should be REVERSED!
-For documentation on 0.2.x, please [go here](https://github.com/sendgrid/sendgrid-nodejs/tree/v0.2.11).
+WARNING: This module was recently upgraded from [0.4.x](https://github.com/sendgrid/sendgrid-nodejs/tree/v0.4.6) to 1.0.0. There were API breaking changes for various method names. See [usage](https://github.com/sendgrid/sendgrid-nodejs#usage) for up to date method names.
 
 [![BuildStatus](https://travis-ci.org/sendgrid/sendgrid-nodejs.png?branch=master)](https://travis-ci.org/sendgrid/sendgrid-nodejs)
 [![NPM version](https://badge.fury.io/js/sendgrid.png)](http://badge.fury.io/js/sendgrid)
