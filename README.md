@@ -205,15 +205,15 @@ email.setHtml('<h1>Some html</h1>');
 sendgrid.send(email, function(err, json) { });
 ```
 
-#### addHeaders
+#### addHeader
 
 You can add custom headers. This will ADD rather than SET headers.
 
 ```javascript
 var email     = new sendgrid.Email(); 
 email.setHeaders({full: 'hearts'});   // headers = {full: 'hearts'}
-email.addHeaders({spin: 'attack'});   // headers = {full: 'hearts', spin: 'attack'}
-email.addHeaders({mask: 'salesman'}); // headers = {full: 'hearts', spin: 'attack', mask: 'salesman'}
+email.addHeader({spin: 'attack'});   // headers = {full: 'hearts', spin: 'attack'}
+email.addHeader({mask: 'salesman'}); // headers = {full: 'hearts', spin: 'attack', mask: 'salesman'}
 sendgrid.send(email, function(err, json) { });
 ```
 

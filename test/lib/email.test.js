@@ -221,22 +221,22 @@ describe('Email', function () {
       expect(mail.headers).to.eql(custom_headers);
     });
 
-    it('should allow setting custom headers one at a time with addHeaders', function() {
+    it('should allow setting custom headers one at a time with addHeader', function() {
       for(var key in custom_headers) {
         var args = {};
         args[key] = custom_headers[key];
-        mail.addHeaders(args);
+        mail.addHeader(args);
       }
 
       expect(mail.headers).to.eql(custom_headers);
-      mail.addHeaders({fox: 'hound'});
+      mail.addHeader({fox: 'hound'});
       expect(mail.headers.fox).to.eql('hound');
     });
 
-    it('should overwrite headers when calling addHeaders with the same value', function() {
-      mail.addHeaders(custom_headers);
+    it('should overwrite headers when calling addHeader with the same value', function() {
+      mail.addHeader(custom_headers);
       expect(mail.headers).to.eql(custom_headers);
-      mail.addHeaders({cow: 'in my mind'});
+      mail.addHeader({cow: 'in my mind'});
       expect(mail.headers).not.to.eql(custom_headers);
       expect(mail.headers.cow).to.eql('in my mind');
     });
