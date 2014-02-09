@@ -2,11 +2,7 @@
 
 This nodejs module allows you to quickly and easily send emails through SendGrid using [nodejs](http://nodejs.org/).
 
-WARNING2: This module was recently upgraded from [0.3.x](https://github.com/sendgrid/sendgrid-nodejs/tree/v0.3.2) to 0.4.x. There were API breaking changes for how `to` and `addTo` worked. See [the note under addTo](https://github.com/sendgrid/sendgrid-nodejs#addto) for more information.
-
-WARNING: This module was recently upgraded from [0.2.x](https://github.com/sendgrid/sendgrid-nodejs/tree/v0.2.11) to 0.3.x. There were API breaking changes. 
-Callback function now acts as a normal Node callback, i.e., (error, result). This means your logic in your callback handler should be REVERSED!
-For documentation on 0.2.x, please [go here](https://github.com/sendgrid/sendgrid-nodejs/tree/v0.2.11).
+WARNING: This module was recently upgraded from [0.4.x](https://github.com/sendgrid/sendgrid-nodejs/tree/v0.4.6) to 1.0.0. There were API breaking changes for various method names. See [usage](https://github.com/sendgrid/sendgrid-nodejs#usage) for up to date method names.
 
 [![BuildStatus](https://travis-ci.org/sendgrid/sendgrid-nodejs.png?branch=master)](https://travis-ci.org/sendgrid/sendgrid-nodejs)
 [![NPM version](https://badge.fury.io/js/sendgrid.png)](http://badge.fury.io/js/sendgrid)
@@ -54,15 +50,6 @@ You can also install sendgrid locally with the following command:
 npm install sendgrid
 ```
 
-## SendGrid APIs
-
-SendGrid provides two methods of sending email: the Web API, and SMTP API.  SendGrid recommends using the SMTP API for sending emails.
-For an explanation of the benefits of each, refer to http://docs.sendgrid.com/documentation/get-started/integrate/examples/smtp-vs-rest/.
-
-This library implements a common interface to make it very easy to use either API.
-
-Please open a [GitHub issue](https://github.com/sendgrid/sendgrid-nodejs/issues) if you find bugs or missing features.
-
 ## Example App
 
 There is a [sendgrid-nodejs-example app](https://github.com/scottmotte/sendgrid-nodejs-example) to help jumpstart your development.
@@ -95,19 +82,6 @@ sendgrid.send(payload, function(err, json) {
 });
 ```
 
-**Alternatively you can opt to send via SMTP rather than via the WEB API. Just initialize with the `api: 'smtp'` option.**
-
-```javascript
-var sendgrid  = require('sendgrid')(api_user, api_key, {api: 'smtp'});
-```
-
-## Advanced Usage
-
-There are two additioanl objects built into this library that will help you use this library as a power user.
-
-+ Email
-+ SmtpapiHeaders
-
 ### Email
 
 Email helps you more powerfully prepare your message to be sent.
@@ -117,8 +91,7 @@ To get started create an Email object where `params` is a javascript object. You
 
 ```javascript
 var sendgrid  = require('sendgrid')(api_user, api_key);
-var Email     = sendgrid.Email;
-var email     = new Email(params);
+var email     = new sendgrid.Email(params);
 ```
 
 #### Sample
@@ -127,8 +100,7 @@ Here is a sample for using it.
 
 ```javascript
 var sendgrid  = require('sendgrid')(api_user, api_key);
-var Email     = sendgrid.Email;
-var email     = new Email({
+var email     = new sendgrid.Email({
   to:       'person@somewhere.com',
   from:     'you@yourself',
   subject:  'What was Wenger thinking sending Walcott on that early?',
@@ -178,8 +150,7 @@ You can set params like you would for any standard JavaScript object.
 
 ```javascript
 var sendgrid  = require('sendgrid')(api_user, api_key);
-var Email     = sendgrid.Email;
-var email     = new Email({to: 'person@email.com'});
+var email     = new sendgrid.Email({to: 'person@email.com'});
 email.to      = "different@email.com";
 email.replyto = "reply-here@email.com";
 email.subject = "This is a subject";
@@ -190,7 +161,7 @@ email.subject = "This is a subject";
 You can add one or multiple TO addresses using `addTo`.
 
 ```javascript
-var email     = new Email(); 
+var email     = new sendgrid.Email(); 
 email.addTo('foo@bar.com');
 email.addTo('another@another.com');
 sendgrid.send(email, function(err, json) { });
@@ -201,7 +172,7 @@ NOTE: This is different than setting an array on `to`. The array on `to` will sh
 #### setFrom
 
 ```javascript
-var email     = new Email(); 
+var email     = new sendgrid.Email(); 
 email.setFrom('foo@bar.com');
 sendgrid.send(email, function(err, json) { });
 ```
@@ -209,7 +180,7 @@ sendgrid.send(email, function(err, json) { });
 #### setSubject
 
 ```javascript
-var email     = new Email(); 
+var email     = new sendgrid.Email(); 
 email.setSubject('Some subject');
 sendgrid.send(email, function(err, json) { });
 ```
@@ -217,7 +188,7 @@ sendgrid.send(email, function(err, json) { });
 #### setText
 
 ```javascript
-var email     = new Email(); 
+var email     = new sendgrid.Email(); 
 email.setText('Some text');
 sendgrid.send(email, function(err, json) { });
 ```
@@ -225,8 +196,20 @@ sendgrid.send(email, function(err, json) { });
 #### setHtml
 
 ```javascript
-var email     = new Email(); 
+var email     = new sendgrid.Email(); 
 email.setHtml('<h1>Some html</h1>');
+sendgrid.send(email, function(err, json) { });
+```
+
+#### addHeader
+
+You can add custom headers. This will ADD rather than SET headers.
+
+```javascript
+var email     = new sendgrid.Email(); 
+email.setHeaders({full: 'hearts'});   // headers = {full: 'hearts'}
+email.addHeader({spin: 'attack'});   // headers = {full: 'hearts', spin: 'attack'}
+email.addHeader({mask: 'salesman'}); // headers = {full: 'hearts', spin: 'attack', mask: 'salesman'}
 sendgrid.send(email, function(err, json) { });
 ```
 
@@ -235,70 +218,91 @@ sendgrid.send(email, function(err, json) { });
 You can set custom headers. 
 
 ```javascript
-var email     = new Email(); 
+var email     = new sendgrid.Email(); 
 email.setHeaders({full: 'hearts'});   // headers = {full: 'hearts'}
 email.setHeaders({mask: 'salesman'}); // headers = {mask: 'salesman'}
 sendgrid.send(email, function(err, json) { });
 ```
 
-#### addHeaders
-
-You can add custom headers. This will ADD rather than SET headers.
+#### addSubstitution
 
 ```javascript
-var email     = new Email(); 
-email.setHeaders({full: 'hearts'});   // headers = {full: 'hearts'}
-email.addHeaders({spin: 'attack'});   // headers = {full: 'hearts', spin: 'attack'}
-email.addHeaders({mask: 'salesman'}); // headers = {full: 'hearts', spin: 'attack', mask: 'salesman'}
-sendgrid.send(email, function(err, json) { });
+var email     = new sendgrid.Email();
+email.addSubstitution('keep', 'secret'); // sub = {keep: ['secret']}
+email.addSubstitution('other', ['one', 'two']);   // sub = {keep: ['secret'], other: ['one', 'two']}
 ```
 
-#### addSubVal
+#### setSubstitutions
 
 ```javascript
-var email     = new Email();
-email.addSubVal('keep', 'secret'); // sub = {keep: ['secret']}
-email.addSubVal('other', ['one', 'two']);   // sub = {keep: ['secret'], other: ['one', 'two']}
-```
-
-#### setSection 
-
-```javascript
-var email     = new Email();
-email.setSection({'-charge-': 'This ship is useless.'}); // section = {'-charge-': 'This ship is useless.'}
+var email     = new sendgrid.Email();
+email.setSubstitutions('keep', 'secret'); // sub = {keep: ['secret']}
+email.setSubstitutions('other', ['one', 'two']);   // sub = {keep: ['secret'], other: ['one', 'two']}
 ```
 
 #### addSection
 
 ```javascript
-var email     = new Email();
-email.setSection({'-charge-': 'This ship is useless.'}); // section = {'-charge-': 'This ship is useless.'}
-email.addSection({'-bomber-': 'Only for sad vikings.'}); // section = {'-charge-': 'This ship is useless.',
+var email     = new sendgrid.Email();
+email.addSection({'-charge-': 'This ship is useless.'}); // section = {'-charge-': 'This ship is useless.'}
+```
+
+#### setSections 
+
+```javascript
+var email     = new sendgrid.Email();
+email.setSections({'-charge-': 'This ship is useless.'}); // section = {'-charge-': 'This ship is useless.'}
+```
+
+#### addUniqueArg
+
+```javascript
+var email     = new sendgrid.Email();
+email.setUniqueArg({cow: 'chicken'}); // unique_args = {cow: 'chicken'}
+email.addUniqueArg({cat: 'dog'});     // unique_args = {cow: 'chicken', cat: 'dog'}
 ```
 
 #### setUniqueArgs
 
 ```javascript
-var email     = new Email();
+var email     = new sendgrid.Email();
 email.setUniqueArgs({cow: 'chicken'}); // unique_args = {cow: 'chicken'}
 email.setUniqueArgs({dad: 'proud'});   // unique_args = {dad: 'proud'}
 ```
 
-#### addUniqueArgs
+#### addCategory
 
 ```javascript
-var email     = new Email();
-email.setUniqueArgs({cow: 'chicken'}); // unique_args = {cow: 'chicken'}
-email.addUniqueArgs({cat: 'dog'});     // unique_args = {cow: 'chicken', cat: 'dog'}
+var email     = new sendgrid.Email();
+email.addCategory('tactics');        // category = ['tactics']
+email.addCategory('advanced');       // category = ['tactics', 'advanced']
 ```
 
-#### setFilterSetting
+#### setCategories
+
+```javascript
+var email     = new sendgrid.Email();
+email.setCategories(['tactics']);        // category = ['tactics']
+email.setCategories(['snowball-fight']); // category = ['snowball-fight']
+```
+
+#### addFilter
+
+Alternatively, you can add filter settings one at a time.
+
+```javascript
+var email     = new sendgrid.Email();
+email.addFilter('footer', 'enable', 1);
+email.addFilter('footer', 'text/html', '<strong>boo</strong>');
+```
+
+#### setFilters
 
 You can set a filter using an object literal.
 
 ```javascript
-var email     = new Email();
-email.setFilterSetting({
+var email     = new sendgrid.Email();
+email.setFilters({
   'footer': {
     'setting': {
       'enable': 1,
@@ -306,32 +310,6 @@ email.setFilterSetting({
     }
   }
 });
-```
-
-#### setCategory
-
-```javascript
-var email     = new Email();
-email.setCategory('tactics');        // category = ['tactics']
-email.setCategory('snowball-fight'); // category = ['snowball-fight']
-```
-
-#### addCategory
-
-```javascript
-var email     = new Email();
-email.setCategory('tactics');        // category = ['tactics']
-email.addCategory('advanced');       // category = ['tactics', 'advanced']
-```
-
-#### addFilterSetting
-
-Alternatively, you can add filter settings one at a time.
-
-```javascript
-var email     = new Email();
-email.addFilterSetting('footer', 'enable', 1);
-email.addFilterSetting('footer', 'text/html', '<strong>boo</strong>');
 ```
 
 #### addFile
@@ -372,15 +350,15 @@ email.addFile({
 email.addHtml('<div>Our logo:<img src="cid:the_logo"></div>');
 ```
 
-## Web Options
+## Options
 
 sendgrid-nodejs uses the node request module. You can pass in options
 to be merged. This enables you to use your own https.Agent, node-tunnel
 or the request proxy url. Please note that sendgrid requires https.
 
 ```javascript
-var sendgrid = require('sendgrid')('username', 'password', { web: {
-proxy: "http://localproxy:3128" } });
+var sendgrid = require('sendgrid')('username', 'password', {
+proxy: "http://localproxy:3128" });
 ```
 
 or
@@ -393,33 +371,6 @@ agent.maxSockets = 500;
 
 var sendgrid = require('sendgrid')('username', 'password', { web: {
 pool: agent } });
-```
-
-## SMTP options
-
-You can change the port to 465 if you prefer. When initializing with the smtp api, also initialize with the port. 
-
-```javascript
-var sendgrid  = require('sendgrid')('username', 'password', {api: 'smtp', port: 465});
-var payload   = {...};
-sendgrid.send(payload, function(err, json) {
-  if (err) { console.error(err); }
-  console.log(json);
-});
-```
-
-You can also pass some additional fields through the smtp to the underlying nodemailer. The list of these fields are [here](https://github.com/andris9/Nodemailer#e-mail-message-fields). To do this, you have to use the underlying `.smtp` method. This is really for power users.
-
-```javascript
-var sendgrid            = require('sendgrid')('username', 'password', {api: 'smtp'});
-var payload             = {...};
-var nodeMailerOptions   = {
-  messageId: "some-message-id" 
-}
-sendgrid.smtp(payload, nodeMailerOptions, function(err, json) {
-  if (err) { console.error(err); }
-  console.log(json);
-}
 ```
 
 ## Contributing

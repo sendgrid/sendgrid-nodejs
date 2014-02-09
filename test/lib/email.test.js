@@ -143,56 +143,6 @@ describe('Email', function () {
     });
   });
 
-  describe("#toSmtpFormat", function() {
-    it('should return an Smtp Api format as expected', function() {
-      var payload     = Object.create(default_payload);
-      var email       = new Email(payload);
-      var format      = email.toSmtpFormat();
-
-      expect(format.to).to.equal(payload.to);
-      expect(format.sender).to.equal(payload.from);
-      expect(format.subject).to.equal(payload.subject);
-      expect(format.body).to.equal(payload.text);
-    });
-
-    it('should have multiple TOs if as an array', function() {
-      var payload     = Object.create(default_payload);
-      payload.to      = ['david.tomberlin@sendgrid.com', 'otherguy@sendgrid.com'];
-      var email       = new Email(payload);
-      var format      = email.toSmtpFormat();
-
-      expect(format.to).to.equal(payload.to);
-    });
-
-    it('should have not have multiple TOs if as an array but also set on smtp-api via addTo', function() {
-      var payload     = Object.create(default_payload);
-      payload.to      = ['david.tomberlin@sendgrid.com', 'otherguy@sendgrid.com'];
-      var email       = new Email(payload);
-      email.addTo(payload.to[0]);
-      email.addTo(payload.to[1]);
-
-      var format      = email.toSmtpFormat();
-
-      expect(format.to).to.equal(payload.from);
-    });
-
-    it('should have multiple BCCs if as an array', function() {
-      var payload     = Object.create(default_payload);
-      payload.bcc     = ['david.tomberlin@sendgrid.com', 'otherguy@sendgrid.com'];
-      var email       = new Email(payload);
-      var format      = email.toSmtpFormat();
-
-      expect(format.bcc).to.equal(payload.bcc);
-    });
-
-
-    it('should not have a to address if there is no to or no smtpapi.to set via Smtp Api', function() {
-      var email = new Email({from: 'test@test.com', subject: 'testing', text: 'testing'});
-      var format = email.toSmtpFormat();
-      expect(format.to).to.be.empty;
-    });
-  });
-
   it('should be possible to setFrom', function() {
     var email = new Email();
     expect(email.from).to.be.empty;
@@ -271,22 +221,22 @@ describe('Email', function () {
       expect(mail.headers).to.eql(custom_headers);
     });
 
-    it('should allow setting custom headers one at a time with addHeaders', function() {
+    it('should allow setting custom headers one at a time with addHeader', function() {
       for(var key in custom_headers) {
         var args = {};
         args[key] = custom_headers[key];
-        mail.addHeaders(args);
+        mail.addHeader(args);
       }
 
       expect(mail.headers).to.eql(custom_headers);
-      mail.addHeaders({fox: 'hound'});
+      mail.addHeader({fox: 'hound'});
       expect(mail.headers.fox).to.eql('hound');
     });
 
-    it('should overwrite headers when calling addHeaders with the same value', function() {
-      mail.addHeaders(custom_headers);
+    it('should overwrite headers when calling addHeader with the same value', function() {
+      mail.addHeader(custom_headers);
       expect(mail.headers).to.eql(custom_headers);
-      mail.addHeaders({cow: 'in my mind'});
+      mail.addHeader({cow: 'in my mind'});
       expect(mail.headers).not.to.eql(custom_headers);
       expect(mail.headers.cow).to.eql('in my mind');
     });

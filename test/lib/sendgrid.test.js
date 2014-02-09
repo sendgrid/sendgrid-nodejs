@@ -14,12 +14,8 @@ describe('SendGrid', function () {
     expect(sendgrid.Email).to.not.be.undefined;
   });
 
-  it('should export the SmtpapiHeaders object', function() {
-    expect(sendgrid.SmtpapiHeaders).to.not.be.undefined;
-  });
-
   it('version should be set', function() {
-    expect(sendgrid.version).to.equal("0.4.6");
+    expect(sendgrid.version).to.equal("1.0.0-rc.1.0");
   });
 
   it('should attach a options object to self', function() {
@@ -32,25 +28,13 @@ describe('SendGrid', function () {
     expect(sendgrid2.options.web.pool).to.equal(http.globalAgent);
   });
 
-  it('port should be set and settable', function() {
-    expect(sendgrid.port).to.equal(587);
-    sendgrid.port = 465;
-    expect(sendgrid.port).to.equal(465);
-  });
-
-  it('options.port should be set and settable', function() {
-    expect(sendgrid.options.port).to.equal(587);
-    var sendgrid2 = require('../../lib/sendgrid')('username', 'password', {api: 'smtp', port: 465}); 
-    expect(sendgrid2.options.port).to.equal(465);
-  });
-
   describe('#send', function() {
     var payload, mock, webApi, postParams, postParamsString;
 
     beforeEach(function() {
       payload = Object.create(default_payload);
 
-      webApi  = nock('https://sendgrid.com')
+      webApi  = nock('https://api.sendgrid.com')
         .filteringRequestBody(function(path) {
           postParamsString = path;
           return '*';
