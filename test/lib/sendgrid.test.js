@@ -34,7 +34,7 @@ describe('SendGrid', function () {
     beforeEach(function() {
       payload = Object.create(default_payload);
 
-      webApi  = nock('https://sendgrid.com')
+      webApi  = nock('https://api.sendgrid.com')
         .filteringRequestBody(function(path) {
           postParamsString = path;
           return '*';
