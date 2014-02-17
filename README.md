@@ -31,7 +31,7 @@ Add the following to your `package.json` file:
   ...
   "dependencies": {
     ...
-    "sendgrid": "0.4.4"
+    "sendgrid": "1.0.0"
   }
 }
 ```
