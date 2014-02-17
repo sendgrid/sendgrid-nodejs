@@ -221,7 +221,20 @@ describe('Email', function () {
       expect(mail.headers).to.eql(custom_headers);
     });
 
-    it('should allow setting custom headers one at a time with addHeader', function() {
+    it('should allow setting custom headers with key, value approach', function() {
+      mail.addHeader('fox', 'hound');
+      expect(mail.headers.fox).to.eql('hound');
+    });
+
+    it('should overwrite headers when calling addHeader with the same value', function() {
+      mail.addHeader(custom_headers);
+      expect(mail.headers).to.eql(custom_headers);
+      mail.addHeader('cow', 'in my mind');
+      expect(mail.headers).not.to.eql(custom_headers);
+      expect(mail.headers.cow).to.eql('in my mind');
+    });
+
+    it('should allow setting custom headers one at a time with addHeader as a hash (temporary. deprecate this ability for key, value approach instead)', function() {
       for(var key in custom_headers) {
         var args = {};
         args[key] = custom_headers[key];
@@ -231,14 +244,6 @@ describe('Email', function () {
       expect(mail.headers).to.eql(custom_headers);
       mail.addHeader({fox: 'hound'});
       expect(mail.headers.fox).to.eql('hound');
-    });
-
-    it('should overwrite headers when calling addHeader with the same value', function() {
-      mail.addHeader(custom_headers);
-      expect(mail.headers).to.eql(custom_headers);
-      mail.addHeader({cow: 'in my mind'});
-      expect(mail.headers).not.to.eql(custom_headers);
-      expect(mail.headers.cow).to.eql('in my mind');
     });
 
   });
