@@ -52,7 +52,7 @@ npm install sendgrid
 
 ## Example App
 
-There is a [sendgrid-nodejs-example app](https://github.com/scottmotte/sendgrid-nodejs-example) to help jumpstart your development.
+There is a [sendgrid-nodejs-example app](https://github.com/sendgrid/sendgrid-nodejs-example) to help jumpstart your development.
 
 ## Usage
 
