@@ -373,6 +373,10 @@ var sendgrid = require('sendgrid')('username', 'password', { web: {
 pool: agent } });
 ```
 
+## Issues
+When filing an issue please include your ```package.json``` and the output of
+```npm ls sendgrid``` to help us isolate and repro the issue
+
 ## Contributing
 
 1. Fork it
