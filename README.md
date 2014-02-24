@@ -236,8 +236,7 @@ email.addSubstitution('other', ['one', 'two']);   // sub = {keep: ['secret'], ot
 
 ```javascript
 var email     = new sendgrid.Email();
-email.setSubstitutions('keep', 'secret'); // sub = {keep: ['secret']}
-email.setSubstitutions('other', ['one', 'two']);   // sub = {keep: ['secret'], other: ['one', 'two']}
+email.setSubstitutions({keep: ['secret'], other: ['one', 'two']}); // sub = {keep: ['secret'], other: ['one', 'two']});
 ```
 
 #### addSection
