@@ -101,10 +101,10 @@ Here is a sample for using it.
 ```javascript
 var sendgrid  = require('sendgrid')(api_user, api_key);
 var email     = new sendgrid.Email({
-  to:       'person@somewhere.com',
-  from:     'you@yourself',
-  subject:  'What was Wenger thinking sending Walcott on that early?',
-  text:     'Did you see that ludicrous display last night?'
+  to:       'foo@bar.com',
+  from:     'you@yourself.com',
+  subject:  'Subject goes here',
+  text:     'Hello world'
 });
 sendgrid.send(email, function(err, json) {
   if (err) { return console.error(err); }
