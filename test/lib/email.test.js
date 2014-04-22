@@ -305,5 +305,15 @@ describe('Email', function () {
         done();
       });
     });
+
+    it('should be able to add filters', function(done) {
+      var email = new Email();
+
+      email.addFilter('footer', 'enable', 1);
+      email.addFilter('footer', 'text/html', '<strong>boo</strong>'); 
+      expect(email.smtpapi.jsonString()).to.eql('{"filters":{"footer":{"settings":{"enable":1,"text/html":"<strong>boo</strong>"}}}}');
+
+      done();
+    });
   });
 });
