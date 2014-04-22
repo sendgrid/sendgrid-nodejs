@@ -309,9 +309,10 @@ describe('Email', function () {
     it('should be able to add filters', function(done) {
       var email = new Email();
 
-      email.addFilter('footer', 'enable', 1);
-      email.addFilter('footer', 'text/html', '<strong>boo</strong>'); 
-      expect(email.smtpapi.jsonString()).to.eql('{"filters":{"footer":{"settings":{"enable":1,"text/html":"<strong>boo</strong>"}}}}');
+      email.addFilter('subscriptiontrack', 'enable', 1)
+      email.addFilter('subscriptiontrack', "text/plain", "If you would like to unsubscribe and stop receiving these emails click here: <% %>.")
+
+      expect(email.smtpapi.jsonString()).to.eql("{\"filters\":{\"subscriptiontrack\":{\"settings\":{\"enable\":1,\"text/plain\":\"If you would like to unsubscribe and stop receiving these emails click here: <% %>.\"}}}}");
 
       done();
     });
