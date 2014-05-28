@@ -45,7 +45,7 @@ describe('Email', function () {
       expect(format.to).to.equal(payload.to);
     });
 
-    it('should have not have multiple TOs if as an array but also set on smtp-api via addTo', function() {
+    it('should not have multiple TOs if as an array but also set on smtpapi via addTo', function() {
       var payload     = Object.create(default_payload);
       payload.to      = ['david.tomberlin@sendgrid.com', 'otherguy@sendgrid.com'];
       var email       = new Email(payload);
@@ -54,6 +54,7 @@ describe('Email', function () {
 
       var format      = email.toWebFormat();
 
+      console.log(format);
       expect(format.to).to.equal(payload.from);
     });
 
