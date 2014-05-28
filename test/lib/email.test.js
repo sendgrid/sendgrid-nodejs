@@ -54,7 +54,6 @@ describe('Email', function () {
 
       var format      = email.toWebFormat();
 
-      console.log(format);
       expect(format.to).to.equal(payload.from);
     });
 
