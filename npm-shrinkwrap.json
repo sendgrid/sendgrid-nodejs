@@ -124,8 +124,9 @@
       "resolved": "https://registry.npmjs.org/lodash/-/lodash-2.0.0.tgz"
     },
     "smtpapi": {
-      "version": "1.0.2",
-      "from": "smtpapi@1.0.2"
+      "version": "1.0.3",
+      "from": "smtpapi@1.0.3",
+      "resolved": "https://registry.npmjs.org/smtpapi/-/smtpapi-1.0.3.tgz"
     }
   }
 }
