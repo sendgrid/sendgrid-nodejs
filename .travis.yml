@@ -3,3 +3,13 @@ language: node_js
 node_js:
   - 0.8
   - 0.10
+
+notifications:
+  hipchat:
+    rooms:
+      secure: U4oMQRXVm23/KtPWJ7FRohyP+2OR7hZKLhZmaqCLuT+Al3UCiniX6fJtS+7tCg/2igERV2PN22HZS9fAhv34tNzTjSvpAk/2T5Exhg0B/FMQZmjxPIcalNL5nmgaY4c1D1Z0teKJrzayOgQEfkEi4SZ8ePiVQUmFMsnV8BmjKRE=
+    template:
+    - '<a href="https://travis-ci.org/%{repository}/builds/%{build_id}">{%repository%} Build
+      %{build_number}</a> on branch <i>%{branch}</i> by %{author}: <strong>%{message}</strong>
+      <a href="https://github.com/sendgrid/docs/commits/%{commit}">View on GitHub</a>'
+    format: html
