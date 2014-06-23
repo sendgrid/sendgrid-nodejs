@@ -351,6 +351,21 @@ email.addHtml('<div>Our logo:<img src="cid:the_logo"></div>');
 
 ## Options
 
+### Changing URL
+You may change the URL sendgrid-nodejs uses to send email by supplying various parameters to `options`, all parameters are optional:
+
+```javascript
+var sendgrid = require('sendgrid')('username', 'password', { "protocol" : "http", "host" : "sendgrid.org", "endpoint" : "/send", "port" : "80" });
+```
+
+A full URI may also be provided:
+
+```javascript
+var sendgrid = require('sendgrid')('username', 'password', { "uri" : "http://sendgrid.org:80/send" });
+```
+
+### Request
+
 sendgrid-nodejs uses the node request module. You can pass in options
 to be merged. This enables you to use your own https.Agent, node-tunnel
 or the request proxy url. Please note that sendgrid requires https.

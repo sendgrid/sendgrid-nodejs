@@ -22,6 +22,16 @@ describe('SendGrid', function () {
     expect( typeof sendgrid.options).to.equal('object');
   });
 
+  it('should have uri set to the default', function() {
+    expect(sendgrid.options.uri).to.equal("https://api.sendgrid.com/api/mail.send.json");
+  });
+
+  it('should allow uri to change', function() {
+    var options   = { "protocol" : "http", "host" : "sendgrid.org", "endpoint" : "/send", "port" : "80" };
+    var sendgrid2 = require('../../lib/sendgrid')(API_USER, API_KEY, options);
+    expect(sendgrid2.options.uri).to.equal("http://sendgrid.org:80/send");
+  });
+
   it('should have web options agent global', function() {
     var options   = { web: { pool: global.http.globalAgent } };
     var sendgrid2 = require('../../lib/sendgrid')(API_USER, API_KEY, options);
