@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "mime": "1.2.9",
-    "request": "2.22.0",
+    "request": "2.40.0",
     "lodash": "2.0.0",
     "smtpapi": "1.0.3"
   },
