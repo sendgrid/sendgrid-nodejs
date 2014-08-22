@@ -114,7 +114,7 @@ sendgrid.send(email, function(err, json) {
 
 ```javascript
 var params = {
-  smtpapi:  new sengrid.smtpapi(),
+  smtpapi:  new sendgrid.smtpapi(),
   to:       [],
   toname:   [],
   from:     '',
