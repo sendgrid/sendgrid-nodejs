@@ -241,7 +241,7 @@ email.setSubstitutions({keep: ['secret'], other: ['one', 'two']}); // sub = {kee
 
 ```javascript
 var email     = new sendgrid.Email();
-email.addSection({'-charge-': 'This ship is useless.'}); // section = {'-charge-': 'This ship is useless.'}
+email.addSection('-charge-', 'This ship is useless.'); // section = {'-charge-': 'This ship is useless.'}
 ```
 
 #### setSections 

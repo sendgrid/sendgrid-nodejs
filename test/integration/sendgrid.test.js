@@ -390,8 +390,8 @@ describe('SendGrid #skip', function () {
       //mail.addTo(setup.multi_to);
       email.addSubstitution('-name-', ['Kyle', 'David']);
       email.addSubstitution('-meme-', ['-kyleSection-', '-davidSection-']);
-      email.addSection({'-kyleSection-': 'I heard you liked batman so I killed your parents'});
-      email.addSection({'-davidSection-': 'Metal gear?!!?!!!!eleven'});
+      email.addSection('-kyleSection-', 'I heard you liked batman so I killed your parents');
+      email.addSection('-davidSection-', 'Metal gear?!!?!!!!eleven');
       email.html = "Yo -name-!<br /> Here's a meme for you:<br /> -meme-";
       sendgrid.send(email, function(err, json) {
         expect(err).to.be.null;
