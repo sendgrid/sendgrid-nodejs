@@ -9,7 +9,7 @@
   ],
   "name": "sendgrid",
   "description": "Official SendGrid NodeJS library.",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "homepage": "http://sendgrid.com",
   "repository": {
     "type": "git",
@@ -19,17 +19,17 @@
     "node": ">= 0.4.7"
   },
   "dependencies": {
-    "mime": "1.2.9",
-    "request": "2.40.0",
-    "lodash": "2.0.0",
-    "smtpapi": "git://github.com/bpneal/smtpapi-nodejs#master"
+    "mime": "^1.2.9",
+    "request": "^2.40.0",
+    "lodash": "^2.0.0",
+    "smtpapi": "^1.0.3"
   },
   "devDependencies": {
     "dotenv": "0.0.2",
     "mocha": ">= 0.9.0",
     "chai": ">= 0.1.6",
-    "nock": "~0.16.0",
-    "sinon": "~1.6.0"
+    "nock": "^0.16.0",
+    "sinon": "^1.6.0"
   },
   "scripts": {
     "test": "./node_modules/.bin/mocha --grep '#skip' --invert",

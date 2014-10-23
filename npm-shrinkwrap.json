@@ -1,7 +1,12 @@
 {
   "name": "sendgrid",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "dependencies": {
+    "lodash": {
+      "version": "2.0.0",
+      "from": "https://registry.npmjs.org/lodash/-/lodash-2.0.0.tgz",
+      "resolved": "https://registry.npmjs.org/lodash/-/lodash-2.0.0.tgz"
+    },
     "mime": {
       "version": "1.2.9",
       "from": "https://registry.npmjs.org/mime/-/mime-1.2.9.tgz",
@@ -149,15 +154,10 @@
         }
       }
     },
-    "lodash": {
-      "version": "2.0.0",
-      "from": "https://registry.npmjs.org/lodash/-/lodash-2.0.0.tgz",
-      "resolved": "https://registry.npmjs.org/lodash/-/lodash-2.0.0.tgz"
-    },
     "smtpapi": {
       "version": "1.0.3",
-      "from": "git://github.com/bpneal/smtpapi-nodejs#master",
-      "resolved": "git://github.com/bpneal/smtpapi-nodejs#1edf8d0691933c3d8b10ea9c01ed3d506f8119ca"
+      "from": "https://registry.npmjs.org/smtpapi/-/smtpapi-1.0.3.tgz",
+      "resolved": "https://registry.npmjs.org/smtpapi/-/smtpapi-1.0.3.tgz"
     }
   }
 }
