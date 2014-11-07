@@ -155,9 +155,9 @@
       }
     },
     "smtpapi": {
-      "version": "1.0.3",
-      "from": "https://registry.npmjs.org/smtpapi/-/smtpapi-1.0.3.tgz",
-      "resolved": "https://registry.npmjs.org/smtpapi/-/smtpapi-1.0.3.tgz"
+      "version": "1.0.4",
+      "from": "https://registry.npmjs.org/smtpapi/-/smtpapi-1.0.4.tgz",
+      "resolved": "https://registry.npmjs.org/smtpapi/-/smtpapi-1.0.4.tgz"
     }
   }
 }
