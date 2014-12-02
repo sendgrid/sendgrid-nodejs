@@ -301,9 +301,9 @@ You can set a filter using an object literal.
 var email     = new sendgrid.Email();
 email.setFilters({
   'footer': {
-    'setting': {
+    'settings': {
       'enable': 1,
-      'text/plain': 'You can haz footers!'
+      'text/html': '<strong>You can haz footers!</strong>'
     }
   }
 });
