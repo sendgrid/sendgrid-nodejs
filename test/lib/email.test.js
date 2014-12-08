@@ -66,6 +66,15 @@ describe('Email', function () {
       expect(format.bcc).to.equal(payload.bcc);
     });
 
+    it('should have multiple CCs if as an array', function() {
+      var payload     = Object.create(default_payload);
+      payload.cc     = ['david.tomberlin@sendgrid.com', 'otherguy@sendgrid.com'];
+      var email       = new Email(payload);
+      var format      = email.toWebFormat();
+
+      expect(format.cc).to.equal(payload.cc);
+    });
+
     it('should not have a field for undefined file', function() {
       var payload     = Object.create(default_payload);
       var email       = new Email(payload);
@@ -171,6 +180,32 @@ describe('Email', function () {
     expect(email.html).to.eql('<p>Some html</p>');
   });
 
+  it('should be possible to addCc', function() {
+    var email = new Email();
+    expect(email.cc).to.eql([]);
+    email.addCc('sorin@domain.com');
+    expect(email.cc).to.eql(['sorin@domain.com']);
+    email.addCc('sorin2@domain.com');
+    expect(email.cc).to.eql(['sorin@domain.com', 'sorin2@domain.com']);
+  });
+
+  it('should be possible to setCcs', function() {
+    var email = new Email();
+    expect(email.cc).to.eql([]);
+    email.setCcs(['sorin@domain.com']);
+    expect(email.cc).to.eql(['sorin@domain.com']);
+    email.setCcs(['sorin2@domain.com']);
+    expect(email.cc).to.eql(['sorin2@domain.com']);
+  });
+
+  it('should be possible to setCcs and addCc', function() {
+    var email = new Email();
+    expect(email.cc).to.eql([]);
+    email.setCcs(['sorin@domain.com']);
+    expect(email.cc).to.eql(['sorin@domain.com']);
+    email.addCc('sorin2@domain.com');
+    expect(email.cc).to.eql(['sorin@domain.com', 'sorin2@domain.com']);
+  });
 
   describe('files', function() {
     it('should support adding attachments via path', function() {
