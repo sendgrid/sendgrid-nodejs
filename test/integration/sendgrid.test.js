@@ -51,6 +51,7 @@ describe('SendGrid #skip', function () {
 
       sendgrid.send(payload, function(err, json) {
         expect(err).to.be.null;
+        expect(json.message).to.equal('success');
 
         done();
       });
@@ -62,6 +63,7 @@ describe('SendGrid #skip', function () {
 
       sendgrid.send(payload, function(err, json) {
         expect(err).to.be.null;
+        expect(json.message).to.equal('success');
 
         done();
       });
@@ -76,6 +78,7 @@ describe('SendGrid #skip', function () {
 
       sendgrid.send(email, function(err, json) {
         expect(err).to.be.null;
+        expect(json.message).to.equal('success');
 
         done();
       });
@@ -87,6 +90,19 @@ describe('SendGrid #skip', function () {
 
       sendgrid.send(payload, function(err, json) {
         expect(err).to.be.null;
+        expect(json.message).to.equal('success');
+
+        done();
+      });
+    });
+
+    it('has array of CCs', function(done) {
+      payload.subject += "has array of CCs";
+      payload.cc = ['sendgrid-nodejs@mailinator.com']
+
+      sendgrid.send(payload, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
 
         done();
       });

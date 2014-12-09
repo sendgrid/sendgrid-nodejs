@@ -11,7 +11,7 @@ var default_payload = {
 var files = [
   __dirname + '/../assets/logo.png',
   __dirname + '/../assets/sendgrid.txt'
-]
+];
 
 describe('Email', function () {
   it('should allow attributes to be set in the constructor', function() {
@@ -66,6 +66,15 @@ describe('Email', function () {
       expect(format.bcc).to.equal(payload.bcc);
     });
 
+    it('should have multiple CCs if as an array', function() {
+      var payload     = Object.create(default_payload);
+      payload.cc     = ['david.tomberlin@sendgrid.com', 'otherguy@sendgrid.com'];
+      var email       = new Email(payload);
+      var format      = email.toWebFormat();
+
+      expect(format.cc).to.equal(payload.cc);
+    });
+
     it('should not have a field for undefined file', function() {
       var payload     = Object.create(default_payload);
       var email       = new Email(payload);
@@ -81,11 +90,11 @@ describe('Email', function () {
     });
 
     it('should not have a field for undefined file even with Array prototype overridden', function() {
-      
-      Array.prototype['testMethod'] = function() {
+
+      Array.prototype.testMethod = function() {
         return 'testMethod';
       };
-      
+
       var payload     = Object.create(default_payload);
       var email       = new Email(payload);
       var format      = email.toWebFormat();
@@ -98,10 +107,10 @@ describe('Email', function () {
       expect(format.toname).to.be.empty;
       expect(format['files[undefined]']).to.be.undefined;
     });
-    
+
     it('should not have a to address if there is no to or no smtpapi.', function() {
       var payload     = Object.create(default_payload);
-      var email       = new Email({from: 'test@test.com', subject: 'testing', text: 'testing'});  
+      var email       = new Email({from: 'test@test.com', subject: 'testing', text: 'testing'});
       var format = email.toWebFormat();
       expect(format.to).to.be.empty;
     });
@@ -114,7 +123,7 @@ describe('Email', function () {
       var format = email.toWebFormat();
 
       expect(JSON.parse(format['x-smtpapi']).to).to.not.be.empty;
-      expect(format.to).to.not.be.empty; 
+      expect(format.to).to.not.be.empty;
     });
 
     it("should set a fromname if one is provided", function() {
@@ -196,6 +205,33 @@ describe('Email', function () {
     expect(email.smtpapi.header.unique_args).to.eql({unique_arg1: 'value'});
     email.addUniqueArg('unique_arg2', 'value');
     expect(email.smtpapi.header.unique_args).to.eql({unique_arg1: 'value', unique_arg2: 'value'});
+  });
+
+  it('should be possible to addCc', function() {
+    var email = new Email();
+    expect(email.cc).to.eql([]);
+    email.addCc('sorin@domain.com');
+    expect(email.cc).to.eql(['sorin@domain.com']);
+    email.addCc('sorin2@domain.com');
+    expect(email.cc).to.eql(['sorin@domain.com', 'sorin2@domain.com']);
+  });
+
+  it('should be possible to setCcs', function() {
+    var email = new Email();
+    expect(email.cc).to.eql([]);
+    email.setCcs(['sorin@domain.com']);
+    expect(email.cc).to.eql(['sorin@domain.com']);
+    email.setCcs(['sorin2@domain.com']);
+    expect(email.cc).to.eql(['sorin2@domain.com']);
+  });
+
+  it('should be possible to setCcs and addCc', function() {
+    var email = new Email();
+    expect(email.cc).to.eql([]);
+    email.setCcs(['sorin@domain.com']);
+    expect(email.cc).to.eql(['sorin@domain.com']);
+    email.addCc('sorin2@domain.com');
+    expect(email.cc).to.eql(['sorin@domain.com', 'sorin2@domain.com']);
   });
 
   describe('files', function() {
@@ -335,8 +371,8 @@ describe('Email', function () {
     it('should be able to add filters', function(done) {
       var email = new Email();
 
-      email.addFilter('subscriptiontrack', 'enable', 1)
-      email.addFilter('subscriptiontrack', "text/plain", "If you would like to unsubscribe and stop receiving these emails click here: <% %>.")
+      email.addFilter('subscriptiontrack', 'enable', 1);
+      email.addFilter('subscriptiontrack', "text/plain", "If you would like to unsubscribe and stop receiving these emails click here: <% %>.");
 
       expect(email.smtpapi.jsonString()).to.eql("{\"filters\":{\"subscriptiontrack\":{\"settings\":{\"enable\":1,\"text/plain\":\"If you would like to unsubscribe and stop receiving these emails click here: <% %>.\"}}}}");
 
