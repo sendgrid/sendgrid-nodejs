@@ -123,6 +123,7 @@ var params = {
   text:     '',
   html:     '',
   bcc:      [],
+  cc:       [],
   replyto:  '',
   date:     new Date(),
   files: [
@@ -172,6 +173,27 @@ NOTE: This is different than setting an array on `to`. The array on `to` will sh
 ```javascript
 var email     = new sendgrid.Email(); 
 email.setFrom('foo@bar.com');
+sendgrid.send(email, function(err, json) { });
+```
+
+#### addCc
+
+You can add one or multiple CC addresses using `addCc`.
+
+```javascript
+var email     = new sendgrid.Email();
+email.addCc('foo@bar.com');
+email.addCc('another@another.com');
+sendgrid.send(email, function(err, json) { });
+```
+
+#### setCcs
+
+You can multiple CC addresses using `setCcs`.
+
+```javascript
+var email     = new sendgrid.Email();
+email.setCcs(['foo@bar.com', 'another@another.com');
 sendgrid.send(email, function(err, json) { });
 ```
 
