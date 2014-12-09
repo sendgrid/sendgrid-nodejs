@@ -400,5 +400,27 @@ describe('SendGrid #skip', function () {
         done();
       });
     });
+
+    it('handles unique args being set in the email', function(done) {
+      payload.subject   += "handles unique args being set in the email";
+
+      var email = new Email(payload);
+      email.addSubstitution('-name-', ['Kyle', 'David']);
+      email.addSubstitution('-meme-', ['-kyleSection-', '-davidSection-']);
+      email.addSubstitution('-id-', ['111', '222']);
+      email.addSection('-kyleSection-', 'I heard you liked batman so I killed your parents');
+      email.addSection('-davidSection-', 'Metal gear?!!?!!!!eleven');
+      email.html = "Yo -name-!<br /> Here's a meme for you:<br /> -meme-";
+
+      email.setUniqueArgs({secret_code: '-id-'});
+      email.addUniqueArg('secret_code_sg', '111-222-333');
+
+      sendgrid.send(email, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
+
+        done();
+      });
+    });
   });
 });

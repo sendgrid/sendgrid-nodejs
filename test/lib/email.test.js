@@ -171,6 +171,32 @@ describe('Email', function () {
     expect(email.html).to.eql('<p>Some html</p>');
   });
 
+  it('should be possible to addUniqueArg', function() {
+    var email = new Email();
+    expect(email.smtpapi.header.unique_args).to.eql({});
+    email.addUniqueArg('unique_arg1', 'value');
+    expect(email.smtpapi.header.unique_args).to.eql({unique_arg1: 'value'});
+    email.addUniqueArg('unique_arg2', 'value');
+    expect(email.smtpapi.header.unique_args).to.eql({unique_arg1: 'value', unique_arg2: 'value'});
+  });
+
+  it('should be possible to setUniqueArgs', function() {
+    var email = new Email();
+    expect(email.smtpapi.header.unique_args).to.eql({});
+    email.setUniqueArgs({unique_arg1: 'value'});
+    expect(email.smtpapi.header.unique_args).to.eql({unique_arg1: 'value'});
+    email.setUniqueArgs({unique_arg2: 'value'});
+    expect(email.smtpapi.header.unique_args).to.eql({unique_arg2: 'value'});
+  });
+
+  it('should be possible to setUniqueArgs and addUniqueArg', function() {
+    var email = new Email();
+    expect(email.smtpapi.header.unique_args).to.eql({});
+    email.setUniqueArgs({unique_arg1: 'value'});
+    expect(email.smtpapi.header.unique_args).to.eql({unique_arg1: 'value'});
+    email.addUniqueArg('unique_arg2', 'value');
+    expect(email.smtpapi.header.unique_args).to.eql({unique_arg1: 'value', unique_arg2: 'value'});
+  });
 
   describe('files', function() {
     it('should support adding attachments via path', function() {
