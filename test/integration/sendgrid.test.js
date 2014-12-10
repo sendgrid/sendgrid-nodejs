@@ -357,6 +357,34 @@ describe('SendGrid #skip', function () {
       });
     });
 
+    it('handles the send_at scheduling param', function(done) {
+      payload.subject   += "handles the send_at scheduling param";
+
+      var email         = new Email(payload);
+      email.setSendAt(Math.floor(new Date() / 1000) + 60);
+      sendgrid.send(email, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
+        done();
+      });
+    });
+
+    it('handles the send_each_at scheduling param', function(done) {
+      payload.subject   += "handles the send_each_at scheduling param";
+      payload.to = [process.env.TO, 'sendgrid-nodejs@mailinator.com']
+      var email  = new Email(payload);
+      email.addTo(payload.to[0]);
+      email.addTo(payload.to[1]);
+      email.addSendEachAt(Math.floor(new Date() / 1000) + 60);
+      email.addSendEachAt(Math.floor(new Date() / 1000) + 300);
+
+      sendgrid.send(email, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
+        done();
+      });
+    });
+
     it('handles filters', function(done) {
       payload.subject   += "handles filters";
 

@@ -9,7 +9,7 @@
   ],
   "name": "sendgrid",
   "description": "Official SendGrid NodeJS library.",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "homepage": "http://sendgrid.com",
   "repository": {
     "type": "git",
@@ -22,7 +22,7 @@
     "mime": "^1.2.9",
     "request": "^2.40.0",
     "lodash": "^2.0.0",
-    "smtpapi": "^1.0.4"
+    "smtpapi": "^1.0.5"
   },
   "devDependencies": {
     "dotenv": "0.0.2",
