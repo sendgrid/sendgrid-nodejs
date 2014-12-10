@@ -189,6 +189,44 @@ describe('Email', function () {
     expect(email.smtpapi.header.unique_args).to.eql({unique_arg1: 'value', unique_arg2: 'value'});
   });
 
+  it('should be possible to setSendAt', function() {
+    var email = new Email();
+    expect(email.smtpapi.header.send_at).to.be.empty;
+    expect(email.smtpapi.header.send_each_at).to.eql([]);
+    email.setSendAt(1409348513);
+    expect(email.smtpapi.header.send_at).to.eql(1409348513);
+    expect(email.smtpapi.header.send_each_at).to.eql([]);
+  });
+
+  it('should be possible to setSendEachAt', function() {
+    var email = new Email();
+    expect(email.smtpapi.header.send_at).to.be.empty;
+    expect(email.smtpapi.header.send_each_at).to.eql([]);
+    email.setSendEachAt([1409348513, 1409348514]);
+    expect(email.smtpapi.header.send_at).to.be.empty;
+    expect(email.smtpapi.header.send_each_at).to.eql([1409348513, 1409348514]);
+  });
+
+  it('should be possible to addSendEachAt', function() {
+    var email = new Email();
+    expect(email.smtpapi.header.send_at).to.be.empty;
+    expect(email.smtpapi.header.send_each_at).to.eql([]);
+    email.addSendEachAt(1409348513);
+    email.addSendEachAt(1409348514);
+    expect(email.smtpapi.header.send_at).to.be.empty;
+    expect(email.smtpapi.header.send_each_at).to.eql([1409348513, 1409348514]);
+  });
+
+  it('should be possible to setSendEachAt and addSendEachAt', function() {
+    var email = new Email();
+    expect(email.smtpapi.header.send_at).to.be.empty;
+    expect(email.smtpapi.header.send_each_at).to.eql([]);
+    email.setSendEachAt([1409348513]);
+    email.addSendEachAt(1409348514);
+    expect(email.smtpapi.header.send_at).to.be.empty;
+    expect(email.smtpapi.header.send_each_at).to.eql([1409348513, 1409348514]);
+  });
+
   it('should be possible to setUniqueArgs', function() {
     var email = new Email();
     expect(email.smtpapi.header.unique_args).to.eql({});

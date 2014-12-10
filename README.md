@@ -221,6 +221,31 @@ email.setHtml('<h1>Some html</h1>');
 sendgrid.send(email, function(err, json) { });
 ```
 
+#### setSendAt
+
+```javascript
+var email     = new sendgrid.Email();
+email.setSendAt(1409348513');
+sendgrid.send(email, function(err, json) { });
+```
+
+#### setSendEachAt
+
+```javascript
+var email     = new sendgrid.Email();
+email.setSendEachAt([1409348513, 1409348514]);
+sendgrid.send(email, function(err, json) { });
+```
+
+#### addSendEachAt
+
+```javascript
+var email     = new sendgrid.Email();
+email.addSendEachAt(1409348513);
+email.addSendEachAt(1409348514);
+sendgrid.send(email, function(err, json) { });
+```
+
 #### addHeader
 
 You can add custom headers. This will ADD rather than SET headers.
