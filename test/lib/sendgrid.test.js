@@ -15,7 +15,7 @@ describe('SendGrid', function () {
   });
 
   it('version should be set', function() {
-    expect(sendgrid.version).to.equal("1.4.0");
+    expect(sendgrid.version).to.equal("1.5.0");
   });
 
   it('should attach a options object to self', function() {
