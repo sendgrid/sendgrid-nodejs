@@ -1,4 +1,4 @@
-# Sendgrid-nodejs
+# SendGrid-nodejs
 
 This nodejs module allows you to quickly and easily send emails through SendGrid using [nodejs](http://nodejs.org/).
 
