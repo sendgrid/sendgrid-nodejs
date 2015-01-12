@@ -357,6 +357,18 @@ describe('SendGrid #skip', function () {
       });
     });
 
+    it('handles the date param', function(done) {
+      payload.subject   += "handles the date param";
+
+      var email         = new Email(payload);
+      email.setDate('Wed, 17 Dec 2014 19:21:16 +0000');
+      sendgrid.send(email, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
+        done();
+      });
+    });
+
     it('handles the send_at scheduling param', function(done) {
       payload.subject   += "handles the send_at scheduling param";
 

@@ -29,7 +29,7 @@ Add the following to your `package.json` file:
   ...
   "dependencies": {
     ...
-    "sendgrid": "1.3.0"
+    "sendgrid": "1.5.0"
   }
 }
 ```
@@ -125,7 +125,7 @@ var params = {
   bcc:      [],
   cc:       [],
   replyto:  '',
-  date:     new Date(),
+  date:     '',
   files: [
     {
       filename:     '',           // required only if file.content is used.
@@ -226,6 +226,14 @@ sendgrid.send(email, function(err, json) { });
 ```javascript
 var email     = new sendgrid.Email(); 
 email.setHtml('<h1>Some html</h1>');
+sendgrid.send(email, function(err, json) { });
+```
+
+#### setDate
+
+```javascript
+var email     = new sendgrid.Email();
+email.setDate('Wed, 17 Dec 2014 19:21:16 +0000');
 sendgrid.send(email, function(err, json) { });
 ```
 

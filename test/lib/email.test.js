@@ -134,6 +134,18 @@ describe('Email', function () {
       expect(format.fromname).to.equal('Tester T. Testerson');
     });
 
+    it("should set a date if one is provided", function() {
+      var payload     = Object.create(default_payload);
+      var email       = new Email({from: 'test@test.com', fromname:'Tester T. Testerson', subject: 'testing', text: 'testing', date: 'Wed, 17 Dec 2014 19:21:16 +0000'});
+      var format = email.toWebFormat();
+
+      expect(format.date).to.equal('Wed, 17 Dec 2014 19:21:16 +0000');
+
+      email.setDate('Wed, 17 Dec 2013 19:21:16 +0000');
+      format = email.toWebFormat();
+      expect(format.date).to.equal('Wed, 17 Dec 2013 19:21:16 +0000');
+    });
+
     it("should set a toname if one is provided", function() {
       var payload     = Object.create(default_payload);
       var email       = new Email({from: 'test@test.com', to:'test@test.com', toname:'Tester T. Testerson', subject: 'testing', text: 'testing'});
@@ -187,6 +199,13 @@ describe('Email', function () {
     expect(email.smtpapi.header.unique_args).to.eql({unique_arg1: 'value'});
     email.addUniqueArg('unique_arg2', 'value');
     expect(email.smtpapi.header.unique_args).to.eql({unique_arg1: 'value', unique_arg2: 'value'});
+  });
+
+  it('should be possible to setDate', function() {
+    var email = new Email();
+    expect(email.date).to.be.empty;
+    email.setDate('Wed, 17 Dec 2014 19:21:16 +0000');
+    expect(email.date).to.eql('Wed, 17 Dec 2014 19:21:16 +0000');
   });
 
   it('should be possible to setSendAt', function() {
