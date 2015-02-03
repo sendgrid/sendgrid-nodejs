@@ -264,6 +264,13 @@ describe('Email', function () {
     expect(email.smtpapi.header.unique_args).to.eql({unique_arg1: 'value', unique_arg2: 'value'});
   });
 
+  it('should be possible to setASMGroupID', function() {
+    var email = new Email();
+    expect(email.smtpapi.header.asm_group_id).to.eql({});
+    email.setASMGroupID(123);
+    expect(email.smtpapi.header.asm_group_id).to.eql(123);
+  });
+
   it('should be possible to addCc', function() {
     var email = new Email();
     expect(email.cc).to.eql([]);

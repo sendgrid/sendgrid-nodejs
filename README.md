@@ -29,7 +29,7 @@ Add the following to your `package.json` file:
   ...
   "dependencies": {
     ...
-    "sendgrid": "1.5.0"
+    "sendgrid": "1.5.1"
   }
 }
 ```
@@ -370,6 +370,15 @@ email.setFilters({
     }
   }
 });
+```
+
+#### setASMGroupID
+
+You can set an ASM Group ID using an integer.
+
+```javascript
+var email     = new sendgrid.Email();
+email.setASMGroupID(123);        // asm_group_id = 123
 ```
 
 #### addFile

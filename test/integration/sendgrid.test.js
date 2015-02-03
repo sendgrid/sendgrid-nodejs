@@ -478,5 +478,18 @@ describe('SendGrid #skip', function () {
         done();
       });
     });
+
+    it('handles ASM group ID', function(done) {
+      payload.subject += "handles ASM group ID";
+
+      var email = new Email(payload);
+      email.setASMGroupID(123);
+      sendgrid.send(email, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
+
+        done();
+      });
+    });
   });
 });
