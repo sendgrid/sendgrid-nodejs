@@ -419,6 +419,32 @@ email.addFile({
 email.addHtml('<div>Our logo:<img src="cid:the_logo"></div>');
 ```
 
+## Templates
+You can easily use SendGrid's [template engine](https://sendgrid.com/docs/User_Guide/Apps/template_engine.html).
+
+```javascript
+var email = new sendgrid.Email();
+email.addTo('example@domain.com');
+email.subject = "Send with templates app";
+email.from = 'from@example.com';
+email.text = 'Hi there!';
+email.html = '<h1>Hi there!</h1>';
+ 
+// add filter settings one at a time
+email.addFilter('templates', 'enable', 1);
+email.addFilter('templates', 'template_id', '09c6ab89-9157-4710-8ca4-db7927c631d6');
+ 
+// or set a filter using an object literal.
+email.setFilters({
+    'templates': {
+        'settings': {
+            'enable': 1,
+            'template_id' : '09c6ab89-9157-4710-8ca4-db7927c631d6',
+        }
+    }
+});
+```
+
 ## Options
 
 ### Changing URL
