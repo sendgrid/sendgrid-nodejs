@@ -392,7 +392,7 @@ email.addFile({
 });
 ```
 
-You can add files directly from a url. It will try to guess the contentType based on the filename.
+You can add files directly from a url. It will try to guess the contentType based on the filename. **Note:** `filename` is required when using a url.
 
 ```javascript
 email.addFile({
