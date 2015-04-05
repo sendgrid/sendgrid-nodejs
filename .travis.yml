@@ -5,8 +5,7 @@ node_js:
 - "0.11"
 - "0.12"
 before_install:
-- '[ "${TRAVIS_NODE_VERSION}" != "0.8" ] || npm install -g npm@1.4.28'
-- npm install -g npm@latest
+- npm install -g npm@next
 notifications:
   hipchat:
     rooms:
