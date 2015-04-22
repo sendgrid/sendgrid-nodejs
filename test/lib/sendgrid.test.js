@@ -6,23 +6,58 @@ var default_payload = {
   html          : "<h2>This is an html body</h2>"
 }
 
-var sinon = require('sinon')
-  , nock  = require('nock');
+var sinon = require('sinon');
+var nock  = require('nock');
 
 describe('SendGrid', function () {
+  it('should be an instance of SendGrid', function() {
+    var sendgrid = SendGrid(API_USER, API_KEY);
+    expect(sendgrid).to.be.an.instanceof(SendGrid);
+  });
+
+  it('should work with a username and password', function() {
+    var sendgrid = SendGrid(API_USER, API_KEY);
+    expect(sendgrid.api_user).to.equal(API_USER);
+    expect(sendgrid.api_key).to.equal(API_KEY);
+  });
+
+  it('should work with a username, password, and options', function() {
+    var sendgrid = SendGrid(API_USER, API_KEY, {foo: 'bar'});
+    expect(sendgrid.api_user).to.equal(API_USER);
+    expect(sendgrid.api_key).to.equal(API_KEY);
+    expect(sendgrid.options.foo).to.equal('bar');
+  });
+
+  it('should work with an api key', function() {
+    var sendgrid = SendGrid(API_KEY);
+    expect(sendgrid.api_key).to.equal(API_KEY);
+    expect(sendgrid.api_user).to.be.null;
+  });
+
+  it('should work with an api key and options', function() {
+    var sendgrid = SendGrid(API_KEY, {foo: 'bar'});
+    expect(sendgrid.api_key).to.equal(API_KEY);
+    expect(sendgrid.api_user).to.be.null;
+    expect(sendgrid.options.foo).to.equal('bar');
+  });
+
   it('should export the Email object', function() {
+    var sendgrid = SendGrid(API_USER, API_KEY);
     expect(sendgrid.Email).to.not.be.undefined;
   });
 
   it('version should be set', function() {
+    var sendgrid = SendGrid(API_USER, API_KEY);
     expect(sendgrid.version).to.equal("1.6.1");
   });
 
   it('should attach a options object to self', function() {
+    var sendgrid = SendGrid(API_USER, API_KEY);
     expect( typeof sendgrid.options).to.equal('object');
   });
 
   it('should have uri set to the default', function() {
+    var sendgrid = SendGrid(API_USER, API_KEY);
     expect(sendgrid.options.uri).to.equal("https://api.sendgrid.com/api/mail.send.json");
   });
 
@@ -53,6 +88,7 @@ describe('SendGrid', function () {
     });
 
     it('has an optional callback', function(done) {
+      var sendgrid = SendGrid(API_USER, API_KEY);
       expect(function() {
         sendgrid.send(payload);
       }).to.not.throw(Error);
@@ -61,6 +97,7 @@ describe('SendGrid', function () {
     });
 
     it('reports errors to the user', function(done) {
+      var sendgrid = SendGrid(API_USER, API_KEY);
       mock = webApi.reply(500, { message: "error", errors: ["some error"] });
 
       sendgrid.send({}, function(err, json) {
@@ -71,9 +108,10 @@ describe('SendGrid', function () {
     });
 
     it('reports http errors to the user', function(done) {
-      var https = require('https')
-        , realRequest = https.request
-        , stub;
+      var https = require('https');
+      var realRequest = https.request;
+      var stub;
+      var sendgrid = SendGrid(API_USER, API_KEY);
 
       function fakeRequest(options, cb) {
         var req = realRequest(options, cb);
@@ -93,6 +131,7 @@ describe('SendGrid', function () {
     });
 
     it("returns success if message is 'success'", function(done) {
+      var sendgrid = SendGrid(API_USER, API_KEY);
       mock = webApi.reply(200, { message: "success" });
 
       sendgrid.send({}, function(err, json) {
@@ -103,6 +142,7 @@ describe('SendGrid', function () {
     });
 
     it('sends the basic message parameters', function(done) {
+      var sendgrid = SendGrid(API_USER, API_KEY);
       mock = webApi.reply(200, { message: "success" });
 
       sendgrid.send(payload, function(err, json) {
@@ -119,6 +159,7 @@ describe('SendGrid', function () {
     });
 
     it('supports an optional toname and fromname', function(done) {
+      var sendgrid = SendGrid(API_USER, API_KEY);
       mock = webApi.reply(200, { message: "success" });
 
       payload.toname = "to name";
@@ -133,6 +174,7 @@ describe('SendGrid', function () {
     });
 
     it('encodes unicode strings in parameters', function(done) {
+      var sendgrid = SendGrid(API_USER, API_KEY);
       mock = webApi.reply(200, { message: "success" });
 
       payload.subject = "A unicode ✔ subject";
@@ -141,6 +183,17 @@ describe('SendGrid', function () {
         var encodedCheckmark = '✔';
 
         expect(postParamsString).to.include(encodedCheckmark);
+        done();
+      });
+    });
+
+    it('should have an authorization header when using an api key', function(done) {
+      var sendgrid = SendGrid(API_KEY);
+      mock = webApi.matchHeader('Authorization', 'Bearer ' + API_KEY).reply(200, { message: "success" });
+
+      sendgrid.send({}, function(err, json) {
+        expect(err).to.be.null;
+        expect(json['message']).to.equal('success');
         done();
       });
     });
