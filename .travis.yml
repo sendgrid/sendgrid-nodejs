@@ -9,9 +9,10 @@ before_install:
 notifications:
   hipchat:
     rooms:
-      secure: NqkzYRNBD1dyo67msVsDCunf6t1LnrlY7pX4dC6cBXpdnCAr4mtx2EcL111P6NjdIWk3hKMG2C+HfIfV+7WaMkLWz+zVuUoqySZiCIcNXO3wOcI5q97cUX6LAyxbhkeLBbueSluVx2x2/B+CQjL+YxZBG5uk6gyYwQ3tgAbN6zM=
+      secure: UVH1YNXLzilBEQQblcNrkqIDn36OdSpVjAPJGiSnjox04Ze+PO6T3KZqAwoR/ODYu0ujR4aRrJ/84/OR3U+VorzqcNWodiVXPxR7jgG9BuFH5/XXDB0nTj4MVS5aCivwPuBQB3asNHOogQ4EWLZVw80XIw2pov5GEl1Pc9lN+CE=
     template:
     - '<a href="https://travis-ci.org/%{repository}/builds/%{build_id}">%{repository}
       Build %{build_number}</a> on branch <i>%{branch}</i> by %{author}: <strong>%{message}</strong>
       <a href="https://github.com/sendgrid/docs/commits/%{commit}">View on GitHub</a>'
     format: html
+    notify: true
