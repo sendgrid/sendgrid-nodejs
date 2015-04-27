@@ -29,7 +29,7 @@ Add the following to your `package.json` file:
   ...
   "dependencies": {
     ...
-    "sendgrid": "^1.6.1"
+    "sendgrid": "^1.7.0"
   }
 }
 ```
@@ -54,10 +54,12 @@ There is a [sendgrid-nodejs-example app](https://github.com/sendgrid/sendgrid-no
 
 ## Usage
 
-To begin using this library, initialize the SendGrid object with your SendGrid credentials.
+To begin using this library, initialize the SendGrid object with your SendGrid credentials OR a SendGrid API Key. API Key is the preferred method. API Keys are in beta. To configure API keys, visit https://sendgrid.com/beta/settings/api_keys
 
 ```javascript
-var sendgrid  = require('sendgrid')(api_user, api_key);
+var sendgrid  = require('sendgrid')(api_user, api_password);
+// OR
+var sendgrid  = require('sendgrid')(api_key);
 ```
 
 Create a new JavaScript object with your message details.

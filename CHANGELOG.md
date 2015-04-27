@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [1.7.0] - 2015-4-27
+### Added
+- Support for API keys
+
 ## [1.6.1] - 2015-4-5
 ### Added
 - Updated version of lodash for optimizations [#158](https://github.com/sendgrid/sendgrid-nodejs/pull/158)

@@ -48,7 +48,7 @@ describe('SendGrid', function () {
 
   it('version should be set', function() {
     var sendgrid = SendGrid(API_USER, API_KEY);
-    expect(sendgrid.version).to.equal("1.6.1");
+    expect(sendgrid.version).to.equal("1.7.0");
   });
 
   it('should attach a options object to self', function() {
