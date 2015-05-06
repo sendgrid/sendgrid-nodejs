@@ -298,6 +298,33 @@ describe('Email', function () {
     expect(email.cc).to.eql(['sorin@domain.com', 'sorin2@domain.com']);
   });
 
+  it('should be possible to addBcc', function() {
+    var email = new Email();
+    expect(email.bcc).to.eql([]);
+    email.addBcc('sorin@domain.com');
+    expect(email.bcc).to.eql(['sorin@domain.com']);
+    email.addBcc('sorin2@domain.com');
+    expect(email.bcc).to.eql(['sorin@domain.com', 'sorin2@domain.com']);
+  });
+
+  it('should be possible to setBccs', function() {
+    var email = new Email();
+    expect(email.bcc).to.eql([]);
+    email.setBccs(['sorin@domain.com']);
+    expect(email.bcc).to.eql(['sorin@domain.com']);
+    email.setBccs(['sorin2@domain.com']);
+    expect(email.bcc).to.eql(['sorin2@domain.com']);
+  });
+
+  it('should be possible to setBccs and addBcc', function() {
+    var email = new Email();
+    expect(email.bcc).to.eql([]);
+    email.setBccs(['sorin@domain.com']);
+    expect(email.bcc).to.eql(['sorin@domain.com']);
+    email.addBcc('sorin2@domain.com');
+    expect(email.bcc).to.eql(['sorin@domain.com', 'sorin2@domain.com']);
+  });
+
   describe('files', function() {
     it('should support adding attachments via path', function() {
       var email = new Email();

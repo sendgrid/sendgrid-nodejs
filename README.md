@@ -207,6 +207,27 @@ email.setCcs(['foo@bar.com', 'another@another.com');
 sendgrid.send(email, function(err, json) { });
 ```
 
+#### addBcc
+
+You can add one or multiple BCC addresses using `addBcc`.
+
+```javascript
+var email     = new sendgrid.Email();
+email.addBcc('foo@bar.com');
+email.addBcc('another@another.com');
+sendgrid.send(email, function(err, json) { });
+```
+
+#### setBccs
+
+You can multiple BCC addresses using `setBccs`.
+
+```javascript
+var email     = new sendgrid.Email();
+email.setBccs(['foo@bar.com', 'another@another.com');
+sendgrid.send(email, function(err, json) { });
+```
+
 #### setSubject
 
 ```javascript
