@@ -2,8 +2,8 @@
 
 This nodejs module allows you to quickly and easily send emails through SendGrid using [nodejs](http://nodejs.org/).
 
-[![BuildStatus](https://travis-ci.org/sendgrid/sendgrid-nodejs.png?branch=master)](https://travis-ci.org/sendgrid/sendgrid-nodejs)
-[![NPM version](https://badge.fury.io/js/sendgrid.png)](http://badge.fury.io/js/sendgrid)
+[![BuildStatus](https://travis-ci.org/sendgrid/sendgrid-nodejs.svg?branch=master)](https://travis-ci.org/sendgrid/sendgrid-nodejs)
+[![NPM version](https://badge.fury.io/js/sendgrid.svg)](http://badge.fury.io/js/sendgrid)
 
 ```javascript
 var sendgrid  = require('sendgrid')(api_user, api_key);
@@ -54,7 +54,7 @@ There is a [sendgrid-nodejs-example app](https://github.com/sendgrid/sendgrid-no
 
 ## Usage
 
-To begin using this library, initialize the SendGrid object with your SendGrid credentials OR a SendGrid API Key. API Key is the preferred method. API Keys are in beta. To configure API keys, visit https://sendgrid.com/beta/settings/api_keys
+To begin using this library, initialize the SendGrid object with your SendGrid credentials OR a SendGrid [API Key](https://sendgrid.com/docs/User_Guide/Account/api_keys.html). API Key is the preferred method. API Keys are in beta. To configure API keys, visit https://sendgrid.com/beta/settings/api_keys
 
 ```javascript
 var sendgrid  = require('sendgrid')(api_user, api_password);
