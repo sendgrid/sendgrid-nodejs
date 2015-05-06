@@ -10,6 +10,11 @@ var sinon = require('sinon');
 var nock  = require('nock');
 
 describe('SendGrid', function () {
+  it('version should be set', function() {
+    var sendgrid = SendGrid(API_USER, API_KEY);
+    expect(sendgrid.version).to.equal("1.8.0");
+  });
+
   it('should be an instance of SendGrid', function() {
     var sendgrid = SendGrid(API_USER, API_KEY);
     expect(sendgrid).to.be.an.instanceof(SendGrid);
@@ -44,11 +49,6 @@ describe('SendGrid', function () {
   it('should export the Email object', function() {
     var sendgrid = SendGrid(API_USER, API_KEY);
     expect(sendgrid.Email).to.not.be.undefined;
-  });
-
-  it('version should be set', function() {
-    var sendgrid = SendGrid(API_USER, API_KEY);
-    expect(sendgrid.version).to.equal("1.7.0");
   });
 
   it('should attach a options object to self', function() {

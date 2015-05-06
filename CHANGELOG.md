@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [1.8.0] - 2015-5-06
+### Added
+- addBcc and setBccs functions
+
 ## [1.7.0] - 2015-4-27
 ### Added
 - Support for API keys
