@@ -36,5 +36,6 @@
     "test": "./node_modules/.bin/mocha --grep '#skip' --invert",
     "skipped": "./node_modules/.bin/mocha --grep '#skip'"
   },
+  "license": "MIT",
   "optionalDependencies": {}
 }
