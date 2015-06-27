@@ -6,7 +6,7 @@ This nodejs module allows you to quickly and easily send emails through SendGrid
 [![NPM version](https://badge.fury.io/js/sendgrid.svg)](http://badge.fury.io/js/sendgrid)
 
 ```javascript
-var sendgrid  = require('sendgrid')(api_user, api_key);
+var sendgrid  = require('sendgrid')(api_user, api_password);
 sendgrid.send({
   to:       'example@example.com',
   from:     'other@example.com',
@@ -90,7 +90,7 @@ Email helps you more powerfully prepare your message to be sent.
 To get started create an Email object where `params` is a javascript object. You can pass in as much or as little to `params` as you want.
 
 ```javascript
-var sendgrid  = require('sendgrid')(api_user, api_key);
+var sendgrid  = require('sendgrid')(api_user, api_password);
 var email     = new sendgrid.Email(params);
 ```
 
@@ -99,7 +99,7 @@ var email     = new sendgrid.Email(params);
 Here is a sample for using it.
 
 ```javascript
-var sendgrid  = require('sendgrid')(api_user, api_key);
+var sendgrid  = require('sendgrid')(api_user, api_password);
 var email     = new sendgrid.Email({
   to:       'foo@bar.com',
   from:     'you@yourself.com',
@@ -150,7 +150,7 @@ NOTE: anything that is available in the Email constructor is available for use i
 You can set params like you would for any standard JavaScript object.
 
 ```javascript
-var sendgrid  = require('sendgrid')(api_user, api_key);
+var sendgrid  = require('sendgrid')(api_user, api_password);
 var email     = new sendgrid.Email({to: 'person@email.com'});
 email.to      = "different@email.com";
 email.replyto = "reply-here@email.com";
