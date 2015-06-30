@@ -520,7 +520,7 @@ When filing an issue please include your ```package.json``` and the output of
 
 ## Running Tests
 
-The existing tests can be run using [Mocha](http://visionmedia.github.io/mocha/) with the following command:
+The existing tests can be run using [Mocha](http://mochajs.org/) with the following command:
 
 ```bash
 npm test
