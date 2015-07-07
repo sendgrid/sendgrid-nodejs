@@ -186,6 +186,14 @@ email.setFrom('foo@bar.com');
 sendgrid.send(email, function(err, json) { });
 ```
 
+#### setFromName
+
+```javascript
+var email     = new sendgrid.Email(); 
+email.setFromName('Bob Bar');
+sendgrid.send(email, function(err, json) { });
+```
+
 #### addCc
 
 You can add one or multiple CC addresses using `addCc`.
