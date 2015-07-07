@@ -171,6 +171,13 @@ describe('Email', function () {
     expect(email.from).to.eql('kyle.partridge@sendgrid.com');
   });
 
+  it('should be possible to setFromName', function() {
+    var email = new Email();
+    expect(email.fromname).to.be.empty;
+    email.setFromName('Part Kyle');
+    expect(email.fromname).to.eql('Part Kyle');
+  });
+
   it('should be possible to setSubject', function() {
     var email = new Email();
     expect(email.subject).to.be.empty;
