@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [1.9.0] - 2015-7-07
+### Added
+- setFromName function [#175](https://github.com/sendgrid/sendgrid-nodejs/pull/175)
+
 ## [1.8.0] - 2015-5-06
 ### Added
 - addBcc and setBccs functions
