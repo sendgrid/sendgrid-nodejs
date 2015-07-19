@@ -54,7 +54,7 @@ There is a [sendgrid-nodejs-example app](https://github.com/sendgrid/sendgrid-no
 
 ## Usage
 
-To begin using this library, initialize the SendGrid object with your SendGrid credentials OR a SendGrid [API Key](https://sendgrid.com/docs/User_Guide/Account/api_keys.html). API Key is the preferred method. API Keys are in beta. To configure API keys, visit https://sendgrid.com/beta/settings/api_keys
+To begin using this library, initialize the SendGrid object with your SendGrid credentials OR a SendGrid [API Key](https://sendgrid.com/docs/User_Guide/Account/api_keys.html). API Key is the preferred method. To configure API keys, visit https://sendgrid.com/settings/api_keys
 
 ```javascript
 var sendgrid  = require('sendgrid')(api_user, api_password);
