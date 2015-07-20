@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [1.9.1] - 2015-7-20
+### Changed
+- Pinned request version to be less than `2.59.0` because it broke something
+
 ## [1.9.0] - 2015-7-07
 ### Added
 - setFromName function [#175](https://github.com/sendgrid/sendgrid-nodejs/pull/175)
