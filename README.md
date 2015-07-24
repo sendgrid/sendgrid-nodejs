@@ -562,6 +562,7 @@ npm test
 * Confirm tests pass
 * Commit `Version bump vX.X.X`
 * `npm publish`
+* Push changes to GitHub
 * Release tag on GitHub `vX.X.X`
 
 ## License
