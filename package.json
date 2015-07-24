@@ -21,9 +21,9 @@
   },
   "dependencies": {
     "mime": "^1.2.9",
-    "request": "~2.58.0 || >2.59.0",
+    "request": "^2.60.0",
     "lodash": "^3.0.1 || ^2.0.0",
-    "smtpapi": "^1.1.0"
+    "smtpapi": "^1.2.0"
   },
   "devDependencies": {
     "dotenv": "0.0.2",
