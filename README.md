@@ -29,7 +29,7 @@ Add the following to your `package.json` file:
   ...
   "dependencies": {
     ...
-    "sendgrid": "^1.9.1"
+    "sendgrid": "^1.9.2"
   }
 }
 ```

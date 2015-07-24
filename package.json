@@ -10,7 +10,7 @@
   ],
   "name": "sendgrid",
   "description": "Official SendGrid NodeJS library.",
-  "version": "1.9.1",
+  "version": "1.9.2",
   "homepage": "http://sendgrid.com",
   "repository": {
     "type": "git",
