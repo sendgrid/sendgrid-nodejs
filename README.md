@@ -554,6 +554,15 @@ Next, open up `.env.test` and fill it in.  After you have updated the environmen
 npm test
 ```
 
+## Deploying
+
+* Confirm tests pass
+* Bump the version in `README.md`, `package.json`, `test/lib/sendgrid.test.js`
+* Confirm tests pass
+* Commit `Version bump vX.X.X`
+* `npm publish`
+* Release tag on GitHub `vX.X.X`
+
 ## License
 
 Licensed under the MIT License.
