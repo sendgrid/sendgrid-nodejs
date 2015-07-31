@@ -345,6 +345,23 @@ describe('SendGrid #skip', function () {
       });
     });
 
+    it('handles multiple files of same name', function(done) {
+      this.timeout(30000);
+
+      payload.subject   += "handles multiple files of same name";
+      payload.files     = [
+        {filename: 'icon.jpg', url: "http://i.imgur.com/2fDh8.jpg"},
+        {filename: 'icon.jpg', url: 'http://i.imgur.com/2fDh8.jpg'}
+      ];
+
+      sendgrid.send(payload, function(err, json) {
+        expect(err).to.be.null;
+        expect(json.message).to.equal('success');
+
+        done();
+      });
+    });
+
     it('handles the reply_to field', function(done) {
       payload.subject   += "handles the reply_to field";
 

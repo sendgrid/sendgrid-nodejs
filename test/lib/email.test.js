@@ -108,6 +108,77 @@ describe('Email', function () {
       expect(format['files[undefined]']).to.be.undefined;
     });
 
+    it('should have a field for file', function() {
+
+      Array.prototype.testMethod = function() {
+        return 'testMethod';
+      };
+      var path = __dirname + '/../assets/secret.txt';
+      var files = [{
+        filename: 'secret.txt',
+        path: path,
+        contentType: ''
+      }];
+      default_payload = {
+        to        : 'david.tomberlin@sendgrid.com',
+        from      : 'kyle.partridge@sendgrid.com',
+        subject   : 'Subject',
+        text      : 'This is an email.',
+        files     : files
+      };
+
+      var payload     = Object.create(default_payload);
+      var email       = new Email(payload);
+      var format      = email.toWebFormat();
+
+      expect(format.to).to.equal(payload.to);
+      expect(format.from).to.equal(payload.from);
+      expect(format.subject).to.equal(payload.subject);
+      expect(format.text).to.equal(payload.text);
+      expect(format.fromname).to.be.empty;
+      expect(format.toname).to.be.empty;
+      expect(format['files[secret.txt]'].fileName).to.equal(payload.files[0].fileName);
+    });
+
+    it('should have a field for file with multiple files of same name', function() {
+
+      Array.prototype.testMethod = function() {
+        return 'testMethod';
+      };
+      var path = __dirname + '/../assets/secret.txt';
+      var file1 = {
+        filename: 'secret.txt',
+        path: path,
+        contentType: ''
+      };
+      var file2 = {
+        filename: 'secret.txt',
+        path: path,
+        contentType: ''
+      };
+      var files = [file1, file2];
+      default_payload = {
+        to        : 'david.tomberlin@sendgrid.com',
+        from      : 'kyle.partridge@sendgrid.com',
+        subject   : 'Subject',
+        text      : 'This is an email.',
+        files     : files
+      };
+
+      var payload     = Object.create(default_payload);
+      var email       = new Email(payload);
+      var format      = email.toWebFormat();
+
+      expect(format.to).to.equal(payload.to);
+      expect(format.from).to.equal(payload.from);
+      expect(format.subject).to.equal(payload.subject);
+      expect(format.text).to.equal(payload.text);
+      expect(format.fromname).to.be.empty;
+      expect(format.toname).to.be.empty;
+      expect(format['files[secret.txt]'].fileName).to.equal(payload.files[0].fileName);
+      expect(format['files[secret_0.txt]'].fileName).to.equal(payload.files[1].fileName);
+    });
+
     it('should not have a to address if there is no to or no smtpapi.', function() {
       var payload     = Object.create(default_payload);
       var email       = new Email({from: 'test@test.com', subject: 'testing', text: 'testing'});
