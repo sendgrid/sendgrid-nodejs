@@ -5,6 +5,18 @@ This nodejs module allows you to quickly and easily send emails through SendGrid
 [![BuildStatus](https://travis-ci.org/sendgrid/sendgrid-nodejs.svg?branch=master)](https://travis-ci.org/sendgrid/sendgrid-nodejs)
 [![NPM version](https://badge.fury.io/js/sendgrid.svg)](http://badge.fury.io/js/sendgrid)
 
+WARNING: This module was recently upgraded from [1.9.x](https://github.com/sendgrid/sendgrid-nodejs/tree/v1.9.1) to 2.X. There were API breaking changes for various method names. See [usage](https://github.com/sendgrid/sendgrid-nodejs#usage) for up to date method names.
+
+PLEASE READ THIS
+
+TLDR: If you upgrade and don't change your code appropriately, things WILL break.
+
+One of the most notable changes is how addTo() behaves. We are now using our Web API parameters instead of the X-SMTPAPI header. What this means is that if you call addTo() multiple times for an email, ONE email will be sent with each email address visible to everyone. To utilize the original behavior of having an individual personalized email sent to each recipient you must now use addSmtpapiTo(). This will break substitutions if there is more than one To address added unless you update to use addSmtpapiTo().
+
+Smtpapi addressing methods cannot be mixed with non Smtpapi addressing methods. Meaning you cannot currently use Cc and Bcc with addSmtpapiTo().
+
+The send() method now raises a \SendGrid\Exception by default if the response code is not 200 and returns an instance of \SendGrid\Response.
+
 ```javascript
 var sendgrid  = require('sendgrid')(sendgrid_api_key);
 sendgrid.send({
