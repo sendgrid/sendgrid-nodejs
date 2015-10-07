@@ -119,12 +119,24 @@ describe('Email', function () {
       var payload     = Object.create(default_payload);
       payload.to      = "";
       var email       = new Email(payload);
-      email.addTo("test@test.com");
+      email.addSmtpapiTo("test@test.com");
       var format = email.toWebFormat();
 
-      expect(JSON.parse(format['x-smtpapi']).to).to.not.be.empty;
       expect(format.to).to.not.be.empty;
+      expect(JSON.parse(format['x-smtpapi']).to).to.not.be.empty;
     });
+
+    it('should have to addresses if there is no tos set but there are smtpapi tos set', function() {
+      var payload     = Object.create(default_payload);
+      payload.to      = "";
+      var email       = new Email(payload);
+      email.setSmtpapiTos(["test@test.com", "test2@test.com"]);
+      var format = email.toWebFormat();
+
+      expect(format.to).to.not.be.empty;
+      expect(JSON.parse(format['x-smtpapi']).to).to.not.be.empty;
+      expect(JSON.parse(format['x-smtpapi']).to).to.be.an.array;
+    })
 
     it("should set a fromname if one is provided", function() {
       var payload     = Object.create(default_payload);
