@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [2.0.0] - 
+## Fixed
+- Add cc now uses the WebAPI instead of the SMTPApi. Read disclaimer for details
+
 ## [1.9.1] - 2015-7-20
 ### Changed
 - Pinned request version to be less than `2.59.0` because it broke something
