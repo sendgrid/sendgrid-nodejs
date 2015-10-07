@@ -12,7 +12,7 @@ var nock  = require('nock');
 describe('SendGrid', function () {
   it('version should be set', function() {
     var sendgrid = SendGrid(API_USER, API_KEY);
-    expect(sendgrid.version).to.equal("1.9.2");
+    expect(sendgrid.version).to.equal("2.0.0");
   });
 
   it('should be an instance of SendGrid', function() {
