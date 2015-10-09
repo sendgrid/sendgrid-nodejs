@@ -7,15 +7,17 @@ This nodejs module allows you to quickly and easily send emails through SendGrid
 
 WARNING: This module was recently upgraded from [1.9.x](https://github.com/sendgrid/sendgrid-nodejs/tree/v1.9.1) to 2.X. There were API breaking changes for various method names. See [usage](https://github.com/sendgrid/sendgrid-nodejs#usage) for up to date method names.
 
-PLEASE READ THIS
+## PLEASE READ THIS
 
-TLDR: If you upgrade and don't change your code appropriately, things WILL break.
+**TLDR: If you upgrade and don't change your code appropriately, things *WILL* break.**
 
 One of the most notable changes is how addTo() behaves. We are now using our Web API parameters instead of the X-SMTPAPI header. What this means is that if you call addTo() multiple times for an email, ONE email will be sent with each email address visible to everyone. To utilize the original behavior of having an individual personalized email sent to each recipient you must now use addSmtpapiTo(). This will break substitutions if there is more than one To address added unless you update to use addSmtpapiTo().
 
 Smtpapi addressing methods cannot be mixed with non Smtpapi addressing methods. Meaning you cannot currently use Cc and Bcc with addSmtpapiTo().
 
 The send() method now raises a \SendGrid\Exception by default if the response code is not 200 and returns an instance of \SendGrid\Response.
+
+## Sample
 
 ```javascript
 var sendgrid  = require('sendgrid')(sendgrid_api_key);
@@ -173,6 +175,8 @@ email.subject = "This is a subject";
 
 You can add one or multiple TO addresses using `addTo`.
 
+**Note**: One of the most notable changes is how `addTo()` behaves. We are now using our Web API parameters instead of the X-SMTPAPI header. What this means is that if you call `addTo()` multiple times for an email, **ONE** email will be sent with each email address visible to everyone. In oder to use the header, please call the `addSmtpapiTo()` method.
+
 ```javascript
 var email     = new sendgrid.Email(); 
 email.addTo('foo@bar.com');
@@ -180,13 +184,30 @@ email.addTo('another@another.com');
 sendgrid.send(email, function(err, json) { });
 ```
 
-NOTE: This is different than setting an array on `to`. The array on `to` will show everyone the to addresses it was sent to. Using addTo will not. Usually, you'll want to use `addTo`.  
+#### addSmtpapiTo
+
+
+```javascript
+var email = new sendgrid.Email()
+email.addSmtpapiTo('test@test.com');
+sendgrid.send(email, function(err, json) { });
+``` 
 
 #### setTos
+
+**Note**: The `setTos()` method now utilizes the Web API as opposed to using the X-SMTPAPI header. Please refer to the note posted on the top of this page. In order to use the header, you will need to use the `setSmtpapiTos()` method.
 
 ```javascript
 var email     = new sendgrid.Email(); 
 email.setTos(['foo@bar.com', 'another@another.com']);
+sendgrid.send(email, function(err, json) { });
+```
+
+#### setSmtpapiTos
+
+```javascript
+var email = new sendgrid.Email();
+email.setSmtpapiTos(["test@test.com","test2@test.com"]);
 sendgrid.send(email, function(err, json) { });
 ```
 
