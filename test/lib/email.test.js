@@ -136,7 +136,34 @@ describe('Email', function () {
       expect(format.to).to.not.be.empty;
       expect(JSON.parse(format['x-smtpapi']).to).to.not.be.empty;
       expect(JSON.parse(format['x-smtpapi']).to).to.be.an.array;
-    })
+    });
+
+    it('should have a to address using addTo if there is no smtpapi to', function(){
+      var payload = Object.create(default_payload);
+      payload.to = "";
+      var email = new Email(payload);
+      email.addTo('test@test.com');
+      email.addTo('test1@test.com');
+      var format = email.toWebFormat();
+
+      expect(format.to).to.not.be.empty;
+      expect(format.to[0]).to.equal('test@test.com');
+      expect(format.to[1]).to.equal('test1@test.com');
+    });
+
+    it('should have a to addresses using setTos if there is no smtpapi to', function(){
+      var payload = Object.create(default_payload);
+      payload.to = "";
+      var email = new Email(payload);
+      email.setTos(['test@test.com', 'test1@test.com']);
+      
+      var format = email.toWebFormat();
+
+      expect(format.to).to.not.be.empty;
+      expect(format.to).to.be.an.array;
+      expect(format.to[0]).to.equal('test@test.com');
+      expect(format.to[1]).to.equal('test1@test.com');
+    });
 
     it("should set a fromname if one is provided", function() {
       var payload     = Object.create(default_payload);
