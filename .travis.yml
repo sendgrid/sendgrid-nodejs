@@ -5,7 +5,7 @@ node_js:
 - "0.12"
 - "iojs"
 before_install:
-- npm install -g npm@next
+- npm install -g npm@2
 notifications:
   hipchat:
     rooms:
@@ -13,6 +13,6 @@ notifications:
     template:
     - '<a href="https://travis-ci.org/%{repository}/builds/%{build_id}">%{repository}
       Build %{build_number}</a> on branch <i>%{branch}</i> by %{author}: <strong>%{message}</strong>
-      <a href="https://github.com/sendgrid/docs/commits/%{commit}">View on GitHub</a>'
+      <a href="https://github.com/%{repository}/commits/%{commit}">View on GitHub</a>'
     format: html
     notify: true
