@@ -20,7 +20,7 @@ The send() method now raises a \SendGrid\Exception by default if the response co
 ## Sample
 
 ```javascript
-var sendgrid  = require('sendgrid')(sendgrid_api_key);
+var sendgrid  = require('sendgrid')('YOUR_SENDGRID_API_KEY');
 sendgrid.send({
   to:       'example@example.com',
   from:     'other@example.com',
@@ -71,9 +71,7 @@ There is a [sendgrid-nodejs-example app](https://github.com/sendgrid/sendgrid-no
 To begin using this library, initialize the SendGrid object with your SendGrid credentials OR a SendGrid [API Key](https://sendgrid.com/docs/User_Guide/Account/api_keys.html). API Key is the preferred method. To configure API keys, visit [https://app.sendgrid.com/settings/api_keys](https://app.sendgrid.com/settings/api_keys).
 
 ```javascript
-var sendgrid  = require('sendgrid')(sendgrid_api_key);
-// OR
-var sendgrid  = require('sendgrid')(api_user, api_password);
+var sendgrid  = require('sendgrid')('YOUR_SENDGRID_API_KEY');
 ```
 
 Create a new JavaScript object with your message details.
@@ -104,7 +102,7 @@ Email helps you more powerfully prepare your message to be sent.
 To get started create an Email object where `params` is a javascript object. You can pass in as much or as little to `params` as you want.
 
 ```javascript
-var sendgrid  = require('sendgrid')(api_user, api_password);
+var sendgrid  = require('sendgrid')('YOUR_SENDGRID_API_KEY');
 var email     = new sendgrid.Email(params);
 ```
 
@@ -113,7 +111,7 @@ var email     = new sendgrid.Email(params);
 Here is a sample for using it.
 
 ```javascript
-var sendgrid  = require('sendgrid')(api_user, api_password);
+var sendgrid  = require('sendgrid')('YOUR_SENDGRID_API_KEY');
 var email     = new sendgrid.Email({
   to:       'foo@bar.com',
   from:     'you@yourself.com',
@@ -164,7 +162,7 @@ NOTE: anything that is available in the Email constructor is available for use i
 You can set params like you would for any standard JavaScript object.
 
 ```javascript
-var sendgrid  = require('sendgrid')(api_user, api_password);
+var sendgrid  = require('sendgrid')('YOUR_SENDGRID_API_KEY');
 var email     = new sendgrid.Email({to: 'person@email.com'});
 email.to      = "different@email.com";
 email.replyto = "reply-here@email.com";
@@ -515,13 +513,13 @@ email.setFilters({
 You may change the URL sendgrid-nodejs uses to send email by supplying various parameters to `options`, all parameters are optional:
 
 ```javascript
-var sendgrid = require('sendgrid')('username', 'password', { "protocol" : "http", "host" : "sendgrid.org", "endpoint" : "/send", "port" : "80" });
+var sendgrid = require('sendgrid')('YOUR_SENDGRID_API_KEY', { "protocol" : "http", "host" : "sendgrid.org", "endpoint" : "/send", "port" : "80" });
 ```
 
 A full URI may also be provided:
 
 ```javascript
-var sendgrid = require('sendgrid')('username', 'password', { "uri" : "http://sendgrid.org:80/send" });
+var sendgrid = require('sendgrid')('YOUR_SENDGRID_API_KEY', { "uri" : "http://sendgrid.org:80/send" });
 ```
 
 ### Request
@@ -531,8 +529,7 @@ to be merged. This enables you to use your own https.Agent, node-tunnel
 or the request proxy url. Please note that sendgrid requires https.
 
 ```javascript
-var sendgrid = require('sendgrid')('username', 'password', {
-proxy: "http://localproxy:3128" });
+var sendgrid = require('sendgrid')('YOUR_SENDGRID_API_KEY', { proxy: "http://localproxy:3128" });
 ```
 
 or
@@ -543,8 +540,7 @@ var agent = new https.Agent();
 // Set Max Sockets to 500
 agent.maxSockets = 500;
 
-var sendgrid = require('sendgrid')('username', 'password', { web: {
-pool: agent } });
+var sendgrid = require('sendgrid')('YOUR_SENDGRID_API_KEY', { web: { pool: agent } });
 ```
 
 ## Issues
