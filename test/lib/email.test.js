@@ -394,6 +394,17 @@ describe('Email', function () {
         expect(email.files[0].contentType).to.equal('image/png');
       });
     });
+
+    it('should support attachments via readstream', function () {
+      var fileReadStream = fs.createReadStream(__filename)
+      var email = new Email();
+      email.addFile({
+        stream: fileReadStream,
+        contentType: 'text/javascript'
+      });
+      expect(email.files[0].stream).to.equal(fileReadStream);
+      expect(email.files[0].contentType).to.equal('text/javascript');
+    });
   });
 
   describe('custom headers', function() {
@@ -487,6 +498,25 @@ describe('Email', function () {
       });
 
       email.files[0].loadContent(function(error, message) {
+        expect(error).to.not.be.true;
+        expect(email.files[0].content).to.not.be.undefined;
+        done();
+      });
+    });
+
+    it('should be able to add readstream files easily', function (done) {
+      var file = {
+        stream: fs.createReadStream(__filename),
+        contentType: 'text/javascript'
+      }
+
+      var email = new Email({
+        files: [
+          file
+        ]
+      });
+
+      email.files[0].loadContent(function (error, message) {
         expect(error).to.not.be.true;
         expect(email.files[0].content).to.not.be.undefined;
         done();
