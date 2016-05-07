@@ -1,7 +1,13 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## [2.0.0] - 
+## [3.0.0] - XXXX-XX-XX
+### Added
+- Breaking change to support the v3 Web API
+- New HTTP client
+- v3 Mail Send helper
+
+## [2.0.0] - XXXX-XX-XX
 ## Fixed
 - Add cc now uses the WebAPI instead of the SMTPApi. Read disclaimer for details
 
