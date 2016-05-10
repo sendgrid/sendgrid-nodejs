@@ -1,21 +1,13 @@
 function helloEmail(){
   var helper = require('../../../lib/helpers/mail/mail.js')
 
-  mail = new helper.Mail()
-  email = new helper.Email("dx@sendgrid.com")
-  mail.setFrom(email)
-
-  personalization = new helper.Personalization()
-  email = new helper.Email("elmer.thomas@sendgrid.com")
-  personalization.addTo(email)
-  mail.addPersonalization(personalization)
-
-  mail.setSubject("Hello World from the SendGrid Node.js Library")
-
+  from_email = new helper.Email("dx@sendgrid.com")
+  to_email = new helper.Email("elmer.thomas@sendgrid.com")
+  subject = "Hello World from the SendGrid Node.js Library"
   content = new helper.Content("text/plain", "some text here")
-  mail.addContent(content)
-  content = new helper.Content("text/html", "<html><body>some text here</body></html>")
-  mail.addContent(content)
+  mail = new helper.Mail(from_email, subject, to_email, content)
+  email = new helper.Email("elmer.thomas+add_second_email@sendgrid.com")
+  mail.personalizations[0].addTo(email)
 
   return mail.toJSON()
 }
@@ -106,13 +98,13 @@ function kitchenSink(){
 
   mail.setBatchId("some_batch_id")
 
-  asm = new helper.ASM(3, [1,4,5])
-  mail.setASM(asm)
+  asm = new helper.Asm(3, [1,4,5])
+  mail.setAsm(asm)
 
   mail.setIpPoolName("23")
 
   mail_settings = new helper.MailSettings()
-  bcc = new helper.BCC(true, "elmer.thomas+spam@sendgrid.com")
+  bcc = new helper.Bcc(true, "elmer.thomas+spam@sendgrid.com")
   mail_settings.setBcc(bcc)
   footer = new helper.Footer(true, "some footer text", "<html><body>some footer text</body></html>")
   mail_settings.setFooter(footer)
@@ -129,7 +121,7 @@ function kitchenSink(){
   tracking_settings.setOpenTracking(open_tracking)
   subscription_tracking = new helper.SubscriptionTracking(true, "text to insert into the text/plain portion of the message", "html to insert into the text/html portion of the message", "Optional tag to replace with the open image in the body of the message")
   tracking_settings.setSubscriptionTracking(subscription_tracking)
-  ganalytics = new helper.Ganalytics(true, "some utm source", "some utc medium", "some utm term", "some utm content", "some utm campaign", "some utm name")
+  ganalytics = new helper.Ganalytics(true, "some utm source", "some utc medium", "some utm term", "some utm content", "some utm campaign")
   tracking_settings.setGanalytics(ganalytics)
   mail.addTrackingSettings(tracking_settings)
 
