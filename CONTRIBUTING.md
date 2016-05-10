@@ -75,7 +75,7 @@ We welcome direct contributions to the sendgrid-python code base. Thank you!
 ##### Prerequisites #####
 
 * Node.js 0.10 and up
-* Please see [package.json]("https://github.com/sendgrid/sendgrid-nodejs/blob/master/package.json")
+* Please see [package.json]("https://github.com/sendgrid/sendgrid-nodejs/tree/v3beta/package.json")
 
 ##### Initial setup: #####
 
@@ -86,7 +86,7 @@ cd sendgrid-nodejs
 
 ##### Execute: #####
 
-See the [examples folder](https://github.com/sendgrid/sendgrid-nodejs/tree/master/examples) to get started quickly.
+See the [examples folder](https://github.com/sendgrid/sendgrid-nodejs/tree/v3beta/examples) to get started quickly.
 
 You will need to setup the following environment to use the SendGrid example:
 
@@ -117,9 +117,9 @@ The interface to the SendGrid API.
 
 All PRs require passing tests before the PR will be reviewed.
 
-All test files are in the `[tests](https://github.com/sendgrid/sendgrid-nodejs/tree/master/test)` directory.
+All test files are in the `[tests](https://github.com/sendgrid/sendgrid-nodejs/tree/v3beta/test)` directory.
 
-For the purposes of contributing to this repo, please update the [`test.js`](https://github.com/sendgrid/sendgrid-nodejs/blob/master/test/test.js) file with unit tests as you modify the code.
+For the purposes of contributing to this repo, please update the [`test.js`](https://github.com/sendgrid/sendgrid-nodejs/tree/v3beta/test/test.js) file with unit tests as you modify the code.
 
 ```bash
 mocha --recursive

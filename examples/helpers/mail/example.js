@@ -96,7 +96,8 @@ function kitchenSink(){
 
   mail.setSendAt(1443636899)
 
-  mail.setBatchId("some_batch_id")
+  //This must be a valid [batch ID](https://sendgrid.com/docs/API_Reference/SMTP_API/scheduling_parameters.html) to work
+  //mail.setBatchId("some_batch_id")
 
   asm = new helper.Asm(3, [1,4,5])
   mail.setAsm(asm)
@@ -135,7 +136,7 @@ function send(toSend){
   console.log(JSON.stringify(toSend, null, 2))
   //console.log(JSON.stringify(toSend))
 
-  var sg = require('../../../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY, "3wyb2hp7emnqja6ys.stoplight-proxy.io")
+  var sg = require('../../../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
 
   var requestBody = toSend
   var emptyRequest = require('sendgrid-rest').request
