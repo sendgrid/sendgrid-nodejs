@@ -13,6 +13,49 @@ By using this endpoint, you accept that you may encounter bugs and that the endp
 
 # Installation
 
+## Environment Variables
+
+First, get your free SendGrid account [here](https://sendgrid.com/free?source=sendgrid-nodejs).
+
+Next, update your environment with your [SENDGRID_API_KEY](https://app.sendgrid.com/settings/api_keys).
+
+```bash
+echo "export SENDGRID_API_KEY='YOUR_API_KEY'" > sendgrid.env
+echo "sendgrid.env" >> .gitignore
+source ./sendgrid.env
+```
+
+## TRYING OUT THE V3 BETA MAIL SEND
+
+```bash
+git clone -b v3beta --single-branch https://github.com/sendgrid/sendgrid-nodejs.git
+cd sendgrid-nodejs
+npm install
+```
+
+* Update the to and from [emails](https://github.com/sendgrid/sendgrid-nodejs/blob/v3beta/examples/helpers/mail/example.js#L4).
+
+```bash
+node examples/helpers/mail/example.js
+```
+
+## TRYING OUT THE V3 BETA WEB API
+
+```bash
+git clone -b v3beta --single-branch https://github.com/sendgrid/sendgrid-nodejs.git
+```
+
+* Check out the documentation for [Web API v3 endpoints](https://sendgrid.com/docs/API_Reference/Web_API_v3/index.html).
+* Review the corresponding [examples](https://github.com/sendgrid/sendgrid-nodejs/blob/v3beta/examples).
+
+```bash
+$ node examples/example.js
+```
+
+* Check out the documentation for [Web API v3 /mail/send/beta endpoint](https://sendgrid.com/docs/API_Reference/Web_API_v3/Mail/index.html).
+
+## Once we are out of v3 BETA, the following will apply
+
 The following recommended installation requires [npm](https://npmjs.org/). If you are unfamiliar with npm, see the [npm docs](https://npmjs.org/doc/). Npm comes installed with Node.js since node version 0.8.x therefore you likely already have it.
 
 Add the following to your `package.json` file:
@@ -46,18 +89,6 @@ npm install sendgrid
 - The SendGrid Service, starting at the [free level](https://sendgrid.com/free?source=sendgrid-nodejs)
 - [Nodejs-HTTP-Client](https://github.com/sendgrid/nodejs-http-client)
 
-## Environment Variables
-
-First, get your free SendGrid account [here](https://sendgrid.com/free?source=sendgrid-nodejs).
-
-Next, update your environment with your [SENDGRID_API_KEY](https://app.sendgrid.com/settings/api_keys).
-
-```bash
-echo "export SENDGRID_API_KEY='YOUR_API_KEY'" > sendgrid.env
-echo "sendgrid.env" >> .gitignore
-source ./sendgrid.env
-```
-
 # Quick Start
 
 ## Hello Email
@@ -65,8 +96,8 @@ source ./sendgrid.env
 ```javascript
   var helper = require('sendgrid-nodejs').helper
 
-  from_email = new helper.Email("dx@sendgrid.com")
-  to_email = new helper.Email("elmer.thomas@sendgrid.com")
+  from_email = new helper.Email("test@example.com")
+  to_email = new helper.Email("test@example.com")
   subject = "Hello World from the SendGrid Node.js Library"
   content = new helper.Content("text/plain", "some text here")
   mail = new helper.Mail(from_email, subject, to_email, content)

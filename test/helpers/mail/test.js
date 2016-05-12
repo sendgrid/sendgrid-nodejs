@@ -5,11 +5,11 @@ describe('helloEmail', function () {
   var helper = require('../../../lib/helpers/mail/mail.js')
 
   mail = new helper.Mail()
-  email = new helper.Email("dx@sendgrid.com")
+  email = new helper.Email("test@example.com")
   mail.setFrom(email)
 
   personalization = new helper.Personalization()
-  email = new helper.Email("elmer.thomas@sendgrid.com")
+  email = new helper.Email("test@example.com")
   personalization.addTo(email)
   mail.addPersonalization(personalization)
 
@@ -20,7 +20,7 @@ describe('helloEmail', function () {
   content = new helper.Content("text/html", "<html><body>some text here</body></html>")
   mail.addContent(content)
 
-  test_payload = '{"from":{"email":"dx@sendgrid.com"},"personalizations":[{"to":[{"email":"elmer.thomas@sendgrid.com"}]}],"subject":"Hello World from the SendGrid Node.js Library","content":[{"type":"text/plain","value":"some text here"},{"type":"text/html","value":"<html><body>some text here</body></html>"}]}'
+  test_payload = '{"from":{"email":"test@example.com"},"personalizations":[{"to":[{"email":"test@example.com"}]}],"subject":"Hello World from the SendGrid Node.js Library","content":[{"type":"text/plain","value":"some text here"},{"type":"text/html","value":"<html><body>some text here</body></html>"}]}'
 
   it('builds the correct payload', function() {
       assert.equal(JSON.stringify(mail.toJSON()), test_payload, 'payload is correct')
@@ -32,32 +32,32 @@ describe('kitchenSink', function () {
   var helper = require('../../../lib/helpers/mail/mail.js')
 
   mail = new helper.Mail()
-  email = new helper.Email("dx@sendgrid.com", "DX")
+  email = new helper.Email("test@example.com", "Example User")
   mail.setFrom(email)
 
   mail.setSubject("Hello World from the SendGrid Node.js Library")
 
   personalization = new helper.Personalization()
-  email = new helper.Email("elmer.thomas@sendgrid.com", "Elmer Thomas")
+  email = new helper.Email("test@example.com", "Example User")
   personalization.addTo(email)
-  email = new helper.Email("elmer.thomas@gmail.com", "Elmer Thomas Personal")
+  email = new helper.Email("test@example.com", "Example User")
   personalization.addTo(email)
-  email = new helper.Email("elmer.thomas+cc@sendgrid.com", "Elmer Thomas CC")
+  email = new helper.Email("test@example.com", "Example User")
   personalization.addCc(email)
-  email = new helper.Email("elmer.thomas+cc@gmail.com", "Elmer Thomas Personal CC")
+  email = new helper.Email("test@example.com", "Example User")
   personalization.addCc(email)
-  email = new helper.Email("elmer.thomas+bcc@sendgrid.com", "Elmer Thomas BCC")
+  email = new helper.Email("test@example.com", "Example User")
   personalization.addBcc(email)
-  email = new helper.Email("elmer.thomas+bcc@gmail.com", "Elmer Thomas Personal BCC")
+  email = new helper.Email("test@example.com", "Example User")
   personalization.addBcc(email)
   personalization.setSubject("Hello World from the Personalized SendGrid Node.js Library")
   header = new helper.Header("X-Test", "True")
   personalization.addHeader(header)
   header = new helper.Header("X-Test2", "False")
   personalization.addHeader(header)
-  substitution = new helper.Substitution("%name%", "Elmer")
+  substitution = new helper.Substitution("%name%", "Example User")
   personalization.addSubstitution(substitution)
-  substitution = new helper.Substitution("%city%", "Riverside")
+  substitution = new helper.Substitution("%city%", "Denver")
   personalization.addSubstitution(substitution)
   custom_arg = new helper.CustomArgs("timing", "morning")
   personalization.addCustomArg(custom_arg)
@@ -120,7 +120,7 @@ describe('kitchenSink', function () {
   mail.setIpPoolName("23")
 
   mail_settings = new helper.MailSettings()
-  bcc = new helper.BCC(true, "elmer.thomas+spam@sendgrid.com")
+  bcc = new helper.BCC(true, "test@example.com")
   mail_settings.setBcc(bcc)
   footer = new helper.Footer(true, "some footer text", "<html><body>some footer text</body></html>")
   mail_settings.setFooter(footer)
@@ -141,10 +141,10 @@ describe('kitchenSink', function () {
   tracking_settings.setGanalytics(ganalytics)
   mail.addTrackingSettings(tracking_settings)
 
-  email = new helper.Email("dx+reply@sendgrid.com", "DX")
+  email = new helper.Email("test@example.com", "Example User")
   mail.setReplyTo(email)
 
-  test_payload = '{"from":{"email":"dx@sendgrid.com","name":"DX"},"personalizations":[{"to":[{"email":"elmer.thomas@sendgrid.com","name":"Elmer Thomas"},{"email":"elmer.thomas@gmail.com","name":"Elmer Thomas Personal"}],"cc":[{"email":"elmer.thomas+cc@sendgrid.com","name":"Elmer Thomas CC"},{"email":"elmer.thomas+cc@gmail.com","name":"Elmer Thomas Personal CC"}],"bcc":[{"email":"elmer.thomas+bcc@sendgrid.com","name":"Elmer Thomas BCC"},{"email":"elmer.thomas+bcc@gmail.com","name":"Elmer Thomas Personal BCC"}],"subject":"Hello World from the Personalized SendGrid Node.js Library","headers":{"X-Test":"True","X-Test2":"False"},"substitutions":{"%name%":"Elmer","%city%":"Riverside"},"custom_args":{"timing":"morning","type":"marketing"},"send_at":1443636899}],"subject":"Hello World from the SendGrid Node.js Library","content":[{"type":"text/plain","value":"some text here"},{"type":"text/html","value":"<html><body>some text here</body></html>"},{"type":"text/calendar","value":"Party Time"}],"attachments":[{"content":"TG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFtZXQsIGNvbnNlY3RldHVyIGFkaXBpc2NpbmcgZWxpdC4gQ3JhcyBwdW12","type":"application/pdf","filename":"balance_001.pdf","disposition":"attachment"},{"content":"BwdW","type":"image/png","filename":"banner.png","disposition":"inline","content_id":"banner"}],"template_id":"439b6d66-4408-4ead-83de-5c83c2ee313a","sections":{"%section1%":"Textforasubstitutiontagofsection1","%section2%":"Textforasubstitutiontagofsection2"},"headers":{"X-Test3":"1","X-Test4":"2"},"categories":["January","2015"],"custom_args":{"timing":"evening","type":"summer_contest"},"send_at":1443636899,"batch_id":"some_batch_id","asm":{"group_id":3,"groups_to_display":[1,4,5]},"ip_pool_name":"23","mail_settings":{"bcc":{"enable":true,"email":"elmer.thomas+spam@sendgrid.com"},"footer":{"enable":true,"text":"some footer text","html":"<html><body>some footer text</body></html>"},"sandbox_mode":{"enable":true},"spam_check":{"enable":true,"threshold":1,"post_to_url":"https://gotchya.example.com"}},"tracking_settings":{"click_tracking":{"enable":false,"enable_text":false},"open_tracking":{"enable":true,"substitution_tag":"Optional tag to replace with the open image in the body of the message"},"subscription_tracking":{"enable":true,"text":"text to insert into the text/plain portion of the message","html":"html to insert into the text/html portion of the message","substitution_tag":"Optional tag to replace with the open image in the body of the message"},"ganalytics":{"enable":true,"utm_source":"some utm source","utm_medium":"some utc medium","utm_term":"some utm term","utm_content":"some utm content","utm_campaign":"some utm campaign"}},"reply_to":{"email":"dx+reply@sendgrid.com","name":"DX"}}'
+  test_payload = '{"from":{"email":"test@example.com","name":"DX"},"personalizations":[{"to":[{"email":"test@example.com","name":"Example User"},{"email":"test@example.com","name":"Example User"}],"cc":[{"email":"test@example.com","name":"Example User"},{"email":"test@example.com","name":"Example User"}],"bcc":[{"email":"test@example.com","name":"Example User"},{"email":"test@example.com","name":"Example User"}],"subject":"Hello World from the Personalized SendGrid Node.js Library","headers":{"X-Test":"True","X-Test2":"False"},"substitutions":{"%name%":"Example User","%city%":"Denver"},"custom_args":{"timing":"morning","type":"marketing"},"send_at":1443636899}],"subject":"Hello World from the SendGrid Node.js Library","content":[{"type":"text/plain","value":"some text here"},{"type":"text/html","value":"<html><body>some text here</body></html>"},{"type":"text/calendar","value":"Party Time"}],"attachments":[{"content":"TG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFtZXQsIGNvbnNlY3RldHVyIGFkaXBpc2NpbmcgZWxpdC4gQ3JhcyBwdW12","type":"application/pdf","filename":"balance_001.pdf","disposition":"attachment"},{"content":"BwdW","type":"image/png","filename":"banner.png","disposition":"inline","content_id":"banner"}],"template_id":"439b6d66-4408-4ead-83de-5c83c2ee313a","sections":{"%section1%":"Textforasubstitutiontagofsection1","%section2%":"Textforasubstitutiontagofsection2"},"headers":{"X-Test3":"1","X-Test4":"2"},"categories":["January","2015"],"custom_args":{"timing":"evening","type":"summer_contest"},"send_at":1443636899,"batch_id":"some_batch_id","asm":{"group_id":3,"groups_to_display":[1,4,5]},"ip_pool_name":"23","mail_settings":{"bcc":{"enable":true,"email":"test@example.com"},"footer":{"enable":true,"text":"some footer text","html":"<html><body>some footer text</body></html>"},"sandbox_mode":{"enable":true},"spam_check":{"enable":true,"threshold":1,"post_to_url":"https://gotchya.example.com"}},"tracking_settings":{"click_tracking":{"enable":false,"enable_text":false},"open_tracking":{"enable":true,"substitution_tag":"Optional tag to replace with the open image in the body of the message"},"subscription_tracking":{"enable":true,"text":"text to insert into the text/plain portion of the message","html":"html to insert into the text/html portion of the message","substitution_tag":"Optional tag to replace with the open image in the body of the message"},"ganalytics":{"enable":true,"utm_source":"some utm source","utm_medium":"some utc medium","utm_term":"some utm term","utm_content":"some utm content","utm_campaign":"some utm campaign"}},"reply_to":{"email":"test@example.com","name":"DX"}}'
 
   it('builds the correct payload', function() {
       assert.equal(JSON.stringify(mail.toJSON()), test_payload, 'payload is correct')

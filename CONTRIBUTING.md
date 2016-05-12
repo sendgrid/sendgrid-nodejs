@@ -117,7 +117,7 @@ The interface to the SendGrid API.
 
 All PRs require passing tests before the PR will be reviewed.
 
-All test files are in the `[tests](https://github.com/sendgrid/sendgrid-nodejs/tree/v3beta/test)` directory.
+All test files are in the [`tests`](https://github.com/sendgrid/sendgrid-nodejs/tree/v3beta/test) directory.
 
 For the purposes of contributing to this repo, please update the [`test.js`](https://github.com/sendgrid/sendgrid-nodejs/tree/v3beta/test/test.js) file with unit tests as you modify the code.
 
@@ -133,11 +133,6 @@ Generally, we follow the style guidelines as suggested by the official language.
 * [Unofficial Style Guide](https://github.com/felixge/node-style-guide)
 
 Please run your code through [ESLint](http://eslint.org/) Standard style guide.
-
-### Directory Structure
-
-* `examples` for example calls
-* `test`, for all tests
 
 ## Creating a Pull Request<a name="creating_a_pull_request"></a>
 
