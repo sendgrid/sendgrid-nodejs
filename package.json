@@ -20,9 +20,9 @@
     "node": ">= 0.4.7"
   },
   "dependencies": {
+    "lodash": "^3.10.0",
     "mime": "^1.2.9",
     "request": "^2.60.0",
-    "lodash": "^3.0.1 || ^2.0.0",
     "smtpapi": "^1.2.0"
   },
   "devDependencies": {
