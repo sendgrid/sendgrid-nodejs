@@ -279,6 +279,14 @@ email.setBccs(['foo@bar.com', 'another@another.com']);
 sendgrid.send(email, function(err, json) { });
 ```
 
+#### setReplyTo
+
+```javascript
+var email     = new sendgrid.Email(); 
+email.setReplyTo('foo@bar.com');
+sendgrid.send(email, function(err, json) { });
+```
+
 #### setSubject
 
 ```javascript
