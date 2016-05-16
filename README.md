@@ -490,7 +490,7 @@ email.addFile({
   cid: 'the_logo',           // should match cid value in html
   path: '../files/logo.png'
 });
-email.addHtml('<div>Our logo:<img src="cid:the_logo"></div>');
+email.setHtml('<div>Our logo:<img src="cid:the_logo"></div>');
 ```
 
 ## Templates
