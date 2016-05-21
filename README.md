@@ -41,6 +41,7 @@ sendgrid.send({
 }, function(err, json) {
   if (err) { return console.error(err); }
   console.log(json);
+  // console output if successful: { message: 'success' }
 });
 ```
 
@@ -103,6 +104,7 @@ Send it.
 sendgrid.send(payload, function(err, json) {
   if (err) { console.error(err); }
   console.log(json);
+  // console output if successful: { message: 'success' }
 });
 ```
 
@@ -133,6 +135,7 @@ var email     = new sendgrid.Email({
 sendgrid.send(email, function(err, json) {
   if (err) { return console.error(err); }
   console.log(json);
+  // console output if successful: { message: 'success' }
 });
 ```
 
@@ -188,7 +191,7 @@ You can add one or multiple TO addresses using `addTo`.
 **Note**: One of the most notable changes is how `addTo()` behaves. We are now using our Web API parameters instead of the X-SMTPAPI header. What this means is that if you call `addTo()` multiple times for an email, **ONE** email will be sent with each email address visible to everyone. In oder to use the header, please call the `addSmtpapiTo()` method.
 
 ```javascript
-var email     = new sendgrid.Email(); 
+var email     = new sendgrid.Email();
 email.addTo('foo@bar.com');
 email.addTo('another@another.com');
 sendgrid.send(email, function(err, json) { });
@@ -201,14 +204,14 @@ sendgrid.send(email, function(err, json) { });
 var email = new sendgrid.Email()
 email.addSmtpapiTo('test@test.com');
 sendgrid.send(email, function(err, json) { });
-``` 
+```
 
 #### setTos
 
 **Note**: The `setTos()` method now utilizes the Web API as opposed to using the X-SMTPAPI header. Please refer to the note posted on the top of this page. In order to use the header, you will need to use the `setSmtpapiTos()` method.
 
 ```javascript
-var email     = new sendgrid.Email(); 
+var email     = new sendgrid.Email();
 email.setTos(['foo@bar.com', 'another@another.com']);
 sendgrid.send(email, function(err, json) { });
 ```
@@ -224,7 +227,7 @@ sendgrid.send(email, function(err, json) { });
 #### setFrom
 
 ```javascript
-var email     = new sendgrid.Email(); 
+var email     = new sendgrid.Email();
 email.setFrom('foo@bar.com');
 sendgrid.send(email, function(err, json) { });
 ```
@@ -232,7 +235,7 @@ sendgrid.send(email, function(err, json) { });
 #### setFromName
 
 ```javascript
-var email     = new sendgrid.Email(); 
+var email     = new sendgrid.Email();
 email.setFromName('Bob Bar');
 sendgrid.send(email, function(err, json) { });
 ```
@@ -282,7 +285,7 @@ sendgrid.send(email, function(err, json) { });
 #### setSubject
 
 ```javascript
-var email     = new sendgrid.Email(); 
+var email     = new sendgrid.Email();
 email.setSubject('Some subject');
 sendgrid.send(email, function(err, json) { });
 ```
@@ -290,7 +293,7 @@ sendgrid.send(email, function(err, json) { });
 #### setText
 
 ```javascript
-var email     = new sendgrid.Email(); 
+var email     = new sendgrid.Email();
 email.setText('Some text');
 sendgrid.send(email, function(err, json) { });
 ```
@@ -298,7 +301,7 @@ sendgrid.send(email, function(err, json) { });
 #### setHtml
 
 ```javascript
-var email     = new sendgrid.Email(); 
+var email     = new sendgrid.Email();
 email.setHtml('<h1>Some html</h1>');
 sendgrid.send(email, function(err, json) { });
 ```
@@ -341,7 +344,7 @@ sendgrid.send(email, function(err, json) { });
 You can add custom headers. This will ADD rather than SET headers.
 
 ```javascript
-var email     = new sendgrid.Email(); 
+var email     = new sendgrid.Email();
 email.setHeaders({full: 'hearts'});   // headers = {full: 'hearts'}
 email.addHeader('spin', 'attack');   // headers = {full: 'hearts', spin: 'attack'}
 email.addHeader('mask', 'salesman'); // headers = {full: 'hearts', spin: 'attack', mask: 'salesman'}
@@ -350,10 +353,10 @@ sendgrid.send(email, function(err, json) { });
 
 #### setHeaders
 
-You can set custom headers. 
+You can set custom headers.
 
 ```javascript
-var email     = new sendgrid.Email(); 
+var email     = new sendgrid.Email();
 email.setHeaders({full: 'hearts'});   // headers = {full: 'hearts'}
 email.setHeaders({mask: 'salesman'}); // headers = {mask: 'salesman'}
 sendgrid.send(email, function(err, json) { });
@@ -381,7 +384,7 @@ var email     = new sendgrid.Email();
 email.addSection('-charge-', 'This ship is useless.'); // section = {'-charge-': 'This ship is useless.'}
 ```
 
-#### setSections 
+#### setSections
 
 ```javascript
 var email     = new sendgrid.Email();
@@ -503,11 +506,11 @@ email.subject = "Send with templates app";
 email.from = 'from@example.com';
 email.text = 'Hi there!';
 email.html = '<h1>Hi there!</h1>';
- 
+
 // add filter settings one at a time
 email.addFilter('templates', 'enable', 1);
 email.addFilter('templates', 'template_id', '09c6ab89-9157-4710-8ca4-db7927c631d6');
- 
+
 // or set a filter using an object literal.
 email.setFilters({
     'templates': {
