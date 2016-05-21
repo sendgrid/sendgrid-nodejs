@@ -1,3 +1,4 @@
+var fs = require('fs');
 var FileHandler = require('../../lib/file_handler');
 
 describe('FileHandler', function() {
@@ -58,6 +59,17 @@ describe('FileHandler', function() {
 
     expect(handler.filename).to.equal('test');
     expect(handler.type).to.equal('none');
+  });
+
+  it('should handle readstreams', function () {
+    var currentFileReadStream = fs.createReadStream(__filename);
+    var handler = new FileHandler({
+      stream: currentFileReadStream,
+      contentType: 'text/javascript'
+    });
+
+    expect(handler.stream).to.equal(currentFileReadStream);
+    expect(handler.contentType).to.equal('text/javascript');
   });
 
   it('should handle inline content', function() {
