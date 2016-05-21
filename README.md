@@ -3,6 +3,8 @@
 
 **This library allows you to quickly and easily use the SendGrid Web API via Node.js.**
 
+# Announcements
+
 **NOTE: The `/mail/send/beta` endpoint is currently in beta!
 
 Since this is not a general release, we do not recommend POSTing production level traffic through this endpoint or integrating your production servers with this endpoint.
@@ -10,6 +12,20 @@ Since this is not a general release, we do not recommend POSTing production leve
 When this endpoint is ready for general release, your code will require an update in order to use the official URI.
 
 By using this endpoint, you accept that you may encounter bugs and that the endpoint may be taken down for maintenance at any time. We cannot guarantee the continued availability of this beta endpoint. We hope that you like this new endpoint and we appreciate any [feedback](dx+mail-beta@sendgrid.com) that you can send our way.**
+
+**BREAKING CHANGE as of XXXX.XX.XX**
+
+Version 3.0.0 brings you full support for all Web API v3 endpoints. We
+have the following resources to get you started quickly:
+
+-   [SendGrid
+    Documentation](https://sendgrid.com/docs/API_Reference/Web_API_v3/index.html)
+-   [Example
+    Code](https://github.com/sendgrid/sendgrid-nodejs/tree/v3beta/examples)
+
+Thank you for your continued support!
+
+All updates to this library is documented in our [CHANGELOG](https://github.com/sendgrid/sendgrid-nodejs/blob/v3beta/CHANGELOG.md).
 
 # Installation
 
@@ -65,7 +81,7 @@ Add the following to your `package.json` file:
   ...
   "dependencies": {
     ...
-    "sendgrid": "^1.9.2"
+    "sendgrid": "^3.0.0"
   }
 }
 ```
@@ -136,30 +152,13 @@ sg.API(requestGet, function (response) {
 
 # Usage
 
-- [SendGrid Docs](https://sendgrid.com/docs/API_Reference/index.html)
-- [v3 Web API](https://github.com/sendgrid/sendgrid-nodejs/tree/v3beta/USAGE.md)
+- [SendGrid Docs](https://sendgrid.com/docs/API_Reference/Web_API_v3/index.html)
 - [Example Code](https://github.com/sendgrid/sendgrid-nodejs/tree/v3beta/examples)
-- [v3 Web API Mail Send Helper](https://github.com/sendgrid/sendgrid-nodejs/tree/v3beta/lib/helpers/mail/README.md)
-
-# Announcements
-
-**BREAKING CHANGE as of XXXX.XX.XX**
-
-Version 3.0.0 brings you full support for all Web API v3 endpoints. We
-have the following resources to get you started quickly:
-
--   [SendGrid
-    Documentation](https://sendgrid.com/docs/API_Reference/Web_API_v3/index.html)
--   [Usage
-    Documentation](https://github.com/sendgrid/sendgrid-nodejs/tree/v3beta/USAGE.md)
--   [Example
-    Code](https://github.com/sendgrid/sendgrid-nodejs/tree/v3beta/examples)
-
-Thank you for your continued support!
+- [v3 Web API Mail Send Helper](https://github.com/sendgrid/sendgrid-nodejs/tree/v3beta/lib/helpers/mail/README.md
 
 ## Roadmap
 
-[Milestones](https://github.com/sendgrid/sendgrid-nodejs/milestones)
+If you are intersted in the future direction of this project, please take a look at our [milestones](https://github.com/sendgrid/sendgrid-nodejs/milestones). We would love to hear your feedback.
 
 ## How to Contribute
 
@@ -169,17 +168,11 @@ We encourage contribution to our libraries, please see our [CONTRIBUTING](https:
 * [Bug Reports](https://github.com/sendgrid/sendgrid-nodejs/tree/v3beta/CONTRIBUTING.md#submit_a_bug_report)
 * [Improvements to the Codebase](https://github.com/sendgrid/sendgrid-nodejs/tree/v3beta/CONTRIBUTING.md#improvements_to_the_codebase)
 
-## Unsupported Libraries
-
-- [Official and Unsupported SendGrid Libraries](https://sendgrid.com/docs/Integrate/libraries.html)
-
 # About
-
-![SendGrid Logo]
-(https://assets3.sendgrid.com/mkt/assets/logos_brands/small/sglogo_2015_blue-9c87423c2ff2ff393ebce1ab3bd018a4.png)
 
 sendgrid-nodejs is guided and supported by the SendGrid [Developer Experience Team](mailto:dx@sendgrid.com).
 
 sendgrid-nodejs is maintained and funded by SendGrid, Inc. The names and logos for sendgrid-nodejs are trademarks of SendGrid, Inc.
 
-
+![SendGrid Logo]
+(https://assets3.sendgrid.com/mkt/assets/logos_brands/small/sglogo_2015_blue-9c87423c2ff2ff393ebce1ab3bd018a4.png)
