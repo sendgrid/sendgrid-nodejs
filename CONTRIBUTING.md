@@ -91,10 +91,18 @@ node examples/example.js
 
 See the [examples folder](https://github.com/sendgrid/sendgrid-nodejs/tree/v3beta/examples) to get started quickly.
 
-To run the example:
+To run an example:
 
 ```bash
-node examples/example.js
+touch test.js
+```
+
+Copy the desired example into `test.js`.
+
+Change the path to the Sendgrid library to `./lib/sendgrid.js`.
+
+```
+node test.js
 ```
 
 <a name="understanding_the_codebase"></a>

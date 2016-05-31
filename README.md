@@ -20,6 +20,7 @@ have the following resources to get you started quickly:
 
 -   [SendGrid
     Documentation](https://sendgrid.com/docs/API_Reference/Web_API_v3/index.html)
+-   [Usage Docs](https://github.com/sendgrid/sendgrid-nodejs/blob/v3beta/USAGE.md)
 -   [Example
     Code](https://github.com/sendgrid/sendgrid-nodejs/tree/v3beta/examples)
 
@@ -65,7 +66,15 @@ git clone -b v3beta --single-branch https://github.com/sendgrid/sendgrid-nodejs.
 * Review the corresponding [examples](https://github.com/sendgrid/sendgrid-nodejs/blob/v3beta/examples).
 
 ```bash
-$ node examples/example.js
+touch test.js
+```
+
+Copy the desired example into `test.js`.
+
+Change the path to the Sendgrid library to `./lib/sendgrid.js`.
+
+```
+node test.js
 ```
 
 * Check out the documentation for [Web API v3 /mail/send/beta endpoint](https://sendgrid.com/docs/API_Reference/Web_API_v3/Mail/index.html).
@@ -153,6 +162,7 @@ sg.API(requestGet, function (response) {
 # Usage
 
 - [SendGrid Docs](https://sendgrid.com/docs/API_Reference/Web_API_v3/index.html)
+- [Usage Docs](https://github.com/sendgrid/sendgrid-nodejs/blob/v3beta/USAGE.md)
 - [Example Code](https://github.com/sendgrid/sendgrid-nodejs/tree/v3beta/examples)
 - [v3 Web API Mail Send Helper](https://github.com/sendgrid/sendgrid-nodejs/tree/v3beta/lib/helpers/mail/README.md
 
