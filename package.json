@@ -21,7 +21,7 @@
     "node": ">= 0.4.7"
   },
   "dependencies": {
-    "sendgrid-rest": "^1.0.1"
+    "sendgrid-rest": "^2.0.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",

@@ -14,8 +14,8 @@ request.method = 'GET'
 request.path = '/v3/suppression/blocks'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -24,7 +24,7 @@ sg.API(request, function (response) {
 
 var emptyRequest = require('sendgrid-rest').request
 var request = JSON.parse(JSON.stringify(emptyRequest))
-request.requestBody = {
+request.body = {
   "delete_all": false, 
   "emails": [
     "example1@example.com", 
@@ -35,8 +35,8 @@ request.method = 'DELETE'
 request.path = '/v3/suppression/blocks'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -49,8 +49,8 @@ request.method = 'GET'
 request.path = '/v3/suppression/blocks/{email}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -63,8 +63,8 @@ request.method = 'DELETE'
 request.path = '/v3/suppression/blocks/{email}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -79,8 +79,8 @@ request.method = 'GET'
 request.path = '/v3/suppression/bounces'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -89,7 +89,7 @@ sg.API(request, function (response) {
 
 var emptyRequest = require('sendgrid-rest').request
 var request = JSON.parse(JSON.stringify(emptyRequest))
-request.requestBody = {
+request.body = {
   "delete_all": true, 
   "emails": [
     "example@example.com", 
@@ -100,8 +100,8 @@ request.method = 'DELETE'
 request.path = '/v3/suppression/bounces'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -114,8 +114,8 @@ request.method = 'GET'
 request.path = '/v3/suppression/bounces/{email}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -129,8 +129,8 @@ request.method = 'DELETE'
 request.path = '/v3/suppression/bounces/{email}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -147,8 +147,8 @@ request.method = 'GET'
 request.path = '/v3/suppression/invalid_emails'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -157,7 +157,7 @@ sg.API(request, function (response) {
 
 var emptyRequest = require('sendgrid-rest').request
 var request = JSON.parse(JSON.stringify(emptyRequest))
-request.requestBody = {
+request.body = {
   "delete_all": false, 
   "emails": [
     "example1@example.com", 
@@ -168,8 +168,8 @@ request.method = 'DELETE'
 request.path = '/v3/suppression/invalid_emails'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -182,8 +182,8 @@ request.method = 'GET'
 request.path = '/v3/suppression/invalid_emails/{email}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -196,8 +196,8 @@ request.method = 'DELETE'
 request.path = '/v3/suppression/invalid_emails/{email}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -210,8 +210,8 @@ request.method = 'GET'
 request.path = '/v3/suppression/spam_report/{email}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -224,8 +224,8 @@ request.method = 'DELETE'
 request.path = '/v3/suppression/spam_report/{email}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -242,8 +242,8 @@ request.method = 'GET'
 request.path = '/v3/suppression/spam_reports'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -252,7 +252,7 @@ sg.API(request, function (response) {
 
 var emptyRequest = require('sendgrid-rest').request
 var request = JSON.parse(JSON.stringify(emptyRequest))
-request.requestBody = {
+request.body = {
   "delete_all": false, 
   "emails": [
     "example1@example.com", 
@@ -263,8 +263,8 @@ request.method = 'DELETE'
 request.path = '/v3/suppression/spam_reports'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -281,7 +281,7 @@ request.method = 'GET'
 request.path = '/v3/suppression/unsubscribes'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 

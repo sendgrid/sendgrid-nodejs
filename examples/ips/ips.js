@@ -15,8 +15,8 @@ request.method = 'GET'
 request.path = '/v3/ips'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -29,8 +29,8 @@ request.method = 'GET'
 request.path = '/v3/ips/assigned'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -39,15 +39,15 @@ sg.API(request, function (response) {
 
 var emptyRequest = require('sendgrid-rest').request
 var request = JSON.parse(JSON.stringify(emptyRequest))
-request.requestBody = {
+request.body = {
   "name": "marketing"
 };
 request.method = 'POST'
 request.path = '/v3/ips/pools'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -60,8 +60,8 @@ request.method = 'GET'
 request.path = '/v3/ips/pools'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -70,15 +70,15 @@ sg.API(request, function (response) {
 
 var emptyRequest = require('sendgrid-rest').request
 var request = JSON.parse(JSON.stringify(emptyRequest))
-request.requestBody = {
+request.body = {
   "name": "new_pool_name"
 };
 request.method = 'PUT'
 request.path = '/v3/ips/pools/{pool_name}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -91,8 +91,8 @@ request.method = 'GET'
 request.path = '/v3/ips/pools/{pool_name}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -105,8 +105,8 @@ request.method = 'DELETE'
 request.path = '/v3/ips/pools/{pool_name}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -115,15 +115,15 @@ sg.API(request, function (response) {
 
 var emptyRequest = require('sendgrid-rest').request
 var request = JSON.parse(JSON.stringify(emptyRequest))
-request.requestBody = {
+request.body = {
   "ip": "0.0.0.0"
 };
 request.method = 'POST'
 request.path = '/v3/ips/pools/{pool_name}/ips'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -136,8 +136,8 @@ request.method = 'DELETE'
 request.path = '/v3/ips/pools/{pool_name}/ips/{ip}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -146,15 +146,15 @@ sg.API(request, function (response) {
 
 var emptyRequest = require('sendgrid-rest').request
 var request = JSON.parse(JSON.stringify(emptyRequest))
-request.requestBody = {
+request.body = {
   "ip": "0.0.0.0"
 };
 request.method = 'POST'
 request.path = '/v3/ips/warmup'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -167,8 +167,8 @@ request.method = 'GET'
 request.path = '/v3/ips/warmup'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -181,8 +181,8 @@ request.method = 'GET'
 request.path = '/v3/ips/warmup/{ip_address}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -195,8 +195,8 @@ request.method = 'DELETE'
 request.path = '/v3/ips/warmup/{ip_address}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -209,7 +209,7 @@ request.method = 'GET'
 request.path = '/v3/ips/{ip_address}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 

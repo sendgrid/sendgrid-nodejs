@@ -6,7 +6,7 @@ var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
 
 var emptyRequest = require('sendgrid-rest').request
 var request = JSON.parse(JSON.stringify(emptyRequest))
-request.requestBody = {
+request.body = {
   "description": "A group description", 
   "is_default": false, 
   "name": "A group name"
@@ -15,8 +15,8 @@ request.method = 'POST'
 request.path = '/v3/asm/groups'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -29,8 +29,8 @@ request.method = 'GET'
 request.path = '/v3/asm/groups'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -39,7 +39,7 @@ sg.API(request, function (response) {
 
 var emptyRequest = require('sendgrid-rest').request
 var request = JSON.parse(JSON.stringify(emptyRequest))
-request.requestBody = {
+request.body = {
   "description": "Suggestions for items our users might like.", 
   "id": 103, 
   "name": "Item Suggestions"
@@ -48,8 +48,8 @@ request.method = 'PATCH'
 request.path = '/v3/asm/groups/{group_id}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -62,8 +62,8 @@ request.method = 'GET'
 request.path = '/v3/asm/groups/{group_id}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -76,8 +76,8 @@ request.method = 'DELETE'
 request.path = '/v3/asm/groups/{group_id}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -86,7 +86,7 @@ sg.API(request, function (response) {
 
 var emptyRequest = require('sendgrid-rest').request
 var request = JSON.parse(JSON.stringify(emptyRequest))
-request.requestBody = {
+request.body = {
   "recipient_emails": [
     "test1@example.com", 
     "test2@example.com"
@@ -96,8 +96,8 @@ request.method = 'POST'
 request.path = '/v3/asm/groups/{group_id}/suppressions'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -110,8 +110,8 @@ request.method = 'GET'
 request.path = '/v3/asm/groups/{group_id}/suppressions'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -124,8 +124,8 @@ request.method = 'DELETE'
 request.path = '/v3/asm/groups/{group_id}/suppressions/{email}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -134,7 +134,7 @@ sg.API(request, function (response) {
 
 var emptyRequest = require('sendgrid-rest').request
 var request = JSON.parse(JSON.stringify(emptyRequest))
-request.requestBody = {
+request.body = {
   "recipient_emails": [
     "test1@example.com", 
     "test2@example.com"
@@ -144,8 +144,8 @@ request.method = 'POST'
 request.path = '/v3/asm/suppressions/global'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -158,8 +158,8 @@ request.method = 'GET'
 request.path = '/v3/asm/suppressions/global/{email}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -172,7 +172,7 @@ request.method = 'DELETE'
 request.path = '/v3/asm/suppressions/global/{email}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 

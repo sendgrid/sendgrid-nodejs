@@ -6,7 +6,7 @@ var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
 
 var emptyRequest = require('sendgrid-rest').request
 var request = JSON.parse(JSON.stringify(emptyRequest))
-request.requestBody = {
+request.body = {
   "automatic_security": false, 
   "custom_spf": true, 
   "default": true, 
@@ -22,8 +22,8 @@ request.method = 'POST'
 request.path = '/v3/whitelabel/domains'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -41,8 +41,8 @@ request.method = 'GET'
 request.path = '/v3/whitelabel/domains'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -55,8 +55,8 @@ request.method = 'GET'
 request.path = '/v3/whitelabel/domains/default'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -69,8 +69,8 @@ request.method = 'GET'
 request.path = '/v3/whitelabel/domains/subuser'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -83,8 +83,8 @@ request.method = 'DELETE'
 request.path = '/v3/whitelabel/domains/subuser'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -93,7 +93,7 @@ sg.API(request, function (response) {
 
 var emptyRequest = require('sendgrid-rest').request
 var request = JSON.parse(JSON.stringify(emptyRequest))
-request.requestBody = {
+request.body = {
   "custom_spf": true, 
   "default": false
 };
@@ -101,8 +101,8 @@ request.method = 'PATCH'
 request.path = '/v3/whitelabel/domains/{domain_id}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -115,8 +115,8 @@ request.method = 'GET'
 request.path = '/v3/whitelabel/domains/{domain_id}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -129,8 +129,8 @@ request.method = 'DELETE'
 request.path = '/v3/whitelabel/domains/{domain_id}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -139,15 +139,15 @@ sg.API(request, function (response) {
 
 var emptyRequest = require('sendgrid-rest').request
 var request = JSON.parse(JSON.stringify(emptyRequest))
-request.requestBody = {
+request.body = {
   "username": "jane@example.com"
 };
 request.method = 'POST'
 request.path = '/v3/whitelabel/domains/{domain_id}/subuser'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -156,15 +156,15 @@ sg.API(request, function (response) {
 
 var emptyRequest = require('sendgrid-rest').request
 var request = JSON.parse(JSON.stringify(emptyRequest))
-request.requestBody = {
+request.body = {
   "ip": "192.168.0.1"
 };
 request.method = 'POST'
 request.path = '/v3/whitelabel/domains/{id}/ips'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -177,8 +177,8 @@ request.method = 'DELETE'
 request.path = '/v3/whitelabel/domains/{id}/ips/{ip}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -191,8 +191,8 @@ request.method = 'POST'
 request.path = '/v3/whitelabel/domains/{id}/validate'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -201,7 +201,7 @@ sg.API(request, function (response) {
 
 var emptyRequest = require('sendgrid-rest').request
 var request = JSON.parse(JSON.stringify(emptyRequest))
-request.requestBody = {
+request.body = {
   "domain": "example.com", 
   "ip": "192.168.1.1", 
   "subdomain": "email"
@@ -210,8 +210,8 @@ request.method = 'POST'
 request.path = '/v3/whitelabel/ips'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -227,8 +227,8 @@ request.method = 'GET'
 request.path = '/v3/whitelabel/ips'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -241,8 +241,8 @@ request.method = 'GET'
 request.path = '/v3/whitelabel/ips/{id}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -255,8 +255,8 @@ request.method = 'DELETE'
 request.path = '/v3/whitelabel/ips/{id}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -269,8 +269,8 @@ request.method = 'POST'
 request.path = '/v3/whitelabel/ips/{id}/validate'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -279,7 +279,7 @@ sg.API(request, function (response) {
 
 var emptyRequest = require('sendgrid-rest').request
 var request = JSON.parse(JSON.stringify(emptyRequest))
-request.requestBody = {
+request.body = {
   "default": true, 
   "domain": "example.com", 
   "subdomain": "mail"
@@ -290,8 +290,8 @@ request.method = 'POST'
 request.path = '/v3/whitelabel/links'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -305,8 +305,8 @@ request.method = 'GET'
 request.path = '/v3/whitelabel/links'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -320,8 +320,8 @@ request.method = 'GET'
 request.path = '/v3/whitelabel/links/default'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -335,8 +335,8 @@ request.method = 'GET'
 request.path = '/v3/whitelabel/links/subuser'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -350,8 +350,8 @@ request.method = 'DELETE'
 request.path = '/v3/whitelabel/links/subuser'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -360,15 +360,15 @@ sg.API(request, function (response) {
 
 var emptyRequest = require('sendgrid-rest').request
 var request = JSON.parse(JSON.stringify(emptyRequest))
-request.requestBody = {
+request.body = {
   "default": true
 };
 request.method = 'PATCH'
 request.path = '/v3/whitelabel/links/{id}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -381,8 +381,8 @@ request.method = 'GET'
 request.path = '/v3/whitelabel/links/{id}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -395,8 +395,8 @@ request.method = 'DELETE'
 request.path = '/v3/whitelabel/links/{id}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -409,8 +409,8 @@ request.method = 'POST'
 request.path = '/v3/whitelabel/links/{id}/validate'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -419,14 +419,14 @@ sg.API(request, function (response) {
 
 var emptyRequest = require('sendgrid-rest').request
 var request = JSON.parse(JSON.stringify(emptyRequest))
-request.requestBody = {
+request.body = {
   "username": "jane@example.com"
 };
 request.method = 'POST'
 request.path = '/v3/whitelabel/links/{link_id}/subuser'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 

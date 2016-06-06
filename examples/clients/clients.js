@@ -13,8 +13,8 @@ request.method = 'GET'
 request.path = '/v3/clients/stats'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -30,7 +30,7 @@ request.method = 'GET'
 request.path = '/v3/clients/{client_type}/stats'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 

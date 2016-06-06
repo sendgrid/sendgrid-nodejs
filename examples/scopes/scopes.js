@@ -10,7 +10,7 @@ request.method = 'GET'
 request.path = '/v3/scopes'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 

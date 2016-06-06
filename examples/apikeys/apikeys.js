@@ -6,7 +6,7 @@ var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
 
 var emptyRequest = require('sendgrid-rest').request
 var request = JSON.parse(JSON.stringify(emptyRequest))
-request.requestBody = {
+request.body = {
   "name": "My API Key", 
   "scopes": [
     "mail.send", 
@@ -18,8 +18,8 @@ request.method = 'POST'
 request.path = '/v3/api_keys'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -32,8 +32,8 @@ request.method = 'GET'
 request.path = '/v3/api_keys'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -42,7 +42,7 @@ sg.API(request, function (response) {
 
 var emptyRequest = require('sendgrid-rest').request
 var request = JSON.parse(JSON.stringify(emptyRequest))
-request.requestBody = {
+request.body = {
   "name": "A New Hope", 
   "scopes": [
     "user.profile.read", 
@@ -53,8 +53,8 @@ request.method = 'PUT'
 request.path = '/v3/api_keys/{api_key_id}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -63,15 +63,15 @@ sg.API(request, function (response) {
 
 var emptyRequest = require('sendgrid-rest').request
 var request = JSON.parse(JSON.stringify(emptyRequest))
-request.requestBody = {
+request.body = {
   "name": "A New Hope"
 };
 request.method = 'PATCH'
 request.path = '/v3/api_keys/{api_key_id}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -84,8 +84,8 @@ request.method = 'GET'
 request.path = '/v3/api_keys/{api_key_id}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -98,7 +98,7 @@ request.method = 'DELETE'
 request.path = '/v3/api_keys/{api_key_id}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 

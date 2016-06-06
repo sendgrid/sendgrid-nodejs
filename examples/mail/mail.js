@@ -10,8 +10,8 @@ request.method = 'POST'
 request.path = '/v3/mail/batch'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -24,8 +24,8 @@ request.method = 'GET'
 request.path = '/v3/mail/batch/{batch_id}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -34,7 +34,7 @@ sg.API(request, function (response) {
 
 var emptyRequest = require('sendgrid-rest').request
 var request = JSON.parse(JSON.stringify(emptyRequest))
-request.requestBody = {
+request.body = {
   "asm": {
     "group_id": 1, 
     "groups_to_display": [
@@ -181,7 +181,7 @@ request.method = 'POST'
 request.path = '/v3/mail/send/beta'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 

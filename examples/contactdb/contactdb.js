@@ -6,7 +6,7 @@ var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
 
 var emptyRequest = require('sendgrid-rest').request
 var request = JSON.parse(JSON.stringify(emptyRequest))
-request.requestBody = {
+request.body = {
   "name": "pet", 
   "type": "text"
 };
@@ -14,8 +14,8 @@ request.method = 'POST'
 request.path = '/v3/contactdb/custom_fields'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -28,8 +28,8 @@ request.method = 'GET'
 request.path = '/v3/contactdb/custom_fields'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -42,8 +42,8 @@ request.method = 'GET'
 request.path = '/v3/contactdb/custom_fields/{custom_field_id}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -56,8 +56,8 @@ request.method = 'DELETE'
 request.path = '/v3/contactdb/custom_fields/{custom_field_id}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -66,15 +66,15 @@ sg.API(request, function (response) {
 
 var emptyRequest = require('sendgrid-rest').request
 var request = JSON.parse(JSON.stringify(emptyRequest))
-request.requestBody = {
+request.body = {
   "name": "your list name"
 };
 request.method = 'POST'
 request.path = '/v3/contactdb/lists'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -87,8 +87,8 @@ request.method = 'GET'
 request.path = '/v3/contactdb/lists'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -97,7 +97,7 @@ sg.API(request, function (response) {
 
 var emptyRequest = require('sendgrid-rest').request
 var request = JSON.parse(JSON.stringify(emptyRequest))
-request.requestBody = [
+request.body = [
   1, 
   2, 
   3, 
@@ -107,8 +107,8 @@ request.method = 'DELETE'
 request.path = '/v3/contactdb/lists'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -117,7 +117,7 @@ sg.API(request, function (response) {
 
 var emptyRequest = require('sendgrid-rest').request
 var request = JSON.parse(JSON.stringify(emptyRequest))
-request.requestBody = {
+request.body = {
   "name": "newlistname"
 };
 request.queryParams["list_id"] = '0'
@@ -125,8 +125,8 @@ request.method = 'PATCH'
 request.path = '/v3/contactdb/lists/{list_id}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -140,8 +140,8 @@ request.method = 'GET'
 request.path = '/v3/contactdb/lists/{list_id}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -155,8 +155,8 @@ request.method = 'DELETE'
 request.path = '/v3/contactdb/lists/{list_id}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -165,7 +165,7 @@ sg.API(request, function (response) {
 
 var emptyRequest = require('sendgrid-rest').request
 var request = JSON.parse(JSON.stringify(emptyRequest))
-request.requestBody = [
+request.body = [
   "recipient_id1", 
   "recipient_id2"
 ];
@@ -173,8 +173,8 @@ request.method = 'POST'
 request.path = '/v3/contactdb/lists/{list_id}/recipients'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -190,8 +190,8 @@ request.method = 'GET'
 request.path = '/v3/contactdb/lists/{list_id}/recipients'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -204,8 +204,8 @@ request.method = 'POST'
 request.path = '/v3/contactdb/lists/{list_id}/recipients/{recipient_id}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -220,8 +220,8 @@ request.method = 'DELETE'
 request.path = '/v3/contactdb/lists/{list_id}/recipients/{recipient_id}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -230,7 +230,7 @@ sg.API(request, function (response) {
 
 var emptyRequest = require('sendgrid-rest').request
 var request = JSON.parse(JSON.stringify(emptyRequest))
-request.requestBody = [
+request.body = [
   {
     "email": "jones@example.com", 
     "first_name": "Guy", 
@@ -241,8 +241,8 @@ request.method = 'PATCH'
 request.path = '/v3/contactdb/recipients'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -251,7 +251,7 @@ sg.API(request, function (response) {
 
 var emptyRequest = require('sendgrid-rest').request
 var request = JSON.parse(JSON.stringify(emptyRequest))
-request.requestBody = [
+request.body = [
   {
     "age": 25, 
     "email": "example@example.com", 
@@ -269,8 +269,8 @@ request.method = 'POST'
 request.path = '/v3/contactdb/recipients'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -285,8 +285,8 @@ request.method = 'GET'
 request.path = '/v3/contactdb/recipients'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -295,7 +295,7 @@ sg.API(request, function (response) {
 
 var emptyRequest = require('sendgrid-rest').request
 var request = JSON.parse(JSON.stringify(emptyRequest))
-request.requestBody = [
+request.body = [
   "recipient_id1", 
   "recipient_id2"
 ];
@@ -303,8 +303,8 @@ request.method = 'DELETE'
 request.path = '/v3/contactdb/recipients'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -317,8 +317,8 @@ request.method = 'GET'
 request.path = '/v3/contactdb/recipients/billable_count'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -331,8 +331,8 @@ request.method = 'GET'
 request.path = '/v3/contactdb/recipients/count'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -346,8 +346,8 @@ request.method = 'GET'
 request.path = '/v3/contactdb/recipients/search'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -360,8 +360,8 @@ request.method = 'GET'
 request.path = '/v3/contactdb/recipients/{recipient_id}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -374,8 +374,8 @@ request.method = 'DELETE'
 request.path = '/v3/contactdb/recipients/{recipient_id}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -388,8 +388,8 @@ request.method = 'GET'
 request.path = '/v3/contactdb/recipients/{recipient_id}/lists'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -402,8 +402,8 @@ request.method = 'GET'
 request.path = '/v3/contactdb/reserved_fields'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -412,7 +412,7 @@ sg.API(request, function (response) {
 
 var emptyRequest = require('sendgrid-rest').request
 var request = JSON.parse(JSON.stringify(emptyRequest))
-request.requestBody = {
+request.body = {
   "conditions": [
     {
       "and_or": "", 
@@ -440,8 +440,8 @@ request.method = 'POST'
 request.path = '/v3/contactdb/segments'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -454,8 +454,8 @@ request.method = 'GET'
 request.path = '/v3/contactdb/segments'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -464,7 +464,7 @@ sg.API(request, function (response) {
 
 var emptyRequest = require('sendgrid-rest').request
 var request = JSON.parse(JSON.stringify(emptyRequest))
-request.requestBody = {
+request.body = {
   "conditions": [
     {
       "and_or": "", 
@@ -481,8 +481,8 @@ request.method = 'PATCH'
 request.path = '/v3/contactdb/segments/{segment_id}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -496,8 +496,8 @@ request.method = 'GET'
 request.path = '/v3/contactdb/segments/{segment_id}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -511,8 +511,8 @@ request.method = 'DELETE'
 request.path = '/v3/contactdb/segments/{segment_id}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -527,7 +527,7 @@ request.method = 'GET'
 request.path = '/v3/contactdb/segments/{segment_id}/recipients'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 

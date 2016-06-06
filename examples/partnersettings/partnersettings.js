@@ -12,8 +12,8 @@ request.method = 'GET'
 request.path = '/v3/partner_settings'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -22,7 +22,7 @@ sg.API(request, function (response) {
 
 var emptyRequest = require('sendgrid-rest').request
 var request = JSON.parse(JSON.stringify(emptyRequest))
-request.requestBody = {
+request.body = {
   "enable_subuser_statistics": true, 
   "enabled": true, 
   "license_key": ""
@@ -31,8 +31,8 @@ request.method = 'PATCH'
 request.path = '/v3/partner_settings/new_relic'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 
 ##################################################
@@ -45,7 +45,7 @@ request.method = 'GET'
 request.path = '/v3/partner_settings/new_relic'
 sg.API(request, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 

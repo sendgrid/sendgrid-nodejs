@@ -134,11 +134,11 @@ npm install sendgrid
   var requestPost = JSON.parse(JSON.stringify(emptyRequest))
   requestPost.method = 'POST'
   requestPost.path = '/v3/mail/send/beta'
-  requestPost.requestBody = requestBody
+  requestPost.body = requestBody
   sg.API(requestPost, function (response) {
     console.log(response.statusCode)
-    console.log(response.responseBody)
-    console.log(response.responseHeaders)
+    console.log(response.body)
+    console.log(response.headers)
   })
 ```
 
@@ -154,8 +154,8 @@ requestGet.method = 'GET'
 requestGet.path = '/v3/api_keys'
 sg.API(requestGet, function (response) {
   console.log(response.statusCode)
-  console.log(response.responseBody)
-  console.log(response.responseHeaders)
+  console.log(response.body)
+  console.log(response.headers)
 })
 ```
 
