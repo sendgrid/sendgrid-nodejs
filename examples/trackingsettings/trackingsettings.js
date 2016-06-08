@@ -1,11 +1,10 @@
 var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
 
-##################################################
-# Retrieve Tracking Settings #
-# GET /tracking_settings #
+///////////////////////////////////////////////////
+// Retrieve Tracking Settings
+// GET /tracking_settings
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.queryParams["limit"] = '1'
   request.queryParams["offset"] = '1'
 request.method = 'GET'
@@ -16,12 +15,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Update Click Tracking Settings #
-# PATCH /tracking_settings/click #
+///////////////////////////////////////////////////
+// Update Click Tracking Settings
+// PATCH /tracking_settings/click
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = {
   "enabled": true
 };
@@ -33,12 +31,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve Click Track Settings #
-# GET /tracking_settings/click #
+///////////////////////////////////////////////////
+// Retrieve Click Track Settings
+// GET /tracking_settings/click
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'GET'
 request.path = '/v3/tracking_settings/click'
 sg.API(request, function (response) {
@@ -47,12 +44,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Update Google Analytics Settings #
-# PATCH /tracking_settings/google_analytics #
+///////////////////////////////////////////////////
+// Update Google Analytics Settings
+// PATCH /tracking_settings/google_analytics
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = {
   "enabled": true, 
   "utm_campaign": "website", 
@@ -69,12 +65,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve Google Analytics Settings #
-# GET /tracking_settings/google_analytics #
+///////////////////////////////////////////////////
+// Retrieve Google Analytics Settings
+// GET /tracking_settings/google_analytics
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'GET'
 request.path = '/v3/tracking_settings/google_analytics'
 sg.API(request, function (response) {
@@ -83,12 +78,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Update Open Tracking Settings #
-# PATCH /tracking_settings/open #
+///////////////////////////////////////////////////
+// Update Open Tracking Settings
+// PATCH /tracking_settings/open
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = {
   "enabled": true
 };
@@ -100,12 +94,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Get Open Tracking Settings #
-# GET /tracking_settings/open #
+///////////////////////////////////////////////////
+// Get Open Tracking Settings
+// GET /tracking_settings/open
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'GET'
 request.path = '/v3/tracking_settings/open'
 sg.API(request, function (response) {
@@ -114,12 +107,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Update Subscription Tracking Settings #
-# PATCH /tracking_settings/subscription #
+///////////////////////////////////////////////////
+// Update Subscription Tracking Settings
+// PATCH /tracking_settings/subscription
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = {
   "enabled": true, 
   "html_content": "html content", 
@@ -136,12 +128,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve Subscription Tracking Settings #
-# GET /tracking_settings/subscription #
+///////////////////////////////////////////////////
+// Retrieve Subscription Tracking Settings
+// GET /tracking_settings/subscription
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'GET'
 request.path = '/v3/tracking_settings/subscription'
 sg.API(request, function (response) {

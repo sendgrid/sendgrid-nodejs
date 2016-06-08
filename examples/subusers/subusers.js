@@ -1,11 +1,10 @@
 var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
 
-##################################################
-# Create Subuser #
-# POST /subusers #
+///////////////////////////////////////////////////
+// Create Subuser
+// POST /subusers
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = {
   "email": "John@example.com", 
   "ips": [
@@ -23,12 +22,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# List all Subusers #
-# GET /subusers #
+///////////////////////////////////////////////////
+// List all Subusers
+// GET /subusers
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.queryParams["username"] = 'test_string'
   request.queryParams["limit"] = '0'
   request.queryParams["offset"] = '0'
@@ -40,12 +38,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve Subuser Reputations #
-# GET /subusers/reputations #
+///////////////////////////////////////////////////
+// Retrieve Subuser Reputations
+// GET /subusers/reputations
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.queryParams["usernames"] = 'test_string'
 request.method = 'GET'
 request.path = '/v3/subusers/reputations'
@@ -55,12 +52,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve email statistics for your subusers. #
-# GET /subusers/stats #
+///////////////////////////////////////////////////
+// Retrieve email statistics for your subusers.
+// GET /subusers/stats
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.queryParams["end_date"] = '2016-04-01'
   request.queryParams["aggregated_by"] = 'day'
   request.queryParams["limit"] = '1'
@@ -75,12 +71,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve monthly stats for all subusers #
-# GET /subusers/stats/monthly #
+///////////////////////////////////////////////////
+// Retrieve monthly stats for all subusers
+// GET /subusers/stats/monthly
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.queryParams["subuser"] = 'test_string'
   request.queryParams["limit"] = '1'
   request.queryParams["sort_by_metric"] = 'test_string'
@@ -95,12 +90,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-#  Retrieve the totals for each email statistic metric for all subusers. #
-# GET /subusers/stats/sums #
+///////////////////////////////////////////////////
+//  Retrieve the totals for each email statistic metric for all subusers.
+// GET /subusers/stats/sums
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.queryParams["end_date"] = '2016-04-01'
   request.queryParams["aggregated_by"] = 'day'
   request.queryParams["limit"] = '1'
@@ -116,12 +110,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Enable/disable a subuser #
-# PATCH /subusers/{subuser_name} #
+///////////////////////////////////////////////////
+// Enable/disable a subuser
+// PATCH /subusers/{subuser_name}
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = {
   "disabled": false
 };
@@ -133,12 +126,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Delete a subuser #
-# DELETE /subusers/{subuser_name} #
+///////////////////////////////////////////////////
+// Delete a subuser
+// DELETE /subusers/{subuser_name}
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'DELETE'
 request.path = '/v3/subusers/{subuser_name}'
 sg.API(request, function (response) {
@@ -147,12 +139,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Update IPs assigned to a subuser #
-# PUT /subusers/{subuser_name}/ips #
+///////////////////////////////////////////////////
+// Update IPs assigned to a subuser
+// PUT /subusers/{subuser_name}/ips
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = [
   "127.0.0.1"
 ];
@@ -164,12 +155,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Update Monitor Settings for a subuser #
-# PUT /subusers/{subuser_name}/monitor #
+///////////////////////////////////////////////////
+// Update Monitor Settings for a subuser
+// PUT /subusers/{subuser_name}/monitor
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = {
   "email": "example@example.com", 
   "frequency": 500
@@ -182,12 +172,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Create monitor settings #
-# POST /subusers/{subuser_name}/monitor #
+///////////////////////////////////////////////////
+// Create monitor settings
+// POST /subusers/{subuser_name}/monitor
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = {
   "email": "example@example.com", 
   "frequency": 50000
@@ -200,12 +189,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve monitor settings for a subuser #
-# GET /subusers/{subuser_name}/monitor #
+///////////////////////////////////////////////////
+// Retrieve monitor settings for a subuser
+// GET /subusers/{subuser_name}/monitor
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'GET'
 request.path = '/v3/subusers/{subuser_name}/monitor'
 sg.API(request, function (response) {
@@ -214,12 +202,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Delete monitor settings #
-# DELETE /subusers/{subuser_name}/monitor #
+///////////////////////////////////////////////////
+// Delete monitor settings
+// DELETE /subusers/{subuser_name}/monitor
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'DELETE'
 request.path = '/v3/subusers/{subuser_name}/monitor'
 sg.API(request, function (response) {
@@ -228,12 +215,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve the monthly email statistics for a single subuser #
-# GET /subusers/{subuser_name}/stats/monthly #
+///////////////////////////////////////////////////
+// Retrieve the monthly email statistics for a single subuser
+// GET /subusers/{subuser_name}/stats/monthly
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.queryParams["date"] = 'test_string'
   request.queryParams["sort_by_direction"] = 'asc'
   request.queryParams["limit"] = '0'

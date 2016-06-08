@@ -1,11 +1,10 @@
 var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
 
-##################################################
-# Create a Custom Field #
-# POST /contactdb/custom_fields #
+///////////////////////////////////////////////////
+// Create a Custom Field
+// POST /contactdb/custom_fields
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = {
   "name": "pet", 
   "type": "text"
@@ -18,12 +17,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve all custom fields #
-# GET /contactdb/custom_fields #
+///////////////////////////////////////////////////
+// Retrieve all custom fields
+// GET /contactdb/custom_fields
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'GET'
 request.path = '/v3/contactdb/custom_fields'
 sg.API(request, function (response) {
@@ -32,12 +30,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve a Custom Field #
-# GET /contactdb/custom_fields/{custom_field_id} #
+///////////////////////////////////////////////////
+// Retrieve a Custom Field
+// GET /contactdb/custom_fields/{custom_field_id}
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'GET'
 request.path = '/v3/contactdb/custom_fields/{custom_field_id}'
 sg.API(request, function (response) {
@@ -46,12 +43,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Delete a Custom Field #
-# DELETE /contactdb/custom_fields/{custom_field_id} #
+///////////////////////////////////////////////////
+// Delete a Custom Field
+// DELETE /contactdb/custom_fields/{custom_field_id}
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'DELETE'
 request.path = '/v3/contactdb/custom_fields/{custom_field_id}'
 sg.API(request, function (response) {
@@ -60,12 +56,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Create a List #
-# POST /contactdb/lists #
+///////////////////////////////////////////////////
+// Create a List
+// POST /contactdb/lists
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = {
   "name": "your list name"
 };
@@ -77,12 +72,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve all lists #
-# GET /contactdb/lists #
+///////////////////////////////////////////////////
+// Retrieve all lists
+// GET /contactdb/lists
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'GET'
 request.path = '/v3/contactdb/lists'
 sg.API(request, function (response) {
@@ -91,12 +85,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Delete Multiple lists #
-# DELETE /contactdb/lists #
+///////////////////////////////////////////////////
+// Delete Multiple lists
+// DELETE /contactdb/lists
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = [
   1, 
   2, 
@@ -111,12 +104,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Update a List #
-# PATCH /contactdb/lists/{list_id} #
+///////////////////////////////////////////////////
+// Update a List
+// PATCH /contactdb/lists/{list_id}
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = {
   "name": "newlistname"
 };
@@ -129,12 +121,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve a single list #
-# GET /contactdb/lists/{list_id} #
+///////////////////////////////////////////////////
+// Retrieve a single list
+// GET /contactdb/lists/{list_id}
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.queryParams["list_id"] = '0'
 request.method = 'GET'
 request.path = '/v3/contactdb/lists/{list_id}'
@@ -144,12 +135,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Delete a List #
-# DELETE /contactdb/lists/{list_id} #
+///////////////////////////////////////////////////
+// Delete a List
+// DELETE /contactdb/lists/{list_id}
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.queryParams["delete_contacts"] = 'true'
 request.method = 'DELETE'
 request.path = '/v3/contactdb/lists/{list_id}'
@@ -159,12 +149,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Add Multiple Recipients to a List #
-# POST /contactdb/lists/{list_id}/recipients #
+///////////////////////////////////////////////////
+// Add Multiple Recipients to a List
+// POST /contactdb/lists/{list_id}/recipients
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = [
   "recipient_id1", 
   "recipient_id2"
@@ -177,12 +166,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve all recipients on a List #
-# GET /contactdb/lists/{list_id}/recipients #
+///////////////////////////////////////////////////
+// Retrieve all recipients on a List
+// GET /contactdb/lists/{list_id}/recipients
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.queryParams["page"] = '1'
   request.queryParams["page_size"] = '1'
   request.queryParams["list_id"] = '0'
@@ -194,12 +182,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Add a Single Recipient to a List #
-# POST /contactdb/lists/{list_id}/recipients/{recipient_id} #
+///////////////////////////////////////////////////
+// Add a Single Recipient to a List
+// POST /contactdb/lists/{list_id}/recipients/{recipient_id}
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'POST'
 request.path = '/v3/contactdb/lists/{list_id}/recipients/{recipient_id}'
 sg.API(request, function (response) {
@@ -208,12 +195,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Delete a Single Recipient from a Single List #
-# DELETE /contactdb/lists/{list_id}/recipients/{recipient_id} #
+///////////////////////////////////////////////////
+// Delete a Single Recipient from a Single List
+// DELETE /contactdb/lists/{list_id}/recipients/{recipient_id}
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.queryParams["recipient_id"] = '0'
   request.queryParams["list_id"] = '0'
 request.method = 'DELETE'
@@ -224,12 +210,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Update Recipient #
-# PATCH /contactdb/recipients #
+///////////////////////////////////////////////////
+// Update Recipient
+// PATCH /contactdb/recipients
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = [
   {
     "email": "jones@example.com", 
@@ -245,12 +230,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Add recipients #
-# POST /contactdb/recipients #
+///////////////////////////////////////////////////
+// Add recipients
+// POST /contactdb/recipients
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = [
   {
     "age": 25, 
@@ -273,12 +257,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve recipients #
-# GET /contactdb/recipients #
+///////////////////////////////////////////////////
+// Retrieve recipients
+// GET /contactdb/recipients
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.queryParams["page"] = '1'
   request.queryParams["page_size"] = '1'
 request.method = 'GET'
@@ -289,12 +272,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Delete Recipient #
-# DELETE /contactdb/recipients #
+///////////////////////////////////////////////////
+// Delete Recipient
+// DELETE /contactdb/recipients
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = [
   "recipient_id1", 
   "recipient_id2"
@@ -307,12 +289,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve the count of billable recipients #
-# GET /contactdb/recipients/billable_count #
+///////////////////////////////////////////////////
+// Retrieve the count of billable recipients
+// GET /contactdb/recipients/billable_count
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'GET'
 request.path = '/v3/contactdb/recipients/billable_count'
 sg.API(request, function (response) {
@@ -321,12 +302,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve a Count of Recipients #
-# GET /contactdb/recipients/count #
+///////////////////////////////////////////////////
+// Retrieve a Count of Recipients
+// GET /contactdb/recipients/count
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'GET'
 request.path = '/v3/contactdb/recipients/count'
 sg.API(request, function (response) {
@@ -335,12 +315,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve recipients matching search criteria #
-# GET /contactdb/recipients/search #
+///////////////////////////////////////////////////
+// Retrieve recipients matching search criteria
+// GET /contactdb/recipients/search
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.queryParams["{field_name}"] = 'test_string'
 request.method = 'GET'
 request.path = '/v3/contactdb/recipients/search'
@@ -350,12 +329,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve a single recipient #
-# GET /contactdb/recipients/{recipient_id} #
+///////////////////////////////////////////////////
+// Retrieve a single recipient
+// GET /contactdb/recipients/{recipient_id}
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'GET'
 request.path = '/v3/contactdb/recipients/{recipient_id}'
 sg.API(request, function (response) {
@@ -364,12 +342,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Delete a Recipient #
-# DELETE /contactdb/recipients/{recipient_id} #
+///////////////////////////////////////////////////
+// Delete a Recipient
+// DELETE /contactdb/recipients/{recipient_id}
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'DELETE'
 request.path = '/v3/contactdb/recipients/{recipient_id}'
 sg.API(request, function (response) {
@@ -378,12 +355,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve the lists that a recipient is on #
-# GET /contactdb/recipients/{recipient_id}/lists #
+///////////////////////////////////////////////////
+// Retrieve the lists that a recipient is on
+// GET /contactdb/recipients/{recipient_id}/lists
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'GET'
 request.path = '/v3/contactdb/recipients/{recipient_id}/lists'
 sg.API(request, function (response) {
@@ -392,12 +368,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve reserved fields #
-# GET /contactdb/reserved_fields #
+///////////////////////////////////////////////////
+// Retrieve reserved fields
+// GET /contactdb/reserved_fields
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'GET'
 request.path = '/v3/contactdb/reserved_fields'
 sg.API(request, function (response) {
@@ -406,12 +381,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Create a Segment #
-# POST /contactdb/segments #
+///////////////////////////////////////////////////
+// Create a Segment
+// POST /contactdb/segments
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = {
   "conditions": [
     {
@@ -444,12 +418,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve all segments #
-# GET /contactdb/segments #
+///////////////////////////////////////////////////
+// Retrieve all segments
+// GET /contactdb/segments
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'GET'
 request.path = '/v3/contactdb/segments'
 sg.API(request, function (response) {
@@ -458,12 +431,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Update a segment #
-# PATCH /contactdb/segments/{segment_id} #
+///////////////////////////////////////////////////
+// Update a segment
+// PATCH /contactdb/segments/{segment_id}
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = {
   "conditions": [
     {
@@ -485,12 +457,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve a segment #
-# GET /contactdb/segments/{segment_id} #
+///////////////////////////////////////////////////
+// Retrieve a segment
+// GET /contactdb/segments/{segment_id}
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.queryParams["segment_id"] = '0'
 request.method = 'GET'
 request.path = '/v3/contactdb/segments/{segment_id}'
@@ -500,12 +471,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Delete a segment #
-# DELETE /contactdb/segments/{segment_id} #
+///////////////////////////////////////////////////
+// Delete a segment
+// DELETE /contactdb/segments/{segment_id}
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.queryParams["delete_contacts"] = 'true'
 request.method = 'DELETE'
 request.path = '/v3/contactdb/segments/{segment_id}'
@@ -515,12 +485,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve recipients on a segment #
-# GET /contactdb/segments/{segment_id}/recipients #
+///////////////////////////////////////////////////
+// Retrieve recipients on a segment
+// GET /contactdb/segments/{segment_id}/recipients
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.queryParams["page"] = '1'
   request.queryParams["page_size"] = '1'
 request.method = 'GET'

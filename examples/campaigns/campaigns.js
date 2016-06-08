@@ -1,11 +1,10 @@
 var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
 
-##################################################
-# Create a Campaign #
-# POST /campaigns #
+///////////////////////////////////////////////////
+// Create a Campaign
+// POST /campaigns
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = {
   "categories": [
     "spring line"
@@ -34,12 +33,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve all Campaigns #
-# GET /campaigns #
+///////////////////////////////////////////////////
+// Retrieve all Campaigns
+// GET /campaigns
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.queryParams["limit"] = '0'
   request.queryParams["offset"] = '0'
 request.method = 'GET'
@@ -50,12 +48,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Update a Campaign #
-# PATCH /campaigns/{campaign_id} #
+///////////////////////////////////////////////////
+// Update a Campaign
+// PATCH /campaigns/{campaign_id}
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = {
   "categories": [
     "summer line"
@@ -73,12 +70,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve a single campaign #
-# GET /campaigns/{campaign_id} #
+///////////////////////////////////////////////////
+// Retrieve a single campaign
+// GET /campaigns/{campaign_id}
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'GET'
 request.path = '/v3/campaigns/{campaign_id}'
 sg.API(request, function (response) {
@@ -87,12 +83,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Delete a Campaign #
-# DELETE /campaigns/{campaign_id} #
+///////////////////////////////////////////////////
+// Delete a Campaign
+// DELETE /campaigns/{campaign_id}
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'DELETE'
 request.path = '/v3/campaigns/{campaign_id}'
 sg.API(request, function (response) {
@@ -101,12 +96,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Update a Scheduled Campaign #
-# PATCH /campaigns/{campaign_id}/schedules #
+///////////////////////////////////////////////////
+// Update a Scheduled Campaign
+// PATCH /campaigns/{campaign_id}/schedules
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = {
   "send_at": 1489451436
 };
@@ -118,12 +112,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Schedule a Campaign #
-# POST /campaigns/{campaign_id}/schedules #
+///////////////////////////////////////////////////
+// Schedule a Campaign
+// POST /campaigns/{campaign_id}/schedules
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = {
   "send_at": 1489771528
 };
@@ -135,12 +128,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# View Scheduled Time of a Campaign #
-# GET /campaigns/{campaign_id}/schedules #
+///////////////////////////////////////////////////
+// View Scheduled Time of a Campaign
+// GET /campaigns/{campaign_id}/schedules
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'GET'
 request.path = '/v3/campaigns/{campaign_id}/schedules'
 sg.API(request, function (response) {
@@ -149,12 +141,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Unschedule a Scheduled Campaign #
-# DELETE /campaigns/{campaign_id}/schedules #
+///////////////////////////////////////////////////
+// Unschedule a Scheduled Campaign
+// DELETE /campaigns/{campaign_id}/schedules
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'DELETE'
 request.path = '/v3/campaigns/{campaign_id}/schedules'
 sg.API(request, function (response) {
@@ -163,12 +154,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Send a Campaign #
-# POST /campaigns/{campaign_id}/schedules/now #
+///////////////////////////////////////////////////
+// Send a Campaign
+// POST /campaigns/{campaign_id}/schedules/now
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'POST'
 request.path = '/v3/campaigns/{campaign_id}/schedules/now'
 sg.API(request, function (response) {
@@ -177,12 +167,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Send a Test Campaign #
-# POST /campaigns/{campaign_id}/schedules/test #
+///////////////////////////////////////////////////
+// Send a Test Campaign
+// POST /campaigns/{campaign_id}/schedules/test
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = {
   "to": "your.email@example.com"
 };

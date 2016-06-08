@@ -1,11 +1,10 @@
 var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
 
-##################################################
-# Retrieve email statistics by country and state/province. #
-# GET /geo/stats #
+///////////////////////////////////////////////////
+// Retrieve email statistics by country and state/province.
+// GET /geo/stats
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.queryParams["end_date"] = '2016-04-01'
   request.queryParams["country"] = 'US'
   request.queryParams["aggregated_by"] = 'day'

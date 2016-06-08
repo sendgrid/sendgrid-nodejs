@@ -1,11 +1,10 @@
 var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
 
-##################################################
-# Create a domain whitelabel. #
-# POST /whitelabel/domains #
+///////////////////////////////////////////////////
+// Create a domain whitelabel.
+// POST /whitelabel/domains
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = {
   "automatic_security": false, 
   "custom_spf": true, 
@@ -26,12 +25,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# List all domain whitelabels. #
-# GET /whitelabel/domains #
+///////////////////////////////////////////////////
+// List all domain whitelabels.
+// GET /whitelabel/domains
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.queryParams["username"] = 'test_string'
   request.queryParams["domain"] = 'test_string'
   request.queryParams["exclude_subusers"] = 'true'
@@ -45,12 +43,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Get the default domain whitelabel. #
-# GET /whitelabel/domains/default #
+///////////////////////////////////////////////////
+// Get the default domain whitelabel.
+// GET /whitelabel/domains/default
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'GET'
 request.path = '/v3/whitelabel/domains/default'
 sg.API(request, function (response) {
@@ -59,12 +56,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# List the domain whitelabel associated with the given user. #
-# GET /whitelabel/domains/subuser #
+///////////////////////////////////////////////////
+// List the domain whitelabel associated with the given user.
+// GET /whitelabel/domains/subuser
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'GET'
 request.path = '/v3/whitelabel/domains/subuser'
 sg.API(request, function (response) {
@@ -73,12 +69,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Disassociate a domain whitelabel from a given user. #
-# DELETE /whitelabel/domains/subuser #
+///////////////////////////////////////////////////
+// Disassociate a domain whitelabel from a given user.
+// DELETE /whitelabel/domains/subuser
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'DELETE'
 request.path = '/v3/whitelabel/domains/subuser'
 sg.API(request, function (response) {
@@ -87,12 +82,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Update a domain whitelabel. #
-# PATCH /whitelabel/domains/{domain_id} #
+///////////////////////////////////////////////////
+// Update a domain whitelabel.
+// PATCH /whitelabel/domains/{domain_id}
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = {
   "custom_spf": true, 
   "default": false
@@ -105,12 +99,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve a domain whitelabel. #
-# GET /whitelabel/domains/{domain_id} #
+///////////////////////////////////////////////////
+// Retrieve a domain whitelabel.
+// GET /whitelabel/domains/{domain_id}
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'GET'
 request.path = '/v3/whitelabel/domains/{domain_id}'
 sg.API(request, function (response) {
@@ -119,12 +112,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Delete a domain whitelabel. #
-# DELETE /whitelabel/domains/{domain_id} #
+///////////////////////////////////////////////////
+// Delete a domain whitelabel.
+// DELETE /whitelabel/domains/{domain_id}
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'DELETE'
 request.path = '/v3/whitelabel/domains/{domain_id}'
 sg.API(request, function (response) {
@@ -133,12 +125,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Associate a domain whitelabel with a given user. #
-# POST /whitelabel/domains/{domain_id}/subuser #
+///////////////////////////////////////////////////
+// Associate a domain whitelabel with a given user.
+// POST /whitelabel/domains/{domain_id}/subuser
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = {
   "username": "jane@example.com"
 };
@@ -150,12 +141,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Add an IP to a domain whitelabel. #
-# POST /whitelabel/domains/{id}/ips #
+///////////////////////////////////////////////////
+// Add an IP to a domain whitelabel.
+// POST /whitelabel/domains/{id}/ips
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = {
   "ip": "192.168.0.1"
 };
@@ -167,12 +157,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Remove an IP from a domain whitelabel. #
-# DELETE /whitelabel/domains/{id}/ips/{ip} #
+///////////////////////////////////////////////////
+// Remove an IP from a domain whitelabel.
+// DELETE /whitelabel/domains/{id}/ips/{ip}
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'DELETE'
 request.path = '/v3/whitelabel/domains/{id}/ips/{ip}'
 sg.API(request, function (response) {
@@ -181,12 +170,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Validate a domain whitelabel. #
-# POST /whitelabel/domains/{id}/validate #
+///////////////////////////////////////////////////
+// Validate a domain whitelabel.
+// POST /whitelabel/domains/{id}/validate
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'POST'
 request.path = '/v3/whitelabel/domains/{id}/validate'
 sg.API(request, function (response) {
@@ -195,12 +183,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Create an IP whitelabel #
-# POST /whitelabel/ips #
+///////////////////////////////////////////////////
+// Create an IP whitelabel
+// POST /whitelabel/ips
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = {
   "domain": "example.com", 
   "ip": "192.168.1.1", 
@@ -214,12 +201,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve all IP whitelabels #
-# GET /whitelabel/ips #
+///////////////////////////////////////////////////
+// Retrieve all IP whitelabels
+// GET /whitelabel/ips
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.queryParams["ip"] = 'test_string'
   request.queryParams["limit"] = '1'
   request.queryParams["offset"] = '1'
@@ -231,12 +217,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve an IP whitelabel #
-# GET /whitelabel/ips/{id} #
+///////////////////////////////////////////////////
+// Retrieve an IP whitelabel
+// GET /whitelabel/ips/{id}
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'GET'
 request.path = '/v3/whitelabel/ips/{id}'
 sg.API(request, function (response) {
@@ -245,12 +230,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Delete an IP whitelabel #
-# DELETE /whitelabel/ips/{id} #
+///////////////////////////////////////////////////
+// Delete an IP whitelabel
+// DELETE /whitelabel/ips/{id}
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'DELETE'
 request.path = '/v3/whitelabel/ips/{id}'
 sg.API(request, function (response) {
@@ -259,12 +243,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Validate an IP whitelabel #
-# POST /whitelabel/ips/{id}/validate #
+///////////////////////////////////////////////////
+// Validate an IP whitelabel
+// POST /whitelabel/ips/{id}/validate
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'POST'
 request.path = '/v3/whitelabel/ips/{id}/validate'
 sg.API(request, function (response) {
@@ -273,12 +256,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Create a Link Whitelabel #
-# POST /whitelabel/links #
+///////////////////////////////////////////////////
+// Create a Link Whitelabel
+// POST /whitelabel/links
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = {
   "default": true, 
   "domain": "example.com", 
@@ -294,12 +276,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve all link whitelabels #
-# GET /whitelabel/links #
+///////////////////////////////////////////////////
+// Retrieve all link whitelabels
+// GET /whitelabel/links
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.queryParams["limit"] = '1'
 request.method = 'GET'
 request.path = '/v3/whitelabel/links'
@@ -309,12 +290,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve a Default Link Whitelabel #
-# GET /whitelabel/links/default #
+///////////////////////////////////////////////////
+// Retrieve a Default Link Whitelabel
+// GET /whitelabel/links/default
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.queryParams["domain"] = 'test_string'
 request.method = 'GET'
 request.path = '/v3/whitelabel/links/default'
@@ -324,12 +304,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve Associated Link Whitelabel #
-# GET /whitelabel/links/subuser #
+///////////////////////////////////////////////////
+// Retrieve Associated Link Whitelabel
+// GET /whitelabel/links/subuser
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.queryParams["username"] = 'test_string'
 request.method = 'GET'
 request.path = '/v3/whitelabel/links/subuser'
@@ -339,12 +318,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Disassociate a Link Whitelabel #
-# DELETE /whitelabel/links/subuser #
+///////////////////////////////////////////////////
+// Disassociate a Link Whitelabel
+// DELETE /whitelabel/links/subuser
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.queryParams["username"] = 'test_string'
 request.method = 'DELETE'
 request.path = '/v3/whitelabel/links/subuser'
@@ -354,12 +332,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Update a Link Whitelabel #
-# PATCH /whitelabel/links/{id} #
+///////////////////////////////////////////////////
+// Update a Link Whitelabel
+// PATCH /whitelabel/links/{id}
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = {
   "default": true
 };
@@ -371,12 +348,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve a Link Whitelabel #
-# GET /whitelabel/links/{id} #
+///////////////////////////////////////////////////
+// Retrieve a Link Whitelabel
+// GET /whitelabel/links/{id}
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'GET'
 request.path = '/v3/whitelabel/links/{id}'
 sg.API(request, function (response) {
@@ -385,12 +361,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Delete a Link Whitelabel #
-# DELETE /whitelabel/links/{id} #
+///////////////////////////////////////////////////
+// Delete a Link Whitelabel
+// DELETE /whitelabel/links/{id}
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'DELETE'
 request.path = '/v3/whitelabel/links/{id}'
 sg.API(request, function (response) {
@@ -399,12 +374,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Validate a Link Whitelabel #
-# POST /whitelabel/links/{id}/validate #
+///////////////////////////////////////////////////
+// Validate a Link Whitelabel
+// POST /whitelabel/links/{id}/validate
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'POST'
 request.path = '/v3/whitelabel/links/{id}/validate'
 sg.API(request, function (response) {
@@ -413,12 +387,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Associate a Link Whitelabel #
-# POST /whitelabel/links/{link_id}/subuser #
+///////////////////////////////////////////////////
+// Associate a Link Whitelabel
+// POST /whitelabel/links/{link_id}/subuser
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = {
   "username": "jane@example.com"
 };

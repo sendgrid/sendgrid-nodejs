@@ -1,11 +1,10 @@
 var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
 
-##################################################
-# Get a user's account information. #
-# GET /user/account #
+///////////////////////////////////////////////////
+// Get a user's account information.
+// GET /user/account
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'GET'
 request.path = '/v3/user/account'
 sg.API(request, function (response) {
@@ -14,12 +13,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve your credit balance #
-# GET /user/credits #
+///////////////////////////////////////////////////
+// Retrieve your credit balance
+// GET /user/credits
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'GET'
 request.path = '/v3/user/credits'
 sg.API(request, function (response) {
@@ -28,12 +26,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Update your account email address #
-# PUT /user/email #
+///////////////////////////////////////////////////
+// Update your account email address
+// PUT /user/email
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = {
   "email": "example@example.com"
 };
@@ -45,12 +42,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve your account email address #
-# GET /user/email #
+///////////////////////////////////////////////////
+// Retrieve your account email address
+// GET /user/email
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'GET'
 request.path = '/v3/user/email'
 sg.API(request, function (response) {
@@ -59,12 +55,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Update your password #
-# PUT /user/password #
+///////////////////////////////////////////////////
+// Update your password
+// PUT /user/password
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = {
   "new_password": "new_password", 
   "old_password": "old_password"
@@ -77,12 +72,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Update a user's profile #
-# PATCH /user/profile #
+///////////////////////////////////////////////////
+// Update a user's profile
+// PATCH /user/profile
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = {
   "city": "Orange", 
   "first_name": "Example", 
@@ -96,12 +90,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Get a user's profile #
-# GET /user/profile #
+///////////////////////////////////////////////////
+// Get a user's profile
+// GET /user/profile
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'GET'
 request.path = '/v3/user/profile'
 sg.API(request, function (response) {
@@ -110,12 +103,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Cancel or pause a scheduled send #
-# POST /user/scheduled_sends #
+///////////////////////////////////////////////////
+// Cancel or pause a scheduled send
+// POST /user/scheduled_sends
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = {
   "batch_id": "YOUR_BATCH_ID", 
   "status": "pause"
@@ -128,12 +120,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve all scheduled sends #
-# GET /user/scheduled_sends #
+///////////////////////////////////////////////////
+// Retrieve all scheduled sends
+// GET /user/scheduled_sends
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'GET'
 request.path = '/v3/user/scheduled_sends'
 sg.API(request, function (response) {
@@ -142,12 +133,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Update user scheduled send information #
-# PATCH /user/scheduled_sends/{batch_id} #
+///////////////////////////////////////////////////
+// Update user scheduled send information
+// PATCH /user/scheduled_sends/{batch_id}
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = {
   "status": "pause"
 };
@@ -159,12 +149,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve scheduled send #
-# GET /user/scheduled_sends/{batch_id} #
+///////////////////////////////////////////////////
+// Retrieve scheduled send
+// GET /user/scheduled_sends/{batch_id}
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'GET'
 request.path = '/v3/user/scheduled_sends/{batch_id}'
 sg.API(request, function (response) {
@@ -173,12 +162,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Delete a cancellation or pause of a scheduled send #
-# DELETE /user/scheduled_sends/{batch_id} #
+///////////////////////////////////////////////////
+// Delete a cancellation or pause of a scheduled send
+// DELETE /user/scheduled_sends/{batch_id}
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'DELETE'
 request.path = '/v3/user/scheduled_sends/{batch_id}'
 sg.API(request, function (response) {
@@ -187,12 +175,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Update Enforced TLS settings #
-# PATCH /user/settings/enforced_tls #
+///////////////////////////////////////////////////
+// Update Enforced TLS settings
+// PATCH /user/settings/enforced_tls
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = {
   "require_tls": true, 
   "require_valid_cert": false
@@ -205,12 +192,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve current Enforced TLS settings. #
-# GET /user/settings/enforced_tls #
+///////////////////////////////////////////////////
+// Retrieve current Enforced TLS settings.
+// GET /user/settings/enforced_tls
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'GET'
 request.path = '/v3/user/settings/enforced_tls'
 sg.API(request, function (response) {
@@ -219,12 +205,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Update your username #
-# PUT /user/username #
+///////////////////////////////////////////////////
+// Update your username
+// PUT /user/username
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = {
   "username": "test_username"
 };
@@ -236,12 +221,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve your username #
-# GET /user/username #
+///////////////////////////////////////////////////
+// Retrieve your username
+// GET /user/username
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'GET'
 request.path = '/v3/user/username'
 sg.API(request, function (response) {
@@ -250,12 +234,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Update Event Notification Settings #
-# PATCH /user/webhooks/event/settings #
+///////////////////////////////////////////////////
+// Update Event Notification Settings
+// PATCH /user/webhooks/event/settings
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = {
   "bounce": true, 
   "click": true, 
@@ -279,12 +262,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve Event Webhook settings #
-# GET /user/webhooks/event/settings #
+///////////////////////////////////////////////////
+// Retrieve Event Webhook settings
+// GET /user/webhooks/event/settings
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'GET'
 request.path = '/v3/user/webhooks/event/settings'
 sg.API(request, function (response) {
@@ -293,12 +275,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Test Event Notification Settings  #
-# POST /user/webhooks/event/test #
+///////////////////////////////////////////////////
+// Test Event Notification Settings 
+// POST /user/webhooks/event/test
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.body = {
   "url": "url"
 };
@@ -310,12 +291,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieve Parse Webhook settings #
-# GET /user/webhooks/parse/settings #
+///////////////////////////////////////////////////
+// Retrieve Parse Webhook settings
+// GET /user/webhooks/parse/settings
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.method = 'GET'
 request.path = '/v3/user/webhooks/parse/settings'
 sg.API(request, function (response) {
@@ -324,12 +304,11 @@ sg.API(request, function (response) {
   console.log(response.headers)
 })
 
-##################################################
-# Retrieves Inbound Parse Webhook statistics. #
-# GET /user/webhooks/parse/stats #
+///////////////////////////////////////////////////
+// Retrieves Inbound Parse Webhook statistics.
+// GET /user/webhooks/parse/stats
 
-var emptyRequest = require('sendgrid-rest').request
-var request = JSON.parse(JSON.stringify(emptyRequest))
+var request = sg.emptyRequest
 request.queryParams["aggregated_by"] = 'day'
   request.queryParams["limit"] = 'test_string'
   request.queryParams["start_date"] = '2016-01-01'
