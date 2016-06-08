@@ -11,8 +11,7 @@ describe('test_access_settings_activity_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["limit"] = '1'
   request.method = 'GET'
   request.path = '/v3/access_settings/activity'
@@ -36,8 +35,7 @@ describe('test_access_settings_whitelist_post', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "ips": [
     {
@@ -73,8 +71,7 @@ describe('test_access_settings_whitelist_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/access_settings/whitelist'
   request.headers['X-Mock'] = 200
@@ -97,8 +94,7 @@ describe('test_access_settings_whitelist_delete', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "ids": [
     1,
@@ -128,8 +124,7 @@ describe('test_access_settings_whitelist__rule_id__get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/access_settings/whitelist/{rule_id}'
   request.headers['X-Mock'] = 200
@@ -152,8 +147,7 @@ describe('test_access_settings_whitelist__rule_id__delete', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.method = 'DELETE'
   request.path = '/v3/access_settings/whitelist/{rule_id}'
@@ -177,8 +171,7 @@ describe('test_api_keys_post', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "name": "My API Key",
   "scopes": [
@@ -209,8 +202,7 @@ describe('test_api_keys_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/api_keys'
   request.headers['X-Mock'] = 200
@@ -233,8 +225,7 @@ describe('test_api_keys__api_key_id__put', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "name": "A New Hope",
   "scopes": [
@@ -264,8 +255,7 @@ describe('test_api_keys__api_key_id__patch', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "name": "A New Hope"
 };
@@ -291,8 +281,7 @@ describe('test_api_keys__api_key_id__get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/api_keys/{api_key_id}'
   request.headers['X-Mock'] = 200
@@ -315,8 +304,7 @@ describe('test_api_keys__api_key_id__delete', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.method = 'DELETE'
   request.path = '/v3/api_keys/{api_key_id}'
@@ -340,19 +328,18 @@ describe('test_asm_groups_post', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
-  "description": "A group description",
-  "is_default": false,
-  "name": "A group name"
+  "description": "Suggestions for products our users might like.",
+  "is_default": true,
+  "name": "Product Suggestions"
 };
   request.method = 'POST'
   request.path = '/v3/asm/groups'
-  request.headers['X-Mock'] = 200
+  request.headers['X-Mock'] = 201
   it('test_asm_groups_post had the correct response code', function(done) {
     sg.API(request, function (response) {
-      assert.equal(response.statusCode, 200, 'response code is correct')
+      assert.equal(response.statusCode, 201, 'response code is correct')
       done();
     })
   });
@@ -369,8 +356,8 @@ describe('test_asm_groups_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
+  request.queryParams["id"] = '1'
   request.method = 'GET'
   request.path = '/v3/asm/groups'
   request.headers['X-Mock'] = 200
@@ -393,8 +380,7 @@ describe('test_asm_groups__group_id__patch', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "description": "Suggestions for items our users might like.",
   "id": 103,
@@ -422,8 +408,7 @@ describe('test_asm_groups__group_id__get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/asm/groups/{group_id}'
   request.headers['X-Mock'] = 200
@@ -446,8 +431,7 @@ describe('test_asm_groups__group_id__delete', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.method = 'DELETE'
   request.path = '/v3/asm/groups/{group_id}'
@@ -471,8 +455,7 @@ describe('test_asm_groups__group_id__suppressions_post', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "recipient_emails": [
     "test1@example.com",
@@ -501,8 +484,7 @@ describe('test_asm_groups__group_id__suppressions_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/asm/groups/{group_id}/suppressions'
   request.headers['X-Mock'] = 200
@@ -525,8 +507,7 @@ describe('test_asm_groups__group_id__suppressions__email__delete', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.method = 'DELETE'
   request.path = '/v3/asm/groups/{group_id}/suppressions/{email}'
@@ -534,6 +515,29 @@ describe('test_asm_groups__group_id__suppressions__email__delete', function () {
   it('test_asm_groups__group_id__suppressions__email__delete had the correct response code', function(done) {
     sg.API(request, function (response) {
       assert.equal(response.statusCode, 204, 'response code is correct')
+      done();
+    })
+  });
+})
+
+describe('test_asm_suppressions_get', function () {
+  this.timeout(30000);
+  var API_KEY = 'SendGrid API Key'
+  if(process.env.TRAVIS == true) {
+    var TEST_HOST = process.env.MOCK_HOST
+  } else {
+    var TEST_HOST = 'e9sk3d3bfaikbpdq7.stoplight-proxy.io'
+  }
+
+  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+
+  var request = sg.emptyRequest
+  request.method = 'GET'
+  request.path = '/v3/asm/suppressions'
+  request.headers['X-Mock'] = 200
+  it('test_asm_suppressions_get had the correct response code', function(done) {
+    sg.API(request, function (response) {
+      assert.equal(response.statusCode, 200, 'response code is correct')
       done();
     })
   });
@@ -550,8 +554,7 @@ describe('test_asm_suppressions_global_post', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "recipient_emails": [
     "test1@example.com",
@@ -580,8 +583,7 @@ describe('test_asm_suppressions_global__email__get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/asm/suppressions/global/{email}'
   request.headers['X-Mock'] = 200
@@ -604,8 +606,7 @@ describe('test_asm_suppressions_global__email__delete', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.method = 'DELETE'
   request.path = '/v3/asm/suppressions/global/{email}'
@@ -613,6 +614,29 @@ describe('test_asm_suppressions_global__email__delete', function () {
   it('test_asm_suppressions_global__email__delete had the correct response code', function(done) {
     sg.API(request, function (response) {
       assert.equal(response.statusCode, 204, 'response code is correct')
+      done();
+    })
+  });
+})
+
+describe('test_asm_suppressions__email__get', function () {
+  this.timeout(30000);
+  var API_KEY = 'SendGrid API Key'
+  if(process.env.TRAVIS == true) {
+    var TEST_HOST = process.env.MOCK_HOST
+  } else {
+    var TEST_HOST = 'e9sk3d3bfaikbpdq7.stoplight-proxy.io'
+  }
+
+  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+
+  var request = sg.emptyRequest
+  request.method = 'GET'
+  request.path = '/v3/asm/suppressions/{email}'
+  request.headers['X-Mock'] = 200
+  it('test_asm_suppressions__email__get had the correct response code', function(done) {
+    sg.API(request, function (response) {
+      assert.equal(response.statusCode, 200, 'response code is correct')
       done();
     })
   });
@@ -629,8 +653,7 @@ describe('test_browsers_stats_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["end_date"] = '2016-04-01'
   request.queryParams["aggregated_by"] = 'day'
   request.queryParams["browsers"] = 'test_string'
@@ -659,8 +682,7 @@ describe('test_campaigns_post', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "categories": [
     "spring line"
@@ -703,8 +725,7 @@ describe('test_campaigns_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["limit"] = '0'
   request.queryParams["offset"] = '0'
   request.method = 'GET'
@@ -729,8 +750,7 @@ describe('test_campaigns__campaign_id__patch', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "categories": [
     "summer line"
@@ -762,8 +782,7 @@ describe('test_campaigns__campaign_id__get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/campaigns/{campaign_id}'
   request.headers['X-Mock'] = 200
@@ -786,8 +805,7 @@ describe('test_campaigns__campaign_id__delete', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.method = 'DELETE'
   request.path = '/v3/campaigns/{campaign_id}'
@@ -811,8 +829,7 @@ describe('test_campaigns__campaign_id__schedules_patch', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "send_at": 1489451436
 };
@@ -838,8 +855,7 @@ describe('test_campaigns__campaign_id__schedules_post', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "send_at": 1489771528
 };
@@ -865,8 +881,7 @@ describe('test_campaigns__campaign_id__schedules_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/campaigns/{campaign_id}/schedules'
   request.headers['X-Mock'] = 200
@@ -889,8 +904,7 @@ describe('test_campaigns__campaign_id__schedules_delete', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.method = 'DELETE'
   request.path = '/v3/campaigns/{campaign_id}/schedules'
@@ -914,8 +928,7 @@ describe('test_campaigns__campaign_id__schedules_now_post', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.method = 'POST'
   request.path = '/v3/campaigns/{campaign_id}/schedules/now'
@@ -939,8 +952,7 @@ describe('test_campaigns__campaign_id__schedules_test_post', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "to": "your.email@example.com"
 };
@@ -966,8 +978,7 @@ describe('test_categories_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["category"] = 'test_string'
   request.queryParams["limit"] = '1'
   request.queryParams["offset"] = '1'
@@ -993,8 +1004,7 @@ describe('test_categories_stats_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["end_date"] = '2016-04-01'
   request.queryParams["aggregated_by"] = 'day'
   request.queryParams["limit"] = '1'
@@ -1023,8 +1033,7 @@ describe('test_categories_stats_sums_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["end_date"] = '2016-04-01'
   request.queryParams["aggregated_by"] = 'day'
   request.queryParams["limit"] = '1'
@@ -1054,8 +1063,7 @@ describe('test_clients_stats_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["aggregated_by"] = 'day'
   request.queryParams["start_date"] = '2016-01-01'
   request.queryParams["end_date"] = '2016-04-01'
@@ -1081,8 +1089,7 @@ describe('test_clients__client_type__stats_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["aggregated_by"] = 'day'
   request.queryParams["start_date"] = '2016-01-01'
   request.queryParams["end_date"] = '2016-04-01'
@@ -1108,8 +1115,7 @@ describe('test_contactdb_custom_fields_post', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "name": "pet",
   "type": "text"
@@ -1136,8 +1142,7 @@ describe('test_contactdb_custom_fields_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/contactdb/custom_fields'
   request.headers['X-Mock'] = 200
@@ -1160,8 +1165,7 @@ describe('test_contactdb_custom_fields__custom_field_id__get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/contactdb/custom_fields/{custom_field_id}'
   request.headers['X-Mock'] = 200
@@ -1184,8 +1188,7 @@ describe('test_contactdb_custom_fields__custom_field_id__delete', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.method = 'DELETE'
   request.path = '/v3/contactdb/custom_fields/{custom_field_id}'
@@ -1209,8 +1212,7 @@ describe('test_contactdb_lists_post', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "name": "your list name"
 };
@@ -1236,8 +1238,7 @@ describe('test_contactdb_lists_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/contactdb/lists'
   request.headers['X-Mock'] = 200
@@ -1260,8 +1261,7 @@ describe('test_contactdb_lists_delete', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = [
   1,
   2,
@@ -1290,8 +1290,7 @@ describe('test_contactdb_lists__list_id__patch', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "name": "newlistname"
 };
@@ -1318,8 +1317,7 @@ describe('test_contactdb_lists__list_id__get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["list_id"] = '0'
   request.method = 'GET'
   request.path = '/v3/contactdb/lists/{list_id}'
@@ -1343,8 +1341,7 @@ describe('test_contactdb_lists__list_id__delete', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.queryParams["delete_contacts"] = 'true'
   request.method = 'DELETE'
@@ -1369,8 +1366,7 @@ describe('test_contactdb_lists__list_id__recipients_post', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = [
   "recipient_id1",
   "recipient_id2"
@@ -1397,8 +1393,7 @@ describe('test_contactdb_lists__list_id__recipients_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["page"] = '1'
   request.queryParams["page_size"] = '1'
   request.queryParams["list_id"] = '0'
@@ -1424,8 +1419,7 @@ describe('test_contactdb_lists__list_id__recipients__recipient_id__post', functi
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.method = 'POST'
   request.path = '/v3/contactdb/lists/{list_id}/recipients/{recipient_id}'
@@ -1449,8 +1443,7 @@ describe('test_contactdb_lists__list_id__recipients__recipient_id__delete', func
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.queryParams["recipient_id"] = '0'
   request.queryParams["list_id"] = '0'
@@ -1476,8 +1469,7 @@ describe('test_contactdb_recipients_patch', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = [
   {
     "email": "jones@example.com",
@@ -1507,8 +1499,7 @@ describe('test_contactdb_recipients_post', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = [
   {
     "age": 25,
@@ -1545,8 +1536,7 @@ describe('test_contactdb_recipients_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["page"] = '1'
   request.queryParams["page_size"] = '1'
   request.method = 'GET'
@@ -1571,8 +1561,7 @@ describe('test_contactdb_recipients_delete', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = [
   "recipient_id1",
   "recipient_id2"
@@ -1599,8 +1588,7 @@ describe('test_contactdb_recipients_billable_count_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/contactdb/recipients/billable_count'
   request.headers['X-Mock'] = 200
@@ -1623,8 +1611,7 @@ describe('test_contactdb_recipients_count_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/contactdb/recipients/count'
   request.headers['X-Mock'] = 200
@@ -1647,8 +1634,7 @@ describe('test_contactdb_recipients_search_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["{field_name}"] = 'test_string'
   request.method = 'GET'
   request.path = '/v3/contactdb/recipients/search'
@@ -1672,8 +1658,7 @@ describe('test_contactdb_recipients__recipient_id__get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/contactdb/recipients/{recipient_id}'
   request.headers['X-Mock'] = 200
@@ -1696,8 +1681,7 @@ describe('test_contactdb_recipients__recipient_id__delete', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.method = 'DELETE'
   request.path = '/v3/contactdb/recipients/{recipient_id}'
@@ -1721,8 +1705,7 @@ describe('test_contactdb_recipients__recipient_id__lists_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/contactdb/recipients/{recipient_id}/lists'
   request.headers['X-Mock'] = 200
@@ -1745,8 +1728,7 @@ describe('test_contactdb_reserved_fields_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/contactdb/reserved_fields'
   request.headers['X-Mock'] = 200
@@ -1769,8 +1751,7 @@ describe('test_contactdb_segments_post', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "conditions": [
     {
@@ -1817,8 +1798,7 @@ describe('test_contactdb_segments_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/contactdb/segments'
   request.headers['X-Mock'] = 200
@@ -1841,8 +1821,7 @@ describe('test_contactdb_segments__segment_id__patch', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "conditions": [
     {
@@ -1878,8 +1857,7 @@ describe('test_contactdb_segments__segment_id__get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["segment_id"] = '0'
   request.method = 'GET'
   request.path = '/v3/contactdb/segments/{segment_id}'
@@ -1903,8 +1881,7 @@ describe('test_contactdb_segments__segment_id__delete', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.queryParams["delete_contacts"] = 'true'
   request.method = 'DELETE'
@@ -1929,8 +1906,7 @@ describe('test_contactdb_segments__segment_id__recipients_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["page"] = '1'
   request.queryParams["page_size"] = '1'
   request.method = 'GET'
@@ -1955,8 +1931,7 @@ describe('test_devices_stats_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["aggregated_by"] = 'day'
   request.queryParams["limit"] = '1'
   request.queryParams["start_date"] = '2016-01-01'
@@ -1984,8 +1959,7 @@ describe('test_geo_stats_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["end_date"] = '2016-04-01'
   request.queryParams["country"] = 'US'
   request.queryParams["aggregated_by"] = 'day'
@@ -2014,8 +1988,7 @@ describe('test_ips_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["subuser"] = 'test_string'
   request.queryParams["ip"] = 'test_string'
   request.queryParams["limit"] = '1'
@@ -2043,8 +2016,7 @@ describe('test_ips_assigned_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/ips/assigned'
   request.headers['X-Mock'] = 200
@@ -2067,8 +2039,7 @@ describe('test_ips_pools_post', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "name": "marketing"
 };
@@ -2094,8 +2065,7 @@ describe('test_ips_pools_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/ips/pools'
   request.headers['X-Mock'] = 200
@@ -2118,8 +2088,7 @@ describe('test_ips_pools__pool_name__put', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "name": "new_pool_name"
 };
@@ -2145,8 +2114,7 @@ describe('test_ips_pools__pool_name__get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/ips/pools/{pool_name}'
   request.headers['X-Mock'] = 200
@@ -2169,8 +2137,7 @@ describe('test_ips_pools__pool_name__delete', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.method = 'DELETE'
   request.path = '/v3/ips/pools/{pool_name}'
@@ -2194,8 +2161,7 @@ describe('test_ips_pools__pool_name__ips_post', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "ip": "0.0.0.0"
 };
@@ -2221,8 +2187,7 @@ describe('test_ips_pools__pool_name__ips__ip__delete', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.method = 'DELETE'
   request.path = '/v3/ips/pools/{pool_name}/ips/{ip}'
@@ -2246,8 +2211,7 @@ describe('test_ips_warmup_post', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "ip": "0.0.0.0"
 };
@@ -2273,8 +2237,7 @@ describe('test_ips_warmup_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/ips/warmup'
   request.headers['X-Mock'] = 200
@@ -2297,8 +2260,7 @@ describe('test_ips_warmup__ip_address__get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/ips/warmup/{ip_address}'
   request.headers['X-Mock'] = 200
@@ -2321,8 +2283,7 @@ describe('test_ips_warmup__ip_address__delete', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.method = 'DELETE'
   request.path = '/v3/ips/warmup/{ip_address}'
@@ -2346,8 +2307,7 @@ describe('test_ips__ip_address__get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/ips/{ip_address}'
   request.headers['X-Mock'] = 200
@@ -2370,8 +2330,7 @@ describe('test_mail_batch_post', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.method = 'POST'
   request.path = '/v3/mail/batch'
@@ -2395,8 +2354,7 @@ describe('test_mail_batch__batch_id__get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/mail/batch/{batch_id}'
   request.headers['X-Mock'] = 200
@@ -2419,8 +2377,7 @@ describe('test_mail_send_beta_post', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "asm": {
     "group_id": 1,
@@ -2586,8 +2543,7 @@ describe('test_mail_settings_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["limit"] = '1'
   request.queryParams["offset"] = '1'
   request.method = 'GET'
@@ -2612,8 +2568,7 @@ describe('test_mail_settings_address_whitelist_patch', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "enabled": true,
   "list": [
@@ -2643,8 +2598,7 @@ describe('test_mail_settings_address_whitelist_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/mail_settings/address_whitelist'
   request.headers['X-Mock'] = 200
@@ -2667,8 +2621,7 @@ describe('test_mail_settings_bcc_patch', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "email": "email@example.com",
   "enabled": false
@@ -2695,8 +2648,7 @@ describe('test_mail_settings_bcc_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/mail_settings/bcc'
   request.headers['X-Mock'] = 200
@@ -2719,8 +2671,7 @@ describe('test_mail_settings_bounce_purge_patch', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "enabled": true,
   "hard_bounces": 5,
@@ -2748,8 +2699,7 @@ describe('test_mail_settings_bounce_purge_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/mail_settings/bounce_purge'
   request.headers['X-Mock'] = 200
@@ -2772,8 +2722,7 @@ describe('test_mail_settings_footer_patch', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "enabled": true,
   "html_content": "...",
@@ -2801,8 +2750,7 @@ describe('test_mail_settings_footer_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/mail_settings/footer'
   request.headers['X-Mock'] = 200
@@ -2825,8 +2773,7 @@ describe('test_mail_settings_forward_bounce_patch', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "email": "example@example.com",
   "enabled": true
@@ -2853,8 +2800,7 @@ describe('test_mail_settings_forward_bounce_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/mail_settings/forward_bounce'
   request.headers['X-Mock'] = 200
@@ -2877,8 +2823,7 @@ describe('test_mail_settings_forward_spam_patch', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "email": "",
   "enabled": false
@@ -2905,8 +2850,7 @@ describe('test_mail_settings_forward_spam_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/mail_settings/forward_spam'
   request.headers['X-Mock'] = 200
@@ -2929,8 +2873,7 @@ describe('test_mail_settings_plain_content_patch', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "enabled": false
 };
@@ -2956,8 +2899,7 @@ describe('test_mail_settings_plain_content_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/mail_settings/plain_content'
   request.headers['X-Mock'] = 200
@@ -2980,8 +2922,7 @@ describe('test_mail_settings_spam_check_patch', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "enabled": true,
   "max_score": 5,
@@ -3009,8 +2950,7 @@ describe('test_mail_settings_spam_check_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/mail_settings/spam_check'
   request.headers['X-Mock'] = 200
@@ -3033,8 +2973,7 @@ describe('test_mail_settings_template_patch', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "enabled": true,
   "html_content": "<% body %>"
@@ -3061,8 +3000,7 @@ describe('test_mail_settings_template_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/mail_settings/template'
   request.headers['X-Mock'] = 200
@@ -3085,8 +3023,7 @@ describe('test_mailbox_providers_stats_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["end_date"] = '2016-04-01'
   request.queryParams["mailbox_providers"] = 'test_string'
   request.queryParams["aggregated_by"] = 'day'
@@ -3115,8 +3052,7 @@ describe('test_partner_settings_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["limit"] = '1'
   request.queryParams["offset"] = '1'
   request.method = 'GET'
@@ -3141,8 +3077,7 @@ describe('test_partner_settings_new_relic_patch', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "enable_subuser_statistics": true,
   "enabled": true,
@@ -3170,8 +3105,7 @@ describe('test_partner_settings_new_relic_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/partner_settings/new_relic'
   request.headers['X-Mock'] = 200
@@ -3194,8 +3128,7 @@ describe('test_scopes_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/scopes'
   request.headers['X-Mock'] = 200
@@ -3218,8 +3151,7 @@ describe('test_stats_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["aggregated_by"] = 'day'
   request.queryParams["limit"] = '1'
   request.queryParams["start_date"] = '2016-01-01'
@@ -3247,8 +3179,7 @@ describe('test_subusers_post', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "email": "John@example.com",
   "ips": [
@@ -3280,8 +3211,7 @@ describe('test_subusers_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["username"] = 'test_string'
   request.queryParams["limit"] = '0'
   request.queryParams["offset"] = '0'
@@ -3307,8 +3237,7 @@ describe('test_subusers_reputations_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["usernames"] = 'test_string'
   request.method = 'GET'
   request.path = '/v3/subusers/reputations'
@@ -3332,8 +3261,7 @@ describe('test_subusers_stats_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["end_date"] = '2016-04-01'
   request.queryParams["aggregated_by"] = 'day'
   request.queryParams["limit"] = '1'
@@ -3362,8 +3290,7 @@ describe('test_subusers_stats_monthly_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["subuser"] = 'test_string'
   request.queryParams["limit"] = '1'
   request.queryParams["sort_by_metric"] = 'test_string'
@@ -3392,8 +3319,7 @@ describe('test_subusers_stats_sums_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["end_date"] = '2016-04-01'
   request.queryParams["aggregated_by"] = 'day'
   request.queryParams["limit"] = '1'
@@ -3423,8 +3349,7 @@ describe('test_subusers__subuser_name__patch', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "disabled": false
 };
@@ -3450,8 +3375,7 @@ describe('test_subusers__subuser_name__delete', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.method = 'DELETE'
   request.path = '/v3/subusers/{subuser_name}'
@@ -3475,8 +3399,7 @@ describe('test_subusers__subuser_name__ips_put', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = [
   "127.0.0.1"
 ];
@@ -3502,8 +3425,7 @@ describe('test_subusers__subuser_name__monitor_put', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "email": "example@example.com",
   "frequency": 500
@@ -3530,8 +3452,7 @@ describe('test_subusers__subuser_name__monitor_post', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "email": "example@example.com",
   "frequency": 50000
@@ -3558,8 +3479,7 @@ describe('test_subusers__subuser_name__monitor_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/subusers/{subuser_name}/monitor'
   request.headers['X-Mock'] = 200
@@ -3582,8 +3502,7 @@ describe('test_subusers__subuser_name__monitor_delete', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.method = 'DELETE'
   request.path = '/v3/subusers/{subuser_name}/monitor'
@@ -3607,8 +3526,7 @@ describe('test_subusers__subuser_name__stats_monthly_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["date"] = 'test_string'
   request.queryParams["sort_by_direction"] = 'asc'
   request.queryParams["limit"] = '0'
@@ -3636,8 +3554,7 @@ describe('test_suppression_blocks_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["start_time"] = '1'
   request.queryParams["limit"] = '1'
   request.queryParams["end_time"] = '1'
@@ -3664,8 +3581,7 @@ describe('test_suppression_blocks_delete', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "delete_all": false,
   "emails": [
@@ -3695,8 +3611,7 @@ describe('test_suppression_blocks__email__get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/suppression/blocks/{email}'
   request.headers['X-Mock'] = 200
@@ -3719,8 +3634,7 @@ describe('test_suppression_blocks__email__delete', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.method = 'DELETE'
   request.path = '/v3/suppression/blocks/{email}'
@@ -3744,8 +3658,7 @@ describe('test_suppression_bounces_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["start_time"] = '0'
   request.queryParams["end_time"] = '0'
   request.method = 'GET'
@@ -3770,8 +3683,7 @@ describe('test_suppression_bounces_delete', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "delete_all": true,
   "emails": [
@@ -3801,8 +3713,7 @@ describe('test_suppression_bounces__email__get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/suppression/bounces/{email}'
   request.headers['X-Mock'] = 200
@@ -3825,8 +3736,7 @@ describe('test_suppression_bounces__email__delete', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.queryParams["email_address"] = 'example@example.com'
   request.method = 'DELETE'
@@ -3851,8 +3761,7 @@ describe('test_suppression_invalid_emails_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["start_time"] = '1'
   request.queryParams["limit"] = '1'
   request.queryParams["end_time"] = '1'
@@ -3879,8 +3788,7 @@ describe('test_suppression_invalid_emails_delete', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "delete_all": false,
   "emails": [
@@ -3910,8 +3818,7 @@ describe('test_suppression_invalid_emails__email__get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/suppression/invalid_emails/{email}'
   request.headers['X-Mock'] = 200
@@ -3934,8 +3841,7 @@ describe('test_suppression_invalid_emails__email__delete', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.method = 'DELETE'
   request.path = '/v3/suppression/invalid_emails/{email}'
@@ -3959,8 +3865,7 @@ describe('test_suppression_spam_report__email__get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/suppression/spam_report/{email}'
   request.headers['X-Mock'] = 200
@@ -3983,8 +3888,7 @@ describe('test_suppression_spam_report__email__delete', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.method = 'DELETE'
   request.path = '/v3/suppression/spam_report/{email}'
@@ -4008,8 +3912,7 @@ describe('test_suppression_spam_reports_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["start_time"] = '1'
   request.queryParams["limit"] = '1'
   request.queryParams["end_time"] = '1'
@@ -4036,8 +3939,7 @@ describe('test_suppression_spam_reports_delete', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "delete_all": false,
   "emails": [
@@ -4067,8 +3969,7 @@ describe('test_suppression_unsubscribes_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["start_time"] = '1'
   request.queryParams["limit"] = '1'
   request.queryParams["end_time"] = '1'
@@ -4095,8 +3996,7 @@ describe('test_templates_post', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "name": "example_name"
 };
@@ -4122,8 +4022,7 @@ describe('test_templates_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/templates'
   request.headers['X-Mock'] = 200
@@ -4146,8 +4045,7 @@ describe('test_templates__template_id__patch', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "name": "new_example_name"
 };
@@ -4173,8 +4071,7 @@ describe('test_templates__template_id__get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/templates/{template_id}'
   request.headers['X-Mock'] = 200
@@ -4197,8 +4094,7 @@ describe('test_templates__template_id__delete', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.method = 'DELETE'
   request.path = '/v3/templates/{template_id}'
@@ -4222,8 +4118,7 @@ describe('test_templates__template_id__versions_post', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "active": 1,
   "html_content": "<%body%>",
@@ -4254,8 +4149,7 @@ describe('test_templates__template_id__versions__version_id__patch', function ()
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "active": 1,
   "html_content": "<%body%>",
@@ -4285,8 +4179,7 @@ describe('test_templates__template_id__versions__version_id__get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/templates/{template_id}/versions/{version_id}'
   request.headers['X-Mock'] = 200
@@ -4309,8 +4202,7 @@ describe('test_templates__template_id__versions__version_id__delete', function (
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.method = 'DELETE'
   request.path = '/v3/templates/{template_id}/versions/{version_id}'
@@ -4334,8 +4226,7 @@ describe('test_templates__template_id__versions__version_id__activate_post', fun
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.method = 'POST'
   request.path = '/v3/templates/{template_id}/versions/{version_id}/activate'
@@ -4359,8 +4250,7 @@ describe('test_tracking_settings_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["limit"] = '1'
   request.queryParams["offset"] = '1'
   request.method = 'GET'
@@ -4385,8 +4275,7 @@ describe('test_tracking_settings_click_patch', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "enabled": true
 };
@@ -4412,8 +4301,7 @@ describe('test_tracking_settings_click_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/tracking_settings/click'
   request.headers['X-Mock'] = 200
@@ -4436,8 +4324,7 @@ describe('test_tracking_settings_google_analytics_patch', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "enabled": true,
   "utm_campaign": "website",
@@ -4468,8 +4355,7 @@ describe('test_tracking_settings_google_analytics_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/tracking_settings/google_analytics'
   request.headers['X-Mock'] = 200
@@ -4492,8 +4378,7 @@ describe('test_tracking_settings_open_patch', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "enabled": true
 };
@@ -4519,8 +4404,7 @@ describe('test_tracking_settings_open_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/tracking_settings/open'
   request.headers['X-Mock'] = 200
@@ -4543,8 +4427,7 @@ describe('test_tracking_settings_subscription_patch', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "enabled": true,
   "html_content": "html content",
@@ -4575,8 +4458,7 @@ describe('test_tracking_settings_subscription_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/tracking_settings/subscription'
   request.headers['X-Mock'] = 200
@@ -4599,8 +4481,7 @@ describe('test_user_account_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/user/account'
   request.headers['X-Mock'] = 200
@@ -4623,8 +4504,7 @@ describe('test_user_credits_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/user/credits'
   request.headers['X-Mock'] = 200
@@ -4647,8 +4527,7 @@ describe('test_user_email_put', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "email": "example@example.com"
 };
@@ -4674,8 +4553,7 @@ describe('test_user_email_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/user/email'
   request.headers['X-Mock'] = 200
@@ -4698,8 +4576,7 @@ describe('test_user_password_put', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "new_password": "new_password",
   "old_password": "old_password"
@@ -4726,8 +4603,7 @@ describe('test_user_profile_patch', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "city": "Orange",
   "first_name": "Example",
@@ -4755,8 +4631,7 @@ describe('test_user_profile_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/user/profile'
   request.headers['X-Mock'] = 200
@@ -4779,8 +4654,7 @@ describe('test_user_scheduled_sends_post', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "batch_id": "YOUR_BATCH_ID",
   "status": "pause"
@@ -4807,8 +4681,7 @@ describe('test_user_scheduled_sends_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/user/scheduled_sends'
   request.headers['X-Mock'] = 200
@@ -4831,8 +4704,7 @@ describe('test_user_scheduled_sends__batch_id__patch', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "status": "pause"
 };
@@ -4858,8 +4730,7 @@ describe('test_user_scheduled_sends__batch_id__get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/user/scheduled_sends/{batch_id}'
   request.headers['X-Mock'] = 200
@@ -4882,8 +4753,7 @@ describe('test_user_scheduled_sends__batch_id__delete', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.method = 'DELETE'
   request.path = '/v3/user/scheduled_sends/{batch_id}'
@@ -4907,8 +4777,7 @@ describe('test_user_settings_enforced_tls_patch', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "require_tls": true,
   "require_valid_cert": false
@@ -4935,8 +4804,7 @@ describe('test_user_settings_enforced_tls_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/user/settings/enforced_tls'
   request.headers['X-Mock'] = 200
@@ -4959,8 +4827,7 @@ describe('test_user_username_put', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "username": "test_username"
 };
@@ -4986,8 +4853,7 @@ describe('test_user_username_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/user/username'
   request.headers['X-Mock'] = 200
@@ -5010,8 +4876,7 @@ describe('test_user_webhooks_event_settings_patch', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "bounce": true,
   "click": true,
@@ -5049,8 +4914,7 @@ describe('test_user_webhooks_event_settings_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/user/webhooks/event/settings'
   request.headers['X-Mock'] = 200
@@ -5073,8 +4937,7 @@ describe('test_user_webhooks_event_test_post', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "url": "url"
 };
@@ -5100,8 +4963,7 @@ describe('test_user_webhooks_parse_settings_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/user/webhooks/parse/settings'
   request.headers['X-Mock'] = 200
@@ -5124,8 +4986,7 @@ describe('test_user_webhooks_parse_stats_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["aggregated_by"] = 'day'
   request.queryParams["limit"] = 'test_string'
   request.queryParams["start_date"] = '2016-01-01'
@@ -5153,8 +5014,7 @@ describe('test_whitelabel_domains_post', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "automatic_security": false,
   "custom_spf": true,
@@ -5189,8 +5049,7 @@ describe('test_whitelabel_domains_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["username"] = 'test_string'
   request.queryParams["domain"] = 'test_string'
   request.queryParams["exclude_subusers"] = 'true'
@@ -5218,8 +5077,7 @@ describe('test_whitelabel_domains_default_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/whitelabel/domains/default'
   request.headers['X-Mock'] = 200
@@ -5242,8 +5100,7 @@ describe('test_whitelabel_domains_subuser_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/whitelabel/domains/subuser'
   request.headers['X-Mock'] = 200
@@ -5266,8 +5123,7 @@ describe('test_whitelabel_domains_subuser_delete', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.method = 'DELETE'
   request.path = '/v3/whitelabel/domains/subuser'
@@ -5291,8 +5147,7 @@ describe('test_whitelabel_domains__domain_id__patch', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "custom_spf": true,
   "default": false
@@ -5319,8 +5174,7 @@ describe('test_whitelabel_domains__domain_id__get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/whitelabel/domains/{domain_id}'
   request.headers['X-Mock'] = 200
@@ -5343,8 +5197,7 @@ describe('test_whitelabel_domains__domain_id__delete', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.method = 'DELETE'
   request.path = '/v3/whitelabel/domains/{domain_id}'
@@ -5368,8 +5221,7 @@ describe('test_whitelabel_domains__domain_id__subuser_post', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "username": "jane@example.com"
 };
@@ -5395,8 +5247,7 @@ describe('test_whitelabel_domains__id__ips_post', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "ip": "192.168.0.1"
 };
@@ -5422,8 +5273,7 @@ describe('test_whitelabel_domains__id__ips__ip__delete', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.method = 'DELETE'
   request.path = '/v3/whitelabel/domains/{id}/ips/{ip}'
@@ -5447,8 +5297,7 @@ describe('test_whitelabel_domains__id__validate_post', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.method = 'POST'
   request.path = '/v3/whitelabel/domains/{id}/validate'
@@ -5472,8 +5321,7 @@ describe('test_whitelabel_ips_post', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "domain": "example.com",
   "ip": "192.168.1.1",
@@ -5501,8 +5349,7 @@ describe('test_whitelabel_ips_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["ip"] = 'test_string'
   request.queryParams["limit"] = '1'
   request.queryParams["offset"] = '1'
@@ -5528,8 +5375,7 @@ describe('test_whitelabel_ips__id__get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/whitelabel/ips/{id}'
   request.headers['X-Mock'] = 200
@@ -5552,8 +5398,7 @@ describe('test_whitelabel_ips__id__delete', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.method = 'DELETE'
   request.path = '/v3/whitelabel/ips/{id}'
@@ -5577,8 +5422,7 @@ describe('test_whitelabel_ips__id__validate_post', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.method = 'POST'
   request.path = '/v3/whitelabel/ips/{id}/validate'
@@ -5602,8 +5446,7 @@ describe('test_whitelabel_links_post', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "default": true,
   "domain": "example.com",
@@ -5633,8 +5476,7 @@ describe('test_whitelabel_links_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["limit"] = '1'
   request.method = 'GET'
   request.path = '/v3/whitelabel/links'
@@ -5658,8 +5500,7 @@ describe('test_whitelabel_links_default_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["domain"] = 'test_string'
   request.method = 'GET'
   request.path = '/v3/whitelabel/links/default'
@@ -5683,8 +5524,7 @@ describe('test_whitelabel_links_subuser_get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.queryParams["username"] = 'test_string'
   request.method = 'GET'
   request.path = '/v3/whitelabel/links/subuser'
@@ -5708,8 +5548,7 @@ describe('test_whitelabel_links_subuser_delete', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.queryParams["username"] = 'test_string'
   request.method = 'DELETE'
@@ -5734,8 +5573,7 @@ describe('test_whitelabel_links__id__patch', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "default": true
 };
@@ -5761,8 +5599,7 @@ describe('test_whitelabel_links__id__get', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.method = 'GET'
   request.path = '/v3/whitelabel/links/{id}'
   request.headers['X-Mock'] = 200
@@ -5785,8 +5622,7 @@ describe('test_whitelabel_links__id__delete', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.method = 'DELETE'
   request.path = '/v3/whitelabel/links/{id}'
@@ -5810,8 +5646,7 @@ describe('test_whitelabel_links__id__validate_post', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = null;
   request.method = 'POST'
   request.path = '/v3/whitelabel/links/{id}/validate'
@@ -5835,8 +5670,7 @@ describe('test_whitelabel_links__link_id__subuser_post', function () {
 
   var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
 
-  var emptyRequest = require('sendgrid-rest').request
-  var request = JSON.parse(JSON.stringify(emptyRequest))
+  var request = sg.emptyRequest
   request.requestBody = {
   "username": "jane@example.com"
 };
