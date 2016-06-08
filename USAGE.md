@@ -47,7 +47,7 @@ For more information, please see our [User Guide](http://sendgrid.com/docs/User_
 ### GET /access_settings/activity
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["limit"] = '1'
   request.method = 'GET'
   request.path = '/v3/access_settings/activity'
@@ -70,7 +70,7 @@ For more information, please see our [User Guide](http://sendgrid.com/docs/User_
 ### POST /access_settings/whitelist
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "ips": [
     {
@@ -103,7 +103,7 @@ For more information, please see our [User Guide](http://sendgrid.com/docs/User_
 ### GET /access_settings/whitelist
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/access_settings/whitelist'
   sg.API(request, function (response) {
@@ -125,7 +125,7 @@ For more information, please see our [User Guide](http://sendgrid.com/docs/User_
 ### DELETE /access_settings/whitelist
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "ids": [
     1, 
@@ -154,7 +154,7 @@ For more information, please see our [User Guide](http://sendgrid.com/docs/User_
 ### GET /access_settings/whitelist/{rule_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/access_settings/whitelist/{rule_id}'
   sg.API(request, function (response) {
@@ -176,7 +176,7 @@ For more information, please see our [User Guide](http://sendgrid.com/docs/User_
 ### DELETE /access_settings/whitelist/{rule_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/access_settings/whitelist/{rule_id}'
   sg.API(request, function (response) {
@@ -203,7 +203,7 @@ See the [API Key Permissions List](https://sendgrid.com/docs/API_Reference/Web_A
 ### POST /api_keys
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "name": "My API Key", 
   "scopes": [
@@ -229,7 +229,7 @@ The API Keys feature allows customers to be able to generate an API Key credenti
 ### GET /api_keys
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/api_keys'
   sg.API(request, function (response) {
@@ -251,7 +251,7 @@ The API Keys feature allows customers to be able to generate an API Key credenti
 ### PUT /api_keys/{api_key_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "name": "A New Hope", 
   "scopes": [
@@ -284,7 +284,7 @@ The API Keys feature allows customers to be able to generate an API Key credenti
 ### PATCH /api_keys/{api_key_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "name": "A New Hope"
 };
@@ -305,7 +305,7 @@ If the API Key ID does not exist an HTTP 404 will be returned.
 ### GET /api_keys/{api_key_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/api_keys/{api_key_id}'
   sg.API(request, function (response) {
@@ -331,7 +331,7 @@ The API Keys feature allows customers to be able to generate an API Key credenti
 ### DELETE /api_keys/{api_key_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/api_keys/{api_key_id}'
   sg.API(request, function (response) {
@@ -356,7 +356,7 @@ Each user can create up to 25 different suppression groups.
 ### POST /asm/groups
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "description": "Suggestions for products our users might like.", 
   "is_default": true, 
@@ -379,7 +379,7 @@ This endpoint will return information for each group ID that you include in your
 ### GET /asm/groups
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["id"] = '1'
   request.method = 'GET'
   request.path = '/v3/asm/groups'
@@ -402,7 +402,7 @@ Each user can create up to 25 different suppression groups.
 ### PATCH /asm/groups/{group_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "description": "Suggestions for items our users might like.", 
   "id": 103, 
@@ -429,7 +429,7 @@ Each user can create up to 25 different suppression groups.
 ### GET /asm/groups/{group_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/asm/groups/{group_id}'
   sg.API(request, function (response) {
@@ -453,7 +453,7 @@ Each user can create up to 25 different suppression groups.
 ### DELETE /asm/groups/{group_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/asm/groups/{group_id}'
   sg.API(request, function (response) {
@@ -473,7 +473,7 @@ Suppressions are recipient email addresses that are added to [unsubscribe groups
 ### POST /asm/groups/{group_id}/suppressions
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "recipient_emails": [
     "test1@example.com", 
@@ -497,7 +497,7 @@ Suppressions are recipient email addresses that are added to [unsubscribe groups
 ### GET /asm/groups/{group_id}/suppressions
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/asm/groups/{group_id}/suppressions'
   sg.API(request, function (response) {
@@ -515,7 +515,7 @@ Suppressions are recipient email addresses that are added to [unsubscribe groups
 ### DELETE /asm/groups/{group_id}/suppressions/{email}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/asm/groups/{group_id}/suppressions/{email}'
   sg.API(request, function (response) {
@@ -533,7 +533,7 @@ Suppressions are email addresses that can be added to [groups](https://sendgrid.
 ### GET /asm/suppressions
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/asm/suppressions'
   sg.API(request, function (response) {
@@ -551,7 +551,7 @@ A global suppression (or global unsubscribe) is an email address of a recipient 
 ### POST /asm/suppressions/global
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "recipient_emails": [
     "test1@example.com", 
@@ -577,7 +577,7 @@ A global suppression (or global unsubscribe) is an email address of a recipient 
 ### GET /asm/suppressions/global/{email}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/asm/suppressions/global/{email}'
   sg.API(request, function (response) {
@@ -595,7 +595,7 @@ A global suppression (or global unsubscribe) is an email address of a recipient 
 ### DELETE /asm/suppressions/global/{email}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/asm/suppressions/global/{email}'
   sg.API(request, function (response) {
@@ -613,7 +613,7 @@ Suppressions are email addresses that can be added to [groups](https://sendgrid.
 ### GET /asm/suppressions/{email}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/asm/suppressions/{email}'
   sg.API(request, function (response) {
@@ -636,7 +636,7 @@ Advanced Stats provide a more in-depth view of your email statistics and the act
 ### GET /browsers/stats
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["end_date"] = '2016-04-01'
   request.queryParams["aggregated_by"] = 'day'
   request.queryParams["browsers"] = 'test_string'
@@ -669,7 +669,7 @@ For more information:
 ### POST /campaigns
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "categories": [
     "spring line"
@@ -713,7 +713,7 @@ For more information:
 ### GET /campaigns
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["limit"] = '0'
   request.queryParams["offset"] = '0'
   request.method = 'GET'
@@ -735,7 +735,7 @@ For more information:
 ### PATCH /campaigns/{campaign_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "categories": [
     "summer line"
@@ -766,7 +766,7 @@ For more information:
 ### GET /campaigns/{campaign_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/campaigns/{campaign_id}'
   sg.API(request, function (response) {
@@ -788,7 +788,7 @@ For more information:
 ### DELETE /campaigns/{campaign_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/campaigns/{campaign_id}'
   sg.API(request, function (response) {
@@ -808,7 +808,7 @@ For more information:
 ### PATCH /campaigns/{campaign_id}/schedules
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "send_at": 1489451436
 };
@@ -831,7 +831,7 @@ For more information:
 ### POST /campaigns/{campaign_id}/schedules
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "send_at": 1489771528
 };
@@ -854,7 +854,7 @@ For more information:
 ### GET /campaigns/{campaign_id}/schedules
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/campaigns/{campaign_id}/schedules'
   sg.API(request, function (response) {
@@ -877,7 +877,7 @@ For more information:
 ### DELETE /campaigns/{campaign_id}/schedules
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/campaigns/{campaign_id}/schedules'
   sg.API(request, function (response) {
@@ -899,7 +899,7 @@ For more information:
 ### POST /campaigns/{campaign_id}/schedules/now
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'POST'
   request.path = '/v3/campaigns/{campaign_id}/schedules/now'
   sg.API(request, function (response) {
@@ -921,7 +921,7 @@ For more information:
 ### POST /campaigns/{campaign_id}/schedules/test
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "to": "your.email@example.com"
 };
@@ -945,7 +945,7 @@ Categories can help organize your email analytics by enabling you to tag emails 
 ### GET /categories
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["category"] = 'test_string'
   request.queryParams["limit"] = '1'
   request.queryParams["offset"] = '1'
@@ -968,7 +968,7 @@ Categories allow you to group your emails together according to broad topics tha
 ### GET /categories/stats
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["end_date"] = '2016-04-01'
   request.queryParams["aggregated_by"] = 'day'
   request.queryParams["limit"] = '1'
@@ -994,7 +994,7 @@ Categories allow you to group your emails together according to broad topics tha
 ### GET /categories/stats/sums
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["end_date"] = '2016-04-01'
   request.queryParams["aggregated_by"] = 'day'
   request.queryParams["limit"] = '1'
@@ -1024,7 +1024,7 @@ Advanced Stats provide a more in-depth view of your email statistics and the act
 ### GET /clients/stats
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["aggregated_by"] = 'day'
   request.queryParams["start_date"] = '2016-01-01'
   request.queryParams["end_date"] = '2016-04-01'
@@ -1053,7 +1053,7 @@ Advanced Stats provide a more in-depth view of your email statistics and the act
 ### GET /clients/{client_type}/stats
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["aggregated_by"] = 'day'
   request.queryParams["start_date"] = '2016-01-01'
   request.queryParams["end_date"] = '2016-04-01'
@@ -1077,7 +1077,7 @@ The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](
 ### POST /contactdb/custom_fields
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "name": "pet", 
   "type": "text"
@@ -1099,7 +1099,7 @@ The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](
 ### GET /contactdb/custom_fields
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/contactdb/custom_fields'
   sg.API(request, function (response) {
@@ -1117,7 +1117,7 @@ The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](
 ### GET /contactdb/custom_fields/{custom_field_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/contactdb/custom_fields/{custom_field_id}'
   sg.API(request, function (response) {
@@ -1135,7 +1135,7 @@ The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](
 ### DELETE /contactdb/custom_fields/{custom_field_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/contactdb/custom_fields/{custom_field_id}'
   sg.API(request, function (response) {
@@ -1153,7 +1153,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 ### POST /contactdb/lists
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "name": "your list name"
 };
@@ -1174,7 +1174,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 ### GET /contactdb/lists
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/contactdb/lists'
   sg.API(request, function (response) {
@@ -1192,7 +1192,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 ### DELETE /contactdb/lists
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = [
   1, 
   2, 
@@ -1217,7 +1217,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 ### PATCH /contactdb/lists/{list_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "name": "newlistname"
 };
@@ -1239,7 +1239,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 ### GET /contactdb/lists/{list_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["list_id"] = '0'
   request.method = 'GET'
   request.path = '/v3/contactdb/lists/{list_id}'
@@ -1258,7 +1258,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 ### DELETE /contactdb/lists/{list_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["delete_contacts"] = 'true'
   request.method = 'DELETE'
   request.path = '/v3/contactdb/lists/{list_id}'
@@ -1279,7 +1279,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 ### POST /contactdb/lists/{list_id}/recipients
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = [
   "recipient_id1", 
   "recipient_id2"
@@ -1301,7 +1301,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 ### GET /contactdb/lists/{list_id}/recipients
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["page"] = '1'
   request.queryParams["page_size"] = '1'
   request.queryParams["list_id"] = '0'
@@ -1322,7 +1322,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 ### POST /contactdb/lists/{list_id}/recipients/{recipient_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'POST'
   request.path = '/v3/contactdb/lists/{list_id}/recipients/{recipient_id}'
   sg.API(request, function (response) {
@@ -1340,7 +1340,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 ### DELETE /contactdb/lists/{list_id}/recipients/{recipient_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["recipient_id"] = '0'
   request.queryParams["list_id"] = '0'
   request.method = 'DELETE'
@@ -1364,7 +1364,7 @@ The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](
 ### PATCH /contactdb/recipients
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = [
   {
     "email": "jones@example.com", 
@@ -1391,7 +1391,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 ### POST /contactdb/recipients
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = [
   {
     "age": 25, 
@@ -1426,7 +1426,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 ### GET /contactdb/recipients
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["page"] = '1'
   request.queryParams["page_size"] = '1'
   request.method = 'GET'
@@ -1448,7 +1448,7 @@ The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](
 ### DELETE /contactdb/recipients
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = [
   "recipient_id1", 
   "recipient_id2"
@@ -1472,7 +1472,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 ### GET /contactdb/recipients/billable_count
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/contactdb/recipients/billable_count'
   sg.API(request, function (response) {
@@ -1490,7 +1490,7 @@ The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](
 ### GET /contactdb/recipients/count
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/contactdb/recipients/count'
   sg.API(request, function (response) {
@@ -1517,7 +1517,7 @@ The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](
 ### GET /contactdb/recipients/search
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["{field_name}"] = 'test_string'
   request.method = 'GET'
   request.path = '/v3/contactdb/recipients/search'
@@ -1536,7 +1536,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 ### GET /contactdb/recipients/{recipient_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/contactdb/recipients/{recipient_id}'
   sg.API(request, function (response) {
@@ -1554,7 +1554,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 ### DELETE /contactdb/recipients/{recipient_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/contactdb/recipients/{recipient_id}'
   sg.API(request, function (response) {
@@ -1574,7 +1574,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 ### GET /contactdb/recipients/{recipient_id}/lists
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/contactdb/recipients/{recipient_id}/lists'
   sg.API(request, function (response) {
@@ -1592,7 +1592,7 @@ The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](
 ### GET /contactdb/reserved_fields
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/contactdb/reserved_fields'
   sg.API(request, function (response) {
@@ -1630,7 +1630,7 @@ For more information about segments in Marketing Campaigns, please see our [User
 ### POST /contactdb/segments
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "conditions": [
     {
@@ -1674,7 +1674,7 @@ For more information about segments in Marketing Campaigns, please see our [User
 ### GET /contactdb/segments
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/contactdb/segments'
   sg.API(request, function (response) {
@@ -1694,7 +1694,7 @@ For more information about segments in Marketing Campaigns, please see our [User
 ### PATCH /contactdb/segments/{segment_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "conditions": [
     {
@@ -1727,7 +1727,7 @@ For more information about segments in Marketing Campaigns, please see our [User
 ### GET /contactdb/segments/{segment_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["segment_id"] = '0'
   request.method = 'GET'
   request.path = '/v3/contactdb/segments/{segment_id}'
@@ -1750,7 +1750,7 @@ For more information about segments in Marketing Campaigns, please see our [User
 ### DELETE /contactdb/segments/{segment_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["delete_contacts"] = 'true'
   request.method = 'DELETE'
   request.path = '/v3/contactdb/segments/{segment_id}'
@@ -1771,7 +1771,7 @@ For more information about segments in Marketing Campaigns, please see our [User
 ### GET /contactdb/segments/{segment_id}/recipients
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["page"] = '1'
   request.queryParams["page_size"] = '1'
   request.method = 'GET'
@@ -1805,7 +1805,7 @@ Advanced Stats provide a more in-depth view of your email statistics and the act
 ### GET /devices/stats
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["aggregated_by"] = 'day'
   request.queryParams["limit"] = '1'
   request.queryParams["start_date"] = '2016-01-01'
@@ -1833,7 +1833,7 @@ Advanced Stats provide a more in-depth view of your email statistics and the act
 ### GET /geo/stats
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["end_date"] = '2016-04-01'
   request.queryParams["country"] = 'US'
   request.queryParams["aggregated_by"] = 'day'
@@ -1862,7 +1862,7 @@ A single IP address or a range of IP addresses may be dedicated to an account in
 ### GET /ips
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["subuser"] = 'test_string'
   request.queryParams["ip"] = 'test_string'
   request.queryParams["limit"] = '1'
@@ -1885,7 +1885,7 @@ A single IP address or a range of IP addresses may be dedicated to an account in
 ### GET /ips/assigned
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/ips/assigned'
   sg.API(request, function (response) {
@@ -1909,7 +1909,7 @@ If an IP pool is NOT specified for an email, it will use any IP available, inclu
 ### POST /ips/pools
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "name": "marketing"
 };
@@ -1934,7 +1934,7 @@ If an IP pool is NOT specified for an email, it will use any IP available, inclu
 ### GET /ips/pools
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/ips/pools'
   sg.API(request, function (response) {
@@ -1956,7 +1956,7 @@ If an IP pool is NOT specified for an email, it will use any IP available, inclu
 ### PUT /ips/pools/{pool_name}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "name": "new_pool_name"
 };
@@ -1981,7 +1981,7 @@ If an IP pool is NOT specified for an email, it will use any IP available, inclu
 ### GET /ips/pools/{pool_name}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/ips/pools/{pool_name}'
   sg.API(request, function (response) {
@@ -2003,7 +2003,7 @@ If an IP pool is NOT specified for an email, it will use any IP available, inclu
 ### DELETE /ips/pools/{pool_name}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/ips/pools/{pool_name}'
   sg.API(request, function (response) {
@@ -2023,7 +2023,7 @@ A single IP address or a range of IP addresses may be dedicated to an account in
 ### POST /ips/pools/{pool_name}/ips
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "ip": "0.0.0.0"
 };
@@ -2046,7 +2046,7 @@ A single IP address or a range of IP addresses may be dedicated to an account in
 ### DELETE /ips/pools/{pool_name}/ips/{ip}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/ips/pools/{pool_name}/ips/{ip}'
   sg.API(request, function (response) {
@@ -2066,7 +2066,7 @@ For more general information about warming up IPs, please see our [Classroom](ht
 ### POST /ips/warmup
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "ip": "0.0.0.0"
 };
@@ -2089,7 +2089,7 @@ For more general information about warming up IPs, please see our [Classroom](ht
 ### GET /ips/warmup
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/ips/warmup'
   sg.API(request, function (response) {
@@ -2109,7 +2109,7 @@ For more general information about warming up IPs, please see our [Classroom](ht
 ### GET /ips/warmup/{ip_address}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/ips/warmup/{ip_address}'
   sg.API(request, function (response) {
@@ -2129,7 +2129,7 @@ For more general information about warming up IPs, please see our [Classroom](ht
 ### DELETE /ips/warmup/{ip_address}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/ips/warmup/{ip_address}'
   sg.API(request, function (response) {
@@ -2149,7 +2149,7 @@ A single IP address or a range of IP addresses may be dedicated to an account in
 ### GET /ips/{ip_address}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/ips/{ip_address}'
   sg.API(request, function (response) {
@@ -2174,7 +2174,7 @@ More Information:
 ### POST /mail/batch
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'POST'
   request.path = '/v3/mail/batch'
   sg.API(request, function (response) {
@@ -2196,7 +2196,7 @@ More Information:
 ### GET /mail/batch/{batch_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/mail/batch/{batch_id}'
   sg.API(request, function (response) {
@@ -2219,7 +2219,7 @@ For more detailed information about how to use the v3 Mail Send endpoint, please
 ### POST /mail/send/beta
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "asm": {
     "group_id": 1, 
@@ -2383,7 +2383,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 ### GET /mail_settings
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["limit"] = '1'
   request.queryParams["offset"] = '1'
   request.method = 'GET'
@@ -2405,7 +2405,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 ### PATCH /mail_settings/address_whitelist
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "enabled": true, 
   "list": [
@@ -2432,7 +2432,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 ### GET /mail_settings/address_whitelist
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/mail_settings/address_whitelist'
   sg.API(request, function (response) {
@@ -2452,7 +2452,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 ### PATCH /mail_settings/bcc
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "email": "email@example.com", 
   "enabled": false
@@ -2476,7 +2476,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 ### GET /mail_settings/bcc
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/mail_settings/bcc'
   sg.API(request, function (response) {
@@ -2496,7 +2496,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 ### PATCH /mail_settings/bounce_purge
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "enabled": true, 
   "hard_bounces": 5, 
@@ -2521,7 +2521,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 ### GET /mail_settings/bounce_purge
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/mail_settings/bounce_purge'
   sg.API(request, function (response) {
@@ -2541,7 +2541,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 ### PATCH /mail_settings/footer
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "enabled": true, 
   "html_content": "...", 
@@ -2566,7 +2566,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 ### GET /mail_settings/footer
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/mail_settings/footer'
   sg.API(request, function (response) {
@@ -2586,7 +2586,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 ### PATCH /mail_settings/forward_bounce
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "email": "example@example.com", 
   "enabled": true
@@ -2610,7 +2610,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 ### GET /mail_settings/forward_bounce
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/mail_settings/forward_bounce'
   sg.API(request, function (response) {
@@ -2630,7 +2630,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 ### PATCH /mail_settings/forward_spam
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "email": "", 
   "enabled": false
@@ -2654,7 +2654,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 ### GET /mail_settings/forward_spam
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/mail_settings/forward_spam'
   sg.API(request, function (response) {
@@ -2674,7 +2674,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 ### PATCH /mail_settings/plain_content
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "enabled": false
 };
@@ -2697,7 +2697,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 ### GET /mail_settings/plain_content
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/mail_settings/plain_content'
   sg.API(request, function (response) {
@@ -2717,7 +2717,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 ### PATCH /mail_settings/spam_check
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "enabled": true, 
   "max_score": 5, 
@@ -2742,7 +2742,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 ### GET /mail_settings/spam_check
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/mail_settings/spam_check'
   sg.API(request, function (response) {
@@ -2764,7 +2764,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 ### PATCH /mail_settings/template
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "enabled": true, 
   "html_content": "<% body %>"
@@ -2790,7 +2790,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 ### GET /mail_settings/template
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/mail_settings/template'
   sg.API(request, function (response) {
@@ -2813,7 +2813,7 @@ Advanced Stats provide a more in-depth view of your email statistics and the act
 ### GET /mailbox_providers/stats
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["end_date"] = '2016-04-01'
   request.queryParams["mailbox_providers"] = 'test_string'
   request.queryParams["aggregated_by"] = 'day'
@@ -2840,7 +2840,7 @@ Our partner settings allow you to integrate your SendGrid account with our partn
 ### GET /partner_settings
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["limit"] = '1'
   request.queryParams["offset"] = '1'
   request.method = 'GET'
@@ -2862,7 +2862,7 @@ By integrating with New Relic, you can send your SendGrid email statistics to yo
 ### PATCH /partner_settings/new_relic
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "enable_subuser_statistics": true, 
   "enabled": true, 
@@ -2887,7 +2887,7 @@ By integrating with New Relic, you can send your SendGrid email statistics to yo
 ### GET /partner_settings/new_relic
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/partner_settings/new_relic'
   sg.API(request, function (response) {
@@ -2908,7 +2908,7 @@ API Keys can be used to authenticate the use of [SendGrids v3 Web API](https://s
 ### GET /scopes
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/scopes'
   sg.API(request, function (response) {
@@ -2929,7 +2929,7 @@ Parent accounts will see aggregated stats for their account and all subuser acco
 ### GET /stats
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["aggregated_by"] = 'day'
   request.queryParams["limit"] = '1'
   request.queryParams["start_date"] = '2016-01-01'
@@ -2958,7 +2958,7 @@ For more information about Subusers:
 ### POST /subusers
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "email": "John@example.com", 
   "ips": [
@@ -2988,7 +2988,7 @@ For more information about Subusers:
 ### GET /subusers
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["username"] = 'test_string'
   request.queryParams["limit"] = '0'
   request.queryParams["offset"] = '0'
@@ -3009,7 +3009,7 @@ This endpoint allows you to request the reputations for your subusers.
 ### GET /subusers/reputations
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["usernames"] = 'test_string'
   request.method = 'GET'
   request.path = '/v3/subusers/reputations'
@@ -3032,7 +3032,7 @@ For more information, see our [User Guide](https://sendgrid.com/docs/User_Guide/
 ### GET /subusers/stats
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["end_date"] = '2016-04-01'
   request.queryParams["aggregated_by"] = 'day'
   request.queryParams["limit"] = '1'
@@ -3061,7 +3061,7 @@ For more information, see our [User Guide](https://sendgrid.com/docs/User_Guide/
 ### GET /subusers/stats/monthly
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["subuser"] = 'test_string'
   request.queryParams["limit"] = '1'
   request.queryParams["sort_by_metric"] = 'test_string'
@@ -3088,7 +3088,7 @@ For more information, see our [User Guide](https://sendgrid.com/docs/User_Guide/
 ### GET /subusers/stats/sums
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["end_date"] = '2016-04-01'
   request.queryParams["aggregated_by"] = 'day'
   request.queryParams["limit"] = '1'
@@ -3116,7 +3116,7 @@ For more information about Subusers:
 ### PATCH /subusers/{subuser_name}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "disabled": false
 };
@@ -3140,7 +3140,7 @@ For more information about Subusers:
 ### DELETE /subusers/{subuser_name}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/subusers/{subuser_name}'
   sg.API(request, function (response) {
@@ -3161,7 +3161,7 @@ More information:
 ### PUT /subusers/{subuser_name}/ips
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = [
   "127.0.0.1"
 ];
@@ -3180,7 +3180,7 @@ Subuser monitor settings allow you to receive a sample of an outgoing message by
 ### PUT /subusers/{subuser_name}/monitor
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "email": "example@example.com", 
   "frequency": 500
@@ -3200,7 +3200,7 @@ Subuser monitor settings allow you to receive a sample of an outgoing message by
 ### POST /subusers/{subuser_name}/monitor
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "email": "example@example.com", 
   "frequency": 50000
@@ -3220,7 +3220,7 @@ Subuser monitor settings allow you to receive a sample of an outgoing message by
 ### GET /subusers/{subuser_name}/monitor
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/subusers/{subuser_name}/monitor'
   sg.API(request, function (response) {
@@ -3236,7 +3236,7 @@ Subuser monitor settings allow you to receive a sample of an outgoing message by
 ### DELETE /subusers/{subuser_name}/monitor
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/subusers/{subuser_name}/monitor'
   sg.API(request, function (response) {
@@ -3259,7 +3259,7 @@ For more information, see our [User Guide](https://sendgrid.com/docs/User_Guide/
 ### GET /subusers/{subuser_name}/stats/monthly
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["date"] = 'test_string'
   request.queryParams["sort_by_direction"] = 'asc'
   request.queryParams["limit"] = '0'
@@ -3287,7 +3287,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 ### GET /suppression/blocks
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["start_time"] = '1'
   request.queryParams["limit"] = '1'
   request.queryParams["end_time"] = '1'
@@ -3316,7 +3316,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 ### DELETE /suppression/blocks
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "delete_all": false, 
   "emails": [
@@ -3343,7 +3343,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 ### GET /suppression/blocks/{email}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/suppression/blocks/{email}'
   sg.API(request, function (response) {
@@ -3363,7 +3363,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 ### DELETE /suppression/blocks/{email}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/suppression/blocks/{email}'
   sg.API(request, function (response) {
@@ -3386,7 +3386,7 @@ For more information see:
 ### GET /suppression/bounces
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["start_time"] = '0'
   request.queryParams["end_time"] = '0'
   request.method = 'GET'
@@ -3414,7 +3414,7 @@ Note: the `delete_all` and `emails` parameters should be used independently of e
 ### DELETE /suppression/bounces
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "delete_all": true, 
   "emails": [
@@ -3445,7 +3445,7 @@ For more information see:
 ### GET /suppression/bounces/{email}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/suppression/bounces/{email}'
   sg.API(request, function (response) {
@@ -3469,7 +3469,7 @@ For more information see:
 ### DELETE /suppression/bounces/{email}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["email_address"] = 'example@example.com'
   request.method = 'DELETE'
   request.path = '/v3/suppression/bounces/{email}'
@@ -3492,7 +3492,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 ### GET /suppression/invalid_emails
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["start_time"] = '1'
   request.queryParams["limit"] = '1'
   request.queryParams["end_time"] = '1'
@@ -3523,7 +3523,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 ### DELETE /suppression/invalid_emails
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "delete_all": false, 
   "emails": [
@@ -3552,7 +3552,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 ### GET /suppression/invalid_emails/{email}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/suppression/invalid_emails/{email}'
   sg.API(request, function (response) {
@@ -3574,7 +3574,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 ### DELETE /suppression/invalid_emails/{email}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/suppression/invalid_emails/{email}'
   sg.API(request, function (response) {
@@ -3594,7 +3594,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 ### GET /suppression/spam_report/{email}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/suppression/spam_report/{email}'
   sg.API(request, function (response) {
@@ -3614,7 +3614,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 ### DELETE /suppression/spam_report/{email}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/suppression/spam_report/{email}'
   sg.API(request, function (response) {
@@ -3634,7 +3634,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 ### GET /suppression/spam_reports
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["start_time"] = '1'
   request.queryParams["limit"] = '1'
   request.queryParams["end_time"] = '1'
@@ -3663,7 +3663,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 ### DELETE /suppression/spam_reports
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "delete_all": false, 
   "emails": [
@@ -3688,7 +3688,7 @@ A global suppression (or global unsubscribe) is an email address of a recipient 
 ### GET /suppression/unsubscribes
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["start_time"] = '1'
   request.queryParams["limit"] = '1'
   request.queryParams["end_time"] = '1'
@@ -3715,7 +3715,7 @@ Transactional templates are templates created specifically for transactional ema
 ### POST /templates
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "name": "example_name"
 };
@@ -3738,7 +3738,7 @@ Transactional templates are templates created specifically for transactional ema
 ### GET /templates
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/templates'
   sg.API(request, function (response) {
@@ -3759,7 +3759,7 @@ Transactional templates are templates created specifically for transactional ema
 ### PATCH /templates/{template_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "name": "new_example_name"
 };
@@ -3783,7 +3783,7 @@ Transactional templates are templates created specifically for transactional ema
 ### GET /templates/{template_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/templates/{template_id}'
   sg.API(request, function (response) {
@@ -3804,7 +3804,7 @@ Transactional templates are templates created specifically for transactional ema
 ### DELETE /templates/{template_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/templates/{template_id}'
   sg.API(request, function (response) {
@@ -3825,7 +3825,7 @@ For more information about transactional templates, please see our [User Guide](
 ### POST /templates/{template_id}/versions
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "active": 1, 
   "html_content": "<%body%>", 
@@ -3859,7 +3859,7 @@ For more information about transactional templates, please see our [User Guide](
 ### PATCH /templates/{template_id}/versions/{version_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "active": 1, 
   "html_content": "<%body%>", 
@@ -3892,7 +3892,7 @@ For more information about transactional templates, please see our [User Guide](
 ### GET /templates/{template_id}/versions/{version_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/templates/{template_id}/versions/{version_id}'
   sg.API(request, function (response) {
@@ -3918,7 +3918,7 @@ For more information about transactional templates, please see our [User Guide](
 ### DELETE /templates/{template_id}/versions/{version_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/templates/{template_id}/versions/{version_id}'
   sg.API(request, function (response) {
@@ -3945,7 +3945,7 @@ For more information about transactional templates, please see our [User Guide](
 ### POST /templates/{template_id}/versions/{version_id}/activate
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'POST'
   request.path = '/v3/templates/{template_id}/versions/{version_id}/activate'
   sg.API(request, function (response) {
@@ -3968,7 +3968,7 @@ For more information about tracking, please see our [User Guide](https://sendgri
 ### GET /tracking_settings
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["limit"] = '1'
   request.queryParams["offset"] = '1'
   request.method = 'GET'
@@ -3990,7 +3990,7 @@ For more information about tracking, please see our [User Guide](https://sendgri
 ### PATCH /tracking_settings/click
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "enabled": true
 };
@@ -4013,7 +4013,7 @@ For more information about tracking, please see our [User Guide](https://sendgri
 ### GET /tracking_settings/click
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/tracking_settings/click'
   sg.API(request, function (response) {
@@ -4037,7 +4037,7 @@ For more information about tracking, please see our [User Guide](https://sendgri
 ### PATCH /tracking_settings/google_analytics
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "enabled": true, 
   "utm_campaign": "website", 
@@ -4069,7 +4069,7 @@ For more information about tracking, please see our [User Guide](https://sendgri
 ### GET /tracking_settings/google_analytics
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/tracking_settings/google_analytics'
   sg.API(request, function (response) {
@@ -4091,7 +4091,7 @@ For more information about tracking, please see our [User Guide](https://sendgri
 ### PATCH /tracking_settings/open
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "enabled": true
 };
@@ -4116,7 +4116,7 @@ For more information about tracking, please see our [User Guide](https://sendgri
 ### GET /tracking_settings/open
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/tracking_settings/open'
   sg.API(request, function (response) {
@@ -4138,7 +4138,7 @@ For more information about tracking, please see our [User Guide](https://sendgri
 ### PATCH /tracking_settings/subscription
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "enabled": true, 
   "html_content": "html content", 
@@ -4168,7 +4168,7 @@ For more information about tracking, please see our [User Guide](https://sendgri
 ### GET /tracking_settings/subscription
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/tracking_settings/subscription'
   sg.API(request, function (response) {
@@ -4195,7 +4195,7 @@ For more information about your user profile:
 ### GET /user/account
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/user/account'
   sg.API(request, function (response) {
@@ -4213,7 +4213,7 @@ Your monthly credit allotment limits the number of emails you may send before in
 ### GET /user/credits
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/user/credits'
   sg.API(request, function (response) {
@@ -4235,7 +4235,7 @@ For more information about your user profile:
 ### PUT /user/email
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "email": "example@example.com"
 };
@@ -4260,7 +4260,7 @@ For more information about your user profile:
 ### GET /user/email
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/user/email'
   sg.API(request, function (response) {
@@ -4282,7 +4282,7 @@ For more information about your user profile:
 ### PUT /user/password
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "new_password": "new_password", 
   "old_password": "old_password"
@@ -4310,7 +4310,7 @@ It should be noted that any one or more of the parameters can be updated via the
 ### PATCH /user/profile
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "city": "Orange", 
   "first_name": "Example", 
@@ -4335,7 +4335,7 @@ For more information about your user profile:
 ### GET /user/profile
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/user/profile'
   sg.API(request, function (response) {
@@ -4356,7 +4356,7 @@ The Cancel Scheduled Sends feature allows the customer to cancel a scheduled sen
 ### POST /user/scheduled_sends
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "batch_id": "YOUR_BATCH_ID", 
   "status": "pause"
@@ -4378,7 +4378,7 @@ The Cancel Scheduled Sends feature allows the customer to cancel a scheduled sen
 ### GET /user/scheduled_sends
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/user/scheduled_sends'
   sg.API(request, function (response) {
@@ -4396,7 +4396,7 @@ The Cancel Scheduled Sends feature allows the customer to cancel a scheduled sen
 ### PATCH /user/scheduled_sends/{batch_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "status": "pause"
 };
@@ -4417,7 +4417,7 @@ The Cancel Scheduled Sends feature allows the customer to cancel a scheduled sen
 ### GET /user/scheduled_sends/{batch_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/user/scheduled_sends/{batch_id}'
   sg.API(request, function (response) {
@@ -4435,7 +4435,7 @@ The Cancel Scheduled Sends feature allows the customer to cancel a scheduled sen
 ### DELETE /user/scheduled_sends/{batch_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/user/scheduled_sends/{batch_id}'
   sg.API(request, function (response) {
@@ -4455,7 +4455,7 @@ The Enforced TLS settings specify whether or not the recipient is required to su
 ### PATCH /user/settings/enforced_tls
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "require_tls": true, 
   "require_valid_cert": false
@@ -4479,7 +4479,7 @@ The Enforced TLS settings specify whether or not the recipient is required to su
 ### GET /user/settings/enforced_tls
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/user/settings/enforced_tls'
   sg.API(request, function (response) {
@@ -4501,7 +4501,7 @@ For more information about your user profile:
 ### PUT /user/username
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "username": "test_username"
 };
@@ -4526,7 +4526,7 @@ For more information about your user profile:
 ### GET /user/username
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/user/username'
   sg.API(request, function (response) {
@@ -4548,7 +4548,7 @@ Common uses of this data are to remove unsubscribes, react to spam reports, dete
 ### PATCH /user/webhooks/event/settings
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "bounce": true, 
   "click": true, 
@@ -4585,7 +4585,7 @@ Common uses of this data are to remove unsubscribes, react to spam reports, dete
 ### GET /user/webhooks/event/settings
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/user/webhooks/event/settings'
   sg.API(request, function (response) {
@@ -4605,7 +4605,7 @@ Common uses of this data are to remove unsubscribes, react to spam reports, dete
 ### POST /user/webhooks/event/test
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "url": "url"
 };
@@ -4626,7 +4626,7 @@ SendGrid can parse the attachments and contents of incoming emails. The Parse AP
 ### GET /user/webhooks/parse/settings
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/user/webhooks/parse/settings'
   sg.API(request, function (response) {
@@ -4646,7 +4646,7 @@ There are a number of pre-made integrations for the SendGrid Parse Webhook which
 ### GET /user/webhooks/parse/stats
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["aggregated_by"] = 'day'
   request.queryParams["limit"] = 'test_string'
   request.queryParams["start_date"] = '2016-01-01'
@@ -4678,7 +4678,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 ### POST /whitelabel/domains
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "automatic_security": false, 
   "custom_spf": true, 
@@ -4711,7 +4711,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 ### GET /whitelabel/domains
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["username"] = 'test_string'
   request.queryParams["domain"] = 'test_string'
   request.queryParams["exclude_subusers"] = 'true'
@@ -4741,7 +4741,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 ### GET /whitelabel/domains/default
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/whitelabel/domains/default'
   sg.API(request, function (response) {
@@ -4768,7 +4768,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 ### GET /whitelabel/domains/subuser
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/whitelabel/domains/subuser'
   sg.API(request, function (response) {
@@ -4795,7 +4795,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 ### DELETE /whitelabel/domains/subuser
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/whitelabel/domains/subuser'
   sg.API(request, function (response) {
@@ -4815,7 +4815,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 ### PATCH /whitelabel/domains/{domain_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "custom_spf": true, 
   "default": false
@@ -4840,7 +4840,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 ### GET /whitelabel/domains/{domain_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/whitelabel/domains/{domain_id}'
   sg.API(request, function (response) {
@@ -4860,7 +4860,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 ### DELETE /whitelabel/domains/{domain_id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/whitelabel/domains/{domain_id}'
   sg.API(request, function (response) {
@@ -4887,7 +4887,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 ### POST /whitelabel/domains/{domain_id}/subuser
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "username": "jane@example.com"
 };
@@ -4915,7 +4915,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 ### POST /whitelabel/domains/{id}/ips
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "ip": "192.168.0.1"
 };
@@ -4944,7 +4944,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 ### DELETE /whitelabel/domains/{id}/ips/{ip}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/whitelabel/domains/{id}/ips/{ip}'
   sg.API(request, function (response) {
@@ -4969,7 +4969,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 ### POST /whitelabel/domains/{id}/validate
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'POST'
   request.path = '/v3/whitelabel/domains/{id}/validate'
   sg.API(request, function (response) {
@@ -4991,7 +4991,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
 ### POST /whitelabel/ips
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "domain": "example.com", 
   "ip": "192.168.1.1", 
@@ -5018,7 +5018,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
 ### GET /whitelabel/ips
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["ip"] = 'test_string'
   request.queryParams["limit"] = '1'
   request.queryParams["offset"] = '1'
@@ -5041,7 +5041,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
 ### GET /whitelabel/ips/{id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/whitelabel/ips/{id}'
   sg.API(request, function (response) {
@@ -5061,7 +5061,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
 ### DELETE /whitelabel/ips/{id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/whitelabel/ips/{id}'
   sg.API(request, function (response) {
@@ -5081,7 +5081,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
 ### POST /whitelabel/ips/{id}/validate
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'POST'
   request.path = '/v3/whitelabel/ips/{id}/validate'
   sg.API(request, function (response) {
@@ -5101,7 +5101,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
 ### POST /whitelabel/links
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "default": true, 
   "domain": "example.com", 
@@ -5128,7 +5128,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
 ### GET /whitelabel/links
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["limit"] = '1'
   request.method = 'GET'
   request.path = '/v3/whitelabel/links'
@@ -5156,7 +5156,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
 ### GET /whitelabel/links/default
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["domain"] = 'test_string'
   request.method = 'GET'
   request.path = '/v3/whitelabel/links/default'
@@ -5181,7 +5181,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
 ### GET /whitelabel/links/subuser
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["username"] = 'test_string'
   request.method = 'GET'
   request.path = '/v3/whitelabel/links/subuser'
@@ -5206,7 +5206,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
 ### DELETE /whitelabel/links/subuser
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.queryParams["username"] = 'test_string'
   request.method = 'DELETE'
   request.path = '/v3/whitelabel/links/subuser'
@@ -5227,7 +5227,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
 ### PATCH /whitelabel/links/{id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "default": true
 };
@@ -5250,7 +5250,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
 ### GET /whitelabel/links/{id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/whitelabel/links/{id}'
   sg.API(request, function (response) {
@@ -5270,7 +5270,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
 ### DELETE /whitelabel/links/{id}
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/whitelabel/links/{id}'
   sg.API(request, function (response) {
@@ -5290,7 +5290,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
 ### POST /whitelabel/links/{id}/validate
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.method = 'POST'
   request.path = '/v3/whitelabel/links/{id}/validate'
   sg.API(request, function (response) {
@@ -5314,7 +5314,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
 ### POST /whitelabel/links/{link_id}/subuser
 
 ```javascript
-  var request = sg.emptyRequest
+  var request = sg.emptyRequest()
   request.body = {
   "username": "jane@example.com"
 };

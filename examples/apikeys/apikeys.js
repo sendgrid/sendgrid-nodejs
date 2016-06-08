@@ -4,7 +4,7 @@ var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
 // Create API keys
 // POST /api_keys
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.body = {
   "name": "My API Key", 
   "scopes": [
@@ -25,7 +25,7 @@ sg.API(request, function (response) {
 // Retrieve all API Keys belonging to the authenticated user
 // GET /api_keys
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/api_keys'
 sg.API(request, function (response) {
@@ -38,7 +38,7 @@ sg.API(request, function (response) {
 // Update the name & scopes of an API Key
 // PUT /api_keys/{api_key_id}
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.body = {
   "name": "A New Hope", 
   "scopes": [
@@ -58,7 +58,7 @@ sg.API(request, function (response) {
 // Update API keys
 // PATCH /api_keys/{api_key_id}
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.body = {
   "name": "A New Hope"
 };
@@ -74,7 +74,7 @@ sg.API(request, function (response) {
 // Retrieve an existing API Key
 // GET /api_keys/{api_key_id}
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/api_keys/{api_key_id}'
 sg.API(request, function (response) {
@@ -87,7 +87,7 @@ sg.API(request, function (response) {
 // Delete API keys
 // DELETE /api_keys/{api_key_id}
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.method = 'DELETE'
 request.path = '/v3/api_keys/{api_key_id}'
 sg.API(request, function (response) {

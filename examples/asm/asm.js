@@ -4,7 +4,7 @@ var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
 // Create a new suppression group
 // POST /asm/groups
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.body = {
   "description": "Suggestions for products our users might like.", 
   "is_default": true, 
@@ -22,7 +22,7 @@ sg.API(request, function (response) {
 // Retrieve information about multiple suppression groups
 // GET /asm/groups
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.queryParams["id"] = '1'
 request.method = 'GET'
 request.path = '/v3/asm/groups'
@@ -36,7 +36,7 @@ sg.API(request, function (response) {
 // Update a suppression group.
 // PATCH /asm/groups/{group_id}
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.body = {
   "description": "Suggestions for items our users might like.", 
   "id": 103, 
@@ -54,7 +54,7 @@ sg.API(request, function (response) {
 // Get information on a single suppression group.
 // GET /asm/groups/{group_id}
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/asm/groups/{group_id}'
 sg.API(request, function (response) {
@@ -67,7 +67,7 @@ sg.API(request, function (response) {
 // Delete a suppression group.
 // DELETE /asm/groups/{group_id}
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.method = 'DELETE'
 request.path = '/v3/asm/groups/{group_id}'
 sg.API(request, function (response) {
@@ -80,7 +80,7 @@ sg.API(request, function (response) {
 // Add suppressions to a suppression group
 // POST /asm/groups/{group_id}/suppressions
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.body = {
   "recipient_emails": [
     "test1@example.com", 
@@ -99,7 +99,7 @@ sg.API(request, function (response) {
 // Retrieve all suppressions for a suppression group
 // GET /asm/groups/{group_id}/suppressions
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/asm/groups/{group_id}/suppressions'
 sg.API(request, function (response) {
@@ -112,7 +112,7 @@ sg.API(request, function (response) {
 // Delete a suppression from a suppression group
 // DELETE /asm/groups/{group_id}/suppressions/{email}
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.method = 'DELETE'
 request.path = '/v3/asm/groups/{group_id}/suppressions/{email}'
 sg.API(request, function (response) {
@@ -125,7 +125,7 @@ sg.API(request, function (response) {
 // Retrieve all suppressions
 // GET /asm/suppressions
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/asm/suppressions'
 sg.API(request, function (response) {
@@ -138,7 +138,7 @@ sg.API(request, function (response) {
 // Add recipient addresses to the global suppression group.
 // POST /asm/suppressions/global
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.body = {
   "recipient_emails": [
     "test1@example.com", 
@@ -157,7 +157,7 @@ sg.API(request, function (response) {
 // Retrieve a Global Suppression
 // GET /asm/suppressions/global/{email}
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/asm/suppressions/global/{email}'
 sg.API(request, function (response) {
@@ -170,7 +170,7 @@ sg.API(request, function (response) {
 // Delete a Global Suppression
 // DELETE /asm/suppressions/global/{email}
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.method = 'DELETE'
 request.path = '/v3/asm/suppressions/global/{email}'
 sg.API(request, function (response) {
@@ -183,7 +183,7 @@ sg.API(request, function (response) {
 // Retrieve all suppression groups for an email address
 // GET /asm/suppressions/{email}
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/asm/suppressions/{email}'
 sg.API(request, function (response) {

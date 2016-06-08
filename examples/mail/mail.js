@@ -4,7 +4,7 @@ var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
 // Create a batch ID
 // POST /mail/batch
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.method = 'POST'
 request.path = '/v3/mail/batch'
 sg.API(request, function (response) {
@@ -17,7 +17,7 @@ sg.API(request, function (response) {
 // Validate batch ID
 // GET /mail/batch/{batch_id}
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/mail/batch/{batch_id}'
 sg.API(request, function (response) {
@@ -30,7 +30,7 @@ sg.API(request, function (response) {
 // v3 Mail Send Beta
 // POST /mail/send/beta
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.body = {
   "asm": {
     "group_id": 1, 

@@ -4,7 +4,7 @@ var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
 // Retrieve all categories
 // GET /categories
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.queryParams["category"] = 'test_string'
   request.queryParams["limit"] = '1'
   request.queryParams["offset"] = '1'
@@ -20,7 +20,7 @@ sg.API(request, function (response) {
 // Retrieve Email Statistics for Categories
 // GET /categories/stats
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.queryParams["end_date"] = '2016-04-01'
   request.queryParams["aggregated_by"] = 'day'
   request.queryParams["limit"] = '1'
@@ -39,7 +39,7 @@ sg.API(request, function (response) {
 // Retrieve sums of email stats for each category [Needs: Stats object defined, has category ID?]
 // GET /categories/stats/sums
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.queryParams["end_date"] = '2016-04-01'
   request.queryParams["aggregated_by"] = 'day'
   request.queryParams["limit"] = '1'

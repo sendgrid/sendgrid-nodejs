@@ -4,7 +4,7 @@ var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
 // Returns a list of all partner settings.
 // GET /partner_settings
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.queryParams["limit"] = '1'
   request.queryParams["offset"] = '1'
 request.method = 'GET'
@@ -19,7 +19,7 @@ sg.API(request, function (response) {
 // Updates New Relic partner settings.
 // PATCH /partner_settings/new_relic
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.body = {
   "enable_subuser_statistics": true, 
   "enabled": true, 
@@ -37,7 +37,7 @@ sg.API(request, function (response) {
 // Returns all New Relic partner settings.
 // GET /partner_settings/new_relic
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/partner_settings/new_relic'
 sg.API(request, function (response) {

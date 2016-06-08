@@ -4,7 +4,7 @@ var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
 // Retrieve email statistics by device type.
 // GET /devices/stats
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.queryParams["aggregated_by"] = 'day'
   request.queryParams["limit"] = '1'
   request.queryParams["start_date"] = '2016-01-01'

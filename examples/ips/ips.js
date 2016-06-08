@@ -4,7 +4,7 @@ var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
 // Retrieve all IP addresses
 // GET /ips
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.queryParams["subuser"] = 'test_string'
   request.queryParams["ip"] = 'test_string'
   request.queryParams["limit"] = '1'
@@ -22,7 +22,7 @@ sg.API(request, function (response) {
 // Retrieve all assigned IPs
 // GET /ips/assigned
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/ips/assigned'
 sg.API(request, function (response) {
@@ -35,7 +35,7 @@ sg.API(request, function (response) {
 // Create an IP pool.
 // POST /ips/pools
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.body = {
   "name": "marketing"
 };
@@ -51,7 +51,7 @@ sg.API(request, function (response) {
 // Retrieve all IP pools.
 // GET /ips/pools
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/ips/pools'
 sg.API(request, function (response) {
@@ -64,7 +64,7 @@ sg.API(request, function (response) {
 // Update an IP pools name.
 // PUT /ips/pools/{pool_name}
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.body = {
   "name": "new_pool_name"
 };
@@ -80,7 +80,7 @@ sg.API(request, function (response) {
 // Retrieve all IPs in a specified pool.
 // GET /ips/pools/{pool_name}
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/ips/pools/{pool_name}'
 sg.API(request, function (response) {
@@ -93,7 +93,7 @@ sg.API(request, function (response) {
 // Delete an IP pool.
 // DELETE /ips/pools/{pool_name}
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.method = 'DELETE'
 request.path = '/v3/ips/pools/{pool_name}'
 sg.API(request, function (response) {
@@ -106,7 +106,7 @@ sg.API(request, function (response) {
 // Add an IP address to a pool
 // POST /ips/pools/{pool_name}/ips
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.body = {
   "ip": "0.0.0.0"
 };
@@ -122,7 +122,7 @@ sg.API(request, function (response) {
 // Remove an IP address from a pool.
 // DELETE /ips/pools/{pool_name}/ips/{ip}
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.method = 'DELETE'
 request.path = '/v3/ips/pools/{pool_name}/ips/{ip}'
 sg.API(request, function (response) {
@@ -135,7 +135,7 @@ sg.API(request, function (response) {
 // Add an IP to warmup
 // POST /ips/warmup
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.body = {
   "ip": "0.0.0.0"
 };
@@ -151,7 +151,7 @@ sg.API(request, function (response) {
 // Retrieve all IPs currently in warmup
 // GET /ips/warmup
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/ips/warmup'
 sg.API(request, function (response) {
@@ -164,7 +164,7 @@ sg.API(request, function (response) {
 // Retrieve warmup status for a specific IP address
 // GET /ips/warmup/{ip_address}
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/ips/warmup/{ip_address}'
 sg.API(request, function (response) {
@@ -177,7 +177,7 @@ sg.API(request, function (response) {
 // Remove an IP from warmup
 // DELETE /ips/warmup/{ip_address}
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.method = 'DELETE'
 request.path = '/v3/ips/warmup/{ip_address}'
 sg.API(request, function (response) {
@@ -190,7 +190,7 @@ sg.API(request, function (response) {
 // Retrieve all IP pools an IP address belongs to
 // GET /ips/{ip_address}
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/ips/{ip_address}'
 sg.API(request, function (response) {

@@ -4,7 +4,7 @@ var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
 // Retrieve all blocks
 // GET /suppression/blocks
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.queryParams["start_time"] = '1'
   request.queryParams["limit"] = '1'
   request.queryParams["end_time"] = '1'
@@ -21,7 +21,7 @@ sg.API(request, function (response) {
 // Delete blocks
 // DELETE /suppression/blocks
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.body = {
   "delete_all": false, 
   "emails": [
@@ -41,7 +41,7 @@ sg.API(request, function (response) {
 // Retrieve a specific block
 // GET /suppression/blocks/{email}
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/suppression/blocks/{email}'
 sg.API(request, function (response) {
@@ -54,7 +54,7 @@ sg.API(request, function (response) {
 // Delete a specific block
 // DELETE /suppression/blocks/{email}
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.method = 'DELETE'
 request.path = '/v3/suppression/blocks/{email}'
 sg.API(request, function (response) {
@@ -67,7 +67,7 @@ sg.API(request, function (response) {
 // Retrieve all bounces
 // GET /suppression/bounces
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.queryParams["start_time"] = '0'
   request.queryParams["end_time"] = '0'
 request.method = 'GET'
@@ -82,7 +82,7 @@ sg.API(request, function (response) {
 // Delete bounces
 // DELETE /suppression/bounces
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.body = {
   "delete_all": true, 
   "emails": [
@@ -102,7 +102,7 @@ sg.API(request, function (response) {
 // Retrieve a Bounce
 // GET /suppression/bounces/{email}
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/suppression/bounces/{email}'
 sg.API(request, function (response) {
@@ -115,7 +115,7 @@ sg.API(request, function (response) {
 // Delete a bounce
 // DELETE /suppression/bounces/{email}
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.queryParams["email_address"] = 'example@example.com'
 request.method = 'DELETE'
 request.path = '/v3/suppression/bounces/{email}'
@@ -129,7 +129,7 @@ sg.API(request, function (response) {
 // Retrieve all invalid emails
 // GET /suppression/invalid_emails
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.queryParams["start_time"] = '1'
   request.queryParams["limit"] = '1'
   request.queryParams["end_time"] = '1'
@@ -146,7 +146,7 @@ sg.API(request, function (response) {
 // Delete invalid emails
 // DELETE /suppression/invalid_emails
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.body = {
   "delete_all": false, 
   "emails": [
@@ -166,7 +166,7 @@ sg.API(request, function (response) {
 // Retrieve a specific invalid email
 // GET /suppression/invalid_emails/{email}
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/suppression/invalid_emails/{email}'
 sg.API(request, function (response) {
@@ -179,7 +179,7 @@ sg.API(request, function (response) {
 // Delete a specific invalid email
 // DELETE /suppression/invalid_emails/{email}
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.method = 'DELETE'
 request.path = '/v3/suppression/invalid_emails/{email}'
 sg.API(request, function (response) {
@@ -192,7 +192,7 @@ sg.API(request, function (response) {
 // Retrieve a specific spam report
 // GET /suppression/spam_report/{email}
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/suppression/spam_report/{email}'
 sg.API(request, function (response) {
@@ -205,7 +205,7 @@ sg.API(request, function (response) {
 // Delete a specific spam report
 // DELETE /suppression/spam_report/{email}
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.method = 'DELETE'
 request.path = '/v3/suppression/spam_report/{email}'
 sg.API(request, function (response) {
@@ -218,7 +218,7 @@ sg.API(request, function (response) {
 // Retrieve all spam reports
 // GET /suppression/spam_reports
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.queryParams["start_time"] = '1'
   request.queryParams["limit"] = '1'
   request.queryParams["end_time"] = '1'
@@ -235,7 +235,7 @@ sg.API(request, function (response) {
 // Delete spam reports
 // DELETE /suppression/spam_reports
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.body = {
   "delete_all": false, 
   "emails": [
@@ -255,7 +255,7 @@ sg.API(request, function (response) {
 // Retrieve all global suppressions
 // GET /suppression/unsubscribes
 
-var request = sg.emptyRequest
+var request = sg.emptyRequest()
 request.queryParams["start_time"] = '1'
   request.queryParams["limit"] = '1'
   request.queryParams["end_time"] = '1'
