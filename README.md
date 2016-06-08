@@ -130,7 +130,7 @@ npm install sendgrid
   var sg = require('sendgrid-nodejs').SendGrid(process.env.SENDGRID_API_KEY)
 
   var requestBody = toSend
-  var requestPost = sg.emptyRequest
+  var request = sg.emptyRequest()
   requestPost.method = 'POST'
   requestPost.path = '/v3/mail/send/beta'
   requestPost.body = requestBody
@@ -147,7 +147,7 @@ npm install sendgrid
 var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
 
 // GET Collection
-var requestGet = sg.emptyRequest
+var request = sg.emptyRequest()
 requestGet.method = 'GET'
 requestGet.path = '/v3/api_keys'
 sg.API(requestGet, function (response) {
