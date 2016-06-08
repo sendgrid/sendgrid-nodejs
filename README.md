@@ -129,7 +129,7 @@ npm install sendgrid
 
   var sg = require('sendgrid-nodejs').SendGrid(process.env.SENDGRID_API_KEY)
 
-  var requestBody = toSend
+  var requestBody = mail.toJSON()
   var request = sg.emptyRequest()
   requestPost.method = 'POST'
   requestPost.path = '/v3/mail/send/beta'
