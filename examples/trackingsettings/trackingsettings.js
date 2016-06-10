@@ -4,9 +4,10 @@ var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
 // Retrieve Tracking Settings
 // GET /tracking_settings
 
+
 var request = sg.emptyRequest()
 request.queryParams["limit"] = '1'
-  request.queryParams["offset"] = '1'
+request.queryParams["offset"] = '1'
 request.method = 'GET'
 request.path = '/v3/tracking_settings'
 sg.API(request, function (response) {
@@ -18,6 +19,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Update Click Tracking Settings
 // PATCH /tracking_settings/click
+
 
 var request = sg.emptyRequest()
 request.body = {
@@ -35,6 +37,7 @@ sg.API(request, function (response) {
 // Retrieve Click Track Settings
 // GET /tracking_settings/click
 
+
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/tracking_settings/click'
@@ -47,6 +50,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Update Google Analytics Settings
 // PATCH /tracking_settings/google_analytics
+
 
 var request = sg.emptyRequest()
 request.body = {
@@ -69,6 +73,7 @@ sg.API(request, function (response) {
 // Retrieve Google Analytics Settings
 // GET /tracking_settings/google_analytics
 
+
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/tracking_settings/google_analytics'
@@ -81,6 +86,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Update Open Tracking Settings
 // PATCH /tracking_settings/open
+
 
 var request = sg.emptyRequest()
 request.body = {
@@ -98,6 +104,7 @@ sg.API(request, function (response) {
 // Get Open Tracking Settings
 // GET /tracking_settings/open
 
+
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/tracking_settings/open'
@@ -110,6 +117,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Update Subscription Tracking Settings
 // PATCH /tracking_settings/subscription
+
 
 var request = sg.emptyRequest()
 request.body = {
@@ -131,6 +139,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Retrieve Subscription Tracking Settings
 // GET /tracking_settings/subscription
+
 
 var request = sg.emptyRequest()
 request.method = 'GET'

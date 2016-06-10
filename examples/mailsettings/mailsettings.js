@@ -4,9 +4,10 @@ var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
 // Retrieve all mail settings
 // GET /mail_settings
 
+
 var request = sg.emptyRequest()
 request.queryParams["limit"] = '1'
-  request.queryParams["offset"] = '1'
+request.queryParams["offset"] = '1'
 request.method = 'GET'
 request.path = '/v3/mail_settings'
 sg.API(request, function (response) {
@@ -18,6 +19,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Update address whitelist mail settings
 // PATCH /mail_settings/address_whitelist
+
 
 var request = sg.emptyRequest()
 request.body = {
@@ -39,6 +41,7 @@ sg.API(request, function (response) {
 // Retrieve address whitelist mail settings
 // GET /mail_settings/address_whitelist
 
+
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/mail_settings/address_whitelist'
@@ -51,6 +54,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Update BCC mail settings
 // PATCH /mail_settings/bcc
+
 
 var request = sg.emptyRequest()
 request.body = {
@@ -69,6 +73,7 @@ sg.API(request, function (response) {
 // Retrieve all BCC mail settings
 // GET /mail_settings/bcc
 
+
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/mail_settings/bcc'
@@ -81,6 +86,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Update bounce purge mail settings
 // PATCH /mail_settings/bounce_purge
+
 
 var request = sg.emptyRequest()
 request.body = {
@@ -100,6 +106,7 @@ sg.API(request, function (response) {
 // Retrieve bounce purge mail settings
 // GET /mail_settings/bounce_purge
 
+
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/mail_settings/bounce_purge'
@@ -112,6 +119,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Update footer mail settings
 // PATCH /mail_settings/footer
+
 
 var request = sg.emptyRequest()
 request.body = {
@@ -131,6 +139,7 @@ sg.API(request, function (response) {
 // Retrieve footer mail settings
 // GET /mail_settings/footer
 
+
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/mail_settings/footer'
@@ -143,6 +152,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Update forward bounce mail settings
 // PATCH /mail_settings/forward_bounce
+
 
 var request = sg.emptyRequest()
 request.body = {
@@ -161,6 +171,7 @@ sg.API(request, function (response) {
 // Retrieve forward bounce mail settings
 // GET /mail_settings/forward_bounce
 
+
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/mail_settings/forward_bounce'
@@ -173,6 +184,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Update forward spam mail settings
 // PATCH /mail_settings/forward_spam
+
 
 var request = sg.emptyRequest()
 request.body = {
@@ -191,6 +203,7 @@ sg.API(request, function (response) {
 // Retrieve forward spam mail settings
 // GET /mail_settings/forward_spam
 
+
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/mail_settings/forward_spam'
@@ -203,6 +216,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Update plain content mail settings
 // PATCH /mail_settings/plain_content
+
 
 var request = sg.emptyRequest()
 request.body = {
@@ -220,6 +234,7 @@ sg.API(request, function (response) {
 // Retrieve plain content mail settings
 // GET /mail_settings/plain_content
 
+
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/mail_settings/plain_content'
@@ -232,6 +247,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Update spam check mail settings
 // PATCH /mail_settings/spam_check
+
 
 var request = sg.emptyRequest()
 request.body = {
@@ -251,6 +267,7 @@ sg.API(request, function (response) {
 // Retrieve spam check mail settings
 // GET /mail_settings/spam_check
 
+
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/mail_settings/spam_check'
@@ -263,6 +280,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Update template mail settings
 // PATCH /mail_settings/template
+
 
 var request = sg.emptyRequest()
 request.body = {
@@ -280,6 +298,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Retrieve legacy template mail settings
 // GET /mail_settings/template
+
 
 var request = sg.emptyRequest()
 request.method = 'GET'

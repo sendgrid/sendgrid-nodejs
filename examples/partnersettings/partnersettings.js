@@ -4,9 +4,10 @@ var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
 // Returns a list of all partner settings.
 // GET /partner_settings
 
+
 var request = sg.emptyRequest()
 request.queryParams["limit"] = '1'
-  request.queryParams["offset"] = '1'
+request.queryParams["offset"] = '1'
 request.method = 'GET'
 request.path = '/v3/partner_settings'
 sg.API(request, function (response) {
@@ -18,6 +19,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Updates New Relic partner settings.
 // PATCH /partner_settings/new_relic
+
 
 var request = sg.emptyRequest()
 request.body = {
@@ -36,6 +38,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Returns all New Relic partner settings.
 // GET /partner_settings/new_relic
+
 
 var request = sg.emptyRequest()
 request.method = 'GET'

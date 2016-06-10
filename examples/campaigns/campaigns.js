@@ -4,6 +4,7 @@ var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
 // Create a Campaign
 // POST /campaigns
 
+
 var request = sg.emptyRequest()
 request.body = {
   "categories": [
@@ -37,9 +38,10 @@ sg.API(request, function (response) {
 // Retrieve all Campaigns
 // GET /campaigns
 
+
 var request = sg.emptyRequest()
 request.queryParams["limit"] = '0'
-  request.queryParams["offset"] = '0'
+request.queryParams["offset"] = '0'
 request.method = 'GET'
 request.path = '/v3/campaigns'
 sg.API(request, function (response) {
@@ -51,6 +53,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Update a Campaign
 // PATCH /campaigns/{campaign_id}
+
 
 var request = sg.emptyRequest()
 request.body = {
@@ -74,6 +77,7 @@ sg.API(request, function (response) {
 // Retrieve a single campaign
 // GET /campaigns/{campaign_id}
 
+
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/campaigns/{campaign_id}'
@@ -87,6 +91,7 @@ sg.API(request, function (response) {
 // Delete a Campaign
 // DELETE /campaigns/{campaign_id}
 
+
 var request = sg.emptyRequest()
 request.method = 'DELETE'
 request.path = '/v3/campaigns/{campaign_id}'
@@ -99,6 +104,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Update a Scheduled Campaign
 // PATCH /campaigns/{campaign_id}/schedules
+
 
 var request = sg.emptyRequest()
 request.body = {
@@ -116,6 +122,7 @@ sg.API(request, function (response) {
 // Schedule a Campaign
 // POST /campaigns/{campaign_id}/schedules
 
+
 var request = sg.emptyRequest()
 request.body = {
   "send_at": 1489771528
@@ -132,6 +139,7 @@ sg.API(request, function (response) {
 // View Scheduled Time of a Campaign
 // GET /campaigns/{campaign_id}/schedules
 
+
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/campaigns/{campaign_id}/schedules'
@@ -144,6 +152,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Unschedule a Scheduled Campaign
 // DELETE /campaigns/{campaign_id}/schedules
+
 
 var request = sg.emptyRequest()
 request.method = 'DELETE'
@@ -158,6 +167,7 @@ sg.API(request, function (response) {
 // Send a Campaign
 // POST /campaigns/{campaign_id}/schedules/now
 
+
 var request = sg.emptyRequest()
 request.method = 'POST'
 request.path = '/v3/campaigns/{campaign_id}/schedules/now'
@@ -170,6 +180,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Send a Test Campaign
 // POST /campaigns/{campaign_id}/schedules/test
+
 
 var request = sg.emptyRequest()
 request.body = {

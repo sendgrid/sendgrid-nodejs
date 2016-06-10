@@ -4,6 +4,7 @@ var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
 // Retrieve a list of scopes for which this user has access.
 // GET /scopes
 
+
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/scopes'

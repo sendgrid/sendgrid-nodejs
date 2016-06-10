@@ -4,6 +4,7 @@ var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
 // Create a domain whitelabel.
 // POST /whitelabel/domains
 
+
 var request = sg.emptyRequest()
 request.body = {
   "automatic_security": false, 
@@ -29,12 +30,13 @@ sg.API(request, function (response) {
 // List all domain whitelabels.
 // GET /whitelabel/domains
 
+
 var request = sg.emptyRequest()
 request.queryParams["username"] = 'test_string'
-  request.queryParams["domain"] = 'test_string'
-  request.queryParams["exclude_subusers"] = 'true'
-  request.queryParams["limit"] = '1'
-  request.queryParams["offset"] = '1'
+request.queryParams["domain"] = 'test_string'
+request.queryParams["exclude_subusers"] = 'true'
+request.queryParams["limit"] = '1'
+request.queryParams["offset"] = '1'
 request.method = 'GET'
 request.path = '/v3/whitelabel/domains'
 sg.API(request, function (response) {
@@ -46,6 +48,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Get the default domain whitelabel.
 // GET /whitelabel/domains/default
+
 
 var request = sg.emptyRequest()
 request.method = 'GET'
@@ -60,6 +63,7 @@ sg.API(request, function (response) {
 // List the domain whitelabel associated with the given user.
 // GET /whitelabel/domains/subuser
 
+
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/whitelabel/domains/subuser'
@@ -73,6 +77,7 @@ sg.API(request, function (response) {
 // Disassociate a domain whitelabel from a given user.
 // DELETE /whitelabel/domains/subuser
 
+
 var request = sg.emptyRequest()
 request.method = 'DELETE'
 request.path = '/v3/whitelabel/domains/subuser'
@@ -85,6 +90,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Update a domain whitelabel.
 // PATCH /whitelabel/domains/{domain_id}
+
 
 var request = sg.emptyRequest()
 request.body = {
@@ -103,6 +109,7 @@ sg.API(request, function (response) {
 // Retrieve a domain whitelabel.
 // GET /whitelabel/domains/{domain_id}
 
+
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/whitelabel/domains/{domain_id}'
@@ -116,6 +123,7 @@ sg.API(request, function (response) {
 // Delete a domain whitelabel.
 // DELETE /whitelabel/domains/{domain_id}
 
+
 var request = sg.emptyRequest()
 request.method = 'DELETE'
 request.path = '/v3/whitelabel/domains/{domain_id}'
@@ -128,6 +136,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Associate a domain whitelabel with a given user.
 // POST /whitelabel/domains/{domain_id}/subuser
+
 
 var request = sg.emptyRequest()
 request.body = {
@@ -145,6 +154,7 @@ sg.API(request, function (response) {
 // Add an IP to a domain whitelabel.
 // POST /whitelabel/domains/{id}/ips
 
+
 var request = sg.emptyRequest()
 request.body = {
   "ip": "192.168.0.1"
@@ -161,6 +171,7 @@ sg.API(request, function (response) {
 // Remove an IP from a domain whitelabel.
 // DELETE /whitelabel/domains/{id}/ips/{ip}
 
+
 var request = sg.emptyRequest()
 request.method = 'DELETE'
 request.path = '/v3/whitelabel/domains/{id}/ips/{ip}'
@@ -174,6 +185,7 @@ sg.API(request, function (response) {
 // Validate a domain whitelabel.
 // POST /whitelabel/domains/{id}/validate
 
+
 var request = sg.emptyRequest()
 request.method = 'POST'
 request.path = '/v3/whitelabel/domains/{id}/validate'
@@ -186,6 +198,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Create an IP whitelabel
 // POST /whitelabel/ips
+
 
 var request = sg.emptyRequest()
 request.body = {
@@ -205,10 +218,11 @@ sg.API(request, function (response) {
 // Retrieve all IP whitelabels
 // GET /whitelabel/ips
 
+
 var request = sg.emptyRequest()
 request.queryParams["ip"] = 'test_string'
-  request.queryParams["limit"] = '1'
-  request.queryParams["offset"] = '1'
+request.queryParams["limit"] = '1'
+request.queryParams["offset"] = '1'
 request.method = 'GET'
 request.path = '/v3/whitelabel/ips'
 sg.API(request, function (response) {
@@ -220,6 +234,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Retrieve an IP whitelabel
 // GET /whitelabel/ips/{id}
+
 
 var request = sg.emptyRequest()
 request.method = 'GET'
@@ -234,6 +249,7 @@ sg.API(request, function (response) {
 // Delete an IP whitelabel
 // DELETE /whitelabel/ips/{id}
 
+
 var request = sg.emptyRequest()
 request.method = 'DELETE'
 request.path = '/v3/whitelabel/ips/{id}'
@@ -246,6 +262,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Validate an IP whitelabel
 // POST /whitelabel/ips/{id}/validate
+
 
 var request = sg.emptyRequest()
 request.method = 'POST'
@@ -260,6 +277,7 @@ sg.API(request, function (response) {
 // Create a Link Whitelabel
 // POST /whitelabel/links
 
+
 var request = sg.emptyRequest()
 request.body = {
   "default": true, 
@@ -267,7 +285,7 @@ request.body = {
   "subdomain": "mail"
 };
 request.queryParams["limit"] = '1'
-  request.queryParams["offset"] = '1'
+request.queryParams["offset"] = '1'
 request.method = 'POST'
 request.path = '/v3/whitelabel/links'
 sg.API(request, function (response) {
@@ -279,6 +297,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Retrieve all link whitelabels
 // GET /whitelabel/links
+
 
 var request = sg.emptyRequest()
 request.queryParams["limit"] = '1'
@@ -294,6 +313,7 @@ sg.API(request, function (response) {
 // Retrieve a Default Link Whitelabel
 // GET /whitelabel/links/default
 
+
 var request = sg.emptyRequest()
 request.queryParams["domain"] = 'test_string'
 request.method = 'GET'
@@ -307,6 +327,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Retrieve Associated Link Whitelabel
 // GET /whitelabel/links/subuser
+
 
 var request = sg.emptyRequest()
 request.queryParams["username"] = 'test_string'
@@ -322,6 +343,7 @@ sg.API(request, function (response) {
 // Disassociate a Link Whitelabel
 // DELETE /whitelabel/links/subuser
 
+
 var request = sg.emptyRequest()
 request.queryParams["username"] = 'test_string'
 request.method = 'DELETE'
@@ -335,6 +357,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Update a Link Whitelabel
 // PATCH /whitelabel/links/{id}
+
 
 var request = sg.emptyRequest()
 request.body = {
@@ -352,6 +375,7 @@ sg.API(request, function (response) {
 // Retrieve a Link Whitelabel
 // GET /whitelabel/links/{id}
 
+
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/whitelabel/links/{id}'
@@ -364,6 +388,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Delete a Link Whitelabel
 // DELETE /whitelabel/links/{id}
+
 
 var request = sg.emptyRequest()
 request.method = 'DELETE'
@@ -378,6 +403,7 @@ sg.API(request, function (response) {
 // Validate a Link Whitelabel
 // POST /whitelabel/links/{id}/validate
 
+
 var request = sg.emptyRequest()
 request.method = 'POST'
 request.path = '/v3/whitelabel/links/{id}/validate'
@@ -390,6 +416,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Associate a Link Whitelabel
 // POST /whitelabel/links/{link_id}/subuser
+
 
 var request = sg.emptyRequest()
 request.body = {

@@ -4,6 +4,7 @@ var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
 // Create a Custom Field
 // POST /contactdb/custom_fields
 
+
 var request = sg.emptyRequest()
 request.body = {
   "name": "pet", 
@@ -21,6 +22,7 @@ sg.API(request, function (response) {
 // Retrieve all custom fields
 // GET /contactdb/custom_fields
 
+
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/contactdb/custom_fields'
@@ -33,6 +35,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Retrieve a Custom Field
 // GET /contactdb/custom_fields/{custom_field_id}
+
 
 var request = sg.emptyRequest()
 request.method = 'GET'
@@ -47,6 +50,7 @@ sg.API(request, function (response) {
 // Delete a Custom Field
 // DELETE /contactdb/custom_fields/{custom_field_id}
 
+
 var request = sg.emptyRequest()
 request.method = 'DELETE'
 request.path = '/v3/contactdb/custom_fields/{custom_field_id}'
@@ -59,6 +63,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Create a List
 // POST /contactdb/lists
+
 
 var request = sg.emptyRequest()
 request.body = {
@@ -76,6 +81,7 @@ sg.API(request, function (response) {
 // Retrieve all lists
 // GET /contactdb/lists
 
+
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/contactdb/lists'
@@ -88,6 +94,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Delete Multiple lists
 // DELETE /contactdb/lists
+
 
 var request = sg.emptyRequest()
 request.body = [
@@ -108,6 +115,7 @@ sg.API(request, function (response) {
 // Update a List
 // PATCH /contactdb/lists/{list_id}
 
+
 var request = sg.emptyRequest()
 request.body = {
   "name": "newlistname"
@@ -125,6 +133,7 @@ sg.API(request, function (response) {
 // Retrieve a single list
 // GET /contactdb/lists/{list_id}
 
+
 var request = sg.emptyRequest()
 request.queryParams["list_id"] = '0'
 request.method = 'GET'
@@ -139,6 +148,7 @@ sg.API(request, function (response) {
 // Delete a List
 // DELETE /contactdb/lists/{list_id}
 
+
 var request = sg.emptyRequest()
 request.queryParams["delete_contacts"] = 'true'
 request.method = 'DELETE'
@@ -152,6 +162,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Add Multiple Recipients to a List
 // POST /contactdb/lists/{list_id}/recipients
+
 
 var request = sg.emptyRequest()
 request.body = [
@@ -170,10 +181,11 @@ sg.API(request, function (response) {
 // Retrieve all recipients on a List
 // GET /contactdb/lists/{list_id}/recipients
 
+
 var request = sg.emptyRequest()
 request.queryParams["page"] = '1'
-  request.queryParams["page_size"] = '1'
-  request.queryParams["list_id"] = '0'
+request.queryParams["page_size"] = '1'
+request.queryParams["list_id"] = '0'
 request.method = 'GET'
 request.path = '/v3/contactdb/lists/{list_id}/recipients'
 sg.API(request, function (response) {
@@ -185,6 +197,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Add a Single Recipient to a List
 // POST /contactdb/lists/{list_id}/recipients/{recipient_id}
+
 
 var request = sg.emptyRequest()
 request.method = 'POST'
@@ -199,9 +212,10 @@ sg.API(request, function (response) {
 // Delete a Single Recipient from a Single List
 // DELETE /contactdb/lists/{list_id}/recipients/{recipient_id}
 
+
 var request = sg.emptyRequest()
 request.queryParams["recipient_id"] = '0'
-  request.queryParams["list_id"] = '0'
+request.queryParams["list_id"] = '0'
 request.method = 'DELETE'
 request.path = '/v3/contactdb/lists/{list_id}/recipients/{recipient_id}'
 sg.API(request, function (response) {
@@ -213,6 +227,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Update Recipient
 // PATCH /contactdb/recipients
+
 
 var request = sg.emptyRequest()
 request.body = [
@@ -233,6 +248,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Add recipients
 // POST /contactdb/recipients
+
 
 var request = sg.emptyRequest()
 request.body = [
@@ -261,9 +277,10 @@ sg.API(request, function (response) {
 // Retrieve recipients
 // GET /contactdb/recipients
 
+
 var request = sg.emptyRequest()
 request.queryParams["page"] = '1'
-  request.queryParams["page_size"] = '1'
+request.queryParams["page_size"] = '1'
 request.method = 'GET'
 request.path = '/v3/contactdb/recipients'
 sg.API(request, function (response) {
@@ -275,6 +292,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Delete Recipient
 // DELETE /contactdb/recipients
+
 
 var request = sg.emptyRequest()
 request.body = [
@@ -293,6 +311,7 @@ sg.API(request, function (response) {
 // Retrieve the count of billable recipients
 // GET /contactdb/recipients/billable_count
 
+
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/contactdb/recipients/billable_count'
@@ -306,6 +325,7 @@ sg.API(request, function (response) {
 // Retrieve a Count of Recipients
 // GET /contactdb/recipients/count
 
+
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/contactdb/recipients/count'
@@ -318,6 +338,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Retrieve recipients matching search criteria
 // GET /contactdb/recipients/search
+
 
 var request = sg.emptyRequest()
 request.queryParams["{field_name}"] = 'test_string'
@@ -333,6 +354,7 @@ sg.API(request, function (response) {
 // Retrieve a single recipient
 // GET /contactdb/recipients/{recipient_id}
 
+
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/contactdb/recipients/{recipient_id}'
@@ -345,6 +367,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Delete a Recipient
 // DELETE /contactdb/recipients/{recipient_id}
+
 
 var request = sg.emptyRequest()
 request.method = 'DELETE'
@@ -359,6 +382,7 @@ sg.API(request, function (response) {
 // Retrieve the lists that a recipient is on
 // GET /contactdb/recipients/{recipient_id}/lists
 
+
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/contactdb/recipients/{recipient_id}/lists'
@@ -372,6 +396,7 @@ sg.API(request, function (response) {
 // Retrieve reserved fields
 // GET /contactdb/reserved_fields
 
+
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/contactdb/reserved_fields'
@@ -384,6 +409,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Create a Segment
 // POST /contactdb/segments
+
 
 var request = sg.emptyRequest()
 request.body = {
@@ -422,6 +448,7 @@ sg.API(request, function (response) {
 // Retrieve all segments
 // GET /contactdb/segments
 
+
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/contactdb/segments'
@@ -434,6 +461,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Update a segment
 // PATCH /contactdb/segments/{segment_id}
+
 
 var request = sg.emptyRequest()
 request.body = {
@@ -461,6 +489,7 @@ sg.API(request, function (response) {
 // Retrieve a segment
 // GET /contactdb/segments/{segment_id}
 
+
 var request = sg.emptyRequest()
 request.queryParams["segment_id"] = '0'
 request.method = 'GET'
@@ -474,6 +503,7 @@ sg.API(request, function (response) {
 ///////////////////////////////////////////////////
 // Delete a segment
 // DELETE /contactdb/segments/{segment_id}
+
 
 var request = sg.emptyRequest()
 request.queryParams["delete_contacts"] = 'true'
@@ -489,9 +519,10 @@ sg.API(request, function (response) {
 // Retrieve recipients on a segment
 // GET /contactdb/segments/{segment_id}/recipients
 
+
 var request = sg.emptyRequest()
 request.queryParams["page"] = '1'
-  request.queryParams["page_size"] = '1'
+request.queryParams["page_size"] = '1'
 request.method = 'GET'
 request.path = '/v3/contactdb/segments/{segment_id}/recipients'
 sg.API(request, function (response) {

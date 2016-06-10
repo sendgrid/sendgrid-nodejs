@@ -84,7 +84,6 @@ You will need to setup the following environment to use the SendGrid example:
 echo "export SENDGRID_API_KEY='YOUR_API_KEY'" > sendgrid.env
 echo "sendgrid.env" >> .gitignore
 source ./sendgrid.env
-node examples/example.js
 ```
 
 ##### Execute: #####
@@ -132,7 +131,7 @@ For the purposes of contributing to this repo, please update the [`test.js`](htt
 To run the tests:
 
 ```bash
-mocha --recursive
+mocha
 ```
 
 <a name="style_guidelines_and_naming_conventions"></a>
@@ -145,10 +144,6 @@ Generally, we follow the style guidelines as suggested by the official language.
 Please run your code through:
 
 - [ESLint](http://eslint.org/) with the tandard style guide.
-
-Please run your code through:
-
-<!--- list of linters to use --->
 
 ## Creating a Pull Request<a name="creating_a_pull_request"></a>
 
