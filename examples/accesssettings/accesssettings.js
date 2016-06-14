@@ -1,4 +1,4 @@
-var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
+var sg = require('sendgrid-nodejs').SendGrid(process.env.SENDGRID_API_KEY)
 
 ///////////////////////////////////////////////////
 // Retrieve all recent access attempts
@@ -7,6 +7,7 @@ var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
 
 var request = sg.emptyRequest()
 request.queryParams["limit"] = '1'
+ 
 request.method = 'GET'
 request.path = '/v3/access_settings/activity'
 sg.API(request, function (response) {

@@ -1,4 +1,4 @@
-var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
+var sg = require('sendgrid-nodejs').SendGrid(process.env.SENDGRID_API_KEY)
 
 ///////////////////////////////////////////////////
 // Create a Custom Field
@@ -121,6 +121,7 @@ request.body = {
   "name": "newlistname"
 };
 request.queryParams["list_id"] = '0'
+ 
 request.method = 'PATCH'
 request.path = '/v3/contactdb/lists/{list_id}'
 sg.API(request, function (response) {
@@ -136,6 +137,7 @@ sg.API(request, function (response) {
 
 var request = sg.emptyRequest()
 request.queryParams["list_id"] = '0'
+ 
 request.method = 'GET'
 request.path = '/v3/contactdb/lists/{list_id}'
 sg.API(request, function (response) {
@@ -151,6 +153,7 @@ sg.API(request, function (response) {
 
 var request = sg.emptyRequest()
 request.queryParams["delete_contacts"] = 'true'
+ 
 request.method = 'DELETE'
 request.path = '/v3/contactdb/lists/{list_id}'
 sg.API(request, function (response) {
@@ -184,8 +187,9 @@ sg.API(request, function (response) {
 
 var request = sg.emptyRequest()
 request.queryParams["page"] = '1'
-request.queryParams["page_size"] = '1'
-request.queryParams["list_id"] = '0'
+  request.queryParams["page_size"] = '1'
+  request.queryParams["list_id"] = '0'
+ 
 request.method = 'GET'
 request.path = '/v3/contactdb/lists/{list_id}/recipients'
 sg.API(request, function (response) {
@@ -215,7 +219,8 @@ sg.API(request, function (response) {
 
 var request = sg.emptyRequest()
 request.queryParams["recipient_id"] = '0'
-request.queryParams["list_id"] = '0'
+  request.queryParams["list_id"] = '0'
+ 
 request.method = 'DELETE'
 request.path = '/v3/contactdb/lists/{list_id}/recipients/{recipient_id}'
 sg.API(request, function (response) {
@@ -280,7 +285,8 @@ sg.API(request, function (response) {
 
 var request = sg.emptyRequest()
 request.queryParams["page"] = '1'
-request.queryParams["page_size"] = '1'
+  request.queryParams["page_size"] = '1'
+ 
 request.method = 'GET'
 request.path = '/v3/contactdb/recipients'
 sg.API(request, function (response) {
@@ -342,6 +348,7 @@ sg.API(request, function (response) {
 
 var request = sg.emptyRequest()
 request.queryParams["{field_name}"] = 'test_string'
+ 
 request.method = 'GET'
 request.path = '/v3/contactdb/recipients/search'
 sg.API(request, function (response) {
@@ -477,6 +484,7 @@ request.body = {
   "name": "The Millers"
 };
 request.queryParams["segment_id"] = 'test_string'
+ 
 request.method = 'PATCH'
 request.path = '/v3/contactdb/segments/{segment_id}'
 sg.API(request, function (response) {
@@ -492,6 +500,7 @@ sg.API(request, function (response) {
 
 var request = sg.emptyRequest()
 request.queryParams["segment_id"] = '0'
+ 
 request.method = 'GET'
 request.path = '/v3/contactdb/segments/{segment_id}'
 sg.API(request, function (response) {
@@ -507,6 +516,7 @@ sg.API(request, function (response) {
 
 var request = sg.emptyRequest()
 request.queryParams["delete_contacts"] = 'true'
+ 
 request.method = 'DELETE'
 request.path = '/v3/contactdb/segments/{segment_id}'
 sg.API(request, function (response) {
@@ -522,7 +532,8 @@ sg.API(request, function (response) {
 
 var request = sg.emptyRequest()
 request.queryParams["page"] = '1'
-request.queryParams["page_size"] = '1'
+  request.queryParams["page_size"] = '1'
+ 
 request.method = 'GET'
 request.path = '/v3/contactdb/segments/{segment_id}/recipients'
 sg.API(request, function (response) {

@@ -1,4 +1,4 @@
-var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
+var sg = require('sendgrid-nodejs').SendGrid(process.env.SENDGRID_API_KEY)
 
 ///////////////////////////////////////////////////
 // Retrieve all IP addresses
@@ -7,10 +7,11 @@ var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
 
 var request = sg.emptyRequest()
 request.queryParams["subuser"] = 'test_string'
-request.queryParams["ip"] = 'test_string'
-request.queryParams["limit"] = '1'
-request.queryParams["exclude_whitelabels"] = 'true'
-request.queryParams["offset"] = '1'
+  request.queryParams["ip"] = 'test_string'
+  request.queryParams["limit"] = '1'
+  request.queryParams["exclude_whitelabels"] = 'true'
+  request.queryParams["offset"] = '1'
+ 
 request.method = 'GET'
 request.path = '/v3/ips'
 sg.API(request, function (response) {

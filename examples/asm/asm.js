@@ -1,4 +1,4 @@
-var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
+var sg = require('sendgrid-nodejs').SendGrid(process.env.SENDGRID_API_KEY)
 
 ///////////////////////////////////////////////////
 // Create a new suppression group
@@ -26,6 +26,7 @@ sg.API(request, function (response) {
 
 var request = sg.emptyRequest()
 request.queryParams["id"] = '1'
+ 
 request.method = 'GET'
 request.path = '/v3/asm/groups'
 sg.API(request, function (response) {

@@ -3,7 +3,7 @@ This documentation is based on our [OAI specification](https://github.com/sendgr
 # INITIALIZATION
 
 ```javascript
-var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
+var sg = require('sendgrid-nodejs').SendGrid(process.env.SENDGRID_API_KEY)
 ```
 
 # Table of Contents
@@ -2296,7 +2296,7 @@ More Information:
     console.log(response.headers)
   })
   ```
-## v3 Mail Send Beta
+## v3 Mail Send
 
 This endpoint allows you to send email over SendGrids v3 Web API, the most recent version of our API. If you are looking for documentation about the v2 Mail Send endpoint, please see our [v2 API Reference](https://sendgrid.com/docs/API_Reference/Web_API/mail.html).
 
@@ -2307,9 +2307,9 @@ For an overview of the v3 Mail Send endpoint, please visit our [v3 API Reference
 
 For more detailed information about how to use the v3 Mail Send endpoint, please visit our [Classroom](https://sendgrid.com/docs/Classroom/Send/v3_Mail_Send/index.html).
 
-### POST /mail/send/beta
+### POST /mail/send
 
-// This endpoint has a helper, check it out [here](https://github.com/sendgrid/sendgrid-nodejs/blob/v3beta/lib/helpers/mail/README.md).
+// This endpoint has a helper, check it out [here](https://github.com/sendgrid/sendgrid-nodejs/blob/master/lib/helpers/mail/README.md).
 
 ```javascript
   var request = sg.emptyRequest()
@@ -2457,7 +2457,7 @@ For more detailed information about how to use the v3 Mail Send endpoint, please
   }
 };
   request.method = 'POST'
-  request.path = '/v3/mail/send/beta'
+  request.path = '/v3/mail/send'
   sg.API(request, function (response) {
     console.log(response.statusCode)
     console.log(response.body)

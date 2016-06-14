@@ -1,4 +1,4 @@
-var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
+var sg = require('sendgrid-nodejs').SendGrid(process.env.SENDGRID_API_KEY)
 
 ///////////////////////////////////////////////////
 // Create Subuser
@@ -30,8 +30,9 @@ sg.API(request, function (response) {
 
 var request = sg.emptyRequest()
 request.queryParams["username"] = 'test_string'
-request.queryParams["limit"] = '0'
-request.queryParams["offset"] = '0'
+  request.queryParams["limit"] = '0'
+  request.queryParams["offset"] = '0'
+ 
 request.method = 'GET'
 request.path = '/v3/subusers'
 sg.API(request, function (response) {
@@ -47,6 +48,7 @@ sg.API(request, function (response) {
 
 var request = sg.emptyRequest()
 request.queryParams["usernames"] = 'test_string'
+ 
 request.method = 'GET'
 request.path = '/v3/subusers/reputations'
 sg.API(request, function (response) {
@@ -62,11 +64,12 @@ sg.API(request, function (response) {
 
 var request = sg.emptyRequest()
 request.queryParams["end_date"] = '2016-04-01'
-request.queryParams["aggregated_by"] = 'day'
-request.queryParams["limit"] = '1'
-request.queryParams["offset"] = '1'
-request.queryParams["start_date"] = '2016-01-01'
-request.queryParams["subusers"] = 'test_string'
+  request.queryParams["aggregated_by"] = 'day'
+  request.queryParams["limit"] = '1'
+  request.queryParams["offset"] = '1'
+  request.queryParams["start_date"] = '2016-01-01'
+  request.queryParams["subusers"] = 'test_string'
+ 
 request.method = 'GET'
 request.path = '/v3/subusers/stats'
 sg.API(request, function (response) {
@@ -82,11 +85,12 @@ sg.API(request, function (response) {
 
 var request = sg.emptyRequest()
 request.queryParams["subuser"] = 'test_string'
-request.queryParams["limit"] = '1'
-request.queryParams["sort_by_metric"] = 'test_string'
-request.queryParams["offset"] = '1'
-request.queryParams["date"] = 'test_string'
-request.queryParams["sort_by_direction"] = 'asc'
+  request.queryParams["limit"] = '1'
+  request.queryParams["sort_by_metric"] = 'test_string'
+  request.queryParams["offset"] = '1'
+  request.queryParams["date"] = 'test_string'
+  request.queryParams["sort_by_direction"] = 'asc'
+ 
 request.method = 'GET'
 request.path = '/v3/subusers/stats/monthly'
 sg.API(request, function (response) {
@@ -102,12 +106,13 @@ sg.API(request, function (response) {
 
 var request = sg.emptyRequest()
 request.queryParams["end_date"] = '2016-04-01'
-request.queryParams["aggregated_by"] = 'day'
-request.queryParams["limit"] = '1'
-request.queryParams["sort_by_metric"] = 'test_string'
-request.queryParams["offset"] = '1'
-request.queryParams["start_date"] = '2016-01-01'
-request.queryParams["sort_by_direction"] = 'asc'
+  request.queryParams["aggregated_by"] = 'day'
+  request.queryParams["limit"] = '1'
+  request.queryParams["sort_by_metric"] = 'test_string'
+  request.queryParams["offset"] = '1'
+  request.queryParams["start_date"] = '2016-01-01'
+  request.queryParams["sort_by_direction"] = 'asc'
+ 
 request.method = 'GET'
 request.path = '/v3/subusers/stats/sums'
 sg.API(request, function (response) {
@@ -235,10 +240,11 @@ sg.API(request, function (response) {
 
 var request = sg.emptyRequest()
 request.queryParams["date"] = 'test_string'
-request.queryParams["sort_by_direction"] = 'asc'
-request.queryParams["limit"] = '0'
-request.queryParams["sort_by_metric"] = 'test_string'
-request.queryParams["offset"] = '1'
+  request.queryParams["sort_by_direction"] = 'asc'
+  request.queryParams["limit"] = '0'
+  request.queryParams["sort_by_metric"] = 'test_string'
+  request.queryParams["offset"] = '1'
+ 
 request.method = 'GET'
 request.path = '/v3/subusers/{subuser_name}/stats/monthly'
 sg.API(request, function (response) {

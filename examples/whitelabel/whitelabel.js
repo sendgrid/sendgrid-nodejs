@@ -1,4 +1,4 @@
-var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
+var sg = require('sendgrid-nodejs').SendGrid(process.env.SENDGRID_API_KEY)
 
 ///////////////////////////////////////////////////
 // Create a domain whitelabel.
@@ -33,10 +33,11 @@ sg.API(request, function (response) {
 
 var request = sg.emptyRequest()
 request.queryParams["username"] = 'test_string'
-request.queryParams["domain"] = 'test_string'
-request.queryParams["exclude_subusers"] = 'true'
-request.queryParams["limit"] = '1'
-request.queryParams["offset"] = '1'
+  request.queryParams["domain"] = 'test_string'
+  request.queryParams["exclude_subusers"] = 'true'
+  request.queryParams["limit"] = '1'
+  request.queryParams["offset"] = '1'
+ 
 request.method = 'GET'
 request.path = '/v3/whitelabel/domains'
 sg.API(request, function (response) {
@@ -221,8 +222,9 @@ sg.API(request, function (response) {
 
 var request = sg.emptyRequest()
 request.queryParams["ip"] = 'test_string'
-request.queryParams["limit"] = '1'
-request.queryParams["offset"] = '1'
+  request.queryParams["limit"] = '1'
+  request.queryParams["offset"] = '1'
+ 
 request.method = 'GET'
 request.path = '/v3/whitelabel/ips'
 sg.API(request, function (response) {
@@ -285,7 +287,8 @@ request.body = {
   "subdomain": "mail"
 };
 request.queryParams["limit"] = '1'
-request.queryParams["offset"] = '1'
+  request.queryParams["offset"] = '1'
+ 
 request.method = 'POST'
 request.path = '/v3/whitelabel/links'
 sg.API(request, function (response) {
@@ -301,6 +304,7 @@ sg.API(request, function (response) {
 
 var request = sg.emptyRequest()
 request.queryParams["limit"] = '1'
+ 
 request.method = 'GET'
 request.path = '/v3/whitelabel/links'
 sg.API(request, function (response) {
@@ -316,6 +320,7 @@ sg.API(request, function (response) {
 
 var request = sg.emptyRequest()
 request.queryParams["domain"] = 'test_string'
+ 
 request.method = 'GET'
 request.path = '/v3/whitelabel/links/default'
 sg.API(request, function (response) {
@@ -331,6 +336,7 @@ sg.API(request, function (response) {
 
 var request = sg.emptyRequest()
 request.queryParams["username"] = 'test_string'
+ 
 request.method = 'GET'
 request.path = '/v3/whitelabel/links/subuser'
 sg.API(request, function (response) {
@@ -346,6 +352,7 @@ sg.API(request, function (response) {
 
 var request = sg.emptyRequest()
 request.queryParams["username"] = 'test_string'
+ 
 request.method = 'DELETE'
 request.path = '/v3/whitelabel/links/subuser'
 sg.API(request, function (response) {

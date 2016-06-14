@@ -1,4 +1,4 @@
-var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
+var sg = require('sendgrid-nodejs').SendGrid(process.env.SENDGRID_API_KEY)
 
 ///////////////////////////////////////////////////
 // Create a Campaign
@@ -41,7 +41,8 @@ sg.API(request, function (response) {
 
 var request = sg.emptyRequest()
 request.queryParams["limit"] = '0'
-request.queryParams["offset"] = '0'
+  request.queryParams["offset"] = '0'
+ 
 request.method = 'GET'
 request.path = '/v3/campaigns'
 sg.API(request, function (response) {

@@ -142,7 +142,7 @@ function send(toSend){
   var emptyRequest = require('sendgrid-rest').request
   var requestPost = JSON.parse(JSON.stringify(emptyRequest))
   requestPost.method = 'POST'
-  requestPost.path = '/v3/mail/send/beta'
+  requestPost.path = '/v3/mail/send'
   requestPost.requestBody = requestBody
   sg.API(requestPost, function (response) {
     console.log(response.statusCode)

@@ -5,32 +5,24 @@
 
 # Announcements
 
-**NOTE: The `/mail/send/beta` endpoint is currently in beta!
-
-Since this is not a general release, we do not recommend POSTing production level traffic through this endpoint or integrating your production servers with this endpoint.
-
-When this endpoint is ready for general release, your code will require an update in order to use the official URI.
-
-By using this endpoint, you accept that you may encounter bugs and that the endpoint may be taken down for maintenance at any time. We cannot guarantee the continued availability of this beta endpoint. We hope that you like this new endpoint and we appreciate any [feedback](dx+mail-beta@sendgrid.com) that you can send our way.**
-
-**BREAKING CHANGE as of XXXX.XX.XX**
+**BREAKING CHANGE as of 2016.06.14**
 
 Version 3.0.0 brings you full support for all Web API v3 endpoints. We
 have the following resources to get you started quickly:
 
 -   [SendGrid
     Documentation](https://sendgrid.com/docs/API_Reference/Web_API_v3/index.html)
--   [Usage Docs](https://github.com/sendgrid/sendgrid-nodejs/blob/v3beta/USAGE.md)
+-   [Usage Docs](https://github.com/sendgrid/sendgrid-nodejs/blob/master/USAGE.md)
 -   [Example
-    Code](https://github.com/sendgrid/sendgrid-nodejs/tree/v3beta/examples)
+    Code](https://github.com/sendgrid/sendgrid-nodejs/tree/master/examples)
 
 Thank you for your continued support!
 
-All updates to this library is documented in our [CHANGELOG](https://github.com/sendgrid/sendgrid-nodejs/blob/v3beta/CHANGELOG.md).
+All updates to this library is documented in our [CHANGELOG](https://github.com/sendgrid/sendgrid-nodejs/blob/master/CHANGELOG.md).
 
 # Installation
 
-## Environment Variables
+## Setup Environment Variables
 
 First, get your free SendGrid account [here](https://sendgrid.com/free?source=sendgrid-nodejs).
 
@@ -42,44 +34,7 @@ echo "sendgrid.env" >> .gitignore
 source ./sendgrid.env
 ```
 
-## TRYING OUT THE V3 BETA MAIL SEND
-
-```bash
-git clone -b v3beta --single-branch https://github.com/sendgrid/sendgrid-nodejs.git
-cd sendgrid-nodejs
-npm install
-```
-
-* Update the to and from [emails](https://github.com/sendgrid/sendgrid-nodejs/blob/v3beta/examples/helpers/mail/example.js#L4).
-
-```bash
-node examples/helpers/mail/example.js
-```
-
-## TRYING OUT THE V3 BETA WEB API
-
-```bash
-git clone -b v3beta --single-branch https://github.com/sendgrid/sendgrid-nodejs.git
-```
-
-* Check out the documentation for [Web API v3 endpoints](https://sendgrid.com/docs/API_Reference/Web_API_v3/index.html).
-* Review the corresponding [examples](https://github.com/sendgrid/sendgrid-nodejs/blob/v3beta/examples).
-
-```bash
-touch test.js
-```
-
-Copy the desired example into `test.js`.
-
-Change the path to the Sendgrid library to `./lib/sendgrid.js`.
-
-```
-node test.js
-```
-
-* Check out the documentation for [Web API v3 /mail/send/beta endpoint](https://sendgrid.com/docs/API_Reference/Web_API_v3/Mail/index.html).
-
-## Once we are out of v3 BETA, the following will apply
+## Install Package
 
 The following recommended installation requires [npm](https://npmjs.org/). If you are unfamiliar with npm, see the [npm docs](https://npmjs.org/doc/). Npm comes installed with Node.js since node version 0.8.x therefore you likely already have it.
 
@@ -132,7 +87,7 @@ npm install sendgrid
   var requestBody = mail.toJSON()
   var request = sg.emptyRequest()
   requestPost.method = 'POST'
-  requestPost.path = '/v3/mail/send/beta'
+  requestPost.path = '/v3/mail/send'
   requestPost.body = requestBody
   sg.API(requestPost, function (response) {
     console.log(response.statusCode)
@@ -144,7 +99,7 @@ npm install sendgrid
 ## General v3 Web API Usage
 
 ```javascript
-var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
+var sg = require('sendgrid-nodejs').SendGrid(process.env.SENDGRID_API_KEY)
 
 // GET Collection
 var request = sg.emptyRequest()
@@ -160,9 +115,9 @@ sg.API(requestGet, function (response) {
 # Usage
 
 - [SendGrid Docs](https://sendgrid.com/docs/API_Reference/Web_API_v3/index.html)
-- [Usage Docs](https://github.com/sendgrid/sendgrid-nodejs/blob/v3beta/USAGE.md)
-- [Example Code](https://github.com/sendgrid/sendgrid-nodejs/tree/v3beta/examples)
-- [v3 Web API Mail Send Helper](https://github.com/sendgrid/sendgrid-nodejs/tree/v3beta/lib/helpers/mail/README.md
+- [Usage Docs](https://github.com/sendgrid/sendgrid-nodejs/blob/master/USAGE.md)
+- [Example Code](https://github.com/sendgrid/sendgrid-nodejs/tree/master/examples)
+- [v3 Web API Mail Send Helper](https://github.com/sendgrid/sendgrid-nodejs/tree/master/lib/helpers/mail/README.md
 
 ## Roadmap
 
@@ -170,11 +125,11 @@ If you are intersted in the future direction of this project, please take a look
 
 ## How to Contribute
 
-We encourage contribution to our libraries, please see our [CONTRIBUTING](https://github.com/sendgrid/sendgrid-nodejs/tree/v3beta/CONTRIBUTING.md) guide for details.
+We encourage contribution to our libraries, please see our [CONTRIBUTING](https://github.com/sendgrid/sendgrid-nodejs/tree/master/CONTRIBUTING.md) guide for details.
 
-* [Feature Request](https://github.com/sendgrid/sendgrid-nodejs/tree/v3beta/CONTRIBUTING.md#feature_request)
-* [Bug Reports](https://github.com/sendgrid/sendgrid-nodejs/tree/v3beta/CONTRIBUTING.md#submit_a_bug_report)
-* [Improvements to the Codebase](https://github.com/sendgrid/sendgrid-nodejs/tree/v3beta/CONTRIBUTING.md#improvements_to_the_codebase)
+* [Feature Request](https://github.com/sendgrid/sendgrid-nodejs/tree/master/CONTRIBUTING.md#feature_request)
+* [Bug Reports](https://github.com/sendgrid/sendgrid-nodejs/tree/master/CONTRIBUTING.md#submit_a_bug_report)
+* [Improvements to the Codebase](https://github.com/sendgrid/sendgrid-nodejs/tree/master/CONTRIBUTING.md#improvements_to_the_codebase)
 
 # About
 

@@ -1,4 +1,4 @@
-var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
+var sg = require('sendgrid-nodejs').SendGrid(process.env.SENDGRID_API_KEY)
 
 ///////////////////////////////////////////////////
 // Retrieve all blocks
@@ -7,9 +7,10 @@ var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
 
 var request = sg.emptyRequest()
 request.queryParams["start_time"] = '1'
-request.queryParams["limit"] = '1'
-request.queryParams["end_time"] = '1'
-request.queryParams["offset"] = '1'
+  request.queryParams["limit"] = '1'
+  request.queryParams["end_time"] = '1'
+  request.queryParams["offset"] = '1'
+ 
 request.method = 'GET'
 request.path = '/v3/suppression/blocks'
 sg.API(request, function (response) {
@@ -74,7 +75,8 @@ sg.API(request, function (response) {
 
 var request = sg.emptyRequest()
 request.queryParams["start_time"] = '0'
-request.queryParams["end_time"] = '0'
+  request.queryParams["end_time"] = '0'
+ 
 request.method = 'GET'
 request.path = '/v3/suppression/bounces'
 sg.API(request, function (response) {
@@ -125,6 +127,7 @@ sg.API(request, function (response) {
 
 var request = sg.emptyRequest()
 request.queryParams["email_address"] = 'example@example.com'
+ 
 request.method = 'DELETE'
 request.path = '/v3/suppression/bounces/{email}'
 sg.API(request, function (response) {
@@ -140,9 +143,10 @@ sg.API(request, function (response) {
 
 var request = sg.emptyRequest()
 request.queryParams["start_time"] = '1'
-request.queryParams["limit"] = '1'
-request.queryParams["end_time"] = '1'
-request.queryParams["offset"] = '1'
+  request.queryParams["limit"] = '1'
+  request.queryParams["end_time"] = '1'
+  request.queryParams["offset"] = '1'
+ 
 request.method = 'GET'
 request.path = '/v3/suppression/invalid_emails'
 sg.API(request, function (response) {
@@ -235,9 +239,10 @@ sg.API(request, function (response) {
 
 var request = sg.emptyRequest()
 request.queryParams["start_time"] = '1'
-request.queryParams["limit"] = '1'
-request.queryParams["end_time"] = '1'
-request.queryParams["offset"] = '1'
+  request.queryParams["limit"] = '1'
+  request.queryParams["end_time"] = '1'
+  request.queryParams["offset"] = '1'
+ 
 request.method = 'GET'
 request.path = '/v3/suppression/spam_reports'
 sg.API(request, function (response) {
@@ -274,9 +279,10 @@ sg.API(request, function (response) {
 
 var request = sg.emptyRequest()
 request.queryParams["start_time"] = '1'
-request.queryParams["limit"] = '1'
-request.queryParams["end_time"] = '1'
-request.queryParams["offset"] = '1'
+  request.queryParams["limit"] = '1'
+  request.queryParams["end_time"] = '1'
+  request.queryParams["offset"] = '1'
+ 
 request.method = 'GET'
 request.path = '/v3/suppression/unsubscribes'
 sg.API(request, function (response) {

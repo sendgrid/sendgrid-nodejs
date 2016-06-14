@@ -1,4 +1,4 @@
-var sg = require('../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
+var sg = require('sendgrid-nodejs').SendGrid(process.env.SENDGRID_API_KEY)
 
 ///////////////////////////////////////////////////
 // Get a user's account information.
@@ -331,10 +331,11 @@ sg.API(request, function (response) {
 
 var request = sg.emptyRequest()
 request.queryParams["aggregated_by"] = 'day'
-request.queryParams["limit"] = 'test_string'
-request.queryParams["start_date"] = '2016-01-01'
-request.queryParams["end_date"] = '2016-04-01'
-request.queryParams["offset"] = 'test_string'
+  request.queryParams["limit"] = 'test_string'
+  request.queryParams["start_date"] = '2016-01-01'
+  request.queryParams["end_date"] = '2016-04-01'
+  request.queryParams["offset"] = 'test_string'
+ 
 request.method = 'GET'
 request.path = '/v3/user/webhooks/parse/stats'
 sg.API(request, function (response) {
