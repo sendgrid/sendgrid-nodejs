@@ -65,7 +65,7 @@ We welcome direct contributions to the sendgrid-nodejs code base. Thank you!
 ##### Prerequisites #####
 
 - Node.js 0.10 and up
-- Please see [package.json]("https://github.com/sendgrid/sendgrid-nodejs/tree/v3beta/package.json")
+- Please see [package.json]("https://github.com/sendgrid/sendgrid-nodejs/tree/master/package.json")
 
 ##### Initial setup: #####
 
@@ -88,7 +88,7 @@ source ./sendgrid.env
 
 ##### Execute: #####
 
-See the [examples folder](https://github.com/sendgrid/sendgrid-nodejs/tree/v3beta/examples) to get started quickly.
+See the [examples folder](https://github.com/sendgrid/sendgrid-nodejs/tree/master/examples) to get started quickly.
 
 To run an example:
 
@@ -124,9 +124,9 @@ The interface to the SendGrid API.
 
 All PRs require passing tests before the PR will be reviewed.
 
-All test files are in the [`tests`](https://github.com/sendgrid/sendgrid-nodejs/tree/v3beta/test) directory.
+All test files are in the [`tests`](https://github.com/sendgrid/sendgrid-nodejs/tree/master/test) directory.
 
-For the purposes of contributing to this repo, please update the [`test.js`](https://github.com/sendgrid/sendgrid-nodejs/tree/v3beta/test/test.js) file with unit tests as you modify the code.
+For the purposes of contributing to this repo, please update the [`test.js`](https://github.com/sendgrid/sendgrid-nodejs/tree/master/test/test.js) file with unit tests as you modify the code.
 
 To run the tests:
 
