@@ -124,13 +124,8 @@ request.body = {
       "send_at": 1409348513,
       "subject": "Hello, World!",
       "substitutions": {
-        "sub": {
-          "%name%": [
-            "John",
-            "Jane",
-            "Sam"
-          ]
-        }
+        "id": "substitutions",
+        "type": "object"
       },
       "to": [
         {
