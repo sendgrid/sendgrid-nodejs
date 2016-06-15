@@ -74,7 +74,7 @@ npm install sendgrid
 ## Hello Email
 
 ```javascript
-  var helper = require('sendgrid-nodejs').helper
+  var helper = require('sendgrid').mailHelper
 
   from_email = new helper.Email("test@example.com")
   to_email = new helper.Email("test@example.com")
@@ -82,7 +82,7 @@ npm install sendgrid
   content = new helper.Content("text/plain", "some text here")
   mail = new helper.Mail(from_email, subject, to_email, content)
 
-  var sg = require('sendgrid-nodejs').SendGrid(process.env.SENDGRID_API_KEY)
+  var sg = require('sendgrid').SendGrid(process.env.SENDGRID_API_KEY)
 
   var requestBody = mail.toJSON()
   var request = sg.emptyRequest()
@@ -99,13 +99,13 @@ npm install sendgrid
 ## General v3 Web API Usage
 
 ```javascript
-var sg = require('sendgrid-nodejs').SendGrid(process.env.SENDGRID_API_KEY)
+var sg = require('sendgrid').SendGrid(process.env.SENDGRID_API_KEY)
 
 // GET Collection
 var request = sg.emptyRequest()
-requestGet.method = 'GET'
-requestGet.path = '/v3/api_keys'
-sg.API(requestGet, function (response) {
+request.method = 'GET'
+request.path = '/v3/api_keys'
+sg.API(request, function (response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
