@@ -1,4 +1,4 @@
-var sg = require('sendgrid-nodejs').SendGrid(process.env.SENDGRID_API_KEY)
+var sg = require('sendgrid').SendGrid(process.env.SENDGRID_API_KEY)
 
 ///////////////////////////////////////////////////
 // Create a domain whitelabel.
