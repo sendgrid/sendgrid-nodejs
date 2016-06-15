@@ -1,5 +1,5 @@
 function helloEmail(){
-  var helper = require('../../../lib/helpers/mail/mail.js')
+  var helper = require('sendgrid').mail
 
   from_email = new helper.Email("test@example.com")
   to_email = new helper.Email("test@example.com")
@@ -13,7 +13,7 @@ function helloEmail(){
 }
 
 function kitchenSink(){
-  var helper = require('../../../lib/helpers/mail/mail.js')
+  var helper = require('sendgrid').mail
 
   mail = new helper.Mail()
   email = new helper.Email("test@example.com", "Example User")
@@ -136,7 +136,7 @@ function send(toSend){
   console.log(JSON.stringify(toSend, null, 2))
   //console.log(JSON.stringify(toSend))
 
-  var sg = require('../../../lib/sendgrid.js').SendGrid(process.env.SENDGRID_API_KEY)
+  var sg = require('sendgrid').SendGrid(process.env.SENDGRID_API_KEY)
 
   var requestBody = toSend
   var emptyRequest = require('sendgrid-rest').request
