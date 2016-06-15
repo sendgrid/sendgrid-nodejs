@@ -11,7 +11,7 @@
   ],
   "name": "sendgrid",
   "description": "Official SendGrid NodeJS library.",
-  "version": "3.0.4",
+  "version": "3.0.5",
   "homepage": "https://sendgrid.com",
   "repository": {
     "type": "git",
@@ -21,7 +21,7 @@
     "node": ">= 0.4.7"
   },
   "dependencies": {
-    "sendgrid-rest": "^2.2.0"
+    "sendgrid-rest": "^2.2.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",

@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [3.0.5] - 2016-06-14
+### Fixed
+- Updated dependency on https://github.com/sendgrid/nodejs-http-client
+- Sending email with accents: https://github.com/sendgrid/sendgrid-nodejs/issues/239
+- Thanks [eaparango](https://github.com/eaparango)!
+
 ## [3.0.4] - 2016-06-14
 ### Fixed
 - Fixed exports and README example
