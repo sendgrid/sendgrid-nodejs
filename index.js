@@ -1,2 +1,2 @@
-module.exports = require("./lib/sendgrid");
-exports.mailHelper = require('./lib/helpers/mail/mail.js')
+exports = module.exports = require("./lib/sendgrid");
+exports.mail = require("./lib/helpers/mail/mail.js")

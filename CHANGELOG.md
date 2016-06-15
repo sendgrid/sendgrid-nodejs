@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [3.0.4] - 2016-06-14
+### Fixed
+- Fixed exports and README example
+
 ## [3.0.3] - 2016-06-14
 ### Added
 - Moving mail helper export
