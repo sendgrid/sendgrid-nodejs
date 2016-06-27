@@ -35,12 +35,15 @@
     "mocha": "^2.4.5",
     "mocha-sinon": "^1.1.5",
     "sinon": "^1.17.5",
-    "sinon-chai": "^2.8.0"
+    "sinon-chai": "^2.8.0",
+    "typescript": "^2.0.0"
   },
   "scripts": {
     "lint": "eslint . --fix",
-    "test": "mocha"
+    "test": "mocha",
+    "test:typescript": "tsc"
   },
+  "typings": "index.d.ts",
   "tags": [
     "http",
     "rest",
