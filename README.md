@@ -115,7 +115,7 @@ sg.API(request, function (response) {
 - [SendGrid Docs](https://sendgrid.com/docs/API_Reference/Web_API_v3/index.html)
 - [Usage Docs](https://github.com/sendgrid/sendgrid-nodejs/blob/master/USAGE.md)
 - [Example Code](https://github.com/sendgrid/sendgrid-nodejs/tree/master/examples)
-- [v3 Web API Mail Send Helper](https://github.com/sendgrid/sendgrid-nodejs/tree/master/lib/helpers/mail/README.md
+- [v3 Web API Mail Send Helper](https://github.com/sendgrid/sendgrid-nodejs/tree/master/lib/helpers/mail/README.md)
 
 ## Roadmap
 
