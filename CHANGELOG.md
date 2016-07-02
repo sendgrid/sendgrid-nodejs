@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [3.0.6] - 2016-07-01
+### Fixed
+- GET suppression/bounces needs header to be Accept: application/json
+
 ## [3.0.5] - 2016-06-14
 ### Fixed
 - Updated dependency on https://github.com/sendgrid/nodejs-http-client
