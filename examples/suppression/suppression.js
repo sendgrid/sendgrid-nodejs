@@ -74,8 +74,8 @@ sg.API(request, function (response) {
 
 
 var request = sg.emptyRequest()
-request.queryParams["start_time"] = '0'
-  request.queryParams["end_time"] = '0'
+request.queryParams["start_time"] = '1'
+  request.queryParams["end_time"] = '1'
  
 request.method = 'GET'
 request.path = '/v3/suppression/bounces'

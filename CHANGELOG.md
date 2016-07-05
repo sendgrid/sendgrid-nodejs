@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [3.0.7] - 2016-07-05
+### Updated
+- Content based on our updated [Swagger/OAI doc](https://github.com/sendgrid/sendgrid-oai)
+
 ## [3.0.6] - 2016-07-01
 ### Fixed
 - GET suppression/bounces needs header to be Accept: application/json

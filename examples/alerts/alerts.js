@@ -1,22 +1,18 @@
 var sg = require('sendgrid').SendGrid(process.env.SENDGRID_API_KEY)
 
 ///////////////////////////////////////////////////
-// Create API keys
-// POST /api_keys
+// Create a new Alert
+// POST /alerts
 
 
 var request = sg.emptyRequest()
 request.body = {
-  "name": "My API Key", 
-  "sample": "data", 
-  "scopes": [
-    "mail.send", 
-    "alerts.create", 
-    "alerts.read"
-  ]
+  "email_to": "example@example.com", 
+  "frequency": "daily", 
+  "type": "stats_notification"
 };
 request.method = 'POST'
-request.path = '/v3/api_keys'
+request.path = '/v3/alerts'
 sg.API(request, function (response) {
   console.log(response.statusCode)
   console.log(response.body)
@@ -24,15 +20,13 @@ sg.API(request, function (response) {
 })
 
 ///////////////////////////////////////////////////
-// Retrieve all API Keys belonging to the authenticated user
-// GET /api_keys
+// Retrieve all alerts
+// GET /alerts
 
 
 var request = sg.emptyRequest()
-request.queryParams["limit"] = '1'
- 
 request.method = 'GET'
-request.path = '/v3/api_keys'
+request.path = '/v3/alerts'
 sg.API(request, function (response) {
   console.log(response.statusCode)
   console.log(response.body)
@@ -40,37 +34,16 @@ sg.API(request, function (response) {
 })
 
 ///////////////////////////////////////////////////
-// Update the name & scopes of an API Key
-// PUT /api_keys/{api_key_id}
+// Update an alert
+// PATCH /alerts/{alert_id}
 
 
 var request = sg.emptyRequest()
 request.body = {
-  "name": "A New Hope", 
-  "scopes": [
-    "user.profile.read", 
-    "user.profile.update"
-  ]
-};
-request.method = 'PUT'
-request.path = '/v3/api_keys/{api_key_id}'
-sg.API(request, function (response) {
-  console.log(response.statusCode)
-  console.log(response.body)
-  console.log(response.headers)
-})
-
-///////////////////////////////////////////////////
-// Update API keys
-// PATCH /api_keys/{api_key_id}
-
-
-var request = sg.emptyRequest()
-request.body = {
-  "name": "A New Hope"
+  "email_to": "example@example.com"
 };
 request.method = 'PATCH'
-request.path = '/v3/api_keys/{api_key_id}'
+request.path = '/v3/alerts/{alert_id}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
   console.log(response.body)
@@ -78,13 +51,13 @@ sg.API(request, function (response) {
 })
 
 ///////////////////////////////////////////////////
-// Retrieve an existing API Key
-// GET /api_keys/{api_key_id}
+// Retrieve a specific alert
+// GET /alerts/{alert_id}
 
 
 var request = sg.emptyRequest()
 request.method = 'GET'
-request.path = '/v3/api_keys/{api_key_id}'
+request.path = '/v3/alerts/{alert_id}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
   console.log(response.body)
@@ -92,13 +65,13 @@ sg.API(request, function (response) {
 })
 
 ///////////////////////////////////////////////////
-// Delete API keys
-// DELETE /api_keys/{api_key_id}
+// Delete an alert
+// DELETE /alerts/{alert_id}
 
 
 var request = sg.emptyRequest()
 request.method = 'DELETE'
-request.path = '/v3/api_keys/{api_key_id}'
+request.path = '/v3/alerts/{alert_id}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
   console.log(response.body)

@@ -17,6 +17,7 @@ describe('test_access_settings_activity_get', function () {
     request.port = 4010
   }
   request.queryParams["limit"] = '1'
+
   request.method = 'GET'
   request.path = '/v3/access_settings/activity'
   request.headers['X-Mock'] = 200
@@ -184,6 +185,150 @@ describe('test_access_settings_whitelist__rule_id__delete', function () {
   });
 })
 
+describe('test_alerts_post', function () {
+  this.timeout(30000);
+  var API_KEY = 'SendGrid API Key'
+  if(process.env.TRAVIS) {
+    var TEST_HOST = process.env.MOCK_HOST
+  } else {
+    var TEST_HOST = 'localhost'
+  }
+
+  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+
+  var request = sg.emptyRequest()
+  if(TEST_HOST == 'localhost') {
+    request.test = true
+    request.port = 4010
+  }
+  request.body = {
+  "email_to": "example@example.com",
+  "frequency": "daily",
+  "type": "stats_notification"
+};
+  request.method = 'POST'
+  request.path = '/v3/alerts'
+  request.headers['X-Mock'] = 201
+  it('test_alerts_post had the correct response code', function(done) {
+    sg.API(request, function (response) {
+      assert.equal(response.statusCode, 201, 'response code is not correct')
+      done();
+    })
+  });
+})
+
+describe('test_alerts_get', function () {
+  this.timeout(30000);
+  var API_KEY = 'SendGrid API Key'
+  if(process.env.TRAVIS) {
+    var TEST_HOST = process.env.MOCK_HOST
+  } else {
+    var TEST_HOST = 'localhost'
+  }
+
+  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+
+  var request = sg.emptyRequest()
+  if(TEST_HOST == 'localhost') {
+    request.test = true
+    request.port = 4010
+  }
+  request.method = 'GET'
+  request.path = '/v3/alerts'
+  request.headers['X-Mock'] = 200
+  it('test_alerts_get had the correct response code', function(done) {
+    sg.API(request, function (response) {
+      assert.equal(response.statusCode, 200, 'response code is not correct')
+      done();
+    })
+  });
+})
+
+describe('test_alerts__alert_id__patch', function () {
+  this.timeout(30000);
+  var API_KEY = 'SendGrid API Key'
+  if(process.env.TRAVIS) {
+    var TEST_HOST = process.env.MOCK_HOST
+  } else {
+    var TEST_HOST = 'localhost'
+  }
+
+  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+
+  var request = sg.emptyRequest()
+  if(TEST_HOST == 'localhost') {
+    request.test = true
+    request.port = 4010
+  }
+  request.body = {
+  "email_to": "example@example.com"
+};
+  request.method = 'PATCH'
+  request.path = '/v3/alerts/{alert_id}'
+  request.headers['X-Mock'] = 200
+  it('test_alerts__alert_id__patch had the correct response code', function(done) {
+    sg.API(request, function (response) {
+      assert.equal(response.statusCode, 200, 'response code is not correct')
+      done();
+    })
+  });
+})
+
+describe('test_alerts__alert_id__get', function () {
+  this.timeout(30000);
+  var API_KEY = 'SendGrid API Key'
+  if(process.env.TRAVIS) {
+    var TEST_HOST = process.env.MOCK_HOST
+  } else {
+    var TEST_HOST = 'localhost'
+  }
+
+  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+
+  var request = sg.emptyRequest()
+  if(TEST_HOST == 'localhost') {
+    request.test = true
+    request.port = 4010
+  }
+  request.method = 'GET'
+  request.path = '/v3/alerts/{alert_id}'
+  request.headers['X-Mock'] = 200
+  it('test_alerts__alert_id__get had the correct response code', function(done) {
+    sg.API(request, function (response) {
+      assert.equal(response.statusCode, 200, 'response code is not correct')
+      done();
+    })
+  });
+})
+
+describe('test_alerts__alert_id__delete', function () {
+  this.timeout(30000);
+  var API_KEY = 'SendGrid API Key'
+  if(process.env.TRAVIS) {
+    var TEST_HOST = process.env.MOCK_HOST
+  } else {
+    var TEST_HOST = 'localhost'
+  }
+
+  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+
+  var request = sg.emptyRequest()
+  if(TEST_HOST == 'localhost') {
+    request.test = true
+    request.port = 4010
+  }
+  request.body = null;
+  request.method = 'DELETE'
+  request.path = '/v3/alerts/{alert_id}'
+  request.headers['X-Mock'] = 204
+  it('test_alerts__alert_id__delete had the correct response code', function(done) {
+    sg.API(request, function (response) {
+      assert.equal(response.statusCode, 204, 'response code is not correct')
+      done();
+    })
+  });
+})
+
 describe('test_api_keys_post', function () {
   this.timeout(30000);
   var API_KEY = 'SendGrid API Key'
@@ -202,6 +347,7 @@ describe('test_api_keys_post', function () {
   }
   request.body = {
   "name": "My API Key",
+  "sample": "data",
   "scopes": [
     "mail.send",
     "alerts.create",
@@ -235,6 +381,8 @@ describe('test_api_keys_get', function () {
     request.test = true
     request.port = 4010
   }
+  request.queryParams["limit"] = '1'
+
   request.method = 'GET'
   request.path = '/v3/api_keys'
   request.headers['X-Mock'] = 200
@@ -414,6 +562,7 @@ describe('test_asm_groups_get', function () {
     request.port = 4010
   }
   request.queryParams["id"] = '1'
+
   request.method = 'GET'
   request.path = '/v3/asm/groups'
   request.headers['X-Mock'] = 200
@@ -565,6 +714,40 @@ describe('test_asm_groups__group_id__suppressions_get', function () {
   request.path = '/v3/asm/groups/{group_id}/suppressions'
   request.headers['X-Mock'] = 200
   it('test_asm_groups__group_id__suppressions_get had the correct response code', function(done) {
+    sg.API(request, function (response) {
+      assert.equal(response.statusCode, 200, 'response code is not correct')
+      done();
+    })
+  });
+})
+
+describe('test_asm_groups__group_id__suppressions_search_post', function () {
+  this.timeout(30000);
+  var API_KEY = 'SendGrid API Key'
+  if(process.env.TRAVIS) {
+    var TEST_HOST = process.env.MOCK_HOST
+  } else {
+    var TEST_HOST = 'localhost'
+  }
+
+  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+
+  var request = sg.emptyRequest()
+  if(TEST_HOST == 'localhost') {
+    request.test = true
+    request.port = 4010
+  }
+  request.body = {
+  "recipient_emails": [
+    "exists1@example.com",
+    "exists2@example.com",
+    "doesnotexists@example.com"
+  ]
+};
+  request.method = 'POST'
+  request.path = '/v3/asm/groups/{group_id}/suppressions/search'
+  request.headers['X-Mock'] = 200
+  it('test_asm_groups__group_id__suppressions_search_post had the correct response code', function(done) {
     sg.API(request, function (response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
@@ -764,6 +947,7 @@ describe('test_browsers_stats_get', function () {
   request.queryParams["limit"] = 'test_string'
   request.queryParams["offset"] = 'test_string'
   request.queryParams["start_date"] = '2016-01-01'
+
   request.method = 'GET'
   request.path = '/v3/browsers/stats'
   request.headers['X-Mock'] = 200
@@ -838,8 +1022,9 @@ describe('test_campaigns_get', function () {
     request.test = true
     request.port = 4010
   }
-  request.queryParams["limit"] = '0'
-  request.queryParams["offset"] = '0'
+  request.queryParams["limit"] = '1'
+  request.queryParams["offset"] = '1'
+
   request.method = 'GET'
   request.path = '/v3/campaigns'
   request.headers['X-Mock'] = 200
@@ -1134,6 +1319,7 @@ describe('test_categories_get', function () {
   request.queryParams["category"] = 'test_string'
   request.queryParams["limit"] = '1'
   request.queryParams["offset"] = '1'
+
   request.method = 'GET'
   request.path = '/v3/categories'
   request.headers['X-Mock'] = 200
@@ -1167,6 +1353,7 @@ describe('test_categories_stats_get', function () {
   request.queryParams["offset"] = '1'
   request.queryParams["start_date"] = '2016-01-01'
   request.queryParams["categories"] = 'test_string'
+
   request.method = 'GET'
   request.path = '/v3/categories/stats'
   request.headers['X-Mock'] = 200
@@ -1201,6 +1388,7 @@ describe('test_categories_stats_sums_get', function () {
   request.queryParams["offset"] = '1'
   request.queryParams["start_date"] = '2016-01-01'
   request.queryParams["sort_by_direction"] = 'asc'
+
   request.method = 'GET'
   request.path = '/v3/categories/stats/sums'
   request.headers['X-Mock'] = 200
@@ -1231,6 +1419,7 @@ describe('test_clients_stats_get', function () {
   request.queryParams["aggregated_by"] = 'day'
   request.queryParams["start_date"] = '2016-01-01'
   request.queryParams["end_date"] = '2016-04-01'
+
   request.method = 'GET'
   request.path = '/v3/clients/stats'
   request.headers['X-Mock'] = 200
@@ -1261,6 +1450,7 @@ describe('test_clients__client_type__stats_get', function () {
   request.queryParams["aggregated_by"] = 'day'
   request.queryParams["start_date"] = '2016-01-01'
   request.queryParams["end_date"] = '2016-04-01'
+
   request.method = 'GET'
   request.path = '/v3/clients/{client_type}/stats'
   request.headers['X-Mock'] = 200
@@ -1494,7 +1684,8 @@ describe('test_contactdb_lists__list_id__patch', function () {
   request.body = {
   "name": "newlistname"
 };
-  request.queryParams["list_id"] = '0'
+  request.queryParams["list_id"] = '1'
+
   request.method = 'PATCH'
   request.path = '/v3/contactdb/lists/{list_id}'
   request.headers['X-Mock'] = 200
@@ -1522,7 +1713,8 @@ describe('test_contactdb_lists__list_id__get', function () {
     request.test = true
     request.port = 4010
   }
-  request.queryParams["list_id"] = '0'
+  request.queryParams["list_id"] = '1'
+
   request.method = 'GET'
   request.path = '/v3/contactdb/lists/{list_id}'
   request.headers['X-Mock'] = 200
@@ -1552,6 +1744,7 @@ describe('test_contactdb_lists__list_id__delete', function () {
   }
   request.body = null;
   request.queryParams["delete_contacts"] = 'true'
+
   request.method = 'DELETE'
   request.path = '/v3/contactdb/lists/{list_id}'
   request.headers['X-Mock'] = 202
@@ -1612,7 +1805,8 @@ describe('test_contactdb_lists__list_id__recipients_get', function () {
   }
   request.queryParams["page"] = '1'
   request.queryParams["page_size"] = '1'
-  request.queryParams["list_id"] = '0'
+  request.queryParams["list_id"] = '1'
+
   request.method = 'GET'
   request.path = '/v3/contactdb/lists/{list_id}/recipients'
   request.headers['X-Mock'] = 200
@@ -1669,8 +1863,9 @@ describe('test_contactdb_lists__list_id__recipients__recipient_id__delete', func
     request.port = 4010
   }
   request.body = null;
-  request.queryParams["recipient_id"] = '0'
-  request.queryParams["list_id"] = '0'
+  request.queryParams["recipient_id"] = '1'
+  request.queryParams["list_id"] = '1'
+
   request.method = 'DELETE'
   request.path = '/v3/contactdb/lists/{list_id}/recipients/{recipient_id}'
   request.headers['X-Mock'] = 204
@@ -1775,6 +1970,7 @@ describe('test_contactdb_recipients_get', function () {
   }
   request.queryParams["page"] = '1'
   request.queryParams["page_size"] = '1'
+
   request.method = 'GET'
   request.path = '/v3/contactdb/recipients'
   request.headers['X-Mock'] = 200
@@ -1887,7 +2083,9 @@ describe('test_contactdb_recipients_search_get', function () {
     request.test = true
     request.port = 4010
   }
+  request.queryParams["%7Bfield_name%7D"] = 'test_string'
   request.queryParams["{field_name}"] = 'test_string'
+
   request.method = 'GET'
   request.path = '/v3/contactdb/recipients/search'
   request.headers['X-Mock'] = 200
@@ -2115,6 +2313,7 @@ describe('test_contactdb_segments__segment_id__patch', function () {
   "name": "The Millers"
 };
   request.queryParams["segment_id"] = 'test_string'
+
   request.method = 'PATCH'
   request.path = '/v3/contactdb/segments/{segment_id}'
   request.headers['X-Mock'] = 200
@@ -2142,7 +2341,8 @@ describe('test_contactdb_segments__segment_id__get', function () {
     request.test = true
     request.port = 4010
   }
-  request.queryParams["segment_id"] = '0'
+  request.queryParams["segment_id"] = '1'
+
   request.method = 'GET'
   request.path = '/v3/contactdb/segments/{segment_id}'
   request.headers['X-Mock'] = 200
@@ -2172,6 +2372,7 @@ describe('test_contactdb_segments__segment_id__delete', function () {
   }
   request.body = null;
   request.queryParams["delete_contacts"] = 'true'
+
   request.method = 'DELETE'
   request.path = '/v3/contactdb/segments/{segment_id}'
   request.headers['X-Mock'] = 204
@@ -2201,6 +2402,7 @@ describe('test_contactdb_segments__segment_id__recipients_get', function () {
   }
   request.queryParams["page"] = '1'
   request.queryParams["page_size"] = '1'
+
   request.method = 'GET'
   request.path = '/v3/contactdb/segments/{segment_id}/recipients'
   request.headers['X-Mock'] = 200
@@ -2233,6 +2435,7 @@ describe('test_devices_stats_get', function () {
   request.queryParams["start_date"] = '2016-01-01'
   request.queryParams["end_date"] = '2016-04-01'
   request.queryParams["offset"] = '1'
+
   request.method = 'GET'
   request.path = '/v3/devices/stats'
   request.headers['X-Mock'] = 200
@@ -2266,6 +2469,7 @@ describe('test_geo_stats_get', function () {
   request.queryParams["limit"] = '1'
   request.queryParams["offset"] = '1'
   request.queryParams["start_date"] = '2016-01-01'
+
   request.method = 'GET'
   request.path = '/v3/geo/stats'
   request.headers['X-Mock'] = 200
@@ -2298,6 +2502,7 @@ describe('test_ips_get', function () {
   request.queryParams["limit"] = '1'
   request.queryParams["exclude_whitelabels"] = 'true'
   request.queryParams["offset"] = '1'
+
   request.method = 'GET'
   request.path = '/v3/ips'
   request.headers['X-Mock'] = 200
@@ -2730,7 +2935,7 @@ describe('test_mail_batch__batch_id__get', function () {
   });
 })
 
-describe('test_mail_send_beta_post', function () {
+describe('test_mail_send_post', function () {
   this.timeout(30000);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
@@ -2835,13 +3040,8 @@ describe('test_mail_send_beta_post', function () {
       "send_at": 1409348513,
       "subject": "Hello, World!",
       "substitutions": {
-        "sub": {
-          "%name%": [
-            "John",
-            "Jane",
-            "Sam"
-          ]
-        }
+        "id": "substitutions",
+        "type": "object"
       },
       "to": [
         {
@@ -2890,9 +3090,9 @@ describe('test_mail_send_beta_post', function () {
   }
 };
   request.method = 'POST'
-  request.path = '/v3/mail/send/beta'
+  request.path = '/v3/mail/send'
   request.headers['X-Mock'] = 202
-  it('test_mail_send_beta_post had the correct response code', function(done) {
+  it('test_mail_send_post had the correct response code', function(done) {
     sg.API(request, function (response) {
       assert.equal(response.statusCode, 202, 'response code is not correct')
       done();
@@ -2918,6 +3118,7 @@ describe('test_mail_settings_get', function () {
   }
   request.queryParams["limit"] = '1'
   request.queryParams["offset"] = '1'
+
   request.method = 'GET'
   request.path = '/v3/mail_settings'
   request.headers['X-Mock'] = 200
@@ -3478,6 +3679,7 @@ describe('test_mailbox_providers_stats_get', function () {
   request.queryParams["limit"] = '1'
   request.queryParams["offset"] = '1'
   request.queryParams["start_date"] = '2016-01-01'
+
   request.method = 'GET'
   request.path = '/v3/mailbox_providers/stats'
   request.headers['X-Mock'] = 200
@@ -3507,6 +3709,7 @@ describe('test_partner_settings_get', function () {
   }
   request.queryParams["limit"] = '1'
   request.queryParams["offset"] = '1'
+
   request.method = 'GET'
   request.path = '/v3/partner_settings'
   request.headers['X-Mock'] = 200
@@ -3625,6 +3828,7 @@ describe('test_stats_get', function () {
   request.queryParams["start_date"] = '2016-01-01'
   request.queryParams["end_date"] = '2016-04-01'
   request.queryParams["offset"] = '1'
+
   request.method = 'GET'
   request.path = '/v3/stats'
   request.headers['X-Mock'] = 200
@@ -3689,8 +3893,9 @@ describe('test_subusers_get', function () {
     request.port = 4010
   }
   request.queryParams["username"] = 'test_string'
-  request.queryParams["limit"] = '0'
-  request.queryParams["offset"] = '0'
+  request.queryParams["limit"] = '1'
+  request.queryParams["offset"] = '1'
+
   request.method = 'GET'
   request.path = '/v3/subusers'
   request.headers['X-Mock'] = 200
@@ -3719,6 +3924,7 @@ describe('test_subusers_reputations_get', function () {
     request.port = 4010
   }
   request.queryParams["usernames"] = 'test_string'
+
   request.method = 'GET'
   request.path = '/v3/subusers/reputations'
   request.headers['X-Mock'] = 200
@@ -3752,6 +3958,7 @@ describe('test_subusers_stats_get', function () {
   request.queryParams["offset"] = '1'
   request.queryParams["start_date"] = '2016-01-01'
   request.queryParams["subusers"] = 'test_string'
+
   request.method = 'GET'
   request.path = '/v3/subusers/stats'
   request.headers['X-Mock'] = 200
@@ -3785,6 +3992,7 @@ describe('test_subusers_stats_monthly_get', function () {
   request.queryParams["offset"] = '1'
   request.queryParams["date"] = 'test_string'
   request.queryParams["sort_by_direction"] = 'asc'
+
   request.method = 'GET'
   request.path = '/v3/subusers/stats/monthly'
   request.headers['X-Mock'] = 200
@@ -3819,6 +4027,7 @@ describe('test_subusers_stats_sums_get', function () {
   request.queryParams["offset"] = '1'
   request.queryParams["start_date"] = '2016-01-01'
   request.queryParams["sort_by_direction"] = 'asc'
+
   request.method = 'GET'
   request.path = '/v3/subusers/stats/sums'
   request.headers['X-Mock'] = 200
@@ -4053,9 +4262,10 @@ describe('test_subusers__subuser_name__stats_monthly_get', function () {
   }
   request.queryParams["date"] = 'test_string'
   request.queryParams["sort_by_direction"] = 'asc'
-  request.queryParams["limit"] = '0'
+  request.queryParams["limit"] = '1'
   request.queryParams["sort_by_metric"] = 'test_string'
   request.queryParams["offset"] = '1'
+
   request.method = 'GET'
   request.path = '/v3/subusers/{subuser_name}/stats/monthly'
   request.headers['X-Mock'] = 200
@@ -4087,6 +4297,7 @@ describe('test_suppression_blocks_get', function () {
   request.queryParams["limit"] = '1'
   request.queryParams["end_time"] = '1'
   request.queryParams["offset"] = '1'
+
   request.method = 'GET'
   request.path = '/v3/suppression/blocks'
   request.headers['X-Mock'] = 200
@@ -4203,8 +4414,9 @@ describe('test_suppression_bounces_get', function () {
     request.test = true
     request.port = 4010
   }
-  request.queryParams["start_time"] = '0'
-  request.queryParams["end_time"] = '0'
+  request.queryParams["start_time"] = '1'
+  request.queryParams["end_time"] = '1'
+
   request.method = 'GET'
   request.path = '/v3/suppression/bounces'
   request.headers['X-Mock'] = 200
@@ -4295,6 +4507,7 @@ describe('test_suppression_bounces__email__delete', function () {
   }
   request.body = null;
   request.queryParams["email_address"] = 'example@example.com'
+
   request.method = 'DELETE'
   request.path = '/v3/suppression/bounces/{email}'
   request.headers['X-Mock'] = 204
@@ -4326,6 +4539,7 @@ describe('test_suppression_invalid_emails_get', function () {
   request.queryParams["limit"] = '1'
   request.queryParams["end_time"] = '1'
   request.queryParams["offset"] = '1'
+
   request.method = 'GET'
   request.path = '/v3/suppression/invalid_emails'
   request.headers['X-Mock'] = 200
@@ -4501,6 +4715,7 @@ describe('test_suppression_spam_reports_get', function () {
   request.queryParams["limit"] = '1'
   request.queryParams["end_time"] = '1'
   request.queryParams["offset"] = '1'
+
   request.method = 'GET'
   request.path = '/v3/suppression/spam_reports'
   request.headers['X-Mock'] = 200
@@ -4566,6 +4781,7 @@ describe('test_suppression_unsubscribes_get', function () {
   request.queryParams["limit"] = '1'
   request.queryParams["end_time"] = '1'
   request.queryParams["offset"] = '1'
+
   request.method = 'GET'
   request.path = '/v3/suppression/unsubscribes'
   request.headers['X-Mock'] = 200
@@ -4889,6 +5105,7 @@ describe('test_tracking_settings_get', function () {
   }
   request.queryParams["limit"] = '1'
   request.queryParams["offset"] = '1'
+
   request.method = 'GET'
   request.path = '/v3/tracking_settings'
   request.headers['X-Mock'] = 200
@@ -5696,6 +5913,39 @@ describe('test_user_webhooks_event_test_post', function () {
   });
 })
 
+describe('test_user_webhooks_parse_settings_post', function () {
+  this.timeout(30000);
+  var API_KEY = 'SendGrid API Key'
+  if(process.env.TRAVIS) {
+    var TEST_HOST = process.env.MOCK_HOST
+  } else {
+    var TEST_HOST = 'localhost'
+  }
+
+  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+
+  var request = sg.emptyRequest()
+  if(TEST_HOST == 'localhost') {
+    request.test = true
+    request.port = 4010
+  }
+  request.body = {
+  "hostname": "myhostname.com",
+  "send_raw": false,
+  "spam_check": true,
+  "url": "http://email.myhosthame.com"
+};
+  request.method = 'POST'
+  request.path = '/v3/user/webhooks/parse/settings'
+  request.headers['X-Mock'] = 201
+  it('test_user_webhooks_parse_settings_post had the correct response code', function(done) {
+    sg.API(request, function (response) {
+      assert.equal(response.statusCode, 201, 'response code is not correct')
+      done();
+    })
+  });
+})
+
 describe('test_user_webhooks_parse_settings_get', function () {
   this.timeout(30000);
   var API_KEY = 'SendGrid API Key'
@@ -5723,6 +5973,93 @@ describe('test_user_webhooks_parse_settings_get', function () {
   });
 })
 
+describe('test_user_webhooks_parse_settings__hostname__patch', function () {
+  this.timeout(30000);
+  var API_KEY = 'SendGrid API Key'
+  if(process.env.TRAVIS) {
+    var TEST_HOST = process.env.MOCK_HOST
+  } else {
+    var TEST_HOST = 'localhost'
+  }
+
+  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+
+  var request = sg.emptyRequest()
+  if(TEST_HOST == 'localhost') {
+    request.test = true
+    request.port = 4010
+  }
+  request.body = {
+  "send_raw": true,
+  "spam_check": false,
+  "url": "http://newdomain.com/parse"
+};
+  request.method = 'PATCH'
+  request.path = '/v3/user/webhooks/parse/settings/{hostname}'
+  request.headers['X-Mock'] = 200
+  it('test_user_webhooks_parse_settings__hostname__patch had the correct response code', function(done) {
+    sg.API(request, function (response) {
+      assert.equal(response.statusCode, 200, 'response code is not correct')
+      done();
+    })
+  });
+})
+
+describe('test_user_webhooks_parse_settings__hostname__get', function () {
+  this.timeout(30000);
+  var API_KEY = 'SendGrid API Key'
+  if(process.env.TRAVIS) {
+    var TEST_HOST = process.env.MOCK_HOST
+  } else {
+    var TEST_HOST = 'localhost'
+  }
+
+  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+
+  var request = sg.emptyRequest()
+  if(TEST_HOST == 'localhost') {
+    request.test = true
+    request.port = 4010
+  }
+  request.method = 'GET'
+  request.path = '/v3/user/webhooks/parse/settings/{hostname}'
+  request.headers['X-Mock'] = 200
+  it('test_user_webhooks_parse_settings__hostname__get had the correct response code', function(done) {
+    sg.API(request, function (response) {
+      assert.equal(response.statusCode, 200, 'response code is not correct')
+      done();
+    })
+  });
+})
+
+describe('test_user_webhooks_parse_settings__hostname__delete', function () {
+  this.timeout(30000);
+  var API_KEY = 'SendGrid API Key'
+  if(process.env.TRAVIS) {
+    var TEST_HOST = process.env.MOCK_HOST
+  } else {
+    var TEST_HOST = 'localhost'
+  }
+
+  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+
+  var request = sg.emptyRequest()
+  if(TEST_HOST == 'localhost') {
+    request.test = true
+    request.port = 4010
+  }
+  request.body = null;
+  request.method = 'DELETE'
+  request.path = '/v3/user/webhooks/parse/settings/{hostname}'
+  request.headers['X-Mock'] = 204
+  it('test_user_webhooks_parse_settings__hostname__delete had the correct response code', function(done) {
+    sg.API(request, function (response) {
+      assert.equal(response.statusCode, 204, 'response code is not correct')
+      done();
+    })
+  });
+})
+
 describe('test_user_webhooks_parse_stats_get', function () {
   this.timeout(30000);
   var API_KEY = 'SendGrid API Key'
@@ -5744,6 +6081,7 @@ describe('test_user_webhooks_parse_stats_get', function () {
   request.queryParams["start_date"] = '2016-01-01'
   request.queryParams["end_date"] = '2016-04-01'
   request.queryParams["offset"] = 'test_string'
+
   request.method = 'GET'
   request.path = '/v3/user/webhooks/parse/stats'
   request.headers['X-Mock'] = 200
@@ -5815,6 +6153,7 @@ describe('test_whitelabel_domains_get', function () {
   request.queryParams["exclude_subusers"] = 'true'
   request.queryParams["limit"] = '1'
   request.queryParams["offset"] = '1'
+
   request.method = 'GET'
   request.path = '/v3/whitelabel/domains'
   request.headers['X-Mock'] = 200
@@ -6161,6 +6500,7 @@ describe('test_whitelabel_ips_get', function () {
   request.queryParams["ip"] = 'test_string'
   request.queryParams["limit"] = '1'
   request.queryParams["offset"] = '1'
+
   request.method = 'GET'
   request.path = '/v3/whitelabel/ips'
   request.headers['X-Mock'] = 200
@@ -6278,6 +6618,7 @@ describe('test_whitelabel_links_post', function () {
 };
   request.queryParams["limit"] = '1'
   request.queryParams["offset"] = '1'
+
   request.method = 'POST'
   request.path = '/v3/whitelabel/links'
   request.headers['X-Mock'] = 201
@@ -6306,6 +6647,7 @@ describe('test_whitelabel_links_get', function () {
     request.port = 4010
   }
   request.queryParams["limit"] = '1'
+
   request.method = 'GET'
   request.path = '/v3/whitelabel/links'
   request.headers['X-Mock'] = 200
@@ -6334,6 +6676,7 @@ describe('test_whitelabel_links_default_get', function () {
     request.port = 4010
   }
   request.queryParams["domain"] = 'test_string'
+
   request.method = 'GET'
   request.path = '/v3/whitelabel/links/default'
   request.headers['X-Mock'] = 200
@@ -6362,6 +6705,7 @@ describe('test_whitelabel_links_subuser_get', function () {
     request.port = 4010
   }
   request.queryParams["username"] = 'test_string'
+
   request.method = 'GET'
   request.path = '/v3/whitelabel/links/subuser'
   request.headers['X-Mock'] = 200
@@ -6391,6 +6735,7 @@ describe('test_whitelabel_links_subuser_delete', function () {
   }
   request.body = null;
   request.queryParams["username"] = 'test_string'
+
   request.method = 'DELETE'
   request.path = '/v3/whitelabel/links/subuser'
   request.headers['X-Mock'] = 204

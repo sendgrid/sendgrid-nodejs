@@ -30,8 +30,8 @@ sg.API(request, function (response) {
 
 var request = sg.emptyRequest()
 request.queryParams["username"] = 'test_string'
-  request.queryParams["limit"] = '0'
-  request.queryParams["offset"] = '0'
+  request.queryParams["limit"] = '1'
+  request.queryParams["offset"] = '1'
  
 request.method = 'GET'
 request.path = '/v3/subusers'
@@ -241,7 +241,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.queryParams["date"] = 'test_string'
   request.queryParams["sort_by_direction"] = 'asc'
-  request.queryParams["limit"] = '0'
+  request.queryParams["limit"] = '1'
   request.queryParams["sort_by_metric"] = 'test_string'
   request.queryParams["offset"] = '1'
  

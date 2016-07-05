@@ -9,6 +9,7 @@ var sg = require('sendgrid').SendGrid(process.env.SENDGRID_API_KEY)
 # Table of Contents
 
 * [ACCESS SETTINGS](#access_settings)
+* [ALERTS](#alerts)
 * [API KEYS](#api_keys)
 * [ASM](#asm)
 * [BROWSERS](#browsers)
@@ -191,6 +192,132 @@ For more information, please see our [User Guide](http://sendgrid.com/docs/User_
     console.log(response.headers)
   })
   ```
+<a name="alerts"></a>
+# ALERTS
+
+## Create a new Alert
+
+**This endpoint allows you to create a new alert.**
+
+Alerts allow you to specify an email address to receive notifications regarding your email usage or statistics.
+* Usage alerts allow you to set the threshold at which an alert will be sent.
+* Stats notifications allow you to set how frequently you would like to receive email statistics reports. For example, "daily", "weekly", or "monthly".
+
+For more information about alerts, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/alerts.html).
+
+### POST /alerts
+
+
+```javascript
+  var request = sg.emptyRequest()
+  request.body = {
+  "email_to": "example@example.com",
+  "frequency": "daily",
+  "type": "stats_notification"
+};
+  request.method = 'POST'
+  request.path = '/v3/alerts'
+  sg.API(request, function (response) {
+    console.log(response.statusCode)
+    console.log(response.body)
+    console.log(response.headers)
+  })
+  ```
+## Retrieve all alerts
+
+**This endpoint allows you to retieve all of your alerts.**
+
+Alerts allow you to specify an email address to receive notifications regarding your email usage or statistics.
+* Usage alerts allow you to set the threshold at which an alert will be sent.
+* Stats notifications allow you to set how frequently you would like to receive email statistics reports. For example, "daily", "weekly", or "monthly".
+
+For more information about alerts, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/alerts.html).
+
+### GET /alerts
+
+
+```javascript
+  var request = sg.emptyRequest()
+  request.method = 'GET'
+  request.path = '/v3/alerts'
+  sg.API(request, function (response) {
+    console.log(response.statusCode)
+    console.log(response.body)
+    console.log(response.headers)
+  })
+  ```
+## Update an alert
+
+**This endpoint allows you to update an alert.**
+
+Alerts allow you to specify an email address to receive notifications regarding your email usage or statistics.
+* Usage alerts allow you to set the threshold at which an alert will be sent.
+* Stats notifications allow you to set how frequently you would like to receive email statistics reports. For example, "daily", "weekly", or "monthly".
+
+For more information about alerts, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/alerts.html).
+
+### PATCH /alerts/{alert_id}
+
+
+```javascript
+  var request = sg.emptyRequest()
+  request.body = {
+  "email_to": "example@example.com"
+};
+  request.method = 'PATCH'
+  request.path = '/v3/alerts/{alert_id}'
+  sg.API(request, function (response) {
+    console.log(response.statusCode)
+    console.log(response.body)
+    console.log(response.headers)
+  })
+  ```
+## Retrieve a specific alert
+
+**This endpoint allows you to retrieve a specific alert.**
+
+Alerts allow you to specify an email address to receive notifications regarding your email usage or statistics.
+* Usage alerts allow you to set the threshold at which an alert will be sent.
+* Stats notifications allow you to set how frequently you would like to receive email statistics reports. For example, "daily", "weekly", or "monthly".
+
+For more information about alerts, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/alerts.html).
+
+### GET /alerts/{alert_id}
+
+
+```javascript
+  var request = sg.emptyRequest()
+  request.method = 'GET'
+  request.path = '/v3/alerts/{alert_id}'
+  sg.API(request, function (response) {
+    console.log(response.statusCode)
+    console.log(response.body)
+    console.log(response.headers)
+  })
+  ```
+## Delete an alert
+
+**This endpoint allows you to delete an alert.**
+
+Alerts allow you to specify an email address to receive notifications regarding your email usage or statistics.
+* Usage alerts allow you to set the threshold at which an alert will be sent.
+* Stats notifications allow you to set how frequently you would like to receive email statistics reports. For example, "daily", "weekly", or "monthly".
+
+For more information about alerts, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/alerts.html).
+
+### DELETE /alerts/{alert_id}
+
+
+```javascript
+  var request = sg.emptyRequest()
+  request.method = 'DELETE'
+  request.path = '/v3/alerts/{alert_id}'
+  sg.API(request, function (response) {
+    console.log(response.statusCode)
+    console.log(response.body)
+    console.log(response.headers)
+  })
+  ```
 <a name="api_keys"></a>
 # API KEYS
 
@@ -213,6 +340,7 @@ See the [API Key Permissions List](https://sendgrid.com/docs/API_Reference/Web_A
   var request = sg.emptyRequest()
   request.body = {
   "name": "My API Key",
+  "sample": "data",
   "scopes": [
     "mail.send",
     "alerts.create",
@@ -238,6 +366,7 @@ The API Keys feature allows customers to be able to generate an API Key credenti
 
 ```javascript
   var request = sg.emptyRequest()
+  request.queryParams["limit"] = '1'
   request.method = 'GET'
   request.path = '/v3/api_keys'
   sg.API(request, function (response) {
@@ -389,6 +518,10 @@ Each user can create up to 25 different suppression groups.
 
 This endpoint will return information for each group ID that you include in your request. To add a group ID to your request, simply append `&id=` followed by the group ID.
 
+Suppressions are a list of email addresses that will not receive content sent under a given [group](https://sendgrid.com/docs/API_Reference/Web_API_v3/Suppression_Management/groups.html).
+
+Suppression groups, or [unsubscribe groups](https://sendgrid.com/docs/API_Reference/Web_API_v3/Suppression_Management/groups.html), allow you to label a category of content that you regularly send. This gives your recipients the ability to opt out of a specific set of your email. For example, you might define a group for your transactional email, and one for your marketing email so that your users can continue recieving your transactional email witout having to receive your marketing content.
+
 ### GET /asm/groups
 
 
@@ -525,6 +658,34 @@ Suppressions are recipient email addresses that are added to [unsubscribe groups
     console.log(response.headers)
   })
   ```
+## Search for suppressions within a group
+
+**This endpoint allows you to search a suppression group for multiple suppressions.**
+
+When given a list of email addresses and a group ID, this endpoint will return only the email addresses that have been unsubscribed from the given group.
+
+Suppressions are a list of email addresses that will not receive content sent under a given [group](https://sendgrid.com/docs/API_Reference/Web_API_v3/Suppression_Management/groups.html).
+
+### POST /asm/groups/{group_id}/suppressions/search
+
+
+```javascript
+  var request = sg.emptyRequest()
+  request.body = {
+  "recipient_emails": [
+    "exists1@example.com",
+    "exists2@example.com",
+    "doesnotexists@example.com"
+  ]
+};
+  request.method = 'POST'
+  request.path = '/v3/asm/groups/{group_id}/suppressions/search'
+  sg.API(request, function (response) {
+    console.log(response.statusCode)
+    console.log(response.body)
+    console.log(response.headers)
+  })
+  ```
 ## Delete a suppression from a suppression group
 
 **This endpoint allows you to remove a suppressed email address from the given suppression group.**
@@ -548,7 +709,7 @@ Suppressions are recipient email addresses that are added to [unsubscribe groups
 
 **This endpoint allows you to retrieve a list of all suppressions.**
 
-Suppressions are email addresses that can be added to [groups](https://sendgrid.com/docs/API_Reference/Web_API_v3/Suppression_Management/groups.html) to prevent certain types of emails from being delivered to those addresses.
+Suppressions are a list of email addresses that will not receive content sent under a given [group](https://sendgrid.com/docs/API_Reference/Web_API_v3/Suppression_Management/groups.html).
 
 ### GET /asm/suppressions
 
@@ -630,9 +791,9 @@ A global suppression (or global unsubscribe) is an email address of a recipient 
   ```
 ## Retrieve all suppression groups for an email address
 
-**This endpoint will return a list of all suppression groups, indicating if the given email address is suppressed for each group.**
+**This endpoint returns the list of all groups that the given email address has been unsubscribed from.**
 
-Suppressions are email addresses that can be added to [groups](https://sendgrid.com/docs/API_Reference/Web_API_v3/Suppression_Management/groups.html) to prevent certain types of emails from being delivered to those addresses.
+Suppressions are a list of email addresses that will not receive content sent under a given [group](https://sendgrid.com/docs/API_Reference/Web_API_v3/Suppression_Management/groups.html).
 
 ### GET /asm/suppressions/{email}
 
@@ -742,8 +903,8 @@ For more information:
 
 ```javascript
   var request = sg.emptyRequest()
-  request.queryParams["limit"] = '0'
-  request.queryParams["offset"] = '0'
+  request.queryParams["limit"] = '1'
+  request.queryParams["offset"] = '1'
   request.method = 'GET'
   request.path = '/v3/campaigns'
   sg.API(request, function (response) {
@@ -1271,7 +1432,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
   request.body = {
   "name": "newlistname"
 };
-  request.queryParams["list_id"] = '0'
+  request.queryParams["list_id"] = '1'
   request.method = 'PATCH'
   request.path = '/v3/contactdb/lists/{list_id}'
   sg.API(request, function (response) {
@@ -1291,7 +1452,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 
 ```javascript
   var request = sg.emptyRequest()
-  request.queryParams["list_id"] = '0'
+  request.queryParams["list_id"] = '1'
   request.method = 'GET'
   request.path = '/v3/contactdb/lists/{list_id}'
   sg.API(request, function (response) {
@@ -1358,7 +1519,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
   var request = sg.emptyRequest()
   request.queryParams["page"] = '1'
   request.queryParams["page_size"] = '1'
-  request.queryParams["list_id"] = '0'
+  request.queryParams["list_id"] = '1'
   request.method = 'GET'
   request.path = '/v3/contactdb/lists/{list_id}/recipients'
   sg.API(request, function (response) {
@@ -1397,8 +1558,8 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 
 ```javascript
   var request = sg.emptyRequest()
-  request.queryParams["recipient_id"] = '0'
-  request.queryParams["list_id"] = '0'
+  request.queryParams["recipient_id"] = '1'
+  request.queryParams["list_id"] = '1'
   request.method = 'DELETE'
   request.path = '/v3/contactdb/lists/{list_id}/recipients/{recipient_id}'
   sg.API(request, function (response) {
@@ -1581,6 +1742,7 @@ The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](
 
 ```javascript
   var request = sg.emptyRequest()
+  request.queryParams["%7Bfield_name%7D"] = 'test_string'
   request.queryParams["{field_name}"] = 'test_string'
   request.method = 'GET'
   request.path = '/v3/contactdb/recipients/search'
@@ -1799,7 +1961,7 @@ For more information about segments in Marketing Campaigns, please see our [User
 
 ```javascript
   var request = sg.emptyRequest()
-  request.queryParams["segment_id"] = '0'
+  request.queryParams["segment_id"] = '1'
   request.method = 'GET'
   request.path = '/v3/contactdb/segments/{segment_id}'
   sg.API(request, function (response) {
@@ -3105,8 +3267,8 @@ For more information about Subusers:
 ```javascript
   var request = sg.emptyRequest()
   request.queryParams["username"] = 'test_string'
-  request.queryParams["limit"] = '0'
-  request.queryParams["offset"] = '0'
+  request.queryParams["limit"] = '1'
+  request.queryParams["offset"] = '1'
   request.method = 'GET'
   request.path = '/v3/subusers'
   sg.API(request, function (response) {
@@ -3389,7 +3551,7 @@ For more information, see our [User Guide](https://sendgrid.com/docs/User_Guide/
   var request = sg.emptyRequest()
   request.queryParams["date"] = 'test_string'
   request.queryParams["sort_by_direction"] = 'asc'
-  request.queryParams["limit"] = '0'
+  request.queryParams["limit"] = '1'
   request.queryParams["sort_by_metric"] = 'test_string'
   request.queryParams["offset"] = '1'
   request.method = 'GET'
@@ -3519,8 +3681,8 @@ For more information see:
 
 ```javascript
   var request = sg.emptyRequest()
-  request.queryParams["start_time"] = '0'
-  request.queryParams["end_time"] = '0'
+  request.queryParams["start_time"] = '1'
+  request.queryParams["end_time"] = '1'
   request.method = 'GET'
   request.path = '/v3/suppression/bounces'
   sg.API(request, function (response) {
@@ -4799,11 +4961,36 @@ Common uses of this data are to remove unsubscribes, react to spam reports, dete
     console.log(response.headers)
   })
   ```
-## Retrieve Parse Webhook settings
+## Create a parse setting
 
-**This endpoint allows you to retrieve your current inbound parse webhook settings.**
+**This endpoint allows you to create a new inbound parse setting.**
 
-SendGrid can parse the attachments and contents of incoming emails. The Parse API will POST the parsed email to a URL that you specify. For more information, see our Inbound [Parse Webhook documentation](https://sendgrid.com/docs/API_Reference/Webhooks/parse.html).
+The inbound parse webhook allows you to have incoming emails parsed, extracting some or all of the content, and then have that content POSTed by SendGrid to a URL of your choosing. For more information, please see our [User Guide](https://sendgrid.com/docs/API_Reference/Webhooks/parse.html).
+
+### POST /user/webhooks/parse/settings
+
+
+```javascript
+  var request = sg.emptyRequest()
+  request.body = {
+  "hostname": "myhostname.com",
+  "send_raw": false,
+  "spam_check": true,
+  "url": "http://email.myhosthame.com"
+};
+  request.method = 'POST'
+  request.path = '/v3/user/webhooks/parse/settings'
+  sg.API(request, function (response) {
+    console.log(response.statusCode)
+    console.log(response.body)
+    console.log(response.headers)
+  })
+  ```
+## Retrieve all parse settings
+
+**This endpoint allows you to retrieve all of your current inbound parse settings.**
+
+The inbound parse webhook allows you to have incoming emails parsed, extracting some or all of the contnet, and then have that content POSTed by SendGrid to a URL of your choosing. For more information, please see our [User Guide](https://sendgrid.com/docs/API_Reference/Webhooks/parse.html).
 
 ### GET /user/webhooks/parse/settings
 
@@ -4812,6 +4999,68 @@ SendGrid can parse the attachments and contents of incoming emails. The Parse AP
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/user/webhooks/parse/settings'
+  sg.API(request, function (response) {
+    console.log(response.statusCode)
+    console.log(response.body)
+    console.log(response.headers)
+  })
+  ```
+## Update a parse setting
+
+**This endpoint allows you to update a specific inbound parse setting.**
+
+The inbound parse webhook allows you to have incoming emails parsed, extracting some or all of the contnet, and then have that content POSTed by SendGrid to a URL of your choosing. For more information, please see our [User Guide](https://sendgrid.com/docs/API_Reference/Webhooks/parse.html).
+
+### PATCH /user/webhooks/parse/settings/{hostname}
+
+
+```javascript
+  var request = sg.emptyRequest()
+  request.body = {
+  "send_raw": true,
+  "spam_check": false,
+  "url": "http://newdomain.com/parse"
+};
+  request.method = 'PATCH'
+  request.path = '/v3/user/webhooks/parse/settings/{hostname}'
+  sg.API(request, function (response) {
+    console.log(response.statusCode)
+    console.log(response.body)
+    console.log(response.headers)
+  })
+  ```
+## Retrieve a specific parse setting
+
+**This endpoint allows you to retrieve a specific inbound parse setting.**
+
+The inbound parse webhook allows you to have incoming emails parsed, extracting some or all of the contnet, and then have that content POSTed by SendGrid to a URL of your choosing. For more information, please see our [User Guide](https://sendgrid.com/docs/API_Reference/Webhooks/parse.html).
+
+### GET /user/webhooks/parse/settings/{hostname}
+
+
+```javascript
+  var request = sg.emptyRequest()
+  request.method = 'GET'
+  request.path = '/v3/user/webhooks/parse/settings/{hostname}'
+  sg.API(request, function (response) {
+    console.log(response.statusCode)
+    console.log(response.body)
+    console.log(response.headers)
+  })
+  ```
+## Delete a parse setting
+
+**This endpoint allows you to delete a specific inbound parse setting.**
+
+The inbound parse webhook allows you to have incoming emails parsed, extracting some or all of the contnet, and then have that content POSTed by SendGrid to a URL of your choosing. For more information, please see our [User Guide](https://sendgrid.com/docs/API_Reference/Webhooks/parse.html).
+
+### DELETE /user/webhooks/parse/settings/{hostname}
+
+
+```javascript
+  var request = sg.emptyRequest()
+  request.method = 'DELETE'
+  request.path = '/v3/user/webhooks/parse/settings/{hostname}'
   sg.API(request, function (response) {
     console.log(response.statusCode)
     console.log(response.body)

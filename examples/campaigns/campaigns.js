@@ -40,8 +40,8 @@ sg.API(request, function (response) {
 
 
 var request = sg.emptyRequest()
-request.queryParams["limit"] = '0'
-  request.queryParams["offset"] = '0'
+request.queryParams["limit"] = '1'
+  request.queryParams["offset"] = '1'
  
 request.method = 'GET'
 request.path = '/v3/campaigns'

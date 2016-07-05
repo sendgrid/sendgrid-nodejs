@@ -311,13 +311,80 @@ sg.API(request, function (response) {
 })
 
 ///////////////////////////////////////////////////
-// Retrieve Parse Webhook settings
+// Create a parse setting
+// POST /user/webhooks/parse/settings
+
+
+var request = sg.emptyRequest()
+request.body = {
+  "hostname": "myhostname.com", 
+  "send_raw": false, 
+  "spam_check": true, 
+  "url": "http://email.myhosthame.com"
+};
+request.method = 'POST'
+request.path = '/v3/user/webhooks/parse/settings'
+sg.API(request, function (response) {
+  console.log(response.statusCode)
+  console.log(response.body)
+  console.log(response.headers)
+})
+
+///////////////////////////////////////////////////
+// Retrieve all parse settings
 // GET /user/webhooks/parse/settings
 
 
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/user/webhooks/parse/settings'
+sg.API(request, function (response) {
+  console.log(response.statusCode)
+  console.log(response.body)
+  console.log(response.headers)
+})
+
+///////////////////////////////////////////////////
+// Update a parse setting
+// PATCH /user/webhooks/parse/settings/{hostname}
+
+
+var request = sg.emptyRequest()
+request.body = {
+  "send_raw": true, 
+  "spam_check": false, 
+  "url": "http://newdomain.com/parse"
+};
+request.method = 'PATCH'
+request.path = '/v3/user/webhooks/parse/settings/{hostname}'
+sg.API(request, function (response) {
+  console.log(response.statusCode)
+  console.log(response.body)
+  console.log(response.headers)
+})
+
+///////////////////////////////////////////////////
+// Retrieve a specific parse setting
+// GET /user/webhooks/parse/settings/{hostname}
+
+
+var request = sg.emptyRequest()
+request.method = 'GET'
+request.path = '/v3/user/webhooks/parse/settings/{hostname}'
+sg.API(request, function (response) {
+  console.log(response.statusCode)
+  console.log(response.body)
+  console.log(response.headers)
+})
+
+///////////////////////////////////////////////////
+// Delete a parse setting
+// DELETE /user/webhooks/parse/settings/{hostname}
+
+
+var request = sg.emptyRequest()
+request.method = 'DELETE'
+request.path = '/v3/user/webhooks/parse/settings/{hostname}'
 sg.API(request, function (response) {
   console.log(response.statusCode)
   console.log(response.body)

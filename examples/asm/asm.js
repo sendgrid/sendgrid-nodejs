@@ -117,6 +117,27 @@ sg.API(request, function (response) {
 })
 
 ///////////////////////////////////////////////////
+// Search for suppressions within a group
+// POST /asm/groups/{group_id}/suppressions/search
+
+
+var request = sg.emptyRequest()
+request.body = {
+  "recipient_emails": [
+    "exists1@example.com", 
+    "exists2@example.com", 
+    "doesnotexists@example.com"
+  ]
+};
+request.method = 'POST'
+request.path = '/v3/asm/groups/{group_id}/suppressions/search'
+sg.API(request, function (response) {
+  console.log(response.statusCode)
+  console.log(response.body)
+  console.log(response.headers)
+})
+
+///////////////////////////////////////////////////
 // Delete a suppression from a suppression group
 // DELETE /asm/groups/{group_id}/suppressions/{email}
 

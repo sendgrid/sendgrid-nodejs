@@ -7,3 +7,4 @@ test/config.js
 .env.production
 .env.staging
 .env
+temp.js
