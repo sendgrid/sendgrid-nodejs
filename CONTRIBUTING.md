@@ -93,15 +93,15 @@ See the [examples folder](https://github.com/sendgrid/sendgrid-nodejs/tree/maste
 To run an example:
 
 ```bash
-touch test.js
+touch example.js
 ```
 
-Copy the desired example into `test.js`.
+Copy the desired example into `example.js`.
 
 Change the path to the Sendgrid library to `./lib/sendgrid.js`.
 
 ```
-node test.js
+node example.js
 ```
 
 <a name="understanding_the_codebase"></a>

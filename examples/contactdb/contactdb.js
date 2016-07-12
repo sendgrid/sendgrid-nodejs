@@ -347,8 +347,7 @@ sg.API(request, function (response) {
 
 
 var request = sg.emptyRequest()
-request.queryParams["%7Bfield_name%7D"] = 'test_string'
-  request.queryParams["{field_name}"] = 'test_string'
+request.queryParams["{field_name}"] = 'test_string'
  
 request.method = 'GET'
 request.path = '/v3/contactdb/recipients/search'

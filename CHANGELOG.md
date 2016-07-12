@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [3.0.8] - 2016-07-12
+### Added
+- Update docs, unit tests and examples to include Sender ID
+
 ## [3.0.7] - 2016-07-05
 ### Updated
 - Content based on our updated [Swagger/OAI doc](https://github.com/sendgrid/sendgrid-oai)
