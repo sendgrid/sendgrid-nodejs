@@ -64,8 +64,8 @@ We welcome direct contributions to the sendgrid-nodejs code base. Thank you!
 
 ##### Prerequisites #####
 
-- Node.js 0.10 and up
-- Please see [package.json]("https://github.com/sendgrid/sendgrid-nodejs/tree/master/package.json")
+- Node.js version 0.10, 0.12 or 4
+- Please see [package.json](https://github.com/sendgrid/sendgrid-nodejs/tree/master/package.json)
 
 ##### Initial setup: #####
 

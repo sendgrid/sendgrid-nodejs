@@ -23,11 +23,14 @@ All updates to this library is documented in our [CHANGELOG](https://github.com/
 
 # Installation
 
+## Prerequisites
+
+- Node.js version 0.10, 0.12 or 4
+- The SendGrid service, starting at the [free level](https://sendgrid.com/free?source=sendgrid-nodejs)
+
 ## Setup Environment Variables
 
-First, get your free SendGrid account [here](https://sendgrid.com/free?source=sendgrid-nodejs).
-
-Next, update your environment with your [SENDGRID_API_KEY](https://app.sendgrid.com/settings/api_keys).
+Update your environment with your [SENDGRID_API_KEY](https://app.sendgrid.com/settings/api_keys).
 
 ```bash
 echo "export SENDGRID_API_KEY='YOUR_API_KEY'" > sendgrid.env
@@ -67,7 +70,6 @@ npm install sendgrid
 
 ## Dependencies
 
-- The SendGrid Service, starting at the [free level](https://sendgrid.com/free?source=sendgrid-nodejs)
 - [Nodejs-HTTP-Client](https://github.com/sendgrid/nodejs-http-client)
 
 # Quick Start
