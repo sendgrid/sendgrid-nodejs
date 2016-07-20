@@ -1,6 +1,13 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [3.0.9] - 2016-07-20
+### Added
+- README updates
+- Update introduction blurb to include information regarding our forward path
+- Update the v3 /mail/send example to include non-helper usage
+- Update the generic v3 example to include non-fluent interface usage
+
 ## [3.0.8] - 2016-07-12
 ### Added
 - Update docs, unit tests and examples to include Sender ID
