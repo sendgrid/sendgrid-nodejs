@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [3.0.10] - 2016-07-23
+### Fixed
+- Fixed type in Mail Helper per [pull request #250](https://github.com/sendgrid/sendgrid-nodejs/pull/250)
+- Thanks to [Cameron Wilby](https://github.com/cameronoca) for finding the issue!
+
 ## [3.0.9] - 2016-07-20
 ### Added
 - README updates
