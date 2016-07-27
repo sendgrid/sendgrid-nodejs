@@ -14,7 +14,7 @@ request.queryParams["aggregated_by"] = 'day'
  
 request.method = 'GET'
 request.path = '/v3/stats'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)

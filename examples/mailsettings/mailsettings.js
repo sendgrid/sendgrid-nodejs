@@ -11,7 +11,7 @@ request.queryParams["limit"] = '1'
  
 request.method = 'GET'
 request.path = '/v3/mail_settings'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -32,7 +32,7 @@ request.body = {
 };
 request.method = 'PATCH'
 request.path = '/v3/mail_settings/address_whitelist'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -46,7 +46,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/mail_settings/address_whitelist'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -64,7 +64,7 @@ request.body = {
 };
 request.method = 'PATCH'
 request.path = '/v3/mail_settings/bcc'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -78,7 +78,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/mail_settings/bcc'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -97,7 +97,7 @@ request.body = {
 };
 request.method = 'PATCH'
 request.path = '/v3/mail_settings/bounce_purge'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -111,7 +111,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/mail_settings/bounce_purge'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -130,7 +130,7 @@ request.body = {
 };
 request.method = 'PATCH'
 request.path = '/v3/mail_settings/footer'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -144,7 +144,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/mail_settings/footer'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -162,7 +162,7 @@ request.body = {
 };
 request.method = 'PATCH'
 request.path = '/v3/mail_settings/forward_bounce'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -176,7 +176,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/mail_settings/forward_bounce'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -194,7 +194,7 @@ request.body = {
 };
 request.method = 'PATCH'
 request.path = '/v3/mail_settings/forward_spam'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -208,7 +208,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/mail_settings/forward_spam'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -225,7 +225,7 @@ request.body = {
 };
 request.method = 'PATCH'
 request.path = '/v3/mail_settings/plain_content'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -239,7 +239,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/mail_settings/plain_content'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -258,7 +258,7 @@ request.body = {
 };
 request.method = 'PATCH'
 request.path = '/v3/mail_settings/spam_check'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -272,7 +272,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/mail_settings/spam_check'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -290,7 +290,7 @@ request.body = {
 };
 request.method = 'PATCH'
 request.path = '/v3/mail_settings/template'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -304,7 +304,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/mail_settings/template'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)

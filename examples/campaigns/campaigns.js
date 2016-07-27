@@ -28,7 +28,7 @@ request.body = {
 };
 request.method = 'POST'
 request.path = '/v3/campaigns'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -45,7 +45,7 @@ request.queryParams["limit"] = '1'
  
 request.method = 'GET'
 request.path = '/v3/campaigns'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -68,7 +68,7 @@ request.body = {
 };
 request.method = 'PATCH'
 request.path = '/v3/campaigns/{campaign_id}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -82,7 +82,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/campaigns/{campaign_id}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -96,7 +96,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'DELETE'
 request.path = '/v3/campaigns/{campaign_id}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -113,7 +113,7 @@ request.body = {
 };
 request.method = 'PATCH'
 request.path = '/v3/campaigns/{campaign_id}/schedules'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -130,7 +130,7 @@ request.body = {
 };
 request.method = 'POST'
 request.path = '/v3/campaigns/{campaign_id}/schedules'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -144,7 +144,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/campaigns/{campaign_id}/schedules'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -158,7 +158,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'DELETE'
 request.path = '/v3/campaigns/{campaign_id}/schedules'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -172,7 +172,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'POST'
 request.path = '/v3/campaigns/{campaign_id}/schedules/now'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -189,7 +189,7 @@ request.body = {
 };
 request.method = 'POST'
 request.path = '/v3/campaigns/{campaign_id}/schedules/test'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)

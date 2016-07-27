@@ -14,7 +14,7 @@ request.queryParams["subuser"] = 'test_string'
  
 request.method = 'GET'
 request.path = '/v3/ips'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -28,7 +28,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/ips/assigned'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -45,7 +45,7 @@ request.body = {
 };
 request.method = 'POST'
 request.path = '/v3/ips/pools'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -59,7 +59,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/ips/pools'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -76,7 +76,7 @@ request.body = {
 };
 request.method = 'PUT'
 request.path = '/v3/ips/pools/{pool_name}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -90,7 +90,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/ips/pools/{pool_name}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -104,7 +104,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'DELETE'
 request.path = '/v3/ips/pools/{pool_name}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -121,7 +121,7 @@ request.body = {
 };
 request.method = 'POST'
 request.path = '/v3/ips/pools/{pool_name}/ips'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -135,7 +135,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'DELETE'
 request.path = '/v3/ips/pools/{pool_name}/ips/{ip}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -152,7 +152,7 @@ request.body = {
 };
 request.method = 'POST'
 request.path = '/v3/ips/warmup'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -166,7 +166,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/ips/warmup'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -180,7 +180,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/ips/warmup/{ip_address}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -194,7 +194,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'DELETE'
 request.path = '/v3/ips/warmup/{ip_address}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -208,7 +208,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/ips/{ip_address}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)

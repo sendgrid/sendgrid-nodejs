@@ -12,7 +12,7 @@ request.body = {
 };
 request.method = 'POST'
 request.path = '/v3/contactdb/custom_fields'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -26,7 +26,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/contactdb/custom_fields'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -40,7 +40,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/contactdb/custom_fields/{custom_field_id}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -54,7 +54,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'DELETE'
 request.path = '/v3/contactdb/custom_fields/{custom_field_id}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -71,7 +71,7 @@ request.body = {
 };
 request.method = 'POST'
 request.path = '/v3/contactdb/lists'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -85,7 +85,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/contactdb/lists'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -105,7 +105,7 @@ request.body = [
 ];
 request.method = 'DELETE'
 request.path = '/v3/contactdb/lists'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -124,7 +124,7 @@ request.queryParams["list_id"] = '1'
  
 request.method = 'PATCH'
 request.path = '/v3/contactdb/lists/{list_id}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -140,7 +140,7 @@ request.queryParams["list_id"] = '1'
  
 request.method = 'GET'
 request.path = '/v3/contactdb/lists/{list_id}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -156,7 +156,7 @@ request.queryParams["delete_contacts"] = 'true'
  
 request.method = 'DELETE'
 request.path = '/v3/contactdb/lists/{list_id}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -174,7 +174,7 @@ request.body = [
 ];
 request.method = 'POST'
 request.path = '/v3/contactdb/lists/{list_id}/recipients'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -192,7 +192,7 @@ request.queryParams["page"] = '1'
  
 request.method = 'GET'
 request.path = '/v3/contactdb/lists/{list_id}/recipients'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -206,7 +206,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'POST'
 request.path = '/v3/contactdb/lists/{list_id}/recipients/{recipient_id}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -223,7 +223,7 @@ request.queryParams["recipient_id"] = '1'
  
 request.method = 'DELETE'
 request.path = '/v3/contactdb/lists/{list_id}/recipients/{recipient_id}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -244,7 +244,7 @@ request.body = [
 ];
 request.method = 'PATCH'
 request.path = '/v3/contactdb/recipients'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -272,7 +272,7 @@ request.body = [
 ];
 request.method = 'POST'
 request.path = '/v3/contactdb/recipients'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -289,7 +289,7 @@ request.queryParams["page"] = '1'
  
 request.method = 'GET'
 request.path = '/v3/contactdb/recipients'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -307,7 +307,7 @@ request.body = [
 ];
 request.method = 'DELETE'
 request.path = '/v3/contactdb/recipients'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -321,7 +321,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/contactdb/recipients/billable_count'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -335,7 +335,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/contactdb/recipients/count'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -351,7 +351,7 @@ request.queryParams["{field_name}"] = 'test_string'
  
 request.method = 'GET'
 request.path = '/v3/contactdb/recipients/search'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -365,7 +365,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/contactdb/recipients/{recipient_id}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -379,7 +379,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'DELETE'
 request.path = '/v3/contactdb/recipients/{recipient_id}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -393,7 +393,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/contactdb/recipients/{recipient_id}/lists'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -407,7 +407,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/contactdb/reserved_fields'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -445,7 +445,7 @@ request.body = {
 };
 request.method = 'POST'
 request.path = '/v3/contactdb/segments'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -459,7 +459,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/contactdb/segments'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -487,7 +487,7 @@ request.queryParams["segment_id"] = 'test_string'
  
 request.method = 'PATCH'
 request.path = '/v3/contactdb/segments/{segment_id}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -503,7 +503,7 @@ request.queryParams["segment_id"] = '1'
  
 request.method = 'GET'
 request.path = '/v3/contactdb/segments/{segment_id}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -519,7 +519,7 @@ request.queryParams["delete_contacts"] = 'true'
  
 request.method = 'DELETE'
 request.path = '/v3/contactdb/segments/{segment_id}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -536,7 +536,7 @@ request.queryParams["page"] = '1'
  
 request.method = 'GET'
 request.path = '/v3/contactdb/segments/{segment_id}/recipients'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)

@@ -8,7 +8,7 @@ var sg = require('sendgrid').SendGrid(process.env.SENDGRID_API_KEY)
 var request = sg.emptyRequest()
 request.method = 'POST'
 request.path = '/v3/mail/batch'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -22,7 +22,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/mail/batch/{batch_id}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -175,7 +175,7 @@ request.body = {
 };
 request.method = 'POST'
 request.path = '/v3/mail/send'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)

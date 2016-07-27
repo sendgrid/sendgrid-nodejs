@@ -83,7 +83,7 @@ The following is the minimum needed code to send an email with the [/mail/send H
   request.method = 'POST'
   request.path = '/v3/mail/send'
   request.body = requestBody
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -122,7 +122,7 @@ request.body = {
 };
 request.method = 'POST'
 request.path = '/v3/mail/send'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -138,7 +138,7 @@ var sg = require('sendgrid').SendGrid(process.env.SENDGRID_API_KEY)
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/api_keys'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)

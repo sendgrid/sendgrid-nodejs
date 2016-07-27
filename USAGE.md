@@ -53,7 +53,7 @@ For more information, please see our [User Guide](http://sendgrid.com/docs/User_
   request.queryParams["limit"] = '1'
   request.method = 'GET'
   request.path = '/v3/access_settings/activity'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -89,7 +89,7 @@ For more information, please see our [User Guide](http://sendgrid.com/docs/User_
 };
   request.method = 'POST'
   request.path = '/v3/access_settings/whitelist'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -110,7 +110,7 @@ For more information, please see our [User Guide](http://sendgrid.com/docs/User_
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/access_settings/whitelist'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -140,7 +140,7 @@ For more information, please see our [User Guide](http://sendgrid.com/docs/User_
 };
   request.method = 'DELETE'
   request.path = '/v3/access_settings/whitelist'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -163,7 +163,7 @@ For more information, please see our [User Guide](http://sendgrid.com/docs/User_
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/access_settings/whitelist/{rule_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -186,7 +186,7 @@ For more information, please see our [User Guide](http://sendgrid.com/docs/User_
   var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/access_settings/whitelist/{rule_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -217,7 +217,7 @@ For more information about alerts, please see our [User Guide](https://sendgrid.
 };
   request.method = 'POST'
   request.path = '/v3/alerts'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -240,7 +240,7 @@ For more information about alerts, please see our [User Guide](https://sendgrid.
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/alerts'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -266,7 +266,7 @@ For more information about alerts, please see our [User Guide](https://sendgrid.
 };
   request.method = 'PATCH'
   request.path = '/v3/alerts/{alert_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -289,7 +289,7 @@ For more information about alerts, please see our [User Guide](https://sendgrid.
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/alerts/{alert_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -312,7 +312,7 @@ For more information about alerts, please see our [User Guide](https://sendgrid.
   var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/alerts/{alert_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -349,7 +349,7 @@ See the [API Key Permissions List](https://sendgrid.com/docs/API_Reference/Web_A
 };
   request.method = 'POST'
   request.path = '/v3/api_keys'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -369,7 +369,7 @@ The API Keys feature allows customers to be able to generate an API Key credenti
   request.queryParams["limit"] = '1'
   request.method = 'GET'
   request.path = '/v3/api_keys'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -399,7 +399,7 @@ The API Keys feature allows customers to be able to generate an API Key credenti
 };
   request.method = 'PUT'
   request.path = '/v3/api_keys/{api_key_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -429,7 +429,7 @@ The API Keys feature allows customers to be able to generate an API Key credenti
 };
   request.method = 'PATCH'
   request.path = '/v3/api_keys/{api_key_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -448,7 +448,7 @@ If the API Key ID does not exist an HTTP 404 will be returned.
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/api_keys/{api_key_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -475,7 +475,7 @@ The API Keys feature allows customers to be able to generate an API Key credenti
   var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/api_keys/{api_key_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -506,7 +506,7 @@ Each user can create up to 25 different suppression groups.
 };
   request.method = 'POST'
   request.path = '/v3/asm/groups'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -530,7 +530,7 @@ Suppression groups, or [unsubscribe groups](https://sendgrid.com/docs/API_Refere
   request.queryParams["id"] = '1'
   request.method = 'GET'
   request.path = '/v3/asm/groups'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -558,7 +558,7 @@ Each user can create up to 25 different suppression groups.
 };
   request.method = 'PATCH'
   request.path = '/v3/asm/groups/{group_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -581,7 +581,7 @@ Each user can create up to 25 different suppression groups.
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/asm/groups/{group_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -606,7 +606,7 @@ Each user can create up to 25 different suppression groups.
   var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/asm/groups/{group_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -633,7 +633,7 @@ Suppressions are recipient email addresses that are added to [unsubscribe groups
 };
   request.method = 'POST'
   request.path = '/v3/asm/groups/{group_id}/suppressions'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -652,7 +652,7 @@ Suppressions are recipient email addresses that are added to [unsubscribe groups
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/asm/groups/{group_id}/suppressions'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -680,7 +680,7 @@ Suppressions are a list of email addresses that will not receive content sent un
 };
   request.method = 'POST'
   request.path = '/v3/asm/groups/{group_id}/suppressions/search'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -699,7 +699,7 @@ Suppressions are recipient email addresses that are added to [unsubscribe groups
   var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/asm/groups/{group_id}/suppressions/{email}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -718,7 +718,7 @@ Suppressions are a list of email addresses that will not receive content sent un
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/asm/suppressions'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -743,7 +743,7 @@ A global suppression (or global unsubscribe) is an email address of a recipient 
 };
   request.method = 'POST'
   request.path = '/v3/asm/suppressions/global'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -764,7 +764,7 @@ A global suppression (or global unsubscribe) is an email address of a recipient 
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/asm/suppressions/global/{email}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -783,7 +783,7 @@ A global suppression (or global unsubscribe) is an email address of a recipient 
   var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/asm/suppressions/global/{email}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -802,7 +802,7 @@ Suppressions are a list of email addresses that will not receive content sent un
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/asm/suppressions/{email}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -832,7 +832,7 @@ Advanced Stats provide a more in-depth view of your email statistics and the act
   request.queryParams["start_date"] = '2016-01-01'
   request.method = 'GET'
   request.path = '/v3/browsers/stats'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -880,7 +880,7 @@ For more information:
 };
   request.method = 'POST'
   request.path = '/v3/campaigns'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -907,7 +907,7 @@ For more information:
   request.queryParams["offset"] = '1'
   request.method = 'GET'
   request.path = '/v3/campaigns'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -937,7 +937,7 @@ For more information:
 };
   request.method = 'PATCH'
   request.path = '/v3/campaigns/{campaign_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -960,7 +960,7 @@ For more information:
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/campaigns/{campaign_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -983,7 +983,7 @@ For more information:
   var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/campaigns/{campaign_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1007,7 +1007,7 @@ For more information:
 };
   request.method = 'PATCH'
   request.path = '/v3/campaigns/{campaign_id}/schedules'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1031,7 +1031,7 @@ For more information:
 };
   request.method = 'POST'
   request.path = '/v3/campaigns/{campaign_id}/schedules'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1052,7 +1052,7 @@ For more information:
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/campaigns/{campaign_id}/schedules'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1076,7 +1076,7 @@ For more information:
   var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/campaigns/{campaign_id}/schedules'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1099,7 +1099,7 @@ For more information:
   var request = sg.emptyRequest()
   request.method = 'POST'
   request.path = '/v3/campaigns/{campaign_id}/schedules/now'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1125,7 +1125,7 @@ For more information:
 };
   request.method = 'POST'
   request.path = '/v3/campaigns/{campaign_id}/schedules/test'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1150,7 +1150,7 @@ Categories can help organize your email analytics by enabling you to tag emails 
   request.queryParams["offset"] = '1'
   request.method = 'GET'
   request.path = '/v3/categories'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1177,7 +1177,7 @@ Categories allow you to group your emails together according to broad topics tha
   request.queryParams["categories"] = 'test_string'
   request.method = 'GET'
   request.path = '/v3/categories/stats'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1205,7 +1205,7 @@ Categories allow you to group your emails together according to broad topics tha
   request.queryParams["sort_by_direction"] = 'asc'
   request.method = 'GET'
   request.path = '/v3/categories/stats/sums'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1232,7 +1232,7 @@ Advanced Stats provide a more in-depth view of your email statistics and the act
   request.queryParams["end_date"] = '2016-04-01'
   request.method = 'GET'
   request.path = '/v3/clients/stats'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1262,7 +1262,7 @@ Advanced Stats provide a more in-depth view of your email statistics and the act
   request.queryParams["end_date"] = '2016-04-01'
   request.method = 'GET'
   request.path = '/v3/clients/{client_type}/stats'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1288,7 +1288,7 @@ The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](
 };
   request.method = 'POST'
   request.path = '/v3/contactdb/custom_fields'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1307,7 +1307,7 @@ The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/contactdb/custom_fields'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1326,7 +1326,7 @@ The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/contactdb/custom_fields/{custom_field_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1345,7 +1345,7 @@ The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](
   var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/contactdb/custom_fields/{custom_field_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1367,7 +1367,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 };
   request.method = 'POST'
   request.path = '/v3/contactdb/lists'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1386,7 +1386,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/contactdb/lists'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1411,7 +1411,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 ];
   request.method = 'DELETE'
   request.path = '/v3/contactdb/lists'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1435,7 +1435,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
   request.queryParams["list_id"] = '1'
   request.method = 'PATCH'
   request.path = '/v3/contactdb/lists/{list_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1455,7 +1455,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
   request.queryParams["list_id"] = '1'
   request.method = 'GET'
   request.path = '/v3/contactdb/lists/{list_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1475,7 +1475,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
   request.queryParams["delete_contacts"] = 'true'
   request.method = 'DELETE'
   request.path = '/v3/contactdb/lists/{list_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1500,7 +1500,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 ];
   request.method = 'POST'
   request.path = '/v3/contactdb/lists/{list_id}/recipients'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1522,7 +1522,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
   request.queryParams["list_id"] = '1'
   request.method = 'GET'
   request.path = '/v3/contactdb/lists/{list_id}/recipients'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1541,7 +1541,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
   var request = sg.emptyRequest()
   request.method = 'POST'
   request.path = '/v3/contactdb/lists/{list_id}/recipients/{recipient_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1562,7 +1562,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
   request.queryParams["list_id"] = '1'
   request.method = 'DELETE'
   request.path = '/v3/contactdb/lists/{list_id}/recipients/{recipient_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1592,7 +1592,7 @@ The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](
 ];
   request.method = 'PATCH'
   request.path = '/v3/contactdb/recipients'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1627,7 +1627,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 ];
   request.method = 'POST'
   request.path = '/v3/contactdb/recipients'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1651,7 +1651,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
   request.queryParams["page_size"] = '1'
   request.method = 'GET'
   request.path = '/v3/contactdb/recipients'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1676,7 +1676,7 @@ The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](
 ];
   request.method = 'DELETE'
   request.path = '/v3/contactdb/recipients'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1697,7 +1697,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/contactdb/recipients/billable_count'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1716,7 +1716,7 @@ The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/contactdb/recipients/count'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1746,7 +1746,7 @@ The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](
   request.queryParams["{field_name}"] = 'test_string'
   request.method = 'GET'
   request.path = '/v3/contactdb/recipients/search'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1765,7 +1765,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/contactdb/recipients/{recipient_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1784,7 +1784,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
   var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/contactdb/recipients/{recipient_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1805,7 +1805,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/contactdb/recipients/{recipient_id}/lists'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1824,7 +1824,7 @@ The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/contactdb/reserved_fields'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1887,7 +1887,7 @@ For more information about segments in Marketing Campaigns, please see our [User
 };
   request.method = 'POST'
   request.path = '/v3/contactdb/segments'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1908,7 +1908,7 @@ For more information about segments in Marketing Campaigns, please see our [User
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/contactdb/segments'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1942,7 +1942,7 @@ For more information about segments in Marketing Campaigns, please see our [User
   request.queryParams["segment_id"] = 'test_string'
   request.method = 'PATCH'
   request.path = '/v3/contactdb/segments/{segment_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1964,7 +1964,7 @@ For more information about segments in Marketing Campaigns, please see our [User
   request.queryParams["segment_id"] = '1'
   request.method = 'GET'
   request.path = '/v3/contactdb/segments/{segment_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -1988,7 +1988,7 @@ For more information about segments in Marketing Campaigns, please see our [User
   request.queryParams["delete_contacts"] = 'true'
   request.method = 'DELETE'
   request.path = '/v3/contactdb/segments/{segment_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2011,7 +2011,7 @@ For more information about segments in Marketing Campaigns, please see our [User
   request.queryParams["page_size"] = '1'
   request.method = 'GET'
   request.path = '/v3/contactdb/segments/{segment_id}/recipients'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2049,7 +2049,7 @@ Advanced Stats provide a more in-depth view of your email statistics and the act
   request.queryParams["offset"] = '1'
   request.method = 'GET'
   request.path = '/v3/devices/stats'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2079,7 +2079,7 @@ Advanced Stats provide a more in-depth view of your email statistics and the act
   request.queryParams["start_date"] = '2016-01-01'
   request.method = 'GET'
   request.path = '/v3/geo/stats'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2108,7 +2108,7 @@ A single IP address or a range of IP addresses may be dedicated to an account in
   request.queryParams["offset"] = '1'
   request.method = 'GET'
   request.path = '/v3/ips'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2127,7 +2127,7 @@ A single IP address or a range of IP addresses may be dedicated to an account in
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/ips/assigned'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2155,7 +2155,7 @@ If an IP pool is NOT specified for an email, it will use any IP available, inclu
 };
   request.method = 'POST'
   request.path = '/v3/ips/pools'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2178,7 +2178,7 @@ If an IP pool is NOT specified for an email, it will use any IP available, inclu
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/ips/pools'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2204,7 +2204,7 @@ If an IP pool is NOT specified for an email, it will use any IP available, inclu
 };
   request.method = 'PUT'
   request.path = '/v3/ips/pools/{pool_name}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2227,7 +2227,7 @@ If an IP pool is NOT specified for an email, it will use any IP available, inclu
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/ips/pools/{pool_name}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2250,7 +2250,7 @@ If an IP pool is NOT specified for an email, it will use any IP available, inclu
   var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/ips/pools/{pool_name}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2274,7 +2274,7 @@ A single IP address or a range of IP addresses may be dedicated to an account in
 };
   request.method = 'POST'
   request.path = '/v3/ips/pools/{pool_name}/ips'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2295,7 +2295,7 @@ A single IP address or a range of IP addresses may be dedicated to an account in
   var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/ips/pools/{pool_name}/ips/{ip}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2319,7 +2319,7 @@ For more general information about warming up IPs, please see our [Classroom](ht
 };
   request.method = 'POST'
   request.path = '/v3/ips/warmup'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2340,7 +2340,7 @@ For more general information about warming up IPs, please see our [Classroom](ht
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/ips/warmup'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2361,7 +2361,7 @@ For more general information about warming up IPs, please see our [Classroom](ht
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/ips/warmup/{ip_address}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2382,7 +2382,7 @@ For more general information about warming up IPs, please see our [Classroom](ht
   var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/ips/warmup/{ip_address}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2403,7 +2403,7 @@ A single IP address or a range of IP addresses may be dedicated to an account in
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/ips/{ip_address}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2429,7 +2429,7 @@ More Information:
   var request = sg.emptyRequest()
   request.method = 'POST'
   request.path = '/v3/mail/batch'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2452,7 +2452,7 @@ More Information:
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/mail/batch/{batch_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2615,7 +2615,7 @@ For more detailed information about how to use the v3 Mail Send endpoint, please
 };
   request.method = 'POST'
   request.path = '/v3/mail/send'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2639,7 +2639,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
   request.queryParams["offset"] = '1'
   request.method = 'GET'
   request.path = '/v3/mail_settings'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2667,7 +2667,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 };
   request.method = 'PATCH'
   request.path = '/v3/mail_settings/address_whitelist'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2688,7 +2688,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/mail_settings/address_whitelist'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2713,7 +2713,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 };
   request.method = 'PATCH'
   request.path = '/v3/mail_settings/bcc'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2734,7 +2734,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/mail_settings/bcc'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2760,7 +2760,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 };
   request.method = 'PATCH'
   request.path = '/v3/mail_settings/bounce_purge'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2781,7 +2781,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/mail_settings/bounce_purge'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2807,7 +2807,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 };
   request.method = 'PATCH'
   request.path = '/v3/mail_settings/footer'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2828,7 +2828,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/mail_settings/footer'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2853,7 +2853,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 };
   request.method = 'PATCH'
   request.path = '/v3/mail_settings/forward_bounce'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2874,7 +2874,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/mail_settings/forward_bounce'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2899,7 +2899,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 };
   request.method = 'PATCH'
   request.path = '/v3/mail_settings/forward_spam'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2920,7 +2920,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/mail_settings/forward_spam'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2944,7 +2944,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 };
   request.method = 'PATCH'
   request.path = '/v3/mail_settings/plain_content'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2965,7 +2965,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/mail_settings/plain_content'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -2991,7 +2991,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 };
   request.method = 'PATCH'
   request.path = '/v3/mail_settings/spam_check'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3012,7 +3012,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/mail_settings/spam_check'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3039,7 +3039,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 };
   request.method = 'PATCH'
   request.path = '/v3/mail_settings/template'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3062,7 +3062,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/mail_settings/template'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3092,7 +3092,7 @@ Advanced Stats provide a more in-depth view of your email statistics and the act
   request.queryParams["start_date"] = '2016-01-01'
   request.method = 'GET'
   request.path = '/v3/mailbox_providers/stats'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3116,7 +3116,7 @@ Our partner settings allow you to integrate your SendGrid account with our partn
   request.queryParams["offset"] = '1'
   request.method = 'GET'
   request.path = '/v3/partner_settings'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3142,7 +3142,7 @@ By integrating with New Relic, you can send your SendGrid email statistics to yo
 };
   request.method = 'PATCH'
   request.path = '/v3/partner_settings/new_relic'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3163,7 +3163,7 @@ By integrating with New Relic, you can send your SendGrid email statistics to yo
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/partner_settings/new_relic'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3185,7 +3185,7 @@ API Keys can be used to authenticate the use of [SendGrids v3 Web API](https://s
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/scopes'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3212,7 +3212,7 @@ Parent accounts will see aggregated stats for their account and all subuser acco
   request.queryParams["offset"] = '1'
   request.method = 'GET'
   request.path = '/v3/stats'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3246,7 +3246,7 @@ For more information about Subusers:
 };
   request.method = 'POST'
   request.path = '/v3/subusers'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3271,7 +3271,7 @@ For more information about Subusers:
   request.queryParams["offset"] = '1'
   request.method = 'GET'
   request.path = '/v3/subusers'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3291,7 +3291,7 @@ This endpoint allows you to request the reputations for your subusers.
   request.queryParams["usernames"] = 'test_string'
   request.method = 'GET'
   request.path = '/v3/subusers/reputations'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3320,7 +3320,7 @@ For more information, see our [User Guide](https://sendgrid.com/docs/User_Guide/
   request.queryParams["subusers"] = 'test_string'
   request.method = 'GET'
   request.path = '/v3/subusers/stats'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3350,7 +3350,7 @@ For more information, see our [User Guide](https://sendgrid.com/docs/User_Guide/
   request.queryParams["sort_by_direction"] = 'asc'
   request.method = 'GET'
   request.path = '/v3/subusers/stats/monthly'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3379,7 +3379,7 @@ For more information, see our [User Guide](https://sendgrid.com/docs/User_Guide/
   request.queryParams["sort_by_direction"] = 'asc'
   request.method = 'GET'
   request.path = '/v3/subusers/stats/sums'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3404,7 +3404,7 @@ For more information about Subusers:
 };
   request.method = 'PATCH'
   request.path = '/v3/subusers/{subuser_name}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3426,7 +3426,7 @@ For more information about Subusers:
   var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/subusers/{subuser_name}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3451,7 +3451,7 @@ More information:
 ];
   request.method = 'PUT'
   request.path = '/v3/subusers/{subuser_name}/ips'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3472,7 +3472,7 @@ Subuser monitor settings allow you to receive a sample of an outgoing message by
 };
   request.method = 'PUT'
   request.path = '/v3/subusers/{subuser_name}/monitor'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3493,7 +3493,7 @@ Subuser monitor settings allow you to receive a sample of an outgoing message by
 };
   request.method = 'POST'
   request.path = '/v3/subusers/{subuser_name}/monitor'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3510,7 +3510,7 @@ Subuser monitor settings allow you to receive a sample of an outgoing message by
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/subusers/{subuser_name}/monitor'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3527,7 +3527,7 @@ Subuser monitor settings allow you to receive a sample of an outgoing message by
   var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/subusers/{subuser_name}/monitor'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3556,7 +3556,7 @@ For more information, see our [User Guide](https://sendgrid.com/docs/User_Guide/
   request.queryParams["offset"] = '1'
   request.method = 'GET'
   request.path = '/v3/subusers/{subuser_name}/stats/monthly'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3584,7 +3584,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
   request.queryParams["offset"] = '1'
   request.method = 'GET'
   request.path = '/v3/suppression/blocks'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3617,7 +3617,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 };
   request.method = 'DELETE'
   request.path = '/v3/suppression/blocks'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3638,7 +3638,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/suppression/blocks/{email}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3659,7 +3659,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
   var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/suppression/blocks/{email}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3685,7 +3685,7 @@ For more information see:
   request.queryParams["end_time"] = '1'
   request.method = 'GET'
   request.path = '/v3/suppression/bounces'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3719,7 +3719,7 @@ Note: the `delete_all` and `emails` parameters should be used independently of e
 };
   request.method = 'DELETE'
   request.path = '/v3/suppression/bounces'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3744,7 +3744,7 @@ For more information see:
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/suppression/bounces/{email}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3770,7 +3770,7 @@ For more information see:
   request.queryParams["email_address"] = 'example@example.com'
   request.method = 'DELETE'
   request.path = '/v3/suppression/bounces/{email}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3797,7 +3797,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
   request.queryParams["offset"] = '1'
   request.method = 'GET'
   request.path = '/v3/suppression/invalid_emails'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3832,7 +3832,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 };
   request.method = 'DELETE'
   request.path = '/v3/suppression/invalid_emails'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3855,7 +3855,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/suppression/invalid_emails/{email}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3878,7 +3878,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
   var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/suppression/invalid_emails/{email}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3899,7 +3899,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/suppression/spam_report/{email}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3920,7 +3920,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
   var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/suppression/spam_report/{email}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3945,7 +3945,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
   request.queryParams["offset"] = '1'
   request.method = 'GET'
   request.path = '/v3/suppression/spam_reports'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -3978,7 +3978,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 };
   request.method = 'DELETE'
   request.path = '/v3/suppression/spam_reports'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4001,7 +4001,7 @@ A global suppression (or global unsubscribe) is an email address of a recipient 
   request.queryParams["offset"] = '1'
   request.method = 'GET'
   request.path = '/v3/suppression/unsubscribes'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4028,7 +4028,7 @@ Transactional templates are templates created specifically for transactional ema
 };
   request.method = 'POST'
   request.path = '/v3/templates'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4049,7 +4049,7 @@ Transactional templates are templates created specifically for transactional ema
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/templates'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4074,7 +4074,7 @@ Transactional templates are templates created specifically for transactional ema
 };
   request.method = 'PATCH'
   request.path = '/v3/templates/{template_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4096,7 +4096,7 @@ Transactional templates are templates created specifically for transactional ema
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/templates/{template_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4118,7 +4118,7 @@ Transactional templates are templates created specifically for transactional ema
   var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/templates/{template_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4148,7 +4148,7 @@ For more information about transactional templates, please see our [User Guide](
 };
   request.method = 'POST'
   request.path = '/v3/templates/{template_id}/versions'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4182,7 +4182,7 @@ For more information about transactional templates, please see our [User Guide](
 };
   request.method = 'PATCH'
   request.path = '/v3/templates/{template_id}/versions/{version_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4209,7 +4209,7 @@ For more information about transactional templates, please see our [User Guide](
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/templates/{template_id}/versions/{version_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4236,7 +4236,7 @@ For more information about transactional templates, please see our [User Guide](
   var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/templates/{template_id}/versions/{version_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4264,7 +4264,7 @@ For more information about transactional templates, please see our [User Guide](
   var request = sg.emptyRequest()
   request.method = 'POST'
   request.path = '/v3/templates/{template_id}/versions/{version_id}/activate'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4290,7 +4290,7 @@ For more information about tracking, please see our [User Guide](https://sendgri
   request.queryParams["offset"] = '1'
   request.method = 'GET'
   request.path = '/v3/tracking_settings'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4314,7 +4314,7 @@ For more information about tracking, please see our [User Guide](https://sendgri
 };
   request.method = 'PATCH'
   request.path = '/v3/tracking_settings/click'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4335,7 +4335,7 @@ For more information about tracking, please see our [User Guide](https://sendgri
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/tracking_settings/click'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4368,7 +4368,7 @@ For more information about tracking, please see our [User Guide](https://sendgri
 };
   request.method = 'PATCH'
   request.path = '/v3/tracking_settings/google_analytics'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4393,7 +4393,7 @@ For more information about tracking, please see our [User Guide](https://sendgri
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/tracking_settings/google_analytics'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4419,7 +4419,7 @@ For more information about tracking, please see our [User Guide](https://sendgri
 };
   request.method = 'PATCH'
   request.path = '/v3/tracking_settings/open'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4442,7 +4442,7 @@ For more information about tracking, please see our [User Guide](https://sendgri
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/tracking_settings/open'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4473,7 +4473,7 @@ For more information about tracking, please see our [User Guide](https://sendgri
 };
   request.method = 'PATCH'
   request.path = '/v3/tracking_settings/subscription'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4496,7 +4496,7 @@ For more information about tracking, please see our [User Guide](https://sendgri
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/tracking_settings/subscription'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4524,7 +4524,7 @@ For more information about your user profile:
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/user/account'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4543,7 +4543,7 @@ Your monthly credit allotment limits the number of emails you may send before in
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/user/credits'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4569,7 +4569,7 @@ For more information about your user profile:
 };
   request.method = 'PUT'
   request.path = '/v3/user/email'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4592,7 +4592,7 @@ For more information about your user profile:
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/user/email'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4619,7 +4619,7 @@ For more information about your user profile:
 };
   request.method = 'PUT'
   request.path = '/v3/user/password'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4649,7 +4649,7 @@ It should be noted that any one or more of the parameters can be updated via the
 };
   request.method = 'PATCH'
   request.path = '/v3/user/profile'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4670,7 +4670,7 @@ For more information about your user profile:
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/user/profile'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4696,7 +4696,7 @@ The Cancel Scheduled Sends feature allows the customer to cancel a scheduled sen
 };
   request.method = 'POST'
   request.path = '/v3/user/scheduled_sends'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4715,7 +4715,7 @@ The Cancel Scheduled Sends feature allows the customer to cancel a scheduled sen
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/user/scheduled_sends'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4737,7 +4737,7 @@ The Cancel Scheduled Sends feature allows the customer to cancel a scheduled sen
 };
   request.method = 'PATCH'
   request.path = '/v3/user/scheduled_sends/{batch_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4756,7 +4756,7 @@ The Cancel Scheduled Sends feature allows the customer to cancel a scheduled sen
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/user/scheduled_sends/{batch_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4775,7 +4775,7 @@ The Cancel Scheduled Sends feature allows the customer to cancel a scheduled sen
   var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/user/scheduled_sends/{batch_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4800,7 +4800,7 @@ The Enforced TLS settings specify whether or not the recipient is required to su
 };
   request.method = 'PATCH'
   request.path = '/v3/user/settings/enforced_tls'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4821,7 +4821,7 @@ The Enforced TLS settings specify whether or not the recipient is required to su
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/user/settings/enforced_tls'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4847,7 +4847,7 @@ For more information about your user profile:
 };
   request.method = 'PUT'
   request.path = '/v3/user/username'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4870,7 +4870,7 @@ For more information about your user profile:
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/user/username'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4908,7 +4908,7 @@ Common uses of this data are to remove unsubscribes, react to spam reports, dete
 };
   request.method = 'PATCH'
   request.path = '/v3/user/webhooks/event/settings'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4931,7 +4931,7 @@ Common uses of this data are to remove unsubscribes, react to spam reports, dete
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/user/webhooks/event/settings'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4955,7 +4955,7 @@ Common uses of this data are to remove unsubscribes, react to spam reports, dete
 };
   request.method = 'POST'
   request.path = '/v3/user/webhooks/event/test'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4980,7 +4980,7 @@ The inbound parse webhook allows you to have incoming emails parsed, extracting 
 };
   request.method = 'POST'
   request.path = '/v3/user/webhooks/parse/settings'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -4999,7 +4999,7 @@ The inbound parse webhook allows you to have incoming emails parsed, extracting 
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/user/webhooks/parse/settings'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -5023,7 +5023,7 @@ The inbound parse webhook allows you to have incoming emails parsed, extracting 
 };
   request.method = 'PATCH'
   request.path = '/v3/user/webhooks/parse/settings/{hostname}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -5042,7 +5042,7 @@ The inbound parse webhook allows you to have incoming emails parsed, extracting 
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/user/webhooks/parse/settings/{hostname}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -5061,7 +5061,7 @@ The inbound parse webhook allows you to have incoming emails parsed, extracting 
   var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/user/webhooks/parse/settings/{hostname}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -5087,7 +5087,7 @@ There are a number of pre-made integrations for the SendGrid Parse Webhook which
   request.queryParams["offset"] = 'test_string'
   request.method = 'GET'
   request.path = '/v3/user/webhooks/parse/stats'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -5127,7 +5127,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 };
   request.method = 'POST'
   request.path = '/v3/whitelabel/domains'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -5154,7 +5154,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
   request.queryParams["offset"] = '1'
   request.method = 'GET'
   request.path = '/v3/whitelabel/domains'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -5180,7 +5180,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/whitelabel/domains/default'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -5208,7 +5208,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/whitelabel/domains/subuser'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -5236,7 +5236,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
   var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/whitelabel/domains/subuser'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -5261,7 +5261,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 };
   request.method = 'PATCH'
   request.path = '/v3/whitelabel/domains/{domain_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -5283,7 +5283,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/whitelabel/domains/{domain_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -5304,7 +5304,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
   var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/whitelabel/domains/{domain_id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -5335,7 +5335,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 };
   request.method = 'POST'
   request.path = '/v3/whitelabel/domains/{domain_id}/subuser'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -5364,7 +5364,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 };
   request.method = 'POST'
   request.path = '/v3/whitelabel/domains/{id}/ips'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -5391,7 +5391,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
   var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/whitelabel/domains/{id}/ips/{ip}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -5417,7 +5417,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
   var request = sg.emptyRequest()
   request.method = 'POST'
   request.path = '/v3/whitelabel/domains/{id}/validate'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -5445,7 +5445,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
 };
   request.method = 'POST'
   request.path = '/v3/whitelabel/ips'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -5471,7 +5471,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
   request.queryParams["offset"] = '1'
   request.method = 'GET'
   request.path = '/v3/whitelabel/ips'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -5492,7 +5492,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/whitelabel/ips/{id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -5513,7 +5513,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
   var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/whitelabel/ips/{id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -5534,7 +5534,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
   var request = sg.emptyRequest()
   request.method = 'POST'
   request.path = '/v3/whitelabel/ips/{id}/validate'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -5562,7 +5562,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
   request.queryParams["offset"] = '1'
   request.method = 'POST'
   request.path = '/v3/whitelabel/links'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -5584,7 +5584,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
   request.queryParams["limit"] = '1'
   request.method = 'GET'
   request.path = '/v3/whitelabel/links'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -5613,7 +5613,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
   request.queryParams["domain"] = 'test_string'
   request.method = 'GET'
   request.path = '/v3/whitelabel/links/default'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -5639,7 +5639,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
   request.queryParams["username"] = 'test_string'
   request.method = 'GET'
   request.path = '/v3/whitelabel/links/subuser'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -5665,7 +5665,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
   request.queryParams["username"] = 'test_string'
   request.method = 'DELETE'
   request.path = '/v3/whitelabel/links/subuser'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -5689,7 +5689,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
 };
   request.method = 'PATCH'
   request.path = '/v3/whitelabel/links/{id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -5710,7 +5710,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
   var request = sg.emptyRequest()
   request.method = 'GET'
   request.path = '/v3/whitelabel/links/{id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -5731,7 +5731,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
   var request = sg.emptyRequest()
   request.method = 'DELETE'
   request.path = '/v3/whitelabel/links/{id}'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -5752,7 +5752,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
   var request = sg.emptyRequest()
   request.method = 'POST'
   request.path = '/v3/whitelabel/links/{id}/validate'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -5780,7 +5780,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
 };
   request.method = 'POST'
   request.path = '/v3/whitelabel/links/{link_id}/subuser'
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)

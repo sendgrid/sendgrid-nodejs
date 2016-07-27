@@ -79,7 +79,7 @@ To read the error message returned by SendGrid's API:
   request.method = 'POST'
   request.path = '/v3/mail/send'
   request.body = requestBody
-  sg.API(request, function (response) {
+  sg.API(request, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)

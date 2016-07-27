@@ -144,7 +144,7 @@ function send(toSend){
   requestPost.method = 'POST'
   requestPost.path = '/v3/mail/send'
   requestPost.body = requestBody
-  sg.API(requestPost, function (response) {
+  sg.API(requestPost, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)

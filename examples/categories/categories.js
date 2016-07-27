@@ -12,7 +12,7 @@ request.queryParams["category"] = 'test_string'
  
 request.method = 'GET'
 request.path = '/v3/categories'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -33,7 +33,7 @@ request.queryParams["end_date"] = '2016-04-01'
  
 request.method = 'GET'
 request.path = '/v3/categories/stats'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -55,7 +55,7 @@ request.queryParams["end_date"] = '2016-04-01'
  
 request.method = 'GET'
 request.path = '/v3/categories/stats/sums'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)

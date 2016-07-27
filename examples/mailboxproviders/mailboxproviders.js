@@ -15,7 +15,7 @@ request.queryParams["end_date"] = '2016-04-01'
  
 request.method = 'GET'
 request.path = '/v3/mailbox_providers/stats'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
