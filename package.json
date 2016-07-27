@@ -30,7 +30,7 @@
     "mocha": "^2.4.5"
   },
   "scripts": {
-    "pretest": "eslint . --fix",
+    "lint": "eslint . --fix",
     "test": "mocha"
   },
   "tags": [
