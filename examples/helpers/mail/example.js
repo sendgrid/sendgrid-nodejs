@@ -136,7 +136,7 @@ function send(toSend){
   console.log(JSON.stringify(toSend, null, 2))
   //console.log(JSON.stringify(toSend))
 
-  var sg = require('sendgrid').SendGrid(process.env.SENDGRID_API_KEY)
+  var sg = require('sendgrid')(process.env.SENDGRID_API_KEY)
 
   var requestBody = toSend
   var emptyRequest = require('sendgrid-rest').request
