@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [4.0.1] - 2016-08-02 ##
+### Fixed
+- Pull request [#264](https://github.com/sendgrid/sendgrid-nodejs/pull/264): Fixed backwards compatability with Node.js versions 0.10 and 0.12
+- Use var instead of let
+- Check if Promise is defined
+
 ## [4.0.0] - 2016-08-02 ##
 ### Breaking Change
 - Pull request [#261](https://github.com/sendgrid/sendgrid-nodejs/pull/261)
