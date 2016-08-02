@@ -1,4 +1,5 @@
 var assert = require('chai').assert
+var sendgrid = require('../lib/sendgrid');
 
 describe('test_access_settings_activity_get', function () {
   this.timeout(30000);
@@ -9,7 +10,7 @@ describe('test_access_settings_activity_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -22,7 +23,7 @@ describe('test_access_settings_activity_get', function () {
   request.path = '/v3/access_settings/activity'
   request.headers['X-Mock'] = 200
   it('test_access_settings_activity_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -38,7 +39,7 @@ describe('test_access_settings_whitelist_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -62,7 +63,7 @@ describe('test_access_settings_whitelist_post', function () {
   request.path = '/v3/access_settings/whitelist'
   request.headers['X-Mock'] = 201
   it('test_access_settings_whitelist_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 201, 'response code is not correct')
       done();
     })
@@ -78,7 +79,7 @@ describe('test_access_settings_whitelist_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -89,7 +90,7 @@ describe('test_access_settings_whitelist_get', function () {
   request.path = '/v3/access_settings/whitelist'
   request.headers['X-Mock'] = 200
   it('test_access_settings_whitelist_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -105,7 +106,7 @@ describe('test_access_settings_whitelist_delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -123,7 +124,7 @@ describe('test_access_settings_whitelist_delete', function () {
   request.path = '/v3/access_settings/whitelist'
   request.headers['X-Mock'] = 204
   it('test_access_settings_whitelist_delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -139,7 +140,7 @@ describe('test_access_settings_whitelist__rule_id__get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -150,7 +151,7 @@ describe('test_access_settings_whitelist__rule_id__get', function () {
   request.path = '/v3/access_settings/whitelist/{rule_id}'
   request.headers['X-Mock'] = 200
   it('test_access_settings_whitelist__rule_id__get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -166,7 +167,7 @@ describe('test_access_settings_whitelist__rule_id__delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -178,7 +179,7 @@ describe('test_access_settings_whitelist__rule_id__delete', function () {
   request.path = '/v3/access_settings/whitelist/{rule_id}'
   request.headers['X-Mock'] = 204
   it('test_access_settings_whitelist__rule_id__delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -194,7 +195,7 @@ describe('test_alerts_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -210,7 +211,7 @@ describe('test_alerts_post', function () {
   request.path = '/v3/alerts'
   request.headers['X-Mock'] = 201
   it('test_alerts_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 201, 'response code is not correct')
       done();
     })
@@ -226,7 +227,7 @@ describe('test_alerts_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -237,7 +238,7 @@ describe('test_alerts_get', function () {
   request.path = '/v3/alerts'
   request.headers['X-Mock'] = 200
   it('test_alerts_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -253,7 +254,7 @@ describe('test_alerts__alert_id__patch', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -267,7 +268,7 @@ describe('test_alerts__alert_id__patch', function () {
   request.path = '/v3/alerts/{alert_id}'
   request.headers['X-Mock'] = 200
   it('test_alerts__alert_id__patch had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -283,7 +284,7 @@ describe('test_alerts__alert_id__get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -294,7 +295,7 @@ describe('test_alerts__alert_id__get', function () {
   request.path = '/v3/alerts/{alert_id}'
   request.headers['X-Mock'] = 200
   it('test_alerts__alert_id__get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -310,7 +311,7 @@ describe('test_alerts__alert_id__delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -322,7 +323,7 @@ describe('test_alerts__alert_id__delete', function () {
   request.path = '/v3/alerts/{alert_id}'
   request.headers['X-Mock'] = 204
   it('test_alerts__alert_id__delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -338,7 +339,7 @@ describe('test_api_keys_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -358,7 +359,7 @@ describe('test_api_keys_post', function () {
   request.path = '/v3/api_keys'
   request.headers['X-Mock'] = 201
   it('test_api_keys_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 201, 'response code is not correct')
       done();
     })
@@ -374,7 +375,7 @@ describe('test_api_keys_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -387,7 +388,7 @@ describe('test_api_keys_get', function () {
   request.path = '/v3/api_keys'
   request.headers['X-Mock'] = 200
   it('test_api_keys_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -403,7 +404,7 @@ describe('test_api_keys__api_key_id__put', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -421,7 +422,7 @@ describe('test_api_keys__api_key_id__put', function () {
   request.path = '/v3/api_keys/{api_key_id}'
   request.headers['X-Mock'] = 200
   it('test_api_keys__api_key_id__put had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -437,7 +438,7 @@ describe('test_api_keys__api_key_id__patch', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -451,7 +452,7 @@ describe('test_api_keys__api_key_id__patch', function () {
   request.path = '/v3/api_keys/{api_key_id}'
   request.headers['X-Mock'] = 200
   it('test_api_keys__api_key_id__patch had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -467,7 +468,7 @@ describe('test_api_keys__api_key_id__get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -478,7 +479,7 @@ describe('test_api_keys__api_key_id__get', function () {
   request.path = '/v3/api_keys/{api_key_id}'
   request.headers['X-Mock'] = 200
   it('test_api_keys__api_key_id__get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -494,7 +495,7 @@ describe('test_api_keys__api_key_id__delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -506,7 +507,7 @@ describe('test_api_keys__api_key_id__delete', function () {
   request.path = '/v3/api_keys/{api_key_id}'
   request.headers['X-Mock'] = 204
   it('test_api_keys__api_key_id__delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -522,7 +523,7 @@ describe('test_asm_groups_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -538,7 +539,7 @@ describe('test_asm_groups_post', function () {
   request.path = '/v3/asm/groups'
   request.headers['X-Mock'] = 201
   it('test_asm_groups_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 201, 'response code is not correct')
       done();
     })
@@ -554,7 +555,7 @@ describe('test_asm_groups_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -567,7 +568,7 @@ describe('test_asm_groups_get', function () {
   request.path = '/v3/asm/groups'
   request.headers['X-Mock'] = 200
   it('test_asm_groups_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -583,7 +584,7 @@ describe('test_asm_groups__group_id__patch', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -599,7 +600,7 @@ describe('test_asm_groups__group_id__patch', function () {
   request.path = '/v3/asm/groups/{group_id}'
   request.headers['X-Mock'] = 201
   it('test_asm_groups__group_id__patch had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 201, 'response code is not correct')
       done();
     })
@@ -615,7 +616,7 @@ describe('test_asm_groups__group_id__get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -626,7 +627,7 @@ describe('test_asm_groups__group_id__get', function () {
   request.path = '/v3/asm/groups/{group_id}'
   request.headers['X-Mock'] = 200
   it('test_asm_groups__group_id__get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -642,7 +643,7 @@ describe('test_asm_groups__group_id__delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -654,7 +655,7 @@ describe('test_asm_groups__group_id__delete', function () {
   request.path = '/v3/asm/groups/{group_id}'
   request.headers['X-Mock'] = 204
   it('test_asm_groups__group_id__delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -670,7 +671,7 @@ describe('test_asm_groups__group_id__suppressions_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -687,7 +688,7 @@ describe('test_asm_groups__group_id__suppressions_post', function () {
   request.path = '/v3/asm/groups/{group_id}/suppressions'
   request.headers['X-Mock'] = 201
   it('test_asm_groups__group_id__suppressions_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 201, 'response code is not correct')
       done();
     })
@@ -703,7 +704,7 @@ describe('test_asm_groups__group_id__suppressions_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -714,7 +715,7 @@ describe('test_asm_groups__group_id__suppressions_get', function () {
   request.path = '/v3/asm/groups/{group_id}/suppressions'
   request.headers['X-Mock'] = 200
   it('test_asm_groups__group_id__suppressions_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -730,7 +731,7 @@ describe('test_asm_groups__group_id__suppressions_search_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -748,7 +749,7 @@ describe('test_asm_groups__group_id__suppressions_search_post', function () {
   request.path = '/v3/asm/groups/{group_id}/suppressions/search'
   request.headers['X-Mock'] = 200
   it('test_asm_groups__group_id__suppressions_search_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -764,7 +765,7 @@ describe('test_asm_groups__group_id__suppressions__email__delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -776,7 +777,7 @@ describe('test_asm_groups__group_id__suppressions__email__delete', function () {
   request.path = '/v3/asm/groups/{group_id}/suppressions/{email}'
   request.headers['X-Mock'] = 204
   it('test_asm_groups__group_id__suppressions__email__delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -792,7 +793,7 @@ describe('test_asm_suppressions_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -803,7 +804,7 @@ describe('test_asm_suppressions_get', function () {
   request.path = '/v3/asm/suppressions'
   request.headers['X-Mock'] = 200
   it('test_asm_suppressions_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -819,7 +820,7 @@ describe('test_asm_suppressions_global_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -836,7 +837,7 @@ describe('test_asm_suppressions_global_post', function () {
   request.path = '/v3/asm/suppressions/global'
   request.headers['X-Mock'] = 201
   it('test_asm_suppressions_global_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 201, 'response code is not correct')
       done();
     })
@@ -852,7 +853,7 @@ describe('test_asm_suppressions_global__email__get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -863,7 +864,7 @@ describe('test_asm_suppressions_global__email__get', function () {
   request.path = '/v3/asm/suppressions/global/{email}'
   request.headers['X-Mock'] = 200
   it('test_asm_suppressions_global__email__get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -879,7 +880,7 @@ describe('test_asm_suppressions_global__email__delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -891,7 +892,7 @@ describe('test_asm_suppressions_global__email__delete', function () {
   request.path = '/v3/asm/suppressions/global/{email}'
   request.headers['X-Mock'] = 204
   it('test_asm_suppressions_global__email__delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -907,7 +908,7 @@ describe('test_asm_suppressions__email__get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -918,7 +919,7 @@ describe('test_asm_suppressions__email__get', function () {
   request.path = '/v3/asm/suppressions/{email}'
   request.headers['X-Mock'] = 200
   it('test_asm_suppressions__email__get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -934,7 +935,7 @@ describe('test_browsers_stats_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -952,7 +953,7 @@ describe('test_browsers_stats_get', function () {
   request.path = '/v3/browsers/stats'
   request.headers['X-Mock'] = 200
   it('test_browsers_stats_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -968,7 +969,7 @@ describe('test_campaigns_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -999,7 +1000,7 @@ describe('test_campaigns_post', function () {
   request.path = '/v3/campaigns'
   request.headers['X-Mock'] = 201
   it('test_campaigns_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 201, 'response code is not correct')
       done();
     })
@@ -1015,7 +1016,7 @@ describe('test_campaigns_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -1029,7 +1030,7 @@ describe('test_campaigns_get', function () {
   request.path = '/v3/campaigns'
   request.headers['X-Mock'] = 200
   it('test_campaigns_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -1045,7 +1046,7 @@ describe('test_campaigns__campaign_id__patch', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -1065,7 +1066,7 @@ describe('test_campaigns__campaign_id__patch', function () {
   request.path = '/v3/campaigns/{campaign_id}'
   request.headers['X-Mock'] = 200
   it('test_campaigns__campaign_id__patch had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -1081,7 +1082,7 @@ describe('test_campaigns__campaign_id__get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -1092,7 +1093,7 @@ describe('test_campaigns__campaign_id__get', function () {
   request.path = '/v3/campaigns/{campaign_id}'
   request.headers['X-Mock'] = 200
   it('test_campaigns__campaign_id__get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -1108,7 +1109,7 @@ describe('test_campaigns__campaign_id__delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -1120,7 +1121,7 @@ describe('test_campaigns__campaign_id__delete', function () {
   request.path = '/v3/campaigns/{campaign_id}'
   request.headers['X-Mock'] = 204
   it('test_campaigns__campaign_id__delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -1136,7 +1137,7 @@ describe('test_campaigns__campaign_id__schedules_patch', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -1150,7 +1151,7 @@ describe('test_campaigns__campaign_id__schedules_patch', function () {
   request.path = '/v3/campaigns/{campaign_id}/schedules'
   request.headers['X-Mock'] = 200
   it('test_campaigns__campaign_id__schedules_patch had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -1166,7 +1167,7 @@ describe('test_campaigns__campaign_id__schedules_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -1180,7 +1181,7 @@ describe('test_campaigns__campaign_id__schedules_post', function () {
   request.path = '/v3/campaigns/{campaign_id}/schedules'
   request.headers['X-Mock'] = 201
   it('test_campaigns__campaign_id__schedules_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 201, 'response code is not correct')
       done();
     })
@@ -1196,7 +1197,7 @@ describe('test_campaigns__campaign_id__schedules_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -1207,7 +1208,7 @@ describe('test_campaigns__campaign_id__schedules_get', function () {
   request.path = '/v3/campaigns/{campaign_id}/schedules'
   request.headers['X-Mock'] = 200
   it('test_campaigns__campaign_id__schedules_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -1223,7 +1224,7 @@ describe('test_campaigns__campaign_id__schedules_delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -1235,7 +1236,7 @@ describe('test_campaigns__campaign_id__schedules_delete', function () {
   request.path = '/v3/campaigns/{campaign_id}/schedules'
   request.headers['X-Mock'] = 204
   it('test_campaigns__campaign_id__schedules_delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -1251,7 +1252,7 @@ describe('test_campaigns__campaign_id__schedules_now_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -1263,7 +1264,7 @@ describe('test_campaigns__campaign_id__schedules_now_post', function () {
   request.path = '/v3/campaigns/{campaign_id}/schedules/now'
   request.headers['X-Mock'] = 201
   it('test_campaigns__campaign_id__schedules_now_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 201, 'response code is not correct')
       done();
     })
@@ -1279,7 +1280,7 @@ describe('test_campaigns__campaign_id__schedules_test_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -1293,7 +1294,7 @@ describe('test_campaigns__campaign_id__schedules_test_post', function () {
   request.path = '/v3/campaigns/{campaign_id}/schedules/test'
   request.headers['X-Mock'] = 204
   it('test_campaigns__campaign_id__schedules_test_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -1309,7 +1310,7 @@ describe('test_categories_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -1324,7 +1325,7 @@ describe('test_categories_get', function () {
   request.path = '/v3/categories'
   request.headers['X-Mock'] = 200
   it('test_categories_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -1340,7 +1341,7 @@ describe('test_categories_stats_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -1358,7 +1359,7 @@ describe('test_categories_stats_get', function () {
   request.path = '/v3/categories/stats'
   request.headers['X-Mock'] = 200
   it('test_categories_stats_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -1374,7 +1375,7 @@ describe('test_categories_stats_sums_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -1393,7 +1394,7 @@ describe('test_categories_stats_sums_get', function () {
   request.path = '/v3/categories/stats/sums'
   request.headers['X-Mock'] = 200
   it('test_categories_stats_sums_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -1409,7 +1410,7 @@ describe('test_clients_stats_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -1424,7 +1425,7 @@ describe('test_clients_stats_get', function () {
   request.path = '/v3/clients/stats'
   request.headers['X-Mock'] = 200
   it('test_clients_stats_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -1440,7 +1441,7 @@ describe('test_clients__client_type__stats_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -1455,7 +1456,7 @@ describe('test_clients__client_type__stats_get', function () {
   request.path = '/v3/clients/{client_type}/stats'
   request.headers['X-Mock'] = 200
   it('test_clients__client_type__stats_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -1471,7 +1472,7 @@ describe('test_contactdb_custom_fields_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -1486,7 +1487,7 @@ describe('test_contactdb_custom_fields_post', function () {
   request.path = '/v3/contactdb/custom_fields'
   request.headers['X-Mock'] = 201
   it('test_contactdb_custom_fields_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 201, 'response code is not correct')
       done();
     })
@@ -1502,7 +1503,7 @@ describe('test_contactdb_custom_fields_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -1513,7 +1514,7 @@ describe('test_contactdb_custom_fields_get', function () {
   request.path = '/v3/contactdb/custom_fields'
   request.headers['X-Mock'] = 200
   it('test_contactdb_custom_fields_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -1529,7 +1530,7 @@ describe('test_contactdb_custom_fields__custom_field_id__get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -1540,7 +1541,7 @@ describe('test_contactdb_custom_fields__custom_field_id__get', function () {
   request.path = '/v3/contactdb/custom_fields/{custom_field_id}'
   request.headers['X-Mock'] = 200
   it('test_contactdb_custom_fields__custom_field_id__get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -1556,7 +1557,7 @@ describe('test_contactdb_custom_fields__custom_field_id__delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -1568,7 +1569,7 @@ describe('test_contactdb_custom_fields__custom_field_id__delete', function () {
   request.path = '/v3/contactdb/custom_fields/{custom_field_id}'
   request.headers['X-Mock'] = 202
   it('test_contactdb_custom_fields__custom_field_id__delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 202, 'response code is not correct')
       done();
     })
@@ -1584,7 +1585,7 @@ describe('test_contactdb_lists_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -1598,7 +1599,7 @@ describe('test_contactdb_lists_post', function () {
   request.path = '/v3/contactdb/lists'
   request.headers['X-Mock'] = 201
   it('test_contactdb_lists_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 201, 'response code is not correct')
       done();
     })
@@ -1614,7 +1615,7 @@ describe('test_contactdb_lists_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -1625,7 +1626,7 @@ describe('test_contactdb_lists_get', function () {
   request.path = '/v3/contactdb/lists'
   request.headers['X-Mock'] = 200
   it('test_contactdb_lists_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -1641,7 +1642,7 @@ describe('test_contactdb_lists_delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -1658,7 +1659,7 @@ describe('test_contactdb_lists_delete', function () {
   request.path = '/v3/contactdb/lists'
   request.headers['X-Mock'] = 204
   it('test_contactdb_lists_delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -1674,7 +1675,7 @@ describe('test_contactdb_lists__list_id__patch', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -1690,7 +1691,7 @@ describe('test_contactdb_lists__list_id__patch', function () {
   request.path = '/v3/contactdb/lists/{list_id}'
   request.headers['X-Mock'] = 200
   it('test_contactdb_lists__list_id__patch had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -1706,7 +1707,7 @@ describe('test_contactdb_lists__list_id__get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -1719,7 +1720,7 @@ describe('test_contactdb_lists__list_id__get', function () {
   request.path = '/v3/contactdb/lists/{list_id}'
   request.headers['X-Mock'] = 200
   it('test_contactdb_lists__list_id__get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -1735,7 +1736,7 @@ describe('test_contactdb_lists__list_id__delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -1749,7 +1750,7 @@ describe('test_contactdb_lists__list_id__delete', function () {
   request.path = '/v3/contactdb/lists/{list_id}'
   request.headers['X-Mock'] = 202
   it('test_contactdb_lists__list_id__delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 202, 'response code is not correct')
       done();
     })
@@ -1765,7 +1766,7 @@ describe('test_contactdb_lists__list_id__recipients_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -1780,7 +1781,7 @@ describe('test_contactdb_lists__list_id__recipients_post', function () {
   request.path = '/v3/contactdb/lists/{list_id}/recipients'
   request.headers['X-Mock'] = 201
   it('test_contactdb_lists__list_id__recipients_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 201, 'response code is not correct')
       done();
     })
@@ -1796,7 +1797,7 @@ describe('test_contactdb_lists__list_id__recipients_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -1811,7 +1812,7 @@ describe('test_contactdb_lists__list_id__recipients_get', function () {
   request.path = '/v3/contactdb/lists/{list_id}/recipients'
   request.headers['X-Mock'] = 200
   it('test_contactdb_lists__list_id__recipients_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -1827,7 +1828,7 @@ describe('test_contactdb_lists__list_id__recipients__recipient_id__post', functi
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -1839,7 +1840,7 @@ describe('test_contactdb_lists__list_id__recipients__recipient_id__post', functi
   request.path = '/v3/contactdb/lists/{list_id}/recipients/{recipient_id}'
   request.headers['X-Mock'] = 201
   it('test_contactdb_lists__list_id__recipients__recipient_id__post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 201, 'response code is not correct')
       done();
     })
@@ -1855,7 +1856,7 @@ describe('test_contactdb_lists__list_id__recipients__recipient_id__delete', func
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -1870,7 +1871,7 @@ describe('test_contactdb_lists__list_id__recipients__recipient_id__delete', func
   request.path = '/v3/contactdb/lists/{list_id}/recipients/{recipient_id}'
   request.headers['X-Mock'] = 204
   it('test_contactdb_lists__list_id__recipients__recipient_id__delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -1886,7 +1887,7 @@ describe('test_contactdb_recipients_patch', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -1904,7 +1905,7 @@ describe('test_contactdb_recipients_patch', function () {
   request.path = '/v3/contactdb/recipients'
   request.headers['X-Mock'] = 201
   it('test_contactdb_recipients_patch had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 201, 'response code is not correct')
       done();
     })
@@ -1920,7 +1921,7 @@ describe('test_contactdb_recipients_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -1945,7 +1946,7 @@ describe('test_contactdb_recipients_post', function () {
   request.path = '/v3/contactdb/recipients'
   request.headers['X-Mock'] = 201
   it('test_contactdb_recipients_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 201, 'response code is not correct')
       done();
     })
@@ -1961,7 +1962,7 @@ describe('test_contactdb_recipients_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -1975,7 +1976,7 @@ describe('test_contactdb_recipients_get', function () {
   request.path = '/v3/contactdb/recipients'
   request.headers['X-Mock'] = 200
   it('test_contactdb_recipients_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -1991,7 +1992,7 @@ describe('test_contactdb_recipients_delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -2006,7 +2007,7 @@ describe('test_contactdb_recipients_delete', function () {
   request.path = '/v3/contactdb/recipients'
   request.headers['X-Mock'] = 200
   it('test_contactdb_recipients_delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -2022,7 +2023,7 @@ describe('test_contactdb_recipients_billable_count_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -2033,7 +2034,7 @@ describe('test_contactdb_recipients_billable_count_get', function () {
   request.path = '/v3/contactdb/recipients/billable_count'
   request.headers['X-Mock'] = 200
   it('test_contactdb_recipients_billable_count_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -2049,7 +2050,7 @@ describe('test_contactdb_recipients_count_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -2060,7 +2061,7 @@ describe('test_contactdb_recipients_count_get', function () {
   request.path = '/v3/contactdb/recipients/count'
   request.headers['X-Mock'] = 200
   it('test_contactdb_recipients_count_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -2076,7 +2077,7 @@ describe('test_contactdb_recipients_search_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -2090,7 +2091,7 @@ describe('test_contactdb_recipients_search_get', function () {
   request.path = '/v3/contactdb/recipients/search'
   request.headers['X-Mock'] = 200
   it('test_contactdb_recipients_search_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -2106,7 +2107,7 @@ describe('test_contactdb_recipients__recipient_id__get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -2117,7 +2118,7 @@ describe('test_contactdb_recipients__recipient_id__get', function () {
   request.path = '/v3/contactdb/recipients/{recipient_id}'
   request.headers['X-Mock'] = 200
   it('test_contactdb_recipients__recipient_id__get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -2133,7 +2134,7 @@ describe('test_contactdb_recipients__recipient_id__delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -2145,7 +2146,7 @@ describe('test_contactdb_recipients__recipient_id__delete', function () {
   request.path = '/v3/contactdb/recipients/{recipient_id}'
   request.headers['X-Mock'] = 204
   it('test_contactdb_recipients__recipient_id__delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -2161,7 +2162,7 @@ describe('test_contactdb_recipients__recipient_id__lists_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -2172,7 +2173,7 @@ describe('test_contactdb_recipients__recipient_id__lists_get', function () {
   request.path = '/v3/contactdb/recipients/{recipient_id}/lists'
   request.headers['X-Mock'] = 200
   it('test_contactdb_recipients__recipient_id__lists_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -2188,7 +2189,7 @@ describe('test_contactdb_reserved_fields_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -2199,7 +2200,7 @@ describe('test_contactdb_reserved_fields_get', function () {
   request.path = '/v3/contactdb/reserved_fields'
   request.headers['X-Mock'] = 200
   it('test_contactdb_reserved_fields_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -2215,7 +2216,7 @@ describe('test_contactdb_segments_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -2250,7 +2251,7 @@ describe('test_contactdb_segments_post', function () {
   request.path = '/v3/contactdb/segments'
   request.headers['X-Mock'] = 200
   it('test_contactdb_segments_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -2266,7 +2267,7 @@ describe('test_contactdb_segments_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -2277,7 +2278,7 @@ describe('test_contactdb_segments_get', function () {
   request.path = '/v3/contactdb/segments'
   request.headers['X-Mock'] = 200
   it('test_contactdb_segments_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -2293,7 +2294,7 @@ describe('test_contactdb_segments__segment_id__patch', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -2318,7 +2319,7 @@ describe('test_contactdb_segments__segment_id__patch', function () {
   request.path = '/v3/contactdb/segments/{segment_id}'
   request.headers['X-Mock'] = 200
   it('test_contactdb_segments__segment_id__patch had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -2334,7 +2335,7 @@ describe('test_contactdb_segments__segment_id__get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -2347,7 +2348,7 @@ describe('test_contactdb_segments__segment_id__get', function () {
   request.path = '/v3/contactdb/segments/{segment_id}'
   request.headers['X-Mock'] = 200
   it('test_contactdb_segments__segment_id__get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -2363,7 +2364,7 @@ describe('test_contactdb_segments__segment_id__delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -2377,7 +2378,7 @@ describe('test_contactdb_segments__segment_id__delete', function () {
   request.path = '/v3/contactdb/segments/{segment_id}'
   request.headers['X-Mock'] = 204
   it('test_contactdb_segments__segment_id__delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -2393,7 +2394,7 @@ describe('test_contactdb_segments__segment_id__recipients_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -2407,7 +2408,7 @@ describe('test_contactdb_segments__segment_id__recipients_get', function () {
   request.path = '/v3/contactdb/segments/{segment_id}/recipients'
   request.headers['X-Mock'] = 200
   it('test_contactdb_segments__segment_id__recipients_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -2423,7 +2424,7 @@ describe('test_devices_stats_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -2440,7 +2441,7 @@ describe('test_devices_stats_get', function () {
   request.path = '/v3/devices/stats'
   request.headers['X-Mock'] = 200
   it('test_devices_stats_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -2456,7 +2457,7 @@ describe('test_geo_stats_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -2474,7 +2475,7 @@ describe('test_geo_stats_get', function () {
   request.path = '/v3/geo/stats'
   request.headers['X-Mock'] = 200
   it('test_geo_stats_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -2490,7 +2491,7 @@ describe('test_ips_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -2507,7 +2508,7 @@ describe('test_ips_get', function () {
   request.path = '/v3/ips'
   request.headers['X-Mock'] = 200
   it('test_ips_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -2523,7 +2524,7 @@ describe('test_ips_assigned_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -2534,7 +2535,7 @@ describe('test_ips_assigned_get', function () {
   request.path = '/v3/ips/assigned'
   request.headers['X-Mock'] = 200
   it('test_ips_assigned_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -2550,7 +2551,7 @@ describe('test_ips_pools_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -2564,7 +2565,7 @@ describe('test_ips_pools_post', function () {
   request.path = '/v3/ips/pools'
   request.headers['X-Mock'] = 200
   it('test_ips_pools_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -2580,7 +2581,7 @@ describe('test_ips_pools_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -2591,7 +2592,7 @@ describe('test_ips_pools_get', function () {
   request.path = '/v3/ips/pools'
   request.headers['X-Mock'] = 200
   it('test_ips_pools_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -2607,7 +2608,7 @@ describe('test_ips_pools__pool_name__put', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -2621,7 +2622,7 @@ describe('test_ips_pools__pool_name__put', function () {
   request.path = '/v3/ips/pools/{pool_name}'
   request.headers['X-Mock'] = 200
   it('test_ips_pools__pool_name__put had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -2637,7 +2638,7 @@ describe('test_ips_pools__pool_name__get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -2648,7 +2649,7 @@ describe('test_ips_pools__pool_name__get', function () {
   request.path = '/v3/ips/pools/{pool_name}'
   request.headers['X-Mock'] = 200
   it('test_ips_pools__pool_name__get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -2664,7 +2665,7 @@ describe('test_ips_pools__pool_name__delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -2676,7 +2677,7 @@ describe('test_ips_pools__pool_name__delete', function () {
   request.path = '/v3/ips/pools/{pool_name}'
   request.headers['X-Mock'] = 204
   it('test_ips_pools__pool_name__delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -2692,7 +2693,7 @@ describe('test_ips_pools__pool_name__ips_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -2706,7 +2707,7 @@ describe('test_ips_pools__pool_name__ips_post', function () {
   request.path = '/v3/ips/pools/{pool_name}/ips'
   request.headers['X-Mock'] = 201
   it('test_ips_pools__pool_name__ips_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 201, 'response code is not correct')
       done();
     })
@@ -2722,7 +2723,7 @@ describe('test_ips_pools__pool_name__ips__ip__delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -2734,7 +2735,7 @@ describe('test_ips_pools__pool_name__ips__ip__delete', function () {
   request.path = '/v3/ips/pools/{pool_name}/ips/{ip}'
   request.headers['X-Mock'] = 204
   it('test_ips_pools__pool_name__ips__ip__delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -2750,7 +2751,7 @@ describe('test_ips_warmup_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -2764,7 +2765,7 @@ describe('test_ips_warmup_post', function () {
   request.path = '/v3/ips/warmup'
   request.headers['X-Mock'] = 200
   it('test_ips_warmup_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -2780,7 +2781,7 @@ describe('test_ips_warmup_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -2791,7 +2792,7 @@ describe('test_ips_warmup_get', function () {
   request.path = '/v3/ips/warmup'
   request.headers['X-Mock'] = 200
   it('test_ips_warmup_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -2807,7 +2808,7 @@ describe('test_ips_warmup__ip_address__get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -2818,7 +2819,7 @@ describe('test_ips_warmup__ip_address__get', function () {
   request.path = '/v3/ips/warmup/{ip_address}'
   request.headers['X-Mock'] = 200
   it('test_ips_warmup__ip_address__get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -2834,7 +2835,7 @@ describe('test_ips_warmup__ip_address__delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -2846,7 +2847,7 @@ describe('test_ips_warmup__ip_address__delete', function () {
   request.path = '/v3/ips/warmup/{ip_address}'
   request.headers['X-Mock'] = 204
   it('test_ips_warmup__ip_address__delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -2862,7 +2863,7 @@ describe('test_ips__ip_address__get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -2873,7 +2874,7 @@ describe('test_ips__ip_address__get', function () {
   request.path = '/v3/ips/{ip_address}'
   request.headers['X-Mock'] = 200
   it('test_ips__ip_address__get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -2889,7 +2890,7 @@ describe('test_mail_batch_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -2901,7 +2902,7 @@ describe('test_mail_batch_post', function () {
   request.path = '/v3/mail/batch'
   request.headers['X-Mock'] = 201
   it('test_mail_batch_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 201, 'response code is not correct')
       done();
     })
@@ -2917,7 +2918,7 @@ describe('test_mail_batch__batch_id__get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -2928,7 +2929,7 @@ describe('test_mail_batch__batch_id__get', function () {
   request.path = '/v3/mail/batch/{batch_id}'
   request.headers['X-Mock'] = 200
   it('test_mail_batch__batch_id__get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -2944,7 +2945,7 @@ describe('test_mail_send_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -3093,7 +3094,7 @@ describe('test_mail_send_post', function () {
   request.path = '/v3/mail/send'
   request.headers['X-Mock'] = 202
   it('test_mail_send_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 202, 'response code is not correct')
       done();
     })
@@ -3109,7 +3110,7 @@ describe('test_mail_settings_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -3123,7 +3124,7 @@ describe('test_mail_settings_get', function () {
   request.path = '/v3/mail_settings'
   request.headers['X-Mock'] = 200
   it('test_mail_settings_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -3139,7 +3140,7 @@ describe('test_mail_settings_address_whitelist_patch', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -3157,7 +3158,7 @@ describe('test_mail_settings_address_whitelist_patch', function () {
   request.path = '/v3/mail_settings/address_whitelist'
   request.headers['X-Mock'] = 200
   it('test_mail_settings_address_whitelist_patch had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -3173,7 +3174,7 @@ describe('test_mail_settings_address_whitelist_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -3184,7 +3185,7 @@ describe('test_mail_settings_address_whitelist_get', function () {
   request.path = '/v3/mail_settings/address_whitelist'
   request.headers['X-Mock'] = 200
   it('test_mail_settings_address_whitelist_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -3200,7 +3201,7 @@ describe('test_mail_settings_bcc_patch', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -3215,7 +3216,7 @@ describe('test_mail_settings_bcc_patch', function () {
   request.path = '/v3/mail_settings/bcc'
   request.headers['X-Mock'] = 200
   it('test_mail_settings_bcc_patch had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -3231,7 +3232,7 @@ describe('test_mail_settings_bcc_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -3242,7 +3243,7 @@ describe('test_mail_settings_bcc_get', function () {
   request.path = '/v3/mail_settings/bcc'
   request.headers['X-Mock'] = 200
   it('test_mail_settings_bcc_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -3258,7 +3259,7 @@ describe('test_mail_settings_bounce_purge_patch', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -3274,7 +3275,7 @@ describe('test_mail_settings_bounce_purge_patch', function () {
   request.path = '/v3/mail_settings/bounce_purge'
   request.headers['X-Mock'] = 200
   it('test_mail_settings_bounce_purge_patch had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -3290,7 +3291,7 @@ describe('test_mail_settings_bounce_purge_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -3301,7 +3302,7 @@ describe('test_mail_settings_bounce_purge_get', function () {
   request.path = '/v3/mail_settings/bounce_purge'
   request.headers['X-Mock'] = 200
   it('test_mail_settings_bounce_purge_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -3317,7 +3318,7 @@ describe('test_mail_settings_footer_patch', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -3333,7 +3334,7 @@ describe('test_mail_settings_footer_patch', function () {
   request.path = '/v3/mail_settings/footer'
   request.headers['X-Mock'] = 200
   it('test_mail_settings_footer_patch had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -3349,7 +3350,7 @@ describe('test_mail_settings_footer_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -3360,7 +3361,7 @@ describe('test_mail_settings_footer_get', function () {
   request.path = '/v3/mail_settings/footer'
   request.headers['X-Mock'] = 200
   it('test_mail_settings_footer_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -3376,7 +3377,7 @@ describe('test_mail_settings_forward_bounce_patch', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -3391,7 +3392,7 @@ describe('test_mail_settings_forward_bounce_patch', function () {
   request.path = '/v3/mail_settings/forward_bounce'
   request.headers['X-Mock'] = 200
   it('test_mail_settings_forward_bounce_patch had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -3407,7 +3408,7 @@ describe('test_mail_settings_forward_bounce_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -3418,7 +3419,7 @@ describe('test_mail_settings_forward_bounce_get', function () {
   request.path = '/v3/mail_settings/forward_bounce'
   request.headers['X-Mock'] = 200
   it('test_mail_settings_forward_bounce_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -3434,7 +3435,7 @@ describe('test_mail_settings_forward_spam_patch', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -3449,7 +3450,7 @@ describe('test_mail_settings_forward_spam_patch', function () {
   request.path = '/v3/mail_settings/forward_spam'
   request.headers['X-Mock'] = 200
   it('test_mail_settings_forward_spam_patch had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -3465,7 +3466,7 @@ describe('test_mail_settings_forward_spam_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -3476,7 +3477,7 @@ describe('test_mail_settings_forward_spam_get', function () {
   request.path = '/v3/mail_settings/forward_spam'
   request.headers['X-Mock'] = 200
   it('test_mail_settings_forward_spam_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -3492,7 +3493,7 @@ describe('test_mail_settings_plain_content_patch', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -3506,7 +3507,7 @@ describe('test_mail_settings_plain_content_patch', function () {
   request.path = '/v3/mail_settings/plain_content'
   request.headers['X-Mock'] = 200
   it('test_mail_settings_plain_content_patch had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -3522,7 +3523,7 @@ describe('test_mail_settings_plain_content_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -3533,7 +3534,7 @@ describe('test_mail_settings_plain_content_get', function () {
   request.path = '/v3/mail_settings/plain_content'
   request.headers['X-Mock'] = 200
   it('test_mail_settings_plain_content_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -3549,7 +3550,7 @@ describe('test_mail_settings_spam_check_patch', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -3565,7 +3566,7 @@ describe('test_mail_settings_spam_check_patch', function () {
   request.path = '/v3/mail_settings/spam_check'
   request.headers['X-Mock'] = 200
   it('test_mail_settings_spam_check_patch had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -3581,7 +3582,7 @@ describe('test_mail_settings_spam_check_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -3592,7 +3593,7 @@ describe('test_mail_settings_spam_check_get', function () {
   request.path = '/v3/mail_settings/spam_check'
   request.headers['X-Mock'] = 200
   it('test_mail_settings_spam_check_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -3608,7 +3609,7 @@ describe('test_mail_settings_template_patch', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -3623,7 +3624,7 @@ describe('test_mail_settings_template_patch', function () {
   request.path = '/v3/mail_settings/template'
   request.headers['X-Mock'] = 200
   it('test_mail_settings_template_patch had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -3639,7 +3640,7 @@ describe('test_mail_settings_template_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -3650,7 +3651,7 @@ describe('test_mail_settings_template_get', function () {
   request.path = '/v3/mail_settings/template'
   request.headers['X-Mock'] = 200
   it('test_mail_settings_template_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -3666,7 +3667,7 @@ describe('test_mailbox_providers_stats_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -3684,7 +3685,7 @@ describe('test_mailbox_providers_stats_get', function () {
   request.path = '/v3/mailbox_providers/stats'
   request.headers['X-Mock'] = 200
   it('test_mailbox_providers_stats_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -3700,7 +3701,7 @@ describe('test_partner_settings_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -3714,7 +3715,7 @@ describe('test_partner_settings_get', function () {
   request.path = '/v3/partner_settings'
   request.headers['X-Mock'] = 200
   it('test_partner_settings_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -3730,7 +3731,7 @@ describe('test_partner_settings_new_relic_patch', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -3746,7 +3747,7 @@ describe('test_partner_settings_new_relic_patch', function () {
   request.path = '/v3/partner_settings/new_relic'
   request.headers['X-Mock'] = 200
   it('test_partner_settings_new_relic_patch had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -3762,7 +3763,7 @@ describe('test_partner_settings_new_relic_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -3773,7 +3774,7 @@ describe('test_partner_settings_new_relic_get', function () {
   request.path = '/v3/partner_settings/new_relic'
   request.headers['X-Mock'] = 200
   it('test_partner_settings_new_relic_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -3789,7 +3790,7 @@ describe('test_scopes_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -3800,7 +3801,7 @@ describe('test_scopes_get', function () {
   request.path = '/v3/scopes'
   request.headers['X-Mock'] = 200
   it('test_scopes_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -3816,7 +3817,7 @@ describe('test_stats_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -3833,7 +3834,7 @@ describe('test_stats_get', function () {
   request.path = '/v3/stats'
   request.headers['X-Mock'] = 200
   it('test_stats_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -3849,7 +3850,7 @@ describe('test_subusers_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -3869,7 +3870,7 @@ describe('test_subusers_post', function () {
   request.path = '/v3/subusers'
   request.headers['X-Mock'] = 200
   it('test_subusers_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -3885,7 +3886,7 @@ describe('test_subusers_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -3900,7 +3901,7 @@ describe('test_subusers_get', function () {
   request.path = '/v3/subusers'
   request.headers['X-Mock'] = 200
   it('test_subusers_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -3916,7 +3917,7 @@ describe('test_subusers_reputations_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -3929,7 +3930,7 @@ describe('test_subusers_reputations_get', function () {
   request.path = '/v3/subusers/reputations'
   request.headers['X-Mock'] = 200
   it('test_subusers_reputations_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -3945,7 +3946,7 @@ describe('test_subusers_stats_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -3963,7 +3964,7 @@ describe('test_subusers_stats_get', function () {
   request.path = '/v3/subusers/stats'
   request.headers['X-Mock'] = 200
   it('test_subusers_stats_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -3979,7 +3980,7 @@ describe('test_subusers_stats_monthly_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -3997,7 +3998,7 @@ describe('test_subusers_stats_monthly_get', function () {
   request.path = '/v3/subusers/stats/monthly'
   request.headers['X-Mock'] = 200
   it('test_subusers_stats_monthly_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -4013,7 +4014,7 @@ describe('test_subusers_stats_sums_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -4032,7 +4033,7 @@ describe('test_subusers_stats_sums_get', function () {
   request.path = '/v3/subusers/stats/sums'
   request.headers['X-Mock'] = 200
   it('test_subusers_stats_sums_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -4048,7 +4049,7 @@ describe('test_subusers__subuser_name__patch', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -4062,7 +4063,7 @@ describe('test_subusers__subuser_name__patch', function () {
   request.path = '/v3/subusers/{subuser_name}'
   request.headers['X-Mock'] = 204
   it('test_subusers__subuser_name__patch had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -4078,7 +4079,7 @@ describe('test_subusers__subuser_name__delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -4090,7 +4091,7 @@ describe('test_subusers__subuser_name__delete', function () {
   request.path = '/v3/subusers/{subuser_name}'
   request.headers['X-Mock'] = 204
   it('test_subusers__subuser_name__delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -4106,7 +4107,7 @@ describe('test_subusers__subuser_name__ips_put', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -4120,7 +4121,7 @@ describe('test_subusers__subuser_name__ips_put', function () {
   request.path = '/v3/subusers/{subuser_name}/ips'
   request.headers['X-Mock'] = 200
   it('test_subusers__subuser_name__ips_put had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -4136,7 +4137,7 @@ describe('test_subusers__subuser_name__monitor_put', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -4151,7 +4152,7 @@ describe('test_subusers__subuser_name__monitor_put', function () {
   request.path = '/v3/subusers/{subuser_name}/monitor'
   request.headers['X-Mock'] = 200
   it('test_subusers__subuser_name__monitor_put had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -4167,7 +4168,7 @@ describe('test_subusers__subuser_name__monitor_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -4182,7 +4183,7 @@ describe('test_subusers__subuser_name__monitor_post', function () {
   request.path = '/v3/subusers/{subuser_name}/monitor'
   request.headers['X-Mock'] = 200
   it('test_subusers__subuser_name__monitor_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -4198,7 +4199,7 @@ describe('test_subusers__subuser_name__monitor_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -4209,7 +4210,7 @@ describe('test_subusers__subuser_name__monitor_get', function () {
   request.path = '/v3/subusers/{subuser_name}/monitor'
   request.headers['X-Mock'] = 200
   it('test_subusers__subuser_name__monitor_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -4225,7 +4226,7 @@ describe('test_subusers__subuser_name__monitor_delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -4237,7 +4238,7 @@ describe('test_subusers__subuser_name__monitor_delete', function () {
   request.path = '/v3/subusers/{subuser_name}/monitor'
   request.headers['X-Mock'] = 204
   it('test_subusers__subuser_name__monitor_delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -4253,7 +4254,7 @@ describe('test_subusers__subuser_name__stats_monthly_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -4270,7 +4271,7 @@ describe('test_subusers__subuser_name__stats_monthly_get', function () {
   request.path = '/v3/subusers/{subuser_name}/stats/monthly'
   request.headers['X-Mock'] = 200
   it('test_subusers__subuser_name__stats_monthly_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -4286,7 +4287,7 @@ describe('test_suppression_blocks_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -4302,7 +4303,7 @@ describe('test_suppression_blocks_get', function () {
   request.path = '/v3/suppression/blocks'
   request.headers['X-Mock'] = 200
   it('test_suppression_blocks_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -4318,7 +4319,7 @@ describe('test_suppression_blocks_delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -4336,7 +4337,7 @@ describe('test_suppression_blocks_delete', function () {
   request.path = '/v3/suppression/blocks'
   request.headers['X-Mock'] = 204
   it('test_suppression_blocks_delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -4352,7 +4353,7 @@ describe('test_suppression_blocks__email__get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -4363,7 +4364,7 @@ describe('test_suppression_blocks__email__get', function () {
   request.path = '/v3/suppression/blocks/{email}'
   request.headers['X-Mock'] = 200
   it('test_suppression_blocks__email__get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -4379,7 +4380,7 @@ describe('test_suppression_blocks__email__delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -4391,7 +4392,7 @@ describe('test_suppression_blocks__email__delete', function () {
   request.path = '/v3/suppression/blocks/{email}'
   request.headers['X-Mock'] = 204
   it('test_suppression_blocks__email__delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -4407,7 +4408,7 @@ describe('test_suppression_bounces_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -4421,7 +4422,7 @@ describe('test_suppression_bounces_get', function () {
   request.path = '/v3/suppression/bounces'
   request.headers['X-Mock'] = 200
   it('test_suppression_bounces_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -4437,7 +4438,7 @@ describe('test_suppression_bounces_delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -4455,7 +4456,7 @@ describe('test_suppression_bounces_delete', function () {
   request.path = '/v3/suppression/bounces'
   request.headers['X-Mock'] = 204
   it('test_suppression_bounces_delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -4471,7 +4472,7 @@ describe('test_suppression_bounces__email__get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -4482,7 +4483,7 @@ describe('test_suppression_bounces__email__get', function () {
   request.path = '/v3/suppression/bounces/{email}'
   request.headers['X-Mock'] = 200
   it('test_suppression_bounces__email__get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -4498,7 +4499,7 @@ describe('test_suppression_bounces__email__delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -4512,7 +4513,7 @@ describe('test_suppression_bounces__email__delete', function () {
   request.path = '/v3/suppression/bounces/{email}'
   request.headers['X-Mock'] = 204
   it('test_suppression_bounces__email__delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -4528,7 +4529,7 @@ describe('test_suppression_invalid_emails_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -4544,7 +4545,7 @@ describe('test_suppression_invalid_emails_get', function () {
   request.path = '/v3/suppression/invalid_emails'
   request.headers['X-Mock'] = 200
   it('test_suppression_invalid_emails_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -4560,7 +4561,7 @@ describe('test_suppression_invalid_emails_delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -4578,7 +4579,7 @@ describe('test_suppression_invalid_emails_delete', function () {
   request.path = '/v3/suppression/invalid_emails'
   request.headers['X-Mock'] = 204
   it('test_suppression_invalid_emails_delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -4594,7 +4595,7 @@ describe('test_suppression_invalid_emails__email__get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -4605,7 +4606,7 @@ describe('test_suppression_invalid_emails__email__get', function () {
   request.path = '/v3/suppression/invalid_emails/{email}'
   request.headers['X-Mock'] = 200
   it('test_suppression_invalid_emails__email__get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -4621,7 +4622,7 @@ describe('test_suppression_invalid_emails__email__delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -4633,7 +4634,7 @@ describe('test_suppression_invalid_emails__email__delete', function () {
   request.path = '/v3/suppression/invalid_emails/{email}'
   request.headers['X-Mock'] = 204
   it('test_suppression_invalid_emails__email__delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -4649,7 +4650,7 @@ describe('test_suppression_spam_report__email__get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -4660,7 +4661,7 @@ describe('test_suppression_spam_report__email__get', function () {
   request.path = '/v3/suppression/spam_report/{email}'
   request.headers['X-Mock'] = 200
   it('test_suppression_spam_report__email__get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -4676,7 +4677,7 @@ describe('test_suppression_spam_report__email__delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -4688,7 +4689,7 @@ describe('test_suppression_spam_report__email__delete', function () {
   request.path = '/v3/suppression/spam_report/{email}'
   request.headers['X-Mock'] = 204
   it('test_suppression_spam_report__email__delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -4704,7 +4705,7 @@ describe('test_suppression_spam_reports_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -4720,7 +4721,7 @@ describe('test_suppression_spam_reports_get', function () {
   request.path = '/v3/suppression/spam_reports'
   request.headers['X-Mock'] = 200
   it('test_suppression_spam_reports_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -4736,7 +4737,7 @@ describe('test_suppression_spam_reports_delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -4754,7 +4755,7 @@ describe('test_suppression_spam_reports_delete', function () {
   request.path = '/v3/suppression/spam_reports'
   request.headers['X-Mock'] = 204
   it('test_suppression_spam_reports_delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -4770,7 +4771,7 @@ describe('test_suppression_unsubscribes_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -4786,7 +4787,7 @@ describe('test_suppression_unsubscribes_get', function () {
   request.path = '/v3/suppression/unsubscribes'
   request.headers['X-Mock'] = 200
   it('test_suppression_unsubscribes_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -4802,7 +4803,7 @@ describe('test_templates_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -4816,7 +4817,7 @@ describe('test_templates_post', function () {
   request.path = '/v3/templates'
   request.headers['X-Mock'] = 201
   it('test_templates_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 201, 'response code is not correct')
       done();
     })
@@ -4832,7 +4833,7 @@ describe('test_templates_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -4843,7 +4844,7 @@ describe('test_templates_get', function () {
   request.path = '/v3/templates'
   request.headers['X-Mock'] = 200
   it('test_templates_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -4859,7 +4860,7 @@ describe('test_templates__template_id__patch', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -4873,7 +4874,7 @@ describe('test_templates__template_id__patch', function () {
   request.path = '/v3/templates/{template_id}'
   request.headers['X-Mock'] = 200
   it('test_templates__template_id__patch had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -4889,7 +4890,7 @@ describe('test_templates__template_id__get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -4900,7 +4901,7 @@ describe('test_templates__template_id__get', function () {
   request.path = '/v3/templates/{template_id}'
   request.headers['X-Mock'] = 200
   it('test_templates__template_id__get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -4916,7 +4917,7 @@ describe('test_templates__template_id__delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -4928,7 +4929,7 @@ describe('test_templates__template_id__delete', function () {
   request.path = '/v3/templates/{template_id}'
   request.headers['X-Mock'] = 204
   it('test_templates__template_id__delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -4944,7 +4945,7 @@ describe('test_templates__template_id__versions_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -4963,7 +4964,7 @@ describe('test_templates__template_id__versions_post', function () {
   request.path = '/v3/templates/{template_id}/versions'
   request.headers['X-Mock'] = 201
   it('test_templates__template_id__versions_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 201, 'response code is not correct')
       done();
     })
@@ -4979,7 +4980,7 @@ describe('test_templates__template_id__versions__version_id__patch', function ()
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -4997,7 +4998,7 @@ describe('test_templates__template_id__versions__version_id__patch', function ()
   request.path = '/v3/templates/{template_id}/versions/{version_id}'
   request.headers['X-Mock'] = 200
   it('test_templates__template_id__versions__version_id__patch had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -5013,7 +5014,7 @@ describe('test_templates__template_id__versions__version_id__get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -5024,7 +5025,7 @@ describe('test_templates__template_id__versions__version_id__get', function () {
   request.path = '/v3/templates/{template_id}/versions/{version_id}'
   request.headers['X-Mock'] = 200
   it('test_templates__template_id__versions__version_id__get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -5040,7 +5041,7 @@ describe('test_templates__template_id__versions__version_id__delete', function (
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -5052,7 +5053,7 @@ describe('test_templates__template_id__versions__version_id__delete', function (
   request.path = '/v3/templates/{template_id}/versions/{version_id}'
   request.headers['X-Mock'] = 204
   it('test_templates__template_id__versions__version_id__delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -5068,7 +5069,7 @@ describe('test_templates__template_id__versions__version_id__activate_post', fun
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -5080,7 +5081,7 @@ describe('test_templates__template_id__versions__version_id__activate_post', fun
   request.path = '/v3/templates/{template_id}/versions/{version_id}/activate'
   request.headers['X-Mock'] = 200
   it('test_templates__template_id__versions__version_id__activate_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -5096,7 +5097,7 @@ describe('test_tracking_settings_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -5110,7 +5111,7 @@ describe('test_tracking_settings_get', function () {
   request.path = '/v3/tracking_settings'
   request.headers['X-Mock'] = 200
   it('test_tracking_settings_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -5126,7 +5127,7 @@ describe('test_tracking_settings_click_patch', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -5140,7 +5141,7 @@ describe('test_tracking_settings_click_patch', function () {
   request.path = '/v3/tracking_settings/click'
   request.headers['X-Mock'] = 200
   it('test_tracking_settings_click_patch had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -5156,7 +5157,7 @@ describe('test_tracking_settings_click_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -5167,7 +5168,7 @@ describe('test_tracking_settings_click_get', function () {
   request.path = '/v3/tracking_settings/click'
   request.headers['X-Mock'] = 200
   it('test_tracking_settings_click_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -5183,7 +5184,7 @@ describe('test_tracking_settings_google_analytics_patch', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -5202,7 +5203,7 @@ describe('test_tracking_settings_google_analytics_patch', function () {
   request.path = '/v3/tracking_settings/google_analytics'
   request.headers['X-Mock'] = 200
   it('test_tracking_settings_google_analytics_patch had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -5218,7 +5219,7 @@ describe('test_tracking_settings_google_analytics_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -5229,7 +5230,7 @@ describe('test_tracking_settings_google_analytics_get', function () {
   request.path = '/v3/tracking_settings/google_analytics'
   request.headers['X-Mock'] = 200
   it('test_tracking_settings_google_analytics_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -5245,7 +5246,7 @@ describe('test_tracking_settings_open_patch', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -5259,7 +5260,7 @@ describe('test_tracking_settings_open_patch', function () {
   request.path = '/v3/tracking_settings/open'
   request.headers['X-Mock'] = 200
   it('test_tracking_settings_open_patch had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -5275,7 +5276,7 @@ describe('test_tracking_settings_open_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -5286,7 +5287,7 @@ describe('test_tracking_settings_open_get', function () {
   request.path = '/v3/tracking_settings/open'
   request.headers['X-Mock'] = 200
   it('test_tracking_settings_open_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -5302,7 +5303,7 @@ describe('test_tracking_settings_subscription_patch', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -5321,7 +5322,7 @@ describe('test_tracking_settings_subscription_patch', function () {
   request.path = '/v3/tracking_settings/subscription'
   request.headers['X-Mock'] = 200
   it('test_tracking_settings_subscription_patch had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -5337,7 +5338,7 @@ describe('test_tracking_settings_subscription_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -5348,7 +5349,7 @@ describe('test_tracking_settings_subscription_get', function () {
   request.path = '/v3/tracking_settings/subscription'
   request.headers['X-Mock'] = 200
   it('test_tracking_settings_subscription_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -5364,7 +5365,7 @@ describe('test_user_account_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -5375,7 +5376,7 @@ describe('test_user_account_get', function () {
   request.path = '/v3/user/account'
   request.headers['X-Mock'] = 200
   it('test_user_account_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -5391,7 +5392,7 @@ describe('test_user_credits_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -5402,7 +5403,7 @@ describe('test_user_credits_get', function () {
   request.path = '/v3/user/credits'
   request.headers['X-Mock'] = 200
   it('test_user_credits_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -5418,7 +5419,7 @@ describe('test_user_email_put', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -5432,7 +5433,7 @@ describe('test_user_email_put', function () {
   request.path = '/v3/user/email'
   request.headers['X-Mock'] = 200
   it('test_user_email_put had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -5448,7 +5449,7 @@ describe('test_user_email_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -5459,7 +5460,7 @@ describe('test_user_email_get', function () {
   request.path = '/v3/user/email'
   request.headers['X-Mock'] = 200
   it('test_user_email_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -5475,7 +5476,7 @@ describe('test_user_password_put', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -5490,7 +5491,7 @@ describe('test_user_password_put', function () {
   request.path = '/v3/user/password'
   request.headers['X-Mock'] = 200
   it('test_user_password_put had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -5506,7 +5507,7 @@ describe('test_user_profile_patch', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -5522,7 +5523,7 @@ describe('test_user_profile_patch', function () {
   request.path = '/v3/user/profile'
   request.headers['X-Mock'] = 200
   it('test_user_profile_patch had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -5538,7 +5539,7 @@ describe('test_user_profile_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -5549,7 +5550,7 @@ describe('test_user_profile_get', function () {
   request.path = '/v3/user/profile'
   request.headers['X-Mock'] = 200
   it('test_user_profile_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -5565,7 +5566,7 @@ describe('test_user_scheduled_sends_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -5580,7 +5581,7 @@ describe('test_user_scheduled_sends_post', function () {
   request.path = '/v3/user/scheduled_sends'
   request.headers['X-Mock'] = 201
   it('test_user_scheduled_sends_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 201, 'response code is not correct')
       done();
     })
@@ -5596,7 +5597,7 @@ describe('test_user_scheduled_sends_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -5607,7 +5608,7 @@ describe('test_user_scheduled_sends_get', function () {
   request.path = '/v3/user/scheduled_sends'
   request.headers['X-Mock'] = 200
   it('test_user_scheduled_sends_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -5623,7 +5624,7 @@ describe('test_user_scheduled_sends__batch_id__patch', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -5637,7 +5638,7 @@ describe('test_user_scheduled_sends__batch_id__patch', function () {
   request.path = '/v3/user/scheduled_sends/{batch_id}'
   request.headers['X-Mock'] = 204
   it('test_user_scheduled_sends__batch_id__patch had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -5653,7 +5654,7 @@ describe('test_user_scheduled_sends__batch_id__get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -5664,7 +5665,7 @@ describe('test_user_scheduled_sends__batch_id__get', function () {
   request.path = '/v3/user/scheduled_sends/{batch_id}'
   request.headers['X-Mock'] = 200
   it('test_user_scheduled_sends__batch_id__get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -5680,7 +5681,7 @@ describe('test_user_scheduled_sends__batch_id__delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -5692,7 +5693,7 @@ describe('test_user_scheduled_sends__batch_id__delete', function () {
   request.path = '/v3/user/scheduled_sends/{batch_id}'
   request.headers['X-Mock'] = 204
   it('test_user_scheduled_sends__batch_id__delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -5708,7 +5709,7 @@ describe('test_user_settings_enforced_tls_patch', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -5723,7 +5724,7 @@ describe('test_user_settings_enforced_tls_patch', function () {
   request.path = '/v3/user/settings/enforced_tls'
   request.headers['X-Mock'] = 200
   it('test_user_settings_enforced_tls_patch had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -5739,7 +5740,7 @@ describe('test_user_settings_enforced_tls_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -5750,7 +5751,7 @@ describe('test_user_settings_enforced_tls_get', function () {
   request.path = '/v3/user/settings/enforced_tls'
   request.headers['X-Mock'] = 200
   it('test_user_settings_enforced_tls_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -5766,7 +5767,7 @@ describe('test_user_username_put', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -5780,7 +5781,7 @@ describe('test_user_username_put', function () {
   request.path = '/v3/user/username'
   request.headers['X-Mock'] = 200
   it('test_user_username_put had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -5796,7 +5797,7 @@ describe('test_user_username_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -5807,7 +5808,7 @@ describe('test_user_username_get', function () {
   request.path = '/v3/user/username'
   request.headers['X-Mock'] = 200
   it('test_user_username_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -5823,7 +5824,7 @@ describe('test_user_webhooks_event_settings_patch', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -5849,7 +5850,7 @@ describe('test_user_webhooks_event_settings_patch', function () {
   request.path = '/v3/user/webhooks/event/settings'
   request.headers['X-Mock'] = 200
   it('test_user_webhooks_event_settings_patch had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -5865,7 +5866,7 @@ describe('test_user_webhooks_event_settings_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -5876,7 +5877,7 @@ describe('test_user_webhooks_event_settings_get', function () {
   request.path = '/v3/user/webhooks/event/settings'
   request.headers['X-Mock'] = 200
   it('test_user_webhooks_event_settings_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -5892,7 +5893,7 @@ describe('test_user_webhooks_event_test_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -5906,7 +5907,7 @@ describe('test_user_webhooks_event_test_post', function () {
   request.path = '/v3/user/webhooks/event/test'
   request.headers['X-Mock'] = 204
   it('test_user_webhooks_event_test_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -5922,7 +5923,7 @@ describe('test_user_webhooks_parse_settings_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -5939,7 +5940,7 @@ describe('test_user_webhooks_parse_settings_post', function () {
   request.path = '/v3/user/webhooks/parse/settings'
   request.headers['X-Mock'] = 201
   it('test_user_webhooks_parse_settings_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 201, 'response code is not correct')
       done();
     })
@@ -5955,7 +5956,7 @@ describe('test_user_webhooks_parse_settings_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -5966,7 +5967,7 @@ describe('test_user_webhooks_parse_settings_get', function () {
   request.path = '/v3/user/webhooks/parse/settings'
   request.headers['X-Mock'] = 200
   it('test_user_webhooks_parse_settings_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -5982,7 +5983,7 @@ describe('test_user_webhooks_parse_settings__hostname__patch', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -5998,7 +5999,7 @@ describe('test_user_webhooks_parse_settings__hostname__patch', function () {
   request.path = '/v3/user/webhooks/parse/settings/{hostname}'
   request.headers['X-Mock'] = 200
   it('test_user_webhooks_parse_settings__hostname__patch had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -6014,7 +6015,7 @@ describe('test_user_webhooks_parse_settings__hostname__get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -6025,7 +6026,7 @@ describe('test_user_webhooks_parse_settings__hostname__get', function () {
   request.path = '/v3/user/webhooks/parse/settings/{hostname}'
   request.headers['X-Mock'] = 200
   it('test_user_webhooks_parse_settings__hostname__get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -6041,7 +6042,7 @@ describe('test_user_webhooks_parse_settings__hostname__delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -6053,7 +6054,7 @@ describe('test_user_webhooks_parse_settings__hostname__delete', function () {
   request.path = '/v3/user/webhooks/parse/settings/{hostname}'
   request.headers['X-Mock'] = 204
   it('test_user_webhooks_parse_settings__hostname__delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -6069,7 +6070,7 @@ describe('test_user_webhooks_parse_stats_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -6086,7 +6087,7 @@ describe('test_user_webhooks_parse_stats_get', function () {
   request.path = '/v3/user/webhooks/parse/stats'
   request.headers['X-Mock'] = 200
   it('test_user_webhooks_parse_stats_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -6102,7 +6103,7 @@ describe('test_whitelabel_domains_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -6125,7 +6126,7 @@ describe('test_whitelabel_domains_post', function () {
   request.path = '/v3/whitelabel/domains'
   request.headers['X-Mock'] = 201
   it('test_whitelabel_domains_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 201, 'response code is not correct')
       done();
     })
@@ -6141,7 +6142,7 @@ describe('test_whitelabel_domains_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -6158,7 +6159,7 @@ describe('test_whitelabel_domains_get', function () {
   request.path = '/v3/whitelabel/domains'
   request.headers['X-Mock'] = 200
   it('test_whitelabel_domains_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -6174,7 +6175,7 @@ describe('test_whitelabel_domains_default_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -6185,7 +6186,7 @@ describe('test_whitelabel_domains_default_get', function () {
   request.path = '/v3/whitelabel/domains/default'
   request.headers['X-Mock'] = 200
   it('test_whitelabel_domains_default_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -6201,7 +6202,7 @@ describe('test_whitelabel_domains_subuser_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -6212,7 +6213,7 @@ describe('test_whitelabel_domains_subuser_get', function () {
   request.path = '/v3/whitelabel/domains/subuser'
   request.headers['X-Mock'] = 200
   it('test_whitelabel_domains_subuser_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -6228,7 +6229,7 @@ describe('test_whitelabel_domains_subuser_delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -6240,7 +6241,7 @@ describe('test_whitelabel_domains_subuser_delete', function () {
   request.path = '/v3/whitelabel/domains/subuser'
   request.headers['X-Mock'] = 204
   it('test_whitelabel_domains_subuser_delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -6256,7 +6257,7 @@ describe('test_whitelabel_domains__domain_id__patch', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -6271,7 +6272,7 @@ describe('test_whitelabel_domains__domain_id__patch', function () {
   request.path = '/v3/whitelabel/domains/{domain_id}'
   request.headers['X-Mock'] = 200
   it('test_whitelabel_domains__domain_id__patch had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -6287,7 +6288,7 @@ describe('test_whitelabel_domains__domain_id__get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -6298,7 +6299,7 @@ describe('test_whitelabel_domains__domain_id__get', function () {
   request.path = '/v3/whitelabel/domains/{domain_id}'
   request.headers['X-Mock'] = 200
   it('test_whitelabel_domains__domain_id__get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -6314,7 +6315,7 @@ describe('test_whitelabel_domains__domain_id__delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -6326,7 +6327,7 @@ describe('test_whitelabel_domains__domain_id__delete', function () {
   request.path = '/v3/whitelabel/domains/{domain_id}'
   request.headers['X-Mock'] = 204
   it('test_whitelabel_domains__domain_id__delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -6342,7 +6343,7 @@ describe('test_whitelabel_domains__domain_id__subuser_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -6356,7 +6357,7 @@ describe('test_whitelabel_domains__domain_id__subuser_post', function () {
   request.path = '/v3/whitelabel/domains/{domain_id}/subuser'
   request.headers['X-Mock'] = 201
   it('test_whitelabel_domains__domain_id__subuser_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 201, 'response code is not correct')
       done();
     })
@@ -6372,7 +6373,7 @@ describe('test_whitelabel_domains__id__ips_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -6386,7 +6387,7 @@ describe('test_whitelabel_domains__id__ips_post', function () {
   request.path = '/v3/whitelabel/domains/{id}/ips'
   request.headers['X-Mock'] = 200
   it('test_whitelabel_domains__id__ips_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -6402,7 +6403,7 @@ describe('test_whitelabel_domains__id__ips__ip__delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -6414,7 +6415,7 @@ describe('test_whitelabel_domains__id__ips__ip__delete', function () {
   request.path = '/v3/whitelabel/domains/{id}/ips/{ip}'
   request.headers['X-Mock'] = 200
   it('test_whitelabel_domains__id__ips__ip__delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -6430,7 +6431,7 @@ describe('test_whitelabel_domains__id__validate_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -6442,7 +6443,7 @@ describe('test_whitelabel_domains__id__validate_post', function () {
   request.path = '/v3/whitelabel/domains/{id}/validate'
   request.headers['X-Mock'] = 200
   it('test_whitelabel_domains__id__validate_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -6458,7 +6459,7 @@ describe('test_whitelabel_ips_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -6474,7 +6475,7 @@ describe('test_whitelabel_ips_post', function () {
   request.path = '/v3/whitelabel/ips'
   request.headers['X-Mock'] = 201
   it('test_whitelabel_ips_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 201, 'response code is not correct')
       done();
     })
@@ -6490,7 +6491,7 @@ describe('test_whitelabel_ips_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -6505,7 +6506,7 @@ describe('test_whitelabel_ips_get', function () {
   request.path = '/v3/whitelabel/ips'
   request.headers['X-Mock'] = 200
   it('test_whitelabel_ips_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -6521,7 +6522,7 @@ describe('test_whitelabel_ips__id__get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -6532,7 +6533,7 @@ describe('test_whitelabel_ips__id__get', function () {
   request.path = '/v3/whitelabel/ips/{id}'
   request.headers['X-Mock'] = 200
   it('test_whitelabel_ips__id__get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -6548,7 +6549,7 @@ describe('test_whitelabel_ips__id__delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -6560,7 +6561,7 @@ describe('test_whitelabel_ips__id__delete', function () {
   request.path = '/v3/whitelabel/ips/{id}'
   request.headers['X-Mock'] = 204
   it('test_whitelabel_ips__id__delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -6576,7 +6577,7 @@ describe('test_whitelabel_ips__id__validate_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -6588,7 +6589,7 @@ describe('test_whitelabel_ips__id__validate_post', function () {
   request.path = '/v3/whitelabel/ips/{id}/validate'
   request.headers['X-Mock'] = 200
   it('test_whitelabel_ips__id__validate_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -6604,7 +6605,7 @@ describe('test_whitelabel_links_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -6623,7 +6624,7 @@ describe('test_whitelabel_links_post', function () {
   request.path = '/v3/whitelabel/links'
   request.headers['X-Mock'] = 201
   it('test_whitelabel_links_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 201, 'response code is not correct')
       done();
     })
@@ -6639,7 +6640,7 @@ describe('test_whitelabel_links_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -6652,7 +6653,7 @@ describe('test_whitelabel_links_get', function () {
   request.path = '/v3/whitelabel/links'
   request.headers['X-Mock'] = 200
   it('test_whitelabel_links_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -6668,7 +6669,7 @@ describe('test_whitelabel_links_default_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -6681,7 +6682,7 @@ describe('test_whitelabel_links_default_get', function () {
   request.path = '/v3/whitelabel/links/default'
   request.headers['X-Mock'] = 200
   it('test_whitelabel_links_default_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -6697,7 +6698,7 @@ describe('test_whitelabel_links_subuser_get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -6710,7 +6711,7 @@ describe('test_whitelabel_links_subuser_get', function () {
   request.path = '/v3/whitelabel/links/subuser'
   request.headers['X-Mock'] = 200
   it('test_whitelabel_links_subuser_get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -6726,7 +6727,7 @@ describe('test_whitelabel_links_subuser_delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -6740,7 +6741,7 @@ describe('test_whitelabel_links_subuser_delete', function () {
   request.path = '/v3/whitelabel/links/subuser'
   request.headers['X-Mock'] = 204
   it('test_whitelabel_links_subuser_delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -6756,7 +6757,7 @@ describe('test_whitelabel_links__id__patch', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -6770,7 +6771,7 @@ describe('test_whitelabel_links__id__patch', function () {
   request.path = '/v3/whitelabel/links/{id}'
   request.headers['X-Mock'] = 200
   it('test_whitelabel_links__id__patch had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -6786,7 +6787,7 @@ describe('test_whitelabel_links__id__get', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -6797,7 +6798,7 @@ describe('test_whitelabel_links__id__get', function () {
   request.path = '/v3/whitelabel/links/{id}'
   request.headers['X-Mock'] = 200
   it('test_whitelabel_links__id__get had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -6813,7 +6814,7 @@ describe('test_whitelabel_links__id__delete', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -6825,7 +6826,7 @@ describe('test_whitelabel_links__id__delete', function () {
   request.path = '/v3/whitelabel/links/{id}'
   request.headers['X-Mock'] = 204
   it('test_whitelabel_links__id__delete had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 204, 'response code is not correct')
       done();
     })
@@ -6841,7 +6842,7 @@ describe('test_whitelabel_links__id__validate_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -6853,7 +6854,7 @@ describe('test_whitelabel_links__id__validate_post', function () {
   request.path = '/v3/whitelabel/links/{id}/validate'
   request.headers['X-Mock'] = 200
   it('test_whitelabel_links__id__validate_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
@@ -6869,7 +6870,7 @@ describe('test_whitelabel_links__link_id__subuser_post', function () {
     var TEST_HOST = 'localhost'
   }
 
-  var sg = require('../lib/sendgrid.js').SendGrid(API_KEY, TEST_HOST)
+  var sg = sendgrid(API_KEY, TEST_HOST)
 
   var request = sg.emptyRequest()
   if(TEST_HOST == 'localhost') {
@@ -6883,11 +6884,9 @@ describe('test_whitelabel_links__link_id__subuser_post', function () {
   request.path = '/v3/whitelabel/links/{link_id}/subuser'
   request.headers['X-Mock'] = 200
   it('test_whitelabel_links__link_id__subuser_post had the correct response code', function(done) {
-    sg.API(request, function (response) {
+    sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
     })
   });
 })
-
-

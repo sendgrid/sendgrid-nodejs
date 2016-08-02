@@ -1,4 +1,4 @@
-var sg = require('sendgrid').SendGrid(process.env.SENDGRID_API_KEY)
+var sg = require('sendgrid')(process.env.SENDGRID_API_KEY)
 
 ///////////////////////////////////////////////////
 // Retrieve a list of scopes for which this user has access.
@@ -8,7 +8,7 @@ var sg = require('sendgrid').SendGrid(process.env.SENDGRID_API_KEY)
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/scopes'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)

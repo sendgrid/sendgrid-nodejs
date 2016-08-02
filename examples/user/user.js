@@ -1,4 +1,4 @@
-var sg = require('sendgrid').SendGrid(process.env.SENDGRID_API_KEY)
+var sg = require('sendgrid')(process.env.SENDGRID_API_KEY)
 
 ///////////////////////////////////////////////////
 // Get a user's account information.
@@ -8,7 +8,7 @@ var sg = require('sendgrid').SendGrid(process.env.SENDGRID_API_KEY)
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/user/account'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -22,7 +22,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/user/credits'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -39,7 +39,7 @@ request.body = {
 };
 request.method = 'PUT'
 request.path = '/v3/user/email'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -53,7 +53,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/user/email'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -71,7 +71,7 @@ request.body = {
 };
 request.method = 'PUT'
 request.path = '/v3/user/password'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -90,7 +90,7 @@ request.body = {
 };
 request.method = 'PATCH'
 request.path = '/v3/user/profile'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -104,7 +104,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/user/profile'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -122,7 +122,7 @@ request.body = {
 };
 request.method = 'POST'
 request.path = '/v3/user/scheduled_sends'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -136,7 +136,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/user/scheduled_sends'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -153,7 +153,7 @@ request.body = {
 };
 request.method = 'PATCH'
 request.path = '/v3/user/scheduled_sends/{batch_id}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -167,7 +167,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/user/scheduled_sends/{batch_id}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -181,7 +181,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'DELETE'
 request.path = '/v3/user/scheduled_sends/{batch_id}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -199,7 +199,7 @@ request.body = {
 };
 request.method = 'PATCH'
 request.path = '/v3/user/settings/enforced_tls'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -213,7 +213,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/user/settings/enforced_tls'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -230,7 +230,7 @@ request.body = {
 };
 request.method = 'PUT'
 request.path = '/v3/user/username'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -244,7 +244,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/user/username'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -273,7 +273,7 @@ request.body = {
 };
 request.method = 'PATCH'
 request.path = '/v3/user/webhooks/event/settings'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -287,7 +287,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/user/webhooks/event/settings'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -304,7 +304,7 @@ request.body = {
 };
 request.method = 'POST'
 request.path = '/v3/user/webhooks/event/test'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -324,7 +324,7 @@ request.body = {
 };
 request.method = 'POST'
 request.path = '/v3/user/webhooks/parse/settings'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -338,7 +338,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/user/webhooks/parse/settings'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -357,7 +357,7 @@ request.body = {
 };
 request.method = 'PATCH'
 request.path = '/v3/user/webhooks/parse/settings/{hostname}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -371,7 +371,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/user/webhooks/parse/settings/{hostname}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -385,7 +385,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'DELETE'
 request.path = '/v3/user/webhooks/parse/settings/{hostname}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -405,7 +405,7 @@ request.queryParams["aggregated_by"] = 'day'
  
 request.method = 'GET'
 request.path = '/v3/user/webhooks/parse/stats'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)

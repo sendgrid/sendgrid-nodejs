@@ -1,4 +1,4 @@
-var sg = require('sendgrid').SendGrid(process.env.SENDGRID_API_KEY)
+var sg = require('sendgrid')(process.env.SENDGRID_API_KEY)
 
 ///////////////////////////////////////////////////
 // Retrieve all blocks
@@ -13,7 +13,7 @@ request.queryParams["start_time"] = '1'
  
 request.method = 'GET'
 request.path = '/v3/suppression/blocks'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -34,7 +34,7 @@ request.body = {
 };
 request.method = 'DELETE'
 request.path = '/v3/suppression/blocks'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -48,7 +48,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/suppression/blocks/{email}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -62,7 +62,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'DELETE'
 request.path = '/v3/suppression/blocks/{email}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -79,7 +79,7 @@ request.queryParams["start_time"] = '1'
  
 request.method = 'GET'
 request.path = '/v3/suppression/bounces'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -100,7 +100,7 @@ request.body = {
 };
 request.method = 'DELETE'
 request.path = '/v3/suppression/bounces'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -114,7 +114,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/suppression/bounces/{email}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -130,7 +130,7 @@ request.queryParams["email_address"] = 'example@example.com'
  
 request.method = 'DELETE'
 request.path = '/v3/suppression/bounces/{email}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -149,7 +149,7 @@ request.queryParams["start_time"] = '1'
  
 request.method = 'GET'
 request.path = '/v3/suppression/invalid_emails'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -170,7 +170,7 @@ request.body = {
 };
 request.method = 'DELETE'
 request.path = '/v3/suppression/invalid_emails'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -184,7 +184,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/suppression/invalid_emails/{email}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -198,7 +198,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'DELETE'
 request.path = '/v3/suppression/invalid_emails/{email}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -212,7 +212,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/suppression/spam_report/{email}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -226,7 +226,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'DELETE'
 request.path = '/v3/suppression/spam_report/{email}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -245,7 +245,7 @@ request.queryParams["start_time"] = '1'
  
 request.method = 'GET'
 request.path = '/v3/suppression/spam_reports'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -266,7 +266,7 @@ request.body = {
 };
 request.method = 'DELETE'
 request.path = '/v3/suppression/spam_reports'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -285,7 +285,7 @@ request.queryParams["start_time"] = '1'
  
 request.method = 'GET'
 request.path = '/v3/suppression/unsubscribes'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)

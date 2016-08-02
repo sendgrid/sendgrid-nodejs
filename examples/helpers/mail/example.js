@@ -136,7 +136,7 @@ function send(toSend){
   console.log(JSON.stringify(toSend, null, 2))
   //console.log(JSON.stringify(toSend))
 
-  var sg = require('sendgrid').SendGrid(process.env.SENDGRID_API_KEY)
+  var sg = require('sendgrid')(process.env.SENDGRID_API_KEY)
 
   var requestBody = toSend
   var emptyRequest = require('sendgrid-rest').request
@@ -144,7 +144,7 @@ function send(toSend){
   requestPost.method = 'POST'
   requestPost.path = '/v3/mail/send'
   requestPost.body = requestBody
-  sg.API(requestPost, function (response) {
+  sg.API(requestPost, function (error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)

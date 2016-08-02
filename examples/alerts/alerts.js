@@ -1,4 +1,4 @@
-var sg = require('sendgrid').SendGrid(process.env.SENDGRID_API_KEY)
+var sg = require('sendgrid')(process.env.SENDGRID_API_KEY)
 
 ///////////////////////////////////////////////////
 // Create a new Alert
@@ -13,7 +13,7 @@ request.body = {
 };
 request.method = 'POST'
 request.path = '/v3/alerts'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -27,7 +27,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/alerts'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -44,7 +44,7 @@ request.body = {
 };
 request.method = 'PATCH'
 request.path = '/v3/alerts/{alert_id}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -58,7 +58,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/alerts/{alert_id}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -72,7 +72,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'DELETE'
 request.path = '/v3/alerts/{alert_id}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)

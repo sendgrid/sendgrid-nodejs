@@ -1,4 +1,4 @@
-var sg = require('sendgrid').SendGrid(process.env.SENDGRID_API_KEY)
+var sg = require('sendgrid')(process.env.SENDGRID_API_KEY)
 
 ///////////////////////////////////////////////////
 // Retrieve global email statistics
@@ -14,7 +14,7 @@ request.queryParams["aggregated_by"] = 'day'
  
 request.method = 'GET'
 request.path = '/v3/stats'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)

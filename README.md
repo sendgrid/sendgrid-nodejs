@@ -71,19 +71,20 @@ The following is the minimum needed code to send an email with the [/mail/send H
 
 ```javascript
   var helper = require('sendgrid').mail
-  from_email = new helper.Email("test@example.com")
-  to_email = new helper.Email("test@example.com")
-  subject = "Hello World from the SendGrid Node.js Library!"
-  content = new helper.Content("text/plain", "Hello, Email!")
+  from_email = new helper.Email('test@example.com')
+  to_email = new helper.Email('test@example.com')
+  subject = 'Hello World from the SendGrid Node.js Library!'
+  content = new helper.Content('text/plain', 'Hello, Email!')
   mail = new helper.Mail(from_email, subject, to_email, content)
 
-  var sg = require('sendgrid').SendGrid(process.env.SENDGRID_API_KEY)
-  var requestBody = mail.toJSON()
-  var request = sg.emptyRequest()
-  request.method = 'POST'
-  request.path = '/v3/mail/send'
-  request.body = requestBody
-  sg.API(request, function (response) {
+  var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
+  var request = sg.emptyRequest({
+    method: 'POST',
+    path: '/v3/mail/send',
+    body: mail.toJSON()
+  });
+
+  sg.API(request, function(error, response) {
     console.log(response.statusCode)
     console.log(response.body)
     console.log(response.headers)
@@ -97,48 +98,86 @@ The `Mail` constructor creates a [personalization object](https://sendgrid.com/d
 The following is the minimum needed code to send an email without the /mail/send Helper ([here](https://github.com/sendgrid/sendgrid-nodejs/blob/master/examples/mail/mail.js#L31) is a full example):
 
 ```javascript
-var sg = require('sendgrid').SendGrid(process.env.SENDGRID_API_KEY)
-var request = sg.emptyRequest()
-request.body = {
-  "personalizations": [
-    {
-      "to": [
-        {
-          "email": "test@example.com"
-        }
-      ],
-      "subject": "Hello World from the SendGrid Node.js Library!"
-    }
-  ],
-  "from": {
-    "email": "test@example.com"
-  },
-  "content": [
-    {
-      "type": "text/plain",
-      "value": "Hello, Email!"
-    }
-  ]
-};
-request.method = 'POST'
-request.path = '/v3/mail/send'
-sg.API(request, function (response) {
-  console.log(response.statusCode)
-  console.log(response.body)
-  console.log(response.headers)
-})
+var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
+var request = sg.emptyRequest({
+  method: 'POST',
+  path: '/v3/mail/send',
+  body: {
+    personalizations: [
+      {
+        to: [
+          {
+            email: 'test@example.com'
+          }
+        ],
+        subject: 'Hello World from the SendGrid Node.js Library!'
+      }
+    ],
+    from: {
+      email: 'test@example.com'
+    },
+    content: [
+      {
+        type: 'text/plain',
+        value: 'Hello, Email!'
+      }
+    ]
+  };
+});
+
+//With promise
+sg.API(request)
+  .then(response => {
+    console.log(response.statusCode);
+    console.log(response.body);
+    console.log(response.headers);
+  })
+  .catch(error => {
+    //error is an instance of SendGridError
+    //The full response is attached to error.response
+    console.log(error.response.statusCode);
+  });
+
+//With callback
+sg.API(request, function(error, response) {
+  if (error) {
+    console.log('Error response received');
+  }
+  console.log(response.statusCode);
+  console.log(response.body);
+  console.log(response.headers);
+});
 ```
 
 ## General v3 Web API Usage
 
 ```javascript
-var sg = require('sendgrid').SendGrid(process.env.SENDGRID_API_KEY)
+var sg = require('sendgrid')(process.env.SENDGRID_API_KEY)
 
 // GET Collection
-var request = sg.emptyRequest()
-request.method = 'GET'
-request.path = '/v3/api_keys'
-sg.API(request, function (response) {
+var request = sg.emptyRequest({
+  method: 'GET',
+  path: '/v3/api_keys'
+});
+
+//With promise
+sg.API(request)
+  .then(response => {
+    console.log(response.statusCode)
+    console.log(response.body)
+    console.log(response.headers)
+  })
+  .catch(error => {
+    //error is an instance of SendGridError
+    //The full response is attached to error.response
+    console.log(error.response.statusCode);
+  });
+
+//With callback
+sg.API(request, function(error, response) {
+  if (error) {
+    console.log('Error response received');
+  }
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
