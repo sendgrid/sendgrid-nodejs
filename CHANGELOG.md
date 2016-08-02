@@ -5,10 +5,12 @@ All notable changes to this project will be documented in this file.
 ### Breaking Change
 - Pull request [#261](https://github.com/sendgrid/sendgrid-nodejs/pull/261)
 - BIG THANKS to [Adam Buczynski](https://github.com/adambuczynski)!!!
+
 ### Fixed
 - Issue [#240](https://github.com/sendgrid/sendgrid-nodejs/issues/240)
 - Issue [#246](https://github.com/sendgrid/sendgrid-nodejs/issues/246)
 - Issue [#206](https://github.com/sendgrid/sendgrid-nodejs/issues/206)
+
 ### Added
 - Extracted some logic into helpers
 - Using a getEmptyRequest helper to avoid code duplication
