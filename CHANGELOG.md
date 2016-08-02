@@ -1,6 +1,23 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [4.0.0] - 2016-08-02 ##
+### Breaking Change
+- Pull request [#261](https://github.com/sendgrid/sendgrid-nodejs/pull/261)
+- BIG THANKS to [Adam Buczynski](https://github.com/adambuczynski)!!!
+### Fixed
+- Issue [#240](https://github.com/sendgrid/sendgrid-nodejs/issues/240)
+- Issue [#246](https://github.com/sendgrid/sendgrid-nodejs/issues/246)
+- Issue [#206](https://github.com/sendgrid/sendgrid-nodejs/issues/206)
+### Added
+- Extracted some logic into helpers
+- Using a getEmptyRequest helper to avoid code duplication
+- emtpyRequest now accepts an object with data to extend the empty request with, this will allow simpler syntax for initializing requests.
+- Callback function now receives two parameters as per Node conventions (error, response)
+- If no callback provided, the method will return a promise instead.
+- Implemented promise API when not passing a callback function
+- Using native Promise by default if present, but allow users to override this with any other implementation by setting Sendgrid.Promise to any value, e.g. Sendgrid.Promise = require('bluebird')
+
 ## [3.0.11] - 2016-07-26 ##
 ### Added
 - [Troubleshooting](https://github.com/sendgrid/sendgrid-python/blob/master/TROUBLESHOOTING.md) section
