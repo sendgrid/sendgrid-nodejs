@@ -122,7 +122,7 @@ var request = sg.emptyRequest({
         value: 'Hello, Email!'
       }
     ]
-  };
+  }
 });
 
 //With promise
