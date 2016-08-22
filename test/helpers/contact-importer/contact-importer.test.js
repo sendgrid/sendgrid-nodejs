@@ -32,7 +32,7 @@ describe.only('test_contact_importer', function() {
         last_name: 'User'
       }
       // Lets make the first user produce an error.
-      if (i === 0) {
+      if (i === 1) {
         item.invalid_field= 'some value'
       }
       data.push(item)
