@@ -55,10 +55,5 @@ describe.only('test_contact_importer', function() {
       expect(self.contactImporter._sendBatch).to.have.callCount(3)
       done()
     })
-
-
-    // assert.equal(sg.limiters['/v3/contactdb/recipients'].queue.length, 2)
-    // assert.equal(sg.limiters['/v3/contactdb/recipients'].pendingItems.length, 5)
-    // done()
   })
 })
