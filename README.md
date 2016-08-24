@@ -10,6 +10,19 @@ Please browse the rest of this README for further detail.
 
 We appreciate your continued support, thank you!
 
+# Table of Contents
+
+* [Installation](#installation)
+* [Quick Start](#quick_start)
+* [Usage](#usage)
+* [Use Cases](#use_cases)
+* [Announcements](#announcements)
+* [Roadmap](#roadmap)
+* [How to Contribute](#contribute)
+* [Troubleshooting](#troubleshooting)
+* [About](#about)
+
+<a name="installation"></a>
 # Installation
 
 ## Prerequisites
@@ -61,6 +74,7 @@ npm install sendgrid
 
 - [Nodejs-HTTP-Client](https://github.com/sendgrid/nodejs-http-client)
 
+<a name="quick_start"></a>
 # Quick Start
 
 ## Hello Email
@@ -70,25 +84,25 @@ The following is the minimum needed code to send an email with the [/mail/send H
 ### With Mail Helper Class
 
 ```javascript
-  var helper = require('sendgrid').mail
-  from_email = new helper.Email('test@example.com')
-  to_email = new helper.Email('test@example.com')
-  subject = 'Hello World from the SendGrid Node.js Library!'
-  content = new helper.Content('text/plain', 'Hello, Email!')
-  mail = new helper.Mail(from_email, subject, to_email, content)
+var helper = require('sendgrid').mail;
+var from_email = new helper.Email('test@example.com');
+var to_email = new helper.Email('test@example.com');
+var subject = 'Hello World from the SendGrid Node.js Library!';
+var content = new helper.Content('text/plain', 'Hello, Email!');
+var mail = new helper.Mail(from_email, subject, to_email, content);
 
-  var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
-  var request = sg.emptyRequest({
-    method: 'POST',
-    path: '/v3/mail/send',
-    body: mail.toJSON()
-  });
+var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
+var request = sg.emptyRequest({
+  method: 'POST',
+  path: '/v3/mail/send',
+  body: mail.toJSON(),
+});
 
-  sg.API(request, function(error, response) {
-    console.log(response.statusCode)
-    console.log(response.body)
-    console.log(response.headers)
-  })
+sg.API(request, function(error, response) {
+  console.log(response.statusCode);
+  console.log(response.body);
+  console.log(response.headers);
+});
 ```
 
 The `Mail` constructor creates a [personalization object](https://sendgrid.com/docs/Classroom/Send/v3_Mail_Send/personalizations.html) for you. [Here](https://github.com/sendgrid/sendgrid-nodejs/blob/master/examples/helpers/mail/example.js#L10) is an example of how to add to it.
@@ -107,22 +121,22 @@ var request = sg.emptyRequest({
       {
         to: [
           {
-            email: 'test@example.com'
-          }
+            email: 'test@example.com',
+          },
         ],
-        subject: 'Hello World from the SendGrid Node.js Library!'
-      }
+        subject: 'Hello World from the SendGrid Node.js Library!',
+      },
     ],
     from: {
-      email: 'test@example.com'
+      email: 'test@example.com',
     },
     content: [
       {
         type: 'text/plain',
-        value: 'Hello, Email!'
-      }
-    ]
-  }
+        value: 'Hello, Email!',
+      },
+    ],
+  },
 });
 
 //With promise
@@ -184,6 +198,7 @@ sg.API(request, function(error, response) {
 })
 ```
 
+<a name="usage"></a>
 # Usage
 
 - [SendGrid Docs](https://sendgrid.com/docs/API_Reference/Web_API_v3/index.html)
@@ -192,14 +207,22 @@ sg.API(request, function(error, response) {
 - [How-to: Migration from v2 to v3](https://sendgrid.com/docs/Classroom/Send/v3_Mail_Send/how_to_migrate_from_v2_to_v3_mail_send.html)
 - [v3 Web API Mail Send Helper](https://github.com/sendgrid/sendgrid-nodejs/tree/master/lib/helpers/mail/README.md)
 
+<a name="use_cases">
+# Use Cases
+
+[Examples of common API use cases](https://github.com/sendgrid/sendgrid-nodejs/blob/master/USE_CASES.md), such as how to send an email with a transactional template.
+
+<a name="announcements"></a>
 # Announcements
 
 All updates to this library is documented in our [CHANGELOG](https://github.com/sendgrid/sendgrid-nodejs/blob/master/CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases).
 
+<a name="roadmap"></a>
 # Roadmap
 
 If you are interested in the future direction of this project, please take a look at our open [issues](https://github.com/sendgrid/sendgrid-nodejs/issues) and [pull requests](https://github.com/sendgrid/sendgrid-nodejs/pulls). We would love to hear your feedback.
 
+<a name="contribute"></a>
 # How to Contribute
 
 We encourage contribution to our libraries (you might even score some nifty swag), please see our [CONTRIBUTING](https://github.com/sendgrid/sendgrid-nodejs/blob/master/CONTRIBUTING.md) guide for details.
@@ -208,10 +231,12 @@ We encourage contribution to our libraries (you might even score some nifty swag
 * [Bug Reports](https://github.com/sendgrid/sendgrid-nodejs/tree/master/CONTRIBUTING.md#submit_a_bug_report)
 * [Improvements to the Codebase](https://github.com/sendgrid/sendgrid-nodejs/tree/master/CONTRIBUTING.md#improvements_to_the_codebase)
 
+<a name="troubleshooting"></a>
 # Troubleshooting
 
 Please see our [troubleshooting guide](https://github.com/sendgrid/sendgrid-nodejs/blob/master/TROUBLESHOOTING.md) for common library issues.
 
+<a name="about"></a>
 # About
 
 sendgrid-nodejs is guided and supported by the SendGrid [Developer Experience Team](mailto:dx@sendgrid.com).
