@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [4.1.0] - 2016-09-09 ##
+### Added
+- Pull Request #277: [Make SendGrid a factory that enables multiple prototype instances](https://github.com/sendgrid/sendgrid-nodejs/pull/277)
+- Thanks to [Tom Kirkpatrick](https://github.com/mrfelton) for the pull request!
+
 ## [4.0.2] - 2016-08-24 ##
 ### Added
 - Table of Contents in the README
