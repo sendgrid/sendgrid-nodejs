@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [4.2.0] - 2016-09-14 ##
+### Added
+- Pull Request #278: [Tkp/contact importer](https://github.com/sendgrid/sendgrid-nodejs/pull/278)
+- Thanks to [Tom Kirkpatrick](https://github.com/mrfelton) for the pull request!
+
 ## [4.1.0] - 2016-09-09 ##
 ### Added
 - Pull Request #277: [Make SendGrid a factory that enables multiple prototype instances](https://github.com/sendgrid/sendgrid-nodejs/pull/277)
