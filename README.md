@@ -61,7 +61,7 @@ Add the following to your `package.json` file:
 Install sendgrid-nodejs and its dependencies:
 
 ```bash
-npm install
+npm install sendgrid-nodejs
 ```
 
 ### Alternative Installation
