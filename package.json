@@ -12,7 +12,7 @@
   ],
   "name": "sendgrid",
   "description": "Official SendGrid NodeJS library.",
-  "version": "4.2.0",
+  "version": "4.2.1",
   "homepage": "https://sendgrid.com",
   "repository": {
     "type": "git",
@@ -25,12 +25,12 @@
     "async.ensureasync": "^0.5.2",
     "async.queue": "^0.5.2",
     "bottleneck": "^1.12.0",
+    "debug": "^2.2.0",
     "lodash.chunk": "^4.2.0",
     "sendgrid-rest": "^2.2.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "debug": "^2.2.0",
     "eslint": "^3.1.0",
     "mocha": "^2.4.5",
     "mocha-sinon": "^1.1.5",

@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [4.2.1] - 2016-09-15 ##
+### Fixed
+- Issue #292: [4.2.0 Error: Cannot find module 'debug'](https://github.com/sendgrid/sendgrid-nodejs/issues/292)
+
 ## [4.2.0] - 2016-09-14 ##
 ### Added
 - Pull Request #278: [Tkp/contact importer](https://github.com/sendgrid/sendgrid-nodejs/pull/278)
