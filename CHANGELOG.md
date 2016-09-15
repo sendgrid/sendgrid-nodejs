@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [4.3.0] - 2016-09-15 ##
+## Added
+- Pull #251: [Add TypeScript typings definition file for v3 API](https://github.com/sendgrid/sendgrid-nodejs/pull/251)
+- Thanks to [Benjamin Pannell](https://github.com/SPARTAN563) for the pull request!
+
 ## [4.2.1] - 2016-09-15 ##
 ### Fixed
 - Issue #292: [4.2.0 Error: Cannot find module 'debug'](https://github.com/sendgrid/sendgrid-nodejs/issues/292)
