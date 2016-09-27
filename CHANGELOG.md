@@ -1,6 +1,13 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [4.4.0] - 2016-09-27 ##
+## Added
+- Pull #299: [Fill 'response' property in error instance](https://github.com/sendgrid/sendgrid-nodejs/pull/299)
+- This makes the behavior when using callbacks consistent with the promise counterpart.
+That is, in both cases, error.response is present
+- Thanks to [Guilherme Souza](https://github.com/sitegui) for the pull request!
+
 ## [4.3.1] - 2016-09-27 ##
 ## Fixed
 - Pull #300: [Correct TypeScript definitions](https://github.com/sendgrid/sendgrid-nodejs/pull/300)
