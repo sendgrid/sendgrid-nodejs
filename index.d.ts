@@ -456,6 +456,8 @@ declare namespace SendGrid {
     export interface SendGridConstructor {
         (apiKey: string, host?: string, globalHeaders?: { [header: string]: string; }): SendGrid;
         constructor(apiKey: string, host?: string, globalHeaders?: { [header: string]: string; }): SendGrid;
+
+        mail: SendGrid.Helpers.Mail.Helper;
     }
 
     export class SendGrid {
@@ -467,6 +469,5 @@ declare namespace SendGrid {
     }
 }
 
-declare const mail: SendGrid.Helpers.Mail.Helper;
 declare const sendGrid: SendGrid.SendGridConstructor;
-export {mail, sendGrid as SendGrid};
+export = sendGrid;
