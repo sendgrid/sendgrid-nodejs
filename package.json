@@ -12,7 +12,7 @@
   ],
   "name": "sendgrid",
   "description": "Official SendGrid NodeJS library.",
-  "version": "4.0.2",
+  "version": "4.4.0",
   "homepage": "https://sendgrid.com",
   "repository": {
     "type": "git",
@@ -22,17 +22,28 @@
     "node": ">= 0.4.7"
   },
   "dependencies": {
+    "async.ensureasync": "^0.5.2",
+    "async.queue": "^0.5.2",
+    "bottleneck": "^1.12.0",
+    "debug": "^2.2.0",
+    "lodash.chunk": "^4.2.0",
     "sendgrid-rest": "^2.2.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "eslint": "^3.1.0",
-    "mocha": "^2.4.5"
+    "mocha": "^2.4.5",
+    "mocha-sinon": "^1.1.5",
+    "sinon": "^1.17.5",
+    "sinon-chai": "^2.8.0",
+    "typescript": "^2.0.0"
   },
   "scripts": {
     "lint": "eslint . --fix",
-    "test": "mocha"
+    "test": "mocha",
+    "test:typescript": "tsc"
   },
+  "typings": "index.d.ts",
   "tags": [
     "http",
     "rest",

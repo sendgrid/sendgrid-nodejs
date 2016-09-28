@@ -6,6 +6,9 @@ node_js:
 - "4"
 before_install:
 - npm install -g npm@2
+script:
+- npm test
+- npm run test:typescript
 notifications:
   hipchat:
     rooms:

@@ -1,6 +1,37 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [4.4.0] - 2016-09-27 ##
+## Added
+- Pull #299: [Fill 'response' property in error instance](https://github.com/sendgrid/sendgrid-nodejs/pull/299)
+- This makes the behavior when using callbacks consistent with the promise counterpart.
+That is, in both cases, error.response is present
+- Thanks to [Guilherme Souza](https://github.com/sitegui) for the pull request!
+
+## [4.3.1] - 2016-09-27 ##
+## Fixed
+- Pull #300: [Correct TypeScript definitions](https://github.com/sendgrid/sendgrid-nodejs/pull/300)
+- Thanks to [Benjamin Pannell](https://github.com/SPARTAN563) for the fix!
+
+## [4.3.0] - 2016-09-15 ##
+## Added
+- Pull #251: [Add TypeScript typings definition file for v3 API](https://github.com/sendgrid/sendgrid-nodejs/pull/251)
+- Thanks to [Benjamin Pannell](https://github.com/SPARTAN563) for the pull request!
+
+## [4.2.1] - 2016-09-15 ##
+### Fixed
+- Issue #292: [4.2.0 Error: Cannot find module 'debug'](https://github.com/sendgrid/sendgrid-nodejs/issues/292)
+
+## [4.2.0] - 2016-09-14 ##
+### Added
+- Pull Request #278: [Tkp/contact importer](https://github.com/sendgrid/sendgrid-nodejs/pull/278)
+- Thanks to [Tom Kirkpatrick](https://github.com/mrfelton) for the pull request!
+
+## [4.1.0] - 2016-09-09 ##
+### Added
+- Pull Request #277: [Make SendGrid a factory that enables multiple prototype instances](https://github.com/sendgrid/sendgrid-nodejs/pull/277)
+- Thanks to [Tom Kirkpatrick](https://github.com/mrfelton) for the pull request!
+
 ## [4.0.2] - 2016-08-24 ##
 ### Added
 - Table of Contents in the README
