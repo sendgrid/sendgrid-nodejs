@@ -466,6 +466,7 @@ declare namespace SendGrid {
         emptyRequest(): SendGrid.Rest.Request;
 
         API(request: SendGrid.Rest.Request, callback: (response: SendGrid.Rest.Response) => void): void;
+        API(request: SendGrid.Rest.Request): PromiseLike<SendGrid.Rest.Response>;
     }
 }
 
