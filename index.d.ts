@@ -463,7 +463,7 @@ declare namespace SendGrid {
     export class SendGrid {
         constructor(apiKey: string, host?: string, globalHeaders?: { [header: string]: string; });
 
-        emptyRequest(): SendGrid.Rest.Request;
+        emptyRequest(data?: SendGrid.Rest.Request): SendGrid.Rest.Request;
 
         API(request: SendGrid.Rest.Request, callback: (response: SendGrid.Rest.Response) => void): void;
     }
