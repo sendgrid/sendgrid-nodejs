@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [4.4.1] - 2016-09-27 ##
+## Fixed
+- Pull #309 [Allow emptyRequest() to be called with a request object](https://github.com/sendgrid/sendgrid-nodejs/pull/309)
+- Thanks to [Benjamin Pannell](https://github.com/SPARTAN563) for the fix!
+
 ## [4.4.0] - 2016-09-27 ##
 ## Added
 - Pull #299: [Fill 'response' property in error instance](https://github.com/sendgrid/sendgrid-nodejs/pull/299)
