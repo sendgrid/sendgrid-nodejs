@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [4.5.0] - 2016-10-05 ##
+## Added
+- Pull #308 [feat: Add support for promises to the TypeScript definitions file](https://github.com/sendgrid/sendgrid-nodejs/pull/308)
+- Thanks to [Benjamin Pannell](https://github.com/SPARTAN563) for the pull request!
+
 ## [4.4.1] - 2016-09-27 ##
 ## Fixed
 - Pull #309 [Allow emptyRequest() to be called with a request object](https://github.com/sendgrid/sendgrid-nodejs/pull/309)
