@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [4.6.0] - 2016-10-13 ##
+### Added
+- Pull #319, Fixed issue #266
+- Converts `response.body` to have valid json objects
+- Thanks to [Hugo Durães](https://github.com/hugoduraes) for the pull request!
+
 ## [4.5.0] - 2016-10-05 ##
 ## Added
 - Pull #308 [feat: Add support for promises to the TypeScript definitions file](https://github.com/sendgrid/sendgrid-nodejs/pull/308)

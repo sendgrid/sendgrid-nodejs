@@ -53,7 +53,7 @@ Add the following to your `package.json` file:
   ...
   "dependencies": {
     ...
-    "sendgrid": "^4.5.0"
+    "sendgrid": "^4.6.0"
   }
 }
 ```
