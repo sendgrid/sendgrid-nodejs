@@ -80,9 +80,15 @@ To read the error message returned by SendGrid's API:
   request.path = '/v3/mail/send'
   request.body = requestBody
   sg.API(request, function (error, response) {
-    console.log(response.statusCode)
-    console.log(response.body)
-    console.log(response.headers)
+    
+    if(error) {
+      console.log(error.message);
+      console.log(error.response.statusCode);
+      console.log(error.response.body);
+      console.log(error.response.headers);
+    } else {
+      console.log(response);
+    }
   })
 ```
 
