@@ -1,6 +1,13 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [4.7.0] - 2016-10-14 ##
+### Added
+- Pull #323, Fixed issue #317
+- Updates nodejs-http-client dependency to [v2.3.0](https://github.com/sendgrid/nodejs-http-client/releases/tag/v2.3.0)
+- Invoke the API callback with a mocked response upon Error
+- Thanks to [Huli](https://github.com/aszx87410) for the PR!
+
 ## [4.6.0] - 2016-10-13 ##
 ### Added
 - Pull #319, Fixed issue #266
