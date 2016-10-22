@@ -40,7 +40,7 @@
   },
   "scripts": {
     "lint": "eslint . --fix",
-    "test": "mocha",
+    "test": "mocha --recursive",
     "test:typescript": "tsc"
   },
   "typings": "index.d.ts",
