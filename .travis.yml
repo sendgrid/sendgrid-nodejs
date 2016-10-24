@@ -1,11 +1,18 @@
 language: node_js
 node_js:
-- "0.10"
+- "0.11"
 - "0.12"
 - "iojs"
 - "4"
+- "6"
+- "7"
 before_install:
 - npm install -g npm@2
+before_script:
+- mkdir prism
+- mkdir prism/bin
+- export PATH=$PATH:$PWD/prism/bin/
+- ./test/prism.sh
 script:
 - npm test
 - npm run test:typescript

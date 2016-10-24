@@ -1,8 +1,48 @@
+var fs = require('fs');
+var execSync = require('child_process').execSync;
+var spawn = require('child_process').spawn;
+
 var assert = require('chai').assert
 var sendgrid = require('../lib/sendgrid');
+var sleep = require('system-sleep');
+
+var prism;
+var TEST_TIMEOUT_MS = 30000;
+var PRISM_SETUP_MS = 2000;
+var PRISM_STARTUP_MS = 20000;
+
+before(function() {
+  this.timeout(Math.max(PRISM_SETUP_MS + PRISM_STARTUP_MS, TEST_TIMEOUT_MS));
+  if (!fs.existsSync('/usr/local/bin/prism')) {
+    if (process.platform != 'win32') {
+      try {
+        execSync('test/prism.sh');
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Error downloading the prism binary, you can try downloading directly here (https://github.com/stoplightio/prism/releases) and placing it in your /user/local/bin directory');
+        process.exit(1);
+      }
+    }
+    else {
+      console.log('Please download the Windows binary (https://github.com/stoplightio/prism/releases) and place it in your /usr/local/bin directory');
+      process.exit(1);
+    }
+  }
+  console.log('Activating Prism (~20s)');
+  prism = spawn('prism', ['run', '--mock', '--list', '--spec', 'https://raw.githubusercontent.com/sendgrid/sendgrid-oai/master/oai_stoplight.json'], { detached: true });
+  console.log('Prism Started');
+  sleep(PRISM_STARTUP_MS);
+  prism.stdout.on('data', function(data) {
+    console.log(data.toString());
+  });
+  prism.stderr.on('data', function(data) {
+    console.log(data.toString());
+  });
+});
 
 describe('test_access_settings_activity_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -31,7 +71,7 @@ describe('test_access_settings_activity_get', function () {
 })
 
 describe('test_access_settings_whitelist_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -71,7 +111,7 @@ describe('test_access_settings_whitelist_post', function () {
 })
 
 describe('test_access_settings_whitelist_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -98,7 +138,7 @@ describe('test_access_settings_whitelist_get', function () {
 })
 
 describe('test_access_settings_whitelist_delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -132,7 +172,7 @@ describe('test_access_settings_whitelist_delete', function () {
 })
 
 describe('test_access_settings_whitelist__rule_id__get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -159,7 +199,7 @@ describe('test_access_settings_whitelist__rule_id__get', function () {
 })
 
 describe('test_access_settings_whitelist__rule_id__delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -187,7 +227,7 @@ describe('test_access_settings_whitelist__rule_id__delete', function () {
 })
 
 describe('test_alerts_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -219,7 +259,7 @@ describe('test_alerts_post', function () {
 })
 
 describe('test_alerts_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -246,7 +286,7 @@ describe('test_alerts_get', function () {
 })
 
 describe('test_alerts__alert_id__patch', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -276,7 +316,7 @@ describe('test_alerts__alert_id__patch', function () {
 })
 
 describe('test_alerts__alert_id__get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -303,7 +343,7 @@ describe('test_alerts__alert_id__get', function () {
 })
 
 describe('test_alerts__alert_id__delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -331,7 +371,7 @@ describe('test_alerts__alert_id__delete', function () {
 })
 
 describe('test_api_keys_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -367,7 +407,7 @@ describe('test_api_keys_post', function () {
 })
 
 describe('test_api_keys_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -396,7 +436,7 @@ describe('test_api_keys_get', function () {
 })
 
 describe('test_api_keys__api_key_id__put', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -430,7 +470,7 @@ describe('test_api_keys__api_key_id__put', function () {
 })
 
 describe('test_api_keys__api_key_id__patch', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -460,7 +500,7 @@ describe('test_api_keys__api_key_id__patch', function () {
 })
 
 describe('test_api_keys__api_key_id__get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -487,7 +527,7 @@ describe('test_api_keys__api_key_id__get', function () {
 })
 
 describe('test_api_keys__api_key_id__delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -515,7 +555,7 @@ describe('test_api_keys__api_key_id__delete', function () {
 })
 
 describe('test_asm_groups_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -547,7 +587,7 @@ describe('test_asm_groups_post', function () {
 })
 
 describe('test_asm_groups_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -576,7 +616,7 @@ describe('test_asm_groups_get', function () {
 })
 
 describe('test_asm_groups__group_id__patch', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -608,7 +648,7 @@ describe('test_asm_groups__group_id__patch', function () {
 })
 
 describe('test_asm_groups__group_id__get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -635,7 +675,7 @@ describe('test_asm_groups__group_id__get', function () {
 })
 
 describe('test_asm_groups__group_id__delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -663,7 +703,7 @@ describe('test_asm_groups__group_id__delete', function () {
 })
 
 describe('test_asm_groups__group_id__suppressions_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -696,7 +736,7 @@ describe('test_asm_groups__group_id__suppressions_post', function () {
 })
 
 describe('test_asm_groups__group_id__suppressions_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -723,7 +763,7 @@ describe('test_asm_groups__group_id__suppressions_get', function () {
 })
 
 describe('test_asm_groups__group_id__suppressions_search_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -757,7 +797,7 @@ describe('test_asm_groups__group_id__suppressions_search_post', function () {
 })
 
 describe('test_asm_groups__group_id__suppressions__email__delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -785,7 +825,7 @@ describe('test_asm_groups__group_id__suppressions__email__delete', function () {
 })
 
 describe('test_asm_suppressions_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -812,7 +852,7 @@ describe('test_asm_suppressions_get', function () {
 })
 
 describe('test_asm_suppressions_global_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -845,7 +885,7 @@ describe('test_asm_suppressions_global_post', function () {
 })
 
 describe('test_asm_suppressions_global__email__get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -872,7 +912,7 @@ describe('test_asm_suppressions_global__email__get', function () {
 })
 
 describe('test_asm_suppressions_global__email__delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -900,7 +940,7 @@ describe('test_asm_suppressions_global__email__delete', function () {
 })
 
 describe('test_asm_suppressions__email__get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -927,7 +967,7 @@ describe('test_asm_suppressions__email__get', function () {
 })
 
 describe('test_browsers_stats_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -961,7 +1001,7 @@ describe('test_browsers_stats_get', function () {
 })
 
 describe('test_campaigns_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -1008,7 +1048,7 @@ describe('test_campaigns_post', function () {
 })
 
 describe('test_campaigns_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -1038,7 +1078,7 @@ describe('test_campaigns_get', function () {
 })
 
 describe('test_campaigns__campaign_id__patch', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -1074,7 +1114,7 @@ describe('test_campaigns__campaign_id__patch', function () {
 })
 
 describe('test_campaigns__campaign_id__get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -1101,7 +1141,7 @@ describe('test_campaigns__campaign_id__get', function () {
 })
 
 describe('test_campaigns__campaign_id__delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -1129,7 +1169,7 @@ describe('test_campaigns__campaign_id__delete', function () {
 })
 
 describe('test_campaigns__campaign_id__schedules_patch', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -1159,7 +1199,7 @@ describe('test_campaigns__campaign_id__schedules_patch', function () {
 })
 
 describe('test_campaigns__campaign_id__schedules_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -1189,7 +1229,7 @@ describe('test_campaigns__campaign_id__schedules_post', function () {
 })
 
 describe('test_campaigns__campaign_id__schedules_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -1216,7 +1256,7 @@ describe('test_campaigns__campaign_id__schedules_get', function () {
 })
 
 describe('test_campaigns__campaign_id__schedules_delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -1244,7 +1284,7 @@ describe('test_campaigns__campaign_id__schedules_delete', function () {
 })
 
 describe('test_campaigns__campaign_id__schedules_now_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -1272,7 +1312,7 @@ describe('test_campaigns__campaign_id__schedules_now_post', function () {
 })
 
 describe('test_campaigns__campaign_id__schedules_test_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -1302,7 +1342,7 @@ describe('test_campaigns__campaign_id__schedules_test_post', function () {
 })
 
 describe('test_categories_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -1333,7 +1373,7 @@ describe('test_categories_get', function () {
 })
 
 describe('test_categories_stats_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -1367,7 +1407,7 @@ describe('test_categories_stats_get', function () {
 })
 
 describe('test_categories_stats_sums_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -1402,7 +1442,7 @@ describe('test_categories_stats_sums_get', function () {
 })
 
 describe('test_clients_stats_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -1433,7 +1473,7 @@ describe('test_clients_stats_get', function () {
 })
 
 describe('test_clients__client_type__stats_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -1464,7 +1504,7 @@ describe('test_clients__client_type__stats_get', function () {
 })
 
 describe('test_contactdb_custom_fields_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -1495,7 +1535,7 @@ describe('test_contactdb_custom_fields_post', function () {
 })
 
 describe('test_contactdb_custom_fields_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -1522,7 +1562,7 @@ describe('test_contactdb_custom_fields_get', function () {
 })
 
 describe('test_contactdb_custom_fields__custom_field_id__get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -1549,7 +1589,7 @@ describe('test_contactdb_custom_fields__custom_field_id__get', function () {
 })
 
 describe('test_contactdb_custom_fields__custom_field_id__delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -1577,7 +1617,7 @@ describe('test_contactdb_custom_fields__custom_field_id__delete', function () {
 })
 
 describe('test_contactdb_lists_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -1607,7 +1647,7 @@ describe('test_contactdb_lists_post', function () {
 })
 
 describe('test_contactdb_lists_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -1634,7 +1674,7 @@ describe('test_contactdb_lists_get', function () {
 })
 
 describe('test_contactdb_lists_delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -1667,7 +1707,7 @@ describe('test_contactdb_lists_delete', function () {
 })
 
 describe('test_contactdb_lists__list_id__patch', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -1699,7 +1739,7 @@ describe('test_contactdb_lists__list_id__patch', function () {
 })
 
 describe('test_contactdb_lists__list_id__get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -1728,7 +1768,7 @@ describe('test_contactdb_lists__list_id__get', function () {
 })
 
 describe('test_contactdb_lists__list_id__delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -1758,7 +1798,7 @@ describe('test_contactdb_lists__list_id__delete', function () {
 })
 
 describe('test_contactdb_lists__list_id__recipients_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -1789,7 +1829,7 @@ describe('test_contactdb_lists__list_id__recipients_post', function () {
 })
 
 describe('test_contactdb_lists__list_id__recipients_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -1820,7 +1860,7 @@ describe('test_contactdb_lists__list_id__recipients_get', function () {
 })
 
 describe('test_contactdb_lists__list_id__recipients__recipient_id__post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -1848,7 +1888,7 @@ describe('test_contactdb_lists__list_id__recipients__recipient_id__post', functi
 })
 
 describe('test_contactdb_lists__list_id__recipients__recipient_id__delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -1879,7 +1919,7 @@ describe('test_contactdb_lists__list_id__recipients__recipient_id__delete', func
 })
 
 describe('test_contactdb_recipients_patch', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -1913,7 +1953,7 @@ describe('test_contactdb_recipients_patch', function () {
 })
 
 describe('test_contactdb_recipients_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -1954,7 +1994,7 @@ describe('test_contactdb_recipients_post', function () {
 })
 
 describe('test_contactdb_recipients_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -1984,7 +2024,7 @@ describe('test_contactdb_recipients_get', function () {
 })
 
 describe('test_contactdb_recipients_delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -2015,7 +2055,7 @@ describe('test_contactdb_recipients_delete', function () {
 })
 
 describe('test_contactdb_recipients_billable_count_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -2042,7 +2082,7 @@ describe('test_contactdb_recipients_billable_count_get', function () {
 })
 
 describe('test_contactdb_recipients_count_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -2069,7 +2109,7 @@ describe('test_contactdb_recipients_count_get', function () {
 })
 
 describe('test_contactdb_recipients_search_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -2099,7 +2139,7 @@ describe('test_contactdb_recipients_search_get', function () {
 })
 
 describe('test_contactdb_recipients__recipient_id__get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -2126,7 +2166,7 @@ describe('test_contactdb_recipients__recipient_id__get', function () {
 })
 
 describe('test_contactdb_recipients__recipient_id__delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -2154,7 +2194,7 @@ describe('test_contactdb_recipients__recipient_id__delete', function () {
 })
 
 describe('test_contactdb_recipients__recipient_id__lists_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -2181,7 +2221,7 @@ describe('test_contactdb_recipients__recipient_id__lists_get', function () {
 })
 
 describe('test_contactdb_reserved_fields_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -2208,7 +2248,7 @@ describe('test_contactdb_reserved_fields_get', function () {
 })
 
 describe('test_contactdb_segments_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -2259,7 +2299,7 @@ describe('test_contactdb_segments_post', function () {
 })
 
 describe('test_contactdb_segments_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -2286,7 +2326,7 @@ describe('test_contactdb_segments_get', function () {
 })
 
 describe('test_contactdb_segments__segment_id__patch', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -2327,7 +2367,7 @@ describe('test_contactdb_segments__segment_id__patch', function () {
 })
 
 describe('test_contactdb_segments__segment_id__get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -2356,7 +2396,7 @@ describe('test_contactdb_segments__segment_id__get', function () {
 })
 
 describe('test_contactdb_segments__segment_id__delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -2386,7 +2426,7 @@ describe('test_contactdb_segments__segment_id__delete', function () {
 })
 
 describe('test_contactdb_segments__segment_id__recipients_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -2416,7 +2456,7 @@ describe('test_contactdb_segments__segment_id__recipients_get', function () {
 })
 
 describe('test_devices_stats_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -2449,7 +2489,7 @@ describe('test_devices_stats_get', function () {
 })
 
 describe('test_geo_stats_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -2483,7 +2523,7 @@ describe('test_geo_stats_get', function () {
 })
 
 describe('test_ips_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -2516,7 +2556,7 @@ describe('test_ips_get', function () {
 })
 
 describe('test_ips_assigned_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -2543,7 +2583,7 @@ describe('test_ips_assigned_get', function () {
 })
 
 describe('test_ips_pools_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -2573,7 +2613,7 @@ describe('test_ips_pools_post', function () {
 })
 
 describe('test_ips_pools_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -2600,7 +2640,7 @@ describe('test_ips_pools_get', function () {
 })
 
 describe('test_ips_pools__pool_name__put', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -2630,7 +2670,7 @@ describe('test_ips_pools__pool_name__put', function () {
 })
 
 describe('test_ips_pools__pool_name__get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -2657,7 +2697,7 @@ describe('test_ips_pools__pool_name__get', function () {
 })
 
 describe('test_ips_pools__pool_name__delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -2685,7 +2725,7 @@ describe('test_ips_pools__pool_name__delete', function () {
 })
 
 describe('test_ips_pools__pool_name__ips_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -2715,7 +2755,7 @@ describe('test_ips_pools__pool_name__ips_post', function () {
 })
 
 describe('test_ips_pools__pool_name__ips__ip__delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -2743,7 +2783,7 @@ describe('test_ips_pools__pool_name__ips__ip__delete', function () {
 })
 
 describe('test_ips_warmup_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -2773,7 +2813,7 @@ describe('test_ips_warmup_post', function () {
 })
 
 describe('test_ips_warmup_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -2800,7 +2840,7 @@ describe('test_ips_warmup_get', function () {
 })
 
 describe('test_ips_warmup__ip_address__get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -2827,7 +2867,7 @@ describe('test_ips_warmup__ip_address__get', function () {
 })
 
 describe('test_ips_warmup__ip_address__delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -2855,7 +2895,7 @@ describe('test_ips_warmup__ip_address__delete', function () {
 })
 
 describe('test_ips__ip_address__get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -2882,7 +2922,7 @@ describe('test_ips__ip_address__get', function () {
 })
 
 describe('test_mail_batch_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -2910,7 +2950,7 @@ describe('test_mail_batch_post', function () {
 })
 
 describe('test_mail_batch__batch_id__get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -2937,7 +2977,7 @@ describe('test_mail_batch__batch_id__get', function () {
 })
 
 describe('test_mail_send_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -3102,7 +3142,7 @@ describe('test_mail_send_post', function () {
 })
 
 describe('test_mail_settings_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -3132,7 +3172,7 @@ describe('test_mail_settings_get', function () {
 })
 
 describe('test_mail_settings_address_whitelist_patch', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -3166,7 +3206,7 @@ describe('test_mail_settings_address_whitelist_patch', function () {
 })
 
 describe('test_mail_settings_address_whitelist_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -3193,7 +3233,7 @@ describe('test_mail_settings_address_whitelist_get', function () {
 })
 
 describe('test_mail_settings_bcc_patch', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -3224,7 +3264,7 @@ describe('test_mail_settings_bcc_patch', function () {
 })
 
 describe('test_mail_settings_bcc_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -3251,7 +3291,7 @@ describe('test_mail_settings_bcc_get', function () {
 })
 
 describe('test_mail_settings_bounce_purge_patch', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -3283,7 +3323,7 @@ describe('test_mail_settings_bounce_purge_patch', function () {
 })
 
 describe('test_mail_settings_bounce_purge_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -3310,7 +3350,7 @@ describe('test_mail_settings_bounce_purge_get', function () {
 })
 
 describe('test_mail_settings_footer_patch', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -3342,7 +3382,7 @@ describe('test_mail_settings_footer_patch', function () {
 })
 
 describe('test_mail_settings_footer_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -3369,7 +3409,7 @@ describe('test_mail_settings_footer_get', function () {
 })
 
 describe('test_mail_settings_forward_bounce_patch', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -3400,7 +3440,7 @@ describe('test_mail_settings_forward_bounce_patch', function () {
 })
 
 describe('test_mail_settings_forward_bounce_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -3427,7 +3467,7 @@ describe('test_mail_settings_forward_bounce_get', function () {
 })
 
 describe('test_mail_settings_forward_spam_patch', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -3458,7 +3498,7 @@ describe('test_mail_settings_forward_spam_patch', function () {
 })
 
 describe('test_mail_settings_forward_spam_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -3485,7 +3525,7 @@ describe('test_mail_settings_forward_spam_get', function () {
 })
 
 describe('test_mail_settings_plain_content_patch', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -3515,7 +3555,7 @@ describe('test_mail_settings_plain_content_patch', function () {
 })
 
 describe('test_mail_settings_plain_content_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -3542,7 +3582,7 @@ describe('test_mail_settings_plain_content_get', function () {
 })
 
 describe('test_mail_settings_spam_check_patch', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -3574,7 +3614,7 @@ describe('test_mail_settings_spam_check_patch', function () {
 })
 
 describe('test_mail_settings_spam_check_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -3601,7 +3641,7 @@ describe('test_mail_settings_spam_check_get', function () {
 })
 
 describe('test_mail_settings_template_patch', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -3632,7 +3672,7 @@ describe('test_mail_settings_template_patch', function () {
 })
 
 describe('test_mail_settings_template_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -3659,7 +3699,7 @@ describe('test_mail_settings_template_get', function () {
 })
 
 describe('test_mailbox_providers_stats_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -3693,7 +3733,7 @@ describe('test_mailbox_providers_stats_get', function () {
 })
 
 describe('test_partner_settings_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -3723,7 +3763,7 @@ describe('test_partner_settings_get', function () {
 })
 
 describe('test_partner_settings_new_relic_patch', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -3755,7 +3795,7 @@ describe('test_partner_settings_new_relic_patch', function () {
 })
 
 describe('test_partner_settings_new_relic_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -3782,7 +3822,7 @@ describe('test_partner_settings_new_relic_get', function () {
 })
 
 describe('test_scopes_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -3809,7 +3849,7 @@ describe('test_scopes_get', function () {
 })
 
 describe('test_stats_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -3842,7 +3882,7 @@ describe('test_stats_get', function () {
 })
 
 describe('test_subusers_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -3878,7 +3918,7 @@ describe('test_subusers_post', function () {
 })
 
 describe('test_subusers_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -3909,7 +3949,7 @@ describe('test_subusers_get', function () {
 })
 
 describe('test_subusers_reputations_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -3938,7 +3978,7 @@ describe('test_subusers_reputations_get', function () {
 })
 
 describe('test_subusers_stats_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -3972,7 +4012,7 @@ describe('test_subusers_stats_get', function () {
 })
 
 describe('test_subusers_stats_monthly_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -4006,7 +4046,7 @@ describe('test_subusers_stats_monthly_get', function () {
 })
 
 describe('test_subusers_stats_sums_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -4041,7 +4081,7 @@ describe('test_subusers_stats_sums_get', function () {
 })
 
 describe('test_subusers__subuser_name__patch', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -4071,7 +4111,7 @@ describe('test_subusers__subuser_name__patch', function () {
 })
 
 describe('test_subusers__subuser_name__delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -4099,7 +4139,7 @@ describe('test_subusers__subuser_name__delete', function () {
 })
 
 describe('test_subusers__subuser_name__ips_put', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -4129,7 +4169,7 @@ describe('test_subusers__subuser_name__ips_put', function () {
 })
 
 describe('test_subusers__subuser_name__monitor_put', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -4160,7 +4200,7 @@ describe('test_subusers__subuser_name__monitor_put', function () {
 })
 
 describe('test_subusers__subuser_name__monitor_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -4191,7 +4231,7 @@ describe('test_subusers__subuser_name__monitor_post', function () {
 })
 
 describe('test_subusers__subuser_name__monitor_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -4218,7 +4258,7 @@ describe('test_subusers__subuser_name__monitor_get', function () {
 })
 
 describe('test_subusers__subuser_name__monitor_delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -4246,7 +4286,7 @@ describe('test_subusers__subuser_name__monitor_delete', function () {
 })
 
 describe('test_subusers__subuser_name__stats_monthly_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -4279,7 +4319,7 @@ describe('test_subusers__subuser_name__stats_monthly_get', function () {
 })
 
 describe('test_suppression_blocks_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -4311,7 +4351,7 @@ describe('test_suppression_blocks_get', function () {
 })
 
 describe('test_suppression_blocks_delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -4345,7 +4385,7 @@ describe('test_suppression_blocks_delete', function () {
 })
 
 describe('test_suppression_blocks__email__get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -4372,7 +4412,7 @@ describe('test_suppression_blocks__email__get', function () {
 })
 
 describe('test_suppression_blocks__email__delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -4400,7 +4440,7 @@ describe('test_suppression_blocks__email__delete', function () {
 })
 
 describe('test_suppression_bounces_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -4430,7 +4470,7 @@ describe('test_suppression_bounces_get', function () {
 })
 
 describe('test_suppression_bounces_delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -4464,7 +4504,7 @@ describe('test_suppression_bounces_delete', function () {
 })
 
 describe('test_suppression_bounces__email__get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -4491,7 +4531,7 @@ describe('test_suppression_bounces__email__get', function () {
 })
 
 describe('test_suppression_bounces__email__delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -4521,7 +4561,7 @@ describe('test_suppression_bounces__email__delete', function () {
 })
 
 describe('test_suppression_invalid_emails_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -4553,7 +4593,7 @@ describe('test_suppression_invalid_emails_get', function () {
 })
 
 describe('test_suppression_invalid_emails_delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -4587,7 +4627,7 @@ describe('test_suppression_invalid_emails_delete', function () {
 })
 
 describe('test_suppression_invalid_emails__email__get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -4614,7 +4654,7 @@ describe('test_suppression_invalid_emails__email__get', function () {
 })
 
 describe('test_suppression_invalid_emails__email__delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -4642,7 +4682,7 @@ describe('test_suppression_invalid_emails__email__delete', function () {
 })
 
 describe('test_suppression_spam_report__email__get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -4669,7 +4709,7 @@ describe('test_suppression_spam_report__email__get', function () {
 })
 
 describe('test_suppression_spam_report__email__delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -4697,7 +4737,7 @@ describe('test_suppression_spam_report__email__delete', function () {
 })
 
 describe('test_suppression_spam_reports_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -4729,7 +4769,7 @@ describe('test_suppression_spam_reports_get', function () {
 })
 
 describe('test_suppression_spam_reports_delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -4763,7 +4803,7 @@ describe('test_suppression_spam_reports_delete', function () {
 })
 
 describe('test_suppression_unsubscribes_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -4795,7 +4835,7 @@ describe('test_suppression_unsubscribes_get', function () {
 })
 
 describe('test_templates_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -4825,7 +4865,7 @@ describe('test_templates_post', function () {
 })
 
 describe('test_templates_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -4852,7 +4892,7 @@ describe('test_templates_get', function () {
 })
 
 describe('test_templates__template_id__patch', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -4882,7 +4922,7 @@ describe('test_templates__template_id__patch', function () {
 })
 
 describe('test_templates__template_id__get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -4909,7 +4949,7 @@ describe('test_templates__template_id__get', function () {
 })
 
 describe('test_templates__template_id__delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -4937,7 +4977,7 @@ describe('test_templates__template_id__delete', function () {
 })
 
 describe('test_templates__template_id__versions_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -4972,7 +5012,7 @@ describe('test_templates__template_id__versions_post', function () {
 })
 
 describe('test_templates__template_id__versions__version_id__patch', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -5006,7 +5046,7 @@ describe('test_templates__template_id__versions__version_id__patch', function ()
 })
 
 describe('test_templates__template_id__versions__version_id__get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -5033,7 +5073,7 @@ describe('test_templates__template_id__versions__version_id__get', function () {
 })
 
 describe('test_templates__template_id__versions__version_id__delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -5061,7 +5101,7 @@ describe('test_templates__template_id__versions__version_id__delete', function (
 })
 
 describe('test_templates__template_id__versions__version_id__activate_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -5089,7 +5129,7 @@ describe('test_templates__template_id__versions__version_id__activate_post', fun
 })
 
 describe('test_tracking_settings_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -5119,7 +5159,7 @@ describe('test_tracking_settings_get', function () {
 })
 
 describe('test_tracking_settings_click_patch', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -5149,7 +5189,7 @@ describe('test_tracking_settings_click_patch', function () {
 })
 
 describe('test_tracking_settings_click_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -5176,7 +5216,7 @@ describe('test_tracking_settings_click_get', function () {
 })
 
 describe('test_tracking_settings_google_analytics_patch', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -5211,7 +5251,7 @@ describe('test_tracking_settings_google_analytics_patch', function () {
 })
 
 describe('test_tracking_settings_google_analytics_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -5238,7 +5278,7 @@ describe('test_tracking_settings_google_analytics_get', function () {
 })
 
 describe('test_tracking_settings_open_patch', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -5268,7 +5308,7 @@ describe('test_tracking_settings_open_patch', function () {
 })
 
 describe('test_tracking_settings_open_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -5295,7 +5335,7 @@ describe('test_tracking_settings_open_get', function () {
 })
 
 describe('test_tracking_settings_subscription_patch', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -5330,7 +5370,7 @@ describe('test_tracking_settings_subscription_patch', function () {
 })
 
 describe('test_tracking_settings_subscription_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -5357,7 +5397,7 @@ describe('test_tracking_settings_subscription_get', function () {
 })
 
 describe('test_user_account_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -5384,7 +5424,7 @@ describe('test_user_account_get', function () {
 })
 
 describe('test_user_credits_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -5411,7 +5451,7 @@ describe('test_user_credits_get', function () {
 })
 
 describe('test_user_email_put', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -5441,7 +5481,7 @@ describe('test_user_email_put', function () {
 })
 
 describe('test_user_email_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -5468,7 +5508,7 @@ describe('test_user_email_get', function () {
 })
 
 describe('test_user_password_put', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -5499,7 +5539,7 @@ describe('test_user_password_put', function () {
 })
 
 describe('test_user_profile_patch', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -5531,7 +5571,7 @@ describe('test_user_profile_patch', function () {
 })
 
 describe('test_user_profile_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -5558,7 +5598,7 @@ describe('test_user_profile_get', function () {
 })
 
 describe('test_user_scheduled_sends_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -5589,7 +5629,7 @@ describe('test_user_scheduled_sends_post', function () {
 })
 
 describe('test_user_scheduled_sends_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -5616,7 +5656,7 @@ describe('test_user_scheduled_sends_get', function () {
 })
 
 describe('test_user_scheduled_sends__batch_id__patch', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -5646,7 +5686,7 @@ describe('test_user_scheduled_sends__batch_id__patch', function () {
 })
 
 describe('test_user_scheduled_sends__batch_id__get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -5673,7 +5713,7 @@ describe('test_user_scheduled_sends__batch_id__get', function () {
 })
 
 describe('test_user_scheduled_sends__batch_id__delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -5701,7 +5741,7 @@ describe('test_user_scheduled_sends__batch_id__delete', function () {
 })
 
 describe('test_user_settings_enforced_tls_patch', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -5732,7 +5772,7 @@ describe('test_user_settings_enforced_tls_patch', function () {
 })
 
 describe('test_user_settings_enforced_tls_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -5759,7 +5799,7 @@ describe('test_user_settings_enforced_tls_get', function () {
 })
 
 describe('test_user_username_put', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -5789,7 +5829,7 @@ describe('test_user_username_put', function () {
 })
 
 describe('test_user_username_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -5816,7 +5856,7 @@ describe('test_user_username_get', function () {
 })
 
 describe('test_user_webhooks_event_settings_patch', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -5858,7 +5898,7 @@ describe('test_user_webhooks_event_settings_patch', function () {
 })
 
 describe('test_user_webhooks_event_settings_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -5885,7 +5925,7 @@ describe('test_user_webhooks_event_settings_get', function () {
 })
 
 describe('test_user_webhooks_event_test_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -5915,7 +5955,7 @@ describe('test_user_webhooks_event_test_post', function () {
 })
 
 describe('test_user_webhooks_parse_settings_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -5948,7 +5988,7 @@ describe('test_user_webhooks_parse_settings_post', function () {
 })
 
 describe('test_user_webhooks_parse_settings_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -5975,7 +6015,7 @@ describe('test_user_webhooks_parse_settings_get', function () {
 })
 
 describe('test_user_webhooks_parse_settings__hostname__patch', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -6007,7 +6047,7 @@ describe('test_user_webhooks_parse_settings__hostname__patch', function () {
 })
 
 describe('test_user_webhooks_parse_settings__hostname__get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -6034,7 +6074,7 @@ describe('test_user_webhooks_parse_settings__hostname__get', function () {
 })
 
 describe('test_user_webhooks_parse_settings__hostname__delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -6062,7 +6102,7 @@ describe('test_user_webhooks_parse_settings__hostname__delete', function () {
 })
 
 describe('test_user_webhooks_parse_stats_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -6095,7 +6135,7 @@ describe('test_user_webhooks_parse_stats_get', function () {
 })
 
 describe('test_whitelabel_domains_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -6134,7 +6174,7 @@ describe('test_whitelabel_domains_post', function () {
 })
 
 describe('test_whitelabel_domains_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -6167,7 +6207,7 @@ describe('test_whitelabel_domains_get', function () {
 })
 
 describe('test_whitelabel_domains_default_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -6194,7 +6234,7 @@ describe('test_whitelabel_domains_default_get', function () {
 })
 
 describe('test_whitelabel_domains_subuser_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -6221,7 +6261,7 @@ describe('test_whitelabel_domains_subuser_get', function () {
 })
 
 describe('test_whitelabel_domains_subuser_delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -6249,7 +6289,7 @@ describe('test_whitelabel_domains_subuser_delete', function () {
 })
 
 describe('test_whitelabel_domains__domain_id__patch', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -6280,7 +6320,7 @@ describe('test_whitelabel_domains__domain_id__patch', function () {
 })
 
 describe('test_whitelabel_domains__domain_id__get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -6307,7 +6347,7 @@ describe('test_whitelabel_domains__domain_id__get', function () {
 })
 
 describe('test_whitelabel_domains__domain_id__delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -6335,7 +6375,7 @@ describe('test_whitelabel_domains__domain_id__delete', function () {
 })
 
 describe('test_whitelabel_domains__domain_id__subuser_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -6365,7 +6405,7 @@ describe('test_whitelabel_domains__domain_id__subuser_post', function () {
 })
 
 describe('test_whitelabel_domains__id__ips_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -6395,7 +6435,7 @@ describe('test_whitelabel_domains__id__ips_post', function () {
 })
 
 describe('test_whitelabel_domains__id__ips__ip__delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -6423,7 +6463,7 @@ describe('test_whitelabel_domains__id__ips__ip__delete', function () {
 })
 
 describe('test_whitelabel_domains__id__validate_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -6451,7 +6491,7 @@ describe('test_whitelabel_domains__id__validate_post', function () {
 })
 
 describe('test_whitelabel_ips_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -6483,7 +6523,7 @@ describe('test_whitelabel_ips_post', function () {
 })
 
 describe('test_whitelabel_ips_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -6514,7 +6554,7 @@ describe('test_whitelabel_ips_get', function () {
 })
 
 describe('test_whitelabel_ips__id__get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -6541,7 +6581,7 @@ describe('test_whitelabel_ips__id__get', function () {
 })
 
 describe('test_whitelabel_ips__id__delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -6569,7 +6609,7 @@ describe('test_whitelabel_ips__id__delete', function () {
 })
 
 describe('test_whitelabel_ips__id__validate_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -6597,7 +6637,7 @@ describe('test_whitelabel_ips__id__validate_post', function () {
 })
 
 describe('test_whitelabel_links_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -6632,7 +6672,7 @@ describe('test_whitelabel_links_post', function () {
 })
 
 describe('test_whitelabel_links_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -6661,7 +6701,7 @@ describe('test_whitelabel_links_get', function () {
 })
 
 describe('test_whitelabel_links_default_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -6690,7 +6730,7 @@ describe('test_whitelabel_links_default_get', function () {
 })
 
 describe('test_whitelabel_links_subuser_get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -6719,7 +6759,7 @@ describe('test_whitelabel_links_subuser_get', function () {
 })
 
 describe('test_whitelabel_links_subuser_delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -6749,7 +6789,7 @@ describe('test_whitelabel_links_subuser_delete', function () {
 })
 
 describe('test_whitelabel_links__id__patch', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -6779,7 +6819,7 @@ describe('test_whitelabel_links__id__patch', function () {
 })
 
 describe('test_whitelabel_links__id__get', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -6806,7 +6846,7 @@ describe('test_whitelabel_links__id__get', function () {
 })
 
 describe('test_whitelabel_links__id__delete', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -6834,7 +6874,7 @@ describe('test_whitelabel_links__id__delete', function () {
 })
 
 describe('test_whitelabel_links__id__validate_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -6862,7 +6902,7 @@ describe('test_whitelabel_links__id__validate_post', function () {
 })
 
 describe('test_whitelabel_links__link_id__subuser_post', function () {
-  this.timeout(30000);
+  this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
   if(process.env.TRAVIS) {
     var TEST_HOST = process.env.MOCK_HOST
@@ -6889,4 +6929,8 @@ describe('test_whitelabel_links__link_id__subuser_post', function () {
       done();
     })
   });
+})
+
+after(function() {
+  prism.kill();
 })
