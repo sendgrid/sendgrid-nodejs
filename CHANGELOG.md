@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [4.7.1] - 2016-10-25 ##
+### Added
+- Pull #329
+- Simplified installation instructions
+- Thanks to [Heitor Tashiro Sergent](https://github.com/heitortsergent) for the PR!
+
 ## [4.7.0] - 2016-10-14 ##
 ### Added
 - Pull #323, Fixed issue #317
