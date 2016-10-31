@@ -1,152 +1,102 @@
 var assert = require('chai').assert
+var Mail = require('../../../lib/helpers/mail/mail.js').Mail
+var Personalization = require('../../../lib/helpers/mail/mail.js').Personalization
+var Attachment = require('../../../lib/helpers/mail/mail.js').Attachment
+var MailSettings = require('../../../lib/helpers/mail/mail.js').MailSettings
+var TrackingSettings = require('../../../lib/helpers/mail/mail.js').TrackingSettings
 
 // Test the minimum required to send an email
 describe('helloEmail', function () {
-  var helper = require('../../../lib/helpers/mail/mail.js')
-
-  mail = new helper.Mail()
-  email = new helper.Email("test@example.com")
-  mail.setFrom(email)
-
-  personalization = new helper.Personalization()
-  email = new helper.Email("test@example.com")
-  personalization.addTo(email)
-  mail.addPersonalization(personalization)
-
-  mail.setSubject("Hello World from the SendGrid Node.js Library")
-
-  content = new helper.Content("text/plain", "some text here")
-  mail.addContent(content)
-  content = new helper.Content("text/html", "<html><body>some text here</body></html>")
-  mail.addContent(content)
+  mail = new Mail('test@example.com', 'Hello World from the SendGrid Node.js Library', 'test@example.com', { type:'text/plain', value:'some text here' })
+  mail.addContent([{ type:'text/html', value:'<html><body>some text here</body></html>'}])
 
   test_payload = '{"from":{"email":"test@example.com"},"personalizations":[{"to":[{"email":"test@example.com"}]}],"subject":"Hello World from the SendGrid Node.js Library","content":[{"type":"text/plain","value":"some text here"},{"type":"text/html","value":"<html><body>some text here</body></html>"}]}'
 
   it('builds the correct payload', function() {
-      assert.equal(JSON.stringify(mail.toJSON()), test_payload, 'payload is correct')
-  });
+      assert.equal(JSON.stringify(mail), test_payload, 'payload is correct')
+  })
 })
 
-// Test a fully loaded email payload
+//Test a fully loaded email payload
 describe('kitchenSink', function () {
-  var helper = require('../../../lib/helpers/mail/mail.js')
+  mail = new Mail()
+  mail.setFrom('test@example.com', 'DX')
 
-  mail = new helper.Mail()
-  email = new helper.Email("test@example.com", "Example User")
-  mail.setFrom(email)
+  mail.setSubject('Hello World from the SendGrid Node.js Library')
 
-  mail.setSubject("Hello World from the SendGrid Node.js Library")
-
-  personalization = new helper.Personalization()
-  email = new helper.Email("test@example.com", "Example User")
-  personalization.addTo(email)
-  email = new helper.Email("test@example.com", "Example User")
-  personalization.addTo(email)
-  email = new helper.Email("test@example.com", "Example User")
-  personalization.addCc(email)
-  email = new helper.Email("test@example.com", "Example User")
-  personalization.addCc(email)
-  email = new helper.Email("test@example.com", "Example User")
-  personalization.addBcc(email)
-  email = new helper.Email("test@example.com", "Example User")
-  personalization.addBcc(email)
-  personalization.setSubject("Hello World from the Personalized SendGrid Node.js Library")
-  header = new helper.Header("X-Test", "True")
-  personalization.addHeader(header)
-  header = new helper.Header("X-Test2", "False")
-  personalization.addHeader(header)
-  substitution = new helper.Substitution("%name%", "Example User")
-  personalization.addSubstitution(substitution)
-  substitution = new helper.Substitution("%city%", "Denver")
-  personalization.addSubstitution(substitution)
-  custom_arg = new helper.CustomArgs("timing", "morning")
-  personalization.addCustomArg(custom_arg)
-  custom_arg = new helper.CustomArgs("type", "marketing")
-  personalization.addCustomArg(custom_arg)
+  personalization = new Personalization()
+  personalization.addTo('test@example.com', 'Example User')
+  personalization.addTo('test@example.com', 'Example User')
+  personalization.addCc('test@example.com', 'Example User')
+  personalization.addCc('test@example.com', 'Example User')
+  personalization.addBcc('test@example.com', 'Example User')
+  personalization.addBcc('test@example.com', 'Example User')
+  personalization.setSubject('Hello World from the Personalized SendGrid Node.js Library')
+  personalization.addHeader('X-Test', 'True')
+  personalization.addHeader('X-Test2', 'False')
+  personalization.addSubstitution('%name%', 'Example User')
+  personalization.addSubstitution('%city%', 'Denver')
+  personalization.addCustomArg('timing', 'morning')
+  personalization.addCustomArg('type', 'marketing')
   personalization.setSendAt(1443636899)
   mail.addPersonalization(personalization)
 
-  content = new helper.Content("text/plain", "some text here")
-  mail.addContent(content)
-  content = new helper.Content("text/html", "<html><body>some text here</body></html>")
-  mail.addContent(content)
-  content = new helper.Content("text/calendar", "Party Time")
-  mail.addContent(content)
+  mail.addContent('some text here', 'text/plain')
+  mail.addContent('<html><body>some text here</body></html>', 'text/html')
+  mail.addContent('Party Time', 'text/calendar')
 
-  attachment = new helper.Attachment()
-  attachment.setContent("TG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFtZXQsIGNvbnNlY3RldHVyIGFkaXBpc2NpbmcgZWxpdC4gQ3JhcyBwdW12")
-  attachment.setType("application/pdf")
-  attachment.setFilename("balance_001.pdf")
-  attachment.setDisposition("attachment")
+  attachment = new Attachment('TG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFtZXQsIGNvbnNlY3RldHVyIGFkaXBpc2NpbmcgZWxpdC4gQ3JhcyBwdW12', 'balance_001.pdf')
+  attachment.setType('application/pdf')
+  attachment.setDisposition('attachment')
   mail.addAttachment(attachment)
 
-  attachment = new helper.Attachment()
-  attachment.setContent("BwdW")
+  attachment = new Attachment('BwdW', 'banner.png')
   attachment.setType("image/png")
-  attachment.setFilename("banner.png")
   attachment.setDisposition("inline")
   attachment.setContentId("banner")
   mail.addAttachment(attachment)
 
-  mail.setTemplateId("439b6d66-4408-4ead-83de-5c83c2ee313a")
+  mail.setTemplateId('439b6d66-4408-4ead-83de-5c83c2ee313a')
 
-  section = new helper.Section("%section1%", "Textforasubstitutiontagofsection1")
-  mail.addSection(section)
-  section = new helper.Section("%section2%", "Textforasubstitutiontagofsection2")
-  mail.addSection(section)
+  mail.addSection('%section1%', 'Textforasubstitutiontagofsection1')
+  mail.addSection('%section2%', 'Textforasubstitutiontagofsection2')
 
-  header = new helper.Header("X-Test3", "1")
-  mail.addHeader(header)
-  header = new helper.Header("X-Test4", "2")
-  mail.addHeader(header)
+  mail.addHeader('X-Test3', '1')
+  mail.addHeader('X-Test4', '2')
 
-  category = new helper.Category("January")
-  mail.addCategory(category)
-  category = new helper.Category("2015")
-  mail.addCategory(category)
+  mail.addCategory('January')
+  mail.addCategory('2015')
 
-  custom_arg = new helper.CustomArgs("timing", "evening")
-  mail.addCustomArg(custom_arg)
-  custom_arg = new helper.CustomArgs("type", "summer_contest")
-  mail.addCustomArg(custom_arg)
+  mail.addCustomArg('timing', 'evening')
+  mail.addCustomArg('type', 'summer_contest')
 
   mail.setSendAt(1443636899)
 
-  mail.setBatchId("some_batch_id")
+  mail.setBatchId('some_batch_id')
 
-  asm = new helper.ASM(3, [1,4,5])
-  mail.setASM(asm)
+  mail.setAsm(3, [1,4,5])
 
-  mail.setIpPoolName("23")
+  mail.setIpPoolName('23')
 
-  mail_settings = new helper.MailSettings()
-  bcc = new helper.BCC(true, "test@example.com")
-  mail_settings.setBcc(bcc)
-  footer = new helper.Footer(true, "some footer text", "<html><body>some footer text</body></html>")
-  mail_settings.setFooter(footer)
-  sandbox_mode = new helper.SandBoxMode(true)
-  mail_settings.setSandBoxMode(sandbox_mode)
-  spam_check = new helper.SpamCheck(true, 1, "https://gotchya.example.com")
-  mail_settings.setSpamCheck(spam_check)
-  mail.addMailSettings(mail_settings)
+  mail_settings = new MailSettings()
+  mail_settings.setBcc(true, 'test@example.com')
+  mail_settings.setFooter(true, 'some footer text', '<html><body>some footer text</body></html>')
+  mail_settings.setSandBoxMode(true)
+  mail_settings.setSpamCheck(true, 1, 'https://gotchya.example.com')
+  mail.setMailSettings(mail_settings)
 
-  tracking_settings = new helper.TrackingSettings()
-  click_tracking = new helper.ClickTracking(false, false)
-  tracking_settings.setClickTracking(click_tracking)
-  open_tracking = new helper.OpenTracking(true, "Optional tag to replace with the open image in the body of the message")
-  tracking_settings.setOpenTracking(open_tracking)
-  subscription_tracking = new helper.SubscriptionTracking(true, "text to insert into the text/plain portion of the message", "html to insert into the text/html portion of the message", "Optional tag to replace with the open image in the body of the message")
-  tracking_settings.setSubscriptionTracking(subscription_tracking)
-  ganalytics = new helper.Ganalytics(true, "some utm source", "some utc medium", "some utm term", "some utm content", "some utm campaign")
-  tracking_settings.setGanalytics(ganalytics)
-  mail.addTrackingSettings(tracking_settings)
+  tracking_settings = new TrackingSettings()
+  tracking_settings.setClickTracking(false, false)
+  tracking_settings.setOpenTracking(true, 'Optional tag to replace with the open image in the body of the message')
+  tracking_settings.setSubscriptionTracking(true, 'text to insert into the text/plain portion of the message', 'html to insert into the text/html portion of the message', 'Optional tag to replace with the open image in the body of the message')
+  tracking_settings.setGanalytics(true, 'some utm source', 'some utc medium', 'some utm term', 'some utm content', 'some utm campaign')
+  mail.setTrackingSettings(tracking_settings)
 
-  email = new helper.Email("test@example.com", "Example User")
-  mail.setReplyTo(email)
+  mail.setReplyTo('test@example.com', 'DX')
 
-  test_payload = '{"from":{"email":"test@example.com","name":"DX"},"personalizations":[{"to":[{"email":"test@example.com","name":"Example User"},{"email":"test@example.com","name":"Example User"}],"cc":[{"email":"test@example.com","name":"Example User"},{"email":"test@example.com","name":"Example User"}],"bcc":[{"email":"test@example.com","name":"Example User"},{"email":"test@example.com","name":"Example User"}],"subject":"Hello World from the Personalized SendGrid Node.js Library","headers":{"X-Test":"True","X-Test2":"False"},"substitutions":{"%name%":"Example User","%city%":"Denver"},"custom_args":{"timing":"morning","type":"marketing"},"send_at":1443636899}],"subject":"Hello World from the SendGrid Node.js Library","content":[{"type":"text/plain","value":"some text here"},{"type":"text/html","value":"<html><body>some text here</body></html>"},{"type":"text/calendar","value":"Party Time"}],"attachments":[{"content":"TG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFtZXQsIGNvbnNlY3RldHVyIGFkaXBpc2NpbmcgZWxpdC4gQ3JhcyBwdW12","type":"application/pdf","filename":"balance_001.pdf","disposition":"attachment"},{"content":"BwdW","type":"image/png","filename":"banner.png","disposition":"inline","content_id":"banner"}],"template_id":"439b6d66-4408-4ead-83de-5c83c2ee313a","sections":{"%section1%":"Textforasubstitutiontagofsection1","%section2%":"Textforasubstitutiontagofsection2"},"headers":{"X-Test3":"1","X-Test4":"2"},"categories":["January","2015"],"custom_args":{"timing":"evening","type":"summer_contest"},"send_at":1443636899,"batch_id":"some_batch_id","asm":{"group_id":3,"groups_to_display":[1,4,5]},"ip_pool_name":"23","mail_settings":{"bcc":{"enable":true,"email":"test@example.com"},"footer":{"enable":true,"text":"some footer text","html":"<html><body>some footer text</body></html>"},"sandbox_mode":{"enable":true},"spam_check":{"enable":true,"threshold":1,"post_to_url":"https://gotchya.example.com"}},"tracking_settings":{"click_tracking":{"enable":false,"enable_text":false},"open_tracking":{"enable":true,"substitution_tag":"Optional tag to replace with the open image in the body of the message"},"subscription_tracking":{"enable":true,"text":"text to insert into the text/plain portion of the message","html":"html to insert into the text/html portion of the message","substitution_tag":"Optional tag to replace with the open image in the body of the message"},"ganalytics":{"enable":true,"utm_source":"some utm source","utm_medium":"some utc medium","utm_term":"some utm term","utm_content":"some utm content","utm_campaign":"some utm campaign"}},"reply_to":{"email":"test@example.com","name":"DX"}}'
+  test_payload = '{"from":{"email":"test@example.com","name":"DX"},"personalizations":[{"to":[{"email":"test@example.com","name":"Example User"},{"email":"test@example.com","name":"Example User"}],"cc":[{"email":"test@example.com","name":"Example User"},{"email":"test@example.com","name":"Example User"}],"bcc":[{"email":"test@example.com","name":"Example User"},{"email":"test@example.com","name":"Example User"}],"subject":"Hello World from the Personalized SendGrid Node.js Library","headers":{"X-Test":"True","X-Test2":"False"},"substitutions":{"%name%":"Example User","%city%":"Denver"},"custom_args":{"timing":"morning","type":"marketing"},"send_at":1443636899}],"subject":"Hello World from the SendGrid Node.js Library","content":[{"type":"text/plain","value":"some text here"},{"type":"text/html","value":"<html><body>some text here</body></html>"},{"type":"text/calendar","value":"Party Time"}],"attachments":[{"content":"TG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFtZXQsIGNvbnNlY3RldHVyIGFkaXBpc2NpbmcgZWxpdC4gQ3JhcyBwdW12","filename":"balance_001.pdf","type":"application/pdf","disposition":"attachment"},{"content":"BwdW","filename":"banner.png","type":"image/png","disposition":"inline","content_id":"banner"}],"template_id":"439b6d66-4408-4ead-83de-5c83c2ee313a","sections":{"%section1%":"Textforasubstitutiontagofsection1","%section2%":"Textforasubstitutiontagofsection2"},"headers":{"X-Test3":"1","X-Test4":"2"},"categories":["January","2015"],"custom_args":{"timing":"evening","type":"summer_contest"},"send_at":1443636899,"batch_id":"some_batch_id","asm":{"group_id":3,"groups_to_display":[1,4,5]},"ip_pool_name":"23","mail_settings":{"bcc":{"enable":true,"email":"test@example.com"},"footer":{"enable":true,"text":"some footer text","html":"<html><body>some footer text</body></html>"},"sandbox_mode":{"enable":true},"spam_check":{"enable":true,"threshold":1,"post_to_url":"https://gotchya.example.com"}},"tracking_settings":{"click_tracking":{"enable":false,"enable_text":false},"open_tracking":{"enable":true,"substitution_tag":"Optional tag to replace with the open image in the body of the message"},"subscription_tracking":{"enable":true,"text":"text to insert into the text/plain portion of the message","html":"html to insert into the text/html portion of the message","substitution_tag":"Optional tag to replace with the open image in the body of the message"},"ganalytics":{"enable":true,"utm_source":"some utm source","utm_medium":"some utc medium","utm_term":"some utm term","utm_content":"some utm content","utm_campaign":"some utm campaign"}},"reply_to":{"email":"test@example.com","name":"DX"}}'
 
   it('builds the correct payload', function() {
-      assert.equal(JSON.stringify(mail.toJSON()), test_payload, 'payload is correct')
-  });
+      assert.equal(JSON.stringify(mail), test_payload, 'payload is correct')
+  })
 })

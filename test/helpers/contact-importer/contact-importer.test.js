@@ -10,7 +10,7 @@ chai.use(require('sinon-chai'))
 
 require('mocha-sinon')
 
-describe.only('test_contact_importer', function() {
+describe('test_contact_importer', function() {
   beforeEach(function() {
     // Create a new SendGrid instance.
     var API_KEY = process.env.API_KEY
