@@ -431,18 +431,18 @@ declare namespace SendGrid.Rest {
     export const emptyRequest: Request;
 
     interface Request {
-        host: string;
+        host?: string;
         method: "GET" | "PATCH" | "POST" | "PUT" | "DELETE";
         path: string;
-        headers: {
+        headers?: {
             [header: string]: string|number;
         };
-        body: string | {};
-        queryParams: {
+        body?: string | {};
+        queryParams?: {
             [param: string]: string;
         };
-        test: boolean;
-        port: string|number;
+        test?: boolean;
+        port?: string|number;
     }
 
     interface Response {
