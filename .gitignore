@@ -8,3 +8,4 @@ test/config.js
 .env.staging
 .env
 temp.js
+.vscode/
