@@ -3,9 +3,9 @@ var sendgrid = require('../../../')
 
 var chai = require('chai')
 var sinon = require('sinon')
+var expect = chai.expect
 
 chai.should()
-var expect = chai.expect
 chai.use(require('sinon-chai'))
 
 require('mocha-sinon')
@@ -20,12 +20,12 @@ describe.only('test_contact_importer', function() {
     this.contactImporter = new ContactImporter(sg, {
       batchSize: 2,
     })
-    // this.spy = sinon.spy(ContactImporter.prototype, '_sendBatch')
+
     this.sinon.spy(ContactImporter.prototype, '_sendBatch')
 
     // Generate some test data.
     var data = []
-    for (i = 0; i < 5; i++) {
+    for (var i = 0; i < 5; i++) {
       var item = {
         email: 'example' + i + '@example.com',
         first_name: 'Test',
