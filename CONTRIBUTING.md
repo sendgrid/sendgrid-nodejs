@@ -72,6 +72,7 @@ We welcome direct contributions to the sendgrid-nodejs code base. Thank you!
 ```bash
 git clone https://github.com/sendgrid/sendgrid-nodejs.git
 cd sendgrid-nodejs
+npm install
 ```
 
 ## Environment Variables
