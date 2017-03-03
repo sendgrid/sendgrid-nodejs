@@ -133,7 +133,7 @@ To run the tests:
 
 First, we need to setup a local mocked SendGrid API server.
 
-Install StopLight.io's [Prism](https://stoplight.io/prism/).
+Install StopLight.io's [Prism](https://stoplight.io/platform/prism/).
 
 ```bash
 ./prism run --mock --list --spec https://raw.githubusercontent.com/sendgrid/sendgrid-oai/master/oai_stoplight.json
