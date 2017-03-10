@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [4.8.0] - 2017-03-10 ##
+### Added
+- Pull #333
+- [TypeDefinition] SendGrid.API should return Promise<T> instead of PromiseLike<T>
+- Thanks to [Ayman Nedjmeddine](https://github.com/IOAyman) for the PR!
+
 ## [4.7.1] - 2016-10-25 ##
 ### Added
 - Pull #329
