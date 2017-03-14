@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [4.8.1] - 2017-03-13 ##
+### Fixed
+- Pull #354
+- fix: Make various TypeScript request components optional
+- Thanks to [Benjamin Pannell](https://github.com/SPARTAN563) for the PR!
+
 ## [4.8.0] - 2017-03-10 ##
 ### Added
 - Pull #333
