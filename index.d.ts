@@ -406,7 +406,7 @@ declare namespace SendGrid.Helpers.Mail {
         getHeaders(): Header[];
 
         addSubstitution(substitution: Substitution): void;
-        getSubstitutions(): Substitution[];
+        getSubstitutions(): {[key: string]: string};
 
         addCustomArg(substitution: CustomArgs): void;
         getCustomArgs(): CustomArgs[];
