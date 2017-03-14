@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [4.8.2] - 2017-03-14 ##
+### Fixed
+- Pull #338
+- Fix function name in mail helper and fix the corresponding test
+- Thanks to [Seoker Wang](https://github.com/seoker) for the PR!
+
 ## [4.8.1] - 2017-03-13 ##
 ### Fixed
 - Pull #354
