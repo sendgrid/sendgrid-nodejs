@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [4.8.3] - 2017-03-1419 ##
+### Fixed
+- Pull #368, Fixes #367
+- Personalization.getSubstitutions() return type incorrect in index.d.ts TypeScript definition file
+- Thanks to [Brian Love](https://github.com/blove) for the PR!
+
 ## [4.8.2] - 2017-03-14 ##
 ### Fixed
 - Pull #338
