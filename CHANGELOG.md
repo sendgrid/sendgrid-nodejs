@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [4.8.4] - 2017-03-1419 ##
+### Fixed
+- Pull #348
+- Fix typescript definition for the ClickTracking
+- Thanks to [dhenriques](https://github.com/dhenriques) for the PR!
+
 ## [4.8.3] - 2017-03-1419 ##
 ### Fixed
 - Pull #368, Fixes #367
