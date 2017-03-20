@@ -119,17 +119,17 @@ declare namespace SendGrid.Helpers.Mail {
     }
 
     export class ClickTracking {
-        constructor(enable: boolean, enableText: string);
+        constructor(enable: boolean, enableText: boolean);
 
         getEnable(): boolean;
         setEnable(enabled: boolean): void;
 
-        getEnableText(): string;
-        setEnableText(enableText: string): void;
+        getEnableText(): boolean;
+        setEnableText(enableText: boolean): void;
 
         toJSON(): {
             enable: boolean;
-            enable_text: string;
+            enable_text: boolean;
         };
     }
 
