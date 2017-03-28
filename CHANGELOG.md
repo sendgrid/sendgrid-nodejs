@@ -1,13 +1,19 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## [4.8.4] - 2017-03-1419 ##
+## [4.9] - 2017-03-28 ##
+### Added
+- Pull #371
+- Catch error in sendgrid, partially solves #370
+- Thanks to [gf](https://github.com/furstenheim) for the PR!
+
+## [4.8.4] - 2017-03-14 ##
 ### Fixed
 - Pull #348
 - Fix typescript definition for the ClickTracking
 - Thanks to [dhenriques](https://github.com/dhenriques) for the PR!
 
-## [4.8.3] - 2017-03-1419 ##
+## [4.8.3] - 2017-03-14 ##
 ### Fixed
 - Pull #368, Fixes #367
 - Personalization.getSubstitutions() return type incorrect in index.d.ts TypeScript definition file
