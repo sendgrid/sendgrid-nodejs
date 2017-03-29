@@ -19,7 +19,7 @@
     "url": "git://github.com/sendgrid/sendgrid-nodejs.git"
   },
   "engines": {
-    "node": ">= 0.4.7"
+    "node": ">= 0.8.1"
   },
   "dependencies": {
     "async.ensureasync": "^0.5.2",
