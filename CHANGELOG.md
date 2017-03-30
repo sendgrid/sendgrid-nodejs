@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [4.10] - 2017-03-30 ##
+### Added
+- Pull #303
+- Add Inbound Parse data parser
+- Thanks to [Jamie](https://github.com/jamsinclair) for the PR!
+
 ## [4.9] - 2017-03-28 ##
 ### Added
 - Pull #371
