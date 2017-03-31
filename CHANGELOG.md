@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [5.0] - 2017-03-31 ##
+### BREAKING CHANGE
+- Pull #328
+- Drop 0.10, 0.12 from supported Node.js versions, add 6
+- Thanks to [Mike Ralphson](https://github.com/MikeRalphson) for the PR!
+
 ## [4.10] - 2017-03-30 ##
 ### Added
 - Pull #303
