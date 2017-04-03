@@ -1,4 +1,4 @@
-var sg = require('sendgrid').SendGrid(process.env.SENDGRID_API_KEY)
+var sg = require('sendgrid')(process.env.SENDGRID_API_KEY)
 
 ///////////////////////////////////////////////////
 // Create Subuser
@@ -17,7 +17,7 @@ request.body = {
 };
 request.method = 'POST'
 request.path = '/v3/subusers'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -35,7 +35,7 @@ request.queryParams["username"] = 'test_string'
  
 request.method = 'GET'
 request.path = '/v3/subusers'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -51,7 +51,7 @@ request.queryParams["usernames"] = 'test_string'
  
 request.method = 'GET'
 request.path = '/v3/subusers/reputations'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -72,7 +72,7 @@ request.queryParams["end_date"] = '2016-04-01'
  
 request.method = 'GET'
 request.path = '/v3/subusers/stats'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -93,7 +93,7 @@ request.queryParams["subuser"] = 'test_string'
  
 request.method = 'GET'
 request.path = '/v3/subusers/stats/monthly'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -115,7 +115,7 @@ request.queryParams["end_date"] = '2016-04-01'
  
 request.method = 'GET'
 request.path = '/v3/subusers/stats/sums'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -132,7 +132,7 @@ request.body = {
 };
 request.method = 'PATCH'
 request.path = '/v3/subusers/{subuser_name}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -146,7 +146,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'DELETE'
 request.path = '/v3/subusers/{subuser_name}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -163,7 +163,7 @@ request.body = [
 ];
 request.method = 'PUT'
 request.path = '/v3/subusers/{subuser_name}/ips'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -181,7 +181,7 @@ request.body = {
 };
 request.method = 'PUT'
 request.path = '/v3/subusers/{subuser_name}/monitor'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -199,7 +199,7 @@ request.body = {
 };
 request.method = 'POST'
 request.path = '/v3/subusers/{subuser_name}/monitor'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -213,7 +213,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/subusers/{subuser_name}/monitor'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -227,7 +227,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'DELETE'
 request.path = '/v3/subusers/{subuser_name}/monitor'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -247,7 +247,7 @@ request.queryParams["date"] = 'test_string'
  
 request.method = 'GET'
 request.path = '/v3/subusers/{subuser_name}/stats/monthly'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)

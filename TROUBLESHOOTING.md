@@ -73,16 +73,22 @@ To read the error message returned by SendGrid's API:
   content = new helper.Content("text/plain", "Hello, Email!")
   mail = new helper.Mail(from_email, subject, to_email, content)
 
-  var sg = require('sendgrid').SendGrid(process.env.SENDGRID_API_KEY)
+  var sg = require('sendgrid')(process.env.SENDGRID_API_KEY)
   var requestBody = mail.toJSON()
   var request = sg.emptyRequest()
   request.method = 'POST'
   request.path = '/v3/mail/send'
   request.body = requestBody
-  sg.API(request, function (response) {
-    console.log(response.statusCode)
-    console.log(response.body)
-    console.log(response.headers)
+  sg.API(request, function (error, response) {
+    
+    if(error) {
+      console.log(error.message);
+      console.log(error.response.statusCode);
+      console.log(error.response.body);
+      console.log(error.response.headers);
+    } else {
+      console.log(response);
+    }
   })
 ```
 

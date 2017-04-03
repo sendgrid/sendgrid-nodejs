@@ -1,6 +1,144 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [5.0] - 2017-03-31 ##
+### BREAKING CHANGE
+- Pull #328
+- Drop 0.10, 0.12 from supported Node.js versions, add 6
+- Thanks to [Mike Ralphson](https://github.com/MikeRalphson) for the PR!
+
+## [4.10] - 2017-03-30 ##
+### Added
+- Pull #303
+- Add Inbound Parse data parser
+- Thanks to [Jamie](https://github.com/jamsinclair) for the PR!
+
+## [4.9] - 2017-03-28 ##
+### Added
+- Pull #371
+- Catch error in sendgrid, partially solves #370
+- Thanks to [gf](https://github.com/furstenheim) for the PR!
+
+## [4.8.4] - 2017-03-14 ##
+### Fixed
+- Pull #348
+- Fix typescript definition for the ClickTracking
+- Thanks to [dhenriques](https://github.com/dhenriques) for the PR!
+
+## [4.8.3] - 2017-03-14 ##
+### Fixed
+- Pull #368, Fixes #367
+- Personalization.getSubstitutions() return type incorrect in index.d.ts TypeScript definition file
+- Thanks to [Brian Love](https://github.com/blove) for the PR!
+
+## [4.8.2] - 2017-03-14 ##
+### Fixed
+- Pull #338
+- Fix function name in mail helper and fix the corresponding test
+- Thanks to [Seoker Wang](https://github.com/seoker) for the PR!
+
+## [4.8.1] - 2017-03-13 ##
+### Fixed
+- Pull #354
+- fix: Make various TypeScript request components optional
+- Thanks to [Benjamin Pannell](https://github.com/SPARTAN563) for the PR!
+
+## [4.8.0] - 2017-03-10 ##
+### Added
+- Pull #333
+- [TypeDefinition] SendGrid.API should return Promise<T> instead of PromiseLike<T>
+- Thanks to [Ayman Nedjmeddine](https://github.com/IOAyman) for the PR!
+
+## [4.7.1] - 2016-10-25 ##
+### Added
+- Pull #329
+- Simplified installation instructions
+- Thanks to [Heitor Tashiro Sergent](https://github.com/heitortsergent) for the PR!
+
+## [4.7.0] - 2016-10-14 ##
+### Added
+- Pull #323, Fixed issue #317
+- Updates nodejs-http-client dependency to [v2.3.0](https://github.com/sendgrid/nodejs-http-client/releases/tag/v2.3.0)
+- Invoke the API callback with a mocked response upon Error
+- Thanks to [Huli](https://github.com/aszx87410) for the PR!
+
+## [4.6.0] - 2016-10-13 ##
+### Added
+- Pull #319, Fixed issue #266
+- Converts `response.body` to have valid json objects
+- Thanks to [Hugo Durães](https://github.com/hugoduraes) for the pull request!
+
+## [4.5.0] - 2016-10-05 ##
+## Added
+- Pull #308 [feat: Add support for promises to the TypeScript definitions file](https://github.com/sendgrid/sendgrid-nodejs/pull/308)
+- Thanks to [Benjamin Pannell](https://github.com/SPARTAN563) for the pull request!
+
+## [4.4.1] - 2016-09-27 ##
+## Fixed
+- Pull #309 [Allow emptyRequest() to be called with a request object](https://github.com/sendgrid/sendgrid-nodejs/pull/309)
+- Thanks to [Benjamin Pannell](https://github.com/SPARTAN563) for the fix!
+
+## [4.4.0] - 2016-09-27 ##
+## Added
+- Pull #299: [Fill 'response' property in error instance](https://github.com/sendgrid/sendgrid-nodejs/pull/299)
+- This makes the behavior when using callbacks consistent with the promise counterpart.
+That is, in both cases, error.response is present
+- Thanks to [Guilherme Souza](https://github.com/sitegui) for the pull request!
+
+## [4.3.1] - 2016-09-27 ##
+## Fixed
+- Pull #300: [Correct TypeScript definitions](https://github.com/sendgrid/sendgrid-nodejs/pull/300)
+- Thanks to [Benjamin Pannell](https://github.com/SPARTAN563) for the fix!
+
+## [4.3.0] - 2016-09-15 ##
+## Added
+- Pull #251: [Add TypeScript typings definition file for v3 API](https://github.com/sendgrid/sendgrid-nodejs/pull/251)
+- Thanks to [Benjamin Pannell](https://github.com/SPARTAN563) for the pull request!
+
+## [4.2.1] - 2016-09-15 ##
+### Fixed
+- Issue #292: [4.2.0 Error: Cannot find module 'debug'](https://github.com/sendgrid/sendgrid-nodejs/issues/292)
+
+## [4.2.0] - 2016-09-14 ##
+### Added
+- Pull Request #278: [Tkp/contact importer](https://github.com/sendgrid/sendgrid-nodejs/pull/278)
+- Thanks to [Tom Kirkpatrick](https://github.com/mrfelton) for the pull request!
+
+## [4.1.0] - 2016-09-09 ##
+### Added
+- Pull Request #277: [Make SendGrid a factory that enables multiple prototype instances](https://github.com/sendgrid/sendgrid-nodejs/pull/277)
+- Thanks to [Tom Kirkpatrick](https://github.com/mrfelton) for the pull request!
+
+## [4.0.2] - 2016-08-24 ##
+### Added
+- Table of Contents in the README
+- Added a [USE_CASES.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/USE_CASES.md) section, with the first use case example for transactional templates
+
+## [4.0.1] - 2016-08-02 ##
+### Fixed
+- Pull request [#264](https://github.com/sendgrid/sendgrid-nodejs/pull/264): Fixed backwards compatability with Node.js versions 0.10 and 0.12
+- Use var instead of let
+- Check if Promise is defined
+
+## [4.0.0] - 2016-08-02 ##
+### Breaking Change
+- Pull request [#261](https://github.com/sendgrid/sendgrid-nodejs/pull/261)
+- BIG THANKS to [Adam Buczynski](https://github.com/adambuczynski)!!!
+
+### Fixed
+- Issue [#240](https://github.com/sendgrid/sendgrid-nodejs/issues/240)
+- Issue [#246](https://github.com/sendgrid/sendgrid-nodejs/issues/246)
+- Issue [#206](https://github.com/sendgrid/sendgrid-nodejs/issues/206)
+
+### Added
+- Extracted some logic into helpers
+- Using a getEmptyRequest helper to avoid code duplication
+- emtpyRequest now accepts an object with data to extend the empty request with, this will allow simpler syntax for initializing requests.
+- Callback function now receives two parameters as per Node conventions (error, response)
+- If no callback provided, the method will return a promise instead.
+- Implemented promise API when not passing a callback function
+- Using native Promise by default if present, but allow users to override this with any other implementation by setting Sendgrid.Promise to any value, e.g. Sendgrid.Promise = require('bluebird')
+
 ## [3.0.11] - 2016-07-26 ##
 ### Added
 - [Troubleshooting](https://github.com/sendgrid/sendgrid-python/blob/master/TROUBLESHOOTING.md) section

@@ -1,4 +1,4 @@
-var sg = require('sendgrid').SendGrid(process.env.SENDGRID_API_KEY)
+var sg = require('sendgrid')(process.env.SENDGRID_API_KEY)
 
 ///////////////////////////////////////////////////
 // Retrieve all recent access attempts
@@ -7,10 +7,10 @@ var sg = require('sendgrid').SendGrid(process.env.SENDGRID_API_KEY)
 
 var request = sg.emptyRequest()
 request.queryParams["limit"] = '1'
- 
+
 request.method = 'GET'
 request.path = '/v3/access_settings/activity'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -26,10 +26,10 @@ request.body = {
   "ips": [
     {
       "ip": "192.168.1.1"
-    }, 
+    },
     {
       "ip": "192.*.*.*"
-    }, 
+    },
     {
       "ip": "192.168.1.3/32"
     }
@@ -37,7 +37,7 @@ request.body = {
 };
 request.method = 'POST'
 request.path = '/v3/access_settings/whitelist'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -51,7 +51,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/access_settings/whitelist'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -65,14 +65,14 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.body = {
   "ids": [
-    1, 
-    2, 
+    1,
+    2,
     3
   ]
 };
 request.method = 'DELETE'
 request.path = '/v3/access_settings/whitelist'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -86,7 +86,7 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'GET'
 request.path = '/v3/access_settings/whitelist/{rule_id}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
@@ -100,9 +100,8 @@ sg.API(request, function (response) {
 var request = sg.emptyRequest()
 request.method = 'DELETE'
 request.path = '/v3/access_settings/whitelist/{rule_id}'
-sg.API(request, function (response) {
+sg.API(request, function (error, response) {
   console.log(response.statusCode)
   console.log(response.body)
   console.log(response.headers)
 })
-

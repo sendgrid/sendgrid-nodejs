@@ -7,32 +7,44 @@
     "Brandon West <brandon.west@sendgrid.com>",
     "Scott Motte <scott.motte@sendgrid.com>",
     "Robert Acosta <robert.acosta@sendgrid.com>",
-    "Elmer Thomas <elmer.thomas@sendgrid.com>"
+    "Elmer Thomas <elmer.thomas@sendgrid.com>",
+    "Adam Buczynski <me@adambuczynski.com>"
   ],
   "name": "sendgrid",
   "description": "Official SendGrid NodeJS library.",
-  "version": "3.0.11",
+  "version": "5.0.0",
   "homepage": "https://sendgrid.com",
   "repository": {
     "type": "git",
     "url": "git://github.com/sendgrid/sendgrid-nodejs.git"
   },
   "engines": {
-    "node": ">= 0.4.7"
+    "node": ">= 4.0.0"
   },
   "dependencies": {
-    "sendgrid-rest": "^2.2.1"
+    "async.ensureasync": "^0.5.2",
+    "async.queue": "^0.5.2",
+    "bottleneck": "^1.12.0",
+    "debug": "^2.2.0",
+    "lodash.chunk": "^4.2.0",
+    "mailparser": "^0.6.1",
+    "sendgrid-rest": "^2.3.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "eslint": "^2.7.0",
-    "eslint-config-standard": "^5.1.0",
-    "eslint-plugin-standard": "^1.3.2",
-    "mocha": "^2.4.5"
+    "eslint": "^3.1.0",
+    "mocha": "^2.4.5",
+    "mocha-sinon": "^1.1.5",
+    "sinon": "^1.17.5",
+    "sinon-chai": "^2.8.0",
+    "typescript": "^2.0.0"
   },
   "scripts": {
-    "test": "mocha"
+    "lint": "eslint . --fix",
+    "test": "mocha",
+    "test:typescript": "tsc"
   },
+  "typings": "index.d.ts",
   "tags": [
     "http",
     "rest",

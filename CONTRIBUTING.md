@@ -51,7 +51,7 @@ Before you decide to create a new issue, please try the following:
 
 ### Please use our Bug Report Template
 
-In order to make the process easier, we've included a [sample bug report template](https://github.com/sendgrid/sendgrid-nodejs/.github/ISSUE_TEMPLATE) (borrowed from [Ghost](https://github.com/TryGhost/Ghost/)). The template uses [GitHub flavored markdown](https://help.github.com/articles/github-flavored-markdown/) for formatting.
+In order to make the process easier, we've included a [sample bug report template](https://github.com/sendgrid/sendgrid-nodejs/blob/master/.github/ISSUE_TEMPLATE) (borrowed from [Ghost](https://github.com/TryGhost/Ghost/)). The template uses [GitHub flavored markdown](https://help.github.com/articles/github-flavored-markdown/) for formatting.
 
 <a name="improvements_to_the_codebase"></a>
 ## Improvements to the Codebase
@@ -64,7 +64,7 @@ We welcome direct contributions to the sendgrid-nodejs code base. Thank you!
 
 ##### Prerequisites #####
 
-- Node.js version 0.10, 0.12 or 4
+- Node.js version 4 or 6
 - Please see [package.json](https://github.com/sendgrid/sendgrid-nodejs/tree/master/package.json)
 
 ##### Initial setup: #####
@@ -72,6 +72,7 @@ We welcome direct contributions to the sendgrid-nodejs code base. Thank you!
 ```bash
 git clone https://github.com/sendgrid/sendgrid-nodejs.git
 cd sendgrid-nodejs
+npm install
 ```
 
 ## Environment Variables
@@ -129,6 +130,16 @@ All test files are in the [`tests`](https://github.com/sendgrid/sendgrid-nodejs/
 For the purposes of contributing to this repo, please update the [`test.js`](https://github.com/sendgrid/sendgrid-nodejs/tree/master/test/test.js) file with unit tests as you modify the code.
 
 To run the tests:
+
+First, we need to setup a local mocked SendGrid API server.
+
+Install StopLight.io's [Prism](https://stoplight.io/platform/prism/).
+
+```bash
+./prism run --mock --list --spec https://raw.githubusercontent.com/sendgrid/sendgrid-oai/master/oai_stoplight.json
+```
+
+Now we can run the tests at the root of the `sendgrid-nodejs` repo:
 
 ```bash
 mocha
