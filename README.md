@@ -191,7 +191,7 @@ sg.API(request, function (error, response) {
 - [How-to: Migration from v2 to v3](https://sendgrid.com/docs/Classroom/Send/v3_Mail_Send/how_to_migrate_from_v2_to_v3_mail_send.html)
 - [v3 Web API Mail Send Helper](https://github.com/sendgrid/sendgrid-nodejs/tree/master/lib/helpers/mail/README.md)
 
-<a name="use_cases">
+<a name="use_cases"></a>
 # Use Cases
 
 [Examples of common API use cases](https://github.com/sendgrid/sendgrid-nodejs/blob/master/USE_CASES.md), such as how to send an email with a transactional template.
@@ -229,5 +229,4 @@ sendgrid-nodejs is guided and supported by the SendGrid [Developer Experience Te
 
 sendgrid-nodejs is maintained and funded by SendGrid, Inc. The names and logos for sendgrid-nodejs are trademarks of SendGrid, Inc.
 
-![SendGrid Logo]
-(https://uiux.s3.amazonaws.com/2016-logos/email-logo%402x.png)
+![SendGrid Logo](https://uiux.s3.amazonaws.com/2016-logos/email-logo%402x.png)
