@@ -65,21 +65,21 @@ The following is the minimum needed code to send an email with the [/mail/send H
 ### With Mail Helper Class
 
 ```javascript
-let helper = require('sendgrid').mail;
-let fromEmail = new helper.Email('test@example.com');
-let toEmail = new helper.Email('test@example.com');
-let subject = 'Hello World from the SendGrid Node.js Library!';
-let content = new helper.Content('text/plain', 'Hello, Email!');
-let mail = new helper.Mail(fromEmail, subject, toEmail, content);
+var helper = require('sendgrid').mail;
+var fromEmail = new helper.Email('test@example.com');
+var toEmail = new helper.Email('test@example.com');
+var subject = 'Hello World from the SendGrid Node.js Library!';
+var content = new helper.Content('text/plain', 'Hello, Email!');
+var mail = new helper.Mail(fromEmail, subject, toEmail, content);
 
-let sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
-let request = sg.emptyRequest({
+var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
+var request = sg.emptyRequest({
   method: 'POST',
   path: '/v3/mail/send',
   body: mail.toJSON()
 });
 
-sg.API(request, (error, response) => {
+sg.API(request, function (error, response) {
   if (error) {
     console.log('Error response received');
   }
@@ -96,8 +96,8 @@ The `Mail` constructor creates a [personalization object](https://sendgrid.com/d
 The following is the minimum needed code to send an email without the /mail/send Helper ([here](https://github.com/sendgrid/sendgrid-nodejs/blob/master/examples/mail/mail.js#L31) is a full example):
 
 ```javascript
-let sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
-let request = sg.emptyRequest({
+var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
+var request = sg.emptyRequest({
   method: 'POST',
   path: '/v3/mail/send',
   body: {
@@ -125,19 +125,19 @@ let request = sg.emptyRequest({
 
 // With promise
 sg.API(request)
-  .then(response => {
+  .then(function (response) {
     console.log(response.statusCode);
     console.log(response.body);
     console.log(response.headers);
   })
-  .catch(error => {
+  .catch(function (error) {
     // error is an instance of SendGridError
     // The full response is attached to error.response
     console.log(error.response.statusCode);
   });
 
 // With callback
-sg.API(request, (error, response) => {
+sg.API(request, function (error, response) {
   if (error) {
     console.log('Error response received');
   }
@@ -150,29 +150,29 @@ sg.API(request, (error, response) => {
 ## General v3 Web API Usage
 
 ```javascript
-let sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
+var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
 
 // GET Collection
-let request = sg.emptyRequest({
+var request = sg.emptyRequest({
   method: 'GET',
   path: '/v3/api_keys'
 });
 
 // With promise
 sg.API(request)
-  .then(response => {
+  .then(function (response) {
     console.log(response.statusCode);
     console.log(response.body);
     console.log(response.headers);
   })
-  .catch(error => {
+  .catch(function (error) {
     // error is an instance of SendGridError
     // The full response is attached to error.response
     console.log(error.response.statusCode);
   });
 
 // With callback
-sg.API(request, (error, response) => {
+sg.API(request, function (error, response) {
   if (error) {
     console.log('Error response received');
   }
