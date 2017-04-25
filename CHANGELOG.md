@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [5.0.1] - 2017-04-24 ##
+### Fixed
+- Pull #385
+- Remove JSON.parse() around response bodies in contact-importer
+- Thanks to [Eemeli Aro](https://github.com/eemeli) for the PR!
+
 ## [5.0] - 2017-03-31 ##
 ### BREAKING CHANGE
 - Pull #328
