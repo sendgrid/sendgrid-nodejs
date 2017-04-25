@@ -66,20 +66,23 @@ The following is the minimum needed code to send an email with the [/mail/send H
 
 ```javascript
 var helper = require('sendgrid').mail;
-var from_email = new helper.Email('test@example.com');
-var to_email = new helper.Email('test@example.com');
+var fromEmail = new helper.Email('test@example.com');
+var toEmail = new helper.Email('test@example.com');
 var subject = 'Hello World from the SendGrid Node.js Library!';
 var content = new helper.Content('text/plain', 'Hello, Email!');
-var mail = new helper.Mail(from_email, subject, to_email, content);
+var mail = new helper.Mail(fromEmail, subject, toEmail, content);
 
 var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
 var request = sg.emptyRequest({
   method: 'POST',
   path: '/v3/mail/send',
-  body: mail.toJSON(),
+  body: mail.toJSON()
 });
 
-sg.API(request, function(error, response) {
+sg.API(request, function (error, response) {
+  if (error) {
+    console.log('Error response received');
+  }
   console.log(response.statusCode);
   console.log(response.body);
   console.log(response.headers);
@@ -102,39 +105,39 @@ var request = sg.emptyRequest({
       {
         to: [
           {
-            email: 'test@example.com',
-          },
+            email: 'test@example.com'
+          }
         ],
-        subject: 'Hello World from the SendGrid Node.js Library!',
-      },
+        subject: 'Hello World from the SendGrid Node.js Library!'
+      }
     ],
     from: {
-      email: 'test@example.com',
+      email: 'test@example.com'
     },
     content: [
       {
         type: 'text/plain',
-        value: 'Hello, Email!',
-      },
-    ],
-  },
+        value: 'Hello, Email!'
+      }
+    ]
+  }
 });
 
-//With promise
+// With promise
 sg.API(request)
-  .then(response => {
+  .then(function (response) {
     console.log(response.statusCode);
     console.log(response.body);
     console.log(response.headers);
   })
-  .catch(error => {
-    //error is an instance of SendGridError
-    //The full response is attached to error.response
+  .catch(function (error) {
+    // error is an instance of SendGridError
+    // The full response is attached to error.response
     console.log(error.response.statusCode);
   });
 
-//With callback
-sg.API(request, function(error, response) {
+// With callback
+sg.API(request, function (error, response) {
   if (error) {
     console.log('Error response received');
   }
@@ -147,7 +150,7 @@ sg.API(request, function(error, response) {
 ## General v3 Web API Usage
 
 ```javascript
-var sg = require('sendgrid')(process.env.SENDGRID_API_KEY)
+var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
 
 // GET Collection
 var request = sg.emptyRequest({
@@ -155,28 +158,28 @@ var request = sg.emptyRequest({
   path: '/v3/api_keys'
 });
 
-//With promise
+// With promise
 sg.API(request)
-  .then(response => {
-    console.log(response.statusCode)
-    console.log(response.body)
-    console.log(response.headers)
+  .then(function (response) {
+    console.log(response.statusCode);
+    console.log(response.body);
+    console.log(response.headers);
   })
-  .catch(error => {
-    //error is an instance of SendGridError
-    //The full response is attached to error.response
+  .catch(function (error) {
+    // error is an instance of SendGridError
+    // The full response is attached to error.response
     console.log(error.response.statusCode);
   });
 
-//With callback
-sg.API(request, function(error, response) {
+// With callback
+sg.API(request, function (error, response) {
   if (error) {
     console.log('Error response received');
   }
-  console.log(response.statusCode)
-  console.log(response.body)
-  console.log(response.headers)
-})
+  console.log(response.statusCode);
+  console.log(response.body);
+  console.log(response.headers);
+});
 ```
 
 <a name="usage"></a>
@@ -188,7 +191,7 @@ sg.API(request, function(error, response) {
 - [How-to: Migration from v2 to v3](https://sendgrid.com/docs/Classroom/Send/v3_Mail_Send/how_to_migrate_from_v2_to_v3_mail_send.html)
 - [v3 Web API Mail Send Helper](https://github.com/sendgrid/sendgrid-nodejs/tree/master/lib/helpers/mail/README.md)
 
-<a name="use_cases">
+<a name="use_cases"></a>
 # Use Cases
 
 [Examples of common API use cases](https://github.com/sendgrid/sendgrid-nodejs/blob/master/USE_CASES.md), such as how to send an email with a transactional template.
@@ -226,5 +229,4 @@ sendgrid-nodejs is guided and supported by the SendGrid [Developer Experience Te
 
 sendgrid-nodejs is maintained and funded by SendGrid, Inc. The names and logos for sendgrid-nodejs are trademarks of SendGrid, Inc.
 
-![SendGrid Logo]
-(https://uiux.s3.amazonaws.com/2016-logos/email-logo%402x.png)
+![SendGrid Logo](https://uiux.s3.amazonaws.com/2016-logos/email-logo%402x.png)
