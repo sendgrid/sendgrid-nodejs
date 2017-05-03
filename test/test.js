@@ -44,11 +44,7 @@ before(function() {
 describe('test_access_settings_activity_get', function () {
   this.timeout(TEST_TIMEOUT_MS);
   var API_KEY = 'SendGrid API Key'
-  if(process.env.TRAVIS) {
-    var TEST_HOST = process.env.MOCK_HOST
-  } else {
-    var TEST_HOST = 'localhost'
-  }
+  var TEST_HOST = 'localhost'
 
   var sg = sendgrid(API_KEY, TEST_HOST)
 
