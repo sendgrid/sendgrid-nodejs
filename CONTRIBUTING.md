@@ -64,7 +64,7 @@ We welcome direct contributions to the sendgrid-nodejs code base. Thank you!
 
 ##### Prerequisites #####
 
-- Node.js version 4 or 6
+- Node.js version 4, 6 or 7
 - Please see [package.json](https://github.com/sendgrid/sendgrid-nodejs/tree/master/package.json)
 
 ##### Initial setup: #####
@@ -129,17 +129,7 @@ All test files are in the [`tests`](https://github.com/sendgrid/sendgrid-nodejs/
 
 For the purposes of contributing to this repo, please update the [`test.js`](https://github.com/sendgrid/sendgrid-nodejs/tree/master/test/test.js) file with unit tests as you modify the code.
 
-To run the tests:
-
-First, we need to setup a local mocked SendGrid API server.
-
-Install StopLight.io's [Prism](https://stoplight.io/platform/prism/).
-
-```bash
-./prism run --mock --list --spec https://raw.githubusercontent.com/sendgrid/sendgrid-oai/master/oai_stoplight.json
-```
-
-Now we can run the tests at the root of the `sendgrid-nodejs` repo:
+Run the tests at the root of the `sendgrid-nodejs` repo:
 
 ```bash
 mocha
