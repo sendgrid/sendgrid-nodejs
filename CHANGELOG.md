@@ -1,6 +1,66 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [5.0.1] - 2017-04-24 ##
+### Fixed
+- Pull #385
+- Remove JSON.parse() around response bodies in contact-importer
+- Thanks to [Eemeli Aro](https://github.com/eemeli) for the PR!
+
+## [5.0] - 2017-03-31 ##
+### BREAKING CHANGE
+- Pull #328
+- Drop 0.10, 0.12 from supported Node.js versions, add 6
+- Thanks to [Mike Ralphson](https://github.com/MikeRalphson) for the PR!
+
+## [4.10] - 2017-03-30 ##
+### Added
+- Pull #303
+- Add Inbound Parse data parser
+- Thanks to [Jamie](https://github.com/jamsinclair) for the PR!
+
+## [4.9] - 2017-03-28 ##
+### Added
+- Pull #371
+- Catch error in sendgrid, partially solves #370
+- Thanks to [gf](https://github.com/furstenheim) for the PR!
+
+## [4.8.4] - 2017-03-14 ##
+### Fixed
+- Pull #348
+- Fix typescript definition for the ClickTracking
+- Thanks to [dhenriques](https://github.com/dhenriques) for the PR!
+
+## [4.8.3] - 2017-03-14 ##
+### Fixed
+- Pull #368, Fixes #367
+- Personalization.getSubstitutions() return type incorrect in index.d.ts TypeScript definition file
+- Thanks to [Brian Love](https://github.com/blove) for the PR!
+
+## [4.8.2] - 2017-03-14 ##
+### Fixed
+- Pull #338
+- Fix function name in mail helper and fix the corresponding test
+- Thanks to [Seoker Wang](https://github.com/seoker) for the PR!
+
+## [4.8.1] - 2017-03-13 ##
+### Fixed
+- Pull #354
+- fix: Make various TypeScript request components optional
+- Thanks to [Benjamin Pannell](https://github.com/SPARTAN563) for the PR!
+
+## [4.8.0] - 2017-03-10 ##
+### Added
+- Pull #333
+- [TypeDefinition] SendGrid.API should return Promise<T> instead of PromiseLike<T>
+- Thanks to [Ayman Nedjmeddine](https://github.com/IOAyman) for the PR!
+
+## [4.7.1] - 2016-10-25 ##
+### Added
+- Pull #329
+- Simplified installation instructions
+- Thanks to [Heitor Tashiro Sergent](https://github.com/heitortsergent) for the PR!
+
 ## [4.7.0] - 2016-10-14 ##
 ### Added
 - Pull #323, Fixed issue #317

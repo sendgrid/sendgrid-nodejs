@@ -119,17 +119,17 @@ declare namespace SendGrid.Helpers.Mail {
     }
 
     export class ClickTracking {
-        constructor(enable: boolean, enableText: string);
+        constructor(enable: boolean, enableText: boolean);
 
         getEnable(): boolean;
         setEnable(enabled: boolean): void;
 
-        getEnableText(): string;
-        setEnableText(enableText: string): void;
+        getEnableText(): boolean;
+        setEnableText(enableText: boolean): void;
 
         toJSON(): {
             enable: boolean;
-            enable_text: string;
+            enable_text: boolean;
         };
     }
 
@@ -406,7 +406,7 @@ declare namespace SendGrid.Helpers.Mail {
         getHeaders(): Header[];
 
         addSubstitution(substitution: Substitution): void;
-        getSubstitutions(): Substitution[];
+        getSubstitutions(): {[key: string]: string};
 
         addCustomArg(substitution: CustomArgs): void;
         getCustomArgs(): CustomArgs[];
@@ -431,18 +431,18 @@ declare namespace SendGrid.Rest {
     export const emptyRequest: Request;
 
     interface Request {
-        host: string;
+        host?: string;
         method: "GET" | "PATCH" | "POST" | "PUT" | "DELETE";
         path: string;
-        headers: {
+        headers?: {
             [header: string]: string|number;
         };
-        body: string | {};
-        queryParams: {
+        body?: string | {};
+        queryParams?: {
             [param: string]: string;
         };
-        test: boolean;
-        port: string|number;
+        test?: boolean;
+        port?: string|number;
     }
 
     interface Response {
@@ -466,7 +466,7 @@ declare namespace SendGrid {
         emptyRequest(data?: SendGrid.Rest.Request): SendGrid.Rest.Request;
 
         API(request: SendGrid.Rest.Request, callback: (response: SendGrid.Rest.Response) => void): void;
-        API(request: SendGrid.Rest.Request): PromiseLike<SendGrid.Rest.Response>;
+        API(request: SendGrid.Rest.Request): Promise<SendGrid.Rest.Response>;
     }
 }
 

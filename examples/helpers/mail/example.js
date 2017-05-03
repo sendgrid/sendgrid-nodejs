@@ -107,6 +107,8 @@ function kitchenSink(){
   mail_settings = new helper.MailSettings()
   bcc = new helper.Bcc(true, "test@example.com")
   mail_settings.setBcc(bcc)
+  bypass_list_management = new helper.BypassListManagement(false)
+  mail_settings.setBypassListManagement(bypass_list_management)
   footer = new helper.Footer(true, "some footer text", "<html><body>some footer text</body></html>")
   mail_settings.setFooter(footer)
   sandbox_mode = new helper.SandBoxMode(true)

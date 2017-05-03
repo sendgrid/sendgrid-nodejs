@@ -12,14 +12,14 @@
   ],
   "name": "sendgrid",
   "description": "Official SendGrid NodeJS library.",
-  "version": "4.7.0",
+  "version": "5.0.1",
   "homepage": "https://sendgrid.com",
   "repository": {
     "type": "git",
     "url": "git://github.com/sendgrid/sendgrid-nodejs.git"
   },
   "engines": {
-    "node": ">= 0.4.7"
+    "node": ">= 4.0.0"
   },
   "dependencies": {
     "async.ensureasync": "^0.5.2",
@@ -27,6 +27,7 @@
     "bottleneck": "^1.12.0",
     "debug": "^2.2.0",
     "lodash.chunk": "^4.2.0",
+    "mailparser": "^0.6.1",
     "sendgrid-rest": "^2.3.0"
   },
   "devDependencies": {

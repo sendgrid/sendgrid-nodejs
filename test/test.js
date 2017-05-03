@@ -4698,9 +4698,9 @@ describe('test_suppression_spam_report__email__get', function () {
     request.port = 4010
   }
   request.method = 'GET'
-  request.path = '/v3/suppression/spam_report/{email}'
+  request.path = '/v3/suppression/spam_reports/{email}'
   request.headers['X-Mock'] = 200
-  it('test_suppression_spam_report__email__get had the correct response code', function(done) {
+  it('test_suppression_spam_reports__email__get had the correct response code', function(done) {
     sg.API(request, function (error, response) {
       assert.equal(response.statusCode, 200, 'response code is not correct')
       done();
