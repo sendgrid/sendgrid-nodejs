@@ -37,6 +37,7 @@
     "mocha-sinon": "^1.1.5",
     "sinon": "^1.17.5",
     "sinon-chai": "^2.8.0",
+    "system-sleep": "^1.0.0-g",
     "typescript": "^2.0.0"
   },
   "scripts": {
