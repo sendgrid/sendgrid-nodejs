@@ -30,7 +30,7 @@ We appreciate your continued support, thank you!
 
 ## Prerequisites
 
-- Node.js version 4 or 6
+- Node.js version 4, 6 or 7
 - The SendGrid service, starting at the [free level](https://sendgrid.com/free?source=sendgrid-nodejs)
 
 ## Setup Environment Variables
