@@ -68,8 +68,8 @@ The following is the minimum needed code to send an email with the [/mail/send H
 var helper = require('sendgrid').mail;
 var fromEmail = new helper.Email('test@example.com');
 var toEmail = new helper.Email('test@example.com');
-var subject = 'Hello World from the SendGrid Node.js Library!';
-var content = new helper.Content('text/plain', 'Hello, Email!');
+var subject = 'Sending with SendGrid is Fun';
+var content = new helper.Content('text/plain', 'and easy to do anywhere, even with Node.js');
 var mail = new helper.Mail(fromEmail, subject, toEmail, content);
 
 var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
@@ -108,7 +108,7 @@ var request = sg.emptyRequest({
             email: 'test@example.com'
           }
         ],
-        subject: 'Hello World from the SendGrid Node.js Library!'
+        subject: 'Sending with SendGrid is Fun'
       }
     ],
     from: {
@@ -117,7 +117,7 @@ var request = sg.emptyRequest({
     content: [
       {
         type: 'text/plain',
-        value: 'Hello, Email!'
+        value: 'and easy to do anywhere, even with Node.js'
       }
     ]
   }
