@@ -1,6 +1,19 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [5.2.0] - 2017-05-3 ##
+### Added
+- Pull #325
+- Run prism for tests
+- Now the mock SendGrid server, powered by [Prism](https://stoplight.io/platform/prism/) is automated locally and on Travis
+- Thanks to [Mike Ralphson](https://github.com/MikeRalphson) for the PR!
+
+## [5.0.1] - 2017-04-24 ##
+### Fixed
+- Pull #385
+- Remove JSON.parse() around response bodies in contact-importer
+- Thanks to [Eemeli Aro](https://github.com/eemeli) for the PR!
+
 ## [5.0] - 2017-03-31 ##
 ### BREAKING CHANGE
 - Pull #328
