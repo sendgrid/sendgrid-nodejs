@@ -3,7 +3,7 @@
  * Dependencies
  */
 const client = require('@sendgrid/client');
-const Mail = require('./classes/mail');
+const {Mail} = require('@sendgrid/mail-helpers');
 
 /**
  * Mail service class
