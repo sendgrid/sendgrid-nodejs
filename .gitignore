@@ -1,11 +1,6 @@
-node_modules/
-npm-debug.log
 .DS_Store
+node_modules/
 test/config.js
-.env.test
-.env.development
-.env.production
-.env.staging
-.env
-temp.js
+.env*
+*.log
 .vscode/
