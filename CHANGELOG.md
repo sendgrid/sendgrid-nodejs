@@ -1,7 +1,13 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## [5.2.0] - 2017-05-3 ##
+## [5.1.1] - 2017-06-1 ##
+### Added
+- Pull #391
+- Return personalizations as an array of request compatible JSON.
+- Thanks to [Paul Hrimiuc](https://github.com/hpaul) for the PR!
+
+## [5.1.0] - 2017-05-3 ##
 ### Added
 - Pull #325
 - Run prism for tests
