@@ -1,6 +1,4 @@
-var ContactImporter = require('.importer');
-var sendgrid = require('../../../');
-
+var ContactImporter = require('../../packages/importer');
 
 describe.only('test_contact_importer', function() {
   beforeEach(function() {

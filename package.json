@@ -8,20 +8,26 @@
     "url": "git://github.com/sendgrid/sendgrid-nodejs.git"
   },
   "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
     "chai": "^4.0.1",
+    "chai-as-promised": "^6.0.0",
     "dirty-chai": "^1.2.2",
     "eslint": "^3.19.0",
+    "istanbul": "^1.0.0-alpha.2",
     "lerna": "^2.0.0-rc.5",
     "mocha": "^3.4.2",
     "mocha-clean": "^1.0.0",
     "mocha-sinon": "^2.0.0",
     "sinon": "^2.3.2",
-    "sinon-as-promised": "^4.0.3",
     "sinon-chai": "^2.10.0",
     "system-sleep": "^1.3.5"
   },
   "scripts": {
     "lint": "eslint . --fix",
-    "test": "mocha"
+    "test:all": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"test/**/*.spec.js\"",
+    "test:mail": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"test/mail/*.spec.js\"",
+    "test": "npm run test:all -s",
+    "coverage": "open -a \"Google Chrome\" ./coverage/lcov-report/index.html"
   }
 }

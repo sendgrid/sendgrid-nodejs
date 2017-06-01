@@ -13,7 +13,7 @@ class Personalization {
 	/**
 	 * Constructor
 	 */
-  construct(to, substitutions = {}) {
+  constructor(to, substitutions = {}) {
     this.setTo(to);
     if (substitutions) {
       this.setSubstitutions(substitutions);

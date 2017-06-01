@@ -15,7 +15,7 @@ class Client {
   /**
    * Constructor
    */
-  construct() {
+  constructor() {
 
     //API key
     this.apiKey = '';

@@ -13,7 +13,7 @@ class MailService {
 	/**
 	 * Constructor
 	 */
-  construct() {
+  constructor() {
     this.client = client;
   }
 

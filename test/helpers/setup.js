@@ -1,19 +1,15 @@
 'use strict';
 
 //Load dependencies
+const fs = require('fs');
 const chai = require('chai');
 const sinon = require('sinon');
+const sleep = require('system-sleep');
 const dirtyChai = require('dirty-chai');
 const sinonChai = require('sinon-chai');
 const chaiAsPromised = require('chai-as-promised');
-const fs = require('fs');
 const execSync = require('child_process').execSync;
 const spawn = require('child_process').spawn;
-const sleep = require('system-sleep');
-
-//Load sinon extensions
-require('sinon-as-promised')(Promise);
-require('mocha-sinon');
 
 //Enable should assertion style for usage with chai-as-promised
 chai.should();
@@ -33,8 +29,13 @@ const TEST_TIMEOUT = 30000;
 const PRISM_SETUP = 2000;
 const PRISM_STARTUP = 20000;
 
+//Load sinon extensions
+require('mocha-sinon');
+
 //Global before
-before(() => {
+before(function() {
+
+  //Set timeout
   this.timeout(Math.max(PRISM_SETUP + PRISM_STARTUP, TEST_TIMEOUT));
 
 	//Check prism exists
@@ -58,13 +59,14 @@ before(() => {
 	//Start prism
   console.log('Activating Prism (~20s)');
   prism = spawn('prism', ['run', '--mock', '--list', '--spec', 'https://raw.githubusercontent.com/sendgrid/sendgrid-oai/master/oai_stoplight.json'], { detached: true });
-  console.log('Prism Started');
   sleep(PRISM_STARTUP);
   prism.stdout.on('data', data => console.log(data.toString()));
   prism.stderr.on('data', data => console.log(data.toString()));
 });
 
 //Global after
-after(() => {
-  prism.kill();
+after(function() {
+  if (prism) {
+    prism.kill();
+  }
 });

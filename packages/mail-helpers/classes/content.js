@@ -8,7 +8,7 @@ class Content {
 	/**
 	 * Constructor
 	 */
-  construct(value = '', type = 'text/html') {
+  constructor(value = '', type = 'text/html') {
     this.setValue(value);
     this.setType(type);
   }

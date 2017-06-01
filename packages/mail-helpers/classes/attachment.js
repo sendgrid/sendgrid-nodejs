@@ -8,7 +8,7 @@ class Attachment {
 	/**
 	 * Constructor
 	 */
-  construct(content, filename, type = '', disposition = '', contentId = '') {
+  constructor(content, filename, type = '', disposition = '', contentId = '') {
     this.setContent(content);
     this.setFilename(filename);
     this.setType(type);

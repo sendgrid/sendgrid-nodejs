@@ -1,6 +1,4 @@
-var Parse = require('./parser.js');
-
-var expect = require('chai').expect;
+var Parse = require('../../packages/parser');
 
 describe('test_parse', function() {
   describe('test_parse_key_values', function() {

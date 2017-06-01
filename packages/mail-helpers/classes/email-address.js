@@ -8,7 +8,7 @@ class EmailAddress {
 	/**
 	 * Constructor
 	 */
-  construct(email, name = '') {
+  constructor(email, name = '') {
     this.setEmail(email);
     this.setName(name);
   }

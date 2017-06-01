@@ -15,7 +15,7 @@ class Mail {
 	/**
 	 * Constructor
 	 */
-  construct() {
+  constructor() {
     this.personalizations = [];
     this.attachments = [];
     this.contents = [];
@@ -358,6 +358,11 @@ class Mail {
     //Already instance of Mail class?
     if (data instanceof Mail) {
       return data;
+    }
+
+    //No object
+    if (!data || typeof data !== 'object') {
+      throw new Error('Invalid data provided');
     }
 
     //Extract properties
