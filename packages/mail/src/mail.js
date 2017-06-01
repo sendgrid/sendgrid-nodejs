@@ -54,19 +54,29 @@ class MailService {
       return promise;
     }
 
-    //Create Mail instance(s) from given data and get JSON body for request
-    const mail = Mail.create(data, isMultiple);
-    const body = mail.toJSON();
+    //Catch sync errors
+    try {
 
-    //Create request
-    const request = {
-      method: 'POST',
-      path: '/v3/mail/send',
-      body,
-    };
+      //Create Mail instance(s) from given data and get JSON body for request
+      const mail = Mail.create(data, isMultiple);
+      const body = mail.toJSON();
 
-    //Send
-    return this.client.request(request, cb);
+      //Create request
+      const request = {
+        method: 'POST',
+        path: '/v3/mail/send',
+        body,
+      };
+
+      //Send
+      return this.client.request(request, cb);
+    }
+    catch (error) {
+      if (cb) {
+        cb(error, null);
+      }
+      return Promise.reject(error);
+    }
   }
 
   /**

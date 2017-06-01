@@ -14,6 +14,14 @@ class Personalization {
 	 * Constructor
 	 */
   constructor(to, substitutions = {}) {
+
+    //Init
+    this.cc = [];
+    this.headers = {};
+    this.customArgs = {};
+    this.substitutions = {};
+
+    //Set
     this.setTo(to);
     if (substitutions) {
       this.setSubstitutions(substitutions);

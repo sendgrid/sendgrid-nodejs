@@ -25,18 +25,13 @@ global.sinon = sinon;
 
 //Helper vars
 let prism;
-const TEST_TIMEOUT = 30000;
-const PRISM_SETUP = 2000;
-const PRISM_STARTUP = 20000;
+const PRISM_STARTUP = 12000;
 
 //Load sinon extensions
 require('mocha-sinon');
 
 //Global before
-before(function() {
-
-  //Set timeout
-  this.timeout(Math.max(PRISM_SETUP + PRISM_STARTUP, TEST_TIMEOUT));
+before(() => {
 
 	//Check prism exists
   if (!fs.existsSync('/usr/local/bin/prism')) {
@@ -57,15 +52,15 @@ before(function() {
   }
 
 	//Start prism
-  console.log('Activating Prism (~20s)');
+  console.log('Activating Prism (~' + (PRISM_STARTUP / 1000) + 's)');
   prism = spawn('prism', ['run', '--mock', '--list', '--spec', 'https://raw.githubusercontent.com/sendgrid/sendgrid-oai/master/oai_stoplight.json'], { detached: true });
-  sleep(PRISM_STARTUP);
   prism.stdout.on('data', data => console.log(data.toString()));
   prism.stderr.on('data', data => console.log(data.toString()));
+	sleep(PRISM_STARTUP);
 });
 
 //Global after
-after(function() {
+after(() => {
   if (prism) {
     prism.kill();
   }

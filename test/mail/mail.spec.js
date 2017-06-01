@@ -5,7 +5,6 @@
  */
 const sgMail = require('../../packages/mail');
 const sgClient = sgMail.client;
-const send = sgMail.send;
 const baseUrl = process.env.MOCK_HOST || 'http://localhost:4010/';
 
 /**
@@ -38,14 +37,13 @@ describe('sgMail.send()', () => {
   };
 
   it('should throw an error when no data provided', () => {
-    return expect(send()).to.eventually.be.rejectedWith(Error);
+    return expect(sgMail.send()).to.eventually.be.rejectedWith(Error);
   });
 
-  it('should send a basic email', done => {
-    send(data)
+  it('should send a basic email', () => {
+    return sgMail.send(data)
       .then(([response, body]) => {
         console.log(response);
-        done();
       });
   });
 });

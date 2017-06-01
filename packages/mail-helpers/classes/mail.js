@@ -32,14 +32,24 @@ class Mail {
    * Set from email
    */
   setFrom(from) {
-    this.from = EmailAddress.create(from);
+    if (from) {
+      this.from = EmailAddress.create(from);
+    }
+    else {
+      this.from = '';
+    }
   }
 
   /**
    * Set reply to
    */
   setReplyTo(replyTo) {
-    this.replyTo = EmailAddress.create(replyTo);
+    if (replyTo) {
+      this.replyTo = EmailAddress.create(replyTo);
+    }
+    else {
+      this.replyTo = '';
+    }
   }
 
   /**

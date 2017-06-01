@@ -28,6 +28,7 @@ class Client {
 
     //Empty default request
     this.defaultRequest = {
+      json: true,
       baseUrl: 'https://api.sendgrid.com/',
       uri: '',
       method: 'GET',

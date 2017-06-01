@@ -18,8 +18,9 @@
     "type": "git",
     "url": "git://github.com/sendgrid/sendgrid-nodejs.git"
   },
+  "main": "src/importer.js",
   "engines": {
-    "node": ">= 6.0.0"
+    "node": ">=6.0.0"
   },
   "dependencies": {
     "async.ensureasync": "^0.5.2",

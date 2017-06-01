@@ -19,8 +19,9 @@
     "type": "git",
     "url": "git://github.com/sendgrid/sendgrid-nodejs.git"
   },
+  "main": "src/mail.js",
   "engines": {
-    "node": ">= 6.0.0"
+    "node": ">=6.0.0"
   },
   "dependencies": {
     "@sendgrid/client": "^6.0.0",
