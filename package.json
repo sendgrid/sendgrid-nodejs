@@ -8,15 +8,16 @@
     "url": "git://github.com/sendgrid/sendgrid-nodejs.git"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "eslint": "^3.1.0",
+    "chai": "^4.0.1",
+    "dirty-chai": "^1.2.2",
+    "eslint": "^3.19.0",
     "lerna": "^2.0.0-rc.5",
-    "mocha": "^2.4.5",
-    "mocha-sinon": "^1.1.5",
-    "sinon": "^1.17.5",
-    "sinon-chai": "^2.8.0",
-    "system-sleep": "^1.0.0-g",
-    "typescript": "^2.0.0"
+    "mocha": "^3.4.2",
+    "mocha-clean": "^1.0.0",
+    "mocha-sinon": "^2.0.0",
+    "sinon": "^2.3.2",
+    "sinon-as-promised": "^4.0.3",
+    "sinon-chai": "^2.10.0"
   },
   "scripts": {
     "lint": "eslint . --fix",
