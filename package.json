@@ -20,11 +20,12 @@
     "mocha-clean": "^1.0.0",
     "mocha-sinon": "^2.0.0",
     "sinon": "^2.3.2",
-    "sinon-chai": "^2.10.0",
-    "system-sleep": "^1.3.5"
+    "sinon-chai": "^2.10.0"
   },
   "scripts": {
     "lint": "eslint . --fix",
+    "prism:install": "curl https://raw.githubusercontent.com/stoplightio/prism/master/install.sh | sh",
+    "prism": "prism run --mock --list --spec https://raw.githubusercontent.com/sendgrid/sendgrid-oai/master/oai_stoplight.json",
     "test:all": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"test/**/*.spec.js\"",
     "test:mail": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"test/mail/*.spec.js\"",
     "test": "npm run test:all -s",

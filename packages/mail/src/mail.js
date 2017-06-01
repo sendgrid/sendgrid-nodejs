@@ -64,7 +64,7 @@ class MailService {
       //Create request
       const request = {
         method: 'POST',
-        path: '/v3/mail/send',
+        url: '/v3/mail/send',
         body,
       };
 
