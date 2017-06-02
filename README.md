@@ -1,6 +1,8 @@
 [![BuildStatus](https://travis-ci.org/sendgrid/sendgrid-nodejs.svg?branch=master)](https://travis-ci.org/sendgrid/sendgrid-nodejs)
 [![npm version](https://badge.fury.io/js/sendgrid.svg)](https://badge.fury.io/js/sendgrid)
 
+Just testing the CLA process
+
 Please see our announcement regarding [breaking changes](https://github.com/sendgrid/sendgrid-nodejs/issues/290). Your support is appreciated!
 
 **This library allows you to quickly and easily use the SendGrid Web API v3 via Node.js.**
