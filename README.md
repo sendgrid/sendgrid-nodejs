@@ -1,3 +1,5 @@
+Testing the GitHub Bot
+
 [![BuildStatus](https://travis-ci.org/sendgrid/sendgrid-nodejs.svg?branch=master)](https://travis-ci.org/sendgrid/sendgrid-nodejs)
 [![npm version](https://badge.fury.io/js/sendgrid.svg)](https://badge.fury.io/js/sendgrid)
 
