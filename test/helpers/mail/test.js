@@ -3,24 +3,13 @@ var assert = require('chai').assert
 // Test the minimum required to send an email
 describe('helloEmail', function () {
   var helper = require('../../../lib/helpers/mail/mail.js')
+  var fromEmail = new helper.Email('test@example.com');
+  var toEmail = new helper.Email('test@example.com');
+  var subject = 'Sending with SendGrid is Fun';
+  var content = new helper.Content('text/plain', 'and easy to do anywhere, even with Node.js');
+  var mail = new helper.Mail(fromEmail, subject, toEmail, content);
 
-  mail = new helper.Mail()
-  email = new helper.Email("test@example.com")
-  mail.setFrom(email)
-
-  personalization = new helper.Personalization()
-  email = new helper.Email("test@example.com")
-  personalization.addTo(email)
-  mail.addPersonalization(personalization)
-
-  mail.setSubject("Hello World from the SendGrid Node.js Library")
-
-  content = new helper.Content("text/plain", "some text here")
-  mail.addContent(content)
-  content = new helper.Content("text/html", "<html><body>some text here</body></html>")
-  mail.addContent(content)
-
-  test_payload = '{"from":{"email":"test@example.com"},"personalizations":[{"to":[{"email":"test@example.com"}]}],"subject":"Hello World from the SendGrid Node.js Library","content":[{"type":"text/plain","value":"some text here"},{"type":"text/html","value":"<html><body>some text here</body></html>"}]}'
+  test_payload = '{"from":{"email":"test@example.com"},"personalizations":[{"to":[{"email":"test@example.com"}]}],"subject":"Sending with SendGrid is Fun","content":[{"type":"text/plain","value":"and easy to do anywhere, even with Node.js"}]}'
 
   it('builds the correct payload', function() {
       assert.equal(JSON.stringify(mail.toJSON()), test_payload, 'payload is correct')
