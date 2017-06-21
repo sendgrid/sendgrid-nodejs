@@ -1,7 +1,5 @@
 var assert = require('chai').assert
 
-var helper = require('sendgrid').mail;
-
 // Test the minimum required to send an email
 describe('helloEmail', function () {
   var helper = require('../../../lib/helpers/mail/mail.js')
