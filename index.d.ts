@@ -61,8 +61,8 @@ declare namespace SendGrid.Helpers.Mail {
         setSendAt(sendAt: number): void;
         getSendAt(): number;
 
-        setBatchId(batch_id: number): void;
-        getBatchId(): number;
+        setBatchId(batch_id: string): void;
+        getBatchId(): string;
 
         setAsm(asm: Asm): void;
         getAsm(): Asm;
@@ -91,7 +91,7 @@ declare namespace SendGrid.Helpers.Mail {
             categories: any[];
             custom_args: any[];
             send_at: number;
-            batch_id: number;
+            batch_id: string;
             asm: any;
             ip_pool_name: string;
             mail_settings: any;
