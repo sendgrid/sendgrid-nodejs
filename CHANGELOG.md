@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [5.1.2] - 2017-06-30 ##
+### Fixed
+- Pull #399
+- Fix `batch_id` type
+- Thanks to [Leonardo Testa](https://github.com/testica) for the PR!
+
 ## [5.1.1] - 2017-06-1 ##
 ### Added
 - Pull #391
