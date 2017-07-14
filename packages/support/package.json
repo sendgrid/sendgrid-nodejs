@@ -1,6 +1,6 @@
 {
-  "name": "@sendgrid/mail-helpers",
-  "description": "SendGrid NodeJS mail helpers",
+  "name": "@sendgrid/support",
+  "description": "SendGrid NodeJS support classes and helpers",
   "version": "6.0.0",
   "author": "SendGrid <dx@sendgrid.com> (sendgrid.com)",
   "contributors": [
@@ -25,7 +25,5 @@
   "dependencies": {},
   "tags": [
     "sendgrid",
-		"mail",
-		"helpers"
   ]
 }

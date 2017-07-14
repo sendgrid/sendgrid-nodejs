@@ -23,7 +23,7 @@
     "node": ">=6.0.0"
   },
   "dependencies": {
-    "@sendgrid/mail-helpers": "^6.0.0",
+    "@sendgrid/support": "^6.0.0",
     "mailparser": "^0.6.1"
   },
   "tags": [
