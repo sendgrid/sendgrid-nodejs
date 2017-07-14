@@ -23,7 +23,7 @@ class EmailAddress {
 
     //String given
     if (typeof data === 'string') {
-      const [name, email] = this.splitNameEmail(data);
+      const [name, email] = EmailAddress.splitNameEmail(data);
       data = {name, email};
     }
 
