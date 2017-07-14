@@ -1,4 +1,4 @@
-Main readme for repo
+Main readme for monorepo
 
 ### Testing
 To run tests, please install Prism first by either running `yarn prism:install` or manually downloading from (the Prism website)[https://stoplight.io/platform/prism/].
