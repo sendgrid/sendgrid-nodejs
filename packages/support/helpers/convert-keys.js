@@ -10,9 +10,6 @@ module.exports = function convertKeys(obj, converter) {
     return;
   }
 
-  //Make copy to avoid making changes to actual object
-  obj = Object.assign({}, obj);
-
   //Process all properties
   for (const key in obj) {
     if (obj.hasOwnProperty(key)) {

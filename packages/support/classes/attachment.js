@@ -1,6 +1,13 @@
 'use strict';
 
 /**
+ * Dependencies
+ */
+const toCamelCase = require('../helpers/to-camel-case');
+const toSnakeCase = require('../helpers/to-snake-case');
+const deepClone = require('../helpers/deep-clone');
+
+/**
  * Attachment class
  */
 class Attachment {
@@ -8,7 +15,33 @@ class Attachment {
 	/**
 	 * Constructor
 	 */
-  constructor(content, filename, type = '', disposition = '', contentId = '') {
+  constructor(data) {
+
+    //Create from data
+    if (data) {
+      this.fromData(data);
+    }
+  }
+
+  /**
+   * From data
+   */
+  fromData(data) {
+
+    //Expecting object
+    if (typeof data !== 'object') {
+      throw new Error('Expecting object for Mail data');
+    }
+
+    //Convert to camel case to make it workable, making a copy to prevent
+    //changes to the original objects
+    data = deepClone(data);
+    data = toCamelCase(data);
+
+    //Extract properties from data
+    const {content, filename, type, disposition, contentId} = data;
+
+    //Set data
     this.setContent(content);
     this.setFilename(filename);
     this.setType(type);
@@ -20,7 +53,10 @@ class Attachment {
    * Set content
    */
   setContent(content) {
-    if (content && typeof content !== 'string') {
+    if (typeof content === 'undefined') {
+      return;
+    }
+    if (typeof content !== 'string') {
       throw new Error('String expected for `content`');
     }
     this.content = content;
@@ -30,6 +66,9 @@ class Attachment {
    * Set filename
    */
   setFilename(filename) {
+    if (typeof filename === 'undefined') {
+      return;
+    }
     if (filename && typeof filename !== 'string') {
       throw new Error('String expected for `filename`');
     }
@@ -40,7 +79,10 @@ class Attachment {
    * Set type
    */
   setType(type) {
-    if (type && typeof type !== 'string') {
+    if (typeof type === 'undefined') {
+      return;
+    }
+    if (typeof type !== 'string') {
       throw new Error('String expected for `type`');
     }
     this.type = type;
@@ -50,7 +92,10 @@ class Attachment {
    * Set disposition
    */
   setDisposition(disposition) {
-    if (disposition && typeof disposition !== 'string') {
+    if (typeof disposition === 'undefined') {
+      return;
+    }
+    if (typeof disposition !== 'string') {
       throw new Error('String expected for `disposition`');
     }
     this.disposition = disposition;
@@ -60,7 +105,10 @@ class Attachment {
    * Set content ID
    */
   setContentId(contentId) {
-    if (contentId && typeof contentId !== 'string') {
+    if (typeof contentId === 'undefined') {
+      return;
+    }
+    if (typeof contentId !== 'string') {
       throw new Error('String expected for `contentId`');
     }
     this.contentId = contentId;
@@ -71,25 +119,25 @@ class Attachment {
 	 */
   toJSON() {
 
-    //Initialize with mandatory values
-    const json = {
-      content: this.content,
-      filename: this.filename,
-    };
+    //Extract properties from self
+    const {content, filename, type, disposition, contentId} = this;
+
+    //Initialize with mandatory properties
+    const json = {content, filename};
 
     //Add whatever else we have
-    if (this.type) {
-      json.type = this.type;
+    if (typeof type !== 'undefined') {
+      json.type = type;
     }
-    if (this.disposition) {
-      json.disposition = this.disposition;
+    if (typeof disposition !== 'undefined') {
+      json.disposition = disposition;
     }
-    if (this.contentId) {
-      json.content_id = this.contentId;
+    if (typeof contentId !== 'undefined') {
+      json.contentId = contentId;
     }
 
     //Return
-    return json;
+    return toSnakeCase(json);
   }
 }
 

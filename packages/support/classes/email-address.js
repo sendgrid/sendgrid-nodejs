@@ -36,8 +36,34 @@ class EmailAddress {
     const {name, email} = data;
 
     //Set
-    this.email = email;
+    this.setEmail(email);
+    this.setName(name);
+  }
+
+  /**
+   * Set name
+   */
+  setName(name) {
+    if (typeof name === 'undefined') {
+      return;
+    }
+    if (typeof name !== 'string') {
+      throw new Error('String expected for `name`');
+    }
     this.name = name;
+  }
+
+  /**
+   * Set email
+   */
+  setEmail(email) {
+    if (typeof email === 'undefined') {
+      return;
+    }
+    if (typeof email !== 'string') {
+      throw new Error('String expected for `email`');
+    }
+    this.email = email;
   }
 
 	/**
@@ -45,14 +71,15 @@ class EmailAddress {
 	 */
   toJSON() {
 
-    //Initialize with mandatory values
-    const json = {
-      email: this.email,
-    };
+    //Get properties
+    const {email, name} = this;
+
+    //Initialize with mandatory properties
+    const json = {email};
 
     //Add name if present
-    if (this.name) {
-      json.name = this.name;
+    if (typeof name !== 'undefined') {
+      json.name = name;
     }
 
     //Return
@@ -91,17 +118,14 @@ class EmailAddress {
 
     //Array?
     if (Array.isArray(data)) {
-      return data.map(item => this.create(item));
+      return data
+        .filter(item => !!item)
+        .map(item => this.create(item));
     }
 
     //Already instance of EmailAddress class?
     if (data instanceof EmailAddress) {
       return data;
-    }
-
-    //Nothing given?
-    if (!data) {
-      throw new Error('No data provided for EmailAddress.create()');
     }
 
     //Create instance

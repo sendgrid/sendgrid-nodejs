@@ -57,8 +57,11 @@ class MailService {
     //Send mail
     try {
 
+      //Append multiple flag to data
+      data.isMultiple = isMultiple;
+
       //Create Mail instance from data and get JSON body for request
-      const mail = this.makeMail(data);
+      const mail = Mail.create(data);
       const body = mail.toJSON();
 
       //Create request
@@ -90,20 +93,6 @@ class MailService {
    */
   sendMultiple(data, cb) {
     return this.send(data, true, cb);
-  }
-
-  /**
-   * Helper to make a mail instance from given data
-   */
-  makeMail(data, isMultiple = false) {
-
-    //Already a Mail instance
-    if (data instanceof Mail) {
-      return data;
-    }
-
-    //Create instance
-    return new Mail(data, isMultiple);
   }
 }
 
