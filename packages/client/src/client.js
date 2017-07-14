@@ -113,7 +113,7 @@ class Client {
         }
 
         //Successful response
-        resolve(response);
+        resolve([response, body]);
       });
     });
 
