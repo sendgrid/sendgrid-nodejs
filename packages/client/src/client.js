@@ -5,8 +5,14 @@
  */
 const http = require('request');
 const pkg = require('../package.json');
-const mergeData = require('./helpers/merge-data');
-const ResponseError = require('./helpers/response-error');
+const {
+  helpers: {
+    mergeData,
+  },
+  classes: {
+    ResponseError,
+  },
+} = require('@sendgrid/support');
 
 /**
  * Sendgrid REST Client

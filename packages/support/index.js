@@ -1,21 +1,12 @@
 'use strict';
 
 /**
- * Load classes
+ * Load support assets
  */
-const Attachment = require('./classes/attachment');
-const Content = require('./classes/content');
-const EmailAddress = require('./classes/email-address');
-const Mail = require('./classes/mail');
-const Personalization = require('./classes/personalization');
+const classes = require('./classes');
+const helpers = require('./helpers');
 
 /**
  * Export
  */
-module.exports = {
-  Attachment,
-  Content,
-  EmailAddress,
-  Mail,
-  Personalization,
-};
+module.exports = {classes, helpers};

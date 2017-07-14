@@ -2,7 +2,11 @@
 
 const fs = require('fs');
 const MailParser = require('mailparser').MailParser;
-const {Attachment} = require('@sendgrid/support');
+const {
+  classes: {
+    Attachment,
+  },
+} = require('@sendgrid/support');
 
 /**
  * Normalises attachment files retrieved from file system or parsed raw email
