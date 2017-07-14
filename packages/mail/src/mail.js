@@ -54,11 +54,11 @@ class MailService {
       return promise;
     }
 
-    //Catch sync errors
+    //Send mail
     try {
 
-      //Create Mail instance(s) from given data and get JSON body for request
-      const mail = Mail.create(data, isMultiple);
+      //Create Mail instance from data and get JSON body for request
+      const mail = this.makeMail(data);
       const body = mail.toJSON();
 
       //Create request
@@ -71,10 +71,16 @@ class MailService {
       //Send
       return this.client.request(request, cb);
     }
+
+    //Catch sync errors
     catch (error) {
+
+      //Pass to callback if provided
       if (cb) {
         cb(error, null);
       }
+
+      //Reject promise
       return Promise.reject(error);
     }
   }
@@ -84,6 +90,20 @@ class MailService {
    */
   sendMultiple(data, cb) {
     return this.send(data, true, cb);
+  }
+
+  /**
+   * Helper to make a mail instance from given data
+   */
+  makeMail(data, isMultiple = false) {
+
+    //Already a Mail instance
+    if (data instanceof Mail) {
+      return data;
+    }
+
+    //Create instance
+    return new Mail(data, isMultiple);
   }
 }
 

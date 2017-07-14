@@ -21,8 +21,12 @@ class Personalization {
     this.customArgs = {};
     this.substitutions = {};
 
-    //Set
-    this.setTo(to);
+    //Set recipient(s)
+    if (to) {
+      this.setTo(to);
+    }
+
+    //Set substitutions
     if (substitutions) {
       this.setSubstitutions(substitutions);
     }

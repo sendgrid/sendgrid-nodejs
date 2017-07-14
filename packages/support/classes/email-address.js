@@ -8,28 +8,35 @@ class EmailAddress {
 	/**
 	 * Constructor
 	 */
-  constructor(email, name = '') {
-    this.setEmail(email);
-    this.setName(name);
+  constructor(data) {
+
+    //Construct from data
+    if (data) {
+      this.fromData(data);
+    }
   }
 
   /**
-   * Set email
+   * From data
    */
-  setEmail(email) {
-    if (email && typeof email !== 'string') {
-      throw new Error('String expected for `email`');
+  fromData(data) {
+
+    //String given
+    if (typeof data === 'string') {
+      const [name, email] = this.splitNameEmail(data);
+      data = {name, email};
     }
+
+    //Expecting object
+    if (typeof data !== 'object') {
+      throw new Error('Expecting object or string for EmailAddress data');
+    }
+
+    //Extract name and email
+    const {name, email} = data;
+
+    //Set
     this.email = email;
-  }
-
-  /**
-   * Set name
-   */
-  setName(name) {
-    if (name && typeof name !== 'string') {
-      throw new Error('String expected for `name`');
-    }
     this.name = name;
   }
 
@@ -94,25 +101,11 @@ class EmailAddress {
 
     //Nothing given?
     if (!data) {
-      throw new Error('No data provided for EmailAddress');
+      throw new Error('No data provided for EmailAddress.create()');
     }
-
-    //Extract name and email if string given
-    if (typeof data === 'string') {
-      const [name, email] = this.splitNameEmail(data);
-      data = {name, email};
-    }
-
-    //Check if object
-    if (typeof data !== 'object') {
-      throw new Error('Invalid data provided for EmailAddress');
-    }
-
-    //Extract name and email
-    const {name, email} = data;
 
     //Create instance
-    return new EmailAddress(email, name);
+    return new EmailAddress(data);
   }
 }
 

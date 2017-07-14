@@ -42,7 +42,8 @@ describe('sgMail.send()', () => {
 
   it('should send a basic email', () => {
     sgClient.setDefaultHeader('X-Mock', 201);
-    return sgMail.send(data)
+    return sgMail
+      .send(data)
       .then(([response, body]) => {
         expect(response.statusCode).to.equal(201);
       });

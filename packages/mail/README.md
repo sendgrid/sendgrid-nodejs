@@ -75,7 +75,7 @@ sgMail.sendMultiple(data);
 Note that `sendMultiple(data)` is a convenience shortcut for `send(data, true)`.
 
 ### Basic usage (multiple single emails)
-The `send` method also accepts an array of email data if you want to send multiple different single emails with for example different content and sender values. This will send multiple requests (in parallel), so beware of API rate restrictions:
+The `send` method also accepts an array of email data if you want to send multiple different single emails with for example different content and sender values. This will send multiple requests (in parallel), so be aware of any API rate restrictions:
 
 ```js
 //Load library
@@ -139,9 +139,6 @@ const data = {
     name: 'Some One',
     email: 'someone@example.org',
   },
-
-  //Or an EmailAddress instance
-  to: new EmailAddress('someone@example.org', 'Some One'),
 };
 ```
 
@@ -173,7 +170,7 @@ sgMail
   });
 ```
 
-### Advanced usage
+### Customization per recipient
 To send multiple individual emails to multiple recipients with a different subject and/or substitutions, expand the `to` array as follows:
 
 ```js
@@ -207,4 +204,60 @@ const data = {
 
 //Send emails
 sgMail.sendMultiple(emails);
+```
+
+### Sending attachments
+
+
+### Advanced usage
+All other advanced settings are supported and can be passed in through the data object according to the expected format as per the [API v3 documentation](https://sendgrid.com/docs/API_Reference/Web_API_v3/Mail/index.html). Note that you can use either `camelCase` or `snake_case` for property names:
+
+```js
+const data = {
+
+  //Manually provide personalizations instead of using the `to` property
+  personalizations: Array,
+
+  //Subject
+  subject: String,
+
+  //Manually provide contents array instead of using `html` and `text`
+  content: Array,
+
+  //Attachments
+  attachments: Array,
+
+  //Template ID
+  templateId: String,
+
+  //Sections
+  sections: {},
+
+  //Headers
+  headers: {},
+
+  //Categories
+  categories: Array,
+
+  //Custom arguments
+  customArgs: {},
+
+  //Time to send at (in seconds)
+  sendAt: Number,
+
+  //Batch ID
+  batchId: String,
+
+  //ASM
+  asm: {},
+
+  //IP pool name
+  ipPoolName: String,
+
+  //Mail settings
+  mailSettings: {},
+
+  //Tracking settings
+  trackingSettings: {},
+}
 ```
