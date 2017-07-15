@@ -56,9 +56,9 @@ class Mail {
     //Extract properties from data
     const {
       to, from, replyTo, sendAt, subject, text, html, content, templateId,
-      personalizations, attachments, substitutions, ipPoolName, batchId,
-      asm, sections, headers, categories, customArgs, mailSettings,
-      trackingSettings, isMultiple,
+      personalizations, attachments, ipPoolName, batchId, asm, sections,
+      headers, categories, customArgs, mailSettings, trackingSettings,
+      substitutions, substitutionWrappers, isMultiple,
     } = data;
 
     //Set data
@@ -89,12 +89,15 @@ class Mail {
 
       //Multiple individual emails
       if (isMultiple && Array.isArray(to)) {
-        to.forEach(to => this.addTo(to, to.substitutions || substitutions));
+        to.forEach(to => {
+          const subs = to.substitutions || substitutions;
+          this.addTo(to, subs, substitutionWrappers);
+        });
       }
 
       //Single email (possibly with multiple recipients in the to field)
       else {
-        this.addTo(to, substitutions);
+        this.addTo(to, substitutions, substitutionWrappers);
       }
     }
   }
@@ -220,8 +223,10 @@ class Mail {
   /**
    * Add recipient (convenience method for quickly creating personalizations)
    */
-  addTo(to, substitutions) {
-    this.addPersonalization(new Personalization({to, substitutions}));
+  addTo(to, substitutions, substitutionWrappers) {
+    this.addPersonalization(new Personalization({
+      to, substitutions, substitutionWrappers,
+    }));
   }
 
   /**

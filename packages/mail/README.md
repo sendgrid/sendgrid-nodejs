@@ -74,7 +74,7 @@ const data = {
 sgMail.sendMultiple(data);
 ```
 
-Note that `sendMultiple(data)` is a convenience shortcut for `send(data, true)`.
+Note that `sendMultiple(data)` is a convenience shortcut for `send(data, true)`, and alternatively you can also set the `isMultiple` flag to `true` on your `data` object.
 
 ### Multiple single emails
 The `send` method also accepts an array of email data if you want to send multiple different single emails with for example different content and sender values. This will send multiple requests (in parallel), so be aware of any API rate restrictions:
@@ -157,7 +157,7 @@ sgMail
 All other advanced settings are supported and can be passed in through the data object according to the expected format as per the [API v3 documentation](https://sendgrid.com/docs/API_Reference/Web_API_v3/Mail/index.html). Note that you can use either `camelCase` or `snake_case` for property names.
 
 ### Using transactional templates
-Configure the substitution tag wrappers:
+Configure the substitution tag wrappers globally:
 
 ```js
 sgMail.setSubstitutionWrappers('{{', '}}');
@@ -168,6 +168,19 @@ Then provide a template ID and substitutions:
 ```js
 const data = {
   templateId: 'sendgrid-template-id',
+  substitutions: {
+    name: 'Some One',
+    id: '123',
+  },
+};
+```
+
+Alternatively, you may specify the substitution wrappers via the data object as well. This will override any wrappers you may have configured globally.
+
+```js
+const data = {
+  templateId: 'sendgrid-template-id',
+  substitutionWrappers: ['{{', '}}'],
   substitutions: {
     name: 'Some One',
     id: '123',

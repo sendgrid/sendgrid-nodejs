@@ -19,6 +19,7 @@ class MailService {
 	 */
   constructor() {
     this.client = client;
+    this.substitutionWrappers = ['{{', '}}'];
   }
 
   /**
@@ -26,6 +27,17 @@ class MailService {
    */
   setApiKey(apiKey) {
     this.client.setApiKey(apiKey);
+  }
+
+  /**
+   * Set substitution wrappers
+   */
+  setSubstitutionWrappers(left, right) {
+    if (typeof left === 'undefined' || typeof right === 'undefined') {
+      throw new Error('Must provide both left and right side wrappers');
+    }
+    this.substitutionWrappers[0] = left;
+    this.substitutionWrappers[1] = right;
   }
 
   /**
@@ -61,8 +73,15 @@ class MailService {
     //Send mail
     try {
 
-      //Append multiple flag to data
-      data.isMultiple = isMultiple;
+      //Append multiple flag to data if not set
+      if (typeof data.isMultiple === 'undefined') {
+        data.isMultiple = isMultiple;
+      }
+
+      //Append global substitution wrappers if not set in data
+      if (typeof data.substitutionWrappers === 'undefined') {
+        data.substitutionWrappers = this.substitutionWrappers;
+      }
 
       //Create Mail instance from data and get JSON body for request
       const mail = Mail.create(data);

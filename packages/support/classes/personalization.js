@@ -7,6 +7,7 @@ const EmailAddress = require('./email-address');
 const toCamelCase = require('../helpers/to-camel-case');
 const toSnakeCase = require('../helpers/to-snake-case');
 const deepClone = require('../helpers/deep-clone');
+const wrapSubstitutions = require('../helpers/wrap-substitutions');
 
 /**
  * Personalization class
@@ -23,6 +24,7 @@ class Personalization {
     this.headers = {};
     this.customArgs = {};
     this.substitutions = {};
+    this.substitutionWrappers = ['{{', '}}'];
 
     //Build from data if given
     if (data) {
@@ -47,7 +49,8 @@ class Personalization {
 
     //Extract properties from data
     const {
-      to, cc, bcc, subject, headers, substitutions, customArgs, sendAt,
+      to, cc, bcc, subject, headers, customArgs, sendAt,
+      substitutions, substitutionWrappers,
     } = data;
 
     //Set data
@@ -57,6 +60,7 @@ class Personalization {
     this.setSubject(subject);
     this.setHeaders(headers);
     this.setSubstitutions(substitutions);
+    this.setSubstitutionWrappers(substitutionWrappers);
     this.setCustomArgs(customArgs);
     this.setSendAt(sendAt);
   }
@@ -174,6 +178,21 @@ class Personalization {
   }
 
   /**
+   * Set substitution wrappers
+   */
+  setSubstitutionWrappers(wrappers) {
+    if (typeof wrappers === 'undefined') {
+      return;
+    }
+    if (!Array.isArray(wrappers) || wrappers.length !== 2) {
+      throw new Error(
+        'Array expected with two elements for `substitutionWrappers`'
+      );
+    }
+    this.substitutionWrappers = wrappers;
+  }
+
+  /**
    * Set substitutions
    */
   setSubstitutions(substitutions) {
@@ -216,7 +235,8 @@ class Personalization {
 
     //Get data from self
     const {
-      to, cc, bcc, subject, headers, substitutions, customArgs, sendAt,
+      to, cc, bcc, subject, headers, customArgs, sendAt,
+      substitutions, substitutionWrappers,
     } = this;
 
     //Initialize with mandatory values
@@ -235,7 +255,8 @@ class Personalization {
       json.headers = headers;
     }
     if (Object.keys(substitutions).length > 0) {
-      json.substitutions = substitutions;
+      const [left, right] = substitutionWrappers;
+      json.substitutions = wrapSubstitutions(substitutions, left, right);
     }
     if (Object.keys(customArgs).length > 0) {
       json.customArgs = customArgs;
