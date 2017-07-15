@@ -1,6 +1,11 @@
 'use strict';
 
 /**
+ * Dependencies
+ */
+const splitNameEmail = require('../helpers/split-name-email');
+
+/**
  * Email address class
  */
 class EmailAddress {
@@ -23,7 +28,7 @@ class EmailAddress {
 
     //String given
     if (typeof data === 'string') {
-      const [name, email] = EmailAddress.splitNameEmail(data);
+      const [name, email] = splitNameEmail(data);
       data = {name, email};
     }
 
@@ -89,27 +94,6 @@ class EmailAddress {
   /**************************************************************************
    * Static helpers
    ***/
-
-  /**
-   * Split name and email address from string
-   */
-  static splitNameEmail(str) {
-
-    //If no email bracket present, return as is
-    if (str.indexOf('<') === -1) {
-      return ['', str];
-    }
-
-    //Split into name and email
-    let [name, email] = str.split('<');
-
-    //Trim and fix up
-    name = name.trim();
-    email = email.replace('>', '').trim();
-
-    //Return as array
-    return [name, email];
-  }
 
   /**
    * Create an EmailAddress instance from given data
