@@ -5,4 +5,4 @@ To run tests, please install Prism first by either running `yarn prism:install` 
 
 Next, start Prism in one console window using `yarn prism`.
 
-Run the tests in another console window using `yarn test`, or specific tests e.g. `yarn test:mail`.
+Run the tests in another console window using `yarn test`, or specific tests e.g. `yarn test:mail` or `yarn test:support`.
