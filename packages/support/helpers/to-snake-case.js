@@ -4,16 +4,7 @@
  * Dependencies
  */
 const convertKeys = require('./convert-keys');
-
-/**
- * Internal conversion helper
- */
-function strToSnakeCase(str) {
-  return str.replace(/(\s*\-*\b\w|[A-Z])/g, function($1) {
-    $1 = $1.trim().toLowerCase().replace('-', '');
-    return ($1[0] === '_' ? '' : '_') + $1;
-  }).slice(1);
-}
+const strToSnakeCase = require('./str-to-snake-case');
 
 /**
  * Convert object keys to snake case
