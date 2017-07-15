@@ -3,7 +3,7 @@
 /**
  * Dependencies
  */
-const sgMail = require('../../packages/mail');
+const sgMail = require('./mail');
 const sgClient = sgMail.client;
 const baseUrl = process.env.MOCK_HOST || 'http://localhost:4010/';
 
