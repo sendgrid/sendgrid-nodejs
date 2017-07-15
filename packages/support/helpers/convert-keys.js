@@ -7,11 +7,12 @@ module.exports = function convertKeys(obj, converter) {
 
   //Validate
   if (typeof obj !== 'object' || obj === null) {
-    return;
+    throw new Error('Non object passed to convertKeys: ' + obj);
   }
 
   //Process all properties
   for (const key in obj) {
+    //istanbul ignore else
     if (obj.hasOwnProperty(key)) {
 
       //Recursive for child objects

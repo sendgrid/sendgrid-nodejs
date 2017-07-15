@@ -15,6 +15,7 @@ module.exports = function wrap(substitutions, left = '{{', right = '}}') {
 
   //Map substitutions and ensure string for value
   for (const key in substitutions) {
+    //istanbul ignore else
     if (substitutions.hasOwnProperty(key)) {
       wrapped[left + key + right] = String(substitutions[key]);
     }
