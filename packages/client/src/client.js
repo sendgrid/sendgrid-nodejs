@@ -3,9 +3,16 @@
 /**
  * Dependencies
  */
-const http = require('http-as-promised');
+const http = require('request');
 const pkg = require('../package.json');
-const mergeData = require('./helpers/merge-data');
+const {
+  helpers: {
+    mergeData,
+  },
+  classes: {
+    ResponseError,
+  },
+} = require('@sendgrid/support');
 
 /**
  * Sendgrid REST Client
@@ -98,7 +105,23 @@ class Client {
     const request = this.createRequest(data);
 
     //Perform request
-    const promise = http(request);
+    const promise = new Promise((resolve, reject) => {
+      http(request, (error, response, body) => {
+
+        //Request error
+        if (error) {
+          return reject(error);
+        }
+
+        //Response error
+        if (response.statusCode >= 400) {
+          return reject(new ResponseError(response));
+        }
+
+        //Successful response
+        resolve([response, body]);
+      });
+    });
 
     //Execute callback if provided
     if (cb) {

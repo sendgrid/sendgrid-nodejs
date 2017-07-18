@@ -3,7 +3,11 @@
  * Dependencies
  */
 const client = require('@sendgrid/client');
-const {Mail} = require('@sendgrid/mail-helpers');
+const {
+  classes: {
+    Mail,
+  },
+} = require('@sendgrid/support');
 
 /**
  * Mail service class
@@ -15,6 +19,7 @@ class MailService {
 	 */
   constructor() {
     this.client = client;
+    this.substitutionWrappers = ['{{', '}}'];
   }
 
   /**
@@ -22,6 +27,17 @@ class MailService {
    */
   setApiKey(apiKey) {
     this.client.setApiKey(apiKey);
+  }
+
+  /**
+   * Set substitution wrappers
+   */
+  setSubstitutionWrappers(left, right) {
+    if (typeof left === 'undefined' || typeof right === 'undefined') {
+      throw new Error('Must provide both left and right side wrappers');
+    }
+    this.substitutionWrappers[0] = left;
+    this.substitutionWrappers[1] = right;
   }
 
   /**
@@ -54,11 +70,21 @@ class MailService {
       return promise;
     }
 
-    //Catch sync errors
+    //Send mail
     try {
 
-      //Create Mail instance(s) from given data and get JSON body for request
-      const mail = Mail.create(data, isMultiple);
+      //Append multiple flag to data if not set
+      if (typeof data.isMultiple === 'undefined') {
+        data.isMultiple = isMultiple;
+      }
+
+      //Append global substitution wrappers if not set in data
+      if (typeof data.substitutionWrappers === 'undefined') {
+        data.substitutionWrappers = this.substitutionWrappers;
+      }
+
+      //Create Mail instance from data and get JSON body for request
+      const mail = Mail.create(data);
       const body = mail.toJSON();
 
       //Create request
@@ -71,10 +97,16 @@ class MailService {
       //Send
       return this.client.request(request, cb);
     }
+
+    //Catch sync errors
     catch (error) {
+
+      //Pass to callback if provided
       if (cb) {
         cb(error, null);
       }
+
+      //Reject promise
       return Promise.reject(error);
     }
   }

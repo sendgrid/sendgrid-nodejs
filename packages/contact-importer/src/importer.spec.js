@@ -1,4 +1,4 @@
-var ContactImporter = require('../../packages/importer');
+var ContactImporter = require('./importer');
 
 describe.only('test_contact_importer', function() {
   beforeEach(function() {

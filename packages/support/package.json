@@ -23,8 +23,12 @@
     "node": ">= 6.0.0"
   },
   "tags": [
+<<<<<<< HEAD:packages/mail-helpers/package.json
     "sendgrid",
     "mail",
     "helpers"
+=======
+    "sendgrid"
+>>>>>>> a2775ef11169d4859fba8644cdb789c5036c0267:packages/support/package.json
   ]
 }

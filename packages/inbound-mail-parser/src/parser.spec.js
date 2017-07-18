@@ -1,4 +1,4 @@
-var Parse = require('../../packages/parser');
+var Parse = require('./parser');
 
 describe('test_parse', function() {
   describe('test_parse_key_values', function() {
