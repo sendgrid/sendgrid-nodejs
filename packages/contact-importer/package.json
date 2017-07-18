@@ -1,7 +1,7 @@
 {
   "name": "@sendgrid/contact-importer",
   "description": "SendGrid NodeJS contact importer",
-  "version": "6.0.1-beta.0",
+  "version": "6.0.0-0",
   "author": "SendGrid <dx@sendgrid.com> (sendgrid.com)",
   "contributors": [
     "Kyle Partridge <kyle.partridge@sendgrid.com>",
