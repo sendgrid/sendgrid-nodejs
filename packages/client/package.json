@@ -1,5 +1,5 @@
 {
-  "name": "@sendgrid/client",
+  "name": "sendgrid-client",
   "description": "SendGrid NodeJS API client",
   "version": "6.0.0-0",
   "author": "SendGrid <dx@sendgrid.com> (sendgrid.com)",

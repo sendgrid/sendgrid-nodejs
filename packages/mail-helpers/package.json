@@ -1,5 +1,5 @@
 {
-  "name": "@sendgrid/mail-helpers",
+  "name": "sendgrid-mail-helpers",
   "description": "SendGrid NodeJS mail helpers",
   "version": "6.0.0-0",
   "author": "SendGrid <dx@sendgrid.com> (sendgrid.com)",
