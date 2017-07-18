@@ -1,5 +1,5 @@
 {
-  "name": "sendgrid-mail-helpers",
+  "name": "@sendgrid/mail-helpers",
   "description": "SendGrid NodeJS mail helpers",
   "version": "6.0.0-beta",
   "author": "SendGrid <dx@sendgrid.com> (sendgrid.com)",
@@ -19,16 +19,15 @@
     "type": "git",
     "url": "git://github.com/sendgrid/sendgrid-nodejs.git"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "engines": {
     "node": ">= 6.0.0"
   },
   "tags": [
-<<<<<<< HEAD:packages/mail-helpers/package.json
     "sendgrid",
     "mail",
     "helpers"
-=======
-    "sendgrid"
->>>>>>> a2775ef11169d4859fba8644cdb789c5036c0267:packages/support/package.json
   ]
 }

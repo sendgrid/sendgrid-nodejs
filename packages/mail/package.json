@@ -1,5 +1,5 @@
 {
-  "name": "sendgrid-mail",
+  "name": "@sendgrid/mail",
   "description": "SendGrid NodeJS mail service",
   "version": "6.0.0-beta",
   "author": "SendGrid <dx@sendgrid.com> (sendgrid.com)",
@@ -23,9 +23,12 @@
   "engines": {
     "node": ">=6.0.0"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
-    "sendgrid-client": "^6.0.0-beta",
-    "sendgrid-mail-helpers": "^6.0.0-beta"
+    "@sendgrid/client": "^6.0.0-beta",
+    "@sendgrid/mail-helpers": "^6.0.0-beta"
   },
   "tags": [
     "http",

@@ -1,5 +1,5 @@
 {
-  "name": "sendgrid-contact-importer",
+  "name": "@sendgrid/contact-importer",
   "description": "SendGrid NodeJS contact importer",
   "version": "6.0.0-beta",
   "author": "SendGrid <dx@sendgrid.com> (sendgrid.com)",
@@ -21,6 +21,9 @@
   "main": "src/importer.js",
   "engines": {
     "node": ">=6.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "dependencies": {
     "async.ensureasync": "^0.5.2",
