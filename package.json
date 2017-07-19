@@ -1,7 +1,7 @@
 {
   "name": "sendgrid",
   "version": "6.0.0",
-  "private": true,
+  "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "repository": {
     "type": "git",

@@ -1,7 +1,7 @@
 {
-  "name": "@sendgrid/support",
-  "description": "SendGrid NodeJS support classes and helpers",
-  "version": "6.0.0",
+  "name": "@sendgrid/mail-helpers",
+  "description": "SendGrid NodeJS mail helpers",
+  "version": "6.0.0-beta.0",
   "author": "SendGrid <dx@sendgrid.com> (sendgrid.com)",
   "contributors": [
     "Kyle Partridge <kyle.partridge@sendgrid.com>",
@@ -19,11 +19,15 @@
     "type": "git",
     "url": "git://github.com/sendgrid/sendgrid-nodejs.git"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "engines": {
     "node": ">= 6.0.0"
   },
-  "dependencies": {},
   "tags": [
-    "sendgrid"
+    "sendgrid",
+    "mail",
+    "helpers"
   ]
 }
