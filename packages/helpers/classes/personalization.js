@@ -21,6 +21,7 @@ class Personalization {
 
     //Init array and object placeholders
     this.cc = [];
+    this.bcc = [];
     this.headers = {};
     this.customArgs = {};
     this.substitutions = {};
@@ -107,8 +108,8 @@ class Personalization {
   /**
    * Add a single to
    */
-  addTo(email) {
-    this.to.push(EmailAddress.create(email));
+  addTo(to) {
+    this.to.push(EmailAddress.create(to));
   }
 
   /**
@@ -127,8 +128,8 @@ class Personalization {
   /**
    * Add a single cc
    */
-  addCc(email) {
-    this.cc.push(EmailAddress.create(email));
+  addCc(cc) {
+    this.cc.push(EmailAddress.create(cc));
   }
 
   /**
@@ -147,8 +148,8 @@ class Personalization {
   /**
    * Add a single bcc
    */
-  addBcc(email) {
-    this.bcc.push(EmailAddress.create(email));
+  addBcc(bcc) {
+    this.bcc.push(EmailAddress.create(bcc));
   }
 
   /**
@@ -190,6 +191,19 @@ class Personalization {
       );
     }
     this.substitutionWrappers = wrappers;
+  }
+
+  /**
+   * Reverse merge substitutions, preserving existing ones
+   */
+  reverseMergeSubstitutions(substitutions) {
+    if (typeof substitutions === 'undefined') {
+      return;
+    }
+    if (typeof substitutions !== 'object') {
+      throw new Error('Object expected for `substitutions`');
+    }
+    this.substitutions = Object.assign({}, substitutions, this.substitutions);
   }
 
   /**

@@ -32,6 +32,10 @@ class Mail {
     this.mailSettings = {};
     this.asm = {};
 
+    //Helper properties
+    this.substitutions = null;
+    this.substitutionWrappers = null;
+
     //Process data if given
     if (data) {
       this.fromData(data);
@@ -79,39 +83,26 @@ class Mail {
     this.setAsm(asm);
     this.setMailSettings(mailSettings);
     this.setTrackingSettings(trackingSettings);
-    this.setPersonalizations(personalizations);
+    this.setSubstitutions(substitutions);
+    this.setSubstitutionWrappers(substitutionWrappers);
 
     //Add contents from text/html properties
     this.addTextContent(text);
     this.addHtmlContent(html);
 
-    //Use to property for personalizations
-    if (to) {
+    //Using "to" property for personalizations
+    if (personalizations) {
+      this.setPersonalizations(personalizations);
+    }
 
-      //Create base data for personalizations
-      const baseData = {
-        cc,
-        bcc,
-        substitutions,
-        substitutionWrappers,
-      };
+    //Multiple individual emails
+    else if (isMultiple && Array.isArray(to)) {
+      to.forEach(to => this.addTo(to, cc, bcc));
+    }
 
-      //Multiple individual emails
-      if (isMultiple && Array.isArray(to)) {
-        to.forEach(to => {
-          const toData = Object.assign({}, baseData, {to});
-          if (to.substitutions) {
-            toData.substitutions = to.substitutions;
-          }
-          this.addTo(toData);
-        });
-      }
-
-      //Single email (possibly with multiple recipients in the to field)
-      else {
-        const toData = Object.assign({}, baseData, {to});
-        this.addTo(toData);
-      }
+    //Single email (possibly with multiple recipients in the to field)
+    else {
+      this.addTo(to, cc, bcc);
     }
   }
 
@@ -223,21 +214,69 @@ class Mail {
     if (!Array.isArray(personalizations)) {
       throw new Error('Array expected for `personalizations`');
     }
-    this.personalizations = personalizations;
+
+    //Clear and use add helper to add one by one
+    this.personalizations = [];
+    personalizations
+      .forEach(personalization => this.addPersonalization(personalization));
   }
 
   /**
    * Add personalization
    */
   addPersonalization(personalization) {
+    this.applySubstitutions(personalization);
     this.personalizations.push(personalization);
   }
 
   /**
-   * Add recipient (convenience method for quickly creating personalizations)
+   * Convenience method for quickly creating personalizations
    */
-  addTo(data) {
-    this.addPersonalization(new Personalization(data));
+  addTo(to, cc, bcc) {
+    if (
+      typeof to === 'undefined' &&
+      typeof cc === 'undefined' &&
+      typeof bcc === 'undefined'
+    ) {
+      throw new Error('Provide at least one of to, cc or bcc');
+    }
+    this.addPersonalization(new Personalization({to, cc, bcc}));
+  }
+
+  /**
+   * Set substitutions
+   */
+  setSubstitutions(substitutions) {
+    if (typeof substitutions === 'undefined') {
+      return;
+    }
+    if (typeof substitutions !== 'object') {
+      throw new Error('Object expected for `substitutions`');
+    }
+    this.substitutions = substitutions;
+  }
+
+  /**
+   * Set substitution wrappers
+   */
+  setSubstitutionWrappers(wrappers) {
+    if (typeof wrappers === 'undefined') {
+      return;
+    }
+    if (!Array.isArray(wrappers) || wrappers.length !== 2) {
+      throw new Error(
+        'Array expected with two elements for `substitutionWrappers`'
+      );
+    }
+    this.substitutionWrappers = wrappers;
+  }
+
+  /**
+   * Helper which applies globally set substitutions to personalizations
+   */
+  applySubstitutions(personalization) {
+    personalization.reverseMergeSubstitutions(this.substitutions);
+    personalization.setSubstitutionWrappers(this.substitutionWrappers);
   }
 
   /**

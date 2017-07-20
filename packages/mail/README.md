@@ -114,6 +114,22 @@ const emails = [
 sgMail.send(emails);
 ```
 
+### CC, BCC and Reply To
+You can specify the `cc`, `bcc` and `replyTo` fields for more control over who you send the email to and where people will reply to:
+
+```js
+const data = {
+  to: 'recipient@example.org',
+  cc: 'someone@example.org',
+  bcc: ['me@example.org', 'you@example.org'],
+  from: 'sender@example.org',
+  replyTo: 'othersender@example.org',
+  subject: 'Hello world',
+  text: 'Hello plain world!',
+  html: '<p>Hello HTML world!</p>',
+};
+```
+
 ### Flexible email address fields
 The email address fields (`to`, `from`, `cc`, `bcc`, `replyTo`) are flexible and can be any of the following:
 
@@ -131,6 +147,16 @@ const data = {
     name: 'Some One',
     email: 'someone@example.org',
   },
+
+  //Arrays are supported for to, cc and bcc
+  to: [
+    'someone@example.org',
+    'Some One <someone@example.org>',
+    {
+      name: 'Some One',
+      email: 'someone@example.org',
+    },
+  ],
 };
 ```
 
@@ -144,7 +170,15 @@ sgMail
     //Celebrate
   })
   .catch(error => {
-    //Do something with the error
+
+    //Log friendly error
+    console.error(error.toString());
+
+    //Extract error data
+    const {message, code, response} = error;
+
+    //Extract response data
+    const {headers, body} = response;
   });
 ```
 
@@ -198,26 +232,39 @@ const data = {
 ```
 
 ### Customization per recipient
-To send multiple individual emails to multiple recipients with a different subject and/or substitutions, expand the `to` array as follows:
+To send multiple individual emails to multiple recipients with additional customization (like a different subject), use the `personalizations` field as per the [API definition](https://sendgrid.com/docs/API_Reference/Web_API_v3/Mail/index.html) instead of `to`, leveraging all customization options:
 
 ```js
 const data = {
-  to: [
+  personalizations: [
     {
-      email: 'recipient1@example.org',
+      to: 'recipient1@example.org',
       subject: 'Hello recipient 1',
       substitutions: {
         name: 'Recipient 1',
         id: '123',
       },
+      headers: {
+        'X-Custom-Header': 'Recipient 1',
+      },
+      customArgs: {
+        myArg: 'Recipient 1',
+      },
     },
     {
-      email: 'recipient2@example.org',
+      to: 'recipient2@example.org',
       subject: 'Hello recipient 2',
       substitutions: {
         name: 'Recipient 2',
         id: '456',
       },
+      headers: {
+        'X-Custom-Header': 'Recipient 2',
+      },
+      customArgs: {
+        myArg: 'Recipient 1',
+      },
+      sendAt: 1500077141,
     }
   ],
   from: 'sender@example.org',
@@ -225,6 +272,8 @@ const data = {
   html: '<p>Hello HTML world!</p>',
 };
 ```
+
+If the `substitutions` field is provided globally as well, these substitutions will be merged with any custom substitutions you provide in the `personalizations`.
 
 ### Sending attachments
 Attachments can be sent by providing an array of `attachments` as per the API specifications:
@@ -240,34 +289,6 @@ const data = {
       content: 'Some attachment content',
       filename: 'some-attachment.txt',
     },
-  ],
-};
-```
-
-### Manually providing personalizations
-Instead of using the `to` shorthand proper, you can still manually provide `personalizations` as per the API definition:
-
-```js
-const data = {
-  from: 'sender@example.org',
-  text: 'Hello plain world!',
-  html: '<p>Hello HTML world!</p>',
-  personalizations: [
-    {
-      to: [
-        {
-          name: 'Someone',
-          email: 'someone@example.org',
-        },
-      ],
-      cc: [
-        {
-          name: 'Someone Else',
-          email: 'someone.else@example.org',
-        },
-      ],
-      subject: 'Some subject',
-    }
   ],
 };
 ```
@@ -374,5 +395,60 @@ const data = {
 
   //Tracking settings
   trackingSettings: {},
-}
+};
+```
+
+### Kitchen sink example
+An example with most settings used (note that some settings can be used in multiple ways, see above for full details for each setting):
+
+```js
+//Load library
+const sgMail = require('@sendgrid/mail');
+
+//Set API key
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+//Create mail data
+const data = {
+  to: 'recipient@example.org',
+  cc: 'someone@example.org',
+  bcc: ['me@example.org', 'you@example.org'],
+  from: 'sender@example.org',
+  replyTo: 'othersender@example.org',
+  subject: 'Hello world',
+  text: 'Hello plain world!',
+  html: '<p>Hello HTML world!</p>',
+  templateId: 'sendgrid-template-id',
+  substitutionWrappers: ['{{', '}}'],
+  substitutions: {
+    name: 'Some One',
+    id: '123',
+  },
+  attachments: [
+    {
+      content: 'Some attachment content',
+      filename: 'some-attachment.txt',
+    },
+  ],
+  categories: ['Transactional', 'My category'],
+  sendAt: 1500077141,
+  headers: {
+    'X-CustomHeader': 'Custom header value',
+  },
+  sections: {},
+  customArgs: {
+    myCustomArg: 123,
+  },
+  batchId: 'sendgrid-batch-id',
+  asm: {},
+  ipPoolName: 'sendgrid-ip-pool-name',
+  mailSettings: {},
+  trackingSettings: {},
+};
+
+//Send email and handle result
+sgMail
+  .send(data)
+  .then(() => console.log('Mail sent successfully'))
+  .catch(error => console.error(error.toString()));
 ```
