@@ -324,6 +324,9 @@ class Mail {
     if (typeof categories === 'undefined') {
       return;
     }
+    if (typeof categories === 'string') {
+      categories = [categories];
+    }
     if (!Array.isArray(categories) ||
         !categories.every(cat => typeof cat === 'string')) {
       throw new Error('Array of strings expected for `categories`');
