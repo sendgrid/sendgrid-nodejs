@@ -57,7 +57,7 @@ class Mail {
     const {
       to, from, replyTo, cc, bcc, sendAt, subject, text, html, content,
       templateId, personalizations, attachments, ipPoolName, batchId,
-      sections, headers, categories, customArgs, asm, mailSettings,
+      sections, headers, categories, category, customArgs, asm, mailSettings,
       trackingSettings, substitutions, substitutionWrappers, isMultiple,
     } = data;
 
@@ -73,6 +73,7 @@ class Mail {
     this.setContent(content);
     this.setSections(sections);
     this.setHeaders(headers);
+    this.setCategories(category);
     this.setCategories(categories);
     this.setCustomArgs(customArgs);
     this.setAsm(asm);

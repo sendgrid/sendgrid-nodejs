@@ -336,6 +336,18 @@ const data = {
 };
 ```
 
+Specifying a single `category` is also supported:
+
+```js
+const data = {
+  to: 'recipient@example.org',
+  from: 'sender@example.org',
+  subject: 'Hello email with categories',
+  html: '<p>Some email content</p>',
+  category: 'transactional',
+};
+```
+
 ### Other options
 All other options from the [API definition](https://sendgrid.com/docs/API_Reference/Web_API_v3/Mail/index.html) are supported:
 
