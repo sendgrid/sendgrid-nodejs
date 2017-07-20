@@ -28,5 +28,8 @@
   "tags": [
     "sendgrid",
     "helpers"
-  ]
+  ],
+  "dependencies": {
+    "chalk": "^2.0.1"
+  }
 }

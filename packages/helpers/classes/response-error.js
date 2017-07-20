@@ -1,6 +1,11 @@
 'use strict';
 
 /**
+ * Dependencies
+ */
+const chalk = require('chalk');
+
+/**
  * Response error class
  */
 class ResponseError extends Error {
@@ -13,16 +18,13 @@ class ResponseError extends Error {
     //Super
     super();
 
-    //Set response
-    this.response = response;
+    //Extract data from response
+    const {headers, statusCode, statusMessage, body} = response;
 
-    //Set message
-    if (response.statusCode >= 500) {
-      this.message = 'Server error';
-    }
-    else if (response.statusCode >= 400) {
-      this.message = 'Client error';
-    }
+    //Set data
+    this.code = statusCode;
+    this.message = statusMessage;
+    this.response = {headers, body};
 
     //Capture stack trace
     if (!this.stack) {
@@ -38,15 +40,25 @@ class ResponseError extends Error {
    * Convert to string
    */
   toString() {
-    return `${this.name}: ${this.message}`;
+    const {body} = this.response;
+    let err = chalk.red(`${this.message} (${this.code})`);
+    if (Array.isArray(body.errors)) {
+      body.errors.forEach(error => {
+        const message = chalk.yellow(error.message);
+        const field = chalk.grey(error.field);
+        const help = chalk.grey(error.help);
+        err += `\n  ${message}\n    ${field}\n    ${help}`;
+      });
+    }
+    return err;
   }
 
   /**
    * Convert to simple object for JSON responses
    */
   toJSON() {
-    const {message, response} = this;
-    return {message, response};
+    const {message, code, response} = this;
+    return {message, code, response};
   }
 }
 
