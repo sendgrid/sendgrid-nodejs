@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@sendgrid/client": "^6.0.0-beta.0",
-    "@sendgrid/mail-helpers": "^6.0.0-beta.0"
+    "@sendgrid/helpers": "^6.0.0-beta.0"
   },
   "tags": [
     "http",

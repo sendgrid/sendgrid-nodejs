@@ -1,5 +1,5 @@
 ## Support classes and helpers for the Sendgrid NodeJS libraries
-This is a collection of support classes and helpers used internally by the
+This is a collection of classes and helpers used internally by the
 Sendgrid NodeJS libraries.
 
 Note that not all objects represented in the Sendgrid API have helper classes assigned to them, because it is not expected that developers will use these classes themselves. They are primarily for internal use and developers are expected to use the publicly exposed API in the various endpoint services.

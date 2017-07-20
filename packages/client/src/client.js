@@ -12,7 +12,7 @@ const {
   classes: {
     ResponseError,
   },
-} = require('@sendgrid/support');
+} = require('@sendgrid/helpers');
 
 /**
  * Sendgrid REST Client

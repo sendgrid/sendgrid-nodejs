@@ -7,7 +7,7 @@ const {
   classes: {
     Mail,
   },
-} = require('@sendgrid/support');
+} = require('@sendgrid/helpers');
 
 /**
  * Mail service class

@@ -6,7 +6,7 @@ const {
   classes: {
     Attachment,
   },
-} = require('@sendgrid/support');
+} = require('@sendgrid/helpers');
 
 /**
  * Normalises attachment files retrieved from file system or parsed raw email
