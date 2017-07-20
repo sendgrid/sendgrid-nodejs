@@ -1,7 +1,24 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## [5.2.0] - 2017-05-3 ##
+## [5.2.0] - 2017-07-20 ##
+### Fixed
+- Pull #410: Cast substitution values to strings
+- Thanks to [Ryan James](https://github.com/dangerismycat) for the PR!
+
+## [5.1.2] - 2017-06-30 ##
+### Fixed
+- Pull #399
+- Fix `batch_id` type
+- Thanks to [Leonardo Testa](https://github.com/testica) for the PR!
+
+## [5.1.1] - 2017-06-1 ##
+### Added
+- Pull #391
+- Return personalizations as an array of request compatible JSON.
+- Thanks to [Paul Hrimiuc](https://github.com/hpaul) for the PR!
+
+## [5.1.0] - 2017-05-3 ##
 ### Added
 - Pull #325
 - Run prism for tests
