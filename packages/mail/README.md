@@ -1,6 +1,15 @@
 # Mail service for the Sendgrid API
 This is a dedicated service for interaction with the mail endpoint of the Sendgrid API.
 
+## Installation
+Install with `npm` or `yarn`:
+
+```sh
+npm install @sendgrid/mail
+
+yarn add @sendgrid/mail
+```
+
 ## Basic usage
 
 ### Initialization with API key
