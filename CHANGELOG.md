@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [5.2.0] - 2017-07-20 ##
+### Fixed
+- Pull #410: Cast substitution values to strings
+- Thanks to [Ryan James](https://github.com/dangerismycat) for the PR!
+
 ## [5.1.2] - 2017-06-30 ##
 ### Fixed
 - Pull #399
