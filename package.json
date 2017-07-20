@@ -1,56 +1,38 @@
 {
-  "author": "SendGrid <dx@sendgrid.com> (sendgrid.com)",
-  "contributors": [
-    "Kyle Partridge <kyle.partridge@sendgrid.com>",
-    "David Tomberlin <david.tomberlin@sendgrid.com>",
-    "Swift <swift@sendgrid.com>",
-    "Brandon West <brandon.west@sendgrid.com>",
-    "Scott Motte <scott.motte@sendgrid.com>",
-    "Robert Acosta <robert.acosta@sendgrid.com>",
-    "Elmer Thomas <elmer.thomas@sendgrid.com>",
-    "Adam Buczynski <me@adambuczynski.com>"
-  ],
   "name": "sendgrid",
   "description": "Official SendGrid NodeJS library.",
-  "version": "5.1.2",
   "homepage": "https://sendgrid.com",
+  "version": "6.0.0",
+  "private": false,
+  "license": "SEE LICENSE IN LICENSE.md",
   "repository": {
     "type": "git",
     "url": "git://github.com/sendgrid/sendgrid-nodejs.git"
   },
-  "engines": {
-    "node": ">= 4.0.0"
-  },
-  "dependencies": {
-    "async.ensureasync": "^0.5.2",
-    "async.queue": "^0.5.2",
-    "bottleneck": "^1.12.0",
-    "debug": "^2.2.0",
-    "lodash.chunk": "^4.2.0",
-    "mailparser": "^0.6.1",
-    "sendgrid-rest": "^2.3.0"
-  },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "eslint": "^3.1.0",
-    "mocha": "^2.4.5",
-    "mocha-sinon": "^1.1.5",
-    "sinon": "^1.17.5",
-    "sinon-chai": "^2.8.0",
-    "system-sleep": "^1.0.0-g",
-    "typescript": "^2.0.0"
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "chai": "^4.0.1",
+    "chai-as-promised": "^6.0.0",
+    "dirty-chai": "^1.2.2",
+    "eslint": "^3.19.0",
+    "istanbul": "^1.0.0-alpha.2",
+    "lerna": "^2.0.0-rc.5",
+    "mocha": "^3.4.2",
+    "mocha-clean": "^1.0.0",
+    "mocha-sinon": "^2.0.0",
+    "sinon": "^2.3.2",
+    "sinon-chai": "^2.10.0"
   },
   "scripts": {
     "lint": "eslint . --fix",
-    "test": "mocha",
-    "test:typescript": "tsc"
-  },
-  "typings": "index.d.ts",
-  "tags": [
-    "http",
-    "rest",
-    "api"
-  ],
-  "license": "MIT",
-  "optionalDependencies": {}
+    "prism:install": "curl https://raw.githubusercontent.com/stoplightio/prism/master/install.sh | sh",
+    "prism": "prism run --mock --list --spec https://raw.githubusercontent.com/sendgrid/sendgrid-oai/master/oai_stoplight.json",
+    "test:all": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/**/*.spec.js\"",
+    "test:helpers": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/helpers/**/*.spec.js\"",
+    "test:client": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/client/**/*.spec.js\"",
+    "test:mail": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/mail/**/*.spec.js\"",
+    "test": "npm run test:all -s",
+    "coverage": "open -a \"Google Chrome\" ./coverage/lcov-report/index.html"
+  }
 }

@@ -1,0 +1,40 @@
+{
+  "name": "@sendgrid/mail",
+  "description": "SendGrid NodeJS mail service",
+  "version": "6.0.0-beta.2",
+  "author": "SendGrid <dx@sendgrid.com> (sendgrid.com)",
+  "contributors": [
+    "Kyle Partridge <kyle.partridge@sendgrid.com>",
+    "David Tomberlin <david.tomberlin@sendgrid.com>",
+    "Swift <swift@sendgrid.com>",
+    "Brandon West <brandon.west@sendgrid.com>",
+    "Scott Motte <scott.motte@sendgrid.com>",
+    "Robert Acosta <robert.acosta@sendgrid.com>",
+    "Elmer Thomas <elmer.thomas@sendgrid.com>",
+    "Adam Reis <adam@reis.nz>"
+  ],
+  "license": "MIT",
+  "homepage": "https://sendgrid.com",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sendgrid/sendgrid-nodejs.git"
+  },
+  "main": "src/mail.js",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@sendgrid/client": "^6.0.0-beta.2",
+    "@sendgrid/helpers": "^6.0.0-beta.2"
+  },
+  "tags": [
+    "http",
+    "rest",
+    "api",
+    "mail",
+    "sendgrid"
+  ]
+}
