@@ -14,6 +14,7 @@ describe('deepClone', function() {
   const obj = {
     nested: {a: 1, b: 2, c: {d: 4}},
     e: 5,
+    arr: ['a', 'b'],
   };
 
   //Create clone
@@ -33,5 +34,10 @@ describe('deepClone', function() {
     expect(obj.nested).to.deep.equal(clone.nested);
     expect(obj.nested.c).to.not.equal(clone.nested.c);
     expect(obj.nested.c).to.deep.equal(clone.nested.c);
+  });
+  it('should handle arrays properly', function() {
+    expect(clone.arr).to.be.an.instanceof(Array);
+    expect(clone.arr).to.have.lengthOf(2);
+    expect(clone.arr).to.have.members(['a', 'b']);
   });
 });

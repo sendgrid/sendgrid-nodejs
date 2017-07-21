@@ -3,11 +3,16 @@
 /**
  * Helper to convert an object's keys
  */
-module.exports = function convertKeys(obj, converter) {
+module.exports = function convertKeys(obj, converter, ignored) {
 
   //Validate
   if (typeof obj !== 'object' || obj === null) {
     throw new Error('Non object passed to convertKeys: ' + obj);
+  }
+
+  //Ignore arrays
+  if (Array.isArray(obj)) {
+    return obj;
   }
 
   //Process all properties
@@ -15,9 +20,11 @@ module.exports = function convertKeys(obj, converter) {
     //istanbul ignore else
     if (obj.hasOwnProperty(key)) {
 
-      //Recursive for child objects
+      //Recursive for child objects, unless ignored
       if (typeof obj[key] === 'object' && obj[key] !== null) {
-        obj[key] = convertKeys(obj[key], converter);
+        if (!Array.isArray(ignored) || !ignored.includes(key)) {
+          obj[key] = convertKeys(obj[key], converter, ignored);
+        }
       }
 
       //Convert key to snake case and set if needed
@@ -29,6 +36,6 @@ module.exports = function convertKeys(obj, converter) {
     }
   }
 
-  //Return object copy
+  //Return object
   return obj;
 };

@@ -17,10 +17,6 @@ describe('EmailAddress', function() {
     {name: 'Test', email: 'test@example.org'},
   ];
 
-  //Create emails individually and from array
-  const emails = data.map(email => EmailAddress.create(email));
-  const emailsArr = EmailAddress.create(data);
-
   //Set email
   describe('setEmail()', function() {
     let email;
@@ -75,6 +71,11 @@ describe('EmailAddress', function() {
 
   //To JSON
   describe('toJSON()', function() {
+    let emails;
+    beforeEach(function() {
+      emails = data.map(email => EmailAddress.create(email));
+    });
+
     it('should always have the email field', function() {
       emails.forEach(email => {
         const json = email.toJSON();
@@ -97,72 +98,68 @@ describe('EmailAddress', function() {
     });
   });
 
+  //From data
+  describe('fromData()', function() {
+    let email;
+    beforeEach(function() {
+      email = new EmailAddress();
+    });
+
+    it('should handle email address strings', function() {
+      email.fromData(data[0]);
+      expect(email.email).to.equal('test@example.org');
+      expect(email.name).to.equal('');
+    });
+    it('should handle name and email address strings', function() {
+      email.fromData(data[1]);
+      expect(email.email).to.equal('test@example.org');
+      expect(email.name).to.equal('Test');
+    });
+    it('should handle objects', function() {
+      email.fromData(data[2]);
+      expect(email.email).to.equal('test@example.org');
+      expect(email.name).to.equal('Test');
+    });
+    it('should throw an error for invalid input', function() {
+      expect(function() {
+        email.fromData(5);
+      }).to.throw(Error);
+    });
+  });
+
   //Static create method
   describe('create()', function() {
-    it('smoke test', function() {
-      expect(emails).to.be.an.instanceof(Array);
-      expect(emails).to.have.length(3);
+    let emails;
+    beforeEach(function() {
+      emails = data.map(email => EmailAddress.create(email));
     });
+
     it('should create email address instances from given data', function() {
       emails.forEach(email => {
         expect(email).to.be.an.instanceof(EmailAddress);
       });
     });
-    it('should have the expected properties', function() {
+    it('should have the expected properties for each email', function() {
       emails.forEach(email => {
         expect(email).to.have.property('email');
         expect(email).to.have.property('name');
       });
-    });
-    it('should handle email address strings', function() {
-      expect(emails[0].email).to.equal('test@example.org');
-      expect(emails[0].name).to.equal('');
-    });
-    it('should handle name and email address strings', function() {
-      expect(emails[1].email).to.equal('test@example.org');
-      expect(emails[1].name).to.equal('Test');
-    });
-    it('should handle objects', function() {
-      expect(emails[2].email).to.equal('test@example.org');
-      expect(emails[2].name).to.equal('Test');
     });
     it('should handle arrays', function() {
+      const emailsArr = EmailAddress.create(data);
       expect(emailsArr).to.be.an.instanceof(Array);
-      expect(emailsArr).to.have.length(3);
-    });
-    it('should create email address instances from given data', function() {
+      expect(emailsArr).to.have.lengthOf(3);
       emailsArr.forEach(email => {
         expect(email).to.be.an.instanceof(EmailAddress);
-      });
-    });
-    it('should have the expected properties', function() {
-      emailsArr.forEach(email => {
         expect(email).to.have.property('email');
         expect(email).to.have.property('name');
       });
-    });
-    it('should handle email address strings', function() {
-      expect(emailsArr[0].email).to.equal('test@example.org');
-      expect(emailsArr[0].name).to.equal('');
-    });
-    it('should handle name and email address strings', function() {
-      expect(emailsArr[1].email).to.equal('test@example.org');
-      expect(emailsArr[1].name).to.equal('Test');
-    });
-    it('should handle objects', function() {
-      expect(emailsArr[2].email).to.equal('test@example.org');
-      expect(emailsArr[2].name).to.equal('Test');
     });
     it('should handle instances of EmailAddress', function() {
       const email1 = new EmailAddress({email: 'test@example.org'});
       const email2 = EmailAddress.create(email1);
       expect(email2).to.be.an.instanceof(EmailAddress);
       expect(email2.email).to.equal(email1.email);
-    });
-    it('should throw an error for invalid input', function() {
-      expect(function() {
-        EmailAddress.create(5);
-      }).to.throw(Error);
     });
   });
 });

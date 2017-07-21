@@ -20,6 +20,7 @@ class Personalization {
   constructor(data) {
 
     //Init array and object placeholders
+    this.to = [];
     this.cc = [];
     this.bcc = [];
     this.headers = {};
@@ -109,6 +110,9 @@ class Personalization {
    * Add a single to
    */
   addTo(to) {
+    if (typeof to === 'undefined') {
+      return;
+    }
     this.to.push(EmailAddress.create(to));
   }
 
@@ -129,6 +133,9 @@ class Personalization {
    * Add a single cc
    */
   addCc(cc) {
+    if (typeof cc === 'undefined') {
+      return;
+    }
     this.cc.push(EmailAddress.create(cc));
   }
 
@@ -149,6 +156,9 @@ class Personalization {
    * Add a single bcc
    */
   addBcc(bcc) {
+    if (typeof bcc === 'undefined') {
+      return;
+    }
     this.bcc.push(EmailAddress.create(bcc));
   }
 
@@ -159,7 +169,7 @@ class Personalization {
     if (typeof headers === 'undefined') {
       return;
     }
-    if (typeof headers !== 'object') {
+    if (typeof headers !== 'object' || headers === null) {
       throw new Error('Object expected for `headers`');
     }
     this.headers = headers;
@@ -179,31 +189,29 @@ class Personalization {
   }
 
   /**
-   * Set substitution wrappers
+   * Set custom args
    */
-  setSubstitutionWrappers(wrappers) {
-    if (typeof wrappers === 'undefined') {
+  setCustomArgs(customArgs) {
+    if (typeof customArgs === 'undefined') {
       return;
     }
-    if (!Array.isArray(wrappers) || wrappers.length !== 2) {
-      throw new Error(
-        'Array expected with two elements for `substitutionWrappers`'
-      );
+    if (typeof customArgs !== 'object' || customArgs === null) {
+      throw new Error('Object expected for `customArgs`');
     }
-    this.substitutionWrappers = wrappers;
+    this.customArgs = customArgs;
   }
 
   /**
-   * Reverse merge substitutions, preserving existing ones
+   * Add a custom arg
    */
-  reverseMergeSubstitutions(substitutions) {
-    if (typeof substitutions === 'undefined') {
-      return;
+  addCustomArg(key, value) {
+    if (typeof key !== 'string') {
+      throw new Error('String expected for custom arg key');
     }
-    if (typeof substitutions !== 'object') {
-      throw new Error('Object expected for `substitutions`');
+    if (typeof value !== 'string') {
+      throw new Error('String expected for custom arg value');
     }
-    this.substitutions = Object.assign({}, substitutions, this.substitutions);
+    this.customArgs[key] = value;
   }
 
   /**
@@ -213,7 +221,7 @@ class Personalization {
     if (typeof substitutions === 'undefined') {
       return;
     }
-    if (typeof substitutions !== 'object') {
+    if (typeof substitutions !== 'object' || substitutions === null) {
       throw new Error('Object expected for `substitutions`');
     }
     this.substitutions = substitutions;
@@ -226,20 +234,38 @@ class Personalization {
     if (typeof key !== 'string') {
       throw new Error('String expected for substitution key');
     }
+    if (typeof value !== 'string' && typeof value !== 'number') {
+      throw new Error('String or Number expected for substitution value');
+    }
     this.substitutions[key] = value;
   }
 
   /**
-   * Set custom args
+   * Reverse merge substitutions, preserving existing ones
    */
-  setCustomArgs(customArgs) {
-    if (typeof customArgs === 'undefined') {
+  reverseMergeSubstitutions(substitutions) {
+    if (typeof substitutions === 'undefined') {
       return;
     }
-    if (typeof customArgs !== 'object') {
-      throw new Error('Object expected for `customArgs`');
+    if (typeof substitutions !== 'object' || substitutions === null) {
+      throw new Error('Object expected for `substitutions`');
     }
-    this.customArgs = customArgs;
+    this.substitutions = Object.assign({}, substitutions, this.substitutions);
+  }
+
+  /**
+   * Set substitution wrappers
+   */
+  setSubstitutionWrappers(wrappers) {
+    if (typeof wrappers === 'undefined') {
+      return;
+    }
+    if (!Array.isArray(wrappers) || wrappers.length !== 2) {
+      throw new Error(
+        'Array expected with two elements for `substitutionWrappers`'
+      );
+    }
+    this.substitutionWrappers = wrappers;
   }
 
   /**
@@ -285,7 +311,7 @@ class Personalization {
     }
 
     //Return as snake cased object
-    return toSnakeCase(json);
+    return toSnakeCase(json, ['substitutions']);
   }
 }
 
