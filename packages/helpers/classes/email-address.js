@@ -59,11 +59,11 @@ class EmailAddress {
   }
 
   /**
-   * Set email
+   * Set email (mandatory)
    */
   setEmail(email) {
     if (typeof email === 'undefined') {
-      return;
+      throw new Error('Must provide `email`');
     }
     if (typeof email !== 'string') {
       throw new Error('String expected for `email`');
@@ -83,7 +83,7 @@ class EmailAddress {
     const json = {email};
 
     //Add name if present
-    if (typeof name !== 'undefined') {
+    if (name !== '') {
       json.name = name;
     }
 
