@@ -1,7 +1,8 @@
 [![BuildStatus](https://travis-ci.org/sendgrid/sendgrid-nodejs.svg?branch=master)](https://travis-ci.org/sendgrid/sendgrid-nodejs)
 [![npm version](https://badge.fury.io/js/sendgrid.svg)](https://badge.fury.io/js/sendgrid)
+[![Email Notifications Badge](https://dx.sendgrid.com/badge/nodejs)](https://dx.sendgrid.com/newsletter/nodejs)
 
-Please see our announcement regarding [breaking changes](https://github.com/sendgrid/sendgrid-nodejs/issues/290). Your support is appreciated!
+**NEW:** Subscribe to email [notifications](https://dx.sendgrid.com/newsletter/nodejs) for releases and breaking changes.
 
 **This library allows you to quickly and easily use the SendGrid Web API v3 via Node.js.**
 
@@ -201,7 +202,7 @@ sg.API(request, function (error, response) {
 
 Please see our announcement regarding [breaking changes](https://github.com/sendgrid/sendgrid-nodejs/issues/290). Your support is appreciated!
 
-All updates to this library is documented in our [CHANGELOG](https://github.com/sendgrid/sendgrid-nodejs/blob/master/CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases).
+All updates to this library are documented in our [CHANGELOG](https://github.com/sendgrid/sendgrid-nodejs/blob/master/CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases). You may also subscribe to email [release notifications](https://dx.sendgrid.com/newsletter/nodejs) for releases and breaking changes.
 
 <a name="roadmap"></a>
 # Roadmap
