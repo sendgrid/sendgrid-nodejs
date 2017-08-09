@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [5.2.1] - 2017-08-09 ##
+### Fixed
+- Pull #413: Handle null and undefined values in substitutions
+- Thanks to [Matteo Ferrando](https://github.com/chamini2) for the PR!
+
 ## [5.2.0] - 2017-07-20 ##
 ### Fixed
 - Pull #410: Cast substitution values to strings
