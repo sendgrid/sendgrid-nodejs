@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [5.2.2] - 2017-08-14 ##
+### Fix
+- Pull #418: Fixed #417: fix: Update TypeScript definition to correct callback arguments for API
+- Thanks to [Benjamin Pannell](https://github.com/SPARTAN563) for the PR!
+
+
 ## [5.2.1] - 2017-08-09 ##
 ### Fixed
 - Pull #413: Handle null and undefined values in substitutions
