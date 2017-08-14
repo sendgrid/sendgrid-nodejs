@@ -28,7 +28,7 @@
     "debug": "^2.2.0",
     "lodash.chunk": "^4.2.0",
     "mailparser": "^0.6.1",
-    "sendgrid-rest": "^2.3.0"
+    "sendgrid-rest": "^2.4.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
