@@ -1,3 +1,9 @@
+declare namespace SendGrid.Helpers.Error {
+    export interface SendGridError extends Error {
+
+    }
+}
+
 declare namespace SendGrid.Helpers.Mail {
     export interface Helper {
         Email: typeof Email;
@@ -465,7 +471,7 @@ declare namespace SendGrid {
 
         emptyRequest(data?: SendGrid.Rest.Request): SendGrid.Rest.Request;
 
-        API(request: SendGrid.Rest.Request, callback: (response: SendGrid.Rest.Response) => void): void;
+        API(request: SendGrid.Rest.Request, callback: (err: SendGrid.Helpers.Error.SendGridError, response: SendGrid.Rest.Response) => void): void;
         API(request: SendGrid.Rest.Request): Promise<SendGrid.Rest.Response>;
     }
 }
