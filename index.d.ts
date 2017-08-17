@@ -1,10 +1,11 @@
-declare namespace SendGrid.Helpers.Error {
+export declare namespace SendGrid.Helpers.Error {
     export interface SendGridError extends Error {
 
     }
 }
 
-declare namespace SendGrid.Helpers.Mail {
+
+export declare namespace SendGrid.Helpers.Mail {
     export interface Helper {
         Email: typeof Email;
         Mail: typeof Mail;
@@ -433,7 +434,7 @@ declare namespace SendGrid.Helpers.Mail {
     }
 }
 
-declare namespace SendGrid.Rest {
+export declare namespace SendGrid.Rest {
     export const emptyRequest: Request;
 
     interface Request {
@@ -458,7 +459,7 @@ declare namespace SendGrid.Rest {
     }
 }
 
-declare namespace SendGrid {
+export declare namespace SendGrid {
     export interface SendGridConstructor {
         (apiKey: string, host?: string, globalHeaders?: { [header: string]: string; }): SendGrid;
         constructor(apiKey: string, host?: string, globalHeaders?: { [header: string]: string; }): SendGrid;
@@ -470,11 +471,10 @@ declare namespace SendGrid {
         constructor(apiKey: string, host?: string, globalHeaders?: { [header: string]: string; });
 
         emptyRequest(data?: SendGrid.Rest.Request): SendGrid.Rest.Request;
-
         API(request: SendGrid.Rest.Request, callback: (err: SendGrid.Helpers.Error.SendGridError, response: SendGrid.Rest.Response) => void): void;
         API(request: SendGrid.Rest.Request): Promise<SendGrid.Rest.Response>;
     }
 }
 
 declare const sendGrid: SendGrid.SendGridConstructor;
-export = sendGrid;
+export default sendGrid;
