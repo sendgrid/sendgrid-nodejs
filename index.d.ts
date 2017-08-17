@@ -4,7 +4,6 @@ export declare namespace SendGrid.Helpers.Error {
     }
 }
 
-
 export declare namespace SendGrid.Helpers.Mail {
     export interface Helper {
         Email: typeof Email;
@@ -471,6 +470,7 @@ export declare namespace SendGrid {
         constructor(apiKey: string, host?: string, globalHeaders?: { [header: string]: string; });
 
         emptyRequest(data?: SendGrid.Rest.Request): SendGrid.Rest.Request;
+
         API(request: SendGrid.Rest.Request, callback: (err: SendGrid.Helpers.Error.SendGridError, response: SendGrid.Rest.Response) => void): void;
         API(request: SendGrid.Rest.Request): Promise<SendGrid.Rest.Response>;
     }
