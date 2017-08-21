@@ -15,9 +15,9 @@ const arrayToJSON = require('../helpers/array-to-json');
  */
 class Mail {
 
-	/**
-	 * Constructor
-	 */
+  /**
+   * Constructor
+   */
   constructor(data) {
 
     //Initialize array and object properties
@@ -462,9 +462,9 @@ class Mail {
     this.mailSettings = settings;
   }
 
-	/**
-	 * To JSON
-	 */
+  /**
+   * To JSON
+   */
   toJSON() {
 
     //Extract properties from self

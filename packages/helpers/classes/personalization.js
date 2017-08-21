@@ -14,9 +14,9 @@ const wrapSubstitutions = require('../helpers/wrap-substitutions');
  */
 class Personalization {
 
-	/**
-	 * Constructor
-	 */
+  /**
+   * Constructor
+   */
   constructor(data) {
 
     //Init array and object placeholders
@@ -221,7 +221,7 @@ class Personalization {
     if (typeof substitutions === 'undefined') {
       return;
     }
-    if (typeof substitutions !== 'object' || substitutions === null) {
+    if (typeof substitutions !== 'object') {
       throw new Error('Object expected for `substitutions`');
     }
     this.substitutions = substitutions;
@@ -244,10 +244,10 @@ class Personalization {
    * Reverse merge substitutions, preserving existing ones
    */
   reverseMergeSubstitutions(substitutions) {
-    if (typeof substitutions === 'undefined') {
+    if (typeof substitutions === 'undefined' || substitutions === null) {
       return;
     }
-    if (typeof substitutions !== 'object' || substitutions === null) {
+    if (typeof substitutions !== 'object') {
       throw new Error('Object expected for `substitutions`');
     }
     this.substitutions = Object.assign({}, substitutions, this.substitutions);
@@ -269,8 +269,8 @@ class Personalization {
   }
 
   /**
-	 * To JSON
-	 */
+   * To JSON
+   */
   toJSON() {
 
     //Get data from self

@@ -27,7 +27,7 @@
     "node": ">=6.0.0"
   },
   "dependencies": {
-    "@sendgrid/helpers": "^6.0.0",
+    "@sendgrid/helpers": "^6.0.0-beta.3",
     "request": "^2.81.0"
   },
   "tags": [
