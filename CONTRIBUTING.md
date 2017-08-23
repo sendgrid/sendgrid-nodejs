@@ -125,15 +125,11 @@ The interface to the SendGrid API.
 
 All PRs require passing tests before the PR will be reviewed.
 
-All test files are in the [`tests`](https://github.com/sendgrid/sendgrid-nodejs/tree/master/test) directory.
+To run tests, please install Prism first by either running `yarn prism:install` or manually downloading from (the Prism website)[https://stoplight.io/platform/prism/].
 
-For the purposes of contributing to this repo, please update the [`test.js`](https://github.com/sendgrid/sendgrid-nodejs/tree/master/test/test.js) file with unit tests as you modify the code.
+Next, start Prism in one console window using `yarn prism`.
 
-Run the tests at the root of the `sendgrid-nodejs` repo:
-
-```bash
-mocha
-```
+Run the tests in another console window using `yarn test`, or specific tests e.g. `yarn test:mail` or `yarn test:support`.
 
 <a name="style_guidelines_and_naming_conventions"></a>
 ## Style Guidelines & Naming Conventions
