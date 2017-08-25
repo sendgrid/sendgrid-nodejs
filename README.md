@@ -66,14 +66,14 @@ For more complex cases, please see [USE_CASES.md](https://github.com/sendgrid/se
 ```js
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-const data = {
+const msg = {
   to: 'test@example.com',
   from: 'test@example.com',
   subject: 'Sending with SendGrid is Fun',
   text: 'and easy to do anywhere, even with Node.js',
   html: '<strong>and easy to do anywhere, even with Node.js</strong>',
 };
-sgMail.send(data);
+sgMail.send(msg);
 ```
 
 ## General v3 Web API Usage

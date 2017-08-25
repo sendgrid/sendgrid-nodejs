@@ -1,4 +1,4 @@
-This documentation provides examples for specific use cases. Please [open an issue](https://github.com/sendgrid/sendgrid-nodejs/issues) or make a pull request for any use cases you would like us to document here. Thank you!
+This documentation provides examples for specific email use cases. Please [open an issue](https://github.com/sendgrid/sendgrid-nodejs/issues) or make a pull request for any email use cases you would like us to document here. Thank you!
 
 # Table of Contents
 
@@ -10,7 +10,7 @@ This documentation provides examples for specific use cases. Please [open an iss
 * [Advanced Usage](#advanced)
   * [Transactional Templates](#transactional_templates)
   * [Attachments](#attachments)
-  * [Customization per Recipient](#customization)
+  * [Customization Per Recipient](#customization)
   * [Manually Providing Content](#manualcontent)
   * [Specifying Time to Send At](#timetosend)
   * [Specifying Custom Headers](#customheaders)
@@ -23,14 +23,14 @@ This documentation provides examples for specific use cases. Please [open an iss
 ```js
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-const data = {
+const msg = {
   to: 'recipient@example.org',
   from: 'sender@example.org',
   subject: 'Hello world',
   text: 'Hello plain world!',
   html: '<p>Hello HTML world!</p>',
 };
-sgMail.send(data);
+sgMail.send(msg);
 ```
 
 <a name="singleemailmultiplerecipients"></a>
@@ -41,14 +41,14 @@ The `to` field can contain an array of recipients, which will send a single emai
 ```js
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-const data = {
+const msg = {
   to: ['recipient1@example.org', 'recipient2@example.org'],
   from: 'sender@example.org',
   subject: 'Hello world',
   text: 'Hello plain world!',
   html: '<p>Hello HTML world!</p>',
 };
-sgMail.send(data);
+sgMail.send(msg);
 ```
 
 If you want to send multiple _individual_ emails to multiple recipient where they don't see each others email addresses, use `sendMultiple` instead:
@@ -56,22 +56,22 @@ If you want to send multiple _individual_ emails to multiple recipient where the
 ```js
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-const data = {
+const msg = {
   to: ['recipient1@example.org', 'recipient2@example.org'],
   from: 'sender@example.org',
   subject: 'Hello world',
   text: 'Hello plain world!',
   html: '<p>Hello HTML world!</p>',
 };
-sgMail.sendMultiple(data);
+sgMail.sendMultiple(msg);
 ```
 
-Note that `sendMultiple(data)` is a convenience shortcut for `send(data, true)`, and alternatively you can also set the `isMultiple` flag to `true` on your `data` object.
+Note that `sendMultiple(msg)` is a convenience shortcut for `send(msg, true)`, and alternatively you can also set the `isMultiple` flag to `true` on your `msg` object.
 
 <a name="multipleemailsmultiplerecipients"></a>
 # Send Multiple Emails to Multiple Recipients
 
-The `send` method also accepts an array of email data if you want to send multiple different single emails with for example different content and sender values. This will send multiple requests (in parallel), so be aware of any API rate restrictions:
+The `send` method also accepts an array of email msg if you want to send multiple different single emails with for example different content and sender values. This will send multiple requests (in parallel), so be aware of any API rate restrictions:
 
 ```js
 const emails = [
@@ -93,13 +93,13 @@ const emails = [
 sgMail.send(emails);
 ```
 
-<a name="#ccbccreplyto"></a>
+<a name="ccbccreplyto"></a>
 # CC, BCC and Reply To
 
 You can specify the `cc`, `bcc` and `replyTo` fields for more control over who you send the email to and where people will reply to:
 
 ```js
-const data = {
+const msg = {
   to: 'recipient@example.org',
   cc: 'someone@example.org',
   bcc: ['me@example.org', 'you@example.org'],
@@ -115,7 +115,7 @@ const data = {
 The email address fields (`to`, `from`, `cc`, `bcc`, `replyTo`) are flexible and can be any of the following:
 
 ```js
-const data = {
+const msg = {
 
   //Simple email address string
   to: 'someone@example.org',
@@ -141,14 +141,14 @@ const data = {
 };
 ```
 
-<a name="#successfailureerrors"></a>
+<a name="successfailureerrors"></a>
 # Handling Success/Failure/Errors
 
 The `send` and `sendMultiple` methods return a `Promise`, so you can handle success and capture errors:
 
 ```js
 sgMail
-  .send(data)
+  .send(msg)
   .then(() => {
     //Celebrate
   })
@@ -157,10 +157,10 @@ sgMail
     //Log friendly error
     console.error(error.toString());
 
-    //Extract error data
+    //Extract error msg
     const {message, code, response} = error;
 
-    //Extract response data
+    //Extract response msg
     const {headers, body} = response;
   });
 ```
@@ -169,7 +169,7 @@ Alternatively, pass a callback function as the last parameter:
 
 ```js
 sgMail
-  .send(data, (error, result) => {
+  .send(msg, (error, result) => {
     if (error) {
       //Do something with the error
     }
@@ -182,7 +182,7 @@ sgMail
 <a name="advanced"></a>
 # Advanced Usage
 
-All other advanced settings are supported and can be passed in through the data object according to the expected format as per the [API v3 documentation](https://sendgrid.com/docs/API_Reference/Web_API_v3/Mail/index.html). Note that you can use either `camelCase` or `snake_case` for property names.
+All other advanced settings are supported and can be passed in through the msg object according to the expected format as per the [API v3 documentation](https://sendgrid.com/docs/API_Reference/api_v3.html). Note that you can use either `camelCase` or `snake_case` for property names.
 
 <a name="transactional_templates"></a>
 ## Transactional Templates
@@ -225,7 +225,7 @@ I hope you are having a great day in -city- :)
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 sgMail.setSubstitutionWrappers('-', '-'); // Configure the substitution tag wrappers globally
-const data = {
+const msg = {
   to: 'recipient@example.org',
   from: 'sender@example.org',
   subject: 'Hello world',
@@ -237,13 +237,13 @@ const data = {
     city: 'Denver',
   },
 };
-sgMail.send(data);
+sgMail.send(msg);
 ```
 
-Alternatively, you may specify the substitution wrappers via the data object as well. This will override any wrappers you may have configured globally.
+Alternatively, you may specify the substitution wrappers via the msg object as well. This will override any wrappers you may have configured globally.
 
 ```js
-const data = {
+const msg = {
   ...
   substitutionWrappers: ['-', '-'],
   ...
@@ -253,12 +253,12 @@ const data = {
 <a name="attachments"></a>
 ## Attachments
 
-Attachments can be sent by providing an array of `attachments` as per the API specifications:
+Attachments can be sent by providing an array of `attachments` as per the [API specification](https://sendgrid.com/docs/API_Reference/api_v3.html):
 
 ```js
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-const data = {
+const msg = {
   to: 'recipient@example.org',
   from: 'sender@example.org',
   subject: 'Hello attachment',
@@ -273,16 +273,15 @@ const data = {
     },
   ],
 };
-sgMail.send(data);
 ```
 
 <a name="customization"></a>
-## Customization per Recipient
+## Customization Per Recipient
 
-To send multiple individual emails to multiple recipients with additional customization (like a different subject), use the `personalizations` field as per the [API definition](https://sendgrid.com/docs/API_Reference/Web_API_v3/Mail/index.html) instead of `to`, leveraging all customization options:
+To send multiple individual emails to multiple recipients with additional customization (like a different subject), use the `personalizations` field as per the [API definition](https://sendgrid.com/docs/API_Reference/api_v3.html) instead of `to`, leveraging all customization options:
 
 ```js
-const data = {
+const msg = {
   personalizations: [
     {
       to: 'recipient1@example.org',
@@ -328,7 +327,7 @@ If the `substitutions` field is provided globally as well, these substitutions w
 Instead of using the `text` and `html` shorthand properties, you can manually use the `content` property:
 
 ```js
-const data = {
+const msg = {
   to: 'recipient@example.org',
   from: 'sender@example.org',
   subject: 'Hello manual content',
@@ -348,10 +347,10 @@ const data = {
 <a name="customheaders"></a>
 ## Specifying Custom Headers
 
-Use the `headers` property to specify any custom headers:
+Use the `headers` property to specify any custom headers (note that these can also be set globally per the [API specification](https://sendgrid.com/docs/API_Reference/api_v3.html):
 
 ```js
-const data = {
+const msg = {
   to: 'recipient@example.org',
   from: 'sender@example.org',
   subject: 'Hello custom header',
@@ -365,10 +364,10 @@ const data = {
 <a name="timetosend"></a>
 ## Specifying Time to Send At
 
-Use the `sendAt` property to specify when to send the emails (in seconds, not milliseconds):
+Use the `sendAt` property to specify when to send the emails (in [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) seconds, not milliseconds):
 
 ```js
-const data = {
+const msg = {
   to: 'recipient@example.org',
   from: 'sender@example.org',
   subject: 'Hello delayed email',
@@ -377,13 +376,13 @@ const data = {
 };
 ```
 
-<a name="customheaders">categories</a>
+<a name="categories">categories</a>
 ## Specifying Categories
 
 Use the `categories` property to provide an array of categories for your email:
 
 ```js
-const data = {
+const msg = {
   to: 'recipient@example.org',
   from: 'sender@example.org',
   subject: 'Hello email with categories',
@@ -397,7 +396,7 @@ const data = {
 Specifying a single `category` is also supported:
 
 ```js
-const data = {
+const msg = {
   to: 'recipient@example.org',
   from: 'sender@example.org',
   subject: 'Hello email with categories',
@@ -414,7 +413,7 @@ All other options from the [API definition](https://sendgrid.com/docs/API_Refere
 ```js
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-const data = {
+const msg = {
   to: 'recipient@example.org',
   cc: 'someone@example.org',
   bcc: ['me@example.org', 'you@example.org'],
@@ -451,7 +450,7 @@ const data = {
   trackingSettings: {},
 };
 sgMail
-  .send(data)
+  .send(msg)
   .then(() => console.log('Mail sent successfully'))
   .catch(error => console.error(error.toString()));
 ```
