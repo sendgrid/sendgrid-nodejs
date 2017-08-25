@@ -47,8 +47,9 @@ const request = {
   url: '/v3/api_keys'
 };
 client.request(request)
-.then(response => {
-    console.log(JSON.stringify(response[0].body));
+.then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
 })
 ```
 
