@@ -16,7 +16,9 @@ We appreciate your continued support, thank you!
 
 * [Installation](#installation)
 * [Quick Start](#quick_start)
-* [Use Cases](#use_cases)
+  * [Email v3 Web API](#email)
+  * [General v3 Web API](#general)
+* [Email Use Cases](#use_cases)
 * [Additional Documentation](#usage)
 * [Announcements](#announcements)
 * [Roadmap](#roadmap)
@@ -59,6 +61,7 @@ yarn add @sendgrid/mail
 <a name="quick_start"></a>
 # Quick Start
 
+<a name="email"></a>
 ## Hello Email
 
 For more complex use cases, please see [USE_CASES.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/mail/USE_CASES.md).
@@ -76,6 +79,7 @@ const msg = {
 sgMail.send(msg);
 ```
 
+<a name="general"></a>
 ## General v3 Web API Usage
 
 ```js
@@ -92,7 +96,7 @@ client.request(request)
 ```
 
 <a name="use_cases"></a>
-# Use Cases
+# Email Use Cases
 
 [Examples of common and advanced email use cases](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/mail/USE_CASES.md), such as how to send an email with a transactional template or adding attachments.
 
