@@ -6,12 +6,11 @@ node_js:
 before_install:
 - npm install -g npm@2
 before_script:
+- mkdir prism
+- mkdir prism/bin
+- export PATH=$PATH:$PWD/prism/bin/
 - yarn prism:install
 - yarn prism
-#- mkdir prism
-#- mkdir prism/bin
-#- export PATH=$PATH:$PWD/prism/bin/
-#- ./test/prism.sh
 script:
 - yarn test:mail
 - yarn test:client
