@@ -1,4 +1,4 @@
-**This helper is a stand alone module to help get you started consuming and processing [Inbound Parse](https://sendgrid.com/docs/API_Reference/Webhooks/inbound_email.html) data.**
+**This package helps get you started consuming and processing [Inbound Parse](https://sendgrid.com/docs/API_Reference/Webhooks/inbound_email.html) data.**
 
 To be notified when this package is updated, please subscribe to email [notifications](https://dx.sendgrid.com/newsletter/nodejs) for releases and breaking changes.
 
