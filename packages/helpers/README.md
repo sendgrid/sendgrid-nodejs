@@ -1,8 +1,12 @@
+**This package is part of a monorepo, please see [this README](https://github.com/sendgrid/sendgrid-nodejs/blob/master/README.md) for details**
+
 # Support classes and helpers for the Sendgrid NodeJS libraries
 This is a collection of classes and helpers used internally by the
 [Sendgrid NodeJS libraries](https://www.npmjs.com/org/sendgrid).
 
 Note that not all objects represented in the Sendgrid API have helper classes assigned to them, because it is not expected that developers will use these classes themselves. They are primarily for internal use and developers are expected to use the publicly exposed API in the [various endpoint services](https://www.npmjs.com/org/sendgrid).
+
+To be notified when this package is updated, please subscribe to email [notifications](https://dx.sendgrid.com/newsletter/nodejs) for releases and breaking changes.
 
 ## Mail class
 Used to compose a `Mail` object that converts itself to proper JSON for use with the [Sendgrid v3 API](https://sendgrid.com/docs/API_Reference/api_v3.html). This class supports a slightly different API to make sending emails easier in many cases by not having to deal with personalization arrays, instead offering a simpler interface for composing mails.

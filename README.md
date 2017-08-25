@@ -14,11 +14,7 @@ We appreciate your continued support, thank you!
 
 # Table of Contents
 
-* [Installation](#installation)
-* [Quick Start](#quick_start)
-  * [Email v3 Web API](#email)
-  * [General v3 Web API](#general)
-* [Email Use Cases](#use_cases)
+* [Introduction - Please Read First](#introduction)
 * [Additional Documentation](#usage)
 * [Announcements](#announcements)
 * [Roadmap](#roadmap)
@@ -26,86 +22,16 @@ We appreciate your continued support, thank you!
 * [Troubleshooting](#troubleshooting)
 * [About](#about)
 
-<a name="installation"></a>
-# Installation
+<a name="introduction"></a>
+# Introduction
 
-## Prerequisites
+This library is broken up into several packages as a monorepo so that you only need to install the packages necessary for your use case. This README contains information pertaining to all packages.
 
-- Node.js version 6, 7 or 8
-- The SendGrid service, starting at the [free level](https://sendgrid.com/free?source=sendgrid-nodejs)
-
-## Setup Environment Variables
-
-Update the development environment with your [SENDGRID_API_KEY](https://app.sendgrid.com/settings/api_keys), for example:
-
-```bash
-echo "export SENDGRID_API_KEY='YOUR_API_KEY'" > sendgrid.env
-echo "sendgrid.env" >> .gitignore
-source ./sendgrid.env
-```
-
-## Install Package
-
-The following recommended installation requires [npm](https://npmjs.org/). If you are unfamiliar with npm, see the [npm docs](https://npmjs.org/doc/). Npm comes installed with Node.js since node version 0.8.x therefore you likely already have it.
-
-```sh
-npm install --save @sendgrid/mail
-```
-
-You may also use [yarn](https://yarnpkg.com/en/) to install.
-
-```sh
-yarn add @sendgrid/mail
-```
-
-<a name="quick_start"></a>
-# Quick Start
-
-<a name="email"></a>
-## Hello Email
-
-For more complex use cases, please see [USE_CASES.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/mail/USE_CASES.md).
-
-```js
-const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-const msg = {
-  to: 'test@example.com',
-  from: 'test@example.com',
-  subject: 'Sending with SendGrid is Fun',
-  text: 'and easy to do anywhere, even with Node.js',
-  html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-};
-sgMail.send(msg);
-```
-
-<a name="general"></a>
-## General v3 Web API Usage
-
-```js
-const client = require('@sendgrid/client');
-client.setApiKey(process.env.SENDGRID_API_KEY);
-const request = {
-  method: 'GET',
-  url: '/v3/api_keys'
-};
-client.request(request)
-.then(response => {
-    console.log(JSON.stringify(response[0].body));
-})
-```
-
-<a name="use_cases"></a>
-# Email Use Cases
-
-[Examples of common and advanced email use cases](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/mail/USE_CASES.md), such as how to send an email with a transactional template or adding attachments.
-
-<a name="usage"></a>
-# Additional Documentation
-
-- [Interactive API Docs](https://sendgrid.com/docs/API_Reference/api_v3.html)
-- [v3 API Call Examples](https://github.com/sendgrid/sendgrid-nodejs/blob/master/USAGE.md)
-- [How-to: Migration from v2 to v3](https://sendgrid.com/docs/Classroom/Send/v3_Mail_Send/how_to_migrate_from_v2_to_v3_mail_send.html)
+* [@sendgrid/mail](https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages/mail) - if you just want to send email
+* [@sendgrid/client](https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages/client) - to use all other [SendGrid v3 Web API endpoints](https://sendgrid.com/docs/API_Reference/api_v3.html)
+* [@sendgrid/inbound-mail-parser](https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages/inbound-mail-parser) - help with parsing the SendGrid Inbound Parse API
+* [@sendgrid/contact-import](https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages/contact-import) - help with importing contacts into the ContactDB
+* [@sendgrid/helpers](https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages/helpers) - a collection of classes and helpers used internally by the above packages
 
 <a name="announcements"></a>
 # Announcements
@@ -125,11 +51,6 @@ We encourage contribution to our libraries (you might even score some nifty swag
 * [Feature Request](https://github.com/sendgrid/sendgrid-nodejs/tree/master/CONTRIBUTING.md#feature_request)
 * [Bug Reports](https://github.com/sendgrid/sendgrid-nodejs/tree/master/CONTRIBUTING.md#submit_a_bug_report)
 * [Improvements to the Codebase](https://github.com/sendgrid/sendgrid-nodejs/tree/master/CONTRIBUTING.md#improvements_to_the_codebase)
-
-<a name="troubleshooting"></a>
-# Troubleshooting
-
-Please see our [troubleshooting guide](https://github.com/sendgrid/sendgrid-nodejs/blob/master/TROUBLESHOOTING.md) for common library issues.
 
 <a name="about"></a>
 # About
