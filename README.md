@@ -6,8 +6,6 @@
 
 **This library allows you to quickly and easily use the SendGrid Web API v3 via Node.js.**
 
-Version 3.X.X+ of this library provides full support for all SendGrid [Web API v3](https://sendgrid.com/docs/API_Reference/Web_API_v3/index.html) endpoints, including the new [v3 /mail/send](https://sendgrid.com/blog/introducing-v3mailsend-sendgrids-new-mail-endpoint).
-
 We want this library to be community driven and SendGrid led. We need your help to realize this goal. To help make sure we are building the right things in the right order, we ask that you create [issues](https://github.com/sendgrid/sendgrid-nodejs/issues) and [pull requests](https://github.com/sendgrid/sendgrid-nodejs/blob/master/CONTRIBUTING.md) or simply upvote or comment on existing issues or pull requests.
 
 Please browse the rest of this README for further detail.
@@ -17,7 +15,7 @@ We appreciate your continued support, thank you!
 # Table of Contents
 
 * [Installation](#installation)
-* [Quick Start](#quick_start))
+* [Quick Start](#quick_start)
 * [Use Cases](#use_cases)
 * [Additional Documentation](#usage)
 * [Announcements](#announcements)
