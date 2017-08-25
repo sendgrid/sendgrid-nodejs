@@ -1,4 +1,4 @@
-**This package is part of a monorepo, please see [this README](https://github.com/sendgrid/sendgrid-nodejs/blob/master/README.md) for details**
+**This package is part of a monorepo, please see [this README](https://github.com/sendgrid/sendgrid-nodejs/blob/master/README.md) for details.**
 
 # Client for the Sendgrid v3 Web API
 This client library is used by the other [SendGrid service packages](https://www.npmjs.com/org/sendgrid) to make requests to the [Sendgrid v3 Web API](https://sendgrid.com/docs/API_Reference/api_v3.html). You can also use it independently to make custom requests to the SendGrid v3 Web API and other HTTP APIs.

@@ -1,4 +1,4 @@
-**This package is part of a monorepo, please see [this README](https://github.com/sendgrid/sendgrid-nodejs/blob/master/README.md) for details**
+**This package is part of a monorepo, please see [this README](https://github.com/sendgrid/sendgrid-nodejs/blob/master/README.md) for details.**
 
 # Support classes and helpers for the Sendgrid NodeJS libraries
 This is a collection of classes and helpers used internally by the

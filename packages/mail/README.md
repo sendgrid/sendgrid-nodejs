@@ -1,4 +1,4 @@
-**This package is part of a monorepo, please see [this README](https://github.com/sendgrid/sendgrid-nodejs/blob/master/README.md) for details**
+**This package is part of a monorepo, please see [this README](https://github.com/sendgrid/sendgrid-nodejs/blob/master/README.md) for details.**
 
 # Mail Service for the Sendgrid v3 Web API
 This is a dedicated service for interaction with the mail endpoint of the [Sendgrid v3 API](https://sendgrid.com/docs/API_Reference/api_v3.html).
