@@ -61,7 +61,7 @@ yarn add @sendgrid/mail
 
 ## Hello Email
 
-For more complex cases, please see [USE_CASES.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/USE_CASES.md).
+For more complex use cases, please see [USE_CASES.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/mail/USE_CASES.md).
 
 ```js
 const sgMail = require('@sendgrid/mail');
@@ -94,7 +94,7 @@ client.request(request)
 <a name="use_cases"></a>
 # Use Cases
 
-[Examples of common email use cases](https://github.com/sendgrid/sendgrid-nodejs/blob/master/USE_CASES.md), such as how to send an email with a transactional template or adding attachments.
+[Examples of common and advanced email use cases](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/mail/USE_CASES.md), such as how to send an email with a transactional template or adding attachments.
 
 <a name="usage"></a>
 # Additional Documentation
