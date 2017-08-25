@@ -221,7 +221,7 @@ class Personalization {
     if (typeof substitutions === 'undefined') {
       return;
     }
-    if (typeof substitutions !== 'object') {
+    if (typeof substitutions !== 'object' || substitutions === null) {
       throw new Error('Object expected for `substitutions`');
     }
     this.substitutions = substitutions;
@@ -244,10 +244,10 @@ class Personalization {
    * Reverse merge substitutions, preserving existing ones
    */
   reverseMergeSubstitutions(substitutions) {
-    if (typeof substitutions === 'undefined' || substitutions === null) {
+    if (typeof substitutions === 'undefined') {
       return;
     }
-    if (typeof substitutions !== 'object') {
+    if (typeof substitutions !== 'object' || substitutions === null) {
       throw new Error('Object expected for `substitutions`');
     }
     this.substitutions = Object.assign({}, substitutions, this.substitutions);
