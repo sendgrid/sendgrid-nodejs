@@ -9,7 +9,7 @@ before_script:
 - mkdir prism
 - mkdir prism/bin
 - export PATH=$PATH:$PWD/prism/bin/
-- yarn prism:install
+- ./test/prism.sh
 - yarn prism
 script:
 - yarn test:mail
