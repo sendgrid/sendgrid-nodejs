@@ -244,7 +244,7 @@ class Personalization {
    * Reverse merge substitutions, preserving existing ones
    */
   reverseMergeSubstitutions(substitutions) {
-    if (typeof substitutions === 'undefined') {
+    if (typeof substitutions === 'undefined' || substitutions === null) {
       return;
     }
     if (typeof substitutions !== 'object') {
