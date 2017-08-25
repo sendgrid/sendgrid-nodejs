@@ -129,7 +129,9 @@ To run tests, please install Prism first by either running `yarn prism:install` 
 
 Next, start Prism in one console window using `yarn prism`.
 
-Run the tests in another console window using `yarn test`, or specific tests e.g. `yarn test:mail` or `yarn test:support`.
+Open a new console window and run `lerna bootstrap`.
+
+And finally, run `yarn test`, or specific tests e.g. `yarn test:mail` or `yarn test:support`.
 
 <a name="style_guidelines_and_naming_conventions"></a>
 ## Style Guidelines & Naming Conventions

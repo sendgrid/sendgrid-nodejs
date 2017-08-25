@@ -3,4 +3,4 @@
 /**
  * Dependencies
  */
-const sgClient = require('../../packages/client');
+const sgClient = require('./client');
