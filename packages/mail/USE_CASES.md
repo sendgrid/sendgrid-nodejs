@@ -224,7 +224,7 @@ I hope you are having a great day in -city- :)
 ```js
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-sgMail.setSubstitutionWrappers('-', '-'); // Configure the substitution tag wrappers globally
+sgMail.setSubstitutionWrappers('{{', '}}'); // Configure the substitution tag wrappers globally
 const msg = {
   to: 'recipient@example.org',
   from: 'sender@example.org',
@@ -245,7 +245,7 @@ Alternatively, you may specify the substitution wrappers via the msg object as w
 ```js
 const msg = {
   ...
-  substitutionWrappers: ['-', '-'],
+  substitutionWrappers: ['{{', '}}'],
   ...
 };
 ```
