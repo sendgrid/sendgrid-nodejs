@@ -10,7 +10,8 @@ before_script:
 - mkdir prism/bin
 - export PATH=$PATH:$PWD/prism/bin/
 - ./test/prism.sh
-- yarn prism
+- yarn prism &
+- sleep 5 # give it some time to start
 script:
 - yarn test:mail
 - yarn test:client
