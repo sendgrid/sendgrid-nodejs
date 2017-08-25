@@ -1,6 +1,20 @@
 # Client for the Sendgrid v3 Web API
 This client library is used by the other [SendGrid service packages](https://www.npmjs.com/org/sendgrid) to make requests to the [Sendgrid v3 Web API](https://sendgrid.com/docs/API_Reference/api_v3.html). You can also use it independently to make custom requests to the SendGrid v3 Web API and other HTTP APIs.
 
+# Install Package
+
+The following recommended installation requires [npm](https://npmjs.org/). If you are unfamiliar with npm, see the [npm docs](https://npmjs.org/doc/). Npm comes installed with Node.js since node version 0.8.x therefore you likely already have it.
+
+```sh
+npm install --save @sendgrid/client
+```
+
+You may also use [yarn](https://yarnpkg.com/en/) to install.
+
+```sh
+yarn add @sendgrid/client
+```
+
 <a name="general"></a>
 ## General v3 Web API Usage Example
 

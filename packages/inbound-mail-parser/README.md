@@ -2,6 +2,20 @@
 
 To be notified when this package is updated, please subscribe to email [notifications](https://dx.sendgrid.com/newsletter/nodejs) for releases and breaking changes.
 
+# Install Package
+
+The following recommended installation requires [npm](https://npmjs.org/). If you are unfamiliar with npm, see the [npm docs](https://npmjs.org/doc/). Npm comes installed with Node.js since node version 0.8.x therefore you likely already have it.
+
+```sh
+npm install --save @sendgrid/inbound-mail-parser
+```
+
+You may also use [yarn](https://yarnpkg.com/en/) to install.
+
+```sh
+yarn add @sendgrid/inbound-mail-parser
+```
+
 <a name="about"></a>
 # About
 
