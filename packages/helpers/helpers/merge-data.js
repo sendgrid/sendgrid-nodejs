@@ -20,7 +20,10 @@ module.exports = function mergeData(base, data) {
   for (const key in data) {
     //istanbul ignore else
     if (data.hasOwnProperty(key)) {
-      if (data[key] && typeof data[key] === 'object') {
+      if (data[key] && Array.isArray(data[key])) {
+        merged[key] = data[key];
+      }
+      else if (data[key] && typeof data[key] === 'object') {
         merged[key] = Object.assign({}, data[key]);
       }
       else {

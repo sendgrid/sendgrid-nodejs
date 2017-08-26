@@ -37,7 +37,7 @@ class Client {
     this.defaultRequest = {
       json: true,
       baseUrl: 'https://api.sendgrid.com/',
-      uri: '',
+      url: '',
       method: 'GET',
       headers: {},
     };
@@ -87,6 +87,12 @@ class Client {
    * Create request
    */
   createRequest(data) {
+
+    //Keep URL parameter consistent
+    if (data.uri) {
+      data.url = data.uri;
+      delete data.uri;
+    }
 
     //Merge data with empty request
     const request = mergeData(this.defaultRequest, data);
