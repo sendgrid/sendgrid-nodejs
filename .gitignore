@@ -5,3 +5,4 @@ test/config.js
 .env*
 *.log
 .vscode/
+prism_darwin_amd64
