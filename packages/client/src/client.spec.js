@@ -1,5 +1,5 @@
 'use strict';
-const baseUrl = process.env.MOCK_HOST || 'http://localhost:4010/';
+const baseUrl = 'http://localhost:4010/';
 
 /**
  * Tests
