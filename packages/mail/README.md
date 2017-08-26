@@ -1,454 +1,88 @@
-# Mail service for the Sendgrid API
-This is a dedicated service for interaction with the mail endpoint of the Sendgrid API.
+**This package is part of a monorepo, please see [this README](https://github.com/sendgrid/sendgrid-nodejs/blob/master/README.md) for details.**
 
-## Installation
-Install with `npm` or `yarn`:
+# Mail Service for the Sendgrid v3 Web API
+This is a dedicated service for interaction with the mail endpoint of the [Sendgrid v3 API](https://sendgrid.com/docs/API_Reference/api_v3.html).
+
+To be notified when this package is updated, please subscribe to email [notifications](https://dx.sendgrid.com/newsletter/nodejs) for releases and breaking changes.
+
+# Installation
+
+## Prerequisites
+
+- Node.js version 6, 7 or 8
+- The SendGrid service, starting at the [free level](https://sendgrid.com/free?source=sendgrid-nodejs)
+
+## Setup Environment Variables
+
+Update the development environment with your [SENDGRID_API_KEY](https://app.sendgrid.com/settings/api_keys), for example:
+
+```bash
+echo "export SENDGRID_API_KEY='YOUR_API_KEY'" > sendgrid.env
+echo "sendgrid.env" >> .gitignore
+source ./sendgrid.env
+```
+
+## Install Package
+
+The following recommended installation requires [npm](https://npmjs.org/). If you are unfamiliar with npm, see the [npm docs](https://npmjs.org/doc/). Npm comes installed with Node.js since node version 0.8.x therefore you likely already have it.
 
 ```sh
-npm install @sendgrid/mail
+npm install --save @sendgrid/mail
+```
 
+You may also use [yarn](https://yarnpkg.com/en/) to install.
+
+```sh
 yarn add @sendgrid/mail
 ```
 
-## Basic usage
+<a name="quick_start"></a>
+# Quick Start, Hello Email
 
-### Initialization with API key
-Load the library and set the API key if you haven’t set it before:
+For more complex use cases, please see [USE_CASES.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/mail/USE_CASES.md).
 
 ```js
-//Load library
 const sgMail = require('@sendgrid/mail');
-
-//Set API key
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-```
-
-### Single email to one recipient
-Load the library, prepare your email data and use the `send` method:
-
-```js
-//Load library
-const sgMail = require('@sendgrid/mail');
-
-//Create email data
-const data = {
-  to: 'recipient@example.org',
-  from: 'sender@example.org',
-  subject: 'Hello world',
-  text: 'Hello plain world!',
-  html: '<p>Hello HTML world!</p>',
+const msg = {
+  to: 'test@example.com',
+  from: 'test@example.com',
+  subject: 'Sending with SendGrid is Fun',
+  text: 'and easy to do anywhere, even with Node.js',
+  html: '<strong>and easy to do anywhere, even with Node.js</strong>',
 };
-
-//Send email
-sgMail.send(data);
+sgMail.send(msg);
 ```
 
-### Single email to multiple recipients
-The `to` field can contain an array of recipients, which will send a single email with all of the recipients in the `to` field. The recipients will be able to see each other:
+<a name="troubleshooting"></a>
+# Troubleshooting
 
-```js
-//Load library
-const sgMail = require('@sendgrid/mail');
+Please see our [troubleshooting guide](https://github.com/sendgrid/sendgrid-nodejs/blob/master/TROUBLESHOOTING.md) for common library issues.
 
-//Create email data
-const data = {
-  to: ['recipient1@example.org', 'recipient2@example.org'],
-  from: 'sender@example.org',
-  subject: 'Hello world',
-  text: 'Hello plain world!',
-  html: '<p>Hello HTML world!</p>',
-};
+<a name="announcements"></a>
+# Announcements
 
-//Send email
-sgMail.send(data);
-```
+All updates to this library are documented in our [CHANGELOG](https://github.com/sendgrid/sendgrid-nodejs/blob/master/CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases). You may also subscribe to email [release notifications](https://dx.sendgrid.com/newsletter/nodejs) for releases and breaking changes.
 
-### Multiple emails to multiple recipients
-If you want to send multiple _individual_ emails to multiple recipient where they don't see each others email addresses, use `sendMultiple` instead:
+<a name="roadmap"></a>
+# Roadmap
 
-```js
-//Load library
-const sgMail = require('@sendgrid/mail');
+If you are interested in the future direction of this project, please take a look at our open [issues](https://github.com/sendgrid/sendgrid-nodejs/issues) and [pull requests](https://github.com/sendgrid/sendgrid-nodejs/pulls). We would love to hear your feedback.
 
-//Create email data
-const data = {
-  to: ['recipient1@example.org', 'recipient2@example.org'],
-  from: 'sender@example.org',
-  subject: 'Hello world',
-  text: 'Hello plain world!',
-  html: '<p>Hello HTML world!</p>',
-};
+<a name="contribute"></a>
+# How to Contribute
 
-//Send emails
-sgMail.sendMultiple(data);
-```
+We encourage contribution to our libraries (you might even score some nifty swag), please see our [CONTRIBUTING](https://github.com/sendgrid/sendgrid-nodejs/blob/master/CONTRIBUTING.md) guide for details.
 
-Note that `sendMultiple(data)` is a convenience shortcut for `send(data, true)`, and alternatively you can also set the `isMultiple` flag to `true` on your `data` object.
+* [Feature Request](https://github.com/sendgrid/sendgrid-nodejs/tree/master/CONTRIBUTING.md#feature_request)
+* [Bug Reports](https://github.com/sendgrid/sendgrid-nodejs/tree/master/CONTRIBUTING.md#submit_a_bug_report)
+* [Improvements to the Codebase](https://github.com/sendgrid/sendgrid-nodejs/tree/master/CONTRIBUTING.md#improvements_to_the_codebase)
 
-### Multiple single emails
-The `send` method also accepts an array of email data if you want to send multiple different single emails with for example different content and sender values. This will send multiple requests (in parallel), so be aware of any API rate restrictions:
+<a name="about"></a>
+# About
 
-```js
-//Load library
-const sgMail = require('@sendgrid/mail');
+@sendgrid/mail is guided and supported by the SendGrid [Developer Experience Team](mailto:dx@sendgrid.com).
 
-//Create emails data
-const emails = [
-  {
-    to: 'recipient1@example.org',
-    from: 'sender@example.org',
-    subject: 'Hello recipient 1',
-    text: 'Hello plain world!',
-    html: '<p>Hello HTML world!</p>',
-  },
-  {
-    to: 'recipient2@example.org',
-    from: 'other-sender@example.org',
-    subject: 'Hello recipient 2',
-    text: 'Hello other plain world!',
-    html: '<p>Hello other HTML world!</p>',
-  },
-];
+@sendgrid/mail is maintained and funded by SendGrid, Inc. The names and logos for @sendgrid/mail are trademarks of SendGrid, Inc.
 
-//Send emails
-sgMail.send(emails);
-```
-
-### CC, BCC and Reply To
-You can specify the `cc`, `bcc` and `replyTo` fields for more control over who you send the email to and where people will reply to:
-
-```js
-const data = {
-  to: 'recipient@example.org',
-  cc: 'someone@example.org',
-  bcc: ['me@example.org', 'you@example.org'],
-  from: 'sender@example.org',
-  replyTo: 'othersender@example.org',
-  subject: 'Hello world',
-  text: 'Hello plain world!',
-  html: '<p>Hello HTML world!</p>',
-};
-```
-
-### Flexible email address fields
-The email address fields (`to`, `from`, `cc`, `bcc`, `replyTo`) are flexible and can be any of the following:
-
-```js
-const data = {
-
-  //Simple email address string
-  to: 'someone@example.org',
-
-  //Email address with name
-  to: 'Some One <someone@example.org>',
-
-  //Object with name/email
-  to: {
-    name: 'Some One',
-    email: 'someone@example.org',
-  },
-
-  //Arrays are supported for to, cc and bcc
-  to: [
-    'someone@example.org',
-    'Some One <someone@example.org>',
-    {
-      name: 'Some One',
-      email: 'someone@example.org',
-    },
-  ],
-};
-```
-
-### Handling success/failure
-The `send` and `sendMultiple` methods return a `Promise`, so you can handle success and capture errors:
-
-```js
-sgMail
-  .send(data)
-  .then(() => {
-    //Celebrate
-  })
-  .catch(error => {
-
-    //Log friendly error
-    console.error(error.toString());
-
-    //Extract error data
-    const {message, code, response} = error;
-
-    //Extract response data
-    const {headers, body} = response;
-  });
-```
-
-Alternatively, pass a callback function as the last parameter:
-
-```js
-sgMail
-  .send(data, (error, result) => {
-    if (error) {
-      //Do something with the error
-    }
-    else {
-      //Celebrate
-    }
-  });
-```
-
-## Advanced usage
-All other advanced settings are supported and can be passed in through the data object according to the expected format as per the [API v3 documentation](https://sendgrid.com/docs/API_Reference/Web_API_v3/Mail/index.html). Note that you can use either `camelCase` or `snake_case` for property names.
-
-### Using transactional templates
-Configure the substitution tag wrappers globally:
-
-```js
-sgMail.setSubstitutionWrappers('{{', '}}');
-```
-
-Then provide a template ID and substitutions:
-
-```js
-const data = {
-  templateId: 'sendgrid-template-id',
-  substitutions: {
-    name: 'Some One',
-    id: '123',
-  },
-};
-```
-
-Alternatively, you may specify the substitution wrappers via the data object as well. This will override any wrappers you may have configured globally.
-
-```js
-const data = {
-  templateId: 'sendgrid-template-id',
-  substitutionWrappers: ['{{', '}}'],
-  substitutions: {
-    name: 'Some One',
-    id: '123',
-  },
-};
-```
-
-### Customization per recipient
-To send multiple individual emails to multiple recipients with additional customization (like a different subject), use the `personalizations` field as per the [API definition](https://sendgrid.com/docs/API_Reference/Web_API_v3/Mail/index.html) instead of `to`, leveraging all customization options:
-
-```js
-const data = {
-  personalizations: [
-    {
-      to: 'recipient1@example.org',
-      subject: 'Hello recipient 1',
-      substitutions: {
-        name: 'Recipient 1',
-        id: '123',
-      },
-      headers: {
-        'X-Custom-Header': 'Recipient 1',
-      },
-      customArgs: {
-        myArg: 'Recipient 1',
-      },
-    },
-    {
-      to: 'recipient2@example.org',
-      subject: 'Hello recipient 2',
-      substitutions: {
-        name: 'Recipient 2',
-        id: '456',
-      },
-      headers: {
-        'X-Custom-Header': 'Recipient 2',
-      },
-      customArgs: {
-        myArg: 'Recipient 1',
-      },
-      sendAt: 1500077141,
-    }
-  ],
-  from: 'sender@example.org',
-  text: 'Hello plain world!',
-  html: '<p>Hello HTML world!</p>',
-};
-```
-
-If the `substitutions` field is provided globally as well, these substitutions will be merged with any custom substitutions you provide in the `personalizations`.
-
-### Sending attachments
-Attachments can be sent by providing an array of `attachments` as per the API specifications:
-
-```js
-const data = {
-  to: 'recipient@example.org',
-  from: 'sender@example.org',
-  subject: 'Hello attachment',
-  html: '<p>Here’s an attachment for you!</p>',
-  attachments: [
-    {
-      content: 'Some attachment content',
-      filename: 'some-attachment.txt',
-    },
-  ],
-};
-```
-
-### Manually providing content
-Instead of using the `text` and `html` shorthand properties, you can manually use the `content` property:
-
-```js
-const data = {
-  to: 'recipient@example.org',
-  from: 'sender@example.org',
-  subject: 'Hello manual content',
-  content: [
-    {
-      type: 'text/html',
-      value: '<p>Hello HTML world!</p>',
-    },
-    {
-      type: 'text/plain',
-      value: 'Hello plain world!',
-    },
-  ],
-};
-```
-
-### Specifying time to send at
-Use the `sendAt` property to specify when to send the emails (in seconds, not milliseconds):
-
-```js
-const data = {
-  to: 'recipient@example.org',
-  from: 'sender@example.org',
-  subject: 'Hello delayed email',
-  html: '<p>Some email content</p>',
-  sendAt: 1500077141,
-};
-```
-
-### Specifying custom headers
-Use the `headers` property to specify any custom headers:
-
-```js
-const data = {
-  to: 'recipient@example.org',
-  from: 'sender@example.org',
-  subject: 'Hello custom header',
-  html: '<p>Some email content</p>',
-  headers: {
-    'X-CustomHeader': 'Custom header value',
-  },
-};
-```
-
-### Specifying categories
-Use the `categories` property to provide an array of categories for your email:
-
-```js
-const data = {
-  to: 'recipient@example.org',
-  from: 'sender@example.org',
-  subject: 'Hello email with categories',
-  html: '<p>Some email content</p>',
-  categories: [
-    'transactional', 'customer', 'weekly',
-  ],
-};
-```
-
-Specifying a single `category` is also supported:
-
-```js
-const data = {
-  to: 'recipient@example.org',
-  from: 'sender@example.org',
-  subject: 'Hello email with categories',
-  html: '<p>Some email content</p>',
-  category: 'transactional',
-};
-```
-
-### Other options
-All other options from the [API definition](https://sendgrid.com/docs/API_Reference/Web_API_v3/Mail/index.html) are supported:
-
-```js
-const data = {
-
-  //Sections
-  sections: {},
-
-  //Custom arguments
-  customArgs: {},
-
-  //Batch ID
-  batchId: String,
-
-  //ASM
-  asm: {},
-
-  //IP pool name
-  ipPoolName: String,
-
-  //Mail settings
-  mailSettings: {},
-
-  //Tracking settings
-  trackingSettings: {},
-};
-```
-
-### Kitchen sink example
-An example with most settings used (note that some settings can be used in multiple ways, see above for full details for each setting):
-
-```js
-//Load library
-const sgMail = require('@sendgrid/mail');
-
-//Set API key
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
-//Create mail data
-const data = {
-  to: 'recipient@example.org',
-  cc: 'someone@example.org',
-  bcc: ['me@example.org', 'you@example.org'],
-  from: 'sender@example.org',
-  replyTo: 'othersender@example.org',
-  subject: 'Hello world',
-  text: 'Hello plain world!',
-  html: '<p>Hello HTML world!</p>',
-  templateId: 'sendgrid-template-id',
-  substitutionWrappers: ['{{', '}}'],
-  substitutions: {
-    name: 'Some One',
-    id: '123',
-  },
-  attachments: [
-    {
-      content: 'Some attachment content',
-      filename: 'some-attachment.txt',
-    },
-  ],
-  categories: ['Transactional', 'My category'],
-  sendAt: 1500077141,
-  headers: {
-    'X-CustomHeader': 'Custom header value',
-  },
-  sections: {},
-  customArgs: {
-    myCustomArg: 123,
-  },
-  batchId: 'sendgrid-batch-id',
-  asm: {},
-  ipPoolName: 'sendgrid-ip-pool-name',
-  mailSettings: {},
-  trackingSettings: {},
-};
-
-//Send email and handle result
-sgMail
-  .send(data)
-  .then(() => console.log('Mail sent successfully'))
-  .catch(error => console.error(error.toString()));
-```
+![SendGrid Logo](https://uiux.s3.amazonaws.com/2016-logos/email-logo%402x.png)

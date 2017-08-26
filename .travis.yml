@@ -3,16 +3,20 @@ node_js:
 - "6"
 - "7"
 - "8"
-# before_install:
-# - npm install -g npm@2
+before_install:
+- npm install -g npm@2
 before_script:
 - mkdir prism
 - mkdir prism/bin
 - export PATH=$PATH:$PWD/prism/bin/
 - ./test/prism.sh
+- yarn prism &
+- sleep 5 # give it some time to start
 script:
-- npm test
-- npm run test:typescript
+- lerna bootstrap
+- yarn test:mail
+- yarn test:client
+- yarn test:helpers
 notifications:
   hipchat:
     rooms:

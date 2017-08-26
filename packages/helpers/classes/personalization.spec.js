@@ -408,6 +408,9 @@ describe('Personalization', function() {
       expect(function() {
         p.setSubstitutions('Invalid');
       }).to.throw(Error);
+      expect(function() {
+        p.setSubstitutions(3);
+      }).to.throw(Error);
     });
     it('should accept no input', function() {
       expect(function() {

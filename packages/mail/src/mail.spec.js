@@ -5,7 +5,7 @@
  */
 const sgMail = require('./mail');
 const sgClient = sgMail.client;
-const baseUrl = process.env.MOCK_HOST || 'http://localhost:4010/';
+const baseUrl = 'http://localhost:4010/';
 
 /**
  * Setup client

@@ -248,7 +248,7 @@ class Personalization {
       return;
     }
     if (typeof substitutions !== 'object') {
-      throw new Error('Object expected for `substitutions`');
+      throw new Error('Object expected for `substitutions` in reverseMergeSubstitutions');
     }
     this.substitutions = Object.assign({}, substitutions, this.substitutions);
   }
