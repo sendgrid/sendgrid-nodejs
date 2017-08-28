@@ -64,7 +64,7 @@ We welcome direct contributions to the sendgrid-nodejs code base. Thank you!
 
 ##### Prerequisites #####
 
-- Node.js version 4, 6 or 7
+- Node.js version 6, 7 or 8
 - Please see [package.json](https://github.com/sendgrid/sendgrid-nodejs/tree/master/package.json)
 
 ##### Initial setup: #####
@@ -79,7 +79,7 @@ npm install
 
 First, get your free SendGrid account [here](https://sendgrid.com/free?source=sendgrid-nodejs).
 
-You will need to setup the following environment to use the SendGrid example:
+You will need to setup the following environment to use the SendGrid examples in the README.md, USAGE.md and USE_CASES.md files:
 
 ```
 echo "export SENDGRID_API_KEY='YOUR_API_KEY'" > sendgrid.env
@@ -89,17 +89,15 @@ source ./sendgrid.env
 
 ##### Execute: #####
 
-See the [examples folder](https://github.com/sendgrid/sendgrid-nodejs/tree/master/examples) to get started quickly.
-
 To run an example:
 
 ```bash
 touch example.js
 ```
 
-Copy the desired example into `example.js`.
+Copy the desired code into `example.js`. For this example, I'm assuming you create this file in the root of this project.
 
-Change the path to the Sendgrid library to `./lib/sendgrid.js`.
+Change the path to the Sendgrid library to the reletive path, for example: `./packages/mail/mail`.
 
 ```
 node example.js
@@ -108,32 +106,20 @@ node example.js
 <a name="understanding_the_codebase"></a>
 ## Understanding the Code Base
 
-**/examples**
-
-Working examples that demonstrate usage.
-
-**/tests**
-
-Tests for the SendGrid object.
-
-**/lib**
-
-The interface to the SendGrid API.
+This repo is organized as a monorepo with the packages residing in the `./packages` directory. Please see the root [README.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/README.md) for details.
 
 <a name="testing"></a>
 ## Testing
 
 All PRs require passing tests before the PR will be reviewed.
 
-All test files are in the [`tests`](https://github.com/sendgrid/sendgrid-nodejs/tree/master/test) directory.
+To run tests, please install Prism first by either running `yarn prism:install` or manually downloading from (the Prism website)[https://stoplight.io/platform/prism/].
 
-For the purposes of contributing to this repo, please update the [`test.js`](https://github.com/sendgrid/sendgrid-nodejs/tree/master/test/test.js) file with unit tests as you modify the code.
+Next, start Prism in one console window using `yarn prism`.
 
-Run the tests at the root of the `sendgrid-nodejs` repo:
+Open a new console window and run `lerna bootstrap`.
 
-```bash
-mocha
-```
+And finally, run `yarn test`, or specific tests e.g. `yarn test:mail` or `yarn test:client`.
 
 <a name="style_guidelines_and_naming_conventions"></a>
 ## Style Guidelines & Naming Conventions
@@ -144,7 +130,7 @@ Generally, we follow the style guidelines as suggested by the official language.
 
 Please run your code through:
 
-- [ESLint](http://eslint.org/) with the tandard style guide.
+- [ESLint](http://eslint.org/) with the standard style guide.
 
 ## Creating a Pull Request<a name="creating_a_pull_request"></a>
 
