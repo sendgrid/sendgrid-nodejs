@@ -39,6 +39,8 @@ yarn add @sendgrid/client
 <a name="general"></a>
 ## General v3 Web API Usage Example
 
+Please see [USAGE.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/client/USAGE.md) for all endpoint examples for the [SendGrid v3 Web API](https://sendgrid.com/docs/API_Reference/api_v3.html).
+
 ```js
 const client = require('@sendgrid/client');
 client.setApiKey(process.env.SENDGRID_API_KEY);
