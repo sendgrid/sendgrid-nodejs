@@ -1,3 +1,7 @@
+[![BuildStatus](https://travis-ci.org/sendgrid/sendgrid-nodejs.svg?branch=master)](https://travis-ci.org/sendgrid/sendgrid-nodejs)
+[![npm version](https://badge.fury.io/js/%40sendgrid%2Fclient.svg)](https://badge.fury.io/js/%40sendgrid%2Fclient)
+[![Email Notifications Badge](https://dx.sendgrid.com/badge/nodejs)](https://dx.sendgrid.com/newsletter/nodejs)
+
 **This package is part of a monorepo, please see [this README](https://github.com/sendgrid/sendgrid-nodejs/blob/master/README.md) for details.**
 
 This package has yet to be updated to support v6.0.0 of the `sendgrid-nodejs` SDK. Currently, this package is a placeholder. Please use [this package](https://www.npmjs.com/package/sendgrid) until the upgrade. The related issue is located [here](https://github.com/sendgrid/sendgrid-nodejs/issues/427).

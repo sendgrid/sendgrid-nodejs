@@ -1,3 +1,7 @@
+[![BuildStatus](https://travis-ci.org/sendgrid/sendgrid-nodejs.svg?branch=master)](https://travis-ci.org/sendgrid/sendgrid-nodejs)
+[![npm version](https://badge.fury.io/js/%40sendgrid%2Fclient.svg)](https://badge.fury.io/js/%40sendgrid%2Fclient)
+[![Email Notifications Badge](https://dx.sendgrid.com/badge/nodejs)](https://dx.sendgrid.com/newsletter/nodejs)
+
 **This package is part of a monorepo, please see [this README](https://github.com/sendgrid/sendgrid-nodejs/blob/master/README.md) for details.**
 
 # Support classes and helpers for the Sendgrid NodeJS libraries
