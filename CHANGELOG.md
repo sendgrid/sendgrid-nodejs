@@ -1,6 +1,13 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [6.0.0] - 2017-08-28 ##
+### BREAKING CHANGE
+- BIG, HUGE, MEGA THANKS to [Adam Reis](https://github.com/adamreisnz) for this amazing PR!!!
+- Pull #407 via #378: API Simplification
+- v6.0.0 is a complete rewrite of this SDK for all endpoints. To upgrade from v5.X and lower, please begin [here](https://github.com/sendgrid/sendgrid-nodejs/blob/master/README.md).
+- Please do not hesitate to [open an issue](https://github.com/sendgrid/sendgrid-nodejs/issues) if there are any challenges and/or feedback. [PRs](https://github.com/sendgrid/sendgrid-nodejs/blob/master/CONTRIBUTING.md) are also welcome.
+
 ## [5.2.2] - 2017-08-14 ##
 ### Fix
 - Pull #418: Fixed #417: fix: Update TypeScript definition to correct callback arguments for API
