@@ -103,7 +103,7 @@ If you are using a `package.json` file:
   ...
   "dependencies": {
     ...
-    "sendgrid": "X.X.X"
+    "@sendgrid/[package name]": "X.X.X"
   }
 }
 ```
