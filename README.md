@@ -1,5 +1,5 @@
 [![BuildStatus](https://travis-ci.org/sendgrid/sendgrid-nodejs.svg?branch=master)](https://travis-ci.org/sendgrid/sendgrid-nodejs)
-[![npm version](https://badge.fury.io/js/%40sendgrid%2Fclient.svg)](https://badge.fury.io/js/%40sendgrid%2Fclient)
+[![npm version](https://badge.fury.io/js/%40sendgrid%2Fclient.svg)](https://www.npmjs.com/org/sendgrid)
 [![Email Notifications Badge](https://dx.sendgrid.com/badge/nodejs)](https://dx.sendgrid.com/newsletter/nodejs)
 
 **This library allows you to quickly and easily use the SendGrid Web API v3 via Node.js.**
