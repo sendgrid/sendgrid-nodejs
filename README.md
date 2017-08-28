@@ -30,7 +30,7 @@ This library is broken up into several packages as a monorepo so that you only n
 * [@sendgrid/mail](https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages/mail) - if you just want to send email
 * [@sendgrid/client](https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages/client) - to use all other [SendGrid v3 Web API endpoints](https://sendgrid.com/docs/API_Reference/api_v3.html)
 * [@sendgrid/inbound-mail-parser](https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages/inbound-mail-parser) - help with parsing the SendGrid Inbound Parse API
-* [@sendgrid/contact-import](https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages/contact-import) - help with importing contacts into the ContactDB
+* [@sendgrid/contact-importer](https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages/contact-importer) - help with importing contacts into the ContactDB
 * [@sendgrid/helpers](https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages/helpers) - a collection of classes and helpers used internally by the above packages
 
 <a name="announcements"></a>
