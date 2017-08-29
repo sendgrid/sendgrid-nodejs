@@ -21,3 +21,10 @@ Client.createHeaders({
 const req = Client.createRequest({
   url: "/test"
 });
+
+// Test request() method
+Client.request({
+  url: "/test"
+}).then(res => {
+  res[0].headers
+})

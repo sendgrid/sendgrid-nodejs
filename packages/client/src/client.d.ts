@@ -1,7 +1,6 @@
 import {ResponseError} from "@sendgrid/helpers/classes";
-import {OptionsWithUrl} from "request";
-
-declare type ClientRequest = OptionsWithUrl;
+import {ClientRequest} from "@sendgrid/client/src/request";
+import {ClientResponse} from "@sendgrid/client/src/response";
 
 declare class Client {
   /**
@@ -32,7 +31,7 @@ declare class Client {
   /**
    * Do a request
    */
-  request(data: ClientRequest, cb?: (err: ResponseError, response: any[]) => void): Promise<any[]>;
+  request(data: ClientRequest, cb?: (err: ResponseError, response: [ClientResponse, any]) => void): Promise<[ClientResponse, any]>;
 }
 
 export = new Client()
