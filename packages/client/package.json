@@ -1,7 +1,7 @@
 {
   "name": "@sendgrid/client",
   "description": "SendGrid NodeJS API client",
-  "version": "6.0.0",
+  "version": "6.1.0",
   "author": "SendGrid <dx@sendgrid.com> (sendgrid.com)",
   "contributors": [
     "Kyle Partridge <kyle.partridge@sendgrid.com>",
@@ -27,9 +27,9 @@
     "node": ">=6.0.0"
   },
   "dependencies": {
-    "@sendgrid/helpers": "^6.0.0",
-    "request": "^2.81.0",
-    "@types/request": "^2.0.3"
+    "@sendgrid/helpers": "^6.1.0",
+    "@types/request": "^2.0.3",
+    "request": "^2.81.0"
   },
   "tags": [
     "http",
