@@ -20,7 +20,8 @@
     "mocha-clean": "^1.0.0",
     "mocha-sinon": "^2.0.0",
     "sinon": "^2.3.2",
-    "sinon-chai": "^2.10.0"
+    "sinon-chai": "^2.10.0",
+    "typescript": "~2.4.2"
   },
   "scripts": {
     "lint": "eslint . --fix",
@@ -30,6 +31,7 @@
     "test:helpers": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/helpers/**/*.spec.js\"",
     "test:client": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/client/**/*.spec.js\"",
     "test:mail": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/mail/**/*.spec.js\"",
+    "test:typescript": "tsc",
     "test": "npm run test:all -s",
     "coverage": "open -a \"Google Chrome\" ./coverage/lcov-report/index.html"
   }

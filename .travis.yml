@@ -17,6 +17,7 @@ script:
 - yarn test:mail
 - yarn test:client
 - yarn test:helpers
+- yarn test:typescript
 notifications:
   hipchat:
     rooms:

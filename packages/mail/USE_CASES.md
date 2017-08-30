@@ -444,7 +444,9 @@ const msg = {
     myCustomArg: 123,
   },
   batchId: 'sendgrid-batch-id',
-  asm: {},
+  asm: {
+    groupId: 1
+  },
   ipPoolName: 'sendgrid-ip-pool-name',
   mailSettings: {},
   trackingSettings: {},

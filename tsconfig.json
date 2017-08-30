@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "noEmit": true,
+        "module": "commonjs",
+        "target": "es6",
+        "baseUrl": ".",
+        "paths": {
+            "@sendgrid/*": ["packages/*"]
+        }
+    },
+    "include": [
+        "test/typescript/*.ts"
+    ]
+}
