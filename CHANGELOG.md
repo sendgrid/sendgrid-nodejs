@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [6.1.0] - 2017-08-30 ##
+### Added
+- Pull #430, solves #428: TypeScript support added for v6 packages
+- Thanks to [Benjamin Pannell](https://github.com/SPARTAN563) for the PR!
+
 ## [6.0.0] - 2017-08-28 ##
 ### BREAKING CHANGE
 - BIG, HUGE, MEGA THANKS to [Adam Reis](https://github.com/adamreisnz) for this amazing PR!!!
