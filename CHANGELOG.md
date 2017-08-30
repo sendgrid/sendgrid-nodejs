@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 ### BREAKING CHANGE
 - BIG, HUGE, MEGA THANKS to [Adam Reis](https://github.com/adamreisnz) for this amazing PR!!!
 - Pull #407 via #378: API Simplification
-- v6.0.0 is a complete rewrite of this SDK for all endpoints. To upgrade from v5.X and lower, please begin [here](https://github.com/sendgrid/sendgrid-nodejs/blob/master/README.md).
+- v6.0.0 is a complete rewrite of this SDK for all endpoints. To upgrade from v5.X and lower, we suggest you update your code based on the examples found [here](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/mail/USE_CASES.md) for mail send and [here](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/client/USAGE.md) for all other endpoints.
 - Please do not hesitate to [open an issue](https://github.com/sendgrid/sendgrid-nodejs/issues) if there are any challenges and/or feedback. [PRs](https://github.com/sendgrid/sendgrid-nodejs/blob/master/CONTRIBUTING.md) are also welcome.
 
 ## [5.2.2] - 2017-08-14 ##
