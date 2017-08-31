@@ -1,7 +1,7 @@
 {
   "name": "@sendgrid/helpers",
   "description": "SendGrid NodeJS internal helpers",
-  "version": "6.1.0",
+  "version": "6.1.1",
   "author": "SendGrid <dx@sendgrid.com> (sendgrid.com)",
   "contributors": [
     "Kyle Partridge <kyle.partridge@sendgrid.com>",
