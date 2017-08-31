@@ -5,9 +5,9 @@ If you can't find a solution below, please open an [issue](https://github.com/se
 
 ## Table of Contents
 
-* [Migrating from v2 to v3](#migrating)
-* [Continue Using v2](#v2)
-* [Testing v3 /mail/send Calls Directly](#testing)
+* [Migrating from Web API v2 to Web API v3](#migrating)
+* [Continue Using Web API v2](#v2)
+* [Testing Web API v3 /mail/send Calls Directly](#testing)
 * [Error Messages](#error)
 * [Versions](#versions)
 * [Environment Variables and Your SendGrid API Key](#environment)
@@ -63,34 +63,7 @@ Click the "Clone or download" green button in [GitHub](https://github.com/sendgr
 <a name="error"></a>
 ## Error Messages
 
-To read the error message returned by SendGrid's API:
-
-```javascript
-  var helper = require('sendgrid').mail
-  from_email = new helper.Email("test@example.com")
-  to_email = new helper.Email("test@example.com")
-  subject = "Hello World from the SendGrid Node.js Library!"
-  content = new helper.Content("text/plain", "Hello, Email!")
-  mail = new helper.Mail(from_email, subject, to_email, content)
-
-  var sg = require('sendgrid')(process.env.SENDGRID_API_KEY)
-  var requestBody = mail.toJSON()
-  var request = sg.emptyRequest()
-  request.method = 'POST'
-  request.path = '/v3/mail/send'
-  request.body = requestBody
-  sg.API(request, function (error, response) {
-    
-    if(error) {
-      console.log(error.message);
-      console.log(error.response.statusCode);
-      console.log(error.response.body);
-      console.log(error.response.headers);
-    } else {
-      console.log(response);
-    }
-  })
-```
+To read the error message returned by SendGrid's API, please see [this example](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/mail/USE_CASES.md#successfailureerrors).
 
 <a name="versions"></a>
 ## Versions
@@ -119,16 +92,18 @@ We upload this library to [npm](https://www.npmjs.com/package/sendgrid) whenever
 
 In most cases we recommend you download the latest version of the library, but if you need a different version, please use:
 
-`npm install sendgrid@X.X.X`
+`npm install @sendgrid/[package name]@X.X.X` 
 
-If you are usring a `package.json` file:
+Please check [here](https://www.npmjs.com/org/sendgrid) for a list of package names.
+
+If you are using a `package.json` file:
 
 ```json
 {
   ...
   "dependencies": {
     ...
-    "sendgrid": "X.X.X"
+    "@sendgrid/[package name]": "X.X.X"
   }
 }
 ```

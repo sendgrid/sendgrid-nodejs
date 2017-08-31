@@ -1,7 +1,47 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## [5.2.0] - 2017-05-3 ##
+## [6.1.0] - 2017-08-30 ##
+### Added
+- Pull #430, solves #428: TypeScript support added for v6 packages
+- Thanks to [Benjamin Pannell](https://github.com/SPARTAN563) for the PR!
+
+## [6.0.0] - 2017-08-28 ##
+### BREAKING CHANGE
+- BIG, HUGE, MEGA THANKS to [Adam Reis](https://github.com/adamreisnz) for this amazing PR!!!
+- Pull #407 via #378: API Simplification
+- v6.0.0 is a complete rewrite of this SDK for all endpoints. To upgrade from v5.X and lower, we suggest you update your code based on the examples found [here](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/mail/USE_CASES.md) for mail send and [here](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/client/USAGE.md) for all other endpoints.
+- Please do not hesitate to [open an issue](https://github.com/sendgrid/sendgrid-nodejs/issues) if there are any challenges and/or feedback. [PRs](https://github.com/sendgrid/sendgrid-nodejs/blob/master/CONTRIBUTING.md) are also welcome.
+
+## [5.2.2] - 2017-08-14 ##
+### Fix
+- Pull #418: Fixed #417: fix: Update TypeScript definition to correct callback arguments for API
+- Thanks to [Benjamin Pannell](https://github.com/SPARTAN563) for the PR!
+
+
+## [5.2.1] - 2017-08-09 ##
+### Fixed
+- Pull #413: Handle null and undefined values in substitutions
+- Thanks to [Matteo Ferrando](https://github.com/chamini2) for the PR!
+
+## [5.2.0] - 2017-07-20 ##
+### Fixed
+- Pull #410: Cast substitution values to strings
+- Thanks to [Ryan James](https://github.com/dangerismycat) for the PR!
+
+## [5.1.2] - 2017-06-30 ##
+### Fixed
+- Pull #399
+- Fix `batch_id` type
+- Thanks to [Leonardo Testa](https://github.com/testica) for the PR!
+
+## [5.1.1] - 2017-06-1 ##
+### Added
+- Pull #391
+- Return personalizations as an array of request compatible JSON.
+- Thanks to [Paul Hrimiuc](https://github.com/hpaul) for the PR!
+
+## [5.1.0] - 2017-05-3 ##
 ### Added
 - Pull #325
 - Run prism for tests

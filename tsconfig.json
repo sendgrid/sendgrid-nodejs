@@ -1,15 +1,14 @@
 {
     "compilerOptions": {
-        "allowJs": true,
         "noEmit": true,
         "module": "commonjs",
-        "moduleResolution": "node",
-        "target": "es5",
-        "noImplicitAny": true
+        "target": "es6",
+        "baseUrl": ".",
+        "paths": {
+            "@sendgrid/*": ["packages/*"]
+        }
     },
     "include": [
-        "index.d.ts",
-        "test/test.js",
-        "test/mail/test.js"
+        "test/typescript/*.ts"
     ]
 }
