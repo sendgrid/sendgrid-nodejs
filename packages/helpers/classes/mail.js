@@ -225,6 +225,13 @@ class Mail {
    * Add personalization
    */
   addPersonalization(personalization) {
+
+    //Convert to class if needed
+    if (!(personalization instanceof Personalization)) {
+      personalization = new Personalization(personalization);
+    }
+
+    //Apply substitutions and push to array
     this.applySubstitutions(personalization);
     this.personalizations.push(personalization);
   }
@@ -275,8 +282,10 @@ class Mail {
    * Helper which applies globally set substitutions to personalizations
    */
   applySubstitutions(personalization) {
-    personalization.reverseMergeSubstitutions(this.substitutions);
-    personalization.setSubstitutionWrappers(this.substitutionWrappers);
+    if (personalization instanceof Personalization) {
+      personalization.reverseMergeSubstitutions(this.substitutions);
+      personalization.setSubstitutionWrappers(this.substitutionWrappers);
+    }
   }
 
   /**
