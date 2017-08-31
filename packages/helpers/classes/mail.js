@@ -486,7 +486,7 @@ class Mail {
 
     //Initialize with mandatory values
     const json = {
-      from, subject, content,
+      from, subject,
       personalizations: arrayToJSON(personalizations),
     };
 
@@ -496,6 +496,9 @@ class Mail {
     }
     if (Array.isArray(categories) && categories.length > 0) {
       json.categories = categories.filter(cat => cat !== '');
+    }
+    if (Array.isArray(content) && content.length > 0) {
+      json.content = arrayToJSON(content);
     }
 
     //Object properties
