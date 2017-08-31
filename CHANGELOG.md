@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [6.1.1] - 2017-08-30 ##
+### Fixed
+- Pull #436, solves #433: Convert plain data to personalization class instance
+- Thanks to [Adam Reis](https://github.com/adamreisnz) for the PR!
+
 ## [6.1.0] - 2017-08-30 ##
 ### Added
 - Pull #430, solves #428: TypeScript support added for v6 packages
