@@ -82,10 +82,10 @@ For more information, please see our [User Guide](http://sendgrid.com/docs/User_
   "ips": [
     {
       "ip": "192.168.1.1"
-    }, 
+    },
     {
       "ip": "192.*.*.*"
-    }, 
+    },
     {
       "ip": "192.168.1.3/32"
     }
@@ -116,8 +116,8 @@ For more information, please see our [User Guide](http://sendgrid.com/docs/User_
 ```javascript
   const data = {
   "ids": [
-    1, 
-    2, 
+    1,
+    2,
     3
   ]
 };
@@ -215,8 +215,8 @@ For more information about alerts, please see our [User Guide](https://sendgrid.
 
 ```javascript
   const data = {
-  "email_to": "example@example.com", 
-  "frequency": "daily", 
+  "email_to": "example@example.com",
+  "frequency": "daily",
   "type": "stats_notification"
 };
   request.body = data;
@@ -232,7 +232,7 @@ For more information about alerts, please see our [User Guide](https://sendgrid.
 
 **This endpoint allows you to retrieve all of your alerts.**
 
-Alerts allow you to specify an email address to receive notifications regarding your email usage or statistics. 
+Alerts allow you to specify an email address to receive notifications regarding your email usage or statistics.
 * Usage alerts allow you to set the threshold at which an alert will be sent.
 * Stats notifications allow you to set how frequently you would like to receive email statistics reports. For example, "daily", "weekly", or "monthly".
 
@@ -254,7 +254,7 @@ For more information about alerts, please see our [User Guide](https://sendgrid.
 
 **This endpoint allows you to update an alert.**
 
-Alerts allow you to specify an email address to receive notifications regarding your email usage or statistics. 
+Alerts allow you to specify an email address to receive notifications regarding your email usage or statistics.
 * Usage alerts allow you to set the threshold at which an alert will be sent.
 * Stats notifications allow you to set how frequently you would like to receive email statistics reports. For example, "daily", "weekly", or "monthly".
 
@@ -280,7 +280,7 @@ For more information about alerts, please see our [User Guide](https://sendgrid.
 
 **This endpoint allows you to delete an alert.**
 
-Alerts allow you to specify an email address to receive notifications regarding your email usage or statistics. 
+Alerts allow you to specify an email address to receive notifications regarding your email usage or statistics.
 * Usage alerts allow you to set the threshold at which an alert will be sent.
 * Stats notifications allow you to set how frequently you would like to receive email statistics reports. For example, "daily", "weekly", or "monthly".
 
@@ -304,7 +304,7 @@ For more information about alerts, please see our [User Guide](https://sendgrid.
 
 **This endpoint allows you to retrieve a specific alert.**
 
-Alerts allow you to specify an email address to receive notifications regarding your email usage or statistics. 
+Alerts allow you to specify an email address to receive notifications regarding your email usage or statistics.
 * Usage alerts allow you to set the threshold at which an alert will be sent.
 * Stats notifications allow you to set how frequently you would like to receive email statistics reports. For example, "daily", "weekly", or "monthly".
 
@@ -342,11 +342,11 @@ See the [API Key Permissions List](https://sendgrid.com/docs/API_Reference/Web_A
 
 ```javascript
   const data = {
-  "name": "My API Key", 
-  "sample": "data", 
+  "name": "My API Key",
+  "sample": "data",
   "scopes": [
-    "mail.send", 
-    "alerts.create", 
+    "mail.send",
+    "alerts.create",
     "alerts.read"
   ]
 };
@@ -395,9 +395,9 @@ The API Keys feature allows customers to be able to generate an API Key credenti
 
 ```javascript
   const data = {
-  "name": "A New Hope", 
+  "name": "A New Hope",
   "scopes": [
-    "user.profile.read", 
+    "user.profile.read",
     "user.profile.update"
   ]
 };
@@ -504,8 +504,8 @@ Each user can create up to 25 different suppression groups.
 
 ```javascript
   const data = {
-  "description": "Suggestions for products our users might like.", 
-  "is_default": true, 
+  "description": "Suggestions for products our users might like.",
+  "is_default": true,
   "name": "Product Suggestions"
 };
   request.body = data;
@@ -584,8 +584,8 @@ Each user can create up to 25 different suppression groups.
 
 ```javascript
   const data = {
-  "description": "Suggestions for items our users might like.", 
-  "id": 103, 
+  "description": "Suggestions for items our users might like.",
+  "id": 103,
   "name": "Item Suggestions"
 };
   request.body = data;
@@ -633,7 +633,7 @@ Suppressions are recipient email addresses that are added to [unsubscribe groups
 ```javascript
   const data = {
   "recipient_emails": [
-    "test1@example.com", 
+    "test1@example.com",
     "test2@example.com"
   ]
 };
@@ -678,8 +678,8 @@ Suppressions are a list of email addresses that will not receive content sent un
 ```javascript
   const data = {
   "recipient_emails": [
-    "exists1@example.com", 
-    "exists2@example.com", 
+    "exists1@example.com",
+    "exists2@example.com",
     "doesnotexists@example.com"
   ]
 };
@@ -742,7 +742,7 @@ A global suppression (or global unsubscribe) is an email address of a recipient 
 ```javascript
   const data = {
   "recipient_emails": [
-    "test1@example.com", 
+    "test1@example.com",
     "test2@example.com"
   ]
 };
@@ -829,11 +829,11 @@ Advanced Stats provide a more in-depth view of your email statistics and the act
 
 ```javascript
   const queryParams = {
-  'aggregated_by': 'day', 
-  'browsers': 'test_string', 
-  'end_date': '2016-04-01', 
-  'limit': 'test_string', 
-  'offset': 'test_string', 
+  'aggregated_by': 'day',
+  'browsers': 'test_string',
+  'end_date': '2016-04-01',
+  'limit': 'test_string',
+  'offset': 'test_string',
   'start_date': '2016-01-01'
 };
   request.qs = queryParams;
@@ -867,21 +867,21 @@ For more information:
   const data = {
   "categories": [
     "spring line"
-  ], 
-  "custom_unsubscribe_url": "", 
-  "html_content": "<html><head><title></title></head><body><p>Check out our spring line!</p></body></html>", 
-  "ip_pool": "marketing", 
+  ],
+  "custom_unsubscribe_url": "",
+  "html_content": "<html><head><title></title></head><body><p>Check out our spring line!</p></body></html>",
+  "ip_pool": "marketing",
   "list_ids": [
-    110, 
+    110,
     124
-  ], 
-  "plain_content": "Check out our spring line!", 
+  ],
+  "plain_content": "Check out our spring line!",
   "segment_ids": [
     110
-  ], 
-  "sender_id": 124451, 
-  "subject": "New Products for Spring!", 
-  "suppression_group_id": 42, 
+  ],
+  "sender_id": 124451,
+  "subject": "New Products for Spring!",
+  "suppression_group_id": 42,
   "title": "March Newsletter"
 };
   request.body = data;
@@ -910,7 +910,7 @@ For more information:
 
 ```javascript
   const queryParams = {
-  'limit': 1, 
+  'limit': 1,
   'offset': 1
 };
   request.qs = queryParams;
@@ -937,10 +937,10 @@ For more information:
   const data = {
   "categories": [
     "summer line"
-  ], 
-  "html_content": "<html><head><title></title></head><body><p>Check out our summer line!</p></body></html>", 
-  "plain_content": "Check out our summer line!", 
-  "subject": "New Products for Summer!", 
+  ],
+  "html_content": "<html><head><title></title></head><body><p>Check out our summer line!</p></body></html>",
+  "plain_content": "Check out our summer line!",
+  "subject": "New Products for Summer!",
   "title": "May Newsletter"
 };
   request.body = data;
@@ -1155,8 +1155,8 @@ Categories can help organize your email analytics by enabling you to tag emails 
 
 ```javascript
   const queryParams = {
-  'category': 'test_string', 
-  'limit': 1, 
+  'category': 'test_string',
+  'limit': 1,
   'offset': 1
 };
   request.qs = queryParams;
@@ -1181,11 +1181,11 @@ Categories allow you to group your emails together according to broad topics tha
 
 ```javascript
   const queryParams = {
-  'aggregated_by': 'day', 
-  'categories': 'test_string', 
-  'end_date': '2016-04-01', 
-  'limit': 1, 
-  'offset': 1, 
+  'aggregated_by': 'day',
+  'categories': 'test_string', // or ['category1', 'category2']
+  'end_date': '2016-04-01',
+  'limit': 1,
+  'offset': 1,
   'start_date': '2016-01-01'
 };
   request.qs = queryParams;
@@ -1210,12 +1210,12 @@ Categories allow you to group your emails together according to broad topics tha
 
 ```javascript
   const queryParams = {
-  'aggregated_by': 'day', 
-  'end_date': '2016-04-01', 
-  'limit': 1, 
-  'offset': 1, 
-  'sort_by_direction': 'asc', 
-  'sort_by_metric': 'test_string', 
+  'aggregated_by': 'day',
+  'end_date': '2016-04-01',
+  'limit': 1,
+  'offset': 1,
+  'sort_by_direction': 'asc',
+  'sort_by_metric': 'test_string',
   'start_date': '2016-01-01'
 };
   request.qs = queryParams;
@@ -1243,8 +1243,8 @@ Advanced Stats provide a more in-depth view of your email statistics and the act
 
 ```javascript
   const queryParams = {
-  'aggregated_by': 'day', 
-  'end_date': '2016-04-01', 
+  'aggregated_by': 'day',
+  'end_date': '2016-04-01',
   'start_date': '2016-01-01'
 };
   request.qs = queryParams;
@@ -1275,8 +1275,8 @@ Advanced Stats provide a more in-depth view of your email statistics and the act
 
 ```javascript
   const queryParams = {
-  'aggregated_by': 'day', 
-  'end_date': '2016-04-01', 
+  'aggregated_by': 'day',
+  'end_date': '2016-04-01',
   'start_date': '2016-01-01'
 };
   request.qs = queryParams;
@@ -1302,7 +1302,7 @@ The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](
 
 ```javascript
   const data = {
-  "name": "pet", 
+  "name": "pet",
   "type": "text"
 };
   request.body = data;
@@ -1316,7 +1316,7 @@ The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](
 ```
 ## Retrieve all custom fields
 
-**This endpoint allows you to retrieve all custom fields.** 
+**This endpoint allows you to retrieve all custom fields.**
 
 The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/index.html).
 
@@ -1403,9 +1403,9 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 
 ```javascript
   const data = [
-  1, 
-  2, 
-  3, 
+  1,
+  2,
+  3,
   4
 ];
   request.body = data;
@@ -1521,7 +1521,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 
 ```javascript
   const data = [
-  "recipient_id1", 
+  "recipient_id1",
   "recipient_id2"
 ];
   request.body = data;
@@ -1535,7 +1535,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 ```
 ## Retrieve all recipients on a List
 
-**This endpoint allows you to retrieve all recipients on the list with the given ID.** 
+**This endpoint allows you to retrieve all recipients on the list with the given ID.**
 
 The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/index.html) recipients.
 
@@ -1544,8 +1544,8 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 
 ```javascript
   const queryParams = {
-  'list_id': 1, 
-  'page': 1, 
+  'list_id': 1,
+  'page': 1,
   'page_size': 1
 };
   request.qs = queryParams;
@@ -1590,7 +1590,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
   const data = None;
   request.body = data;
   const queryParams = {
-  'list_id': 1, 
+  'list_id': 1,
   'recipient_id': 1
 };
   request.qs = queryParams;
@@ -1616,15 +1616,15 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 ```javascript
   const data = [
   {
-    "age": 25, 
-    "email": "example@example.com", 
-    "first_name": "", 
+    "age": 25,
+    "email": "example@example.com",
+    "first_name": "",
     "last_name": "User"
-  }, 
+  },
   {
-    "age": 25, 
-    "email": "example2@example.com", 
-    "first_name": "Example", 
+    "age": 25,
+    "email": "example2@example.com",
+    "first_name": "Example",
     "last_name": "User"
   }
 ];
@@ -1650,7 +1650,7 @@ The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](
 
 ```javascript
   const data = [
-  "recipient_id1", 
+  "recipient_id1",
   "recipient_id2"
 ];
   request.body = data;
@@ -1676,7 +1676,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 
 ```javascript
   const queryParams = {
-  'page': 1, 
+  'page': 1,
   'page_size': 1
 };
   request.qs = queryParams;
@@ -1704,8 +1704,8 @@ The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](
 ```javascript
   const data = [
   {
-    "email": "jones@example.com", 
-    "first_name": "Guy", 
+    "email": "jones@example.com",
+    "first_name": "Guy",
     "last_name": "Jones"
   }
 ];
@@ -1874,14 +1874,14 @@ List Id:
 * Send this to segment from an existing list
 * Don't send this in order to segment from your entire contactdb.
 
-Valid operators for create and update depend on the type of the field you are segmenting: 
+Valid operators for create and update depend on the type of the field you are segmenting:
 
-* **Dates:** "eq", "ne", "lt" (before), "gt" (after) 
-* **Text:** "contains", "eq" (is - matches the full field), "ne" (is not - matches any field where the entire field is not the condition value) 
-* **Numbers:** "eq", "lt", "gt" 
-* **Email Clicks and Opens:** "eq" (opened), "ne" (not opened) 
+* **Dates:** "eq", "ne", "lt" (before), "gt" (after)
+* **Text:** "contains", "eq" (is - matches the full field), "ne" (is not - matches any field where the entire field is not the condition value)
+* **Numbers:** "eq", "lt", "gt"
+* **Email Clicks and Opens:** "eq" (opened), "ne" (not opened)
 
-Segment conditions using "eq" or "ne" for email clicks and opens should provide a "field" of either *clicks.campaign_identifier* or *opens.campaign_identifier*. The condition value should be a string containing the id of a completed campaign. 
+Segment conditions using "eq" or "ne" for email clicks and opens should provide a "field" of either *clicks.campaign_identifier* or *opens.campaign_identifier*. The condition value should be a string containing the id of a completed campaign.
 
 Segments may contain multiple conditions, joined by an "and" or "or" in the "and_or" field. The first condition in the conditions list must have an empty "and_or", and subsequent conditions must all specify an "and_or".
 
@@ -1896,25 +1896,25 @@ For more information about segments in Marketing Campaigns, please see our [User
   const data = {
   "conditions": [
     {
-      "and_or": "", 
-      "field": "last_name", 
-      "operator": "eq", 
+      "and_or": "",
+      "field": "last_name",
+      "operator": "eq",
       "value": "Miller"
-    }, 
+    },
     {
-      "and_or": "and", 
-      "field": "last_clicked", 
-      "operator": "gt", 
+      "and_or": "and",
+      "field": "last_clicked",
+      "operator": "gt",
       "value": "01/02/2015"
-    }, 
+    },
     {
-      "and_or": "or", 
-      "field": "clicks.campaign_identifier", 
-      "operator": "eq", 
+      "and_or": "or",
+      "field": "clicks.campaign_identifier",
+      "operator": "eq",
       "value": "513"
     }
-  ], 
-  "list_id": 4, 
+  ],
+  "list_id": 4,
   "name": "Last Name Miller"
 };
   request.body = data;
@@ -1989,13 +1989,13 @@ For more information about segments in Marketing Campaigns, please see our [User
   const data = {
   "conditions": [
     {
-      "and_or": "", 
-      "field": "last_name", 
-      "operator": "eq", 
+      "and_or": "",
+      "field": "last_name",
+      "operator": "eq",
       "value": "Miller"
     }
-  ], 
-  "list_id": 5, 
+  ],
+  "list_id": 5,
   "name": "The Millers"
 };
   request.body = data;
@@ -2048,7 +2048,7 @@ For more information about segments in Marketing Campaigns, please see our [User
 
 ```javascript
   const queryParams = {
-  'page': 1, 
+  'page': 1,
   'page_size': 1
 };
   request.qs = queryParams;
@@ -2101,10 +2101,10 @@ Advanced Stats provide a more in-depth view of your email statistics and the act
 
 ```javascript
   const queryParams = {
-  'aggregated_by': 'day', 
-  'end_date': '2016-04-01', 
-  'limit': 1, 
-  'offset': 1, 
+  'aggregated_by': 'day',
+  'end_date': '2016-04-01',
+  'limit': 1,
+  'offset': 1,
   'start_date': '2016-01-01'
 };
   request.qs = queryParams;
@@ -2132,11 +2132,11 @@ Advanced Stats provide a more in-depth view of your email statistics and the act
 
 ```javascript
   const queryParams = {
-  'aggregated_by': 'day', 
-  'country': 'US', 
-  'end_date': '2016-04-01', 
-  'limit': 1, 
-  'offset': 1, 
+  'aggregated_by': 'day',
+  'country': 'US',
+  'end_date': '2016-04-01',
+  'limit': 1,
+  'offset': 1,
   'start_date': '2016-01-01'
 };
   request.qs = queryParams;
@@ -2160,12 +2160,12 @@ This endpoint is for adding a(n) IP Address(es) to your account.
 
 ```javascript
   const data = {
-  "count": 90323478, 
+  "count": 90323478,
   "subusers": [
-    "subuser1", 
+    "subuser1",
     "subuser2"
-  ], 
-  "user_can_send": true, 
+  ],
+  "user_can_send": true,
   "warmup": true
 };
   request.body = data;
@@ -2190,11 +2190,11 @@ A single IP address or a range of IP addresses may be dedicated to an account in
 
 ```javascript
   const queryParams = {
-  'exclude_whitelabels': 'true', 
-  'ip': 'test_string', 
-  'limit': 1, 
-  'offset': 1, 
-  'sort_by_direction': 'asc', 
+  'exclude_whitelabels': 'true',
+  'ip': 'test_string',
+  'limit': 1,
+  'offset': 1,
+  'sort_by_direction': 'asc',
   'subuser': 'test_string'
 };
   request.qs = queryParams;
@@ -2521,7 +2521,7 @@ A single IP address or a range of IP addresses may be dedicated to an account in
 
 **This endpoint allows you to generate a new batch ID. This batch ID can be associated with scheduled sends via the mail/send endpoint.**
 
-If you set the SMTPAPI header `batch_id`, it allows you to then associate multiple scheduled mail/send requests together with the same ID. Then at anytime up to 10 minutes before the schedule date, you can cancel all of the mail/send requests that have this batch ID by calling the Cancel Scheduled Send endpoint. 
+If you set the SMTPAPI header `batch_id`, it allows you to then associate multiple scheduled mail/send requests together with the same ID. Then at anytime up to 10 minutes before the schedule date, you can cancel all of the mail/send requests that have this batch ID by calling the Cancel Scheduled Send endpoint.
 
 More Information:
 
@@ -2545,7 +2545,7 @@ More Information:
 
 **This endpoint allows you to validate a batch ID.**
 
-If you set the SMTPAPI header `batch_id`, it allows you to then associate multiple scheduled mail/send requests together with the same ID. Then at anytime up to 10 minutes before the schedule date, you can cancel all of the mail/send requests that have this batch ID by calling the Cancel Scheduled Send endpoint. 
+If you set the SMTPAPI header `batch_id`, it allows you to then associate multiple scheduled mail/send requests together with the same ID. Then at anytime up to 10 minutes before the schedule date, you can cancel all of the mail/send requests that have this batch ID by calling the Cancel Scheduled Send endpoint.
 
 More Information:
 
@@ -2569,7 +2569,7 @@ This endpoint allows you to send email over SendGrids v3 Web API, the most recen
 
 * Top level parameters are referred to as "global".
 * Individual fields within the personalizations array will override any other global, or message level, parameters that are defined outside of personalizations.
- 
+
 **SendGrid provides libraries to help you quickly and easily integrate with the v3 Web API in 7 different languages: [C#](https://github.com/sendgrid/sendgrid-csharp), [Go](https://github.com/sendgrid/sendgrid-go), [Java](https://github.com/sendgrid/sendgrid-java), [Node JS](https://github.com/sendgrid/sendgrid-nodejs), [PHP](https://github.com/sendgrid/sendgrid-php), [Python](https://github.com/sendgrid/sendgrid-python), and [Ruby](https://github.com/sendgrid/sendgrid-ruby).**
 
 
@@ -2583,29 +2583,29 @@ For more detailed information about how to use the v3 Mail Send endpoint, please
   const data = {
   "content": [
     {
-      "type": "text/html", 
+      "type": "text/html",
       "value": "<html><p>Hello, world!</p></html>"
     }
-  ], 
+  ],
   "from": {
-    "email": "sam.smith@example.com", 
+    "email": "sam.smith@example.com",
     "name": "Sam Smith"
-  }, 
+  },
   "personalizations": [
     {
-      "subject": "Hello, World!", 
+      "subject": "Hello, World!",
       "to": [
         {
-          "email": "john.doe@example.com", 
+          "email": "john.doe@example.com",
           "name": "John Doe"
         }
       ]
     }
-  ], 
+  ],
   "reply_to": {
-    "email": "sam.smith@example.com", 
+    "email": "sam.smith@example.com",
     "name": "Sam Smith"
-  }, 
+  },
   "subject": "Hello, World!"
 };
   request.body = data;
@@ -2631,7 +2631,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 
 ```javascript
   const queryParams = {
-  'limit': 1, 
+  'limit': 1,
   'offset': 1
 };
   request.qs = queryParams;
@@ -2656,9 +2656,9 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 
 ```javascript
   const data = {
-  "enabled": true, 
+  "enabled": true,
   "list": [
-    "email1@example.com", 
+    "email1@example.com",
     "example.com"
   ]
 };
@@ -2704,7 +2704,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 
 ```javascript
   const data = {
-  "email": "email@example.com", 
+  "email": "email@example.com",
   "enabled": false
 };
   request.body = data;
@@ -2749,8 +2749,8 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 
 ```javascript
   const data = {
-  "enabled": true, 
-  "hard_bounces": 5, 
+  "enabled": true,
+  "hard_bounces": 5,
   "soft_bounces": 5
 };
   request.body = data;
@@ -2795,8 +2795,8 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 
 ```javascript
   const data = {
-  "enabled": true, 
-  "html_content": "...", 
+  "enabled": true,
+  "html_content": "...",
   "plain_content": "..."
 };
   request.body = data;
@@ -2841,7 +2841,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 
 ```javascript
   const data = {
-  "email": "example@example.com", 
+  "email": "example@example.com",
   "enabled": true
 };
   request.body = data;
@@ -2886,7 +2886,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 
 ```javascript
   const data = {
-  "email": "", 
+  "email": "",
   "enabled": false
 };
   request.body = data;
@@ -2975,8 +2975,8 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 
 ```javascript
   const data = {
-  "enabled": true, 
-  "max_score": 5, 
+  "enabled": true,
+  "max_score": 5,
   "url": "url"
 };
   request.body = data;
@@ -3012,7 +3012,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 
 **This endpoint allows you to update your current legacy email template settings.**
 
-This setting refers to our original email templates. We currently support more fully featured [transactional templates](https://sendgrid.com/docs/User_Guide/Transactional_Templates/index.html). 
+This setting refers to our original email templates. We currently support more fully featured [transactional templates](https://sendgrid.com/docs/User_Guide/Transactional_Templates/index.html).
 
 The legacy email template setting wraps an HTML template around your email content. This can be useful for sending out marketing email and/or other HTML formatted messages.
 
@@ -3023,7 +3023,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 
 ```javascript
   const data = {
-  "enabled": true, 
+  "enabled": true,
   "html_content": "<% body %>"
 };
   request.body = data;
@@ -3039,7 +3039,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 
 **This endpoint allows you to retrieve your current legacy email template settings.**
 
-This setting refers to our original email templates. We currently support more fully featured [transactional templates](https://sendgrid.com/docs/User_Guide/Transactional_Templates/index.html). 
+This setting refers to our original email templates. We currently support more fully featured [transactional templates](https://sendgrid.com/docs/User_Guide/Transactional_Templates/index.html).
 
 The legacy email template setting wraps an HTML template around your email content. This can be useful for sending out marketing email and/or other HTML formatted messages.
 
@@ -3073,11 +3073,11 @@ Advanced Stats provide a more in-depth view of your email statistics and the act
 
 ```javascript
   const queryParams = {
-  'aggregated_by': 'day', 
-  'end_date': '2016-04-01', 
-  'limit': 1, 
-  'mailbox_providers': 'test_string', 
-  'offset': 1, 
+  'aggregated_by': 'day',
+  'end_date': '2016-04-01',
+  'limit': 1,
+  'mailbox_providers': 'test_string',
+  'offset': 1,
   'start_date': '2016-01-01'
 };
   request.qs = queryParams;
@@ -3103,7 +3103,7 @@ Our partner settings allow you to integrate your SendGrid account with our partn
 
 ```javascript
   const queryParams = {
-  'limit': 1, 
+  'limit': 1,
   'offset': 1
 };
   request.qs = queryParams;
@@ -3128,8 +3128,8 @@ By integrating with New Relic, you can send your SendGrid email statistics to yo
 
 ```javascript
   const data = {
-  "enable_subuser_statistics": true, 
-  "enabled": true, 
+  "enable_subuser_statistics": true,
+  "enabled": true,
   "license_key": ""
 };
   request.body = data;
@@ -3195,7 +3195,7 @@ link: ```<https://api.sendgrid.com/v3/scopes/requests?limit=10&offset=0>; rel="f
 
 ```javascript
   const queryParams = {
-  'limit': 1, 
+  'limit': 1,
   'offset': 1
 };
   request.qs = queryParams;
@@ -3263,20 +3263,20 @@ Sender Identities are required to be verified before use. If your domain has bee
 
 ```javascript
   const data = {
-  "address": "123 Elm St.", 
-  "address_2": "Apt. 456", 
-  "city": "Denver", 
-  "country": "United States", 
+  "address": "123 Elm St.",
+  "address_2": "Apt. 456",
+  "city": "Denver",
+  "country": "United States",
   "from": {
-    "email": "from@example.com", 
+    "email": "from@example.com",
     "name": "Example INC"
-  }, 
-  "nickname": "My Sender ID", 
+  },
+  "nickname": "My Sender ID",
   "reply_to": {
-    "email": "replyto@example.com", 
+    "email": "replyto@example.com",
     "name": "Example INC"
-  }, 
-  "state": "Colorado", 
+  },
+  "state": "Colorado",
   "zip": "80202"
 };
   request.body = data;
@@ -3357,20 +3357,20 @@ Partial updates are allowed, but fields that are marked as "required" in the POS
 
 ```javascript
   const data = {
-  "address": "123 Elm St.", 
-  "address_2": "Apt. 456", 
-  "city": "Denver", 
-  "country": "United States", 
+  "address": "123 Elm St.",
+  "address_2": "Apt. 456",
+  "city": "Denver",
+  "country": "United States",
   "from": {
-    "email": "from@example.com", 
+    "email": "from@example.com",
     "name": "Example INC"
-  }, 
-  "nickname": "My Sender ID", 
+  },
+  "nickname": "My Sender ID",
   "reply_to": {
-    "email": "replyto@example.com", 
+    "email": "replyto@example.com",
     "name": "Example INC"
-  }, 
-  "state": "Colorado", 
+  },
+  "state": "Colorado",
   "zip": "80202"
 };
   request.body = data;
@@ -3416,10 +3416,10 @@ Parent accounts will see aggregated stats for their account and all subuser acco
 
 ```javascript
   const queryParams = {
-  'aggregated_by': 'day', 
-  'end_date': '2016-04-01', 
-  'limit': 1, 
-  'offset': 1, 
+  'aggregated_by': 'day',
+  'end_date': '2016-04-01',
+  'limit': 1,
+  'offset': 1,
   'start_date': '2016-01-01'
 };
   request.qs = queryParams;
@@ -3448,12 +3448,12 @@ For more information about Subusers:
 
 ```javascript
   const data = {
-  "email": "John@example.com", 
+  "email": "John@example.com",
   "ips": [
-    "1.1.1.1", 
+    "1.1.1.1",
     "2.2.2.2"
-  ], 
-  "password": "johns_password", 
+  ],
+  "password": "johns_password",
   "username": "John@example.com"
 };
   request.body = data;
@@ -3479,8 +3479,8 @@ For more information about Subusers:
 
 ```javascript
   const queryParams = {
-  'limit': 1, 
-  'offset': 1, 
+  'limit': 1,
+  'offset': 1,
   'username': 'test_string'
 };
   request.qs = queryParams;
@@ -3529,11 +3529,11 @@ For more information, see our [User Guide](https://sendgrid.com/docs/User_Guide/
 
 ```javascript
   const queryParams = {
-  'aggregated_by': 'day', 
-  'end_date': '2016-04-01', 
-  'limit': 1, 
-  'offset': 1, 
-  'start_date': '2016-01-01', 
+  'aggregated_by': 'day',
+  'end_date': '2016-04-01',
+  'limit': 1,
+  'offset': 1,
+  'start_date': '2016-01-01',
   'subusers': 'test_string'
 };
   request.qs = queryParams;
@@ -3561,11 +3561,11 @@ For more information, see our [User Guide](https://sendgrid.com/docs/User_Guide/
 
 ```javascript
   const queryParams = {
-  'date': 'test_string', 
-  'limit': 1, 
-  'offset': 1, 
-  'sort_by_direction': 'asc', 
-  'sort_by_metric': 'test_string', 
+  'date': 'test_string',
+  'limit': 1,
+  'offset': 1,
+  'sort_by_direction': 'asc',
+  'sort_by_metric': 'test_string',
   'subuser': 'test_string'
 };
   request.qs = queryParams;
@@ -3591,12 +3591,12 @@ For more information, see our [User Guide](https://sendgrid.com/docs/User_Guide/
 
 ```javascript
   const queryParams = {
-  'aggregated_by': 'day', 
-  'end_date': '2016-04-01', 
-  'limit': 1, 
-  'offset': 1, 
-  'sort_by_direction': 'asc', 
-  'sort_by_metric': 'test_string', 
+  'aggregated_by': 'day',
+  'end_date': '2016-04-01',
+  'limit': 1,
+  'offset': 1,
+  'sort_by_direction': 'asc',
+  'sort_by_metric': 'test_string',
   'start_date': '2016-01-01'
 };
   request.qs = queryParams;
@@ -3658,7 +3658,7 @@ For more information about Subusers:
 ```
 ## Update IPs assigned to a subuser
 
-Each subuser should be assigned to an IP address, from which all of this subuser's mail will be sent. Often, this is the same IP as the parent account, but each subuser can have their own, or multiple, IP addresses as well. 
+Each subuser should be assigned to an IP address, from which all of this subuser's mail will be sent. Often, this is the same IP as the parent account, but each subuser can have their own, or multiple, IP addresses as well.
 
 More information:
 
@@ -3690,7 +3690,7 @@ Subuser monitor settings allow you to receive a sample of an outgoing message by
 
 ```javascript
   const data = {
-  "email": "example@example.com", 
+  "email": "example@example.com",
   "frequency": 500
 };
   request.body = data;
@@ -3711,7 +3711,7 @@ Subuser monitor settings allow you to receive a sample of an outgoing message by
 
 ```javascript
   const data = {
-  "email": "example@example.com", 
+  "email": "example@example.com",
   "frequency": 50000
 };
   request.body = data;
@@ -3773,10 +3773,10 @@ For more information, see our [User Guide](https://sendgrid.com/docs/User_Guide/
 
 ```javascript
   const queryParams = {
-  'date': 'test_string', 
-  'limit': 1, 
-  'offset': 1, 
-  'sort_by_direction': 'asc', 
+  'date': 'test_string',
+  'limit': 1,
+  'offset': 1,
+  'sort_by_direction': 'asc',
   'sort_by_metric': 'test_string'
 };
   request.qs = queryParams;
@@ -3795,9 +3795,9 @@ For more information, see our [User Guide](https://sendgrid.com/docs/User_Guide/
 
 **This endpoint allows you to delete all email addresses on your blocks list.**
 
-There are two options for deleting blocked emails: 
+There are two options for deleting blocked emails:
 
-1. You can delete all blocked emails by setting `delete_all` to true in the request body. 
+1. You can delete all blocked emails by setting `delete_all` to true in the request body.
 2. You can delete some blocked emails by specifying the email addresses in an array in the request body.
 
 [Blocks](https://sendgrid.com/docs/Glossary/blocks.html) happen when your message was rejected for a reason related to the message, not the recipient address. This can happen when your mail server IP address has been added to a blacklist or blocked by an ISP, or if the message content is flagged by a filter on the receiving server.
@@ -3809,9 +3809,9 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 
 ```javascript
   const data = {
-  "delete_all": false, 
+  "delete_all": false,
   "emails": [
-    "example1@example.com", 
+    "example1@example.com",
     "example2@example.com"
   ]
 };
@@ -3837,9 +3837,9 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 
 ```javascript
   const queryParams = {
-  'end_time': 1, 
-  'limit': 1, 
-  'offset': 1, 
+  'end_time': 1,
+  'limit': 1,
+  'offset': 1,
   'start_time': 1
 };
   request.qs = queryParams;
@@ -3899,7 +3899,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 
 A bounced email is when the message is undeliverable and then returned to the server that sent it.
 
-For more information see: 
+For more information see:
 
 * [User Guide > Bounces](https://sendgrid.com/docs/User_Guide/Suppressions/bounces.html) for more information
 * [Glossary > Bounces](https://sendgrid.com/docs/Glossary/Bounces.html)
@@ -3912,9 +3912,9 @@ Note: the `delete_all` and `emails` parameters should be used independently of e
 
 ```javascript
   const data = {
-  "delete_all": true, 
+  "delete_all": true,
   "emails": [
-    "example@example.com", 
+    "example@example.com",
     "example2@example.com"
   ]
 };
@@ -3933,7 +3933,7 @@ Note: the `delete_all` and `emails` parameters should be used independently of e
 
 A bounced email is when the message is undeliverable and then returned to the server that sent it.  
 
-For more information see: 
+For more information see:
 
 * [User Guide > Bounces](https://sendgrid.com/docs/User_Guide/Suppressions/bounces.html) for more information
 * [Glossary > Bounces](https://sendgrid.com/docs/Glossary/Bounces.html)
@@ -3943,7 +3943,7 @@ For more information see:
 
 ```javascript
   const queryParams = {
-  'end_time': 1, 
+  'end_time': 1,
   'start_time': 1
 };
   request.qs = queryParams;
@@ -3959,9 +3959,9 @@ For more information see:
 
 **This endpoint allows you to remove an email address from your bounce list.**
 
-A bounced email is when the message is undeliverable and then returned to the server that sent it. This endpoint allows you to delete a single email addresses from your bounce list. 
+A bounced email is when the message is undeliverable and then returned to the server that sent it. This endpoint allows you to delete a single email addresses from your bounce list.
 
-For more information see: 
+For more information see:
 
 * [User Guide > Bounces](https://sendgrid.com/docs/User_Guide/Suppressions/bounces.html) for more information
 * [Glossary > Bounces](https://sendgrid.com/docs/Glossary/Bounces.html)
@@ -3991,7 +3991,7 @@ For more information see:
 
 A bounced email is when the message is undeliverable and then returned to the server that sent it.
 
-For more information see: 
+For more information see:
 
 * [User Guide > Bounces](https://sendgrid.com/docs/User_Guide/Suppressions/bounces.html) for more information
 * [Glossary > Bounces](https://sendgrid.com/docs/Glossary/Bounces.html)
@@ -4013,7 +4013,7 @@ For more information see:
 
 **This endpoint allows you to remove email addresses from your invalid email address list.**
 
-There are two options for deleting invalid email addresses: 
+There are two options for deleting invalid email addresses:
 
 1) You can delete all invalid email addresses by setting `delete_all` to true in the request body.
 2) You can delete some invalid email addresses by specifying certain addresses in an array in the request body.
@@ -4029,9 +4029,9 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 
 ```javascript
   const data = {
-  "delete_all": false, 
+  "delete_all": false,
   "emails": [
-    "example1@example.com", 
+    "example1@example.com",
     "example2@example.com"
   ]
 };
@@ -4059,9 +4059,9 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 
 ```javascript
   const queryParams = {
-  'end_time': 1, 
-  'limit': 1, 
-  'offset': 1, 
+  'end_time': 1,
+  'limit': 1,
+  'offset': 1,
   'start_time': 1
 };
   request.qs = queryParams;
@@ -4123,9 +4123,9 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 
 **This endpoint allows you to delete your spam reports.**
 
-There are two options for deleting spam reports: 
+There are two options for deleting spam reports:
 
-1) You can delete all spam reports by setting "delete_all" to true in the request body. 
+1) You can delete all spam reports by setting "delete_all" to true in the request body.
 2) You can delete some spam reports by specifying the email addresses in an array in the request body.
 
 [Spam reports](https://sendgrid.com/docs/Glossary/spam_reports.html) happen when a recipient indicates that they think your email is [spam](https://sendgrid.com/docs/Glossary/spam.html) and then their email provider reports this to SendGrid.
@@ -4137,9 +4137,9 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 
 ```javascript
   const data = {
-  "delete_all": false, 
+  "delete_all": false,
   "emails": [
-    "example1@example.com", 
+    "example1@example.com",
     "example2@example.com"
   ]
 };
@@ -4165,9 +4165,9 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 
 ```javascript
   const queryParams = {
-  'end_time': 1, 
-  'limit': 1, 
-  'offset': 1, 
+  'end_time': 1,
+  'limit': 1,
+  'offset': 1,
   'start_time': 1
 };
   request.qs = queryParams;
@@ -4232,9 +4232,9 @@ A global suppression (or global unsubscribe) is an email address of a recipient 
 
 ```javascript
   const queryParams = {
-  'end_time': 1, 
-  'limit': 1, 
-  'offset': 1, 
+  'end_time': 1,
+  'limit': 1,
+  'offset': 1,
   'start_time': 1
 };
   request.qs = queryParams;
@@ -4262,10 +4262,10 @@ Essentials, [Legacy Lite](https://sendgrid.com/docs/Classroom/Basics/Billing/leg
 
 ```javascript
   const data = {
-  "email": "teammate1@example.com", 
-  "is_admin": false, 
+  "email": "teammate1@example.com",
+  "is_admin": false,
   "scopes": [
-    "user.profile.read", 
+    "user.profile.read",
     "user.profile.update"
   ]
 };
@@ -4291,7 +4291,7 @@ link: ```<https://api.sendgrid.com/v3/teammates?limit=10&offset=0>; rel="first";
 
 ```javascript
   const queryParams = {
-  'limit': 1, 
+  'limit': 1,
   'offset': 1
 };
   request.qs = queryParams;
@@ -4394,9 +4394,9 @@ To turn a teammate into an admin, the request body should contain an `is_admin` 
 
 ```javascript
   const data = {
-  "is_admin": false, 
+  "is_admin": false,
   "scopes": [
-    "user.profile.read", 
+    "user.profile.read",
     "user.profile.edit"
   ]
 };
@@ -4551,11 +4551,11 @@ For more information about transactional templates, please see our [User Guide](
 
 ```javascript
   const data = {
-  "active": 1, 
-  "html_content": "<%body%>", 
-  "name": "example_version_name", 
-  "plain_content": "<%body%>", 
-  "subject": "<%subject%>", 
+  "active": 1,
+  "html_content": "<%body%>",
+  "name": "example_version_name",
+  "plain_content": "<%body%>",
+  "subject": "<%subject%>",
   "template_id": "ddb96bbc-9b92-425e-8979-99464621b543"
 };
   request.body = data;
@@ -4614,10 +4614,10 @@ For more information about transactional templates, please see our [User Guide](
 
 ```javascript
   const data = {
-  "active": 1, 
-  "html_content": "<%body%>", 
-  "name": "updated_example_name", 
-  "plain_content": "<%body%>", 
+  "active": 1,
+  "html_content": "<%body%>",
+  "name": "updated_example_name",
+  "plain_content": "<%body%>",
   "subject": "<%subject%>"
 };
   request.body = data;
@@ -4700,7 +4700,7 @@ For more information about tracking, please see our [User Guide](https://sendgri
 
 ```javascript
   const queryParams = {
-  'limit': 1, 
+  'limit': 1,
   'offset': 1
 };
   request.qs = queryParams;
@@ -4773,11 +4773,11 @@ For more information about tracking, please see our [User Guide](https://sendgri
 
 ```javascript
   const data = {
-  "enabled": true, 
-  "utm_campaign": "website", 
-  "utm_content": "", 
-  "utm_medium": "email", 
-  "utm_source": "sendgrid.com", 
+  "enabled": true,
+  "utm_campaign": "website",
+  "utm_content": "",
+  "utm_medium": "email",
+  "utm_source": "sendgrid.com",
   "utm_term": ""
 };
   request.body = data;
@@ -4876,11 +4876,11 @@ For more information about tracking, please see our [User Guide](https://sendgri
 
 ```javascript
   const data = {
-  "enabled": true, 
-  "html_content": "html content", 
-  "landing": "landing page html", 
-  "plain_content": "text content", 
-  "replace": "replacement tag", 
+  "enabled": true,
+  "html_content": "html content",
+  "landing": "landing page html",
+  "plain_content": "text content",
+  "replace": "replacement tag",
   "url": "url"
 };
   request.body = data;
@@ -5022,7 +5022,7 @@ For more information about your user profile:
 
 ```javascript
   const data = {
-  "new_password": "new_password", 
+  "new_password": "new_password",
   "old_password": "old_password"
 };
   request.body = data;
@@ -5051,8 +5051,8 @@ It should be noted that any one or more of the parameters can be updated via the
 
 ```javascript
   const data = {
-  "city": "Orange", 
-  "first_name": "Example", 
+  "city": "Orange",
+  "first_name": "Example",
   "last_name": "User"
 };
   request.body = data;
@@ -5098,7 +5098,7 @@ The Cancel Scheduled Sends feature allows the customer to cancel a scheduled sen
 
 ```javascript
   const data = {
-  "batch_id": "YOUR_BATCH_ID", 
+  "batch_id": "YOUR_BATCH_ID",
   "status": "pause"
 };
   request.body = data;
@@ -5201,7 +5201,7 @@ The Enforced TLS settings specify whether or not the recipient is required to su
 
 ```javascript
   const data = {
-  "require_tls": true, 
+  "require_tls": true,
   "require_valid_cert": false
 };
   request.body = data;
@@ -5296,18 +5296,18 @@ Common uses of this data are to remove unsubscribes, react to spam reports, dete
 
 ```javascript
   const data = {
-  "bounce": true, 
-  "click": true, 
-  "deferred": true, 
-  "delivered": true, 
-  "dropped": true, 
-  "enabled": true, 
-  "group_resubscribe": true, 
-  "group_unsubscribe": true, 
-  "open": true, 
-  "processed": true, 
-  "spam_report": true, 
-  "unsubscribe": true, 
+  "bounce": true,
+  "click": true,
+  "deferred": true,
+  "delivered": true,
+  "dropped": true,
+  "enabled": true,
+  "group_resubscribe": true,
+  "group_unsubscribe": true,
+  "open": true,
+  "processed": true,
+  "spam_report": true,
+  "unsubscribe": true,
   "url": "url"
 };
   request.body = data;
@@ -5376,9 +5376,9 @@ The inbound parse webhook allows you to have incoming emails parsed, extracting 
 
 ```javascript
   const data = {
-  "hostname": "myhostname.com", 
-  "send_raw": false, 
-  "spam_check": true, 
+  "hostname": "myhostname.com",
+  "send_raw": false,
+  "spam_check": true,
   "url": "http://email.myhosthame.com"
 };
   request.body = data;
@@ -5439,8 +5439,8 @@ The inbound parse webhook allows you to have incoming emails parsed, extracting 
 
 ```javascript
   const data = {
-  "send_raw": true, 
-  "spam_check": false, 
+  "send_raw": true,
+  "spam_check": false,
   "url": "http://newdomain.com/parse"
 };
   request.body = data;
@@ -5483,10 +5483,10 @@ There are a number of pre-made integrations for the SendGrid Parse Webhook which
 
 ```javascript
   const queryParams = {
-  'aggregated_by': 'day', 
-  'end_date': '2016-04-01', 
-  'limit': 'test_string', 
-  'offset': 'test_string', 
+  'aggregated_by': 'day',
+  'end_date': '2016-04-01',
+  'limit': 'test_string',
+  'offset': 'test_string',
   'start_date': '2016-01-01'
 };
   request.qs = queryParams;
@@ -5518,15 +5518,15 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 
 ```javascript
   const data = {
-  "automatic_security": false, 
-  "custom_spf": true, 
-  "default": true, 
-  "domain": "example.com", 
+  "automatic_security": false,
+  "custom_spf": true,
+  "default": true,
+  "domain": "example.com",
   "ips": [
-    "192.168.1.1", 
+    "192.168.1.1",
     "192.168.1.2"
-  ], 
-  "subdomain": "news", 
+  ],
+  "subdomain": "news",
   "username": "john@example.com"
 };
   request.body = data;
@@ -5551,10 +5551,10 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 
 ```javascript
   const queryParams = {
-  'domain': 'test_string', 
-  'exclude_subusers': 'true', 
-  'limit': 1, 
-  'offset': 1, 
+  'domain': 'test_string',
+  'exclude_subusers': 'true',
+  'limit': 1,
+  'offset': 1,
   'username': 'test_string'
 };
   request.qs = queryParams;
@@ -5682,7 +5682,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 
 ```javascript
   const data = {
-  "custom_spf": true, 
+  "custom_spf": true,
   "default": false
 };
   request.body = data;
@@ -5844,8 +5844,8 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
 
 ```javascript
   const data = {
-  "domain": "example.com", 
-  "ip": "192.168.1.1", 
+  "domain": "example.com",
+  "ip": "192.168.1.1",
   "subdomain": "email"
 };
   request.body = data;
@@ -5872,8 +5872,8 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
 
 ```javascript
   const queryParams = {
-  'ip': 'test_string', 
-  'limit': 1, 
+  'ip': 'test_string',
+  'limit': 1,
   'offset': 1
 };
   request.qs = queryParams;
@@ -5962,13 +5962,13 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
 
 ```javascript
   const data = {
-  "default": true, 
-  "domain": "example.com", 
+  "default": true,
+  "domain": "example.com",
   "subdomain": "mail"
 };
   request.body = data;
   const queryParams = {
-  'limit': 1, 
+  'limit': 1,
   'offset': 1
 };
   request.qs = queryParams;
@@ -6209,4 +6209,3 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
     console.log(response.body);
   })
 ```
-
