@@ -15,20 +15,28 @@ module.exports = function convertKeys(obj, converter, ignored) {
     return obj;
   }
 
+  //Ensure array for ignored values
+  if (!Array.isArray(ignored)) {
+    ignored = [];
+  }
+
   //Process all properties
   for (const key in obj) {
     //istanbul ignore else
     if (obj.hasOwnProperty(key)) {
 
+      //Convert key to snake case
+      const converted = converter(key);
+
       //Recursive for child objects, unless ignored
+      //The ignored check checks both variants of the key
       if (typeof obj[key] === 'object' && obj[key] !== null) {
-        if (!Array.isArray(ignored) || !ignored.includes(key)) {
+        if (!ignored.includes(key) && !ignored.includes(converted)) {
           obj[key] = convertKeys(obj[key], converter, ignored);
         }
       }
 
       //Convert key to snake case and set if needed
-      const converted = converter(key);
       if (converted !== key) {
         obj[converted] = obj[key];
         delete obj[key];
