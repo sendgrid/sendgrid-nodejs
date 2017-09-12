@@ -602,6 +602,27 @@ describe('Personalization', function() {
       expect(json).to.have.property('send_at');
       expect(json.send_at).to.equal(555);
     });
+    it('should not modify the keys of substitutions and custom args', () => {
+      const data = {
+        to: 'to@example.org',
+        customArgs: {snake_case: 'Test', T_EST: 'Test', camelCase: 'Test'},
+        substitutions: {snake_case: 'Test', T_EST: 'Test', camelCase: 'Test'},
+      };
+      p.fromData(data);
+      const json = p.toJSON();
+      expect(json.substitutions).to.have.property('{{T_EST}}');
+      expect(json.substitutions).to.have.property('{{camelCase}}');
+      expect(json.substitutions).to.have.property('{{snake_case}}');
+      expect(json.substitutions['{{T_EST}}']).to.equal('Test');
+      expect(json.substitutions['{{camelCase}}']).to.equal('Test');
+      expect(json.substitutions['{{snake_case}}']).to.equal('Test');
+      expect(json.custom_args).to.have.property('T_EST');
+      expect(json.custom_args).to.have.property('camelCase');
+      expect(json.custom_args).to.have.property('snake_case');
+      expect(json.custom_args.T_EST).to.equal('Test');
+      expect(json.custom_args.camelCase).to.equal('Test');
+      expect(json.custom_args.snake_case).to.equal('Test');
+    });
   });
 
   //From data
@@ -615,23 +636,23 @@ describe('Personalization', function() {
       subject: 'Test',
       sendAt: 1000,
       headers: {test: 'Test'},
-      customArgs: {test: 'Test'},
-      substitutions: {test: 'Test'},
+      customArgs: {snake_case: 'Test', T_EST: 'Test', camelCase: 'Test'},
+      substitutions: {snake_case: 'Test', T_EST: 'Test', camelCase: 'Test'},
       substitutionWrappers: ['[', ']'],
     };
 
     //Tests
-    it('should call fromData() from the constructor', function() {
+    it('should call fromData() from the constructor', () => {
       p = new Personalization(data);
       expect(p.to[0].email).to.equal('to@example.org');
       expect(p.subject).to.equal('Test');
     });
-    it('should throw an error for invalid input', function() {
+    it('should throw an error for invalid input', () => {
       expect(function() {
         p.fromData(5);
       }).to.throw(Error);
     });
-    it('should have set all properties', function() {
+    it('should have set all properties', () => {
       p.fromData(data);
       expect(p.to[0].email).to.equal('to@example.org');
       expect(p.cc[0].email).to.equal('cc1@example.org');
@@ -641,9 +662,18 @@ describe('Personalization', function() {
       expect(p.subject).to.equal('Test');
       expect(p.sendAt).to.equal(1000);
       expect(p.headers.test).to.equal('Test');
-      expect(p.customArgs.test).to.equal('Test');
-      expect(p.substitutions.test).to.equal('Test');
+      expect(p.customArgs.snake_case).to.equal('Test');
+      expect(p.substitutions.snake_case).to.equal('Test');
       expect(p.substitutionWrappers).to.have.members(['[', ']']);
+    });
+    it('should not modify the keys of substitutions and custom args', () => {
+      p.fromData(data);
+      expect(p.substitutions.T_EST).to.equal('Test');
+      expect(p.substitutions.camelCase).to.equal('Test');
+      expect(p.substitutions.snake_case).to.equal('Test');
+      expect(p.customArgs.T_EST).to.equal('Test');
+      expect(p.customArgs.camelCase).to.equal('Test');
+      expect(p.customArgs.snake_case).to.equal('Test');
     });
   });
 });
