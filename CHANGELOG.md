@@ -1,6 +1,18 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [6.1.3] - 2017-09-11 ##
+### Fixed
+- Pull #442: This addresses the issue where custom args and substitutions would have their keys transformed to camel case / snake case.
+- Solves #441: Substitution is not working
+- Thanks to [Adam Reis](https://github.com/adamreisnz) for the PR!
+
+## [6.1.2] - 2017-08-31 ##
+### Fixed
+- Pull #438: Content is not mandatory
+- Solves #435: Unexpected Error when trying to send transactional email
+- Thanks to [Adam Reis](https://github.com/adamreisnz) for the PR!
+
 ## [6.1.1] - 2017-08-30 ##
 ### Fixed
 - Pull #436, solves #433: Convert plain data to personalization class instance
