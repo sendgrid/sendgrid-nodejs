@@ -9,6 +9,15 @@ This package helps get you started consuming and processing [Inbound Parse](http
 
 To be notified when this package is updated, please subscribe to email [notifications](https://dx.sendgrid.com/newsletter/nodejs) for releases and breaking changes.
 
+## Prerequisites
+
+- Node.js version 6, 7 or 8
+- A SendGrid account, [sign up for free](https://sendgrid.com/free?source=sendgrid-nodejs) to send up to 40,000 emails for the first 30 days or check out [our pricing](https://sendgrid.com/pricing?source=sendgrid-nodejs).
+
+## Obtain an API Key
+
+Grab your API Key from the [SendGrid UI](https://app.sendgrid.com/settings/api_keys).
+
 # Install Package
 
 The following recommended installation requires [npm](https://npmjs.org/). If you are unfamiliar with npm, see the [npm docs](https://npmjs.org/doc/). Npm comes installed with Node.js since node version 0.8.x therefore you likely already have it.

@@ -14,9 +14,15 @@ To be notified when this package is updated, please subscribe to email [notifica
 ## Prerequisites
 
 - Node.js version 6, 7 or 8
-- The SendGrid service, starting at the [free level](https://sendgrid.com/free?source=sendgrid-nodejs)
+- A SendGrid account, [sign up for free](https://sendgrid.com/free?source=sendgrid-nodejs to send up to 40,000 emails for the first 30 days or check out [our pricing](https://sendgrid.com/pricing?source=sendgrid-nodejs).
+
+## Obtain an API Key
+
+Grab your API Key from the [SendGrid UI](https://app.sendgrid.com/settings/api_keys).
 
 ## Setup Environment Variables
+
+Do not hard code your [SendGrid API Key](https://app.sendgrid.com/settings/api_keys) into your code. Instead, use an environment variable or some other secure means of protecting your SendGrid API Key. Following is an example of using an environment variable.
 
 Update the development environment with your [SENDGRID_API_KEY](https://app.sendgrid.com/settings/api_keys), for example:
 
