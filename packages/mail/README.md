@@ -14,9 +14,15 @@ To be notified when this package is updated, please subscribe to email [notifica
 ## Prerequisites
 
 - Node.js version 6, 7 or 8
-- The SendGrid service, starting at the [free level](https://sendgrid.com/free?source=sendgrid-nodejs)
+- A SendGrid account, [sign up for free](https://sendgrid.com/free?source=sendgrid-nodejs) to send up to 40,000 emails for the first 30 days or check out [our pricing](https://sendgrid.com/pricing?source=sendgrid-nodejs).
+
+## Obtain an API Key
+
+Grab your API Key from the [SendGrid UI](https://app.sendgrid.com/settings/api_keys).
 
 ## Setup Environment Variables
+
+Do not hard code your [SendGrid API Key](https://app.sendgrid.com/settings/api_keys) into your code. Instead, use an environment variable or some other secure means of protecting your SendGrid API Key. Following is an example of using an environment variable.
 
 Update the development environment with your [SENDGRID_API_KEY](https://app.sendgrid.com/settings/api_keys), for example:
 
@@ -43,6 +49,8 @@ yarn add @sendgrid/mail
 <a name="quick_start"></a>
 # Quick Start, Hello Email
 
+The following is the minimum needed code to send an simple email. Use this example, and modify the `to` and `from` variables:
+
 For more complex use cases, please see [USE_CASES.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/mail/USE_CASES.md).
 
 ```js
@@ -58,6 +66,8 @@ const msg = {
 sgMail.send(msg);
 ```
 
+After executing the above code, you should have an email in the inbox of the to recipient. You can check the status of your email [in the UI](https://app.sendgrid.com/email_activity?). Alternatively, we can post events to a URL of your choice using our [Event Webhook](https://sendgrid.com/docs/API_Reference/Webhooks/event.html). This gives you data about the events that occur as SendGrid processes your email.
+
 <a name="troubleshooting"></a>
 # Troubleshooting
 
@@ -71,7 +81,7 @@ All updates to this library are documented in our [CHANGELOG](https://github.com
 <a name="roadmap"></a>
 # Roadmap
 
-If you are interested in the future direction of this project, please take a look at our open [issues](https://github.com/sendgrid/sendgrid-nodejs/issues) and [pull requests](https://github.com/sendgrid/sendgrid-nodejs/pulls). We would love to hear your feedback.
+If you are interested in the future direction of this project, please take a look at our open [issues](https://github.com/sendgrid/sendgrid-nodejs/issues) and [pull requests](https://github.com/sendgrid/sendgrid-nodejs/pulls). We would love to hear your feedback!
 
 <a name="contribute"></a>
 # How to Contribute

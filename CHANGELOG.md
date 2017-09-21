@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [6.1.4] - 2017-09-11 ##
+### Updated
+- [Pull #445](https://github.com/sendgrid/sendgrid-nodejs/pull/445): Documenation Updates for better DX/UX
+- Updates to README, TROUBLESHOOTING and USE_CASE documents to improve the developer experience.
+
 ## [6.1.3] - 2017-09-11 ##
 ### Fixed
 - Pull #442: This addresses the issue where custom args and substitutions would have their keys transformed to camel case / snake case.

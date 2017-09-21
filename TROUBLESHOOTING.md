@@ -12,6 +12,7 @@ If you can't find a solution below, please open an [issue](https://github.com/se
 * [Versions](#versions)
 * [Environment Variables and Your SendGrid API Key](#environment)
 * [Using the Package Manager](#package-manager)
+* [Viewing the Request Body](#request-body)
 
 <a name="migrating"></a>
 ## Migrating from v2 to v3
@@ -106,4 +107,22 @@ If you are using a `package.json` file:
     "@sendgrid/[package name]": "X.X.X"
   }
 }
+```
+
+<a name="request-body"></a>
+## Viewing the Request Body
+
+When debugging or testing, it may be useful to exampine the raw request body to compare against the [documented format](https://sendgrid.com/docs/API_Reference/api_v3.html).
+
+You can do this right before you call `sgMail.send(msg);` like so:
+
+```javascript
+const {
+  classes: {
+    Mail,
+  },
+} = require('@sendgrid/helpers');
+const mail = Mail.create(data);
+const body = mail.toJSON();
+console.log(body);
 ```
