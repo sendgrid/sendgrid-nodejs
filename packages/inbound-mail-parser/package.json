@@ -1,7 +1,7 @@
 {
   "name": "@sendgrid/inbound-mail-parser",
   "description": "SendGrid NodeJS inbound mail parser",
-  "version": "6.1.3",
+  "version": "6.1.4",
   "author": "SendGrid <dx@sendgrid.com> (sendgrid.com)",
   "contributors": [
     "Kyle Partridge <kyle.partridge@sendgrid.com>",
