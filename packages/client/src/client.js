@@ -75,8 +75,8 @@ class Client {
     const headers = mergeData(this.defaultHeaders, data);
 
     //Add API key, but don't overwrite if header already set
-    if (typeof headers.Authorization === 'undefined' && this.apiKey) {
-      headers.Authorization = 'Bearer ' + this.apiKey;
+    if (typeof headers.authorization === 'undefined' && this.apiKey) {
+      headers.authorization = 'Bearer ' + this.apiKey;
     }
 
     //Return
