@@ -1543,19 +1543,23 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 
 
 ```javascript
-  const queryParams = {
-  'list_id': 1, 
-  'page': 1, 
-  'page_size': 1
-};
-  request.qs = queryParams;
-  request.method = 'GET';
-  request.url = '/v3/contactdb/lists/{list_id}/recipients';
-  client.request(request)
-  .then(([response, body]) => {
-    console.log(response.statusCode);
-    console.log(response.body);
-  })
+var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
+
+var request = sg.emptyRequest();
+request.queryParams.page = '1';
+request.queryParams.page_size = '1';
+request.method = 'GET';
+var list_id = 1;
+request.path = '/v3/contactdb/lists/' + list_id + '/recipients';
+
+sg.API(request, function(error, response) {
+  if (error) {
+    console.log('Error response received');
+  }
+  console.log(response.statusCode);
+  console.log(response.body);
+  console.log(response.headers);
+});
 ```
 ## Add a Single Recipient to a List
 
