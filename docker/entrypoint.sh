@@ -1,5 +1,18 @@
 #! /bin/bash
 
+# check for + link mounted libraries:
+if [ -d /mnt/source ]
+then
+  rm -rf /root/source
+  ln -s /mnt/source
+  echo "Linked mounted sendgrid-nodejs's code to /root/source"
+
+  cd /root/source
+  # install deps
+  yarn
+  ./node_modules/.bin/lerna bootstrap
+fi
+
 echo "Welcome to sendgrid-nodejs docker"
 echo
 
