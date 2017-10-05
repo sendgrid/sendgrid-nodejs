@@ -81,7 +81,7 @@ First, get your free SendGrid account [here](https://sendgrid.com/free?source=se
 
 You will need to setup the following environment to use the SendGrid examples in the README.md, USAGE.md and USE_CASES.md files:
 
-```
+```bash
 echo "export SENDGRID_API_KEY='YOUR_API_KEY'" > sendgrid.env
 echo "sendgrid.env" >> .gitignore
 source ./sendgrid.env
@@ -99,7 +99,7 @@ Copy the desired code into `example.js`. For this example, I'm assuming you crea
 
 Change the path to the Sendgrid library to the reletive path, for example: `./packages/mail/mail`.
 
-```
+```bash
 node example.js
 ```
 
@@ -113,7 +113,7 @@ This repo is organized as a monorepo with the packages residing in the `./packag
 
 All PRs require passing tests before the PR will be reviewed.
 
-To run tests, please install Prism first by either running `yarn prism:install` or manually downloading from (the Prism website)[https://stoplight.io/platform/prism/].
+To run tests, please install Prism first by either running `yarn prism:install` or manually downloading from [the Prism website](https://stoplight.io/platform/prism/).
 
 Next, start Prism in one console window using `yarn prism`.
 
