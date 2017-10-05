@@ -69,7 +69,7 @@ To read the error message returned by SendGrid's API, please see [this example](
 <a name="versions"></a>
 ## Versions
 
-We follow the MAJOR.MINOR.PATCH versioning scheme as described by [SemVer.org](http://semver.org). Therefore, we recommend that you always pin (or vendor) the particular version you are working with to your code and never auto-update to the latest version. Especially when there is a MAJOR point release, since that is guarenteed to be a breaking change. Changes are documented in the [CHANGELOG](https://github.com/sendgrid/sendgrid-nodejs/blob/master/CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases) section.
+We follow the MAJOR.MINOR.PATCH versioning scheme as described by [SemVer.org](http://semver.org). Therefore, we recommend that you always pin (or vendor) the particular version you are working with to your code and never auto-update to the latest version. Especially when there is a MAJOR point release, since that is guaranteed to be a breaking change. Changes are documented in the [CHANGELOG](https://github.com/sendgrid/sendgrid-nodejs/blob/master/CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases) section.
 
 <a name="environment"></a>
 ## Environment Variables and Your SendGrid API Key
@@ -112,7 +112,7 @@ If you are using a `package.json` file:
 <a name="request-body"></a>
 ## Viewing the Request Body
 
-When debugging or testing, it may be useful to exampine the raw request body to compare against the [documented format](https://sendgrid.com/docs/API_Reference/api_v3.html).
+When debugging or testing, it may be useful to examine the raw request body to compare against the [documented format](https://sendgrid.com/docs/API_Reference/api_v3.html).
 
 You can do this right before you call `sgMail.send(msg);` like so:
 
