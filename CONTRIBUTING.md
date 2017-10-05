@@ -97,7 +97,7 @@ touch example.js
 
 Copy the desired code into `example.js`. For this example, I'm assuming you create this file in the root of this project.
 
-Change the path to the Sendgrid library to the reletive path, for example: `./packages/mail/mail`.
+Change the path to the Sendgrid library to the relative path, for example: `./packages/mail/mail`.
 
 ```
 node example.js
