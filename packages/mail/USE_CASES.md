@@ -472,13 +472,22 @@ env_variables:
   SENDGRID_API_KEY: YOUR_API_KEY
 ```
 
-#### Install necessary packages
+#### Install necessary packages, and update package.json
 
 for example:
 
 ```
 yarn add @sendgrid/mail
 yarn add express
+```
+
+package.json - that `node app.js is` used to start the application
+
+```json
+"scripts": {
+  "deploy": "gcloud app deploy",
+  "start": "node app.js"
+},
 ```
 
 #### Implement the Hello Email app
