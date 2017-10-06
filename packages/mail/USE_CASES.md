@@ -16,6 +16,7 @@ This documentation provides examples for specific email use cases. Please [open 
   * [Specifying Custom Headers](#customheaders)
   * [Specifying Categories](#categories)
   * [Kitchen Sink - an example with all settings used](#kitchensink)
+* [Deploy a simple app on Google App Engine with Node.js](#gae)
 
 <a name="singleemailsinglerecipient"></a>
 # Send a Single Email to a Single Recipient
@@ -456,3 +457,84 @@ sgMail
   .then(() => console.log('Mail sent successfully'))
   .catch(error => console.error(error.toString()));
 ```
+
+<a name="gae"></a>
+## Deploy a simple app on Google App Engine with Node.js
+
+Before you begin, setup google app engine and install required packages by following [getting started](https://cloud.google.com/nodejs/getting-started/hello-world) guide
+
+#### Setup your environment variables
+Include your [SENDGRID_API_KEY](https://app.sendgrid.com/settings/api_keys) in `app.yaml`, for example: 
+
+```yaml
+# Note: Don't commit the app.yaml file with API key, keep it changed locally - only used in deployment
+env_variables:
+  SENDGRID_API_KEY: YOUR_API_KEY
+```
+
+#### Install necessary packages
+
+for example:
+
+```
+yarn add @sendgrid/mail
+yarn add express
+```
+
+#### Implement the Hello Email app
+
+```js
+const express = require('express');
+const sgMail = require('@sendgrid/mail');
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const app = express();
+
+app.get('/send', (req, res) => {
+  const {query: {to = 'test@example.com', from = 'test@example.com'}} = req;
+  // other options could be customized further
+  
+  const msg = {
+    to,
+    from,
+    subject: 'Sending with SendGrid is Fun',
+    text: 'and easy to do anywhere, even with Node.js',
+    html: '<strong>Hello Email app</strong>',
+  };
+  
+  sgMail.send(msg).then(() => {
+    res.status(200).send('Hello, world!').end();
+  }).catch(e => {
+    console.error(e.toString());
+    res.status(500).end();
+  });
+});
+
+// Start the server
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}`);
+  console.log('Press Ctrl+C to quit.');
+});
+```
+
+#### Deploy and running the app on App Engine
+
+1. Deploy the Hello World app by running the following command from the application directory:
+   ```
+   gcloud app deploy
+   ```
+2. Launch your browser and view the app at http://YOUR_PROJECT_ID.appspot.com, by running the following command:
+   ```
+   gcloud app browse
+   ```
+  
+ #### Send email 
+ 
+ Using the following snippet you should be able to send emails with the deployed app (replace `to` and `from` with your own)
+ 
+ ```curl
+ curl -X GET \
+  'http://your_project_id.appspot.com/send?to=to%40host.com&from=from%40host.com' \
+  -H 'cache-control: no-cache'
+ ```
