@@ -15,7 +15,6 @@ We appreciate your continued support, thank you!
 # Table of Contents
 
 * [Introduction - Please Read First](#introduction)
-* [Additional Documentation](#usage)
 * [Announcements](#announcements)
 * [Roadmap](#roadmap)
 * [How to Contribute](#contribute)
