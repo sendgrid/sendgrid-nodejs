@@ -1,145 +1,41 @@
-# Code of Conduct
+# SendGrid Community Code of Conduct
 
-## When Something Happens
+The SendGrid open source community is made up of members from around the globe with a diverse set of skills, personalities, and experiences. It is through these differences that our community experiences successes and continued growth. When you're working with members of the community, we encourage you to follow these guidelines, which help steer our interactions and strive to maintain a positive, successful and growing community. 
 
-If you see a Code of Conduct violation, follow these steps:
+### Be Open
+Members of the community are open to collaboration, whether it's on pull requests, code reviews, approvals, issues or otherwise. We're receptive to constructive comments and criticism, as the experiences and skill sets of all members contribute to the whole of our efforts. We're accepting of all who wish to take part in our activities, fostering an environment where anyone can participate, and everyone can make a difference.
 
-1. Let the person know that what they did is not appropriate and ask them to stop and/or edit their message(s) or commits.
-2. That person should immediately stop the behavior and correct the issue.
-3. If this doesn’t happen, or if you're uncomfortable speaking up, [contact the maintainers](#contacting-maintainers).
-4. As soon as available, a maintainer will look into the issue, and take [further action (see below)](#further-enforcement), starting with a warning, then temporary block, then long-term repo or organization ban.
+### Be Considerate
+Members of the community are considerate of their peers, which include other contributors and users of SendGrid. We're thoughtful when addressing the efforts of others, keeping in mind that often the labor was completed with the intent of the good of the community. We're attentive in our communications, whether in person or online, and we're tactful when approaching differing views.
 
-When reporting, please include any relevant details, links, screenshots, context, or other information that may be used to better understand and resolve the situation.
+### Be Respectful
+Members of the community are respectful. We're respectful of others, their positions, their skills, their commitments and their efforts. We're respectful of the volunteer efforts that permeate the SendGrid community. We're respectful of the processes outlined in the community, and we work within them. When we disagree, we are courteous in raising our issues.  Overall, we're good to each other. We contribute to this community not because we have to, but because we want to. If we remember that, these guidelines will come naturally.
 
-**The maintainer team will prioritize the well-being and comfort of the recipients of the violation over the comfort of the violator.** See [some examples below](#enforcement-examples).
+## Additional Guidance 
 
-## Our Pledge
+### Disclose Potential Conflicts of Interest
+Community discussions often involve interested parties. We expect participants to be aware when they are conflicted due to employment or other projects they are involved in and disclose those interests to other project members. When in doubt, over-disclose. Perceived conflicts of interest are important to address so that the community’s decisions are credible even when unpopular, difficult or favorable to the interests of one group over another.
 
-In the interest of fostering an open and welcoming environment, we as contributors and maintainers of this project pledge to making participation in our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity and expression, level of experience, technical preferences, nationality, personal appearance, race, religion, or sexual identity and orientation.
+### Interpretation
+This Code is not exhaustive or complete. It is not a rulebook; it serves to distill our common understanding of a collaborative, shared environment and goals. We expect it to be followed in spirit as much as in the letter.  When in doubt, try to abide by [SendGrid’s cultural values](https://sendgrid.com/blog/employee-engagement-the-4h-way) defined by our “4H’s”: Happy, Hungry, Humble and Honest.  
 
-## Our Standards
+### Enforcement
+Most members of the SendGrid community always comply with this Code, not because of the existence of this Code, but because they have long experience participating in open source communities where the conduct described above is normal and expected. However, failure to observe this Code may be grounds for suspension, reporting the user for abuse or changing permissions for outside contributors.
 
-Examples of behavior that contributes to creating a positive environment include:
+## If you have concerns about someone’s conduct
+**Initiate Direct Contact** - It is always appropriate to email a community member (if contact information is available), mention that you think their behavior was out of line, and (if necessary) point them to this Code.
 
-  * Using welcoming and inclusive language.
-  * Being respectful of differing viewpoints and experiences.
-  * Gracefully accepting constructive feedback.
-  * Focusing on what is best for the community.
-  * Showing empathy and kindness towards other community members.
-  * Encouraging and raising up your peers in the project so you can all bask in hacks and glory.
+**Discuss Publicly** - Discussing publicly is always acceptable. Note, though, that approaching the person directly may be better, as it tends to make them less defensive, and it respects the time of other community members, so you probably want to try direct contact first.
 
-Examples of unacceptable behavior by participants include:
+**Contact the Moderators** - You can reach the SendGrid moderators by emailing dx@sendgrid.com.
 
-  * The use of sexualized language or imagery and unwelcome sexual attention or advances, including when simulated online. The only exception to sexual topics is channels/spaces specifically for topics of sexual identity.
-  * Casual mention of slavery or indentured servitude and/or false comparisons of one's occupation or situation to slavery. Please consider using or asking about alternate terminology when referring to such metaphors in technology.
-  * Making light of/making mocking comments about trigger warnings and content warnings.
-  * Trolling, insulting/derogatory comments, and personal or political attacks.
-  * Public or private harassment, deliberate intimidation, or threats.
-  * Publishing others' private information, such as a physical or electronic address, without explicit permission. This includes any sort of "outing" of any aspect of someone's identity without their consent.
-  * Publishing private screenshots or quotes of interactions in the context of this project without all quoted users' *explicit* consent.
-  * Publishing of private communication that doesn't have to do with reporting harrassment.
-  * Any of the above even when [presented as "ironic" or "joking"](https://en.wikipedia.org/wiki/Hipster_racism).
-  * Any attempt to present "reverse-ism" versions of the above as violations. Examples of reverse-isms are "reverse racism", "reverse sexism", "heterophobia", and "cisphobia".
-  * Unsolicited explanations under the assumption that someone doesn't already know it. Ask before you teach! Don't assume what people's knowledge gaps are.
-  * [Feigning or exaggerating surprise](https://www.recurse.com/manual#no-feigned-surprise) when someone admits to not knowing something.
-  * "[Well-actuallies](https://www.recurse.com/manual#no-well-actuallys)"
-  * Other conduct which could reasonably be considered inappropriate in a professional or community setting.
-
-## Scope
-
-This Code of Conduct applies both within spaces involving this project and in other spaces involving community members. This includes the repository, its Pull Requests and Issue tracker, its Twitter community, private email communications in the context of the project, and any events where members of the project are participating, as well as adjacent communities and venues affecting the project's members.
-
-Depending on the violation, the maintainers may decide that violations of this code of conduct that have happened outside of the scope of the community may deem an individual unwelcome, and take appropriate action to maintain the comfort and safety of its members.
-
-### Other Community Standards
-
-As a project on GitHub, this project is additionally covered by the [GitHub Community Guidelines](https://help.github.com/articles/github-community-guidelines/).
-
-Additionally, as a project hosted on npm, is is covered by [npm, Inc's Code of Conduct](https://www.npmjs.com/policies/conduct).
-
-Enforcement of those guidelines after violations overlapping with the above are the responsibility of the entities, and enforcement may happen in any or all of the services/communities.
-
-## Maintainer Enforcement Process
-
-Once the maintainers get involved, they will follow a documented series of steps and do their best to preserve the well-being of project members. This section covers actual concrete steps.
-
-### Contacting Maintainers
-
-Refer to the GitHub repository for collaborator/maintainer information and email someone there.
-### Further Enforcement
-
-If you've already followed the [initial enforcement steps](#enforcement), these are the steps maintainers will take for further enforcement, as needed:
-
-  1. Repeat the request to stop.
-  2. If the person doubles down, they will have offending messages removed or edited by a maintainers given an official warning. The PR or Issue may be locked.
-  3. If the behavior continues or is repeated later, the person will be blocked from participating for 24 hours.
-  4. If the behavior continues or is repeated after the temporary block, a long-term (6-12mo) ban will be used.
-
-On top of this, maintainers may remove any offending messages, images, contributions, etc, as they deem necessary.
-
-Maintainers reserve full rights to skip any of these steps, at their discretion, if the violation is considered to be a serious and/or immediate threat to the health and well-being of members of the community. These include any threats, serious physical or verbal attacks, and other such behavior that would be completely unacceptable in any social setting that puts our members at risk.
-
-Members expelled from events or venues with any sort of paid attendance will not be refunded.
-
-### Who Watches the Watchers?
-
-Maintainers and other leaders who do not follow or enforce the Code of Conduct in good faith may face temporary or permanent repercussions as determined by other members of the project's leadership. These may include anything from removal from the maintainer team to a permanent ban from the community.
-
-Additionally, as a project hosted on both GitHub and npm, [their own Codes of Conducts may be applied against maintainers of this project](#other-community-standards), externally of this project's procedures.
-
-### Enforcement Examples
-
-#### The Best Case
-
-The vast majority of situations work out like this. This interaction is common, and generally positive.
-
-> Alex: "Yeah I used X and it was really crazy!"
-
-> Patt (not a maintainer): "Hey, could you not use that word? What about 'ridiculous' instead?"
-
-> Alex: "oh sorry, sure." -> edits old comment to say "it was really confusing!"
-
-#### The Maintainer Case
-
-Sometimes, though, you need to get maintainers involved. Maintainers will do their best to resolve conflicts, but people who were harmed by something **will take priority**.
-
-> Patt: "Honestly, sometimes I just really hate using $library and anyone who uses it probably sucks at their job."
-
-> Alex: "Whoa there, could you dial it back a bit? There's a CoC thing about attacking folks' tech use like that."
-
-> Patt: "I'm not attacking anyone, what's your problem?"
-
-> Alex: "@maintainers hey uh. Can someone look at this issue? Patt is getting a bit aggro. I tried to nudge them about it, but nope."
-
-> KeeperOfCommitBits: (on issue) "Hey Patt, maintainer here. Could you tone it down? This sort of attack is really not okay in this space."
-
-> Patt: "Leave me alone I haven't said anything bad wtf is wrong with you."
-
-> KeeperOfCommitBits: (deletes user's comment), "@patt I mean it. Please refer to the CoC over at (URL to this CoC) if you have questions, but you can consider this an actual warning. I'd appreciate it if you reworded your messages in this thread, since they made folks there uncomfortable. Let's try and be kind, yeah?"
-
-> Patt: "@keeperofbits Okay sorry. I'm just frustrated and I'm kinda burnt out and I guess I got carried away. I'll DM Alex a note apologizing and edit my messages. Sorry for the trouble."
-
-> KeeperOfCommitBits: "@patt Thanks for that. I hear you on the stress. Burnout sucks :/.  Have a good one!"
-
-#### The Nope Case
-
-> PepeTheFrog🐸: "Hi, I am a literal actual nazi and I think white supremacists are quite fashionable."
-
-> Patt: "NOOOOPE. OH NOPE NOPE."
-
-> Alex: "JFC NO. NOPE. @keeperofbits NOPE NOPE LOOK HERE"
-
-> KeeperOfCommitBits: "👀 Nope. NOPE NOPE NOPE. 🔥"
-
-> PepeTheFrog🐸 has been banned from all organization or user repositories belonging to KeeperOfCommitBits.
+## Submission to SendGrid Repositories
+Finally, just a reminder, changes to the SendGrid repositories will only be accepted upon completion of the [SendGrid Contributor Agreement](https://cla.sendgrid.com). 
 
 ## Attribution
 
-This Code of Conduct was generated using [WeAllJS Code of Conduct Generator](https://npm.im/weallbehave), which is based on the [WeAllJS Code of
-Conduct](https://wealljs.org/code-of-conduct), which is itself based on
-[Contributor Covenant](http://contributor-covenant.org), version 1.4, available
-at
-[http://contributor-covenant.org/version/1/4](http://contributor-covenant.org/version/1/4),
-and the LGBTQ in Technology Slack [Code of
-Conduct](http://lgbtq.technology/coc.html).
+SendGrid thanks the following, on which it draws for content and inspiration:
 
+* [Python Community Code of Conduct](https://www.python.org/psf/codeofconduct/)  
+* [Open Source Initiative General Code of Conduct](https://opensource.org/codeofconduct) 
+* [Apache Code of Conduct](https://www.apache.org/foundation/policies/conduct.html) 
