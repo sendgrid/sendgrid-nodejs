@@ -1,6 +1,6 @@
 {
   "name": "@naturalcycles/sendgrid",
-  "version": "6.0.0",
+  "version": "6.0.3",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "repository": {
@@ -35,5 +35,9 @@
     "test": "npm run test:all -s",
     "coverage": "open -a \"Google Chrome\" ./coverage/lcov-report/index.html",
     "pub": "npm publish --access=public"
+  },
+  "dependencies": {
+    "@types/request": "^2.0.4",
+    "request": "^2.83.0"
   }
 }
