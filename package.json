@@ -5,7 +5,7 @@
   "license": "SEE LICENSE IN LICENSE.md",
   "repository": {
     "type": "git",
-    "url": "git://github.com/sendgrid/sendgrid-nodejs.git"
+    "url": "git://github.com/naturalcycles/sendgrid-nodejs.git"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -33,6 +33,7 @@
     "test:mail": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/mail/**/*.spec.js\"",
     "test:typescript": "tsc",
     "test": "npm run test:all -s",
-    "coverage": "open -a \"Google Chrome\" ./coverage/lcov-report/index.html"
+    "coverage": "open -a \"Google Chrome\" ./coverage/lcov-report/index.html",
+    "pub": "npm publish --access=public"
   }
 }
