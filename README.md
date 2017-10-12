@@ -22,7 +22,7 @@ We appreciate your continued support, thank you!
 * [About](#about)
 
 <a name="introduction"></a>
-# Introduction
+# Introduction - Please Read First
 
 This library is broken up into several packages as a monorepo so that you only need to install the packages necessary for your use case. This README contains information pertaining to all packages.
 
