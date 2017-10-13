@@ -1,7 +1,7 @@
 {
-  "name": "@sendgrid/mail",
+  "name": "@naturalcycles/sendgrid-mail",
   "description": "SendGrid NodeJS mail service",
-  "version": "6.1.7",
+  "version": "6.2.0",
   "author": "SendGrid <dx@sendgrid.com> (sendgrid.com)",
   "contributors": [
     "Kyle Partridge <kyle.partridge@sendgrid.com>",
@@ -27,8 +27,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@sendgrid/client": "^6.1.7",
-    "@sendgrid/helpers": "^6.1.7"
+    "@naturalcycles/sendgrid-client": "^6.2.0",
+    "@naturalcycles/sendgrid-helpers": "^6.2.0"
   },
   "tags": [
     "http",

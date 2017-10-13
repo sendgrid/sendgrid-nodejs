@@ -1,7 +1,7 @@
 {
-  "name": "@sendgrid/inbound-mail-parser",
+  "name": "@naturalcycles/sendgrid-inbound-mail-parser",
   "description": "SendGrid NodeJS inbound mail parser",
-  "version": "6.1.7",
+  "version": "6.2.0",
   "author": "SendGrid <dx@sendgrid.com> (sendgrid.com)",
   "contributors": [
     "Kyle Partridge <kyle.partridge@sendgrid.com>",
@@ -26,7 +26,7 @@
     "node": ">=6.0.0"
   },
   "dependencies": {
-    "@sendgrid/helpers": "^6.1.7",
+    "@naturalcycles/sendgrid-helpers": "^6.2.0",
     "mailparser": "^0.6.1"
   },
   "tags": [
