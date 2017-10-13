@@ -1,3 +1,3 @@
-import MailService = require("@sendgrid/mail/src/mail");
+import MailService = require('@naturalcycles/sendgrid-mail/src/mail')
 
-export = MailService;
+export { MailService }

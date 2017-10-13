@@ -1,4 +1,4 @@
-import * as helpers from "@sendgrid/helpers";
+import * as helpers from "@naturalcycles/sendgrid-helpers";
 new helpers.classes.Attachment({
     content: "",
     filename: "test.txt",

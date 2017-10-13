@@ -1,4 +1,4 @@
-import {Attachment} from "@sendgrid/helpers/classes"
+import {Attachment} from "@naturalcycles/sendgrid-helpers/classes"
 
 declare interface ParseConfig {
   keys: string[];

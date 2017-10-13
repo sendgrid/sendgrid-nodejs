@@ -93,7 +93,7 @@ We upload this library to [npm](https://www.npmjs.com/package/sendgrid) whenever
 
 In most cases we recommend you download the latest version of the library, but if you need a different version, please use:
 
-`npm install @sendgrid/[package name]@X.X.X` 
+`npm install @naturalcycles/sendgrid-[package name]@X.X.X` 
 
 Please check [here](https://www.npmjs.com/org/sendgrid) for a list of package names.
 
@@ -104,7 +104,7 @@ If you are using a `package.json` file:
   ...
   "dependencies": {
     ...
-    "@sendgrid/[package name]": "X.X.X"
+    "@naturalcycles/sendgrid-[package name]": "X.X.X"
   }
 }
 ```
@@ -121,7 +121,7 @@ const {
   classes: {
     Mail,
   },
-} = require('@sendgrid/helpers');
+} = require('@naturalcycles/sendgrid-helpers');
 const mail = Mail.create(data);
 const body = mail.toJSON();
 console.log(body);

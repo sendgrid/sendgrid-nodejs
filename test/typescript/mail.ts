@@ -1,4 +1,4 @@
-import sgMail = require("@sendgrid/mail");
+import sgMail = require("@naturalcycles/sendgrid-mail");
 
 // Test setApiKey() method
 sgMail.setApiKey("MY_SENDGRID_API_KEY");

@@ -12,7 +12,7 @@ const {
   classes: {
     ResponseError,
   },
-} = require('@sendgrid/helpers');
+} = require('@naturalcycles/sendgrid-helpers');
 
 /**
  * Sendgrid REST Client

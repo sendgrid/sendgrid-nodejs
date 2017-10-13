@@ -21,7 +21,7 @@ This documentation provides examples for specific email use cases. Please [open 
 # Send a Single Email to a Single Recipient
 
 ```js
-const sgMail = require('@sendgrid/mail');
+const sgMail = require('@naturalcycles/sendgrid-mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const msg = {
   to: 'recipient@example.org',
@@ -39,7 +39,7 @@ sgMail.send(msg);
 The `to` field can contain an array of recipients, which will send a single email with all of the recipients in the `to` field. The recipients will be able to see each other:
 
 ```js
-const sgMail = require('@sendgrid/mail');
+const sgMail = require('@naturalcycles/sendgrid-mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const msg = {
   to: ['recipient1@example.org', 'recipient2@example.org'],
@@ -54,7 +54,7 @@ sgMail.send(msg);
 If you want to send multiple _individual_ emails to multiple recipient where they don't see each others email addresses, use `sendMultiple` instead:
 
 ```js
-const sgMail = require('@sendgrid/mail');
+const sgMail = require('@naturalcycles/sendgrid-mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const msg = {
   to: ['recipient1@example.org', 'recipient2@example.org'],
@@ -222,7 +222,7 @@ I hope you are having a great day in {{city}} :)
 ```
 
 ```js
-const sgMail = require('@sendgrid/mail');
+const sgMail = require('@naturalcycles/sendgrid-mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 sgMail.setSubstitutionWrappers('{{', '}}'); // Configure the substitution tag wrappers globally
 const msg = {
@@ -256,7 +256,7 @@ const msg = {
 Attachments can be sent by providing an array of `attachments` as per the [API specification](https://sendgrid.com/docs/API_Reference/api_v3.html):
 
 ```js
-const sgMail = require('@sendgrid/mail');
+const sgMail = require('@naturalcycles/sendgrid-mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const msg = {
   to: 'recipient@example.org',
@@ -411,7 +411,7 @@ const msg = {
 All other options from the [API definition](https://sendgrid.com/docs/API_Reference/Web_API_v3/Mail/index.html) are supported (note that some settings can be used in multiple ways, see above for full details for each setting):
 
 ```js
-const sgMail = require('@sendgrid/mail');
+const sgMail = require('@naturalcycles/sendgrid-mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const msg = {
   to: 'recipient@example.org',
