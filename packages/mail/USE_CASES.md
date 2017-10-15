@@ -19,6 +19,7 @@ This documentation provides examples for specific email use cases. Please [open 
   * [Kitchen Sink - an example with all settings used](#kitchen-sink)
 * [Deploy a Simple App on Google App Engine with Node.js](#gae)
 * [Deploy a Simple App on Heroku with Node.js](#heroku)
+* [How to Setup Email Sending on Azure](#send_via_azure) 
 * [How to Setup a Domain Whitelabel](#domain-white-label)
 * [How to View Email Statistics](#email-stats)
 
@@ -580,6 +581,39 @@ Here are step by step instructions to deploy your Node.js app to Heroku (assumin
 - `heroku config:set SENDGRID_API_KEY=SG.YOUR.OWN-API_KEY-HERE` (replace `SG.YOUR.OWN-API_KEY-HERE` with your own [api key from sendgrid](https://app.sendgrid.com/settings/api_keys)
 
 If you run into any other non SendGrid related issues, don't forget to read through [Heroku's deployment documentation](https://devcenter.heroku.com/articles/getting-started-with-nodejs).
+
+<a name="send_via_azure"></a>
+# How to Setup Email Sending on Azure
+
+1. First create a account on azure. You can opt for free trial here or buy a subscription.
+2. I am assuming you already have sendgrid API Key with you.
+3. Create a sample node.js App. with an index.js and create a package.json file using npm init or yarn init.   
+4. Install sendgrid-nodejs as a dependency using yarn add @sendgrid/mail.  
+5. Now we need the SendGrid API key to be as an Environment Variable in our application. For that we will create an sendgrid.env file in our local system. Add it to .gitignore file and refresh the terminal.   
+```shell
+echo "export SENDGRID_API_KEY='YOUR_API_KEY'" > sendgrid.env
+echo "sendgrid.env" >> .gitignore
+source ./sendgrid.env
+```
+6. Now lets go to our index.js file and copy paste the following code.
+```js
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const msg = {
+  to: 'test@example.com',
+  from: 'test@example.com',
+  subject: 'Sending with SendGrid is Fun',
+  text: 'and easy to do anywhere, even with Node.js',
+  html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+};
+sgMail.send(msg);
+```  
+
+This will enable you to send a simple message to be sent to your email.   
+7. If you have followed all steps till here. Your app should work fine in local. Now it's time to deploy in Azure.  
+8. Follow the guide on [depolying to azure](https://docs.microsoft.com/en-us/azure/app-service/app-service-deploy-local-git) to the word. It might seem a little difficult to navigate with so many options but once you crack it, It will be a cakewalk.  
+9. Now as soon as you will deploy your application. It will run on the aforementioned port. You will again receive a message in your inbox.  
+10. And Voila you have your app deployed and sending Emails via Azure. Now you can chain your custome logic if you need to send emails as per some parameters and to specific people as per your requirement.  
  
 <a name="domain-white-label"></a>
 # How to Setup a Domain Whitelabel
