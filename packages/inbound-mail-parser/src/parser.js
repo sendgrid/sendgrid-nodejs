@@ -15,7 +15,7 @@ const {
  * @return {Object} A SendGrid Attachment object with the file data
  */
 function createAttachment(file) {
-  var attachment = new Attachment();
+  const attachment = new Attachment();
 
   attachment.setFilename(file.originalname || file.fileName);
   attachment.setType(file.mimetype || file.contentType);
@@ -43,10 +43,10 @@ function Parse(config, request) {
  * @return {Object} Valid key/values in the webhook payload
  */
 Parse.prototype.keyValues = function() {
-  var keyValues = {};
-  var key;
+  const keyValues = {};
+  let key;
 
-  for (var index in this.keys) {
+  for (const index in this.keys) {
     key = this.keys[index];
 
     if (this.payload[key]) {
@@ -70,8 +70,8 @@ Parse.prototype.hasRawEmail = function() {
  * @param {Function} callback Function which will receive the parsed email object as the sole argument
  */
 Parse.prototype.getRawEmail = function(callback) {
-  var mailparser = new MailParser();
-  var rawEmail = this.payload.email;
+  const mailparser = new MailParser();
+  const rawEmail = this.payload.email;
 
   if (!rawEmail) {
     return callback(null);
@@ -106,7 +106,7 @@ Parse.prototype._getAttachmentsRaw = function(callback) {
       return callback([]);
     }
 
-    var attachments = parsedEmail.attachments.map(function(file) {
+    const attachments = parsedEmail.attachments.map(function(file) {
       return createAttachment(file);
     });
 
@@ -120,10 +120,10 @@ Parse.prototype._getAttachmentsRaw = function(callback) {
  * @param {Function} callback Function which will receive an array, of attachments found, as the sole argument
  */
 Parse.prototype._getAttachments = function(callback) {
-  var file;
-  var attachments = [];
+  let file;
+  const attachments = [];
 
-  for (var index in this.files) {
+  for (const index in this.files) {
     file = this.files[index];
 
     if (fs.existsSync(file.path)) {

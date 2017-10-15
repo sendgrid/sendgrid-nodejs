@@ -1,17 +1,17 @@
 /* eslint dot-notation: 'off' */
 'use strict';
 
-var Bottleneck = require('bottleneck');
-var EventEmitter = require('events').EventEmitter;
-var chunk = require('lodash.chunk');
-var debug = require('debug')('sendgrid');
-var util = require('util');
-var queue = require('async.queue');
-var ensureAsync = require('async.ensureasync');
+const Bottleneck = require('bottleneck');
+const EventEmitter = require('events').EventEmitter;
+const chunk = require('lodash.chunk');
+const debug = require('debug')('sendgrid');
+const util = require('util');
+const queue = require('async.queue');
+const ensureAsync = require('async.ensureasync');
 
-var ContactImporter = module.exports = function(sg, options) {
+const ContactImporter = module.exports = function(sg, options) {
   options = options || {};
-  var self = this;
+  const self = this;
   this.sg = sg;
   this.pendingItems = [];
 
@@ -35,7 +35,7 @@ var ContactImporter = module.exports = function(sg, options) {
   this.queue.empty = function() {
     if (self.pendingItems.length) {
       debug('adding %s items from deferrd queue for processing', self.pendingItems.length);
-      var batch = self.pendingItems.splice(0);
+      const batch = self.pendingItems.splice(0);
       self.queue.push({
         data: batch,
         owner: self,
@@ -61,14 +61,14 @@ util.inherits(ContactImporter, EventEmitter);
  * @param {Array|Object} data A contact or array of contacts.
  */
 ContactImporter.prototype.push = function(data) {
-  var self = this;
+  const self = this;
   data = Array.isArray(data) ? data : [data];
 
   // Add the new items onto the pending items.
-  var itemsToProcess = this.pendingItems.concat(data);
+  const itemsToProcess = this.pendingItems.concat(data);
 
   // Chunk the pending items into batches and add onto the queue
-  var batches = chunk(itemsToProcess, this.batchSize);
+  const batches = chunk(itemsToProcess, this.batchSize);
   debug('generated batches %s from %s items', batches.length, data.length);
 
   batches.forEach(function(batch) {
@@ -102,7 +102,7 @@ ContactImporter.prototype.push = function(data) {
  * @param {Function} callback Callback function.
  */
 ContactImporter.prototype._worker = function(task, callback) {
-  var context = task.owner;
+  const context = task.owner;
   debug('processing batch (%s items)', task.data.length);
   context.throttle.submit(context._sendBatch, context, task.data, callback);
 };
@@ -110,7 +110,7 @@ ContactImporter.prototype._worker = function(task, callback) {
 ContactImporter.prototype._sendBatch = function(context, data, callback) {
   debug('sending batch (%s items)', data.length);
 
-  var request = context.sg.emptyRequest();
+  const request = context.sg.emptyRequest();
   request.method = 'POST';
   request.path = '/v3/contactdb/recipients';
   request.body = data;
