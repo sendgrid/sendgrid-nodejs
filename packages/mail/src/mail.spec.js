@@ -36,6 +36,8 @@ describe('sgMail.send()', () => {
     html: '<p>Hello HTML world!</p>',
   };
 
+  const cb = {};
+
   it('should throw an error when no data provided', () => {
     return expect(sgMail.send()).to.eventually.be.rejectedWith(Error);
   });
@@ -48,4 +50,10 @@ describe('sgMail.send()', () => {
         expect(response.statusCode).to.equal(201);
       });
   });
+
+
+  it('should throw an error if callback is not a function', () => {
+    return expect(sgMail.send(data, false, cb)).to.be.an('error');
+  });
 });
+
