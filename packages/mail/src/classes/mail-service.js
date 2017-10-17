@@ -16,9 +16,11 @@ class MailService {
    */
   constructor() {
 
-    //Set client and initialize substitution wrappers
+    //Set client, initialize substitution wrappers and secret rules
+    //filter
     this.setClient(new Client());
     this.setSubstitutionWrappers('{{', '}}');
+    this.secretRules = {};
   }
 
   /**
@@ -47,6 +49,47 @@ class MailService {
     }
     this.substitutionWrappers[0] = left;
     this.substitutionWrappers[1] = right;
+  }
+
+  /**
+   * Set secret rules for filtering the e-mail content
+   */
+  setSecretRules(rules) {
+    if (typeof rules === 'string') {
+      rules = {
+        0: new RegExp(rules)
+      };
+    } else if (typeof rules !== 'object') {
+      return;
+    }
+
+    this.secretRules = rules;
+  }
+
+  /**
+   * Check if the e-mail is safe to be sent
+   */
+  filterSecrets(body) {
+    if ((typeof body === 'object') && !body.hasOwnProperty('content')) {
+      return;
+    }
+
+    const self = this;
+    const secretRulesKeys = Object.keys(this.secretRules);
+
+    body.content.forEach(function (data) {
+      secretRulesKeys.forEach(function (id) {
+        if (self.secretRules.hasOwnProperty(id)
+          && !self.secretRules[id].test(data.value)
+        ) {
+          return;
+        }
+
+        const errorMsg = `The pattern \'${self.secretRules[id]}\' identified by \'${id}\' was found in the message!`;
+
+        throw errorMsg;
+      });
+    });
   }
 
   /**
@@ -95,6 +138,9 @@ class MailService {
       //Create Mail instance from data and get JSON body for request
       const mail = Mail.create(data);
       const body = mail.toJSON();
+
+      //Filters the Mail body to avoid sensitive content leakage
+      this.filterSecrets(body);
 
       //Create request
       const request = {
