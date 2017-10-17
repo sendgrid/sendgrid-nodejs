@@ -20,7 +20,7 @@ class MailService {
     //filter
     this.setClient(new Client());
     this.setSubstitutionWrappers('{{', '}}');
-    this.secretRules = {};
+    this.secretRules = [];
   }
 
   /**
@@ -55,15 +55,41 @@ class MailService {
    * Set secret rules for filtering the e-mail content
    */
   setSecretRules(rules) {
-    if (typeof rules === 'string') {
-      rules = {
-        0: new RegExp(rules)
-      };
-    } else if (typeof rules !== 'object') {
-      return;
+    if (!(rules instanceof Array)) {
+      rules = [rules];
     }
 
-    this.secretRules = rules;
+    const tmpRules = rules.map(function (rule) {
+      const ruleType = typeof rule;
+
+      if (ruleType === 'string') {
+        return {
+          pattern: new RegExp(rule)
+        };
+      } else if (ruleType === 'object') {
+        // normalize rule object
+        if (rule instanceof RegExp) {
+          rule = {
+            pattern: rule
+          }
+        } else if (rule.hasOwnProperty('pattern')
+          && (typeof rule.pattern === 'string')
+        ) {
+            rule.pattern = new RegExp(rule.pattern);
+        }
+
+        try {
+          // test if rule.pattern is a valid regex
+          rule.pattern.test('');
+          return rule
+        } catch (err) {
+        }
+      }
+    });
+
+    this.secretRules = tmpRules.filter(function (val) {
+      return val;
+    });
   }
 
   /**
@@ -75,19 +101,24 @@ class MailService {
     }
 
     const self = this;
-    const secretRulesKeys = Object.keys(this.secretRules);
 
     body.content.forEach(function (data) {
-      secretRulesKeys.forEach(function (id) {
-        if (self.secretRules.hasOwnProperty(id)
-          && !self.secretRules[id].test(data.value)
+      self.secretRules.forEach(function (rule) {
+        if (rule.hasOwnProperty('pattern')
+          && !rule.pattern.test(data.value)
         ) {
           return;
         }
 
-        const errorMsg = `The pattern \'${self.secretRules[id]}\' identified by \'${id}\' was found in the message!`;
+        let message = `The pattern '${rule.pattern}'`;
 
-        throw errorMsg;
+        if (rule.name) {
+          message += `identified by '${rule.name}'`;
+        }
+
+        message += ` was found in the Mail content!`;
+
+        throw new Error(message);
       });
     });
   }
