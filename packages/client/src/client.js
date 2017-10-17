@@ -106,7 +106,6 @@ class Client {
    * Do a request
    */
   request(data, cb) {
-
     //Create request
     const request = this.createRequest(data);
 
@@ -128,6 +127,11 @@ class Client {
         resolve([response, body]);
       });
     });
+
+    // Throw and error incase function not passed
+    if (cb && typeof(cb) !== 'function') {
+      return new Error('Callback passed is not a function.');
+    }
 
     //Execute callback if provided
     if (cb) {
