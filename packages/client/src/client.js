@@ -106,6 +106,7 @@ class Client {
    * Do a request
    */
   request(data, cb) {
+
     //Create request
     const request = this.createRequest(data);
 
