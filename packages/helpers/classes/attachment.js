@@ -6,6 +6,8 @@
 const toCamelCase = require('../helpers/to-camel-case');
 const toSnakeCase = require('../helpers/to-snake-case');
 const deepClone = require('../helpers/deep-clone');
+const fs = require('fs');
+const path = require('path');
 
 /**
  * Attachment class
@@ -39,14 +41,34 @@ class Attachment {
     data = toCamelCase(data);
 
     //Extract properties from data
-    const {content, filename, type, disposition, contentId} = data;
+    const {
+      content,
+      filename,
+      type,
+      disposition,
+      contentId,
+      filePath
+    } = data;
+
+    if ((typeof content !== 'undefined') && (typeof filePath !== 'undefined')) {
+      throw new Error(
+        `The props 'content' and 'filePath' cannot be used together.`
+      );
+    }
 
     //Set data
-    this.setContent(content);
     this.setFilename(filename);
     this.setType(type);
     this.setDisposition(disposition);
     this.setContentId(contentId);
+    this.setContent(filePath ? this.readFile(filePath) : content);
+  }
+
+  /**
+   * Read a file and return its content as base64
+   */
+  readFile(filePath) {
+    return fs.readFileSync(path.resolve(filePath));
   }
 
   /**
@@ -54,15 +76,32 @@ class Attachment {
    */
   setContent(content) {
     //Duck type check toString on content if it's a Buffer as that's the method that will be called.
-    if (typeof content === 'string') {      
+    if (typeof content === 'string') {
       this.content = content;
-    } else if (content instanceof Buffer && content.toString !== undefined) {      
+      return;
+    } else if (content instanceof Buffer && content.toString !== undefined) {
       this.content = content.toString();
-    } else {
-      throw new Error('`content` expected to be either Buffer or string');
+
+      if (this.disposition == 'attachment') {
+        this.content = content.toString('base64');
+      }
+
+      return;
     }
 
-    return;    
+    throw new Error('`content` expected to be either Buffer or string');
+  }
+
+  /**
+   * Set content
+   */
+  setFileContent(content) {
+    if (content instanceof Buffer && content.toString !== undefined) {
+      this.content = content.toString('base64');
+      return;
+    }
+
+    throw new Error('`content` expected to be Buffer');
   }
 
   /**
