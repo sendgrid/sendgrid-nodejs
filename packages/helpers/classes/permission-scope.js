@@ -86,7 +86,7 @@ class PermissionScope {
         'ips.warmup.read',
         'ips.warmup.update',
       ],
-      'mail_setings': [
+      'mail_settings': [
         'mail_settings.address_whitelist.read',
         'mail_settings.address_whitelist.update',
         'mail_settings.bcc.read',
@@ -156,7 +156,7 @@ class PermissionScope {
         'subusers.stats.sums.read',
         'subusers.summary.read',
       ],
-      'suppresions': [
+      'suppression': [
         'suppression.create',
         'suppression.delete',
         'suppression.read',
@@ -182,7 +182,7 @@ class PermissionScope {
         'suppression.unsubscribes.update',
         'suppression.unsubscribes.delete',
       ],
-      'teammates': [
+      'templates': [
         'templates.create',
         'templates.delete',
         'templates.read',
@@ -291,13 +291,7 @@ class PermissionScope {
      * Create admin permissions
      */
   createAdminPermissions() {
-    let result = [];
-    Object.values(this.scopes).forEach(function(p) {
-      p.forEach(function(s) {
-        result.push(s);
-      });
-    });
-    return result;
+    return this.createPermissions(Object.keys(this.scopes), true, true, true, true);
   }
 
     /**
@@ -305,6 +299,22 @@ class PermissionScope {
      */
   readOnly() {
     return this.createPermissions(Object.keys(this.scopes), false, true, false, false);
+  }
+
+    /**
+     * Read only access mail send
+     */
+  readOnlyAccessMailSend() {
+    return this.createPermissions(['mail'], false, true, false, false);
+  }
+
+    /**
+     * Full mail send
+     */
+  fullAccessMailSend() {
+    var result = this.createPermissions(['mail'], true, true, true, true);
+    result.push('mail.send');
+    return result;
   }
 
     /**
@@ -332,14 +342,14 @@ class PermissionScope {
      * Read only access suppressions
      */
   readOnlyAccessSuppressions() {
-    return this.createPermissions(['suppressions'], false, true, false, false);
+    return this.createPermissions(['suppression'], false, true, false, false);
   }
 
     /**
      * Full access suppressions
      */
   fullAccessSuppressions() {
-    return this.createPermissions(['suppressions'], true, true, true, true);
+    return this.createPermissions(['suppression'], true, true, true, true);
   }
 
     /**
@@ -401,7 +411,7 @@ class PermissionScope {
     /**
      * Read only access mail settings
      */
-  readOnlyMailSettings() {
+  readOnlyAccessMailSettings() {
     return this.createPermissions(['mail_settings'], false, true, false, false);
   }
 
@@ -422,7 +432,7 @@ class PermissionScope {
     /**
      * Full access marketing campaigns
      */
-  fullAccesssMarketingCampaigns() {
+  fullAccessMarketingCampaigns() {
     return this.createPermissions(['marketing_campaigns'], true, true, true, true);
   }
 
