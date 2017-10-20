@@ -11,8 +11,22 @@ const {
   },
   classes: {
     ResponseError,
+    Mail,
   },
 } = require('@sendgrid/helpers');
+
+/**
+ * Helper function
+ */
+const createMailRequest = (data) => {
+  const mail = Mail.create(data);
+  const mailRequest = {
+    method: 'POST',
+    url: '/v3/mail/send',
+    body: mail.toJSON(),
+  };
+  return mailRequest;
+};
 
 /**
  * Sendgrid REST Client
@@ -142,6 +156,133 @@ class Client {
     }
 
     //Return promise
+    return promise;
+  }
+
+  getWhiteLabels(username,
+    domain,
+    limit = 50,
+    offset = 0,
+    shouldExcludeSubuser = false,
+    cb) {
+    const request = {
+      method: 'GET',
+      url: 'v3/whitelabel/domains',
+      qs: {
+        exclude_subusers: shouldExcludeSubuser,
+        limit,
+        offset,
+        username,
+        domain,
+      },
+    };
+    return this.request(request, cb);
+  }
+
+  createWhiteLabelDomain(domain,
+      subdomain,
+      emailTo,
+      username,
+      ips,
+      automaticSecurity = false,
+      customSPF = true,
+      isDefault = true,
+      cb) {
+    const request = {
+      method: 'POST',
+      url: 'v3/whitelabel/domains',
+      body: {
+        domain,
+        subdomain,
+        username,
+        ips,
+        custom_spf: customSPF,
+        default: isDefault,
+        automatic_security: automaticSecurity,
+      },
+    };
+    const promise = this.request(request, cb);
+    if (emailTo) {
+      promise.then(([response, body]) => {
+        const msg = {
+          to: emailTo,
+          from: `${body.username}@${domain}`,
+          subject: `DNS Details for ${subdomain}.${domain}`,
+          text: 'DNS Details!',
+          html: `<pre>${JSON.stringify(body, null, 2)}</pre>`,
+          substitutionWrappers: ['{{', '}}'],
+        };
+        const mailRequest = createMailRequest(msg);
+        this.request(mailRequest).catch(error => console.log(error));
+        return Promise.resolve([response, body]);
+      });
+    }
+    return promise;
+  }
+
+  createWhiteLabelIps(ip,
+      domain,
+      subdomain,
+      emailTo,
+      cb) {
+    const request = {
+      method: 'POST',
+      url: 'v3/whitelabel/ips',
+      body: {
+        domain,
+        subdomain,
+        ip,
+      },
+    };
+    const promise = this.request(request, cb);
+    if (emailTo) {
+      promise.then(([response, body]) => {
+        const msg = {
+          to: emailTo,
+          from: `${subdomain}@${domain}`,
+          subject: `DNS Details for ${subdomain}.${domain}`,
+          text: 'DNS Details!',
+          html: `<pre>${JSON.stringify(body, null, 2)}</pre>`,
+          substitutionWrappers: ['{{', '}}'],
+        };
+        const mailRequest = createMailRequest(msg);
+        this.request(mailRequest).catch(error => console.log(error));
+        return Promise.resolve([response, body]);
+      });
+    }
+    return promise;
+  }
+
+  createWhiteLabelLinks(domain,
+      subdomain,
+      emailTo,
+      isDefault = true,
+      cb) {
+    const request = {
+      method: 'POST',
+      url: 'v3/whitelabel/links',
+      body: {
+        domain,
+        subdomain,
+        default: isDefault,
+      },
+    };
+    const promise = this.request(request, cb);
+    if (emailTo) {
+      promise.then(([response, body]) => {
+        const msg = {
+          to: emailTo,
+          from: `${subdomain}@${domain}`,
+          subject: `DNS Details for ${subdomain}.${domain}`,
+          text: 'DNS Details!',
+          html: `<pre>${JSON.stringify(body, null, 2)}</pre>`,
+          substitutionWrappers: ['{{', '}}'],
+        };
+        const mailRequest = createMailRequest(msg);
+        this.request(mailRequest).catch(error => console.log(error));
+        return Promise.resolve([response, body]);
+      });
+    }
     return promise;
   }
 }
