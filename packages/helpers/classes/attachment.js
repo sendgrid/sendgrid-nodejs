@@ -41,8 +41,6 @@ class Attachment {
     //Extract properties from data
     const {content, filename, type, disposition, contentId} = data;
 
-    this.checkNotBothContentAndStream(content, stream);
-
     //Set data
     this.setContent(content);
     this.setFilename(filename);
