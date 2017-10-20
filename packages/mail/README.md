@@ -46,7 +46,7 @@ You may also use [yarn](https://yarnpkg.com/en/) to install.
 yarn add @sendgrid/mail
 ```
 
-<a name="quick_start"></a>
+<a name="quick-start"></a>
 # Quick Start, Hello Email
 
 The following is the minimum needed code to send an simple email. Use this example, and modify the `to` and `from` variables:
