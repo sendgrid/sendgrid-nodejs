@@ -130,8 +130,8 @@ class Client {
     });
 
     // Throw and error incase function not passed
-    if (cb && typeof(cb) !== 'function') {
-      return new Error('Callback passed is not a function.');
+    if (cb && typeof cb !== 'function') {
+      throw new Error('Callback passed is not a function.');
     }
 
     //Execute callback if provided
