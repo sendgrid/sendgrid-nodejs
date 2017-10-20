@@ -41,6 +41,8 @@ class Attachment {
     //Extract properties from data
     const {content, filename, type, disposition, contentId} = data;
 
+    this.checkNotBothContentAndStream(content, stream);
+
     //Set data
     this.setContent(content);
     this.setFilename(filename);
@@ -53,13 +55,16 @@ class Attachment {
    * Set content
    */
   setContent(content) {
-    if (typeof content === 'undefined') {
-      return;
+    //Duck type check toString on content if it's a Buffer as that's the method that will be called.
+    if (typeof content === 'string') {      
+      this.content = content;
+    } else if (content instanceof Buffer && content.toString !== undefined) {      
+      this.content = content.toString();
+    } else {
+      throw new Error('`content` expected to be either Buffer or string');
     }
-    if (typeof content !== 'string') {
-      throw new Error('String expected for `content`');
-    }
-    this.content = content;
+
+    return;    
   }
 
   /**
