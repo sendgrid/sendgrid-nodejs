@@ -55,7 +55,9 @@ class EmailAddress {
     if (typeof name !== 'string') {
       throw new Error('String expected for `name`');
     }
-    this.name = name;
+    // Wrap name in quotes to address API issue
+    // https://github.com/sendgrid/sendgrid-csharp/issues/268#issuecomment-232177443
+    this.name = name.includes(',') ? `\"${name}\"` : name;
   }
 
   /**
