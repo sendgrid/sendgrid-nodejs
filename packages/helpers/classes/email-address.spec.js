@@ -59,6 +59,11 @@ describe('EmailAddress', function() {
       email.setName('Doe, John');
       expect(email.name).to.equal('\"Doe, John\"');
     });
+
+    it('should not double wrap in quotes', function() {
+      email.setName('\"Doe, John\"');
+      expect(email.name).to.equal('\"Doe, John\"');
+    });
     it('should throw an error for invalid input', function() {
       expect(function() {
         email.setName(5);

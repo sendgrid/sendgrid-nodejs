@@ -57,7 +57,9 @@ class EmailAddress {
     }
     // Wrap name in quotes to address API issue
     // https://github.com/sendgrid/sendgrid-csharp/issues/268#issuecomment-232177443
-    this.name = name.includes(',') ? `\"${name}\"` : name;
+    const isQuoted = (name[0] === '\"') && (name[name.length - 1] === '\"');
+    const shouldQuote = name.includes(',') && !isQuoted;
+    this.name = shouldQuote ? `\"${name}\"` : name;
   }
 
   /**
