@@ -14,7 +14,7 @@ To be notified when this package is updated, please subscribe to email [notifica
 ## Prerequisites
 
 - Node.js version 6, 7 or 8
-- A SendGrid account, [sign up for free](https://sendgrid.com/free?source=sendgrid-nodejs to send up to 40,000 emails for the first 30 days or check out [our pricing](https://sendgrid.com/pricing?source=sendgrid-nodejs).
+- A SendGrid account, [sign up for free](https://sendgrid.com/free?source=sendgrid-nodejs) to send up to 40,000 emails for the first 30 days or check out [our pricing](https://sendgrid.com/pricing?source=sendgrid-nodejs).
 
 ## Obtain an API Key
 
