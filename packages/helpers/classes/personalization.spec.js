@@ -676,4 +676,20 @@ describe('Personalization', function() {
       expect(p.customArgs.snake_case).to.equal('Test');
     });
   });
+
+  describe('#527', function() {
+    it('shouldn\'t convert the headers to camel/snake case', function() {
+      const p = new Personalization({
+        to: 'test@example.com',
+        headers: {
+          'List-Unsubscribe': '<mailto:test@test.com>',
+        },
+      });
+
+      expect(p.headers['List-Unsubscribe']).to.equal('<mailto:test@test.com>');
+
+      expect(p.toJSON().headers['List-Unsubscribe']).to
+        .equal('<mailto:test@test.com>');
+    });
+  });
 });
