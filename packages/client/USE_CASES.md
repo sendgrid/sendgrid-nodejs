@@ -2,18 +2,18 @@ This documentation provides examples for specific SendGrid v3 API non mail/send 
 
 # Table of Contents
 
-* [How to Setup a Domain Whitelabel](#domain_whitelabel)
-* [How to View Email Statistics](#email_stats)
+* [How to Setup a Domain Whitelabel](#domain-white-label)
+* [How to View Email Statistics](#email-stats)
 
 
-<a name="domain_whitelabel"></a>
+<a name="domain-white-label"></a>
 # How to Setup a Domain Whitelabel
 
 You can find documentation for how to setup a domain whitelabel via the UI [here](https://sendgrid.com/docs/Classroom/Basics/Whitelabel/setup_domain_whitelabel.html) and via API [here](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/client/USAGE.md#whitelabel).
 
 Find more information about all of SendGrid's whitelabeling related documentation [here](https://sendgrid.com/docs/Classroom/Basics/Whitelabel/index.html).
 
-<a name="email_stats"></a>
+<a name="email-stats"></a>
 # How to View Email Statistics
 
 You can find documentation for how to view your email statistics via the UI [here](https://app.sendgrid.com/statistics) and via API [here](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/client/USAGE.md#stats).
