@@ -1,7 +1,7 @@
 'use strict';
 
 const fs = require('fs');
-const MailParser = require('mailparser').MailParser;
+const { MailParser } = require('mailparser');
 const {
   classes: {
     Attachment,
@@ -14,12 +14,12 @@ const {
  * @param {Object} file The file object returned by file system or parsed email
  * @return {Object} A SendGrid Attachment object with the file data
  */
-function createAttachment(file) {
+function createAttachment({originalname, fileName, mimetype, contentType, content}) {
   const attachment = new Attachment();
 
-  attachment.setFilename(file.originalname || file.fileName);
-  attachment.setType(file.mimetype || file.contentType);
-  attachment.setContent(file.content.toString('base64'));
+  attachment.setFilename(originalname || fileName);
+  attachment.setType(mimetype || contentType);
+  attachment.setContent(content.toString('base64'));
 
   return attachment;
 }
@@ -31,8 +31,8 @@ function createAttachment(file) {
  * @param {Object} config inbound configuration object
  * @param {Object} request request object of the parse webhook payload
  */
-function Parse(config, request) {
-  this.keys = config.keys;
+function Parse({ keys }, request) {
+  this.keys = keys;
   this.request = request;
   this.payload = request.body || {};
   this.files = request.files || [];
@@ -71,7 +71,7 @@ Parse.prototype.hasRawEmail = function() {
  */
 Parse.prototype.getRawEmail = function(callback) {
   const mailparser = new MailParser();
-  const rawEmail = this.payload.email;
+  const { email:rawEmail } = this.payload;
 
   if (!rawEmail) {
     return callback(null);
@@ -101,14 +101,12 @@ Parse.prototype.attachments = function(callback) {
  * @param {Function} callback Function which will receive an array, of attachments found, as the sole argument
  */
 Parse.prototype._getAttachmentsRaw = function(callback) {
-  this.getRawEmail(function(parsedEmail) {
+  this.getRawEmail(parsedEmail => {
     if (!parsedEmail || !parsedEmail.attachments) {
       return callback([]);
     }
 
-    const attachments = parsedEmail.attachments.map(function(file) {
-      return createAttachment(file);
-    });
+    const attachments = parsedEmail.attachments.map(file => createAttachment(file));
 
     callback(attachments);
   });
@@ -125,9 +123,10 @@ Parse.prototype._getAttachments = function(callback) {
 
   for (const index in this.files) {
     file = this.files[index];
+    const { path } = file;
 
-    if (fs.existsSync(file.path)) {
-      file.content = fs.readFileSync(file.path);
+    if (fs.existsSync(path)) {
+      file.content = fs.readFileSync(path);
       attachments.push(createAttachment(file));
     }
   }
