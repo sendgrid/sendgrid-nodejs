@@ -1,5 +1,5 @@
 {
-  "name": "fullStackReactMine",
+  "name": "SendGridWebhooksDemo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,7 +10,6 @@
   "scripts": {
     "start": "heroku local dev",
     "client": "npm start --prefix client",
-    "lt":"nodemon localtunnel.js",
     "heroku-postbuild": "(npm install --prefix client) && (npm run build --prefix client)",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -14,6 +14,9 @@
   3. In client directory run `touch .env` and fill `stripePubKey=pk_test_--------------` in it .
   4. In client directory run `npm start `.
   5. Navigate to localhost:3000 in the browser.
+
+
+  Go to https://app.sendgrid.com/settings/mail_settings and enable Event Notification. There pass the callback url as `{hosturl}/api/surveys/webhooks`. Also check that click tracking is enabled.
  
 ## Sample .env file
 ```
