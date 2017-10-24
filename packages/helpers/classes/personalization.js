@@ -47,7 +47,7 @@ class Personalization {
     //Convert to camel case to make it workable, making a copy to prevent
     //changes to the original objects
     data = deepClone(data);
-    data = toCamelCase(data, ['substitutions', 'customArgs']);
+    data = toCamelCase(data, ['substitutions', 'customArgs', 'headers']);
 
     //Extract properties from data
     const {
@@ -259,9 +259,10 @@ class Personalization {
    * Set substitution wrappers
    */
   setSubstitutionWrappers(wrappers) {
-    if (typeof wrappers === 'undefined') {
+    if (typeof wrappers === 'undefined' || wrappers === null) {
       return;
     }
+
     if (!Array.isArray(wrappers) || wrappers.length !== 2) {
       throw new Error(
         'Array expected with two elements for `substitutionWrappers`'
@@ -313,7 +314,7 @@ class Personalization {
     }
 
     //Return as snake cased object
-    return toSnakeCase(json, ['substitutions', 'customArgs']);
+    return toSnakeCase(json, ['substitutions', 'customArgs', 'headers']);
   }
 }
 
