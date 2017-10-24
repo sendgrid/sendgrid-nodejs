@@ -70,7 +70,6 @@ sendgrid-nodejs is guided and supported by the SendGrid [Developer Experience Te
 
 sendgrid-nodejs is maintained and funded by SendGrid, Inc. The names and logos for sendgrid-nodejs are trademarks of SendGrid, Inc.
 
-![SendGrid Logo](https://uiux.s3.amazonaws.com/2016-logos/email-logo%402x.png)
-
+<a name="license"></a>
 # License
 [The MIT License (MIT)](LICENSE.txt)
