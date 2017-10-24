@@ -1,0 +1,34 @@
+{
+  "name": "fullStackReactMine",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": "8.4.0",
+    "npm": "5.3.0"
+  },
+  "scripts": {
+    "start": "heroku local dev",
+    "client": "npm start --prefix client",
+    "lt":"nodemon localtunnel.js",
+    "heroku-postbuild": "(npm install --prefix client) && (npm run build --prefix client)",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Aditya Agarwal <adityaa803@gmail.com> (http://adi.surge.sh/)",
+  "license": "ISC",
+  "dependencies": {
+    "@sendgrid/mail": "^6.1.3",
+    "body-parser": "^1.18.0",
+    "cookie-session": "^1.3.1",
+    "express": "^4.15.4",
+    "localtunnel": "^1.8.3",
+    "lodash": "^4.17.4",
+    "mongoose": "^4.11.10",
+    "morgan": "^1.8.2",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^1.0.0",
+    "path-parser": "^2.0.2",
+    "stripe": "^4.25.0"
+  }
+}
