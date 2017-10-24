@@ -100,12 +100,12 @@ ContactImporter.prototype.push = function(data) {
  */
 ContactImporter.prototype._worker = function({ owner, data }, callback) {
   const context = owner;
-  debug(`processing batch (${data.length} items)`);
+  debug('processing batch (%s items)', data.length);
   context.throttle.submit(context._sendBatch, context, data, callback);
 };
 
 ContactImporter.prototype._sendBatch = function(context, data, callback) {
-  debug(`sending batch (${data.length} items)`);
+  debug('sending batch (%s items)', data.length);
 
   const request = context.sg.emptyRequest();
   request.method = 'POST';
