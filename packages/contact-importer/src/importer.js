@@ -29,30 +29,7 @@ class ContactImporter extends EventEmitter {
     this.throttle = new Bottleneck(0, 0);
     this.throttle.changeReservoir(this.rateLimitLimit);
 
-    // Create a queue that wil be used to send batches to the throttler.
-    this.queue = queue(ensureAsync(this._worker));
-
-    // When the last batch is removed from the queue, add any incomplete batches.
-    this.queue.empty = () => {
-      if (this.pendingItems.length) {
-        debug('adding %s items from deferrd queue for processing', this.pendingItems.length);
-        const batch = this.pendingItems.splice(0);
-        this.queue.push({
-          data: batch,
-          owner: this,
-        }, (error, result) => {
-          if (error) {
-            return this._notify(error, error.response.body, batch);
-          }
-          return this._notify(null, result.body, batch);
-        });
-      }
-    };
-
-    // Emit an event when the queue is drained.
-    this.queue.drain = () => {
-      this.emit('drain');
-    };
+    this._setupQueue();
   }
 
   /**
@@ -60,7 +37,7 @@ class ContactImporter extends EventEmitter {
    *
    * @param {Array|Object} data A contact or array of contacts.
    */
-  push(data) {
+  push(data = []) {
     data = Array.isArray(data) ? data : [data];
 
     // Add the new items onto the pending items.
@@ -73,15 +50,7 @@ class ContactImporter extends EventEmitter {
     batches.forEach((batch) => {
       // If this batch is full or the queue is empty queue it for processing.
       if (batch.length === this.batchSize || !this.queue.length()) {
-        this.queue.push({
-          data: batch,
-          owner: this,
-        }, (error, result) => {
-          if (error) {
-            return this._notify(error, error.response.body, batch);
-          }
-          return this._notify(null, result.body, batch);
-        });
+        this._pushToQueue(batch);
       }
       // Otherwise, it store it for later.
       else {
@@ -143,6 +112,46 @@ class ContactImporter extends EventEmitter {
     }
     return this.emit('success', result, batch);
   };
+
+  /**
+   * Sets up the queue object on this instance of ContactImporter
+   */
+  _setupQueue () {
+    // Create a queue that wil be used to send batches to the throttler.
+    this.queue = queue(ensureAsync(this._worker));
+
+    // When the last batch is removed from the queue, add any incomplete batches.
+    this.queue.empty = () => {
+      if (!this.pendingItems.length) return;
+
+      debug('adding %s items from deferrd queue for processing', this.pendingItems.length);
+
+      const batch = this.pendingItems.splice(0);
+      this._pushToQueue(batch);
+    };
+
+    // Emit an event when the queue is drained.
+    this.queue.drain = () => {
+      this.emit('drain');
+    };
+  }
+
+  /**
+   * Takes a batch and pushes it to the queue, handling the result as well.
+   *
+   * @param {Array} batch A batch to send to the queue.
+   */
+  _pushToQueue (batch) {
+    this.queue.push({
+      data: batch,
+      owner: this,
+    }, (error, result) => {
+      if (error) {
+        return this._notify(error, error.response.body, batch);
+      }
+      return this._notify(null, result.body, batch);
+    });
+  }
 }
 
 module.exports = ContactImporter;
