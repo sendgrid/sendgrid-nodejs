@@ -31,6 +31,7 @@
     "test:helpers": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/helpers/**/*.spec.js\"",
     "test:client": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/client/**/*.spec.js\"",
     "test:mail": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/mail/**/*.spec.js\"",
+    "test:inbound": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/inbound-mail-parser/**/*.spec.js\"",
     "test:typescript": "tsc",
     "test": "npm run test:all -s",
     "coverage": "open -a \"Google Chrome\" ./coverage/lcov-report/index.html"
