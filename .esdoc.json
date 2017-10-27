@@ -1,0 +1,13 @@
+{
+    "source": "./packages",
+    "destination": "./docs",
+    "plugins": [
+      {
+        "name": "esdoc-coverage-plugin", 
+        "option": {
+          "enable": true,
+          "kind": ["class", "method", "member", "get", "set", "constructor", "function", "variable"]
+        }
+      }
+    ]
+  }
