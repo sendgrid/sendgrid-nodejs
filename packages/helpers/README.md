@@ -39,8 +39,8 @@ We encourage contribution to our libraries (you might even score some nifty swag
 <a name="about"></a>
 # About
 
-@sendgrid/helpers is guided and supported by the SendGrid [Developer Experience Team](mailto:dx@sendgrid.com).
+@naturalcycles/sendgrid-helpers is guided and supported by the SendGrid [Developer Experience Team](mailto:dx@sendgrid.com).
 
-@sendgrid/helpers is maintained and funded by SendGrid, Inc. The names and logos for @sendgrid/helpers are trademarks of SendGrid, Inc.
+@naturalcycles/sendgrid-helpers is maintained and funded by SendGrid, Inc. The names and logos for @naturalcycles/sendgrid-helpers are trademarks of SendGrid, Inc.
 
 ![SendGrid Logo](https://uiux.s3.amazonaws.com/2016-logos/email-logo%402x.png)

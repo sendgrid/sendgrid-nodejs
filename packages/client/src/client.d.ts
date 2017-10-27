@@ -1,6 +1,6 @@
-import {ResponseError} from "@sendgrid/helpers/classes";
-import {ClientRequest} from "@sendgrid/client/src/request";
-import {ClientResponse} from "@sendgrid/client/src/response";
+import {ResponseError} from "@naturalcycles/sendgrid-helpers/classes";
+import {ClientRequest} from "@naturalcycles/sendgrid-client/src/request";
+import {ClientResponse} from "@naturalcycles/sendgrid-client/src/response";
 
 declare class Client {
   /**

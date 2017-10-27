@@ -37,13 +37,13 @@ source ./sendgrid.env
 The following recommended installation requires [npm](https://npmjs.org/). If you are unfamiliar with npm, see the [npm docs](https://npmjs.org/doc/). Npm comes installed with Node.js since node version 0.8.x therefore you likely already have it.
 
 ```sh
-npm install --save @sendgrid/client
+npm install --save @naturalcycles/sendgrid-client
 ```
 
 You may also use [yarn](https://yarnpkg.com/en/) to install.
 
 ```sh
-yarn add @sendgrid/client
+yarn add @naturalcycles/sendgrid-client
 ```
 
 <a name="general"></a>
@@ -52,7 +52,7 @@ yarn add @sendgrid/client
 Please see [USAGE.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/client/USAGE.md) for all endpoint examples for the [SendGrid v3 Web API](https://sendgrid.com/docs/API_Reference/api_v3.html).
 
 ```js
-const client = require('@sendgrid/client');
+const client = require('@naturalcycles/sendgrid-client');
 client.setApiKey(process.env.SENDGRID_API_KEY);
 const request = {
   method: 'GET',
@@ -109,8 +109,8 @@ Please see our [troubleshooting guide](https://github.com/sendgrid/sendgrid-node
 <a name="about"></a>
 # About
 
-@sendgrid/client is guided and supported by the SendGrid [Developer Experience Team](mailto:dx@sendgrid.com).
+@naturalcycles/sendgrid-client is guided and supported by the SendGrid [Developer Experience Team](mailto:dx@sendgrid.com).
 
-@sendgrid/client is maintained and funded by SendGrid, Inc. The names and logos for @sendgrid/client are trademarks of SendGrid, Inc.
+@naturalcycles/sendgrid-client is maintained and funded by SendGrid, Inc. The names and logos for @naturalcycles/sendgrid-client are trademarks of SendGrid, Inc.
 
 ![SendGrid Logo](https://uiux.s3.amazonaws.com/2016-logos/email-logo%402x.png)

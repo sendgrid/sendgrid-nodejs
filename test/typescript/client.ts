@@ -1,4 +1,4 @@
-import Client = require("@sendgrid/client");
+import Client = require("@naturalcycles/sendgrid-client");
 
 // Test setApiKey() method
 Client.setApiKey("MY_SENDGRID_API_KEY");

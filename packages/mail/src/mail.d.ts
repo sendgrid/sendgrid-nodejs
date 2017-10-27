@@ -1,7 +1,7 @@
-import Client = require("@sendgrid/client");
-import {ClientResponse} from "@sendgrid/client/src/response";
-import {ResponseError} from "@sendgrid/helpers/classes";
-import {MailData} from "@sendgrid/helpers/classes/mail";
+import Client = require("@naturalcycles/sendgrid-client");
+import {ClientResponse} from "@naturalcycles/sendgrid-client/src/response";
+import {ResponseError} from "@naturalcycles/sendgrid-helpers/classes";
+import {MailData} from "@naturalcycles/sendgrid-helpers/classes/mail";
 
 declare class MailService {
   /**

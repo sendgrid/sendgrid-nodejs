@@ -37,13 +37,13 @@ source ./sendgrid.env
 The following recommended installation requires [npm](https://npmjs.org/). If you are unfamiliar with npm, see the [npm docs](https://npmjs.org/doc/). Npm comes installed with Node.js since node version 0.8.x therefore you likely already have it.
 
 ```sh
-npm install --save @sendgrid/mail
+npm install --save @naturalcycles/sendgrid-mail
 ```
 
 You may also use [yarn](https://yarnpkg.com/en/) to install.
 
 ```sh
-yarn add @sendgrid/mail
+yarn add @naturalcycles/sendgrid-mail
 ```
 
 <a name="quick-start"></a>
@@ -54,7 +54,7 @@ The following is the minimum needed code to send an simple email. Use this examp
 For more complex use cases, please see [USE_CASES.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/mail/USE_CASES.md).
 
 ```js
-const sgMail = require('@sendgrid/mail');
+const sgMail = require('@naturalcycles/sendgrid-mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const msg = {
   to: 'test@example.com',
@@ -100,8 +100,8 @@ Please see our [troubleshooting guide](https://github.com/sendgrid/sendgrid-node
 <a name="about"></a>
 # About
 
-@sendgrid/mail is guided and supported by the SendGrid [Developer Experience Team](mailto:dx@sendgrid.com).
+@naturalcycles/sendgrid-mail is guided and supported by the SendGrid [Developer Experience Team](mailto:dx@sendgrid.com).
 
-@sendgrid/mail is maintained and funded by SendGrid, Inc. The names and logos for @sendgrid/mail are trademarks of SendGrid, Inc.
+@naturalcycles/sendgrid-mail is maintained and funded by SendGrid, Inc. The names and logos for @naturalcycles/sendgrid-mail are trademarks of SendGrid, Inc.
 
 ![SendGrid Logo](https://uiux.s3.amazonaws.com/2016-logos/email-logo%402x.png)

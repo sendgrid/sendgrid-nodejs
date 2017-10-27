@@ -3,7 +3,7 @@ This documentation is based on our [OAI specification](https://github.com/sendgr
 # INITIALIZATION
 
 ```javascript
-const client = require('@sendgrid/client');
+const client = require('@naturalcycles/sendgrid-client');
 client.setApiKey(process.env.SENDGRID_API_KEY);
 ```
 

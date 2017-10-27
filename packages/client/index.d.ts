@@ -1,3 +1,3 @@
-import Client = require("@sendgrid/client/src/client");
+import Client = require("@naturalcycles/sendgrid-client/src/client");
 
 export = Client;

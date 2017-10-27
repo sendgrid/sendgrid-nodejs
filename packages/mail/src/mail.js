@@ -2,12 +2,12 @@
 /**
  * Dependencies
  */
-const client = require('@sendgrid/client');
+const client = require('@naturalcycles/sendgrid-client');
 const {
   classes: {
     Mail,
   },
-} = require('@sendgrid/helpers');
+} = require('@naturalcycles/sendgrid-helpers');
 
 /**
  * Mail service class

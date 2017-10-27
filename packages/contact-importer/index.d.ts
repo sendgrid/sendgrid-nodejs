@@ -1,3 +1,3 @@
-import Importer = require("@sendgrid/contact-importer/src/importer");
+import Importer = require("@naturalcycles/sendgrid-contact-importer/src/importer");
 
 export = Importer;
