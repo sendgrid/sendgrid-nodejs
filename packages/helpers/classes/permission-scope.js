@@ -1,7 +1,3 @@
-/**
- * hicks2evan on 10-28-17
- */
-
 'use strict';
 
 /**
