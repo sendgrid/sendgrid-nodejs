@@ -3,7 +3,8 @@
 /**
  * Dependencies
  */
-const EmailAddress = require('./email-address');
+const CommonMethods = require('./common-methods');
+ const EmailAddress = require('./email-address');
 const Personalization = require('./personalization');
 const toCamelCase = require('../helpers/to-camel-case');
 const toSnakeCase = require('../helpers/to-snake-case');
@@ -55,7 +56,7 @@ class Mail {
     } = data;
 
     //Set data
-    this.setFrom(from);
+    CommonMethods.setFrom(this, from);
     this.setReplyTo(replyTo);
     this.setSubject(subject);
     this.setSendAt(sendAt);
