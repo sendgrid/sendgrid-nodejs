@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a0e5f413-a0ec-4fd8-be90-fffad38680ee" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/helpers/classes/permission-scope.js" afterPath="$PROJECT_DIR$/packages/helpers/classes/permission-scope.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -502,12 +502,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1508351673792</updated>
-      <workItem from="1508351676965" duration="12347000" />
+      <workItem from="1508351676965" duration="12417000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12347000" />
+    <option name="totallyTimeSpent" value="12417000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
