@@ -34,7 +34,7 @@ This library is broken up into several packages as a monorepo so that you only n
 
 ## .env file
 
-You will find a file in the root of the project called .env_sample. You can run `mv .env_sample .env` or manually rename the file to `.env`; be sure to add your [API key](https://sendgrid.com/docs/User_Guide/Settings/api_keys.html#-Creating-an-API-key).
+You will find a file in the root of the project called .env_sample. You can run `cp .env_sample .env` or manually rename the file to `.env`; be sure to add your [API key](https://sendgrid.com/docs/User_Guide/Settings/api_keys.html#-Creating-an-API-key).
 
 * [@sendgrid/mail](https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages/mail) - if you just want to send email
 * [@sendgrid/client](https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages/client) - to use all other [SendGrid v3 Web API endpoints](https://sendgrid.com/docs/API_Reference/api_v3.html)
