@@ -2,7 +2,7 @@ var assert      = require('assert');
 var should      = require('should');
 var fs          = require('fs');
 
-describe('sendgrid-nodejs repo', function() {
+describe('nodemailer-sendgrid-transport repo', function() {
   it('should have ./Docker or docker/Docker file', function() {
     assert(fileExists('Docker') || fileExists('docker/Docker'));
   });
