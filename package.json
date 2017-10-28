@@ -35,5 +35,22 @@
     "test:typescript": "tsc",
     "test": "npm run test:all -s",
     "coverage": "open -a \"Google Chrome\" ./coverage/lcov-report/index.html"
-  }
+  },
+  "description": "![SendGrid Logo](https://uiux.s3.amazonaws.com/2016-logos/email-logo%402x.png)",
+  "bugs": {
+    "url": "https://github.com/sendgrid/sendgrid-nodejs/issues"
+  },
+  "homepage": "https://github.com/sendgrid/sendgrid-nodejs#readme",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "dependencies": {
+    "chai": "^2.3.0",
+    "esdoc": "^1.0.3",
+    "esdoc-coverage-plugin": "^1.1.0",
+    "esdoc-type-inference-plugin": "^1.0.1"
+  },
+  "author": "SendGrid"
 }
