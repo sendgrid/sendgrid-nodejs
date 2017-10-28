@@ -19,6 +19,7 @@ script:
 - yarn test:helpers
 - yarn test:typescript
 - yarn test:files.spec
+- yarn test:license
 notifications:
   hipchat:
     rooms:
