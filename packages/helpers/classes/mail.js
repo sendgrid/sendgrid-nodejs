@@ -43,20 +43,9 @@ class Mail {
   }
 
   /**
-   * Build from data
+   * Map the data
    */
-  fromData(data) {
-
-    //Expecting object
-    if (typeof data !== 'object') {
-      throw new Error('Expecting object for Mail data');
-    }
-
-    //Convert to camel case to make it workable, making a copy to prevent
-    //changes to the original objects
-    data = deepClone(data);
-    data = toCamelCase(data, ['substitutions', 'customArgs', 'headers']);
-
+  mapDataAttributes(data) {
     //Extract properties from data
     const {
       to, from, replyTo, cc, bcc, sendAt, subject, text, html, content,
@@ -89,7 +78,6 @@ class Mail {
     //Add contents from text/html properties
     this.addTextContent(text);
     this.addHtmlContent(html);
-
     //Using "to" property for personalizations
     if (personalizations) {
       this.setPersonalizations(personalizations);
@@ -104,6 +92,24 @@ class Mail {
     else {
       this.addTo(to, cc, bcc);
     }
+  }
+
+  /**
+   * Build from data
+   */
+  fromData(data) {
+
+    //Expecting object
+    if (typeof data !== 'object') {
+      throw new Error('Expecting object for Mail data');
+    }
+
+    //Convert to camel case to make it workable, making a copy to prevent
+    //changes to the original objects
+    data = deepClone(data);
+    data = toCamelCase(data, ['substitutions', 'customArgs', 'headers']);
+
+    this.mapDataAttributes(data);
   }
 
   /**
@@ -247,7 +253,7 @@ class Mail {
     ) {
       throw new Error('Provide at least one of to, cc or bcc');
     }
-    this.addPersonalization(new Personalization({to, cc, bcc}));
+    this.addPersonalization(new Personalization({ to, cc, bcc }));
   }
 
   /**
@@ -377,7 +383,7 @@ class Mail {
       categories = [categories];
     }
     if (!Array.isArray(categories) ||
-        !categories.every(cat => typeof cat === 'string')) {
+      !categories.every(cat => typeof cat === 'string')) {
       throw new Error('Array of strings expected for `categories`');
     }
     this.categories = categories;
