@@ -33,6 +33,10 @@ class Client {
       'User-agent': 'sendgrid/' + pkg.version + ';nodejs',
     };
 
+    this.defaultQsStringifyOptions = {
+      arrayFormat: 'repeat',
+    };
+
     //Empty default request
     this.defaultRequest = {
       json: true,
@@ -40,6 +44,7 @@ class Client {
       url: '',
       method: 'GET',
       headers: {},
+      qsStringifyOptions: {},
     };
   }
 
@@ -96,6 +101,8 @@ class Client {
 
     //Merge data with empty request
     const request = mergeData(this.defaultRequest, data);
+    request.qsStringifyOptions =
+      mergeData(this.defaultQsStringifyOptions, request.qsStringifyOptions || {});
 
     //Add headers
     request.headers = this.createHeaders(request.headers);

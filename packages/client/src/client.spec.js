@@ -31,10 +31,10 @@ describe('test_access_settings_whitelist_post', () => {
   "ips": [
     {
       "ip": "192.168.1.1"
-    }, 
+    },
     {
       "ip": "192.*.*.*"
-    }, 
+    },
     {
       "ip": "192.168.1.3/32"
     }
@@ -60,8 +60,8 @@ describe('test_access_settings_whitelist_delete', () => {
   const request = {};
   const data = {
   "ids": [
-    1, 
-    2, 
+    1,
+    2,
     3
   ]
 };
@@ -135,8 +135,8 @@ describe('test_access_settings_whitelist__rule_id__get', () => {
 describe('test_alerts_post', () => {
   const request = {};
   const data = {
-  "email_to": "example@example.com", 
-  "frequency": "daily", 
+  "email_to": "example@example.com",
+  "frequency": "daily",
   "type": "stats_notification"
 };
   request.body = data;
@@ -230,11 +230,11 @@ describe('test_alerts__alert_id__get', () => {
 describe('test_api_keys_post', () => {
   const request = {};
   const data = {
-  "name": "My API Key", 
-  "sample": "data", 
+  "name": "My API Key",
+  "sample": "data",
   "scopes": [
-    "mail.send", 
-    "alerts.create", 
+    "mail.send",
+    "alerts.create",
     "alerts.read"
   ]
 };
@@ -278,9 +278,9 @@ describe('test_api_keys_get', () => {
 describe('test_api_keys__api_key_id__put', () => {
   const request = {};
   const data = {
-  "name": "A New Hope", 
+  "name": "A New Hope",
   "scopes": [
-    "user.profile.read", 
+    "user.profile.read",
     "user.profile.update"
   ]
 };
@@ -358,8 +358,8 @@ describe('test_api_keys__api_key_id__get', () => {
 describe('test_asm_groups_post', () => {
   const request = {};
   const data = {
-  "description": "Suggestions for products our users might like.", 
-  "is_default": true, 
+  "description": "Suggestions for products our users might like.",
+  "is_default": true,
   "name": "Product Suggestions"
 };
   request.body = data;
@@ -419,8 +419,8 @@ describe('test_asm_groups__group_id__delete', () => {
 describe('test_asm_groups__group_id__patch', () => {
   const request = {};
   const data = {
-  "description": "Suggestions for items our users might like.", 
-  "id": 103, 
+  "description": "Suggestions for items our users might like.",
+  "id": 103,
   "name": "Item Suggestions"
 };
   request.body = data;
@@ -460,7 +460,7 @@ describe('test_asm_groups__group_id__suppressions_post', () => {
   const request = {};
   const data = {
   "recipient_emails": [
-    "test1@example.com", 
+    "test1@example.com",
     "test2@example.com"
   ]
 };
@@ -501,8 +501,8 @@ describe('test_asm_groups__group_id__suppressions_search_post', () => {
   const request = {};
   const data = {
   "recipient_emails": [
-    "exists1@example.com", 
-    "exists2@example.com", 
+    "exists1@example.com",
+    "exists2@example.com",
     "doesnotexists@example.com"
   ]
 };
@@ -560,7 +560,7 @@ describe('test_asm_suppressions_global_post', () => {
   const request = {};
   const data = {
   "recipient_emails": [
-    "test1@example.com", 
+    "test1@example.com",
     "test2@example.com"
   ]
 };
@@ -634,11 +634,11 @@ describe('test_asm_suppressions__email__get', () => {
 describe('test_browsers_stats_get', () => {
   const request = {};
   const queryParams = {
-  'aggregated_by': 'day', 
-  'browsers': 'test_string', 
-  'end_date': '2016-04-01', 
-  'limit': 'test_string', 
-  'offset': 'test_string', 
+  'aggregated_by': 'day',
+  'browsers': 'test_string',
+  'end_date': '2016-04-01',
+  'limit': 'test_string',
+  'offset': 'test_string',
   'start_date': '2016-01-01'
 };
   request.qs = queryParams;
@@ -662,21 +662,21 @@ describe('test_campaigns_post', () => {
   const data = {
   "categories": [
     "spring line"
-  ], 
-  "custom_unsubscribe_url": "", 
-  "html_content": "<html><head><title></title></head><body><p>Check out our spring line!</p></body></html>", 
-  "ip_pool": "marketing", 
+  ],
+  "custom_unsubscribe_url": "",
+  "html_content": "<html><head><title></title></head><body><p>Check out our spring line!</p></body></html>",
+  "ip_pool": "marketing",
   "list_ids": [
-    110, 
+    110,
     124
-  ], 
-  "plain_content": "Check out our spring line!", 
+  ],
+  "plain_content": "Check out our spring line!",
   "segment_ids": [
     110
-  ], 
-  "sender_id": 124451, 
-  "subject": "New Products for Spring!", 
-  "suppression_group_id": 42, 
+  ],
+  "sender_id": 124451,
+  "subject": "New Products for Spring!",
+  "suppression_group_id": 42,
   "title": "March Newsletter"
 };
   request.body = data;
@@ -698,7 +698,7 @@ describe('test_campaigns_post', () => {
 describe('test_campaigns_get', () => {
   const request = {};
   const queryParams = {
-  'limit': 1, 
+  'limit': 1,
   'offset': 1
 };
   request.qs = queryParams;
@@ -722,10 +722,10 @@ describe('test_campaigns__campaign_id__patch', () => {
   const data = {
   "categories": [
     "summer line"
-  ], 
-  "html_content": "<html><head><title></title></head><body><p>Check out our summer line!</p></body></html>", 
-  "plain_content": "Check out our summer line!", 
-  "subject": "New Products for Summer!", 
+  ],
+  "html_content": "<html><head><title></title></head><body><p>Check out our summer line!</p></body></html>",
+  "plain_content": "Check out our summer line!",
+  "subject": "New Products for Summer!",
   "title": "May Newsletter"
 };
   request.body = data;
@@ -895,8 +895,8 @@ describe('test_campaigns__campaign_id__schedules_test_post', () => {
 describe('test_categories_get', () => {
   const request = {};
   const queryParams = {
-  'category': 'test_string', 
-  'limit': 1, 
+  'category': 'test_string',
+  'limit': 1,
   'offset': 1
 };
   request.qs = queryParams;
@@ -918,11 +918,11 @@ describe('test_categories_get', () => {
 describe('test_categories_stats_get', () => {
   const request = {};
   const queryParams = {
-  'aggregated_by': 'day', 
-  'categories': 'test_string', 
-  'end_date': '2016-04-01', 
-  'limit': 1, 
-  'offset': 1, 
+  'aggregated_by': 'day',
+  'categories': ['test_string'], 
+  'end_date': '2016-04-01',
+  'limit': 1,
+  'offset': 1,
   'start_date': '2016-01-01'
 };
   request.qs = queryParams;
@@ -944,12 +944,12 @@ describe('test_categories_stats_get', () => {
 describe('test_categories_stats_sums_get', () => {
   const request = {};
   const queryParams = {
-  'aggregated_by': 'day', 
-  'end_date': '2016-04-01', 
-  'limit': 1, 
-  'offset': 1, 
-  'sort_by_direction': 'asc', 
-  'sort_by_metric': 'test_string', 
+  'aggregated_by': 'day',
+  'end_date': '2016-04-01',
+  'limit': 1,
+  'offset': 1,
+  'sort_by_direction': 'asc',
+  'sort_by_metric': 'test_string',
   'start_date': '2016-01-01'
 };
   request.qs = queryParams;
@@ -971,8 +971,8 @@ describe('test_categories_stats_sums_get', () => {
 describe('test_clients_stats_get', () => {
   const request = {};
   const queryParams = {
-  'aggregated_by': 'day', 
-  'end_date': '2016-04-01', 
+  'aggregated_by': 'day',
+  'end_date': '2016-04-01',
   'start_date': '2016-01-01'
 };
   request.qs = queryParams;
@@ -994,8 +994,8 @@ describe('test_clients_stats_get', () => {
 describe('test_clients__client_type__stats_get', () => {
   const request = {};
   const queryParams = {
-  'aggregated_by': 'day', 
-  'end_date': '2016-04-01', 
+  'aggregated_by': 'day',
+  'end_date': '2016-04-01',
   'start_date': '2016-01-01'
 };
   request.qs = queryParams;
@@ -1017,7 +1017,7 @@ describe('test_clients__client_type__stats_get', () => {
 describe('test_contactdb_custom_fields_post', () => {
   const request = {};
   const data = {
-  "name": "pet", 
+  "name": "pet",
   "type": "text"
 };
   request.body = data;
@@ -1111,9 +1111,9 @@ describe('test_contactdb_lists_post', () => {
 describe('test_contactdb_lists_delete', () => {
   const request = {};
   const data = [
-  1, 
-  2, 
-  3, 
+  1,
+  2,
+  3,
   4
 ];
   request.body = data;
@@ -1219,7 +1219,7 @@ describe('test_contactdb_lists__list_id__get', () => {
 describe('test_contactdb_lists__list_id__recipients_post', () => {
   const request = {};
   const data = [
-  "recipient_id1", 
+  "recipient_id1",
   "recipient_id2"
 ];
   request.body = data;
@@ -1241,8 +1241,8 @@ describe('test_contactdb_lists__list_id__recipients_post', () => {
 describe('test_contactdb_lists__list_id__recipients_get', () => {
   const request = {};
   const queryParams = {
-  'list_id': 1, 
-  'page': 1, 
+  'list_id': 1,
+  'page': 1,
   'page_size': 1
 };
   request.qs = queryParams;
@@ -1281,7 +1281,7 @@ describe('test_contactdb_lists__list_id__recipients__recipient_id__post', () => 
 describe('test_contactdb_lists__list_id__recipients__recipient_id__delete', () => {
   const request = {};
   const queryParams = {
-  'list_id': 1, 
+  'list_id': 1,
   'recipient_id': 1
 };
   request.qs = queryParams;
@@ -1304,15 +1304,15 @@ describe('test_contactdb_recipients_post', () => {
   const request = {};
   const data = [
   {
-    "age": 25, 
-    "email": "example@example.com", 
-    "first_name": "", 
+    "age": 25,
+    "email": "example@example.com",
+    "first_name": "",
     "last_name": "User"
-  }, 
+  },
   {
-    "age": 25, 
-    "email": "example2@example.com", 
-    "first_name": "Example", 
+    "age": 25,
+    "email": "example2@example.com",
+    "first_name": "Example",
     "last_name": "User"
   }
 ];
@@ -1335,7 +1335,7 @@ describe('test_contactdb_recipients_post', () => {
 describe('test_contactdb_recipients_delete', () => {
   const request = {};
   const data = [
-  "recipient_id1", 
+  "recipient_id1",
   "recipient_id2"
 ];
   request.body = data;
@@ -1357,7 +1357,7 @@ describe('test_contactdb_recipients_delete', () => {
 describe('test_contactdb_recipients_get', () => {
   const request = {};
   const queryParams = {
-  'page': 1, 
+  'page': 1,
   'page_size': 1
 };
   request.qs = queryParams;
@@ -1380,8 +1380,8 @@ describe('test_contactdb_recipients_patch', () => {
   const request = {};
   const data = [
   {
-    "email": "jones@example.com", 
-    "first_name": "Guy", 
+    "email": "jones@example.com",
+    "first_name": "Guy",
     "last_name": "Jones"
   }
 ];
@@ -1529,25 +1529,25 @@ describe('test_contactdb_segments_post', () => {
   const data = {
   "conditions": [
     {
-      "and_or": "", 
-      "field": "last_name", 
-      "operator": "eq", 
+      "and_or": "",
+      "field": "last_name",
+      "operator": "eq",
       "value": "Miller"
-    }, 
+    },
     {
-      "and_or": "and", 
-      "field": "last_clicked", 
-      "operator": "gt", 
+      "and_or": "and",
+      "field": "last_clicked",
+      "operator": "gt",
       "value": "01/02/2015"
-    }, 
+    },
     {
-      "and_or": "or", 
-      "field": "clicks.campaign_identifier", 
-      "operator": "eq", 
+      "and_or": "or",
+      "field": "clicks.campaign_identifier",
+      "operator": "eq",
       "value": "513"
     }
-  ], 
-  "list_id": 4, 
+  ],
+  "list_id": 4,
   "name": "Last Name Miller"
 };
   request.body = data;
@@ -1609,13 +1609,13 @@ describe('test_contactdb_segments__segment_id__patch', () => {
   const data = {
   "conditions": [
     {
-      "and_or": "", 
-      "field": "last_name", 
-      "operator": "eq", 
+      "and_or": "",
+      "field": "last_name",
+      "operator": "eq",
       "value": "Miller"
     }
-  ], 
-  "list_id": 5, 
+  ],
+  "list_id": 5,
   "name": "The Millers"
 };
   request.body = data;
@@ -1662,7 +1662,7 @@ describe('test_contactdb_segments__segment_id__get', () => {
 describe('test_contactdb_segments__segment_id__recipients_get', () => {
   const request = {};
   const queryParams = {
-  'page': 1, 
+  'page': 1,
   'page_size': 1
 };
   request.qs = queryParams;
@@ -1701,10 +1701,10 @@ describe('test_contactdb_status_get', () => {
 describe('test_devices_stats_get', () => {
   const request = {};
   const queryParams = {
-  'aggregated_by': 'day', 
-  'end_date': '2016-04-01', 
-  'limit': 1, 
-  'offset': 1, 
+  'aggregated_by': 'day',
+  'end_date': '2016-04-01',
+  'limit': 1,
+  'offset': 1,
   'start_date': '2016-01-01'
 };
   request.qs = queryParams;
@@ -1726,11 +1726,11 @@ describe('test_devices_stats_get', () => {
 describe('test_geo_stats_get', () => {
   const request = {};
   const queryParams = {
-  'aggregated_by': 'day', 
-  'country': 'US', 
-  'end_date': '2016-04-01', 
-  'limit': 1, 
-  'offset': 1, 
+  'aggregated_by': 'day',
+  'country': 'US',
+  'end_date': '2016-04-01',
+  'limit': 1,
+  'offset': 1,
   'start_date': '2016-01-01'
 };
   request.qs = queryParams;
@@ -1752,12 +1752,12 @@ describe('test_geo_stats_get', () => {
 describe('test_ips_post', () => {
   const request = {};
   const data = {
-  "count": 90323478, 
+  "count": 90323478,
   "subusers": [
-    "subuser1", 
+    "subuser1",
     "subuser2"
-  ], 
-  "user_can_send": true, 
+  ],
+  "user_can_send": true,
   "warmup": true
 };
   request.body = data;
@@ -1779,11 +1779,11 @@ describe('test_ips_post', () => {
 describe('test_ips_get', () => {
   const request = {};
   const queryParams = {
-  'exclude_whitelabels': 'true', 
-  'ip': 'test_string', 
-  'limit': 1, 
-  'offset': 1, 
-  'sort_by_direction': 'asc', 
+  'exclude_whitelabels': 'true',
+  'ip': 'test_string',
+  'limit': 1,
+  'offset': 1,
+  'sort_by_direction': 'asc',
   'subuser': 'test_string'
 };
   request.qs = queryParams;
@@ -2095,29 +2095,29 @@ describe('test_mail_send_post', () => {
   const data = {
   "content": [
     {
-      "type": "text/html", 
+      "type": "text/html",
       "value": "<html><p>Hello, world!</p></html>"
     }
-  ], 
+  ],
   "from": {
-    "email": "sam.smith@example.com", 
+    "email": "sam.smith@example.com",
     "name": "Sam Smith"
-  }, 
+  },
   "personalizations": [
     {
-      "subject": "Hello, World!", 
+      "subject": "Hello, World!",
       "to": [
         {
-          "email": "john.doe@example.com", 
+          "email": "john.doe@example.com",
           "name": "John Doe"
         }
       ]
     }
-  ], 
+  ],
   "reply_to": {
-    "email": "sam.smith@example.com", 
+    "email": "sam.smith@example.com",
     "name": "Sam Smith"
-  }, 
+  },
   "subject": "Hello, World!"
 };
   request.body = data;
@@ -2139,7 +2139,7 @@ describe('test_mail_send_post', () => {
 describe('test_mail_settings_get', () => {
   const request = {};
   const queryParams = {
-  'limit': 1, 
+  'limit': 1,
   'offset': 1
 };
   request.qs = queryParams;
@@ -2161,9 +2161,9 @@ describe('test_mail_settings_get', () => {
 describe('test_mail_settings_address_whitelist_patch', () => {
   const request = {};
   const data = {
-  "enabled": true, 
+  "enabled": true,
   "list": [
-    "email1@example.com", 
+    "email1@example.com",
     "example.com"
   ]
 };
@@ -2203,7 +2203,7 @@ describe('test_mail_settings_address_whitelist_get', () => {
 describe('test_mail_settings_bcc_patch', () => {
   const request = {};
   const data = {
-  "email": "email@example.com", 
+  "email": "email@example.com",
   "enabled": false
 };
   request.body = data;
@@ -2242,8 +2242,8 @@ describe('test_mail_settings_bcc_get', () => {
 describe('test_mail_settings_bounce_purge_patch', () => {
   const request = {};
   const data = {
-  "enabled": true, 
-  "hard_bounces": 5, 
+  "enabled": true,
+  "hard_bounces": 5,
   "soft_bounces": 5
 };
   request.body = data;
@@ -2282,8 +2282,8 @@ describe('test_mail_settings_bounce_purge_get', () => {
 describe('test_mail_settings_footer_patch', () => {
   const request = {};
   const data = {
-  "enabled": true, 
-  "html_content": "...", 
+  "enabled": true,
+  "html_content": "...",
   "plain_content": "..."
 };
   request.body = data;
@@ -2322,7 +2322,7 @@ describe('test_mail_settings_footer_get', () => {
 describe('test_mail_settings_forward_bounce_patch', () => {
   const request = {};
   const data = {
-  "email": "example@example.com", 
+  "email": "example@example.com",
   "enabled": true
 };
   request.body = data;
@@ -2361,7 +2361,7 @@ describe('test_mail_settings_forward_bounce_get', () => {
 describe('test_mail_settings_forward_spam_patch', () => {
   const request = {};
   const data = {
-  "email": "", 
+  "email": "",
   "enabled": false
 };
   request.body = data;
@@ -2438,8 +2438,8 @@ describe('test_mail_settings_plain_content_get', () => {
 describe('test_mail_settings_spam_check_patch', () => {
   const request = {};
   const data = {
-  "enabled": true, 
-  "max_score": 5, 
+  "enabled": true,
+  "max_score": 5,
   "url": "url"
 };
   request.body = data;
@@ -2478,7 +2478,7 @@ describe('test_mail_settings_spam_check_get', () => {
 describe('test_mail_settings_template_patch', () => {
   const request = {};
   const data = {
-  "enabled": true, 
+  "enabled": true,
   "html_content": "<% body %>"
 };
   request.body = data;
@@ -2517,11 +2517,11 @@ describe('test_mail_settings_template_get', () => {
 describe('test_mailbox_providers_stats_get', () => {
   const request = {};
   const queryParams = {
-  'aggregated_by': 'day', 
-  'end_date': '2016-04-01', 
-  'limit': 1, 
-  'mailbox_providers': 'test_string', 
-  'offset': 1, 
+  'aggregated_by': 'day',
+  'end_date': '2016-04-01',
+  'limit': 1,
+  'mailbox_providers': 'test_string',
+  'offset': 1,
   'start_date': '2016-01-01'
 };
   request.qs = queryParams;
@@ -2543,7 +2543,7 @@ describe('test_mailbox_providers_stats_get', () => {
 describe('test_partner_settings_get', () => {
   const request = {};
   const queryParams = {
-  'limit': 1, 
+  'limit': 1,
   'offset': 1
 };
   request.qs = queryParams;
@@ -2565,8 +2565,8 @@ describe('test_partner_settings_get', () => {
 describe('test_partner_settings_new_relic_patch', () => {
   const request = {};
   const data = {
-  "enable_subuser_statistics": true, 
-  "enabled": true, 
+  "enable_subuser_statistics": true,
+  "enabled": true,
   "license_key": ""
 };
   request.body = data;
@@ -2622,7 +2622,7 @@ describe('test_scopes_get', () => {
 describe('test_scopes_requests_get', () => {
   const request = {};
   const queryParams = {
-  'limit': 1, 
+  'limit': 1,
   'offset': 1
 };
   request.qs = queryParams;
@@ -2678,20 +2678,20 @@ describe('test_scopes_requests__request_id__approve_patch', () => {
 describe('test_senders_post', () => {
   const request = {};
   const data = {
-  "address": "123 Elm St.", 
-  "address_2": "Apt. 456", 
-  "city": "Denver", 
-  "country": "United States", 
+  "address": "123 Elm St.",
+  "address_2": "Apt. 456",
+  "city": "Denver",
+  "country": "United States",
   "from": {
-    "email": "from@example.com", 
+    "email": "from@example.com",
     "name": "Example INC"
-  }, 
-  "nickname": "My Sender ID", 
+  },
+  "nickname": "My Sender ID",
   "reply_to": {
-    "email": "replyto@example.com", 
+    "email": "replyto@example.com",
     "name": "Example INC"
-  }, 
-  "state": "Colorado", 
+  },
+  "state": "Colorado",
   "zip": "80202"
 };
   request.body = data;
@@ -2764,20 +2764,20 @@ describe('test_senders__sender_id__delete', () => {
 describe('test_senders__sender_id__patch', () => {
   const request = {};
   const data = {
-  "address": "123 Elm St.", 
-  "address_2": "Apt. 456", 
-  "city": "Denver", 
-  "country": "United States", 
+  "address": "123 Elm St.",
+  "address_2": "Apt. 456",
+  "city": "Denver",
+  "country": "United States",
   "from": {
-    "email": "from@example.com", 
+    "email": "from@example.com",
     "name": "Example INC"
-  }, 
-  "nickname": "My Sender ID", 
+  },
+  "nickname": "My Sender ID",
   "reply_to": {
-    "email": "replyto@example.com", 
+    "email": "replyto@example.com",
     "name": "Example INC"
-  }, 
-  "state": "Colorado", 
+  },
+  "state": "Colorado",
   "zip": "80202"
 };
   request.body = data;
@@ -2816,10 +2816,10 @@ describe('test_senders__sender_id__resend_verification_post', () => {
 describe('test_stats_get', () => {
   const request = {};
   const queryParams = {
-  'aggregated_by': 'day', 
-  'end_date': '2016-04-01', 
-  'limit': 1, 
-  'offset': 1, 
+  'aggregated_by': 'day',
+  'end_date': '2016-04-01',
+  'limit': 1,
+  'offset': 1,
   'start_date': '2016-01-01'
 };
   request.qs = queryParams;
@@ -2841,12 +2841,12 @@ describe('test_stats_get', () => {
 describe('test_subusers_post', () => {
   const request = {};
   const data = {
-  "email": "John@example.com", 
+  "email": "John@example.com",
   "ips": [
-    "1.1.1.1", 
+    "1.1.1.1",
     "2.2.2.2"
-  ], 
-  "password": "johns_password", 
+  ],
+  "password": "johns_password",
   "username": "John@example.com"
 };
   request.body = data;
@@ -2868,8 +2868,8 @@ describe('test_subusers_post', () => {
 describe('test_subusers_get', () => {
   const request = {};
   const queryParams = {
-  'limit': 1, 
-  'offset': 1, 
+  'limit': 1,
+  'offset': 1,
   'username': 'test_string'
 };
   request.qs = queryParams;
@@ -2912,11 +2912,11 @@ describe('test_subusers_reputations_get', () => {
 describe('test_subusers_stats_get', () => {
   const request = {};
   const queryParams = {
-  'aggregated_by': 'day', 
-  'end_date': '2016-04-01', 
-  'limit': 1, 
-  'offset': 1, 
-  'start_date': '2016-01-01', 
+  'aggregated_by': 'day',
+  'end_date': '2016-04-01',
+  'limit': 1,
+  'offset': 1,
+  'start_date': '2016-01-01',
   'subusers': 'test_string'
 };
   request.qs = queryParams;
@@ -2938,11 +2938,11 @@ describe('test_subusers_stats_get', () => {
 describe('test_subusers_stats_monthly_get', () => {
   const request = {};
   const queryParams = {
-  'date': 'test_string', 
-  'limit': 1, 
-  'offset': 1, 
-  'sort_by_direction': 'asc', 
-  'sort_by_metric': 'test_string', 
+  'date': 'test_string',
+  'limit': 1,
+  'offset': 1,
+  'sort_by_direction': 'asc',
+  'sort_by_metric': 'test_string',
   'subuser': 'test_string'
 };
   request.qs = queryParams;
@@ -2964,12 +2964,12 @@ describe('test_subusers_stats_monthly_get', () => {
 describe('test_subusers_stats_sums_get', () => {
   const request = {};
   const queryParams = {
-  'aggregated_by': 'day', 
-  'end_date': '2016-04-01', 
-  'limit': 1, 
-  'offset': 1, 
-  'sort_by_direction': 'asc', 
-  'sort_by_metric': 'test_string', 
+  'aggregated_by': 'day',
+  'end_date': '2016-04-01',
+  'limit': 1,
+  'offset': 1,
+  'sort_by_direction': 'asc',
+  'sort_by_metric': 'test_string',
   'start_date': '2016-01-01'
 };
   request.qs = queryParams;
@@ -3050,7 +3050,7 @@ describe('test_subusers__subuser_name__ips_put', () => {
 describe('test_subusers__subuser_name__monitor_put', () => {
   const request = {};
   const data = {
-  "email": "example@example.com", 
+  "email": "example@example.com",
   "frequency": 500
 };
   request.body = data;
@@ -3072,7 +3072,7 @@ describe('test_subusers__subuser_name__monitor_put', () => {
 describe('test_subusers__subuser_name__monitor_post', () => {
   const request = {};
   const data = {
-  "email": "example@example.com", 
+  "email": "example@example.com",
   "frequency": 50000
 };
   request.body = data;
@@ -3128,10 +3128,10 @@ describe('test_subusers__subuser_name__monitor_get', () => {
 describe('test_subusers__subuser_name__stats_monthly_get', () => {
   const request = {};
   const queryParams = {
-  'date': 'test_string', 
-  'limit': 1, 
-  'offset': 1, 
-  'sort_by_direction': 'asc', 
+  'date': 'test_string',
+  'limit': 1,
+  'offset': 1,
+  'sort_by_direction': 'asc',
   'sort_by_metric': 'test_string'
 };
   request.qs = queryParams;
@@ -3153,9 +3153,9 @@ describe('test_subusers__subuser_name__stats_monthly_get', () => {
 describe('test_suppression_blocks_delete', () => {
   const request = {};
   const data = {
-  "delete_all": false, 
+  "delete_all": false,
   "emails": [
-    "example1@example.com", 
+    "example1@example.com",
     "example2@example.com"
   ]
 };
@@ -3178,9 +3178,9 @@ describe('test_suppression_blocks_delete', () => {
 describe('test_suppression_blocks_get', () => {
   const request = {};
   const queryParams = {
-  'end_time': 1, 
-  'limit': 1, 
-  'offset': 1, 
+  'end_time': 1,
+  'limit': 1,
+  'offset': 1,
   'start_time': 1
 };
   request.qs = queryParams;
@@ -3236,9 +3236,9 @@ describe('test_suppression_blocks__email__get', () => {
 describe('test_suppression_bounces_delete', () => {
   const request = {};
   const data = {
-  "delete_all": true, 
+  "delete_all": true,
   "emails": [
-    "example@example.com", 
+    "example@example.com",
     "example2@example.com"
   ]
 };
@@ -3261,7 +3261,7 @@ describe('test_suppression_bounces_delete', () => {
 describe('test_suppression_bounces_get', () => {
   const request = {};
   const queryParams = {
-  'end_time': 1, 
+  'end_time': 1,
   'start_time': 1
 };
   request.qs = queryParams;
@@ -3321,9 +3321,9 @@ describe('test_suppression_bounces__email__get', () => {
 describe('test_suppression_invalid_emails_delete', () => {
   const request = {};
   const data = {
-  "delete_all": false, 
+  "delete_all": false,
   "emails": [
-    "example1@example.com", 
+    "example1@example.com",
     "example2@example.com"
   ]
 };
@@ -3346,9 +3346,9 @@ describe('test_suppression_invalid_emails_delete', () => {
 describe('test_suppression_invalid_emails_get', () => {
   const request = {};
   const queryParams = {
-  'end_time': 1, 
-  'limit': 1, 
-  'offset': 1, 
+  'end_time': 1,
+  'limit': 1,
+  'offset': 1,
   'start_time': 1
 };
   request.qs = queryParams;
@@ -3404,9 +3404,9 @@ describe('test_suppression_invalid_emails__email__get', () => {
 describe('test_suppression_spam_reports_delete', () => {
   const request = {};
   const data = {
-  "delete_all": false, 
+  "delete_all": false,
   "emails": [
-    "example1@example.com", 
+    "example1@example.com",
     "example2@example.com"
   ]
 };
@@ -3429,9 +3429,9 @@ describe('test_suppression_spam_reports_delete', () => {
 describe('test_suppression_spam_reports_get', () => {
   const request = {};
   const queryParams = {
-  'end_time': 1, 
-  'limit': 1, 
-  'offset': 1, 
+  'end_time': 1,
+  'limit': 1,
+  'offset': 1,
   'start_time': 1
 };
   request.qs = queryParams;
@@ -3487,9 +3487,9 @@ describe('test_suppression_spam_reports__email__get', () => {
 describe('test_suppression_unsubscribes_get', () => {
   const request = {};
   const queryParams = {
-  'end_time': 1, 
-  'limit': 1, 
-  'offset': 1, 
+  'end_time': 1,
+  'limit': 1,
+  'offset': 1,
   'start_time': 1
 };
   request.qs = queryParams;
@@ -3511,10 +3511,10 @@ describe('test_suppression_unsubscribes_get', () => {
 describe('test_teammates_post', () => {
   const request = {};
   const data = {
-  "email": "teammate1@example.com", 
-  "is_admin": false, 
+  "email": "teammate1@example.com",
+  "is_admin": false,
   "scopes": [
-    "user.profile.read", 
+    "user.profile.read",
     "user.profile.update"
   ]
 };
@@ -3537,7 +3537,7 @@ describe('test_teammates_post', () => {
 describe('test_teammates_get', () => {
   const request = {};
   const queryParams = {
-  'limit': 1, 
+  'limit': 1,
   'offset': 1
 };
   request.qs = queryParams;
@@ -3627,9 +3627,9 @@ describe('test_teammates__username__delete', () => {
 describe('test_teammates__username__patch', () => {
   const request = {};
   const data = {
-  "is_admin": false, 
+  "is_admin": false,
   "scopes": [
-    "user.profile.read", 
+    "user.profile.read",
     "user.profile.edit"
   ]
 };
@@ -3762,11 +3762,11 @@ describe('test_templates__template_id__get', () => {
 describe('test_templates__template_id__versions_post', () => {
   const request = {};
   const data = {
-  "active": 1, 
-  "html_content": "<%body%>", 
-  "name": "example_version_name", 
-  "plain_content": "<%body%>", 
-  "subject": "<%subject%>", 
+  "active": 1,
+  "html_content": "<%body%>",
+  "name": "example_version_name",
+  "plain_content": "<%body%>",
+  "subject": "<%subject%>",
   "template_id": "ddb96bbc-9b92-425e-8979-99464621b543"
 };
   request.body = data;
@@ -3805,10 +3805,10 @@ describe('test_templates__template_id__versions__version_id__delete', () => {
 describe('test_templates__template_id__versions__version_id__patch', () => {
   const request = {};
   const data = {
-  "active": 1, 
-  "html_content": "<%body%>", 
-  "name": "updated_example_name", 
-  "plain_content": "<%body%>", 
+  "active": 1,
+  "html_content": "<%body%>",
+  "name": "updated_example_name",
+  "plain_content": "<%body%>",
   "subject": "<%subject%>"
 };
   request.body = data;
@@ -3864,7 +3864,7 @@ describe('test_templates__template_id__versions__version_id__activate_post', () 
 describe('test_tracking_settings_get', () => {
   const request = {};
   const queryParams = {
-  'limit': 1, 
+  'limit': 1,
   'offset': 1
 };
   request.qs = queryParams;
@@ -3924,11 +3924,11 @@ describe('test_tracking_settings_click_get', () => {
 describe('test_tracking_settings_google_analytics_patch', () => {
   const request = {};
   const data = {
-  "enabled": true, 
-  "utm_campaign": "website", 
-  "utm_content": "", 
-  "utm_medium": "email", 
-  "utm_source": "sendgrid.com", 
+  "enabled": true,
+  "utm_campaign": "website",
+  "utm_content": "",
+  "utm_medium": "email",
+  "utm_source": "sendgrid.com",
   "utm_term": ""
 };
   request.body = data;
@@ -4005,11 +4005,11 @@ describe('test_tracking_settings_open_get', () => {
 describe('test_tracking_settings_subscription_patch', () => {
   const request = {};
   const data = {
-  "enabled": true, 
-  "html_content": "html content", 
-  "landing": "landing page html", 
-  "plain_content": "text content", 
-  "replace": "replacement tag", 
+  "enabled": true,
+  "html_content": "html content",
+  "landing": "landing page html",
+  "plain_content": "text content",
+  "replace": "replacement tag",
   "url": "url"
 };
   request.body = data;
@@ -4120,7 +4120,7 @@ describe('test_user_email_get', () => {
 describe('test_user_password_put', () => {
   const request = {};
   const data = {
-  "new_password": "new_password", 
+  "new_password": "new_password",
   "old_password": "old_password"
 };
   request.body = data;
@@ -4142,8 +4142,8 @@ describe('test_user_password_put', () => {
 describe('test_user_profile_patch', () => {
   const request = {};
   const data = {
-  "city": "Orange", 
-  "first_name": "Example", 
+  "city": "Orange",
+  "first_name": "Example",
   "last_name": "User"
 };
   request.body = data;
@@ -4182,7 +4182,7 @@ describe('test_user_profile_get', () => {
 describe('test_user_scheduled_sends_post', () => {
   const request = {};
   const data = {
-  "batch_id": "YOUR_BATCH_ID", 
+  "batch_id": "YOUR_BATCH_ID",
   "status": "pause"
 };
   request.body = data;
@@ -4276,7 +4276,7 @@ describe('test_user_scheduled_sends__batch_id__get', () => {
 describe('test_user_settings_enforced_tls_patch', () => {
   const request = {};
   const data = {
-  "require_tls": true, 
+  "require_tls": true,
   "require_valid_cert": false
 };
   request.body = data;
@@ -4353,18 +4353,18 @@ describe('test_user_username_get', () => {
 describe('test_user_webhooks_event_settings_patch', () => {
   const request = {};
   const data = {
-  "bounce": true, 
-  "click": true, 
-  "deferred": true, 
-  "delivered": true, 
-  "dropped": true, 
-  "enabled": true, 
-  "group_resubscribe": true, 
-  "group_unsubscribe": true, 
-  "open": true, 
-  "processed": true, 
-  "spam_report": true, 
-  "unsubscribe": true, 
+  "bounce": true,
+  "click": true,
+  "deferred": true,
+  "delivered": true,
+  "dropped": true,
+  "enabled": true,
+  "group_resubscribe": true,
+  "group_unsubscribe": true,
+  "open": true,
+  "processed": true,
+  "spam_report": true,
+  "unsubscribe": true,
   "url": "url"
 };
   request.body = data;
@@ -4424,9 +4424,9 @@ describe('test_user_webhooks_event_test_post', () => {
 describe('test_user_webhooks_parse_settings_post', () => {
   const request = {};
   const data = {
-  "hostname": "myhostname.com", 
-  "send_raw": false, 
-  "spam_check": true, 
+  "hostname": "myhostname.com",
+  "send_raw": false,
+  "spam_check": true,
   "url": "http://email.myhosthame.com"
 };
   request.body = data;
@@ -4482,8 +4482,8 @@ describe('test_user_webhooks_parse_settings__hostname__delete', () => {
 describe('test_user_webhooks_parse_settings__hostname__patch', () => {
   const request = {};
   const data = {
-  "send_raw": true, 
-  "spam_check": false, 
+  "send_raw": true,
+  "spam_check": false,
   "url": "http://newdomain.com/parse"
 };
   request.body = data;
@@ -4522,10 +4522,10 @@ describe('test_user_webhooks_parse_settings__hostname__get', () => {
 describe('test_user_webhooks_parse_stats_get', () => {
   const request = {};
   const queryParams = {
-  'aggregated_by': 'day', 
-  'end_date': '2016-04-01', 
-  'limit': 'test_string', 
-  'offset': 'test_string', 
+  'aggregated_by': 'day',
+  'end_date': '2016-04-01',
+  'limit': 'test_string',
+  'offset': 'test_string',
   'start_date': '2016-01-01'
 };
   request.qs = queryParams;
@@ -4547,15 +4547,15 @@ describe('test_user_webhooks_parse_stats_get', () => {
 describe('test_whitelabel_domains_post', () => {
   const request = {};
   const data = {
-  "automatic_security": false, 
-  "custom_spf": true, 
-  "default": true, 
-  "domain": "example.com", 
+  "automatic_security": false,
+  "custom_spf": true,
+  "default": true,
+  "domain": "example.com",
   "ips": [
-    "192.168.1.1", 
+    "192.168.1.1",
     "192.168.1.2"
-  ], 
-  "subdomain": "news", 
+  ],
+  "subdomain": "news",
   "username": "john@example.com"
 };
   request.body = data;
@@ -4577,10 +4577,10 @@ describe('test_whitelabel_domains_post', () => {
 describe('test_whitelabel_domains_get', () => {
   const request = {};
   const queryParams = {
-  'domain': 'test_string', 
-  'exclude_subusers': 'true', 
-  'limit': 1, 
-  'offset': 1, 
+  'domain': 'test_string',
+  'exclude_subusers': 'true',
+  'limit': 1,
+  'offset': 1,
   'username': 'test_string'
 };
   request.qs = queryParams;
@@ -4670,7 +4670,7 @@ describe('test_whitelabel_domains__domain_id__delete', () => {
 describe('test_whitelabel_domains__domain_id__patch', () => {
   const request = {};
   const data = {
-  "custom_spf": true, 
+  "custom_spf": true,
   "default": false
 };
   request.body = data;
@@ -4785,8 +4785,8 @@ describe('test_whitelabel_domains__id__validate_post', () => {
 describe('test_whitelabel_ips_post', () => {
   const request = {};
   const data = {
-  "domain": "example.com", 
-  "ip": "192.168.1.1", 
+  "domain": "example.com",
+  "ip": "192.168.1.1",
   "subdomain": "email"
 };
   request.body = data;
@@ -4808,8 +4808,8 @@ describe('test_whitelabel_ips_post', () => {
 describe('test_whitelabel_ips_get', () => {
   const request = {};
   const queryParams = {
-  'ip': 'test_string', 
-  'limit': 1, 
+  'ip': 'test_string',
+  'limit': 1,
   'offset': 1
 };
   request.qs = queryParams;
@@ -4882,13 +4882,13 @@ describe('test_whitelabel_ips__id__validate_post', () => {
 describe('test_whitelabel_links_post', () => {
   const request = {};
   const data = {
-  "default": true, 
-  "domain": "example.com", 
+  "default": true,
+  "domain": "example.com",
   "subdomain": "mail"
 };
   request.body = data;
   const queryParams = {
-  'limit': 1, 
+  'limit': 1,
   'offset': 1
 };
   request.qs = queryParams;
@@ -5083,5 +5083,3 @@ describe('test_whitelabel_links__link_id__subuser_post', () => {
       });
   });
 });
-
-
