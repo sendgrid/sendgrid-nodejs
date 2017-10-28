@@ -4,7 +4,7 @@
  * Dependencies
  */
 const CommonMethods = require('./common-methods');
- const EmailAddress = require('./email-address');
+const EmailAddress = require('./email-address');
 const Personalization = require('./personalization');
 const toCamelCase = require('../helpers/to-camel-case');
 const toSnakeCase = require('../helpers/to-snake-case');
@@ -44,6 +44,36 @@ class Mail {
   }
 
   /**
+   * Add content and email details
+   * @param {*} text 
+   * @param {*} html 
+   * @param {*} personalizations 
+   * @param {*} isMultiple 
+   * @param {*} to 
+   * @param {*} cc 
+   * @param {*} bcc 
+   */
+  addContent(text, html, personalizations, isMultiple, to, cc, bcc) {
+    //Add contents from text/html properties
+    this.addTextContent(text);
+    this.addHtmlContent(html);
+    //Using "to" property for personalizations
+    if (personalizations) {
+      this.setPersonalizations(personalizations);
+    }
+
+    //Multiple individual emails
+    else if (isMultiple && Array.isArray(to)) {
+      to.forEach(to => this.addTo(to, cc, bcc));
+    }
+
+    //Single email (possibly with multiple recipients in the to field)
+    else {
+      this.addTo(to, cc, bcc);
+    }
+  }
+
+  /**
    * Map the data
    */
   mapDataAttributes(data) {
@@ -76,23 +106,7 @@ class Mail {
     this.setSubstitutions(substitutions);
     this.setSubstitutionWrappers(substitutionWrappers);
 
-    //Add contents from text/html properties
-    this.addTextContent(text);
-    this.addHtmlContent(html);
-    //Using "to" property for personalizations
-    if (personalizations) {
-      this.setPersonalizations(personalizations);
-    }
-
-    //Multiple individual emails
-    else if (isMultiple && Array.isArray(to)) {
-      to.forEach(to => this.addTo(to, cc, bcc));
-    }
-
-    //Single email (possibly with multiple recipients in the to field)
-    else {
-      this.addTo(to, cc, bcc);
-    }
+    this.addContent(text, html, personalizations, isMultiple, to, cc, bcc);
   }
 
   /**
