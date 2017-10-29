@@ -6,6 +6,7 @@ import splitNameEmail = require("@sendgrid/helpers/helpers/split-name-email");
 import toCamelCase = require("@sendgrid/helpers/helpers/to-camel-case");
 import toSnakeCase = require("@sendgrid/helpers/helpers/to-snake-case");
 import wrapSubstitutions = require("@sendgrid/helpers/helpers/wrap-substitutions");
+import removeNull = require("@sendgrid/helpers/helpers/remove-null");
 
 export {
   arrayToJSON,
@@ -16,4 +17,5 @@ export {
   toCamelCase,
   toSnakeCase,
   wrapSubstitutions,
+  removeNull,
 }
