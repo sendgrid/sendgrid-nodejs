@@ -286,32 +286,21 @@ class Personalization {
     const json = {to};
 
     //Arrays
-    if (Array.isArray(cc) && cc.length > 0) {
-      json.cc = cc;
-    }
-    if (Array.isArray(bcc) && bcc.length > 0) {
-      json.bcc = bcc;
-    }
+    json.cc = Array.isArray(cc) ? cc : [];
+    json.bcc = Array.isArray(bcc) ? bcc : [];
 
     //Objects
-    if (Object.keys(headers).length > 0) {
-      json.headers = headers;
-    }
+    json.headers = Object.keys(headers).length > 0 ? headers : {};
+
     if (Object.keys(substitutions).length > 0) {
       const [left, right] = substitutionWrappers;
       json.substitutions = wrapSubstitutions(substitutions, left, right);
     }
-    if (Object.keys(customArgs).length > 0) {
-      json.customArgs = customArgs;
-    }
 
-    //Simple properties
-    if (typeof subject !== 'undefined') {
-      json.subject = subject;
-    }
-    if (typeof sendAt !== 'undefined') {
-      json.sendAt = sendAt;
-    }
+    json.customArgs = Object.keys(customArgs).length > 0 ? customArgs : {};
+
+    json.subject = subject;
+    json.sendAt = sendAt;
 
     //Return as snake cased object
     return toSnakeCase(json, ['substitutions', 'customArgs', 'headers']);
