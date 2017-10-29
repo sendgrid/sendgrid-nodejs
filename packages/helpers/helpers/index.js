@@ -11,7 +11,6 @@ const splitNameEmail = require('./split-name-email');
 const toCamelCase = require('./to-camel-case');
 const toSnakeCase = require('./to-snake-case');
 const wrapSubstitutions = require('./wrap-substitutions');
-const removeNull = require('./remove-null');
 
 /**
  * Export
@@ -25,5 +24,4 @@ module.exports = {
   toCamelCase,
   toSnakeCase,
   wrapSubstitutions,
-  removeNull
 };

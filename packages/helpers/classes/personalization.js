@@ -7,7 +7,6 @@ const EmailAddress = require('./email-address');
 const toCamelCase = require('../helpers/to-camel-case');
 const toSnakeCase = require('../helpers/to-snake-case');
 const deepClone = require('../helpers/deep-clone');
-const removeNull = require('../helpers/remove-null');
 const wrapSubstitutions = require('../helpers/wrap-substitutions');
 
 /**
@@ -287,24 +286,24 @@ class Personalization {
     const json = {to};
 
     //Arrays
-    json.cc = Array.isArray(cc) && cc.length ? cc : null;
-    json.bcc = Array.isArray(bcc) && bcc.length ? bcc : null;
+    json.cc = Array.isArray(cc) ? cc : [];
+    json.bcc = Array.isArray(bcc) ? bcc : [];
 
     //Objects
-    json.headers = Object.keys(headers).length > 0 ? headers : null;
+    json.headers = Object.keys(headers).length > 0 ? headers : {};
 
     if (Object.keys(substitutions).length > 0) {
       const [left, right] = substitutionWrappers;
       json.substitutions = wrapSubstitutions(substitutions, left, right);
     }
 
-    json.customArgs = Object.keys(customArgs).length > 0 ? customArgs : null;
+    json.customArgs = Object.keys(customArgs).length > 0 ? customArgs : {};
 
-    json.subject = subject ? subject : null;
-    json.sendAt = sendAt ? sendAt : null;
+    json.subject = subject;
+    json.sendAt = sendAt;
 
     //Return as snake cased object
-    return toSnakeCase(removeNull(json), ['substitutions', 'customArgs', 'headers']);
+    return toSnakeCase(json, ['substitutions', 'customArgs', 'headers']);
   }
 }
 
