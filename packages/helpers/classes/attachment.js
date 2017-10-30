@@ -12,9 +12,9 @@ const deepClone = require('../helpers/deep-clone');
  */
 class Attachment {
 
-	/**
-	 * Constructor
-	 */
+  /**
+   * Constructor
+   */
   constructor(data) {
 
     //Create from data
@@ -114,9 +114,9 @@ class Attachment {
     this.contentId = contentId;
   }
 
-	/**
-	 * To JSON
-	 */
+  /**
+   * To JSON
+   */
   toJSON() {
 
     //Extract properties from self
