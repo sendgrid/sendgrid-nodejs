@@ -1,3 +1,4 @@
+const sendgrid = require('sendgrid');
 const ContactImporter = require('./importer');
 
 describe.only('test_contact_importer', function() {
@@ -38,8 +39,8 @@ describe.only('test_contact_importer', function() {
       console.log('SUCCESS batch', batch);
     });
     this.contactImporter.on('error', function(error, batch) {
-      console.log('SUCCESS error', error);
-      console.log('SUCCESS batch', batch);
+      console.log('ERROR error', error);
+      console.log('ERROR batch', batch);
     });
     this.contactImporter.on('drain', function() {
       expect(self.contactImporter._sendBatch).to.have.callCount(3);
