@@ -1,0 +1,6 @@
+{
+  "name": "Email Double Opt-In",
+  "description": "Double opt-in email automation",
+  "repository": "https://github.com/devchas/sendgrid_subscription_widget",
+  "keywords": ["email", "SendGrid"]
+}

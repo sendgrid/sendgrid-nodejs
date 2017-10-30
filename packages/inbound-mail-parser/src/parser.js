@@ -1,7 +1,7 @@
 'use strict';
 
 const fs = require('fs');
-const MailParser = require('mailparser').MailParser;
+const { MailParser } = require('mailparser');
 const {
   classes: {
     Attachment,
@@ -15,11 +15,12 @@ const {
  * @return {Object} A SendGrid Attachment object with the file data
  */
 const createAttachment = (file) => {
+  const {originalname, fileName, mimetype, contentType, content} = file;
   const attachment = new Attachment();
 
-  attachment.setFilename(file.originalname || file.fileName);
-  attachment.setType(file.mimetype || file.contentType);
-  attachment.setContent(file.content.toString('base64'));
+  attachment.setFilename(originalname || fileName);
+  attachment.setType(mimetype || contentType);
+  attachment.setContent(content.toString('base64'));
 
   return attachment;
 }
