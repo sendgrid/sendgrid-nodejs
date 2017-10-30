@@ -1,7 +1,7 @@
 'use strict';
 
 const fs = require('fs');
-const MailParser = require('mailparser').MailParser;
+const { MailParser } = require('mailparser');
 const {
   classes: {
     Attachment,
@@ -14,12 +14,12 @@ const {
  * @param {Object} file The file object returned by file system or parsed email
  * @return {Object} A SendGrid Attachment object with the file data
  */
-function createAttachment(file) {
-  var attachment = new Attachment();
+function createAttachment({originalname, fileName, mimetype, contentType, content}) {
+  const attachment = new Attachment();
 
-  attachment.setFilename(file.originalname || file.fileName);
-  attachment.setType(file.mimetype || file.contentType);
-  attachment.setContent(file.content.toString('base64'));
+  attachment.setFilename(originalname || fileName);
+  attachment.setType(mimetype || contentType);
+  attachment.setContent(content.toString('base64'));
 
   return attachment;
 }
@@ -31,8 +31,8 @@ function createAttachment(file) {
  * @param {Object} config inbound configuration object
  * @param {Object} request request object of the parse webhook payload
  */
-function Parse(config, request) {
-  this.keys = config.keys;
+function Parse({ keys }, request) {
+  this.keys = keys;
   this.request = request;
   this.payload = request.body || {};
   this.files = request.files || [];
@@ -43,10 +43,10 @@ function Parse(config, request) {
  * @return {Object} Valid key/values in the webhook payload
  */
 Parse.prototype.keyValues = function() {
-  var keyValues = {};
-  var key;
+  const keyValues = {};
+  let key;
 
-  for (var index in this.keys) {
+  for (const index in this.keys) {
     key = this.keys[index];
 
     if (this.payload[key]) {
@@ -70,8 +70,8 @@ Parse.prototype.hasRawEmail = function() {
  * @param {Function} callback Function which will receive the parsed email object as the sole argument
  */
 Parse.prototype.getRawEmail = function(callback) {
-  var mailparser = new MailParser();
-  var rawEmail = this.payload.email;
+  const mailparser = new MailParser();
+  const { email:rawEmail } = this.payload;
 
   if (!rawEmail) {
     return callback(null);
@@ -101,14 +101,12 @@ Parse.prototype.attachments = function(callback) {
  * @param {Function} callback Function which will receive an array, of attachments found, as the sole argument
  */
 Parse.prototype._getAttachmentsRaw = function(callback) {
-  this.getRawEmail(function(parsedEmail) {
+  this.getRawEmail(parsedEmail => {
     if (!parsedEmail || !parsedEmail.attachments) {
       return callback([]);
     }
 
-    var attachments = parsedEmail.attachments.map(function(file) {
-      return createAttachment(file);
-    });
+    const attachments = parsedEmail.attachments.map(file => createAttachment(file));
 
     callback(attachments);
   });
@@ -120,14 +118,15 @@ Parse.prototype._getAttachmentsRaw = function(callback) {
  * @param {Function} callback Function which will receive an array, of attachments found, as the sole argument
  */
 Parse.prototype._getAttachments = function(callback) {
-  var file;
-  var attachments = [];
+  let file;
+  const attachments = [];
 
-  for (var index in this.files) {
+  for (const index in this.files) {
     file = this.files[index];
+    const { path } = file;
 
-    if (fs.existsSync(file.path)) {
-      file.content = fs.readFileSync(file.path);
+    if (fs.existsSync(path)) {
+      file.content = fs.readFileSync(path);
       attachments.push(createAttachment(file));
     }
   }

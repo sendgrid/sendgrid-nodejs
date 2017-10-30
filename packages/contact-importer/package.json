@@ -30,7 +30,8 @@
     "async.queue": "^0.5.2",
     "bottleneck": "^1.12.0",
     "debug": "^2.2.0",
-    "lodash.chunk": "^4.2.0"
+    "lodash.chunk": "^4.2.0",
+    "sendgrid": "^5.2.3"
   },
   "tags": [
     "sendgrid"
