@@ -17,6 +17,9 @@
     "sendgrid": "^4.0.2",
     "sendgrid-rest": "^2.2.1"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "engines": {
     "node": "4.1.1"
   }
