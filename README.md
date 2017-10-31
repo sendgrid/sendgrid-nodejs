@@ -47,6 +47,8 @@ You will find a file in the root of the project called .env_sample. You can run 
 
 All updates to this library are documented in our [CHANGELOG](https://github.com/sendgrid/sendgrid-nodejs/blob/master/CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases). You may also subscribe to email [release notifications](https://dx.sendgrid.com/newsletter/nodejs) for releases and breaking changes.
 
+Join an experienced and passionate team that focuses on making an impact. Opportunities abound to grow the product - and grow your career! [Sr. Front End Engineer- MC](http://grnh.se/thy5pa1)
+
 <a name="roadmap"></a>
 # Roadmap
 
