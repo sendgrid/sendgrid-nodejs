@@ -50,6 +50,7 @@
   },
   "dependencies": {
     "chai": "^2.3.0",
+    "codecov": "^3.0.0",
     "esdoc": "^1.0.3",
     "esdoc-coverage-plugin": "^1.1.0",
     "esdoc-type-inference-plugin": "^1.0.1"
