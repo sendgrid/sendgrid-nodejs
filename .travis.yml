@@ -13,7 +13,7 @@ before_script:
 - yarn prism &
 - sleep 5 # give it some time to start
 install:
-- npm install -g codecov
+- yarn global add codecov
 script:
 - lerna bootstrap
 - yarn test:mail
