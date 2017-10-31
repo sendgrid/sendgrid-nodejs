@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [6.1.5] - 2017-10-30 ##
+### Updated
+- [Pull #542](https://github.com/sendgrid/sendgrid-nodejs/pull/542): Turn ContactImporter into ES6 class
+- Thanks to [Seth Etter](https://github.com/sethetter) for the PR!
+
 ## [6.1.4] - 2017-09-11 ##
 ### Updated
 - [Pull #445](https://github.com/sendgrid/sendgrid-nodejs/pull/445): Documentation Updates for better DX/UX
