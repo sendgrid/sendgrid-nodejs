@@ -12,6 +12,8 @@ before_script:
 - ./test/prism.sh
 - yarn prism &
 - sleep 5 # give it some time to start
+install:
+- npm install -g codecov
 script:
 - lerna bootstrap
 - yarn test:mail
@@ -20,6 +22,8 @@ script:
 - yarn test:typescript
 - yarn test:files.spec
 - yarn test:license
+- ./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
+- codecov
 notifications:
   hipchat:
     rooms:
