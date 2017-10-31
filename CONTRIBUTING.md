@@ -79,7 +79,7 @@ npm install
 
 First, get your free SendGrid account [here](https://sendgrid.com/free?source=sendgrid-nodejs).
 
-You will need to setup the following environment to use the SendGrid examples in the README.md, USAGE.md and USE_CASES.md files:
+You will need to setup the following environment to use the SendGrid examples in the [README.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/README.md), [USAGE.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/USAGE.md) and USE_CASES.md files:
 
 ```bash
 echo "export SENDGRID_API_KEY='YOUR_API_KEY'" > sendgrid.env
