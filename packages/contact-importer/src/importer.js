@@ -44,7 +44,19 @@ const ContactImporter = module.exports = function(sg, options = {}) {
         }
         return this._notify(null, JSON.parse(body), batch);
       });
+  }
+
+  /**
+  * Emit the result of processing a batch.
+  *
+  * @param {Object} error
+  * @param {Object} result
+  */
+  _notify (error, result, batch) {
+    if (error) {
+      return this.emit('error', error, batch);
     }
+    return this.emit('success', result, batch);
   };
 
   // Emit an event when the queue is drained.
@@ -123,17 +135,7 @@ ContactImporter.prototype._sendBatch = function(context, data, callback) {
       setTimeout(() => context.throttle.incrementReservoir(1), context.rateLimitPeriod);
       return callback(error);
     });
-};
-
-/**
- * Emit the result of processing a batch.
- *
- * @param {Object} error
- * @param {Object} result
- */
-ContactImporter.prototype._notify = function(error, result, batch) {
-  if (error) {
-    return this.emit('error', error, batch);
   }
-  return this.emit('success', result, batch);
-};
+}
+
+module.exports = ContactImporter;

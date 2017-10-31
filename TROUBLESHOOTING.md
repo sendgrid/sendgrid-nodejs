@@ -64,7 +64,7 @@ Click the "Clone or download" green button in [GitHub](https://github.com/sendgr
 <a name="error"></a>
 ## Error Messages
 
-To read the error message returned by SendGrid's API, please see [this example](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/mail/USE_CASES.md#successfailureerrors).
+To read the error message returned by SendGrid's API, please see [this example](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/mail/USE_CASES.md#success-failure-errors).
 
 <a name="versions"></a>
 ## Versions
