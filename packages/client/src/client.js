@@ -54,7 +54,7 @@ class Client {
   /**
    * Set user impersonation
    */
-  impersonateSubuser(subuser) {
+  setImpersonateSubuser(subuser) {
     this.impersonateSubuser = subuser;
   }
 

@@ -11,7 +11,7 @@ declare class Client {
   /**
    * Set client requests to impersonate a subuser
    */
-  impersonateSubuser(subuser: string): void;
+  setImpersonateSubuser(subuser: string): void;
 
   /**
    * Set default header

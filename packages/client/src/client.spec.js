@@ -11,7 +11,7 @@ describe('test_client_request_headers', () => {
 };
   const sgClient = require('./client');
   sgClient.setApiKey(headers.apiKey);
-  sgClient.impersonateSubuser(headers.impersonateSubuser);
+  sgClient.setImpersonateSubuser(headers.impersonateSubuser);
   it('should set the API Key', () => {
     expect(sgClient.apiKey).to.equal(headers.apiKey);
   });
