@@ -31,9 +31,9 @@ There are a few ways to contribute, which we'll enumerate below:
 
 If you'd like to make a feature request, please read this section.
 
-The GitHub issue tracker is the preferred channel for library feature requests, but please respect the following restrictions:
+The GitHub [issue tracker](https://github.com/sendgrid/sendgrid-nodejs/issues) is the preferred channel for library feature requests, but please respect the following restrictions:
 
-- Please **search for existing issues** in order to ensure we don't have duplicate bugs/feature requests.
+- Please [**search for existing issues**](https://github.com/search?utf8=%E2%9C%93&q=repo%3Asendgrid%2Fsendgrid-nodejs&type=Issues) in order to ensure we don't have duplicate bugs/feature requests.
 - Please be respectful and considerate of others when commenting on issues
 
 <a name="submit-a-bug-report"></a>
@@ -45,7 +45,7 @@ A software bug is a demonstrable issue in the code base. In order for us to diag
 
 Before you decide to create a new issue, please try the following:
 
-1. Check the Github issues tab if the identified issue has already been reported, if so, please add a +1 to the existing post.
+1. [Check the Github issues tab](https://github.com/sendgrid/sendgrid-nodejs/issues) if the identified issue has already been reported, if so, please add a +1 to the existing post.
 2. Update to the latest version of this code and check if issue has already been fixed
 3. Copy and fill in the Bug Report Template we have provided below
 
@@ -79,7 +79,7 @@ npm install
 
 First, get your free SendGrid account [here](https://sendgrid.com/free?source=sendgrid-nodejs).
 
-You will need to setup the following environment to use the SendGrid examples in the README.md, USAGE.md and USE_CASES.md files:
+You will need to setup the following environment to use the SendGrid examples in the [README.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/README.md, [USAGE.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/USAGE.MD) and [USE_CASES.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/USE_CASES.md) files:
 
 ```bash
 echo "export SENDGRID_API_KEY='YOUR_API_KEY'" > sendgrid.env
@@ -186,4 +186,4 @@ Please run your code through:
 7. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/)
     with a clear title and description against the `master` branch. All tests must be passing before we will review the PR.
 
-If you have any additional questions, please feel free to [email](mailto:dx@sendgrid.com) us or create an issue in this repo.
+If you have any additional questions, please feel free to [email](mailto:dx@sendgrid.com) us or [create an issue](#submit-a-bug-report) in this repo.
