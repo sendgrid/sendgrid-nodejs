@@ -4,6 +4,22 @@ const baseUrl = 'http://localhost:4010/';
 /**
  * Tests
  */
+describe('test_client_request_headers', () => {
+  const headers = {
+  'apiKey': 'SendGrid API Key',
+  'impersonateSubuser': 'abcxyz@this.is.a.test.subuser',
+};
+  const sgClient = require('./client');
+  sgClient.setApiKey(headers.apiKey);
+  sgClient.impersonateSubuser(headers.impersonateSubuser);
+  it('should set the API Key', () => {
+    expect(sgClient.apiKey).to.equal(headers.apiKey);
+  });
+  it('should set the imperonate subuser header', () => {
+    expect(sgClient.impersonateSubuser).to.equal(headers.impersonateSubuser);
+  });
+});
+
 describe('test_access_settings_activity_get', () => {
   const request = {};
   const queryParams = {

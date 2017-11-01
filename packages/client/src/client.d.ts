@@ -9,6 +9,11 @@ declare class Client {
   setApiKey(apiKey: string): void;
 
   /**
+   * Set client requests to impersonate a subuser
+   */
+  impersonateSubuser(subuser: string): void;
+
+  /**
    * Set default header
    */
   setDefaultHeader(key: string, value: string): this;

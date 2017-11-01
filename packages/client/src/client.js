@@ -26,6 +26,7 @@ class Client {
 
     //API key
     this.apiKey = '';
+    this.impersonateSubuser = '';
 
     //Default headers
     this.defaultHeaders = {
@@ -48,6 +49,13 @@ class Client {
    */
   setApiKey(apiKey) {
     this.apiKey = apiKey;
+  }
+
+  /**
+   * Set user impersonation
+   */
+  impersonateSubuser(subuser) {
+    this.impersonateSubuser = subuser;
   }
 
   /**
@@ -77,6 +85,10 @@ class Client {
     //Add API key, but don't overwrite if header already set
     if (typeof headers.Authorization === 'undefined' && this.apiKey) {
       headers.Authorization = 'Bearer ' + this.apiKey;
+    }
+
+    if (this.impersonateSubuser) {
+      headers['On-Behalf-Of'] = this.impersonateSubuser;
     }
 
     //Return
