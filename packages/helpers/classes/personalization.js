@@ -275,42 +275,25 @@ class Personalization {
    * To JSON
    */
   toJSON() {
-
     //Get data from self
-    const {
-      to, cc, bcc, subject, headers, customArgs, sendAt,
-      substitutions, substitutionWrappers,
-    } = this;
+    const {to, cc, bcc, subject, headers, customArgs, sendAt, substitutions, substitutionWrappers} = this;
 
     //Initialize with mandatory values
     const json = {to};
 
     //Arrays
-    if (Array.isArray(cc) && cc.length > 0) {
-      json.cc = cc;
-    }
-    if (Array.isArray(bcc) && bcc.length > 0) {
-      json.bcc = bcc;
-    }
-
+    json.cc = Array.isArray(cc) && cc.length > 0 ? cc : null;
+    json.bcc = Array.isArray(bcc) && bcc.length > 0 ? bcc : null;
     //Objects
-    if (Object.keys(headers).length > 0) {
-      json.headers = headers;
-    }
+    json.headers = Object.keys(headers).length > 0 ? headers : null;
+    json.customArgs = Object.keys(customArgs).length > 0 ? customArgs : null;
+    //Simple properties
+    json.subject = typeof subject !== 'undefined' ? subject : null;
+    json.sendAt = typeof sendAt !== 'undefined' ? sendAt : null;
+
     if (Object.keys(substitutions).length > 0) {
       const [left, right] = substitutionWrappers;
       json.substitutions = wrapSubstitutions(substitutions, left, right);
-    }
-    if (Object.keys(customArgs).length > 0) {
-      json.customArgs = customArgs;
-    }
-
-    //Simple properties
-    if (typeof subject !== 'undefined') {
-      json.subject = subject;
-    }
-    if (typeof sendAt !== 'undefined') {
-      json.sendAt = sendAt;
     }
 
     //Return as snake cased object
