@@ -1,9 +1,9 @@
 'use strict';
 const baseUrl = 'http://localhost:4010/';
 
-/**
- * Tests
- */
+
+ // Tests
+ 
 describe('test_access_settings_activity_get', () => {
   const request = {};
   const queryParams = {
