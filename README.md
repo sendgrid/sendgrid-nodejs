@@ -1,10 +1,15 @@
+![SendGrid Logo](https://uiux.s3.amazonaws.com/2016-logos/email-logo%402x.png)
+
 [![BuildStatus](https://travis-ci.org/sendgrid/sendgrid-nodejs.svg?branch=master)](https://travis-ci.org/sendgrid/sendgrid-nodejs)
 [![npm version](https://badge.fury.io/js/%40sendgrid%2Fclient.svg)](https://www.npmjs.com/org/sendgrid)
 [![Email Notifications Badge](https://dx.sendgrid.com/badge/nodejs)](https://dx.sendgrid.com/newsletter/nodejs)
+[![Twitter Follow](https://img.shields.io/twitter/follow/sendgrid.svg?style=social&label=Follow)](https://twitter.com/sendgrid)
+[![GitHub contributors](https://img.shields.io/github/contributors/sendgrid/sendgrid-nodejs.svg)](https://github.com/sendgrid/sendgrid-nodejs/graphs/contributors)
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/sendgrid/sendgrid-nodejs/blob/master/LICENSE.md)
 
 **This library allows you to quickly and easily use the SendGrid Web API v3 via Node.js.**
 
-We want this library to be community driven, and SendGrid led. We need your help to realize this goal. To help make sure we are building the right things in the right order, we ask that you create [issues](https://github.com/sendgrid/sendgrid-nodejs/issues) and [pull requests](https://github.com/sendgrid/sendgrid-nodejs/blob/master/CONTRIBUTING.md) or simply upvote or comment on existing issues or pull requests.
+We want this library to be community-driven, and SendGrid led. We need your help to realize this goal. To help make sure we are building the right things in the right order, we ask that you create [issues](https://github.com/sendgrid/sendgrid-nodejs/issues) and [pull requests](https://github.com/sendgrid/sendgrid-nodejs/blob/master/CONTRIBUTING.md) or simply upvote or comment on existing issues or pull requests.
 
 For updates to this library, see our [CHANGELOG](https://github.com/sendgrid/sendgrid-nodejs/blob/master/CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases). 
 
@@ -15,17 +20,21 @@ We appreciate your continued support, thank you!
 # Table of Contents
 
 * [Introduction - Please Read First](#introduction)
-* [Additional Documentation](#usage)
 * [Announcements](#announcements)
 * [Roadmap](#roadmap)
 * [How to Contribute](#contribute)
 * [Troubleshooting](#troubleshooting)
 * [About](#about)
+* [License](#license)
 
 <a name="introduction"></a>
-# Introduction
+# Introduction - Please Read First
 
-This library is broken up into several packages as a monorepo so that you only need to install the packages necessary for your use case. This README contains information pertaining to all packages.
+This library is broken up into several packages as a monorepo so that you only need to install the packages necessary for your use case. This README contains information pertaining to all packages. For examples on how to get started quickly, head over to the READMEs of each individual package (linked and described below), which includes detailed examples.
+
+## .env file
+
+You will find a file in the root of the project called .env_sample. You can run `cp .env_sample .env` or manually rename the file to `.env`; be sure to add your [API key](https://sendgrid.com/docs/User_Guide/Settings/api_keys.html#-Creating-an-API-key).
 
 * [@sendgrid/mail](https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages/mail) - if you just want to send email
 * [@sendgrid/client](https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages/client) - to use all other [SendGrid v3 Web API endpoints](https://sendgrid.com/docs/API_Reference/api_v3.html)
@@ -37,6 +46,8 @@ This library is broken up into several packages as a monorepo so that you only n
 # Announcements
 
 All updates to this library are documented in our [CHANGELOG](https://github.com/sendgrid/sendgrid-nodejs/blob/master/CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases). You may also subscribe to email [release notifications](https://dx.sendgrid.com/newsletter/nodejs) for releases and breaking changes.
+
+Join an experienced and passionate team that focuses on making an impact. Opportunities abound to grow the product - and grow your career! [Sr. Front End Engineer- MC](http://grnh.se/thy5pa1)
 
 <a name="roadmap"></a>
 # Roadmap
@@ -64,4 +75,6 @@ sendgrid-nodejs is guided and supported by the SendGrid [Developer Experience Te
 
 sendgrid-nodejs is maintained and funded by SendGrid, Inc. The names and logos for sendgrid-nodejs are trademarks of SendGrid, Inc.
 
-![SendGrid Logo](https://uiux.s3.amazonaws.com/2016-logos/email-logo%402x.png)
+<a name="license"></a>
+# License
+[The MIT License (MIT)](https://github.com/sendgrid/sendgrid-nodejs/blob/master/LICENSE.md)

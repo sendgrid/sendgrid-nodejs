@@ -129,6 +129,11 @@ class Client {
       });
     });
 
+    // Throw and error incase function not passed
+    if (cb && typeof cb !== 'function') {
+      throw new Error('Callback passed is not a function.');
+    }
+
     //Execute callback if provided
     if (cb) {
       promise
