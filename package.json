@@ -35,6 +35,7 @@
     "test:contact": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/contact-importer/**/*.spec.js\"",
     "test:license": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha license.spec.js",
     "test:typescript": "tsc",
+    "test:files.spec": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha test/files.spec.js",
     "test": "npm run test:all -s",
     "coverage": "open -a \"Google Chrome\" ./coverage/lcov-report/index.html"
   },
