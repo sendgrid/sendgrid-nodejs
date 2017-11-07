@@ -1,16 +1,20 @@
-var assert      = require('assert');
-var should      = require('should');
-var fs          = require('fs');
-
+var fs = require('fs');
+var assert = require('assert');
 describe('nodemailer-sendgrid-transport repo', function() {
+
+  /*
+  * Uncomment when a docker file is added
   it('should have ./Docker or docker/Docker file', function() {
     assert(fileExists('Docker') || fileExists('docker/Docker'));
   });
+  */
 
+  /*
+  * Uncomment when a docker compose yml is added
   it('should have ./docker-compose.yml or ./docker/docker-compose.yml file', function() {
     assert(fileExists('docker-compose.yml') || fileExists('docker/docker-compose.yml'));
   });
-
+  */
   it('should have ./.env_sample file', function() {
     assert(fileExists('.env_sample'));
   });
@@ -63,9 +67,13 @@ describe('nodemailer-sendgrid-transport repo', function() {
     assert(fileExists('USAGE.md'));
   });
 
+
+  /*
+  * Uncomment when a USE_CASES.md file is added
   it('should have ./USE_CASES.md file', function() {
     assert(fileExists('USE_CASES.md'));
   });
+  */
 
   function fileExists(filepath) {
     try {
