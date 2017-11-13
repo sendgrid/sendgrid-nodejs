@@ -20,8 +20,8 @@ script:
 - yarn test:typescript
 - yarn test:files.spec
 - yarn test:license
-- ./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
-- ./node_modules/.bin/codecov
+- yarn test:coverage
+- yarn codecov
 notifications:
   hipchat:
     rooms:
