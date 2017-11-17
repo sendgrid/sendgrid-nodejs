@@ -19,6 +19,7 @@
     "mocha": "^3.4.2",
     "mocha-clean": "^1.0.0",
     "mocha-sinon": "^2.0.0",
+    "should": "^13.1.3",
     "sinon": "^2.3.2",
     "sinon-chai": "^2.10.0",
     "typescript": "~2.4.2"
@@ -34,6 +35,7 @@
     "test:inbound": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/inbound-mail-parser/**/*.spec.js\"",
     "test:contact": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/contact-importer/**/*.spec.js\"",
     "test:license": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha license.spec.js",
+    "test:files": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha test/files.spec.js",
     "test:typescript": "tsc",
     "test": "npm run test:all -s",
     "coverage": "open -a \"Google Chrome\" ./coverage/lcov-report/index.html"

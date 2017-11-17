@@ -18,6 +18,7 @@ script:
 - yarn test:client
 - yarn test:helpers
 - yarn test:typescript
+- yarn test:files
 - yarn test:license
 notifications:
   hipchat:
