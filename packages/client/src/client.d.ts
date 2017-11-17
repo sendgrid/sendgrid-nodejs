@@ -34,4 +34,5 @@ declare class Client {
   request(data: ClientRequest, cb?: (err: ResponseError, response: [ClientResponse, any]) => void): Promise<[ClientResponse, any]>;
 }
 
-export = new Client()
+declare const client: Client
+export = client
