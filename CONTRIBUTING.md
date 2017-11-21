@@ -6,6 +6,7 @@ Hello! Thank you for choosing to help contribute to one of the SendGrid open sou
 - [Submit a Bug Report](#submit-a-bug-report)
 - [Improvements to the Codebase](#improvements-to-the-codebase)
 - [Understanding the Code Base](#understanding-the-codebase)
+- [Codebase Overview](#codebase-overview)
 - [Testing](#testing)
 - [Style Guidelines & Naming Conventions](#style-guidelines-and-naming-conventions)
 - [Creating a Pull Request](#creating-a-pull-request)
@@ -107,6 +108,33 @@ node example.js
 ## Understanding the Code Base
 
 This repo is organized as a monorepo with the packages residing in the `./packages` directory. Please see the root [README.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/README.md) for details.
+
+<a name="codebase-overview"></a>
+## Codebase Overview
+
+This repo is subdivided in 6 main [packages](https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages). Each package has its own dependencies (internal or external) and its own source code in the `src` folder. Each package also has its isolated ReadME files, use cases and usage.md files.
+
+To install a particular packages' dependencies.
+```bash
+cd packages/{NAME}
+npm install or yarn install
+```
+#### Package List
+
+**1. Client**
+This is a  wrapper written on top of the ```request``` module to suite the sendgrid module. All requests made to the sendgrid API are invoked by the `request` function in the `client.js`.
+
+Type declarations: client.d.ts
+Test Cases: client.spec.js
+
+**2. Mail**
+This module exposes the `send` function which send mails via the sdk. This module can be a good starting point to read the source code. 
+
+Type declarations: mail.d.ts
+Test Cases: mail.spec.js
+
+**3. Helpers**
+These are a set of utility functions which all the modules use. Some of them are very basic functions and can be an easy starting point for reading the source code.
 
 <a name="testing"></a>
 ## Testing
