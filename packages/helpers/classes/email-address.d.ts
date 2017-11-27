@@ -8,17 +8,17 @@ export default class EmailAddress {
   /**
    * From data
    */
-  fromData(data: EmailData);
+  fromData(data: EmailData): void;
 
   /**
    * Set name
    */
-  setName(name: string);
+  setName(name: string): void;
 
   /**
    * Set email (mandatory)
    */
-  setEmail(email: string);
+  setEmail(email: string): void;
 
   toJSON(): EmailJSON;
 }
