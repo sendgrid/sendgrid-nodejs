@@ -16,7 +16,7 @@ This documentation provides examples for specific email use cases. Please [open 
   * [Specifying Custom Headers](#custom-headers)
   * [Specifying Categories](#categories)
   * [Kitchen Sink - an example with all settings used](#kitchensink)
-* [Deploy a simple app on Google App Engine with Node.js](#gae)
+* [Deploy a Simple App on Google App Engine with Node.js](#gae)
 * [How to Setup a Domain Whitelabel](#domain-white-label)
 * [How to View Email Statistics](#email-stats)
 
@@ -483,7 +483,7 @@ yarn add @sendgrid/mail
 yarn add express
 ```
 
-package.json - that `node app.js is` used to start the application
+package.json - that `node app.js` is used to start the application
 
 ```json
 "scripts": {
