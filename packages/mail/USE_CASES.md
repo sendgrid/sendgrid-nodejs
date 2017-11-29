@@ -463,7 +463,7 @@ sgMail
 <a name="gae"></a>
 ## Deploy a simple app on Google App Engine with Node.js
 
-Before you begin, setup google app engine and install required packages by following [getting started](https://cloud.google.com/nodejs/getting-started/hello-world) guide
+Before you begin, setup google app engine and install required packages by following [getting started](https://cloud.google.com/nodejs/getting-started/hello-world) guide.
 
 #### Setup your environment variables
 Include your [SENDGRID_API_KEY](https://app.sendgrid.com/settings/api_keys) in `app.yaml`, for example: 
@@ -476,14 +476,14 @@ env_variables:
 
 #### Install necessary packages, and update package.json
 
-for example:
+For example:
 
 ```
 yarn add @sendgrid/mail
 yarn add express
 ```
 
-package.json - that `node app.js` is used to start the application
+Edit `package.json` as follows:
 
 ```json
 "scripts": {
@@ -492,7 +492,7 @@ package.json - that `node app.js` is used to start the application
 },
 ```
 
-#### Implement the Hello Email app
+#### Implement the Hello Email app.js file
 
 ```js
 const express = require('express');
@@ -546,7 +546,7 @@ app.listen(PORT, () => {
  
  ```curl
  curl -X GET \
-  'http://your_project_id.appspot.com/send?to=to%40host.com&from=from%40host.com' \
+  'http://your_project_id.appspot.com/send?to=to%40example.com&from=from%40example.com' \
   -H 'cache-control: no-cache'
  ```
  
