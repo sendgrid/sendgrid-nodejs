@@ -461,7 +461,7 @@ sgMail
 ```
 
 <a name="gae"></a>
-## Deploy a simple app on Google App Engine with Node.js
+## Deploy a Simple App on Google App Engine with Node.js
 
 Before you begin, setup google app engine and install required packages by following [getting started](https://cloud.google.com/nodejs/getting-started/hello-world) guide.
 
