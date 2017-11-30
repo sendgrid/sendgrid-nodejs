@@ -535,10 +535,6 @@ app.listen(PORT, () => {
    ```
    gcloud app deploy
    ```
-2. Launch your browser and view the app at http://YOUR_PROJECT_ID.appspot.com, by running the following command:
-   ```
-   gcloud app browse
-   ```
   
  #### Send email 
  
