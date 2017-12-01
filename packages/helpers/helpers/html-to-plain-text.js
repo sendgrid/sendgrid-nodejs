@@ -7,7 +7,7 @@
 
 
 module.exports = function convertHTML2PlainString(html) {
-  let text = html.replace(/(<([^>]+)>)/g, " ");
+  let text = html.replace(/(<([^>]+)>)/g, "");
   text = text.replace(/\s+/g,' ')
   return text
 }
