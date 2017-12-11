@@ -1,7 +1,7 @@
 const sendgrid = require('sendgrid');
 const ContactImporter = require('./importer');
 
-describe.only('test_contact_importer', function() {
+describe('test_contact_importer', function() {
   beforeEach(function() {
     // Create a new SendGrid instance.
     const API_KEY = process.env.API_KEY;
