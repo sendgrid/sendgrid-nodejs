@@ -10,8 +10,8 @@ const convertHTML2PlainString = require('./html-to-plain-text');
  */
 describe('convertHTML2PlainString', function() {
 
-  //Test string with one html tag
-  const html1 = '<p>Hello world</p>';
+    //Test string with one html tag
+    const html1 = '<p>Hello world</p>';
   
     //Test string with nested html tags
     const html2 = '<div><p>Hello <b>World!</b></p></div>';
