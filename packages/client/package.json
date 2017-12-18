@@ -1,7 +1,7 @@
 {
   "name": "@naturalcycles/sendgrid-client",
   "description": "SendGrid NodeJS API client",
-  "version": "6.2.2",
+  "version": "6.2.4",
   "author": "SendGrid <dx@sendgrid.com> (sendgrid.com)",
   "contributors": [
     "Kyle Partridge <kyle.partridge@sendgrid.com>",
