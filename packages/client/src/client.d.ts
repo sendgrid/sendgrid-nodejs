@@ -1,6 +1,6 @@
-import {ResponseError} from "@naturalcycles/sendgrid-helpers/classes";
-import {ClientRequest} from "@naturalcycles/sendgrid-client/src/request";
-import {ClientResponse} from "@naturalcycles/sendgrid-client/src/response";
+import { ResponseError } from "@naturalcycles/sendgrid-helpers/classes";
+import { ClientRequest } from "@naturalcycles/sendgrid-client/src/request";
+import { ClientResponse } from "@naturalcycles/sendgrid-client/src/response";
 
 declare class Client {
   /**
@@ -16,7 +16,10 @@ declare class Client {
   /**
    * Set default request
    */
-  setDefaultRequest<K extends keyof ClientRequest>(key: K, value: ClientRequest[K]): this;
+  setDefaultRequest<K extends keyof ClientRequest>(
+    key: K,
+    value: ClientRequest[K]
+  ): this;
 
   /**
    * Create headers for request
@@ -31,7 +34,11 @@ declare class Client {
   /**
    * Do a request
    */
-  request(data: ClientRequest, cb?: (err: ResponseError, response: [ClientResponse, any]) => void): Promise<[ClientResponse, any]>;
+  request(
+    data: ClientRequest,
+    cb?: (err: ResponseError, response: [ClientResponse, any]) => void
+  ): Promise<[ClientResponse, any]>;
 }
 
-export = new Client()
+declare const _default: Client;
+export = _default;
