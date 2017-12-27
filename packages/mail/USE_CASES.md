@@ -7,6 +7,8 @@ This documentation provides examples for specific email use cases. Please [open 
 * [Send Multiple Emails to Multiple Recipients](#multipleemailsmultiplerecipients)
 * [CC, BCC and Reply To](#ccbccreplyto)
 * [Handling Success/Failure/Errors](#successfailureerrors)
+* [Deploy](#deploy)
+  * [Deploy to Heroku](#deploy_heroku)
 * [Advanced Usage](#advanced)
   * [Transactional Templates](#transactional_templates)
   * [Attachments](#attachments)
@@ -178,6 +180,21 @@ sgMail
     }
   });
 ```
+<a name="deploy"></a>
+# Deploy
+
+<a name="deploy_heroku"></a>
+## Deploy SendGrid mail to Heroku
+
+We are thrilled you are ready to deploy your SendGridified app! Here are step by step instructions (assuming you have a NodeJS app running on localhost tracked by git):
+
+- `heroku create` (you may need to have your `heroku login` ready)
+- `git push heroku master`
+- `heroku ps:scale web=1`
+- `heroku config:set SENDGRID_API_KEY=SG.YOUR.OWN-API_KEY-HERE` (replace `SG.YOUR.OWN-API_KEY-HERE` with your own [api key from sendgrid](https://app.sendgrid.com/settings/api_keys)
+
+If you run into any other non SendGrid related issues, don't forget to read through [Heroku's deployment documentation](https://devcenter.heroku.com/articles/getting-started-with-nodejs).
+
 
 <a name="advanced"></a>
 # Advanced Usage
