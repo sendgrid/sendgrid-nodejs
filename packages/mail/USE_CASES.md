@@ -2,11 +2,11 @@ This documentation provides examples for specific email use cases. Please [open 
 
 # Table of Contents
 
-* [Send a Single Email to a Single Recipient](#singleemailsinglerecipient)
-* [Send a Single Email to Multiple Recipients](#singleemailmultiplerecipients)
-* [Send Multiple Emails to Multiple Recipients](#multipleemailsmultiplerecipients)
-* [CC, BCC and Reply To](#ccbccreplyto)
-* [Handling Success/Failure/Errors](#successfailureerrors)
+* [Send a Single Email to a Single Recipient](#single-email-multiple-recipients)
+* [Send a Single Email to Multiple Recipients](#single-email-multiple-recipients)
+* [Send Multiple Emails to Multiple Recipients](#multiple-emails-multiple-recipients)
+* [CC, BCC and Reply To](#cc-bcc-reply-to)
+* [Handling Success/Failure/Errors](#success-failure-errors)
 * [Advanced Usage](#advanced)
   * [Transactional Templates](#transactional-templates)
   * [Attachments](#attachments)
@@ -17,7 +17,7 @@ This documentation provides examples for specific email use cases. Please [open 
   * [Specifying Categories](#categories)
   * [Kitchen Sink - an example with all settings used](#kitchensink)
 * [Deploy a Simple App on Google App Engine with Node.js](#gae)
-* [Deploy a Simple App on Heroku with Node.js](#deploy_heroku)
+* [Deploy a Simple App on Heroku with Node.js](#heroku)
 * [How to Setup a Domain Whitelabel](#domain-white-label)
 * [How to View Email Statistics](#email-stats)
 
@@ -182,21 +182,6 @@ sgMail
     }
   });
 ```
-<a name="deploy"></a>
-# Deploy
-
-<a name="deploy_heroku"></a>
-## Deploy SendGrid mail to Heroku
-
-We are thrilled you are ready to deploy your SendGridified app! Here are step by step instructions (assuming you have a NodeJS app running on localhost tracked by git):
-
-- `heroku create` (you may need to have your `heroku login` ready)
-- `git push heroku master`
-- `heroku ps:scale web=1`
-- `heroku config:set SENDGRID_API_KEY=SG.YOUR.OWN-API_KEY-HERE` (replace `SG.YOUR.OWN-API_KEY-HERE` with your own [api key from sendgrid](https://app.sendgrid.com/settings/api_keys)
-
-If you run into any other non SendGrid related issues, don't forget to read through [Heroku's deployment documentation](https://devcenter.heroku.com/articles/getting-started-with-nodejs).
-
 
 <a name="advanced"></a>
 # Advanced Usage
@@ -561,6 +546,18 @@ app.listen(PORT, () => {
   'http://your_project_id.appspot.com/send?to=to%40example.com&from=from%40example.com' \
   -H 'cache-control: no-cache'
  ```
+
+<a name="deploy_heroku"></a>
+# Deploy a Simple App on Heroku with Node.js
+
+Here are step by step instructions to deploy your Node.js app to Heroku (assuming you have a NodeJS app running on localhost tracked by git):
+
+- `heroku create` (you may need to have your `heroku login` ready)
+- `git push heroku master`
+- `heroku ps:scale web=1`
+- `heroku config:set SENDGRID_API_KEY=SG.YOUR.OWN-API_KEY-HERE` (replace `SG.YOUR.OWN-API_KEY-HERE` with your own [api key from sendgrid](https://app.sendgrid.com/settings/api_keys)
+
+If you run into any other non SendGrid related issues, don't forget to read through [Heroku's deployment documentation](https://devcenter.heroku.com/articles/getting-started-with-nodejs).
  
 <a name="domain-white-label"></a>
 # How to Setup a Domain Whitelabel
