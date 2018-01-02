@@ -7,19 +7,21 @@ This documentation provides examples for specific email use cases. Please [open 
 * [Send Multiple Emails to Multiple Recipients](#multipleemailsmultiplerecipients)
 * [CC, BCC and Reply To](#ccbccreplyto)
 * [Handling Success/Failure/Errors](#successfailureerrors)
-* [Deploy](#deploy)
-  * [Deploy to Heroku](#deploy_heroku)
 * [Advanced Usage](#advanced)
-  * [Transactional Templates](#transactional_templates)
+  * [Transactional Templates](#transactional-templates)
   * [Attachments](#attachments)
   * [Customization Per Recipient](#customization)
-  * [Manually Providing Content](#manualcontent)
-  * [Specifying Time to Send At](#timetosend)
-  * [Specifying Custom Headers](#customheaders)
+  * [Manually Providing Content](#manual-content)
+  * [Specifying Time to Send At](#time-to-send)
+  * [Specifying Custom Headers](#custom-headers)
   * [Specifying Categories](#categories)
   * [Kitchen Sink - an example with all settings used](#kitchensink)
+* [Deploy a Simple App on Google App Engine with Node.js](#gae)
+* [Deploy a Simple App on Heroku with Node.js](#deploy_heroku)
+* [How to Setup a Domain Whitelabel](#domain-white-label)
+* [How to View Email Statistics](#email-stats)
 
-<a name="singleemailsinglerecipient"></a>
+<a name="single-email-single-recipient"></a>
 # Send a Single Email to a Single Recipient
 
 ```js
@@ -35,7 +37,7 @@ const msg = {
 sgMail.send(msg);
 ```
 
-<a name="singleemailmultiplerecipients"></a>
+<a name="single-email-multiple-recipients"></a>
 # Send a Single Email to Multiple Recipients
 
 The `to` field can contain an array of recipients, which will send a single email with all of the recipients in the `to` field. The recipients will be able to see each other:
@@ -70,7 +72,7 @@ sgMail.sendMultiple(msg);
 
 Note that `sendMultiple(msg)` is a convenience shortcut for `send(msg, true)`, and alternatively you can also set the `isMultiple` flag to `true` on your `msg` object.
 
-<a name="multipleemailsmultiplerecipients"></a>
+<a name="multiple-emails-multiple-recipients"></a>
 # Send Multiple Emails to Multiple Recipients
 
 The `send` method also accepts an array of email msg if you want to send multiple different single emails with for example different content and sender values. This will send multiple requests (in parallel), so be aware of any API rate restrictions:
@@ -95,7 +97,7 @@ const emails = [
 sgMail.send(emails);
 ```
 
-<a name="ccbccreplyto"></a>
+<a name="cc-bcc-reply-to"></a>
 # CC, BCC and Reply To
 
 You can specify the `cc`, `bcc` and `replyTo` fields for more control over who you send the email to and where people will reply to:
@@ -143,7 +145,7 @@ const msg = {
 };
 ```
 
-<a name="successfailureerrors"></a>
+<a name="success-failure-errors"></a>
 # Handling Success/Failure/Errors
 
 The `send` and `sendMultiple` methods return a `Promise`, so you can handle success and capture errors:
@@ -201,7 +203,7 @@ If you run into any other non SendGrid related issues, don't forget to read thro
 
 All other advanced settings are supported and can be passed in through the msg object according to the expected format as per the [API v3 documentation](https://sendgrid.com/docs/API_Reference/api_v3.html). Note that you can use either `camelCase` or `snake_case` for property names.
 
-<a name="transactional_templates"></a>
+<a name="transactional-templates"></a>
 ## Transactional Templates
 
 For this example, we assume you have created a [transactional template](https://sendgrid.com/docs/User_Guide/Transactional_Templates/index.html). Following is the template content we used for testing.
@@ -338,7 +340,7 @@ const msg = {
 
 If the `substitutions` field is provided globally as well, these substitutions will be merged with any custom substitutions you provide in the `personalizations`.
 
-<a name="manualcontent"></a>
+<a name="manual-content"></a>
 ## Manually Providing Content
 
 Instead of using the `text` and `html` shorthand properties, you can manually use the `content` property:
@@ -361,7 +363,7 @@ const msg = {
 };
 ```
 
-<a name="customheaders"></a>
+<a name="custom-headers"></a>
 ## Specifying Custom Headers
 
 Use the `headers` property to specify any custom headers (note that these can also be set globally per the [API specification](https://sendgrid.com/docs/API_Reference/api_v3.html):
@@ -378,7 +380,7 @@ const msg = {
 };
 ```
 
-<a name="timetosend"></a>
+<a name="time-to-send"></a>
 ## Specifying Time to Send At
 
 Use the `sendAt` property to specify when to send the emails (in [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) seconds, not milliseconds):
@@ -422,7 +424,7 @@ const msg = {
 };
 ```
 
-<a name="kitchensink"></a>
+<a name="kitchen-sink"></a>
 ## Kitchen Sink - an example with all settings used
 
 All other options from the [API definition](https://sendgrid.com/docs/API_Reference/Web_API_v3/Mail/index.html) are supported (note that some settings can be used in multiple ways, see above for full details for each setting):
@@ -473,3 +475,103 @@ sgMail
   .then(() => console.log('Mail sent successfully'))
   .catch(error => console.error(error.toString()));
 ```
+
+<a name="gae"></a>
+## Deploy a Simple App on Google App Engine with Node.js
+
+Before you begin, setup google app engine and install required packages by following [getting started](https://cloud.google.com/nodejs/getting-started/hello-world) guide.
+
+#### Setup your environment variables
+Include your [SENDGRID_API_KEY](https://app.sendgrid.com/settings/api_keys) in `app.yaml`, for example: 
+
+```yaml
+# Note: Don't commit the app.yaml file with API key, keep it changed locally - only used in deployment
+env_variables:
+  SENDGRID_API_KEY: YOUR_API_KEY
+```
+
+#### Install necessary packages, and update package.json
+
+For example:
+
+```
+yarn add @sendgrid/mail
+yarn add express
+```
+
+Edit `package.json` as follows:
+
+```json
+"scripts": {
+  "deploy": "gcloud app deploy",
+  "start": "node app.js"
+},
+```
+
+#### Implement the Hello Email app.js file
+
+```js
+const express = require('express');
+const sgMail = require('@sendgrid/mail');
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const app = express();
+
+app.get('/send', (req, res) => {
+  const {query: {to = 'test@example.com', from = 'test@example.com'}} = req;
+  // other options could be customized further
+  
+  const msg = {
+    to,
+    from,
+    subject: 'Sending with SendGrid is Fun',
+    text: 'and easy to do anywhere, even with Node.js',
+    html: '<strong>Hello Email app</strong>',
+  };
+  
+  sgMail.send(msg).then(() => {
+    res.status(200).send('Hello, world!').end();
+  }).catch(e => {
+    console.error(e.toString());
+    res.status(500).end();
+  });
+});
+
+// Start the server
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}`);
+  console.log('Press Ctrl+C to quit.');
+});
+```
+
+#### Deploy and running the app on App Engine
+
+1. Deploy the Hello World app by running the following command from the application directory:
+   ```
+   gcloud app deploy
+   ```
+  
+ #### Send email 
+ 
+ Using the following snippet you should be able to send emails with the deployed app (replace `to` and `from` with your own)
+ 
+ ```curl
+ curl -X GET \
+  'http://your_project_id.appspot.com/send?to=to%40example.com&from=from%40example.com' \
+  -H 'cache-control: no-cache'
+ ```
+ 
+<a name="domain-white-label"></a>
+# How to Setup a Domain Whitelabel
+
+You can find documentation for how to setup a domain whitelabel via the UI [here](https://sendgrid.com/docs/Classroom/Basics/Whitelabel/setup_domain_whitelabel.html) and via API [here](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/client/USAGE.md#whitelabel).
+
+Find more information about all of SendGrid's whitelabeling related documentation [here](https://sendgrid.com/docs/Classroom/Basics/Whitelabel/index.html).
+
+<a name="email-stats"></a>
+# How to View Email Statistics
+
+You can find documentation for how to view your email statistics via the UI [here](https://app.sendgrid.com/statistics) and via API [here](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/client/USAGE.md#stats).
+
+Alternatively, we can post events to a URL of your choice via our [Event Webhook](https://sendgrid.com/docs/API_Reference/Webhooks/event.html) about events that occur as SendGrid processes your email.
