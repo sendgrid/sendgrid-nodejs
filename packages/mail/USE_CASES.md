@@ -2,7 +2,7 @@ This documentation provides examples for specific email use cases. Please [open 
 
 # Table of Contents
 
-* [Send a Single Email to a Single Recipient](#single-email-multiple-recipients)
+* [Send a Single Email to a Single Recipient](#single-email-single-recipient)
 * [Send a Single Email to Multiple Recipients](#single-email-multiple-recipients)
 * [Send Multiple Emails to Multiple Recipients](#multiple-emails-multiple-recipients)
 * [CC, BCC and Reply To](#cc-bcc-reply-to)
