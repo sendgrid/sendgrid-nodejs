@@ -22,7 +22,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "src/client.js",
+  "main": "index.js",
   "engines": {
     "node": ">=6.0.0"
   },

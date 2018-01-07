@@ -15,6 +15,7 @@ This documentation provides examples for specific email use cases. Please [open 
   * [Specifying Time to Send At](#timetosend)
   * [Specifying Custom Headers](#customheaders)
   * [Specifying Categories](#categories)
+  * [Managing multiple API keys](#multipleapikeys)
   * [Kitchen Sink - an example with all settings used](#kitchensink)
 
 <a name="singleemailsinglerecipient"></a>
@@ -209,13 +210,13 @@ Template Body:
     <title></title>
 </head>
 <body>
-Hello -name-,
+Hello {{name}},
 <br /><br/>
 I'm glad you are trying out the template feature!
 <br /><br/>
 <%body%>
 <br /><br/>
-I hope you are having a great day in -city- :)
+I hope you are having a great day in {{city}} :)
 <br /><br/>
 </body>
 </html>
@@ -403,6 +404,27 @@ const msg = {
   html: '<p>Some email content</p>',
   category: 'transactional',
 };
+```
+
+<a name="multipleapikeys"></a>
+## Managing multiple API keys
+
+In cases where you need to manage multiple instances of the mailer (or underlying client),
+for example when you are using multiple API keys, you can import the mail service class and
+instantiate new instances as required:
+
+```js
+const {MailService} = require('@sendgrid/mail');
+
+//Instantiate mailers
+const sgMail1 = new MailService();
+const sgMail2 = new MailService();
+
+//Set different API keys
+sgMail1.setApiKey('KEY1');
+sgMail2.setApiKey('KEY2');
+
+//Now send emails with the mailers as per the usual
 ```
 
 <a name="kitchensink"></a>
