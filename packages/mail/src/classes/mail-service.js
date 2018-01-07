@@ -12,8 +12,8 @@ const {classes: {Mail}} = require('@sendgrid/helpers');
 class MailService {
 
   /**
-	 * Constructor
-	 */
+   * Constructor
+   */
   constructor() {
 
     //Set client and initialize substitution wrappers
