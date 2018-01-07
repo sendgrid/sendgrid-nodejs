@@ -62,15 +62,15 @@ describe('convertKeys', function() {
     expect(obj.arr).to.have.members(['a', 'b']);
   });
   it('should not converted nested objects if ignored', function() {
-    convertKeys(objCopy, strToCamelCase, ['nestedCamelCase']);
-    expect(objCopy.nestedSnakeCase).to.have.property('a');
-    expect(objCopy.nestedSnakeCase).to.have.property('snakeCase');
-    expect(objCopy.nestedSnakeCase).to.have.property('camelCase');
-    expect(objCopy.nestedSnakeCase).not.to.have.property('snake_case');
+    convertKeys(objCopy, strToCamelCase, ['nestedSnakeCase']);
     expect(objCopy.nestedCamelCase).to.have.property('a');
+    expect(objCopy.nestedCamelCase).to.have.property('snakeCase');
     expect(objCopy.nestedCamelCase).to.have.property('camelCase');
-    expect(objCopy.nestedCamelCase).to.have.property('snake_case');
-    expect(objCopy.nestedCamelCase).not.to.have.property('snakeCase');
+    expect(objCopy.nestedCamelCase).not.to.have.property('snake_case');
+    expect(objCopy.nestedSnakeCase).to.have.property('a');
+    expect(objCopy.nestedSnakeCase).to.have.property('camelCase');
+    expect(objCopy.nestedSnakeCase).to.have.property('snake_case');
+    expect(objCopy.nestedSnakeCase).not.to.have.property('snakeCase');
   });
   it('should throw an error for non object input', function() {
     expect(function() {

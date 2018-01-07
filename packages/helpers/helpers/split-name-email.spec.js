@@ -8,7 +8,7 @@ const splitNameEmail = require('./split-name-email');
 /**
  * Tests
  */
-describe('splitNameEmail()', function() {
+describe('splitNameEmail', function() {
   it('should not split strings without < symbol', function() {
     const [name, email] = splitNameEmail('test@test.com');
     expect(name).to.equal('');
