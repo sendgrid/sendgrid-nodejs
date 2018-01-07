@@ -1,6 +1,28 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [6.1.5] - 2017-10-30 ##
+### Updated
+- [Pull #542](https://github.com/sendgrid/sendgrid-nodejs/pull/542): Turn ContactImporter into ES6 class
+- Thanks to [Seth Etter](https://github.com/sethetter) for the PR!
+
+## [6.1.4] - 2017-09-11 ##
+### Updated
+- [Pull #445](https://github.com/sendgrid/sendgrid-nodejs/pull/445): Documentation Updates for better DX/UX
+- Updates to README, TROUBLESHOOTING and USE_CASE documents to improve the developer experience.
+
+## [6.1.3] - 2017-09-11 ##
+### Fixed
+- Pull #442: This addresses the issue where custom args and substitutions would have their keys transformed to camel case / snake case.
+- Solves #441: Substitution is not working
+- Thanks to [Adam Reis](https://github.com/adamreisnz) for the PR!
+
+## [6.1.2] - 2017-08-31 ##
+### Fixed
+- Pull #438: Content is not mandatory
+- Solves #435: Unexpected Error when trying to send transactional email
+- Thanks to [Adam Reis](https://github.com/adamreisnz) for the PR!
+
 ## [6.1.1] - 2017-08-30 ##
 ### Fixed
 - Pull #436, solves #433: Convert plain data to personalization class instance
@@ -191,7 +213,7 @@ That is, in both cases, error.response is present
 ### Added
 - Extracted some logic into helpers
 - Using a getEmptyRequest helper to avoid code duplication
-- emtpyRequest now accepts an object with data to extend the empty request with, this will allow simpler syntax for initializing requests.
+- emptyRequest now accepts an object with data to extend the empty request with, this will allow simpler syntax for initializing requests.
 - Callback function now receives two parameters as per Node conventions (error, response)
 - If no callback provided, the method will return a promise instead.
 - Implemented promise API when not passing a callback function

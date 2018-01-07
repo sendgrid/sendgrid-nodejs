@@ -1,10 +1,11 @@
-var ContactImporter = require('./importer');
+const sendgrid = require('sendgrid');
+const ContactImporter = require('./importer');
 
-describe.only('test_contact_importer', function() {
+describe('test_contact_importer', function() {
   beforeEach(function() {
     // Create a new SendGrid instance.
-    var API_KEY = process.env.API_KEY;
-    var sg = sendgrid(API_KEY);
+    const API_KEY = process.env.API_KEY;
+    const sg = sendgrid(API_KEY);
 
     // Create a new importer with a batch size of 2.
     this.contactImporter = new ContactImporter(sg, {
@@ -14,9 +15,9 @@ describe.only('test_contact_importer', function() {
     this.sinon.spy(ContactImporter.prototype, '_sendBatch');
 
     // Generate some test data.
-    var data = [];
+    const data = [];
     for (i = 0; i < 5; i++) {
-      var item = {
+      const item = {
         email: 'example' + i + '@example.com',
         first_name: 'Test',
         last_name: 'User',
@@ -31,15 +32,15 @@ describe.only('test_contact_importer', function() {
   });
 
   it('test_contact_importer sends items in batches', function(done) {
-    var self = this;
+    const self = this;
     this.timeout(30000);
     this.contactImporter.on('success', function(result, batch) {
       console.log('SUCCESS result', result);
       console.log('SUCCESS batch', batch);
     });
     this.contactImporter.on('error', function(error, batch) {
-      console.log('SUCCESS error', error);
-      console.log('SUCCESS batch', batch);
+      console.log('ERROR error', error);
+      console.log('ERROR batch', batch);
     });
     this.contactImporter.on('drain', function() {
       expect(self.contactImporter._sendBatch).to.have.callCount(3);
