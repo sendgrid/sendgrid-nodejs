@@ -14,12 +14,12 @@ before_script:
 - sleep 5 # give it some time to start
 script:
 - lerna bootstrap
+- yarn test:files
+- yarn test:license
 - yarn test:mail
 - yarn test:client
 - yarn test:helpers
 - yarn test:typescript
-- yarn test:files.spec
-- yarn test:license
 notifications:
   hipchat:
     rooms:
