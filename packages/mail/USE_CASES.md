@@ -15,7 +15,8 @@ This documentation provides examples for specific email use cases. Please [open 
   * [Specifying Time to Send At](#time-to-send)
   * [Specifying Custom Headers](#custom-headers)
   * [Specifying Categories](#categories)
-  * [Kitchen Sink - an example with all settings used](#kitchensink)
+  * [Managing multiple API keys](#multipleapikeys)
+  * [Kitchen Sink - an example with all settings used](#kitchen-sink)
 * [Deploy a Simple App on Google App Engine with Node.js](#gae)
 * [Deploy a Simple App on Heroku with Node.js](#heroku)
 * [How to Setup a Domain Whitelabel](#domain-white-label)
@@ -407,6 +408,27 @@ const msg = {
   html: '<p>Some email content</p>',
   category: 'transactional',
 };
+```
+
+<a name="multipleapikeys"></a>
+## Managing multiple API keys
+
+In cases where you need to manage multiple instances of the mailer (or underlying client),
+for example when you are using multiple API keys, you can import the mail service class and
+instantiate new instances as required:
+
+```js
+const {MailService} = require('@sendgrid/mail');
+
+//Instantiate mailers
+const sgMail1 = new MailService();
+const sgMail2 = new MailService();
+
+//Set different API keys
+sgMail1.setApiKey('KEY1');
+sgMail2.setApiKey('KEY2');
+
+//Now send emails with the mailers as per the usual
 ```
 
 <a name="kitchen-sink"></a>
