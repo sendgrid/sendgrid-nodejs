@@ -50,7 +50,7 @@
     "test": "test"
   },
   "dependencies": {
-    "chai": "^2.3.0",
+    "chai": "^4.0.1",
     "esdoc": "^1.0.3",
     "esdoc-coverage-plugin": "^1.1.0",
     "esdoc-type-inference-plugin": "^1.0.1"
