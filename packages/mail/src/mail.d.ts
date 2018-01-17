@@ -30,5 +30,5 @@ declare class MailService {
   sendMultiple(data: MailData, cb?: (error: Error|ResponseError, result: [ClientResponse, {}]) => void): Promise<[ClientResponse, {}]>;
 }
 
-declare const mail: MailService
+declare const mail: MailService & { MailService: MailService }
 export = mail
