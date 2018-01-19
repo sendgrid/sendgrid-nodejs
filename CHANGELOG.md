@@ -1,5 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file.
+## [6.2.1] - 2018-1-18 ##
+### Fixed
+- PR #619, Fixes #618: Update definitions for tsc 2.6
+- Thanks to [Francesco Soncina](https://github.com/phra) for the PR!
 
 ## [6.2.0] - 2018-1-13 ##
 ### Added
