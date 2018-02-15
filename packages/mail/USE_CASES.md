@@ -16,9 +16,12 @@ This documentation provides examples for specific email use cases. Please [open 
   * [Specifying Custom Headers](#custom-headers)
   * [Specifying Categories](#categories)
   * [Kitchen Sink - an example with all settings used](#kitchensink)
-  * [Deploy a simple Hello Email app on Digital Ocean with Node.js](#digitaloceandeploy)
-  * [How to Setup a Domain Whitelabel](#domain-white-label)
-  * [How to View Email Statistics](#email-stats)
+  * [Managing multiple API keys](#multipleapikeys)
+* [Deploy a simple Hello Email app on Digital Ocean with Node.js](#digitaloceandeploy)  
+* [Deploy a Simple App on Google App Engine with Node.js](#gae)
+* [Deploy a Simple App on Heroku with Node.js](#heroku)
+* [How to Setup a Domain Whitelabel](#domain-white-label)
+* [How to View Email Statistics](#email-stats)
 
 <a name="single-email-single-recipient"></a>
 # Send a Single Email to a Single Recipient
@@ -408,6 +411,27 @@ const msg = {
 };
 ```
 
+<a name="multipleapikeys"></a>
+## Managing multiple API keys
+
+In cases where you need to manage multiple instances of the mailer (or underlying client),
+for example when you are using multiple API keys, you can import the mail service class and
+instantiate new instances as required:
+
+```js
+const {MailService} = require('@sendgrid/mail');
+
+//Instantiate mailers
+const sgMail1 = new MailService();
+const sgMail2 = new MailService();
+
+//Set different API keys
+sgMail1.setApiKey('KEY1');
+sgMail2.setApiKey('KEY2');
+
+//Now send emails with the mailers as per the usual
+```
+
 <a name="kitchen-sink"></a>
 ## Kitchen Sink - an example with all settings used
 
@@ -582,6 +606,105 @@ Test that your app works
 $ node index.js
 ```
 
+=======
+<a name="gae"></a>
+## Deploy a Simple App on Google App Engine with Node.js
+
+Before you begin, setup google app engine and install required packages by following [getting started](https://cloud.google.com/nodejs/getting-started/hello-world) guide.
+
+#### Setup your environment variables
+Include your [SENDGRID_API_KEY](https://app.sendgrid.com/settings/api_keys) in `app.yaml`, for example: 
+
+```yaml
+# Note: Don't commit the app.yaml file with API key, keep it changed locally - only used in deployment
+env_variables:
+  SENDGRID_API_KEY: YOUR_API_KEY
+```
+
+#### Install necessary packages, and update package.json
+
+For example:
+
+```
+yarn add @sendgrid/mail
+yarn add express
+```
+
+Edit `package.json` as follows:
+
+```json
+"scripts": {
+  "deploy": "gcloud app deploy",
+  "start": "node app.js"
+},
+```
+
+#### Implement the Hello Email app.js file
+
+```js
+const express = require('express');
+const sgMail = require('@sendgrid/mail');
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const app = express();
+
+app.get('/send', (req, res) => {
+  const {query: {to = 'test@example.com', from = 'test@example.com'}} = req;
+  // other options could be customized further
+  
+  const msg = {
+    to,
+    from,
+    subject: 'Sending with SendGrid is Fun',
+    text: 'and easy to do anywhere, even with Node.js',
+    html: '<strong>Hello Email app</strong>',
+  };
+  
+  sgMail.send(msg).then(() => {
+    res.status(200).send('Hello, world!').end();
+  }).catch(e => {
+    console.error(e.toString());
+    res.status(500).end();
+  });
+});
+
+// Start the server
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}`);
+  console.log('Press Ctrl+C to quit.');
+});
+```
+
+#### Deploy and running the app on App Engine
+
+1. Deploy the Hello World app by running the following command from the application directory:
+   ```
+   gcloud app deploy
+   ```
+  
+ #### Send email 
+ 
+ Using the following snippet you should be able to send emails with the deployed app (replace `to` and `from` with your own)
+ 
+ ```curl
+ curl -X GET \
+  'http://your_project_id.appspot.com/send?to=to%40example.com&from=from%40example.com' \
+  -H 'cache-control: no-cache'
+ ```
+
+<a name="deploy_heroku"></a>
+# Deploy a Simple App on Heroku with Node.js
+
+Here are step by step instructions to deploy your Node.js app to Heroku (assuming you have a NodeJS app running on localhost tracked by git):
+
+- `heroku create` (you may need to have your `heroku login` ready)
+- `git push heroku master`
+- `heroku ps:scale web=1`
+- `heroku config:set SENDGRID_API_KEY=SG.YOUR.OWN-API_KEY-HERE` (replace `SG.YOUR.OWN-API_KEY-HERE` with your own [api key from sendgrid](https://app.sendgrid.com/settings/api_keys)
+
+If you run into any other non SendGrid related issues, don't forget to read through [Heroku's deployment documentation](https://devcenter.heroku.com/articles/getting-started-with-nodejs).
+ 
 <a name="domain-white-label"></a>
 # How to Setup a Domain Whitelabel
 

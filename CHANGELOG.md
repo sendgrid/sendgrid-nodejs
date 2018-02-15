@@ -1,5 +1,55 @@
 # Change Log
 All notable changes to this project will be documented in this file.
+## [6.2.1] - 2018-1-18 ##
+### Fixed
+- PR #619, Fixes #618: Update definitions for tsc 2.6
+- Thanks to [Francesco Soncina](https://github.com/phra) for the PR!
+
+## [6.2.0] - 2018-1-13 ##
+### Added
+- PR #650: Expose Client and MailService classes
+- Thanks to [Adam Reis](https://github.com/adamreisnz) for the PR!
+- PR #468: Heroku Tutorial
+- Thanks to [Shawn Wang](https://github.com/sw-yx) for the PR!
+- PR #477: Check if "body" on "response" is actually defined before accessing it
+- Thanks to [Philipp Gröschler](https://github.com/phgroe) for the PR!
+- PR #457: Function to remove HTML tags
+- Thanks to [Nathaniel Hodges](https://github.com/uniOpifex) for the PR!
+- PR #580: Simplify complexity in arrayToJson helpers
+- Thanks to [Anthony Juan Christian](https://github.com/anthonyjuan) for the PR!
+- PR #597: Adds file structure for USE_CASES.md
+- Thanks to [Shriyash Jalukar](https://github.com/shriyash) for the PR!
+- PR #595: Added Code Review to CONTRIBUTING.md
+- Thanks to [Manjiri Tapaswi](https://github.com/mptap) for the PR!
+- PR #471: Google App Engine (GAE) Tutorial
+- Thanks to [Thujeevan](https://github.com/thujeevan) for the PR!
+- PR #449: Updated the endpoint which allows the retrieval of all recipients
+- Thanks to [Divya Rani](https://github.com/Divya063) for the PR!
+- PR #568: Added unittest to check for specific repo files
+- Thanks to [Manjiri Tapaswi](https://github.com/mptap) for the PR!
+- PR #594: Sr. Front End Engineer job posting in Announcements
+- Thanks to [Marghodk](https://github.com/Marghodk) for the PR!
+
+### Fixed
+- PR #605: Chai dependency version issue
+- Thanks to [Mukul Mishra](https://github.com/mukulmishra18) for the PR!
+- PR #581: Remove .only from test
+- Thanks to [Cédric Guérin](https://github.com/ElPonito) for the PR!
+
+
+## [6.1.6] - 2017-10-30 ##
+### Added
+- [Pull #539](https://github.com/sendgrid/sendgrid-nodejs/pull/539): Add subscription widget to packages
+- Thanks to [Devin Chasanoff](https://github.com/devchas) for the PR!
+
+### Updated
+- [Pull #542](https://github.com/sendgrid/sendgrid-nodejs/pull/542): Turn ContactImporter into ES6 class
+- Thanks to [Seth Etter](https://github.com/sethetter) for the PR!
+
+## [6.1.5] - 2017-10-30 ##
+### Updated
+- [Pull #542](https://github.com/sendgrid/sendgrid-nodejs/pull/542): Turn ContactImporter into ES6 class
+- Thanks to [Seth Etter](https://github.com/sethetter) for the PR!
 
 ## [6.1.4] - 2017-09-11 ##
 ### Updated

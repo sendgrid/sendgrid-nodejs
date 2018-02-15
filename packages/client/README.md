@@ -60,8 +60,8 @@ const request = {
 };
 client.request(request)
 .then(([response, body]) => {
-    console.log(response.statusCode);
-    console.log(response.body);
+  console.log(response.statusCode);
+  console.log(body);
 })
 ```
 
@@ -80,6 +80,15 @@ You can overwrite the promise implementation you want the client to use. Default
 
 ```js
 global.Promise = require('bluebird');
+```
+
+## Instantiate Client Instances Manually
+```js
+const {Client} = require('@sendgrid/client');
+const sgClient1 = new Client();
+const sgClient2 = new Client();
+sgClient1.setApiKey('KEY1');
+sgClient2.setApiKey('KEY2');
 ```
 
 <a name="announcements"></a>
