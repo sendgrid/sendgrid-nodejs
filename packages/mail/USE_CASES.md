@@ -339,12 +339,12 @@ const msg = {
   subject: 'Hello manual content',
   content: [
     {
-      type: 'text/html',
-      value: '<p>Hello HTML world!</p>',
-    },
-    {
       type: 'text/plain',
       value: 'Hello plain world!',
+    },
+    {
+      type: 'text/html',
+      value: '<p>Hello HTML world!</p>',
     },
   ],
 };
