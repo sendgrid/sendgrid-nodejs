@@ -328,14 +328,15 @@ class Personalization {
     if (Object.keys(headers).length > 0) {
       json.headers = headers;
     }
-    if (Object.keys(substitutions).length > 0) {
+    if (substitutions && Object.keys(substitutions).length > 0) {
       const [left, right] = substitutionWrappers;
       json.substitutions = wrapSubstitutions(substitutions, left, right);
     }
     if (Object.keys(customArgs).length > 0) {
       json.customArgs = customArgs;
     }
-    if (Object.keys(dynamicTemplateData).length > 0) {
+
+    if (dynamicTemplateData && Object.keys(dynamicTemplateData).length > 0) {
       json.dynamicTemplateData = dynamicTemplateData;
     }
 
