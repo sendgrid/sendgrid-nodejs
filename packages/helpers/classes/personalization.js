@@ -7,7 +7,7 @@ const EmailAddress = require('./email-address');
 const toCamelCase = require('../helpers/to-camel-case');
 const toSnakeCase = require('../helpers/to-snake-case');
 const deepClone = require('../helpers/deep-clone');
-const mergeDataDeep = require('../helpers/merge-data-deep');
+const merge = require('deepmerge');
 const wrapSubstitutions = require('../helpers/wrap-substitutions');
 
 /**
@@ -277,16 +277,16 @@ class Personalization {
   /**
    * Reverse merge dynamic template data, preserving existing ones
    */
-  reverseMergeDynamicTemplateData(dynamicTemplateData) {
+  deepMergeDynamicTemplateData(dynamicTemplateData) {
     if (typeof dynamicTemplateData === 'undefined' || dynamicTemplateData === null) {
       return;
     }
     if (typeof dynamicTemplateData !== 'object') {
       throw new Error(
-        'Object expected for `dynamicTemplateData` in reverseMergeDynamicTemplateData'
+        'Object expected for `dynamicTemplateData` in deepMergeDynamicTemplateData'
       );
     }
-    this.dynamicTemplateData = mergeDataDeep(dynamicTemplateData, this.dynamicTemplateData);
+    this.dynamicTemplateData = merge(dynamicTemplateData, this.dynamicTemplateData);
   }
 
   /**
@@ -314,7 +314,7 @@ class Personalization {
     } = this;
 
     //Initialize with mandatory values
-    const json = { to };
+    const json = {to};
 
     //Arrays
     if (Array.isArray(cc) && cc.length > 0) {

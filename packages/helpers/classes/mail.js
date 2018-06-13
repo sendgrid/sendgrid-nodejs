@@ -21,7 +21,7 @@ class Mail {
   constructor(data) {
 
     //Initialize array and object properties
-    this._isDynamic = false;
+    this.isDynamic = false;
     this.personalizations = [];
     this.attachments = [];
     this.content = [];
@@ -86,7 +86,7 @@ class Mail {
     this.setMailSettings(mailSettings);
     this.setTrackingSettings(trackingSettings);
 
-    if (this._isDynamic) {
+    if (this.isDynamic) {
       this.setDynamicTemplateData(dynamicTemplateData)
     } else {
       this.setSubstitutions(substitutions);
@@ -171,7 +171,7 @@ class Mail {
     }
 
     if (templateId.indexOf('d-') === 0) {
-      this._isDynamic = true;
+      this.isDynamic = true;
     }
 
     this.templateId = templateId;
@@ -240,7 +240,7 @@ class Mail {
 
     //We should either send substitutions or dynamicTemplateData
     //depending on the templateId
-    if (this._isDynamic && personalization.substitutions) {
+    if (this.isDynamic && personalization.substitutions) {
       delete personalization.substitutions;
     } else if (personalization.dynamicTemplateData) {
       delete personalization.dynamicTemplateData;
@@ -252,7 +252,7 @@ class Mail {
     }
 
     //If this is dynamic, set dynamicTemplateData, or set substitutions
-    if (this._isDynamic) {
+    if (this.isDynamic) {
       this.applyDynamicTemplateData(personalization);
     } else {
       this.applySubstitutions(personalization);
@@ -273,7 +273,7 @@ class Mail {
     ) {
       throw new Error('Provide at least one of to, cc or bcc');
     }
-    this.addPersonalization(new Personalization({ to, cc, bcc }));
+    this.addPersonalization(new Personalization({to, cc, bcc}));
   }
 
   /**
@@ -319,12 +319,12 @@ class Mail {
    */
   applyDynamicTemplateData(personalization) {
     if (personalization instanceof Personalization) {
-      personalization.reverseMergeDynamicTemplateData(this.dynamicTemplateData);
+      personalization.deepMergeDynamicTemplateData(this.dynamicTemplateData);
     }
   }
 
   /**
-   * Set substitutions
+   * Set dynamicTemplateData
    */
   setDynamicTemplateData(dynamicTemplateData) {
     if (typeof dynamicTemplateData === 'undefined') {

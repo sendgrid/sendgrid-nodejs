@@ -18,10 +18,10 @@ describe('Personalization', function () {
   });
 
   //Reverse merge substitutions
-  describe('reverseMergeDynamicTemplateData()', function () {
+  describe('deepMergeDynamicTemplateData()', function () {
     it('should reverse merge dynamicTemplateData', function () {
       p.setDynamicTemplateData({ test1: 'Test1' });
-      p.reverseMergeDynamicTemplateData({ test2: 'Test2' });
+      p.deepMergeDynamicTemplateData({ test2: 'Test2' });
       expect(p.dynamicTemplateData).to.have.a.property('test1');
       expect(p.dynamicTemplateData).to.have.a.property('test2');
       expect(p.dynamicTemplateData.test1).to.equal('Test1');
@@ -29,25 +29,25 @@ describe('Personalization', function () {
     });
     it('should not overwrite existing keys', function () {
       p.setDynamicTemplateData({ test1: 'Test1' });
-      p.reverseMergeDynamicTemplateData({ test1: 'Test3', test2: 'Test2' });
+      p.deepMergeDynamicTemplateData({ test1: 'Test3', test2: 'Test2' });
       expect(p.dynamicTemplateData).to.have.a.property('test1');
       expect(p.dynamicTemplateData).to.have.a.property('test2');
       expect(p.dynamicTemplateData.test1).to.equal('Test1');
       expect(p.dynamicTemplateData.test2).to.equal('Test2');
     });
     it('should work without prior dynamicTemplateData', function () {
-      p.reverseMergeDynamicTemplateData({ test2: 'Test2' });
+      p.deepMergeDynamicTemplateData({ test2: 'Test2' });
       expect(p.dynamicTemplateData).to.have.a.property('test2');
       expect(p.dynamicTemplateData.test2).to.equal('Test2');
     });
     it('should throw an error for invalid input', function () {
       expect(function () {
-        p.reverseMergeDynamicTemplateData(3);
+        p.deepMergeDynamicTemplateData(3);
       }).to.throw(Error);
     });
     it('should accept no input', function () {
       expect(function () {
-        p.reverseMergeDynamicTemplateData();
+        p.deepMergeDynamicTemplateData();
       }).not.to.throw(Error);
     });
   });
