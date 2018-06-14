@@ -15,7 +15,11 @@ This documentation provides examples for specific email use cases. Please [open 
   * [Specifying Time to Send At](#time-to-send)
   * [Specifying Custom Headers](#custom-headers)
   * [Specifying Categories](#categories)
-  * [Kitchen Sink - an example with all settings used](#kitchen-sink)
+  * [Kitchen Sink - an example with all settings used](#kitchensink)
+  * [Managing multiple API keys](#multipleapikeys)
+* [Deploy a simple Hello Email app on Digital Ocean with Node.js](#digitaloceandeploy)  
+* [Deploy a Simple App on Google App Engine with Node.js](#gae)
+* [Deploy a Simple App on Heroku with Node.js](#heroku)
 * [How to Setup a Domain Whitelabel](#domain-white-label)
 * [How to View Email Statistics](#email-stats)
 
@@ -271,7 +275,7 @@ const msg = {
       filename: 'some-attachment.txt',
       type: 'plain/text',
       disposition: 'attachment',
-      contentId: 'mytext'
+      content_id: 'mytext'
     },
   ],
 };
@@ -335,12 +339,12 @@ const msg = {
   subject: 'Hello manual content',
   content: [
     {
-      type: 'text/html',
-      value: '<p>Hello HTML world!</p>',
-    },
-    {
       type: 'text/plain',
       value: 'Hello plain world!',
+    },
+    {
+      type: 'text/html',
+      value: '<p>Hello HTML world!</p>',
     },
   ],
 };
@@ -407,6 +411,27 @@ const msg = {
 };
 ```
 
+<a name="multipleapikeys"></a>
+## Managing multiple API keys
+
+In cases where you need to manage multiple instances of the mailer (or underlying client),
+for example when you are using multiple API keys, you can import the mail service class and
+instantiate new instances as required:
+
+```js
+const {MailService} = require('@sendgrid/mail');
+
+//Instantiate mailers
+const sgMail1 = new MailService();
+const sgMail2 = new MailService();
+
+//Set different API keys
+sgMail1.setApiKey('KEY1');
+sgMail2.setApiKey('KEY2');
+
+//Now send emails with the mailers as per the usual
+```
+
 <a name="kitchen-sink"></a>
 ## Kitchen Sink - an example with all settings used
 
@@ -459,6 +484,227 @@ sgMail
   .catch(error => console.error(error.toString()));
 ```
 
+<a name="digitaloceandeploy"></a>
+# Deploy a simple Hello Email app on Digital Ocean with Node.js
+
+### Create a DigitalOcean droplet and install Node.js
+[This tutorial by DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-14-04#create-nodejs-application) walks through the process of setting up a Node.js application on Ubuntu. The tutorial will take a simplified, summarized approach.
+
+First, create a [DigitalOcean](https://www.digitalocean.com) droplet.  Then, login to your VPS from command line. Next, install Node.js.  The following commands are explained in detail in the aforementioned tutorial.
+```
+$ sudo apt-get update
+$ sudo apt-get install git
+$ cd ~
+$ wget [Insert Linux Binaries (.tar.xz) download link]
+$ mkdir node
+$ tar xvf node-v*.tar.?z --strip-components=1 -C ./node
+$ cd ~
+$ rm -rf node-v*
+$ mkdir node/etc
+$ echo 'prefix=/usr/local' > node/etc/npmrc
+$ sudo mv node /opt/
+$ sudo chown -R root: /opt/node
+$ sudo ln -s /opt/node/bin/node /usr/local/bin/node
+$ sudo ln -s /opt/node/bin/npm /usr/local/bin/npm
+```
+
+### Creating the repository
+Next, create a directory to house our Node.js application that will send email. The application will be housed in a directory located at /var/www/domain.com
+```
+$ cd /var
+$ mkdir www & cd www
+$ mkdir domain.com && cd domain.com
+```
+[This tutorial by DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-set-up-automatic-deployment-with-git-with-a-vps) walks through the process of setting up automatic deployment with git with a VPS.  Again, this tutorial will not go into the detail behind the commands but will provide a summary.
+
+```
+$ cd ~/var
+$ mkdir repo && cd repo
+$ mkdir site.git && cd site.git
+$ git init --bare
+$ cd hooks
+$ cat > post-receive
+```
+When you execute this command, you will have a blank line indicating that everything you type will be saved to this file. So let's type:
+```
+#!/bin/sh
+git --work-tree=/var/www/domain.com --git-dir=/var/repo/site.git checkout -f
+```
+When you finish typing, press 'control-d' to save. In order to execute the file, we need to set the proper permissions using:
+```
+$ chmod +x post-receive
+```
+Then exit and return to local machine
+```
+$ exit
+```
+
+### Create send email repo on local machine
+```
+$ cd /my/workspace
+$ mkdir project && cd project
+$ git init
+$ git remote add live ssh://user@mydomain.com/var/repo/site.git
+```
+
+Install package manager and SendGrid dependency. Interactively create a package.json file using
+```
+$ npm init
+```
+Then follow the prompts. Next, install the SendGrid mail dependency.
+```
+$ npm install --save @sendgrid/mail
+```
+Create an index.js file where we will save our Hello Email script
+```
+$ touch index.js
+```
+
+Insert Hello Email script into index.js
+```javascript
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const msg = {
+  to: 'test@example.com',
+  from: 'test@example.com',
+  subject: 'Sending with SendGrid is Fun',
+  text: 'and easy to do anywhere, even with Node.js',
+  html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+};
+sgMail.send(msg);
+```
+
+Next, add a .gitignore file with your /node_modules.
+
+Then, push code to Digital Ocean
+```
+$ git add .
+$ git commit -m "My project is ready"
+$ git push live master
+  Counting objects: 7, done.Delta compression using up to 4 threads.Compressing objects: 100% (7/7), done.Writing objects: 100% (7/7), 10.56 KiB, done.Total 7 (delta 0), reused 0 (delta 0)To ssh://user@mydomain.com/var/repo/site.git* [new branch]      master -> master
+```
+
+### Final Setup on DigitalOcean
+
+Navigate to app directory on DigitalOcean
+```
+$ ssh root@[your-IP-address]
+$ cd /var/www/domain.com
+```
+
+Install dependencies and set API key.  Install dependencies on your DigitalOcean droplet.
+```
+$ npm install
+```
+Save your SendGrid API key as an environment variable.
+```
+$ export SENDGRID_API_KEY=[your-api-key]
+```
+
+Test that your app works
+```
+$ node index.js
+```
+
+=======
+<a name="gae"></a>
+## Deploy a Simple App on Google App Engine with Node.js
+
+Before you begin, setup google app engine and install required packages by following [getting started](https://cloud.google.com/nodejs/getting-started/hello-world) guide.
+
+#### Setup your environment variables
+Include your [SENDGRID_API_KEY](https://app.sendgrid.com/settings/api_keys) in `app.yaml`, for example: 
+
+```yaml
+# Note: Don't commit the app.yaml file with API key, keep it changed locally - only used in deployment
+env_variables:
+  SENDGRID_API_KEY: YOUR_API_KEY
+```
+
+#### Install necessary packages, and update package.json
+
+For example:
+
+```
+yarn add @sendgrid/mail
+yarn add express
+```
+
+Edit `package.json` as follows:
+
+```json
+"scripts": {
+  "deploy": "gcloud app deploy",
+  "start": "node app.js"
+},
+```
+
+#### Implement the Hello Email app.js file
+
+```js
+const express = require('express');
+const sgMail = require('@sendgrid/mail');
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const app = express();
+
+app.get('/send', (req, res) => {
+  const {query: {to = 'test@example.com', from = 'test@example.com'}} = req;
+  // other options could be customized further
+  
+  const msg = {
+    to,
+    from,
+    subject: 'Sending with SendGrid is Fun',
+    text: 'and easy to do anywhere, even with Node.js',
+    html: '<strong>Hello Email app</strong>',
+  };
+  
+  sgMail.send(msg).then(() => {
+    res.status(200).send('Hello, world!').end();
+  }).catch(e => {
+    console.error(e.toString());
+    res.status(500).end();
+  });
+});
+
+// Start the server
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}`);
+  console.log('Press Ctrl+C to quit.');
+});
+```
+
+#### Deploy and running the app on App Engine
+
+1. Deploy the Hello World app by running the following command from the application directory:
+   ```
+   gcloud app deploy
+   ```
+  
+ #### Send email 
+ 
+ Using the following snippet you should be able to send emails with the deployed app (replace `to` and `from` with your own)
+ 
+ ```curl
+ curl -X GET \
+  'http://your_project_id.appspot.com/send?to=to%40example.com&from=from%40example.com' \
+  -H 'cache-control: no-cache'
+ ```
+
+<a name="deploy_heroku"></a>
+# Deploy a Simple App on Heroku with Node.js
+
+Here are step by step instructions to deploy your Node.js app to Heroku (assuming you have a NodeJS app running on localhost tracked by git):
+
+- `heroku create` (you may need to have your `heroku login` ready)
+- `git push heroku master`
+- `heroku ps:scale web=1`
+- `heroku config:set SENDGRID_API_KEY=SG.YOUR.OWN-API_KEY-HERE` (replace `SG.YOUR.OWN-API_KEY-HERE` with your own [api key from sendgrid](https://app.sendgrid.com/settings/api_keys)
+
+If you run into any other non SendGrid related issues, don't forget to read through [Heroku's deployment documentation](https://devcenter.heroku.com/articles/getting-started-with-nodejs).
+ 
 <a name="domain-white-label"></a>
 # How to Setup a Domain Whitelabel
 
@@ -472,3 +718,4 @@ Find more information about all of SendGrid's whitelabeling related documentatio
 You can find documentation for how to view your email statistics via the UI [here](https://app.sendgrid.com/statistics) and via API [here](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/client/USAGE.md#stats).
 
 Alternatively, we can post events to a URL of your choice via our [Event Webhook](https://sendgrid.com/docs/API_Reference/Webhooks/event.html) about events that occur as SendGrid processes your email.
+

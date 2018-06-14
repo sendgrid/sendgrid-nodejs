@@ -11,14 +11,15 @@
     "babel-cli": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
     "chai": "^4.0.1",
-    "chai-as-promised": "^6.0.0",
-    "dirty-chai": "^1.2.2",
-    "eslint": "^3.19.0",
+    "chai-as-promised": "^7.1.1",
+    "dirty-chai": "^2.0.1",
+    "eslint": "^4.19.1",
     "istanbul": "^1.0.0-alpha.2",
     "lerna": "^2.0.0-rc.5",
     "mocha": "^3.4.2",
     "mocha-clean": "^1.0.0",
     "mocha-sinon": "^2.0.0",
+    "moment": "^2.19.3",
     "sinon": "^2.3.2",
     "sinon-chai": "^2.10.0",
     "typescript": "~2.4.2"
@@ -33,6 +34,7 @@
     "test:mail": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/mail/**/*.spec.js\"",
     "test:inbound": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/inbound-mail-parser/**/*.spec.js\"",
     "test:contact": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/contact-importer/**/*.spec.js\"",
+    "test:files": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"test/files.spec.js\"",
     "test:license": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha license.spec.js",
     "test:typescript": "tsc",
     "test": "npm run test:all -s",
@@ -49,7 +51,7 @@
     "test": "test"
   },
   "dependencies": {
-    "chai": "^2.3.0",
+    "chai": "^4.0.1",
     "esdoc": "^1.0.3",
     "esdoc-coverage-plugin": "^1.1.0",
     "esdoc-type-inference-plugin": "^1.0.1"

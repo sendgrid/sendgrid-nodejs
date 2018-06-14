@@ -6,9 +6,11 @@ Hello! Thank you for choosing to help contribute to one of the SendGrid open sou
 - [Submit a Bug Report](#submit-a-bug-report)
 - [Improvements to the Codebase](#improvements-to-the-codebase)
 - [Understanding the Code Base](#understanding-the-codebase)
+- [Codebase Overview](#codebase-overview)
 - [Testing](#testing)
 - [Style Guidelines & Naming Conventions](#style-guidelines-and-naming-conventions)
 - [Creating a Pull Request](#creating-a-pull-request)
+- [Code Reviews](#code-reviews)
 
 <a name="roadmap"></a>
 We use [Milestones](https://github.com/sendgrid/sendgrid-nodejs/milestones) to help define current roadmaps, please feel free to grab an issue from the current milestone. Please indicate that you have begun work on it to avoid collisions. Once a PR is made, community review, comments, suggestions and additional PRs are welcomed and encouraged.
@@ -108,6 +110,33 @@ node example.js
 
 This repo is organized as a monorepo with the packages residing in the `./packages` directory. Please see the root [README.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/README.md) for details.
 
+<a name="codebase-overview"></a>
+## Codebase Overview
+
+This repo is subdivided in 6 main [packages](https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages). Each package has its own dependencies (internal or external) and its own source code in the `src` folder. Each package also has its isolated ReadME files, use cases and usage.md files.
+
+To install a particular packages' dependencies.
+```bash
+cd packages/{NAME}
+npm install or yarn install
+```
+#### Package List
+
+**1. Client**
+This is a  wrapper written on top of the ```request``` module to suite the sendgrid module. All requests made to the sendgrid API are invoked by the `request` function in the `client.js`.
+
+Type declarations: client.d.ts
+Test Cases: client.spec.js
+
+**2. Mail**
+This module exposes the `send` function which send mails via the sdk. This module can be a good starting point to read the source code. 
+
+Type declarations: mail.d.ts
+Test Cases: mail.spec.js
+
+**3. Helpers**
+These are a set of utility functions which all the modules use. Some of them are very basic functions and can be an easy starting point for reading the source code.
+
 <a name="testing"></a>
 ## Testing
 
@@ -186,4 +215,9 @@ Please run your code through:
 7. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/)
     with a clear title and description against the `master` branch. All tests must be passing before we will review the PR.
 
-If you have any additional questions, please feel free to [email](mailto:dx@sendgrid.com) us or [create an issue](#submit-a-bug-report) in this repo.
+If you have any additional questions, please feel free to [email](mailto:dx@sendgrid.com) us or create an issue in this repo.
+
+<a name="code-reviews"></a>
+## Code Reviews
+
+If you can, please look at open PRs and review them. Give feedback and help us merge these PRs much faster! If you don't know how, Github has some [great information on how to review a Pull Request](https://help.github.com/articles/about-pull-request-reviews/).
