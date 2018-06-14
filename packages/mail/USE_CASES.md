@@ -275,7 +275,7 @@ const msg = {
       filename: 'some-attachment.txt',
       type: 'plain/text',
       disposition: 'attachment',
-      contentId: 'mytext'
+      content_id: 'mytext'
     },
   ],
 };

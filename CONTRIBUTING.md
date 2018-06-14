@@ -6,6 +6,7 @@ Hello! Thank you for choosing to help contribute to one of the SendGrid open sou
 - [Submit a Bug Report](#submit-a-bug-report)
 - [Improvements to the Codebase](#improvements-to-the-codebase)
 - [Understanding the Code Base](#understanding-the-codebase)
+- [Codebase Overview](#codebase-overview)
 - [Testing](#testing)
 - [Style Guidelines & Naming Conventions](#style-guidelines-and-naming-conventions)
 - [Creating a Pull Request](#creating-a-pull-request)
@@ -32,9 +33,9 @@ There are a few ways to contribute, which we'll enumerate below:
 
 If you'd like to make a feature request, please read this section.
 
-The GitHub issue tracker is the preferred channel for library feature requests, but please respect the following restrictions:
+The GitHub [issue tracker](https://github.com/sendgrid/sendgrid-nodejs/issues) is the preferred channel for library feature requests, but please respect the following restrictions:
 
-- Please **search for existing issues** in order to ensure we don't have duplicate bugs/feature requests.
+- Please [**search for existing issues**](https://github.com/search?utf8=%E2%9C%93&q=repo%3Asendgrid%2Fsendgrid-nodejs&type=Issues) in order to ensure we don't have duplicate bugs/feature requests.
 - Please be respectful and considerate of others when commenting on issues
 
 <a name="submit-a-bug-report"></a>
@@ -46,7 +47,7 @@ A software bug is a demonstrable issue in the code base. In order for us to diag
 
 Before you decide to create a new issue, please try the following:
 
-1. Check the Github issues tab if the identified issue has already been reported, if so, please add a +1 to the existing post.
+1. [Check the Github issues tab](https://github.com/sendgrid/sendgrid-nodejs/issues) if the identified issue has already been reported, if so, please add a +1 to the existing post.
 2. Update to the latest version of this code and check if issue has already been fixed
 3. Copy and fill in the Bug Report Template we have provided below
 
@@ -80,7 +81,7 @@ npm install
 
 First, get your free SendGrid account [here](https://sendgrid.com/free?source=sendgrid-nodejs).
 
-You will need to setup the following environment to use the SendGrid examples in the README.md, USAGE.md and USE_CASES.md files:
+You will need to setup the following environment to use the SendGrid examples in the [README.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/README.md), [USAGE.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/USAGE.MD) and [USE_CASES.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/USE_CASES.md) files:
 
 ```bash
 echo "export SENDGRID_API_KEY='YOUR_API_KEY'" > sendgrid.env
@@ -108,6 +109,33 @@ node example.js
 ## Understanding the Code Base
 
 This repo is organized as a monorepo with the packages residing in the `./packages` directory. Please see the root [README.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/README.md) for details.
+
+<a name="codebase-overview"></a>
+## Codebase Overview
+
+This repo is subdivided in 6 main [packages](https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages). Each package has its own dependencies (internal or external) and its own source code in the `src` folder. Each package also has its isolated ReadME files, use cases and usage.md files.
+
+To install a particular packages' dependencies.
+```bash
+cd packages/{NAME}
+npm install or yarn install
+```
+#### Package List
+
+**1. Client**
+This is a  wrapper written on top of the ```request``` module to suite the sendgrid module. All requests made to the sendgrid API are invoked by the `request` function in the `client.js`.
+
+Type declarations: client.d.ts
+Test Cases: client.spec.js
+
+**2. Mail**
+This module exposes the `send` function which send mails via the sdk. This module can be a good starting point to read the source code. 
+
+Type declarations: mail.d.ts
+Test Cases: mail.spec.js
+
+**3. Helpers**
+These are a set of utility functions which all the modules use. Some of them are very basic functions and can be an easy starting point for reading the source code.
 
 <a name="testing"></a>
 ## Testing
