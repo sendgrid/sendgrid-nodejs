@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [6.3.1] - 2018-1-18 ##
+
+This minor version bump was due to a hiccup using `lerna` to publish to npm.
+
 ## [6.3.0] - 2018-1-18 ##
 
 ### Added
