@@ -1,0 +1,15 @@
+{
+  "name": "sendgrid-nodejs",
+  "scripts": {
+  },
+  "env": {
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+
+  ]
+}
