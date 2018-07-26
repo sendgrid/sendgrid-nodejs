@@ -1,0 +1,40 @@
+{
+  "name": "@sendgrid/nodemailer-transport",
+  "description": "SendGrid transport for Nodemailer",
+  "version": "0.3.0",
+  "author": "SendGrid <community@sendgrid.com> (sendgrid.com)",
+  "contributors": [
+    "Eddie Zaneski <eddiezane@sendgrid.com",
+    "Will Smidlein <ws@sendgrid.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://sendgrid.com",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sendgrid/sendgrid-nodejs.git"
+  },
+  "main": "src/sendgrid-transport.js",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "Nodemailer",
+    "transport",
+    "SendGrid"
+  ],
+  "dependencies": {
+    "chain": "^0.1.3",
+    "@sendgrid/mail": "^6.3.1"
+  },
+  "tags": [
+    "http",
+    "rest",
+    "api",
+    "transport",
+    "nodemailer",
+    "sendgrid"
+  ]
+}
