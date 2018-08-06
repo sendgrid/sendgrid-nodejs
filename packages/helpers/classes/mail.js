@@ -242,7 +242,7 @@ class Mail {
     //depending on the templateId
     if (this.isDynamic && personalization.substitutions) {
       delete personalization.substitutions;
-    } else if (personalization.dynamicTemplateData) {
+    } else if (!this.isDynamic && personalization.dynamicTemplateData) {
       delete personalization.dynamicTemplateData;
     }
 
