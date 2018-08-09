@@ -7,7 +7,7 @@ const EmailAddress = require('./email-address');
 const toCamelCase = require('../helpers/to-camel-case');
 const toSnakeCase = require('../helpers/to-snake-case');
 const deepClone = require('../helpers/deep-clone');
-const merge = require('deepmerge');
+const merge = require('deepmerge').default;
 const wrapSubstitutions = require('../helpers/wrap-substitutions');
 
 /**
