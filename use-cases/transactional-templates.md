@@ -47,4 +47,4 @@ const msg = {
 sgMail.send(msg);
 ```
 
-There's no need to specify the substitution wrappers as it will assume that you're using [Handlebars](https://handlebarsjs.com/) templting by default.
+There's no need to specify the substitution wrappers as it will assume that you're using [Handlebars](https://handlebarsjs.com/) templating by default.
