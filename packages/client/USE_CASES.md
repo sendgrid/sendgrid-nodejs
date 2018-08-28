@@ -2,8 +2,8 @@ This documentation provides examples for specific SendGrid v3 API non mail/send 
 
 # Table of Contents
 
-* [How to Setup a Domain Whitelabel](#domain_whitelabel)
-* [How to View Email Statistics](#email_stats)
+* [How to Setup a Domain Whitelabel](#domain-white-label)
+* [How to View Email Statistics](#email-stats)
 
 
 <a name="domain-white-label"></a>
