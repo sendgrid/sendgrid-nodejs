@@ -9,6 +9,7 @@ This documentation provides examples for specific SendGrid v3 API use cases. Ple
 * [Handling Success/Failure/Errors](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/success-failure-errors.md)
 * [Advanced Usage](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/advanced.md)
   * [Transactional Templates](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/transactional-templates.md)
+  * [Legacy Transactional Templates](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/transactional-legacy-templates.md)
   * [Attachments](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/attachments.md)
   * [Customization Per Recipient](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/customization.md)
   * [Manually Providing Content](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/manual-content.md)
