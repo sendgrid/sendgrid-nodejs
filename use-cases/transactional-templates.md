@@ -1,17 +1,11 @@
-# Transactional Templates (For API v3 Users)
+# Transactional Templates
 
 For this example, we assume you have created a [transactional template](https://sendgrid.com/docs/User_Guide/Transactional_Templates/index.html). Following is the template content we used for testing.
-
-Template ID (replace with your own):
-
-```text
-d-f43daeeaef504760851f727007e0b5d0
-```
 
 Email Subject:
 
 ```text
-<%subject%>
+{{ subject }}
 ```
 
 Template Body:
@@ -22,13 +16,13 @@ Template Body:
     <title></title>
 </head>
 <body>
-Hello {{name}},
+Hello {{ name }},
 <br /><br/>
 I'm glad you are trying out the template feature!
 <br /><br/>
 <%body%>
 <br /><br/>
-I hope you are having a great day in {{city}} :)
+I hope you are having a great day in {{ city }} :)
 <br /><br/>
 </body>
 </html>
@@ -45,6 +39,7 @@ const msg = {
   html: '<p>Hello HTML world!</p>',
   templateId: 'd-f43daeeaef504760851f727007e0b5d0',
   dynamic_template_data: {
+    subject: 'Testing Templates',
     name: 'Some One',
     city: 'Denver',
   },
@@ -52,4 +47,4 @@ const msg = {
 sgMail.send(msg);
 ```
 
-With SendGrid API v3, there's no need to specify the substitution wrappers as it will assume that you're using [Handlebars](https://handlebarsjs.com/) templting by default.
+There's no need to specify the substitution wrappers as it will assume that you're using [Handlebars](https://handlebarsjs.com/) templting by default.
