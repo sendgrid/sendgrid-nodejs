@@ -9,6 +9,7 @@ This documentation provides examples for specific email use cases. Please [open 
 * [Handling Success/Failure/Errors](#success-failure-errors)
 * [Advanced Usage](#advanced)
   * [Transactional Templates](#transactional-templates)
+  * [Legacy Transactional Templates](#legacy-transactional-templates)
   * [Attachments](#attachments)
   * [Customization Per Recipient](#customization)
   * [Manually Providing Content](#manual-content)
@@ -192,7 +193,59 @@ sgMail
 All other advanced settings are supported and can be passed in through the msg object according to the expected format as per the [API v3 documentation](https://sendgrid.com/docs/API_Reference/api_v3.html). Note that you can use either `camelCase` or `snake_case` for property names.
 
 <a name="transactional-templates"></a>
-## Transactional Templates
+# Transactional Templates
+
+For this example, we assume you have created a [transactional template](https://sendgrid.com/docs/User_Guide/Transactional_Templates/index.html). Following is the template content we used for testing.
+
+Email Subject:
+
+```text
+{{ subject }}
+```
+
+Template Body:
+
+```html
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+Hello {{ name }},
+<br /><br/>
+I'm glad you are trying out the template feature!
+<br /><br/>
+<%body%>
+<br /><br/>
+I hope you are having a great day in {{ city }} :)
+<br /><br/>
+</body>
+</html>
+```
+
+```js
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const msg = {
+  to: 'recipient@example.org',
+  from: 'sender@example.org',
+  subject: 'Hello world',
+  text: 'Hello plain world!',
+  html: '<p>Hello HTML world!</p>',
+  templateId: 'd-f43daeeaef504760851f727007e0b5d0',
+  dynamic_template_data: {
+    subject: 'Testing Templates',
+    name: 'Some One',
+    city: 'Denver',
+  },
+};
+sgMail.send(msg);
+```
+
+There's no need to specify the substitution wrappers as it will assume that you're using [Handlebars]
+
+<a name="legacy-transactional-templates"></a>
+## Legacy Transactional Templates
 
 For this example, we assume you have created a [transactional template](https://sendgrid.com/docs/User_Guide/Transactional_Templates/index.html). Following is the template content we used for testing.
 
