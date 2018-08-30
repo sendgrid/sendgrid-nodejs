@@ -292,7 +292,7 @@ const msg = {
   text: 'Hello plain world!',
   html: '<p>Hello HTML world!</p>',
   templateId: '13b8f94f-bcae-4ec6-b752-70d6cb59f932',
-  substitutions: {
+  dynamicTemplateData: {
     name: 'Some One',
     city: 'Denver',
   },
