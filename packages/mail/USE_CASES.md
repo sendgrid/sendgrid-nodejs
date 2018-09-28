@@ -530,7 +530,17 @@ const msg = {
   },
   ipPoolName: 'sendgrid-ip-pool-name',
   mailSettings: {},
-  trackingSettings: {},
+  trackingSettings: {
+    clickTracking: {
+      enable: true
+    },
+    openTracking: {
+      enable: true
+    },
+    subscriptionTracking: {
+      enable: true
+    }
+  },
 };
 sgMail
   .send(msg)
