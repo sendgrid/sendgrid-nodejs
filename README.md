@@ -74,7 +74,9 @@ Please see our [troubleshooting guide](https://github.com/sendgrid/sendgrid-node
 <a name="about"></a>
 # About
 
-sendgrid-nodejs is guided and supported by the SendGrid [Developer Experience Team](mailto:dx@sendgrid.com).
+sendgrid-nodejs is guided and supported by the SendGrid Developer Experience Team.
+
+Please Email the Developer Experience Team [here](mailto:dx@sendgrid.com) in case of any queries.
 
 sendgrid-nodejs is maintained and funded by SendGrid, Inc. The names and logos for sendgrid-nodejs are trademarks of SendGrid, Inc.
 
