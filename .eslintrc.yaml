@@ -173,7 +173,7 @@ rules:
   block-scoped-var: off
   class-methods-use-this: off
   complexity:
-    - error
+    - warn
     - 6
   consistent-return: off
   default-case: off
@@ -253,7 +253,7 @@ rules:
 
   # Node.js and CommonJS
   callback-return: error
-  global-require: error
+  global-require: off
   handle-callback-err: error
   no-mixed-requires: off
   no-new-require: off
@@ -282,7 +282,7 @@ rules:
   max-params: off
   max-statements-per-line: off
   max-statements:
-    - error
+    - warn
     - 30
   multiline-ternary: off
   new-parens: off
