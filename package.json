@@ -25,6 +25,7 @@
     "typescript": "~2.4.2"
   },
   "scripts": {
+    "doc": "esdoc",
     "lint": "eslint . --fix",
     "prism:install": "curl https://raw.githubusercontent.com/stoplightio/prism/master/install.sh | sh",
     "prism": "prism run --mock --list --spec https://raw.githubusercontent.com/sendgrid/sendgrid-oai/master/oai_stoplight.json",
