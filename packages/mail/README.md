@@ -22,7 +22,7 @@ Grab your API Key from the [SendGrid UI](https://app.sendgrid.com/settings/api_k
 
 ## Setup Environment Variables
 
-Do not hard code your [SendGrid API Key](https://app.sendgrid.com/settings/api_keys) into your code. Instead, use an environment variable or some other secure means of protecting your SendGrid API Key. Following is an example of using an environment variable.
+Do not hardcode your [SendGrid API Key](https://app.sendgrid.com/settings/api_keys) into your code. Instead, use an environment variable or some other secure means of protecting your SendGrid API Key. Following is an example of using an environment variable.
 
 Update the development environment with your [SENDGRID_API_KEY](https://app.sendgrid.com/settings/api_keys), for example:
 
@@ -34,7 +34,7 @@ source ./sendgrid.env
 
 ## Install Package
 
-The following recommended installation requires [npm](https://npmjs.org/). If you are unfamiliar with npm, see the [npm docs](https://npmjs.org/doc/). Npm comes installed with Node.js since node version 0.8.x therefore you likely already have it.
+The following recommended installation requires [npm](https://npmjs.org/). If you are unfamiliar with npm, see the [npm docs](https://npmjs.org/doc/). Npm comes installed with Node.js since node version 0.8.x, therefore, you likely already have it.
 
 ```sh
 npm install --save @sendgrid/mail
@@ -49,7 +49,7 @@ yarn add @sendgrid/mail
 <a name="quick-start"></a>
 # Quick Start, Hello Email
 
-The following is the minimum needed code to send an simple email. Use this example, and modify the `to` and `from` variables:
+The following is the minimum needed code to send a simple email. Use this example, and modify the `to` and `from` variables:
 
 For more complex use cases, please see [USE_CASES.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/mail/USE_CASES.md).
 
@@ -66,7 +66,7 @@ const msg = {
 sgMail.send(msg);
 ```
 
-After executing the above code, you should have an email in the inbox of the to recipient. You can check the status of your email [in the UI](https://app.sendgrid.com/email_activity?). Alternatively, we can post events to a URL of your choice using our [Event Webhook](https://sendgrid.com/docs/API_Reference/Webhooks/event.html). This gives you data about the events that occur as SendGrid processes your email.
+After executing the above code, you should have an email in the inbox of the recipient. You can check the status of your email [in the UI](https://app.sendgrid.com/email_activity?). Alternatively, we can post events to a URL of your choice using our [Event Webhook](https://sendgrid.com/docs/API_Reference/Webhooks/event.html). This gives you data about the events that occur as SendGrid processes your email.
 
 <a name="troubleshooting"></a>
 # Troubleshooting
