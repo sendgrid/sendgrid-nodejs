@@ -26,12 +26,12 @@
     "access": "public"
   },
   "dependencies": {
+    "@sendgrid/client": "^6.3.0",
     "async.ensureasync": "^0.5.2",
     "async.queue": "^0.5.2",
     "bottleneck": "^1.12.0",
-    "debug": "^2.2.0",
-    "lodash.chunk": "^4.2.0",
-    "@sendgrid/client": "^6.3.0"
+    "debug": "^4.0.1",
+    "lodash.chunk": "^4.2.0"
   },
   "tags": [
     "sendgrid"
