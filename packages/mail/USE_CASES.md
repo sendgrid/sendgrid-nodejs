@@ -74,12 +74,12 @@ const msg = {
 sgMail.sendMultiple(msg);
 ```
 
-Note that `sendMultiple(msg)` is a convenience shortcut for `send(msg, true)`, and alternatively you can also set the `isMultiple` flag to `true` on your `msg` object.
+Note that `sendMultiple(msg)` is a convenience shortcut for `send(msg, true)`, and alternatively, you can also set the `isMultiple` flag to `true` on your `msg` object.
 
 <a name="multiple-emails-multiple-recipients"></a>
 # Send Multiple Emails to Multiple Recipients
 
-The `send` method also accepts an array of email msg if you want to send multiple different single emails with for example different content and sender values. This will send multiple requests (in parallel), so be aware of any API rate restrictions:
+The `send` method also accepts an array of email msg if you want to send multiple different single emails with, for example, different content and sender values. This will send multiple requests (in parallel), so be aware of any API rate restrictions:
 
 ```js
 const emails = [
@@ -469,7 +469,7 @@ const msg = {
 ## Managing multiple API keys
 
 In cases where you need to manage multiple instances of the mailer (or underlying client),
-for example when you are using multiple API keys, you can import the mail service class and
+for example, when you are using multiple API keys, you can import the mail service class and
 instantiate new instances as required:
 
 ```js
@@ -573,7 +573,7 @@ $ sudo ln -s /opt/node/bin/npm /usr/local/bin/npm
 ```
 
 ### Creating the repository
-Next, create a directory to house our Node.js application that will send email. The application will be housed in a directory located at /var/www/domain.com
+Next, create a directory to house our Node.js application that will send emails. The application will be housed in a directory located at /var/www/domain.com
 ```
 $ cd /var
 $ mkdir www & cd www
@@ -594,7 +594,7 @@ When you execute this command, you will have a blank line indicating that everyt
 #!/bin/sh
 git --work-tree=/var/www/domain.com --git-dir=/var/repo/site.git checkout -f
 ```
-When you finish typing, press 'control-d' to save. In order to execute the file, we need to set the proper permissions using:
+When you finish typing, press 'control-d' to save. To execute the file, we need to set the proper permissions using:
 ```
 $ chmod +x post-receive
 ```
@@ -674,7 +674,7 @@ $ node index.js
 <a name="gae"></a>
 ## Deploy a Simple App on Google App Engine with Node.js
 
-Before you begin, setup google app engine and install required packages by following [getting started](https://cloud.google.com/nodejs/getting-started/hello-world) guide.
+Before you begin, setup Google App Engine and install required packages by following [getting started](https://cloud.google.com/nodejs/getting-started/hello-world) guide.
 
 #### Setup your environment variables
 Include your [SENDGRID_API_KEY](https://app.sendgrid.com/settings/api_keys) in `app.yaml`, for example: 
@@ -772,17 +772,17 @@ If you run into any other non SendGrid related issues, don't forget to read thro
 <a name="send_via_azure"></a>
 # How to Setup Email Sending on Azure
 
-1. First create a account on azure. You can opt for free trial here or buy a subscription.
-2. I am assuming you already have sendgrid API Key with you.
+1. First, create an account on Azure. You can opt for a free trial here or buy a subscription.
+2. I am assuming you already have a SendGrid API Key with you.
 3. Create a sample node.js App. with an index.js and create a package.json file using npm init or yarn init.   
 4. Install sendgrid-nodejs as a dependency using yarn add @sendgrid/mail.  
-5. Now we need the SendGrid API key to be as an Environment Variable in our application. For that we will create an sendgrid.env file in our local system. Add it to .gitignore file and refresh the terminal.   
+5. Now we need the SendGrid API key to be as an Environment Variable in our application. For that, we will create a sendgrid.env file in our local system. Add it to .gitignore file and refresh the terminal.   
 ```shell
 echo "export SENDGRID_API_KEY='YOUR_API_KEY'" > sendgrid.env
 echo "sendgrid.env" >> .gitignore
 source ./sendgrid.env
 ```
-6. Now lets go to our index.js file and copy paste the following code.
+6. Now let's go to our index.js file and copy paste the following code.
 ```js
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
@@ -798,9 +798,9 @@ sgMail.send(msg);
 
 This will enable you to send a simple message to be sent to your email.   
 7. If you have followed all steps till here. Your app should work fine in local. Now it's time to deploy in Azure.  
-8. Follow the guide on [depolying to azure](https://docs.microsoft.com/en-us/azure/app-service/app-service-deploy-local-git) to the word. It might seem a little difficult to navigate with so many options but once you crack it, It will be a cakewalk.  
-9. Now as soon as you will deploy your application. It will run on the aforementioned port. You will again receive a message in your inbox.  
-10. And Voila you have your app deployed and sending Emails via Azure. Now you can chain your custome logic if you need to send emails as per some parameters and to specific people as per your requirement.  
+8. Follow the guide on [depolying to azure](https://docs.microsoft.com/en-us/azure/app-service/app-service-deploy-local-git) to the word. It might seem a little challenging to navigate with so many options but once you crack it, It will be a cakewalk.  
+9. Now as soon as you deploy your application, it will run on the aforementioned port. You will again receive a message in your inbox.  
+10. And Voila you have your app deployed and sending Emails via Azure. Now you can chain your custom logic if you need to send emails as per some parameters and to specific people as per your requirement.  
  
 <a name="domain-white-label"></a>
 # How to Setup a Domain Whitelabel
