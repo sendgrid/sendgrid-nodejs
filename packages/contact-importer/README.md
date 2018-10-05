@@ -4,8 +4,6 @@
 
 **This package is part of a monorepo, please see [this README](https://github.com/sendgrid/sendgrid-nodejs/blob/master/README.md) for details.**
 
-This package has yet to be updated to support v6.0.0 of the `sendgrid-nodejs` SDK. Currently, this package is a placeholder. Please use [this package](https://www.npmjs.com/package/sendgrid) until the upgrade. The related issue is located [here](https://github.com/sendgrid/sendgrid-nodejs/issues/427).
-
 To be notified when this package is updated, please subscribe to email [notifications](https://dx.sendgrid.com/newsletter/nodejs) for releases and breaking changes.
 
 <a name="contribute"></a>

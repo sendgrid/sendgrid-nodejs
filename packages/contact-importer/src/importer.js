@@ -69,22 +69,23 @@ class ContactImporter extends EventEmitter {
    * @param {Object} task Task to be processed (data in 'data' property)
    * @param {Function} callback Callback function.
    */
-  _worker (task, callback) {
+  _worker(task, callback) {
     const context = task.owner;
     debug('processing batch (%s items)', task.data.length);
     context.throttle.submit(context._sendBatch, context, task.data, callback);
   }
 
-  _sendBatch (context, data, callback) {
+  _sendBatch(context, data, callback) {
     debug('sending batch (%s items)', data.length);
 
-    const request = context.sg.emptyRequest();
-    request.method = 'POST';
-    request.path = '/v3/contactdb/recipients';
-    request.body = data;
+    const request = {
+      method: 'POST',
+      path: '/v3/contactdb/recipients',
+      body: data,
+    };
 
-    context.sg.API(request)
-      .then((response) => {
+    context.sg.request(request)
+      .then(([response]) => {
         debug('got response: %o', response);
         setTimeout(() => {
           context.throttle.incrementReservoir(1);
@@ -106,23 +107,25 @@ class ContactImporter extends EventEmitter {
   * @param {Object} error
   * @param {Object} result
   */
-  _notify (error, result, batch) {
+  _notify(error, result, batch) {
     if (error) {
       return this.emit('error', error, batch);
     }
     return this.emit('success', result, batch);
-  };
+  }
 
   /**
    * Sets up the queue object on this instance of ContactImporter
    */
-  _setupQueue () {
+  _setupQueue() {
     // Create a queue that wil be used to send batches to the throttler.
     this.queue = queue(ensureAsync(this._worker));
 
     // When the last batch is removed from the queue, add any incomplete batches.
     this.queue.empty = () => {
-      if (!this.pendingItems.length) return;
+      if (!this.pendingItems.length) {
+        return;
+      }
 
       debug('adding %s items from deferrd queue for processing', this.pendingItems.length);
 
@@ -141,7 +144,7 @@ class ContactImporter extends EventEmitter {
    *
    * @param {Array} batch A batch to send to the queue.
    */
-  _pushToQueue (batch) {
+  _pushToQueue(batch) {
     this.queue.push({
       data: batch,
       owner: this,
