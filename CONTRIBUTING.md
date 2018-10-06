@@ -81,7 +81,7 @@ npm install
 
 First, get your free SendGrid account [here](https://sendgrid.com/free?source=sendgrid-nodejs).
 
-You will need to setup the following environment to use the SendGrid examples in the [README.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/README.md), [USAGE.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/USAGE.MD) and [USE_CASES](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/README.md) files:
+You will need to setup the following environment to use the SendGrid examples in the [README.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/README.md), [USAGE.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/USAGE.md) and [USE_CASES](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/README.md) files:
 
 ```bash
 echo "export SENDGRID_API_KEY='YOUR_API_KEY'" > sendgrid.env
@@ -160,7 +160,7 @@ Generally, we follow the style guidelines as suggested by the official language.
 Please run your code through:
 
 - [ESLint](http://eslint.org/) with the standard style guide.
-- [esdoc](https://github.com/sendgrid/sendgrid-nodejs/blob/master/.github/USAGE.md) to check the documentation coverage of your added code.
+- [esdoc](https://esdoc.org/) to check the documentation coverage of your added code.
 
 ## Creating a Pull Request<a name="creating-a-pull-request"></a>
 
