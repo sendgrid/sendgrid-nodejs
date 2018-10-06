@@ -38,7 +38,8 @@
     "test:license": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha license.spec.js",
     "test:typescript": "tsc",
     "test": "npm run test:all -s",
-    "coverage": "open -a \"Google Chrome\" ./coverage/lcov-report/index.html"
+    "coverage": "open -a \"Google Chrome\" ./coverage/lcov-report/index.html",
+    "lerna:publish": "lerna publish from-git --yes"
   },
   "description": "![SendGrid Logo](https://uiux.s3.amazonaws.com/2016-logos/email-logo%402x.png)",
   "bugs": {

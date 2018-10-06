@@ -20,6 +20,17 @@ script:
 - yarn test:client
 - yarn test:helpers
 - yarn test:typescript
+before_deploy:
+  - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> $HOME/.npmrc
+deploy:
+  provider: script
+  script: "npm run lerna:publish"
+  skip_cleanup: true
+  on:
+    node: "8"
+    tags: true
+    repo: sendgrid/sendgrid-nodejs
+    branch: master
 notifications:
   hipchat:
     rooms:
