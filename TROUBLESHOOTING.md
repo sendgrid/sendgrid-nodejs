@@ -74,7 +74,7 @@ We follow the MAJOR.MINOR.PATCH versioning scheme as described by [SemVer.org](h
 <a name="environment"></a>
 ## Environment Variables and Your SendGrid API Key
 
-All of our examples assume you are using [environment variables](https://github.com/sendgrid/sendgrid-nodejs#setup-environment-variables) to hold your SendGrid API key.
+All of our examples assume you are using [environment variables](https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages/client#setup-environment-variables) to hold your SendGrid API key.
 
 If you choose to add your SendGrid API key directly (not recommended):
 
