@@ -4464,6 +4464,10 @@ Transactional templates are templates created specifically for transactional ema
 
 
 ```javascript
+  const queryParams = {
+    'generations': 'legacy,dynamic'
+  };
+  request.qs = queryParams;
   request.method = 'GET';
   request.url = '/v3/templates';
   client.request(request)
