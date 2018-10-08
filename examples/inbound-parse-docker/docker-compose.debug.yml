@@ -1,0 +1,13 @@
+version: '2.1'
+
+services:
+  inbound-parse-docker:
+    image: inbound-parse-docker
+    build: .
+    environment:
+      NODE_ENV: development
+    ports:
+      - 3000:3000
+      - 9229:9229
+    ## set your startup file here
+    command: node --inspect index.js
