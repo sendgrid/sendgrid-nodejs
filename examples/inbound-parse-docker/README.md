@@ -17,9 +17,13 @@ This is an example project for using a Docker container as a webhook receiver.
 
 At the moment, the `app.js` only prints data to the console.  You can extend this project by adding more business logic to the `/parse_webhook` route.
 
-# A note on attachments
+# A note on processing events
  
-This project uses the [express-formidable](https://github.com/utatti/express-formidable) middleware to process the form data sent by SendGrid's Inbound Parse Webhook.  As a result, `express-formidable` automatically decodes and stores the images to the `/tmp` directory in the container.  This is configurable by passing a configuration object to the middleware:
+This project uses the [express-formidable](https://github.com/utatti/express-formidable) middleware to process the form data sent by SendGrid's Inbound Parse Webhook.  
+
+The events are available in the `/parse_webhook` route in the `req.fields` object.  The [app.js](app.js) contains logging statements for the elements that are available to you.  It may be useful to review the [example-webhook-payload.txt](example-webhook-payload.txt) for what the form data looks like when extending this application.
+
+Attachments: `express-formidable` automatically decodes and stores the images to the `/tmp` directory in the container.  This is configurable by passing a configuration object to the middleware:
 
 ```js
 app.use(formidable({
