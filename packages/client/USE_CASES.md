@@ -4,6 +4,7 @@ This documentation provides examples for specific SendGrid v3 API non mail/send 
 
 * [How to Setup a Domain Whitelabel](#domain-white-label)
 * [How to View Email Statistics](#email-stats)
+* [How to use the Email Activity Feed](#email-activity-feed)
 
 
 <a name="domain-white-label"></a>
@@ -19,3 +20,10 @@ Find more information about all of SendGrid's whitelabeling related documentatio
 You can find documentation for how to view your email statistics via the UI [here](https://app.sendgrid.com/statistics) and via API [here](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/client/USAGE.md#stats).
 
 Alternatively, we can post events to a URL of your choice via our [Event Webhook](https://sendgrid.com/docs/API_Reference/Webhooks/event.html) about events that occur as SendGrid processes your email.
+
+<a name="email-activity-feed">
+# How to use the Email Activity Feed
+
+You can find documentation for how to use the Email Activity Feed via the UI [here](https://sendgrid.com/docs/ui/analytics-and-reporting/email-activity-feed/) and via API [here](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/client/USAGE.md#messages).
+
+Find more information about getting started with the Email Activity Feed API [here](https://sendgrid.com/docs/API_Reference/Web_API_v3/Tutorials/getting_started_email_activity_api.html).
