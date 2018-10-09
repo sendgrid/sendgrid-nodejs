@@ -10,4 +10,4 @@ services:
       - 3000:3000
       - 9229:9229
     ## set your startup file here
-    command: node --inspect index.js
+    command: node --inspect app.js

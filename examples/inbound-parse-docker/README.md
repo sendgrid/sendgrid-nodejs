@@ -5,7 +5,7 @@ This is an example project for using a Docker container as a webhook receiver.
 # Prerequisites
 
 * Docker CE 18
-* SendGrid Account with inbound parse enabled
+* SendGrid Account with inbound parse enabled to send form data (default)
 * Ngrok or Internet accessible URL
 
 # Usage
