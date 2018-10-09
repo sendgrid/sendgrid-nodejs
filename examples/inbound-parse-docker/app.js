@@ -7,7 +7,7 @@ app.use(formidable())
 
 
 
-app.get('/', (req, res) => res.send('Hello World!'))
+app.get('/', (req, res) => res.status(200).json({status: 'ok'}))
 
 app.post('/parse_webhook', (req, res) => {
     console.log('---------- START RECEIVED WEBHOOK DATA ----------')
