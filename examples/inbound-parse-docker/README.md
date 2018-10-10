@@ -12,7 +12,11 @@ This is an example project for using a Docker container as a [SendGrid](https://
 
 # Usage Locally (aka for Development)
 
+* `mkdir <project>`
 * `cd <project>`
+* `git clone https://github.com/sendgrid/sendgrid-nodejs.git`
+* `cp -R sendgrid-nodejs/examples/inbound-parse-docker/* .`
+* `rm -rf sendgrid-nodejs/`
 * Build the container: `docker-compose build`
 * Run the container: `docker-compose up`
 * (Optional to save your self both commands above) Build & Run the container: `docker-compose build && docker-compose up`
