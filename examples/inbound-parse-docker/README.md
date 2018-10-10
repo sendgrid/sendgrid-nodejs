@@ -1,23 +1,32 @@
 # Introduction
 
-This is an example project for using a Docker container as a webhook receiver.
+This is an example project for using a Docker container as a [SendGrid](https://sendgrid.com) [inbound parse email](https://sendgrid.com/docs/for-developers/parsing-email/setting-up-the-inbound-parse-webhook/) webhooks.
 
 # Prerequisites
 
 * [Docker CE 18](https://www.docker.com/get-started)
+* (Optional for development) A local Kubernetes installation
 * SendGrid Account with inbound parse enabled to send form data (default)
-* Ngrok or Internet accessible URL
+    * [Setup Inbound Parse Webhook](https://sendgrid.com/docs/for-developers/parsing-email/setting-up-the-inbound-parse-webhook/)
+* [Ngrok](https://ngrok.com/) or Internet accessible URL
 
-# Usage
+# Usage Locally (aka for Development)
 
 * `cd <project>`
 * Build the container: `docker-compose build`
 * Run the container: `docker-compose up`
-* Build & Run the container: `docker-compose build && docker-compose up`
+* (Optional to save your self both commands above) Build & Run the container: `docker-compose build && docker-compose up`
+* Run ngrok: `ngrok http 3000`
+* Create an entry in the [Settings > Inbound Parse](https://app.sendgrid.com/settings/parse) with the ngrok URL.  Use the `https` ngrok entry.
+* Send an email to your inbound parse email address.
+
+NOTE: ngrok has a "replay" feature so you don't have to keep sending emails to yourself.  You can access that when ngrok is running at [http://127.0.0.1:4040/inspect/http](http://127.0.0.1:4040/inspect/http)
+
+# Modifying the application
 
 At the moment, the `app.js` only prints data to the console.  You can extend this project by adding more business logic to the `/parse_webhook` route.
 
-# A note on processing events
+## A note on processing events
  
 This project uses the [express-formidable](https://github.com/utatti/express-formidable) middleware to process the form data sent by SendGrid's Inbound Parse Webhook.  
 
@@ -35,7 +44,7 @@ app.use(formidable({
 
 Additionally, the [docker-compose](docker-compose.yml) has a volume mapping commented out if you'd prefer to store them in persistent storage outside of the container.
 
-# Deploy to Kubernetes
+# Deployment to Kubernetes
 
 * In order for Kubernetes to use the container described in this project, the container must be built and stored in a container registry.  You can choose to use a private registry in your cloud provider or a public registry (e.g., Docker Hub).  You can also run a development environment of Kubernetes via [Docker for Mac or Windows](https://www.docker.com/get-started)
 * In this project, the [Kubernetes (k8s) manifest](k8s/inbound-parse.yml) uses the `imagePullPolicy: IfNotPresent` to pull from a local registry on the dev machine running Kubernetes as part of Docker.  If you were deploying to Google Cloud, for example, you should disable that option.
