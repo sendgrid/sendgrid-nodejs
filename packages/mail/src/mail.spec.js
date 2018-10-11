@@ -19,7 +19,9 @@ before(() => {
  * Default mock header
  */
 beforeEach(() => {
-  sgClient.setDefaultHeader('X-Mock', 200);
+  sgClient.setDefaultRequest('qs', {
+    '__code': 200,
+  });
 });
 
 /**
@@ -41,7 +43,9 @@ describe('sgMail.send()', () => {
   });
 
   it('should send a basic email', () => {
-    sgClient.setDefaultHeader('X-Mock', 201);
+    sgClient.setDefaultRequest('qs', {
+      '__code': 201,
+    });
     return sgMail
       .send(data)
       .then(([response, body]) => {
