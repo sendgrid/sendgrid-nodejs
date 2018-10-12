@@ -20,8 +20,6 @@ Hello {{ name }},
 <br /><br/>
 I'm glad you are trying out the template feature!
 <br /><br/>
-<%body%>
-<br /><br/>
 I hope you are having a great day in {{ city }} :)
 <br /><br/>
 </body>
@@ -34,9 +32,6 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const msg = {
   to: 'recipient@example.org',
   from: 'sender@example.org',
-  subject: 'Hello world',
-  text: 'Hello plain world!',
-  html: '<p>Hello HTML world!</p>',
   templateId: 'd-f43daeeaef504760851f727007e0b5d0',
   dynamic_template_data: {
     subject: 'Testing Templates',
