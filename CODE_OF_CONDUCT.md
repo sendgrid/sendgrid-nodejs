@@ -37,5 +37,5 @@ Finally, just a reminder, changes to the SendGrid repositories will only be acce
 SendGrid thanks the following, on which it draws for content and inspiration:
 
 * [Python Community Code of Conduct](https://www.python.org/psf/codeofconduct/)  
-* [Open Source Initiative General Code of Conduct](https://opensource.org/codeofconduct) 
+* [Open Source Initiative General Code of Conduct](https://opensource.org/codeofconduct/licensing) 
 * [Apache Code of Conduct](https://www.apache.org/foundation/policies/conduct.html) 
