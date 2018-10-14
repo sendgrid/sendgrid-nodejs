@@ -49,6 +49,6 @@ sgMail
   .catch(error => console.error(error.toString()));
 ```
 
-### Error Handling:
+### Caveats:
 
 As per [issue #288](https://github.com/sendgrid/sendgrid-nodejs/issues/288), please note that the `customArgs` feild *must* have a string value. 
