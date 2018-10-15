@@ -151,21 +151,3 @@ You can also wrap the text in the HTML to make a multi-line blog post:
     int d = 10;
   </code>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
