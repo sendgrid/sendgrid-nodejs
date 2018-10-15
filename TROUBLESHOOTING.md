@@ -131,7 +131,7 @@ console.log(body);
 <a name="wrapping-text"></a>
 ## Wrapping Text
 
-You can write blog posts using e-mail with the help of SENDGRID API, like so:
+You can write blog posts using e-mail with the help of SendGrid API, like so:
 ```javascript
 sgMail.setApiKey(process.env.SendGrid_API_KEY);
 let msg = {
