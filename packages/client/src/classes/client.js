@@ -15,7 +15,7 @@ const {
 } = require('@sendgrid/helpers');
 
 /**
- * Sendgrid REST Client
+ * SendGrid REST Client
  */
 class Client {
 
