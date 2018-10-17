@@ -19,7 +19,7 @@ This is an example project for using a Docker container as a [SendGrid](https://
 * `rm -rf sendgrid-nodejs/`
 * Build the container: `docker-compose build`
 * Run the container: `docker-compose up`
-* (Optional to save your self both commands above) Build & Run the container: `docker-compose build && docker-compose up`
+* (Optional: to save both commands above) Build & Run the container: `docker-compose build && docker-compose up`
 * Run ngrok: `ngrok http 3000`
 * Create an entry in the [Settings > Inbound Parse](https://app.sendgrid.com/settings/parse) with the ngrok URL.  Use the `https` ngrok entry.
 * Send an email to your inbound parse email address.
