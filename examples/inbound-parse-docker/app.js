@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const formidable = require('express-formidable')
-const port = 3000
+
 
 app.use(formidable())
 
@@ -57,4 +57,4 @@ app.post('/parse_webhook', (req, res) => {
     res.sendStatus(200)
 })
 
-app.listen(port, () => console.log(`SendGrid Inbound Parse webhook listener started on port ${port}!`))
+module.exports = app;

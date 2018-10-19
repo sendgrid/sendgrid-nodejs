@@ -5,12 +5,16 @@
   "main": "app.js",
   "dependencies": {
     "express": "^4.16.3",
-    "express-formidable": "^1.0.0"
+    "express-formidable": "^1.0.0",
+    "debug": "^3.1.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  },
   "scripts": {
-    "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:server": "nodemon server.js"
   },
   "author": "Ashley Roach <aroach@gmail.com>",
   "license": "MIT"

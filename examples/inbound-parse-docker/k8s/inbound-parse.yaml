@@ -2,6 +2,7 @@ apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
   name: inbound-parse-deployment
+  namespace: inbound-parse
 spec:
   selector:
     matchLabels:
@@ -18,16 +19,4 @@ spec:
         imagePullPolicy: IfNotPresent # enables pull from local system
         ports:
         - containerPort: 3000
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: inbound-parse-svc
-spec:
-  ports:
-  - protocol: TCP
-    port: 3000
-    targetPort: 3000
-  selector:
-    app: inbound-parse
-  type: LoadBalancer
+

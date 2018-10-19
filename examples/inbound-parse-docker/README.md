@@ -26,6 +26,14 @@ This is an example project for using a Docker container as a [SendGrid](https://
 
 NOTE: ngrok has a "replay" feature so you don't have to keep sending emails to yourself.  You can access that when ngrok is running at [http://127.0.0.1:4040/inspect/http](http://127.0.0.1:4040/inspect/http)
 
+# Run nodejs server locally
+
+* `cd examples/inbound-parse-docker/`
+* `npm install`
+* `npm run start:server`
+
+* The node server will start running on localhost:3000
+
 # Modifying the application
 
 At the moment, the `app.js` only prints data to the console.  You can extend this project by adding more business logic to the `/parse_webhook` route.
@@ -52,7 +60,37 @@ Additionally, the [docker-compose](docker-compose.yml) has a volume mapping comm
 
 * In order for Kubernetes to use the container described in this project, the container must be built and stored in a container registry.  You can choose to use a private registry in your cloud provider or a public registry (e.g., Docker Hub).  You can also run a development environment of Kubernetes via [Docker for Mac or Windows](https://www.docker.com/get-started)
 * In this project, the [Kubernetes (k8s) manifest](k8s/inbound-parse.yml) uses the `imagePullPolicy: IfNotPresent` to pull from a local registry on the dev machine running Kubernetes as part of Docker.  If you were deploying to Google Cloud, for example, you should disable that option.
-* `kubectl` is used to deploy.  You should already have a working `kubectl context`.  From the root of the project execute: `kubectl apply -f k8s/inbound-parse.yml`
+* `kubectl` is used to deploy.  You should already have a working `kubectl context`.  From the root of the project execute: `kubectl apply -f k8s/inbound-parse.yaml`
+
+# Deployment to minikube
+
+```
+   minikube start
+
+   kubectl apply -f k8s/namespace.yaml
+
+   kubectl apply -f k8s/inbound-parse.yaml
+
+   kubectl apply -f k8s/inbound-parse-svc.yaml
+
+```
+
+  * check the deployment
+
+```
+  kubectl get pod -n inbound-parse -o wide
+
+  NAME                                        READY     STATUS             RESTARTS   AGE       IP           NODE
+  inbound-parse-deployment-765956bc6b-kbpx4   0/1       ImagePullBackOff   0          35s       172.17.0.3   minikube
+  inbound-parse-deployment-765956bc6b-zvstc   0/1       ImagePullBackOff   0          35s       172.17.0.2   minikube
+
+```  
+* check the service
+ 
+ ```
+  kubectl get svc -n inbound service
+
+```  
 
 # Resources
 
