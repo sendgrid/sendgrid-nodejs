@@ -86,6 +86,12 @@ becomes
 
 In the first case SENDGRID_API_KEY is in reference to the name of the environment variable, while the second case references the actual SendGrid API Key.
 
+If you're using Kubernetes Secrets and passing the API Keys to the Environment using it, You may find that there is a `\n` character in the environment variable. You can use the trim function to remove it like this:
+
+```
+process.env.SENDGRID_API_KEY.trim();
+```
+
 <a name="package-manager"></a>
 ## Using the Package Manager
 
