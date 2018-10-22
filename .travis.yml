@@ -1,5 +1,12 @@
 language: node_js
+sudo: false
 node_js:
+- "4.1"
+- "4.0"
+- "0.12"
+- "0.11"
+- "0.10"
+- "iojs"
 - "6"
 - "7"
 - "8"
@@ -12,7 +19,10 @@ before_script:
 - ./test/prism.sh
 - yarn prism &
 - sleep 5 # give it some time to start
+install:
+- npm install
 script:
+- npm test  
 - lerna bootstrap
 - yarn test:files
 - yarn test:license
