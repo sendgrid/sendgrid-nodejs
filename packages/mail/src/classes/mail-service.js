@@ -112,6 +112,7 @@ class MailService {
 
       //Pass to callback if provided
       if (cb) {
+        // eslint-disable-next-line callback-return
         cb(error, null);
       }
 

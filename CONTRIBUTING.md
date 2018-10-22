@@ -160,7 +160,13 @@ Generally, we follow the style guidelines as suggested by the official language.
 Please run your code through:
 
 - [ESLint](http://eslint.org/) with the standard style guide.
-- [esdoc](https://esdoc.org/) to check the documentation coverage of your added code.
+  ```bash
+  yarn lint
+  ```
+- [ESDoc](https://esdoc.org/) to check the documentation coverage of your added code.
+  ```bash
+  yarn doc
+  ```
 
 ## Creating a Pull Request<a name="creating-a-pull-request"></a>
 
