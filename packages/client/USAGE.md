@@ -1181,18 +1181,46 @@ Categories allow you to group your emails according to broad topics that you def
 
 
 ```javascript
-  const queryParams = {
-  'aggregated_by': 'day', 
-  'categories': 'test_string', 
-  'end_date': '2016-04-01', 
-  'limit': 1, 
-  'offset': 1, 
+const queryParams = {
+  'aggregated_by': 'day',
+  'categories': 'test_string',
+  'end_date': '2016-04-01',
+  'limit': 1,
+  'offset': 1,
   'start_date': '2016-01-01'
 };
-  request.qs = queryParams;
-  request.method = 'GET';
-  request.url = '/v3/categories/stats';
-  client.request(request)
+request.qs = queryParams;
+request.method = 'GET';
+request.url = '/v3/categories/stats';
+client
+  .request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+
+
+**Attention:** in order to receive the email statistics for multiple categories at once, you need to set the `qsStringifyOptions` as follows:
+
+```javascript
+const client = require('@sendgrid/client')
+client.setDefaultRequest('qsStringifyOptions', {arrayFormat: 'repeat'});
+
+const request = {}
+const queryParams = {
+  'aggregated_by': 'day',
+  'categories': ['test_category_1', 'cat facts'],
+  'end_date': '2016-04-01',
+  'limit': 1,
+  'offset': 1,
+  'start_date': '2016-01-01'
+};
+request.qs = queryParams;
+request.method = 'GET';
+request.url = '/v3/categories/stats';
+client
+  .request(request)
   .then(([response, body]) => {
     console.log(response.statusCode);
     console.log(response.body);
