@@ -30,4 +30,4 @@ const msg = {
 sgMail.sendMultiple(msg);
 ```
 
-Note that `sendMultiple(msg)` is a convenience shortcut for `send(msg, true)`, and alternatively you can also set the `isMultiple` flag to `true` on your `msg` object.
+Note that `sendMultiple(msg)` is a convenience shortcut for `send(msg, true)`, and alternatively, you can also set the `isMultiple` flag to `true` on your `msg` object.

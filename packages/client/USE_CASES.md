@@ -1,4 +1,4 @@
-This documentation provides examples for specific SendGrid v3 API non mail/send use cases. Please [open an issue](https://github.com/sendgrid/sendgrid-nodejs/issues) or make a pull request for any use cases you would like us to document here. Thank you!
+This document provides examples for specific SendGrid v3 API non-mail/send use cases. Please [open an issue](https://github.com/sendgrid/sendgrid-nodejs/issues) or make a pull request for any use cases you would like us to document here. Thank you!
 
 # Table of Contents
 

@@ -13,14 +13,14 @@ Hello! Thank you for choosing to help contribute to one of the SendGrid open sou
 - [Code Reviews](#code-reviews)
 
 <a name="roadmap"></a>
-We use [Milestones](https://github.com/sendgrid/sendgrid-nodejs/milestones) to help define current roadmaps, please feel free to grab an issue from the current milestone. Please indicate that you have begun work on it to avoid collisions. Once a PR is made, community review, comments, suggestions and additional PRs are welcomed and encouraged.
+We use [Milestones](https://github.com/sendgrid/sendgrid-nodejs/milestones) to help define current roadmaps, please feel free to grab an issue from the current milestone. Please indicate that you have begun work on it to avoid collisions. Once a PR is made, community review, comments, suggestions, and additional PRs are welcomed and encouraged.
 
 <a name="cla"></a>
 ## CLAs and CCLAs
 
 Before you get started, SendGrid requires that a SendGrid Contributor License Agreement (CLA) be filled out by every contributor to a SendGrid open source project.
 
-Our goal with the CLA is to clarify the rights of our contributors and reduce other risks arising from inappropriate contributions.  The CLA also clarifies the rights SendGrid holds in each contribution and helps to avoid misunderstandings over what rights each contributor is required to grant to SendGrid when making a contribution.  In this way the CLA encourages broad participation by our open source community and helps us build strong open source projects, free from any individual contributor withholding or revoking rights to any contribution.
+Our goal with the CLA is to clarify the rights of our contributors and reduce other risks arising from inappropriate contributions.  The CLA also clarifies the rights SendGrid holds in each contribution and helps to avoid misunderstandings over what rights each contributor is required to grant to SendGrid when contributing.  In this way, the CLA encourages broad participation by our open source community and helps us build strong open source projects, free from any individual contributor withholding or revoking rights to any contribution.
 
 SendGrid does not merge a pull request made against a SendGrid open source project until that pull request is associated with a signed CLA. Copies of the CLA are available [here](https://gist.github.com/SendGridDX/98b42c0a5d500058357b80278fde3be8#file-sendgrid_cla).
 
@@ -35,7 +35,7 @@ If you'd like to make a feature request, please read this section.
 
 The GitHub [issue tracker](https://github.com/sendgrid/sendgrid-nodejs/issues) is the preferred channel for library feature requests, but please respect the following restrictions:
 
-- Please [**search for existing issues**](https://github.com/search?utf8=%E2%9C%93&q=repo%3Asendgrid%2Fsendgrid-nodejs&type=Issues) in order to ensure we don't have duplicate bugs/feature requests.
+- Please [**search for existing issues**](https://github.com/search?utf8=%E2%9C%93&q=repo%3Asendgrid%2Fsendgrid-nodejs&type=Issues) to ensure we don't have duplicate bugs/feature requests.
 - Please be respectful and considerate of others when commenting on issues
 
 <a name="submit-a-bug-report"></a>
@@ -43,17 +43,17 @@ The GitHub [issue tracker](https://github.com/sendgrid/sendgrid-nodejs/issues) i
 
 Note: DO NOT include your credentials in ANY code examples, descriptions, or media you make public.
 
-A software bug is a demonstrable issue in the code base. In order for us to diagnose the issue and respond as quickly as possible, please add as much detail as possible into your bug report.
+A software bug is a demonstrable issue in the code base. For us to diagnose the issue and respond as quickly as possible, please add as much detail as possible into your bug report.
 
 Before you decide to create a new issue, please try the following:
 
 1. [Check the Github issues tab](https://github.com/sendgrid/sendgrid-nodejs/issues) if the identified issue has already been reported, if so, please add a +1 to the existing post.
-2. Update to the latest version of this code and check if issue has already been fixed
+2. Update to the latest version of this code and check if the issue has already been fixed
 3. Copy and fill in the Bug Report Template we have provided below
 
 ### Please use our Bug Report Template
 
-In order to make the process easier, we've included a [sample bug report template](https://github.com/sendgrid/sendgrid-nodejs/blob/master/.github/ISSUE_TEMPLATE) (borrowed from [Ghost](https://github.com/TryGhost/Ghost/)). The template uses [GitHub flavored markdown](https://help.github.com/articles/github-flavored-markdown/) for formatting.
+To make the process easier, we've included a [sample bug report template](https://github.com/sendgrid/sendgrid-nodejs/blob/master/.github/ISSUE_TEMPLATE) (borrowed from [Ghost](https://github.com/TryGhost/Ghost/)). The template uses [GitHub flavored markdown](https://help.github.com/articles/github-flavored-markdown/) for formatting.
 
 <a name="improvements-to-the-codebase"></a>
 ## Improvements to the Codebase
@@ -81,7 +81,7 @@ npm install
 
 First, get your free SendGrid account [here](https://sendgrid.com/free?source=sendgrid-nodejs).
 
-You will need to setup the following environment to use the SendGrid examples in the [README.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/README.md), [USAGE.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/USAGE.MD) and [USE_CASES.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/USE_CASES.md) files:
+You will need to setup the following environment to use the SendGrid examples in the [README](README.md), [USAGE](USAGE.md) and [USE_CASES](use-cases/README.md) files:
 
 ```bash
 echo "export SENDGRID_API_KEY='YOUR_API_KEY'" > sendgrid.env
@@ -113,7 +113,7 @@ This repo is organized as a monorepo with the packages residing in the `./packag
 <a name="codebase-overview"></a>
 ## Codebase Overview
 
-This repo is subdivided in 6 main [packages](https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages). Each package has its own dependencies (internal or external) and its own source code in the `src` folder. Each package also has its isolated ReadME files, use cases and usage.md files.
+This repo is subdivided into 6 main [packages](https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages). Each package has its dependencies (internal or external) and its source code in the `src` folder. Each package also has its isolated ReadME files, use cases, and usage.md files.
 
 To install a particular packages' dependencies.
 ```bash
@@ -129,7 +129,7 @@ Type declarations: client.d.ts
 Test Cases: client.spec.js
 
 **2. Mail**
-This module exposes the `send` function which send mails via the sdk. This module can be a good starting point to read the source code. 
+This module exposes the `send` function which sends mail via the sdk. This module can be a good starting point to read the source code. 
 
 Type declarations: mail.d.ts
 Test Cases: mail.spec.js
@@ -200,7 +200,7 @@ Please run your code through:
 
 4. Commit your changes in logical chunks. Please adhere to these [git commit
    message guidelines](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
-   or your code is unlikely be merged into the main project. Use Git's
+   or your code is unlikely to be merged into the main project. Use Git's
    [interactive rebase](https://help.github.com/articles/interactive-rebase)
    feature to tidy up your commits before making them public.
 
@@ -228,4 +228,4 @@ If you have any additional questions, please feel free to [email](mailto:dx@send
 <a name="code-reviews"></a>
 ## Code Reviews
 
-If you can, please look at open PRs and review them. Give feedback and help us merge these PRs much faster! If you don't know how, Github has some [great information on how to review a Pull Request](https://help.github.com/articles/about-pull-request-reviews/).
+If you can, please look at open PRs and review them. Give feedback and help us merge these PRs much faster! If you don't know how Github has some [great information on how to review a Pull Request](https://help.github.com/articles/about-pull-request-reviews/).

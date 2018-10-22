@@ -20,7 +20,7 @@ Grab your API Key from the [SendGrid UI](https://app.sendgrid.com/settings/api_k
 
 # Install Package
 
-The following recommended installation requires [npm](https://npmjs.org/). If you are unfamiliar with npm, see the [npm docs](https://npmjs.org/doc/). Npm comes installed with Node.js since node version 0.8.x therefore you likely already have it.
+The following recommended installation requires [npm](https://npmjs.org/). If you are unfamiliar with npm, see the [npm docs](https://npmjs.org/doc/). Npm comes installed with Node.js since node version 0.8.x, therefore, you likely already have it.
 
 ```sh
 npm install --save @sendgrid/inbound-mail-parser
