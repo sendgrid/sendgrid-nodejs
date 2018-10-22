@@ -13,6 +13,7 @@ If you can't find a solution below, please open an [issue](https://github.com/se
 * [Environment Variables and Your SendGrid API Key](#environment)
 * [Using the Package Manager](#package-manager)
 * [Viewing the Request Body](#request-body)
+* [Wrapping Text](#wrapping-text)
 
 <a name="migrating"></a>
 ## Migrating from v2 to v3
@@ -132,3 +133,27 @@ const mail = Mail.create(data);
 const body = mail.toJSON();
 console.log(body);
 ```
+
+<a name="wrapping-text"></a>
+## Wrapping Text
+
+You can write blog posts using e-mail with the help of SendGrid API, like so:
+```javascript
+sgMail.setApiKey(process.env.SendGrid_API_KEY);
+let msg = {
+  to: '<your-name>@blogger.com',
+  from: '<your-name>@gmail.com',
+  subject: title,
+  html: html,
+};
+sgMail.send(msg);
+``` 
+You can also wrap the text in the HTML to make a multi-line blog post:
+```javascript
+<div style="white-space: pre-wrap;">
+  <code>
+    int a = 10;
+    int b = 10;
+    int d = 10;
+  </code>
+</div>
