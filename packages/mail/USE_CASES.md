@@ -24,6 +24,7 @@ This documentation provides examples for specific email use cases. Please [open 
 * [How to Setup Email Sending on Azure](#send_via_azure) 
 * [How to Setup a Domain Whitelabel](#domain-white-label)
 * [How to View Email Statistics](#email-stats)
+* [Slack event integration](#slackeventintegration)
 
 <a name="single-email-single-recipient"></a>
 # Send a Single Email to a Single Recipient
@@ -838,3 +839,118 @@ You can find documentation for how to view your email statistics via the UI [her
 
 Alternatively, we can post events to a URL of your choice via our [Event Webhook](https://sendgrid.com/docs/API_Reference/Webhooks/event.html) about events that occur as SendGrid processes your email.
 
+<a name="slackeventintegration"></a>
+## Slack event integration
+- Create your Slack app by going to https://api.slack.com/apps/new
+- Go to "Event Subscriptions" configuration page
+- Turns "Enable Events" option to "on"
+- Now we need an actual endpoint to put in "Request URL" input box for the verification, so you will need to create an app for receiving Slack webhook and make sure your app can be accessed from the Internet
+  - Use any Node.js server of your choice to create an endpoint which accept "POST" method
+  - You can make sure the request is actually from your Slack app by compare the value of "token" key from request body with your "Verification Token" in your app's "App Credentials" section. You could store the token value in your server's environment variable to make it secured.
+
+    example request body
+    ```
+    {
+      "token": "Jhj5dZrVaK7ZwHHjRyZWjbDl",
+      "challenge": "3eZbrw1aBm2rZgRNFdxV2595E9CY3gmdALWMmHkvFXO7tYXAYM8P",
+      "type": "url_verification"
+    }
+    ```
+
+  - Respond to the challenge with "challenge" value from request body. You can respond with various formats such as
+
+    ```
+    HTTP 200 OK
+    Content-type: application/x-www-form-urlencoded
+    3eZbrw1aBm2rZgRNFdxV2595E9CY3gmdALWMmHkvFXO7tYXAYM8P (challenge value)
+    ```
+
+    or
+    ```
+    HTTP 200 OK
+    Content-type: application/x-www-form-urlencoded
+    challenge=3eZbrw1aBm2rZgRNFdxV2595E9CY3gmdALWMmHkvFXO7tYXAYM8P
+    ```
+
+    or
+    ```
+    HTTP 200 OK
+    Content-type: application/json
+    {"challenge":"3eZbrw1aBm2rZgRNFdxV2595E9CY3gmdALWMmHkvFXO7tYXAYM8P"}
+    ```
+
+    example code using express.js *Noted:* SLACK_APP_TOKEN is an environment variable storing our Slack app token.
+    ```js
+    const port = process.env.PORT || 8000
+    const express = require('express')
+    const bodyParser = require('body-parser')
+    const app = express()
+
+    app.use(bodyParser.json()) // for parsing application/json
+    app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
+    app.post('/', (req, res) => {
+      const isFromOurSlackApp =
+        req.body.token && req.body.token === process.env.SLACK_APP_TOKEN
+      if (isFromOurSlackApp) {
+        res.send(req.body.challenge, req.body)
+        return
+      }
+
+      res.send('request not from our Slack app')
+    })
+
+    app.listen(port, function() {
+      console.log(`Example app listening on port ${port}!`)
+    })
+    ```
+
+- Enter your app's URL in "Request URL" input box *Noted:* your app needs to be able to response back with challenge from request payload as we already did in the first step.
+- Select which events you want to subscribe by going to "Subscribe to Workspace Events". For example if you want to interact with messages posted to a channel you can choose to subscribe to "message.channels"
+- Congratulations!!! Now you can respond to various event types you've subscribed. For example if a user post to a channel there would be a request from Slack with this following body
+  ```
+  {
+    "token": "XXYYZZ",
+    "team_id": "TXXXXXXXX",
+    "api_app_id": "AXXXXXXXXX",
+    "event": {
+      "type": "message",
+      "channel": "C2147483705",
+      "user": "U2147483697",
+      "text": "I'm sick today",
+      "ts": "1355517523.000005"
+    },
+    "type": "event_callback",
+    "authed_users": ["UXXXXXXX1"],
+    "event_id": "Ev08MFMKH6",
+    "event_time": 1234567890
+  }
+  ```
+
+  Then you could react to user's message, for instance, if a message contains a word "sick" or other similar phrases, we would send an email to HR team telling them this guy won't be coming to work today.
+
+    To send an email, you should store your Sendgrid API key in an environment variable (`SENDGRID_API_KEY` in this case) on your server.
+  ```js
+  const sgMail = require('@sendgrid/mail');
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+  function sendEmailIfEmployeeIsSick() {
+    const msg = {
+      to: 'hr@example.com',
+      from: 'no-reply@example.com',
+      subject: 'Someone will probably take a sick leave',
+      text: 'Please check messages on Slack. Because someone said "sick" maybe he/she is going to take sick leave.'
+    };
+    sgMail.send(msg);
+  }
+  ```
+
+  Now we could do something like this. *Noted:* I have removed the code to respond back with challenge for simplicity.
+  ```js
+  app.post('/', (req, res) => {
+    if (req.body.event.type === 'message' && req.body.event.text.match('sick')) {
+      sendEmailIfEmployeeIsSick()
+    }
+    res.sendStatus(200)
+  })
+  ```
