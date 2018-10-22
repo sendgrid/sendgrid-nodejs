@@ -149,6 +149,25 @@ const msg = {
 };
 ```
 
+Another example - for the `from` fields
+```js
+const msg = {
+
+  //Simple email address string
+  from: 'someone@example.org',
+
+  //Email address with name
+  from: 'Some One <someone@example.org>',
+
+  //Object with name/email
+  from: {
+    name: 'Some One',
+    email: 'someone@example.org',
+  },
+
+};
+```
+
 <a name="success-failure-errors"></a>
 # Handling Success/Failure/Errors
 

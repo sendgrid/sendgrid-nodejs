@@ -33,7 +33,7 @@ const msg = {
   },
   sections: {},
   customArgs: {
-    myCustomArg: 123,
+    myCustomArg: 'some string', // must be a string
   },
   batchId: 'sendgrid-batch-id',
   asm: {
@@ -48,3 +48,7 @@ sgMail
   .then(() => console.log('Mail sent successfully'))
   .catch(error => console.error(error.toString()));
 ```
+
+### Caveats:
+
+As per [issue #288](https://github.com/sendgrid/sendgrid-nodejs/issues/288), please note that the `customArgs` feild *must* have a string value. 

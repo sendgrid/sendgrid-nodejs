@@ -1,0 +1,104 @@
+--xYzZY
+Content-Disposition: form-data; name="headers"
+
+Received: by mx0032p1las1.sendgrid.net with SMTP id NRnKey2i6C Tue, 09 Oct 2018 03:16:04 +0000 (UTC)
+Received: from mail-yw1-f46.google.com (mail-yw1-f46.google.com [209.85.161.46]) by mx0032p1las1.sendgrid.net (Postfix) with ESMTPS id 1D3BB625D2C for <test@parse.ashleyroach.com>; Tue,  9 Oct 2018 03:16:04 +0000 (UTC)
+Received: by mail-yw1-f46.google.com with SMTP id j75-v6so51762ywj.10 for <test@parse.ashleyroach.com>; Mon, 08 Oct 2018 20:16:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025; h=mime-version:references:in-reply-to:from:date:message-id:subject:to; bh=gaGIowPBiLdos6k2wdsmJawftIRJniyY+QsmcvDWWCA=; b=PnAWpmAy0rbKREK7IOCzDQQeUepqTbv01k8bC72VtSVjRMpYpPsZhR/EUDMVaB+i4/ mng6byw7E62qQykPETggRRaEE8Kh3HDfs6lvQruX+SQZQeNOYiKR1NtrVHw2EL8XQj9C K/64HtprGtCgxA38HFBugUxjNHY0okdaK8tIuxKPC6fyW7YKP8Z50FC9oJO1ZcrZF3y0 nxewJEeyO8dxARX9TABZ5EbAvLqRic3Rjd/5T8j0uMfO+RegC2VUUdhEzQT/98mVzlL/ J7Iibp0PD7vFtLeb3Vm2RhczhrE9cP9SjceuifHbMhBpmBc9AHSqHIcrIGwgwE/Fqqci sn2Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=1e100.net; s=20161025; h=x-gm-message-state:mime-version:references:in-reply-to:from:date :message-id:subject:to; bh=gaGIowPBiLdos6k2wdsmJawftIRJniyY+QsmcvDWWCA=; b=gNDjNwNhOGTB1wXZ7ygXrStMGBVNpK6FrbVq9R06SR2bRPPHoC+lRK1JcMOs5Jz5RK +CQf8PyEIqe3SjqQQl7ThgrwrwM8S3ibQTUzpVnHDcxjmkgrOz8VTFC5TaikM8PhwHUy mw+vYe3Ukc3YclGX1QTrc2VjDJlGED9CYoACDFBjmgG7vn6Qi31n8ZZyR8fi6nvDB6k9 GyQjParwVM565eTX05Gw5SVd97MJ/8Sbpwu2IVM3Xn6CABcCeeMlyER4m5UnfJJAic/5 Ck11za013McUgSp1vPlpRFdFFHTv+z1++C6rYB1qH0Nnml9yxB9bSwE//csBAmMjimR+ fpvg==
+X-Gm-Message-State: ABuFfogvHoUAi4aTQkKUQ3MTlDdwo/mh62FXdjJigY5caYWAbiMEYXLz e1OGhMqAJjkCeSW2MeihTbZe70+uShTCQ2DRi+LcyA==
+X-Google-Smtp-Source: ACcGV634pgBc3Hl7xI6l2dh2DRIZ89uXLaYuE0zBoFCo3YI9n5F2EyfcVhonIDBVJUwTN+pJ94AhD2zd7++B4tde87w=
+X-Received: by 2002:a0d:e445:: with SMTP id n66-v6mr15080932ywe.120.1539054962910; Mon, 08 Oct 2018 20:16:02 -0700 (PDT)
+MIME-Version: 1.0
+References: <CAGsruKux7HKgwztSSWCae8cMu71_pzgziWZRWYeYNo3aiCkjRw@mail.gmail.com>
+In-Reply-To: <CAGsruKux7HKgwztSSWCae8cMu71_pzgziWZRWYeYNo3aiCkjRw@mail.gmail.com>
+From: Ashley Roach <aroach@gmail.com>
+Date: Tue, 9 Oct 2018 03:15:50 +0000
+Message-ID: <CAGsruKuAJk58E07TRMD28pA+mktpZ1mg2fjr6PAWj19e0jdnFg@mail.gmail.com>
+Subject: Fwd: testing webhook parse
+To: test@parse.ashleyroach.com
+Content-Type: multipart/alternative; boundary="0000000000005aac2a0577c32893"
+
+--xYzZY
+Content-Disposition: form-data; name="dkim"
+
+{@gmail.com : pass}
+--xYzZY
+Content-Disposition: form-data; name="to"
+
+test@parse.ashleyroach.com
+--xYzZY
+Content-Disposition: form-data; name="html"
+
+<div dir="ltr"><br><br><div class="gmail_quote"><div dir="ltr">---------- Forwarded message ---------<br>From: <b class="gmail_sendername" dir="auto">Ashley Roach</b> <span dir="ltr">&lt;<a href="mailto:aroach@gmail.com">aroach@gmail.com</a>&gt;</span><br>Date: Mon, Oct 8, 2018 at 7:33 PM<br>Subject: testing webhook parse<br>To:  &lt;<a href="mailto:test@parse.ashleyroach.com">test@parse.ashleyroach.com</a>&gt;<br></div><br><br><div dir="ltr">this is the body for webhook parse <br></div>
+</div></div>
+
+--xYzZY
+Content-Disposition: form-data; name="from"
+
+Ashley Roach <aroach@gmail.com>
+--xYzZY
+Content-Disposition: form-data; name="text"
+
+---------- Forwarded message ---------
+From: Ashley Roach <aroach@gmail.com>
+Date: Mon, Oct 8, 2018 at 7:33 PM
+Subject: testing webhook parse
+To: <test@parse.ashleyroach.com>
+
+
+this is the body for webhook parse
+
+--xYzZY
+Content-Disposition: form-data; name="sender_ip"
+
+209.85.161.46
+--xYzZY
+Content-Disposition: form-data; name="spam_report"
+
+Spam detection software, running on the system "mx0032p1las1.sendgrid.net", has
+identified this incoming email as possible spam.  The original message
+has been attached to this so you can view it (if it isn't spam) or label
+similar future email.  If you have any questions, see
+@@CONTACT_ADDRESS@@ for details.
+
+Content preview:  Forwarded message --------- From: Ashley Roach Date: Mon,
+   Oct 8, 2018 at 7:33 PM Subject: testing webhook parse To: this is the body
+   for webhook parse Forwarded message --------- From: Ashley Roach Date: Mon,
+   Oct 8, 2018 at 7:33 PM Subject: testing webhook parse To: [...] 
+
+Content analysis details:   (0.0 points, 5.0 required)
+
+ pts rule name              description
+---- ---------------------- --------------------------------------------------
+ 0.0 FREEMAIL_FROM          Sender email is freemail (aroach[at]gmail.com)
+ 0.0 HTML_MESSAGE           BODY: HTML included in message
+ 0.0 T_MIME_NO_TEXT         No text body parts
+ 0.0 T_TO_NO_BRKTS_FREEMAIL T_TO_NO_BRKTS_FREEMAIL
+
+
+--xYzZY
+Content-Disposition: form-data; name="envelope"
+
+{"to":["test@parse.ashleyroach.com"],"from":"aroach@gmail.com"}
+--xYzZY
+Content-Disposition: form-data; name="attachments"
+
+0
+--xYzZY
+Content-Disposition: form-data; name="subject"
+
+Fwd: testing webhook parse
+--xYzZY
+Content-Disposition: form-data; name="spam_score"
+
+0.022
+--xYzZY
+Content-Disposition: form-data; name="charsets"
+
+{"to":"UTF-8","html":"UTF-8","subject":"UTF-8","from":"UTF-8","text":"UTF-8"}
+--xYzZY
+Content-Disposition: form-data; name="SPF"
+
+pass
+--xYzZY--

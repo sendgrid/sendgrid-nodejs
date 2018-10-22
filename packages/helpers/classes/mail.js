@@ -9,6 +9,7 @@ const toCamelCase = require('../helpers/to-camel-case');
 const toSnakeCase = require('../helpers/to-snake-case');
 const deepClone = require('../helpers/deep-clone');
 const arrayToJSON = require('../helpers/array-to-json');
+const { DYNAMIC_TEMPLATE_CHAR_WARNING } = require('../constants');
 
 /**
  * Mail class
@@ -87,8 +88,9 @@ class Mail {
     this.setTrackingSettings(trackingSettings);
 
     if (this.isDynamic) {
-      this.setDynamicTemplateData(dynamicTemplateData)
-    } else {
+      this.setDynamicTemplateData(dynamicTemplateData);
+    }
+    else {
       this.setSubstitutions(substitutions);
       this.setSubstitutionWrappers(substitutionWrappers);
     }
@@ -242,7 +244,8 @@ class Mail {
     //depending on the templateId
     if (this.isDynamic && personalization.substitutions) {
       delete personalization.substitutions;
-    } else if (personalization.dynamicTemplateData) {
+    }
+    else if (personalization.dynamicTemplateData) {
       delete personalization.dynamicTemplateData;
     }
 
@@ -254,7 +257,8 @@ class Mail {
     //If this is dynamic, set dynamicTemplateData, or set substitutions
     if (this.isDynamic) {
       this.applyDynamicTemplateData(personalization);
-    } else {
+    }
+    else {
       this.applySubstitutions(personalization);
     }
 
@@ -333,6 +337,14 @@ class Mail {
     if (typeof dynamicTemplateData !== 'object') {
       throw new Error('Object expected for `dynamicTemplateData`');
     }
+
+    // Check dynamic template for non-escaped characters and warn if found
+    Object.values(dynamicTemplateData).forEach(value => {
+      if (/['"&]/.test(value)) {
+        console.warn(DYNAMIC_TEMPLATE_CHAR_WARNING);
+      }
+    });
+
     this.dynamicTemplateData = dynamicTemplateData;
   }
 

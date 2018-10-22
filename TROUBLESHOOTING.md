@@ -13,6 +13,7 @@ If you can't find a solution below, please open an [issue](https://github.com/se
 * [Environment Variables and Your SendGrid API Key](#environment)
 * [Using the Package Manager](#package-manager)
 * [Viewing the Request Body](#request-body)
+* [Wrapping Text](#wrapping-text)
 
 <a name="migrating"></a>
 ## Migrating from v2 to v3
@@ -59,7 +60,7 @@ Click the "Clone or download" green button in [GitHub](https://github.com/sendgr
 <a name="testing"></a>
 ## Testing v3 /mail/send Calls Directly
 
-[Here](https://sendgrid.com/docs/Classroom/Send/v3_Mail_Send/curl_examples.html) are some cURL examples for everyday use cases.
+[Here](https://sendgrid.com/docs/for-developers/sending-email/curl-examples/) are some cURL examples for everyday use cases.
 
 <a name="error"></a>
 ## Error Messages
@@ -74,7 +75,7 @@ We follow the MAJOR.MINOR.PATCH versioning scheme as described by [SemVer.org](h
 <a name="environment"></a>
 ## Environment Variables and Your SendGrid API Key
 
-All of our examples assume you are using [environment variables](https://github.com/sendgrid/sendgrid-nodejs#setup-environment-variables) to hold your SendGrid API key.
+All of our examples assume you are using [environment variables](packages/client#setup-environment-variables) to hold your SendGrid API key.
 
 If you choose to add your SendGrid API key directly (not recommended):
 
@@ -85,6 +86,12 @@ becomes
 `'SENDGRID_API_KEY'`
 
 In the first case, SENDGRID_API_KEY is in reference to the name of the environment variable, while the second case references the actual SendGrid API Key.
+
+If you're using Kubernetes Secrets and passing the API Keys to the Environment using it, You may find that there is a `\n` character in the environment variable. You can use the trim function to remove it like this:
+
+```
+process.env.SENDGRID_API_KEY.trim();
+```
 
 <a name="package-manager"></a>
 ## Using the Package Manager
@@ -126,3 +133,27 @@ const mail = Mail.create(data);
 const body = mail.toJSON();
 console.log(body);
 ```
+
+<a name="wrapping-text"></a>
+## Wrapping Text
+
+You can write blog posts using e-mail with the help of SendGrid API, like so:
+```javascript
+sgMail.setApiKey(process.env.SendGrid_API_KEY);
+let msg = {
+  to: '<your-name>@blogger.com',
+  from: '<your-name>@gmail.com',
+  subject: title,
+  html: html,
+};
+sgMail.send(msg);
+``` 
+You can also wrap the text in the HTML to make a multi-line blog post:
+```javascript
+<div style="white-space: pre-wrap;">
+  <code>
+    int a = 10;
+    int b = 10;
+    int d = 10;
+  </code>
+</div>
