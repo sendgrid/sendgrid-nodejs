@@ -4,6 +4,7 @@
  * Dependencies
  */
 const Mail = require('./mail');
+const { DYNAMIC_TEMPLATE_CHAR_WARNING } = require('../constants');
 
 /**
  * Tests
@@ -153,5 +154,64 @@ describe('Mail', function() {
       });
     });
 
+  });
+
+  describe('dynamic template handlebars substitutions', () => {
+    let logSpy, data;
+
+    beforeEach(() => {
+      logSpy = sinon.spy(console, 'warn');
+      data = {
+        to: 'recipient@example.org',
+        from: 'sender@example.org',
+        subject: 'Hello world',
+        text: 'Hello plain world!',
+        html: '<p>Hello HTML world!</p>',
+        templateId: 'd-df80613cccc6441ea5cd7c95377bc1ef',
+      };
+    });
+
+    afterEach(() => {
+      console.warn.restore();
+    });
+
+    it('should log an error if template subject line contains improperly escaped "\'" character', () => {
+      data = Object.assign(data, {
+        dynamicTemplateData: {
+          subject: 'Testing Templates and \'Stuff\'',
+        },
+      });
+
+      const mail = new Mail(data);
+
+      expect(logSpy.calledOnce).to.equal(true);
+      expect(logSpy.calledWith(DYNAMIC_TEMPLATE_CHAR_WARNING)).to.equal(true);
+    });
+
+    it('should log an error if template subject line contains improperly escaped """ character', () => {
+      data = Object.assign(data, {
+        dynamicTemplateData: {
+          subject: '"Testing Templates" and Stuff',
+        },
+      });
+
+      const mail = new Mail(data);
+
+      expect(logSpy.calledOnce).to.equal(true);
+      expect(logSpy.calledWith(DYNAMIC_TEMPLATE_CHAR_WARNING)).to.equal(true);
+    });
+
+    it('should log an error if template subject line contains improperly escaped "&" character', () => {
+      data = Object.assign(data, {
+        dynamicTemplateData: {
+          subject: 'Testing Templates & Stuff',
+        },
+      });
+
+      const mail = new Mail(data);
+
+      expect(logSpy.calledOnce).to.equal(true);
+      expect(logSpy.calledWith(DYNAMIC_TEMPLATE_CHAR_WARNING)).to.equal(true);
+    });
   });
 });
