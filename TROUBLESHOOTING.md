@@ -60,7 +60,7 @@ Click the "Clone or download" green button in [GitHub](https://github.com/sendgr
 <a name="testing"></a>
 ## Testing v3 /mail/send Calls Directly
 
-[Here](https://sendgrid.com/docs/Classroom/Send/v3_Mail_Send/curl_examples.html) are some cURL examples for common use cases.
+[Here](https://sendgrid.com/docs/for-developers/sending-email/curl-examples/) are some cURL examples for common use cases.
 
 <a name="error"></a>
 ## Error Messages
