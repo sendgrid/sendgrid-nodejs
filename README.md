@@ -12,7 +12,7 @@
 
 **This library allows you to quickly and easily use the SendGrid Web API v3 via Node.js.**
 
-We want this library to be community-driven, and SendGrid led. We need your help to realize this goal. To help make sure we are building the right things in the right order, we ask that you create [issues](https://github.com/sendgrid/sendgrid-nodejs/issues) and [pull requests](https://github.com/sendgrid/sendgrid-nodejs/blob/master/CONTRIBUTING.md) or simply upvote or comment on existing issues or pull requests.
+We want this library to be community-driven, and SendGrid led. We need your help to realize this goal. To help make sure we are building the right things in the right order, we ask that you create [issues](https://github.com/sendgrid/sendgrid-nodejs/issues) and [pull requests](https://github.com/sendgrid/sendgrid-nodejs/blob/master/CONTRIBUTING.md) or merely upvote or comment on existing issues or pull requests.
 
 For updates to this library, see our [CHANGELOG](https://github.com/sendgrid/sendgrid-nodejs/blob/master/CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases).
 
@@ -33,7 +33,7 @@ We appreciate your continued support, thank you!
 <a name="introduction"></a>
 # Introduction - Please Read First
 
-This library is broken up into several packages as a monorepo so that you only need to install the packages necessary for your use case. This README contains information pertaining to all packages. For examples on how to get started quickly, head over to the READMEs of each individual package (linked and described below), which includes detailed examples.
+This library is broken up into several packages as a monorepo so that you only need to install the packages necessary for your use case. This README contains information about all packages. For examples on how to get started quickly, head over to the READMEs of each package (linked and described below), which includes detailed examples.
 
 * **[@sendgrid/mail](https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages/mail) - if you just want to send email**
 * **[@sendgrid/client](https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages/client) - to use all other [SendGrid v3 Web API endpoints](https://sendgrid.com/docs/API_Reference/api_v3.html)**
