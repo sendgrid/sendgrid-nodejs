@@ -126,13 +126,13 @@ The email address fields (`to`, `from`, `cc`, `bcc`, `replyTo`) are flexible and
 const msg = {
 
   //Simple email address string
-  to: 'someone@example.org',
+  from: 'someone@example.org',
 
   //Email address with name
-  to: 'Some One <someone@example.org>',
+  from: 'Some One <someone@example.org>',
 
   //Object with name/email
-  to: {
+  from: {
     name: 'Some One',
     email: 'someone@example.org',
   },
@@ -517,7 +517,10 @@ const msg = {
   to: 'recipient@example.org',
   cc: 'someone@example.org',
   bcc: ['me@example.org', 'you@example.org'],
-  from: 'sender@example.org',
+  from: {
+    email: 'sender@example.org',
+    name: 'Sender Name'
+  },
   replyTo: 'othersender@example.org',
   subject: 'Hello world',
   text: 'Hello plain world!',
