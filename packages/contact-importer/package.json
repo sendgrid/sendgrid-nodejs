@@ -1,7 +1,7 @@
 {
   "name": "@sendgrid/contact-importer",
   "description": "SendGrid NodeJS contact importer",
-  "version": "6.1.0",
+  "version": "6.2.1",
   "author": "SendGrid <dx@sendgrid.com> (sendgrid.com)",
   "contributors": [
     "Kyle Partridge <kyle.partridge@sendgrid.com>",
@@ -26,10 +26,11 @@
     "access": "public"
   },
   "dependencies": {
+    "@sendgrid/client": "^6.3.0",
     "async.ensureasync": "^0.5.2",
     "async.queue": "^0.5.2",
     "bottleneck": "^1.12.0",
-    "debug": "^2.2.0",
+    "debug": "^4.0.1",
     "lodash.chunk": "^4.2.0"
   },
   "tags": [

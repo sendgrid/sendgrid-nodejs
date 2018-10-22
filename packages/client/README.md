@@ -22,7 +22,7 @@ Grab your API Key from the [SendGrid UI](https://app.sendgrid.com/settings/api_k
 
 ## Setup Environment Variables
 
-Do not hard code your [SendGrid API Key](https://app.sendgrid.com/settings/api_keys) into your code. Instead, use an environment variable or some other secure means of protecting your SendGrid API Key. Following is an example of using an environment variable.
+Do not hardcode your [SendGrid API Key](https://app.sendgrid.com/settings/api_keys) into your code. Instead, use an environment variable or some other secure means of protecting your SendGrid API Key. Following is an example of using an environment variable.
 
 Update the development environment with your [SENDGRID_API_KEY](https://app.sendgrid.com/settings/api_keys), for example:
 
@@ -34,7 +34,7 @@ source ./sendgrid.env
 
 ## Install Package
 
-The following recommended installation requires [npm](https://npmjs.org/). If you are unfamiliar with npm, see the [npm docs](https://npmjs.org/doc/). Npm comes installed with Node.js since node version 0.8.x therefore you likely already have it.
+The following recommended installation requires [npm](https://npmjs.org/). If you are unfamiliar with npm, see the [npm docs](https://npmjs.org/doc/). Npm comes installed with Node.js since node version 0.8.x, therefore, you likely already have it.
 
 ```sh
 npm install --save @sendgrid/client
@@ -60,19 +60,19 @@ const request = {
 };
 client.request(request)
 .then(([response, body]) => {
-    console.log(response.statusCode);
-    console.log(response.body);
+  console.log(response.statusCode);
+  console.log(body);
 })
 ```
 
 ## Add a Custom Default Header
 ```js
-sgClient.setDefaultHeader('User-Agent', 'Some user agent string');
+client.setDefaultHeader('User-Agent', 'Some user agent string');
 ```
 
 ## Change Request Defaults
 ```js
-sgClient.setDefaultRequest('baseUrl', 'https://api.sendgrid.com/');
+client.setDefaultRequest('baseUrl', 'https://api.sendgrid.com/');
 ```
 
 ## Overwrite Promise Implementation
@@ -80,6 +80,15 @@ You can overwrite the promise implementation you want the client to use. Default
 
 ```js
 global.Promise = require('bluebird');
+```
+
+## Instantiate Client Instances Manually
+```js
+const {Client} = require('@sendgrid/client');
+const sgClient1 = new Client();
+const sgClient2 = new Client();
+sgClient1.setApiKey('KEY1');
+sgClient2.setApiKey('KEY2');
 ```
 
 <a name="announcements"></a>

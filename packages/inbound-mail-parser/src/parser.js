@@ -1,7 +1,7 @@
 'use strict';
 
 const fs = require('fs');
-const MailParser = require('mailparser').MailParser;
+const { MailParser } = require('mailparser');
 const {
   classes: {
     Attachment,
@@ -14,12 +14,13 @@ const {
  * @param {Object} file The file object returned by file system or parsed email
  * @return {Object} A SendGrid Attachment object with the file data
  */
-function createAttachment(file) {
+const createAttachment = (file) => {
+  const {originalname, fileName, mimetype, contentType, content} = file;
   const attachment = new Attachment();
 
-  attachment.setFilename(file.originalname || file.fileName);
-  attachment.setType(file.mimetype || file.contentType);
-  attachment.setContent(file.content.toString('base64'));
+  attachment.setFilename(originalname || fileName);
+  attachment.setType(mimetype || contentType);
+  attachment.setContent(content.toString('base64'));
 
   return attachment;
 }
@@ -27,112 +28,93 @@ function createAttachment(file) {
 /**
  * Simple class that parses data received from SendGrid Inbound Parse Webhook
  *
- * @constructor
- * @param {Object} config inbound configuration object
- * @param {Object} request request object of the parse webhook payload
  */
-function Parse(config, request) {
-  this.keys = config.keys;
-  this.request = request;
-  this.payload = request.body || {};
-  this.files = request.files || [];
-}
+class Parse {
 
-/**
- * Return an object literal of key/values in the payload received from webhook
- * @return {Object} Valid key/values in the webhook payload
- */
-Parse.prototype.keyValues = function() {
-  const keyValues = {};
-  let key;
-
-  for (const index in this.keys) {
-    key = this.keys[index];
-
-    if (this.payload[key]) {
-      keyValues[key] = this.payload[key];
-    }
+  /**
+   * @constructor
+   * @param {Object} config inbound configuration object
+   * @param {Object} request request object of the parse webhook payload
+   */
+  constructor(config, request) {
+    this.keys = config.keys;
+    this.request = request;
+    this.payload = request.body || {};
+    this.files = request.files || [];
   }
 
-  return keyValues;
-};
-
-/**
- * Whether the payload contains the raw email (Only applies to raw payloads)
- * @return {Boolean}
- */
-Parse.prototype.hasRawEmail = function() {
-  return Boolean(this.payload.email);
-};
-
-/**
- * Parses the raw email and returns the mail object in a callback (Only applies to raw payloads)
- * @param {Function} callback Function which will receive the parsed email object as the sole argument
- */
-Parse.prototype.getRawEmail = function(callback) {
-  const mailparser = new MailParser();
-  const rawEmail = this.payload.email;
-
-  if (!rawEmail) {
-    return callback(null);
+  /**
+   * Return an object literal of key/values in the payload received from webhook
+   * @return {Object} Valid key/values in the webhook payload
+   */
+  keyValues() {
+    return this.keys
+      .filter(key => this.payload[key])
+      .map(key => ({ [key]: this.payload[key] }))
+      .reduce((keyValues, keyPayload) => Object.assign(keyValues, keyPayload));
   }
 
-  mailparser.on('end', callback);
-
-  mailparser.write(rawEmail);
-  mailparser.end();
-};
-
-/**
- * Retrieves all attachments received from the webhook payload
- * @param {Function} callback Function which will receive an array, of attachments found, as the sole argument
- */
-Parse.prototype.attachments = function(callback) {
-  if (this.hasRawEmail()) {
-    return this._getAttachmentsRaw(callback);
+  /**
+   * Whether the payload contains the raw email (Only applies to raw payloads)
+   * @return {Boolean}
+   */
+  hasRawEmail() {
+    return !!this.payload.email;
   }
 
-  this._getAttachments(callback);
-};
+  /**
+   * Parses the raw email and returns the mail object in a callback (Only applies to raw payloads)
+   * @param {Function} callback Function which will receive the parsed email object as the sole argument
+   */
+  getRawEmail(callback) {
+    const mailparser = new MailParser();
+    const { rawEmail } = this.payload;
 
-/**
- * Parses raw email to retrieve any encoded attachments (Only applies to raw payloads)
- * @private
- * @param {Function} callback Function which will receive an array, of attachments found, as the sole argument
- */
-Parse.prototype._getAttachmentsRaw = function(callback) {
-  this.getRawEmail(function(parsedEmail) {
-    if (!parsedEmail || !parsedEmail.attachments) {
-      return callback([]);
+    if (!this.hasRawEmail()) {
+      return callback(null);
     }
 
-    const attachments = parsedEmail.attachments.map(function(file) {
-      return createAttachment(file);
+    mailparser.on('end', callback);
+    mailparser.write(rawEmail);
+    mailparser.end();
+  }
+
+  /**
+   * Retrieves all attachments received from the webhook payload
+   * @param {Function} callback Function which will receive an array, of attachments found, as the sole argument
+   */
+  attachments(callback) {
+    return this[`_getAttachments${this.hasRawEmail() ? 'Raw' : ''}`](callback);
+  }
+
+  /**
+   * Parses raw email to retrieve any encoded attachments (Only applies to raw payloads)
+   * @private
+   * @param {Function} callback Function which will receive an array, of attachments found, as the sole argument
+   */
+  _getAttachmentsRaw(callback) {
+    this.getRawEmail(parsedEmail => {
+      const attachments = (parsedEmail || {}).attachments || [];
+      callback(attachments.map(createAttachment));
     });
-
-    callback(attachments);
-  });
-};
-
-/**
- * Retrieves webhook payload files from the file system (Only applies to non raw payloads)
- * @private
- * @param {Function} callback Function which will receive an array, of attachments found, as the sole argument
- */
-Parse.prototype._getAttachments = function(callback) {
-  let file;
-  const attachments = [];
-
-  for (const index in this.files) {
-    file = this.files[index];
-
-    if (fs.existsSync(file.path)) {
-      file.content = fs.readFileSync(file.path);
-      attachments.push(createAttachment(file));
-    }
   }
 
-  return callback(attachments);
-};
+  /**
+   * Retrieves webhook payload files from the file system (Only applies to non raw payloads)
+   * @private
+   * @param {Function} callback Function which will receive an array, of attachments found, as the sole argument
+   */
+  _getAttachments(callback) {
+    return callback(this.files
+      .filter(file => fs.existsSync(file.path))
+      .map((exists, idx) => [exists, this.files[idx]])
+      .filter(([exists, _]) => exists)
+      .map(([_, file]) => {
+        file.content = fs.readFileSync(file.path);
+        return createAttachment(file);
+      })
+    );
+  }
+}
 
 module.exports = Parse;

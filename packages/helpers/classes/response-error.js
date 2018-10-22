@@ -42,7 +42,7 @@ class ResponseError extends Error {
   toString() {
     const {body} = this.response;
     let err = chalk.red(`${this.message} (${this.code})`);
-    if (Array.isArray(body.errors)) {
+    if (body && Array.isArray(body.errors)) {
       body.errors.forEach(error => {
         const message = chalk.yellow(error.message);
         const field = chalk.grey(error.field);
