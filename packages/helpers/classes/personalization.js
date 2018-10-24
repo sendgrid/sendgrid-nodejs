@@ -286,7 +286,7 @@ class Personalization {
         'Object expected for `dynamicTemplateData` in deepMergeDynamicTemplateData'
       );
     }
-    this.dynamicTemplateData = merge(dynamicTemplateData, this.dynamicTemplateData);
+    this.dynamicTemplateData = Object.assign({}, dynamicTemplateData, this.dynamicTemplateData);
   }
 
   /**
