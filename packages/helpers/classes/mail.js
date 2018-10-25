@@ -122,6 +122,9 @@ class Mail {
     if (typeof from === 'undefined') {
       return;
     }
+    if (typeof from !== 'string') {
+      throw new Error('String expected for `from`');
+    }
     this.from = EmailAddress.create(from);
   }
 
@@ -131,6 +134,9 @@ class Mail {
   setReplyTo(replyTo) {
     if (typeof replyTo === 'undefined') {
       return;
+    }
+    if (typeof replyTo !== 'string') {
+      throw new Error('String expected for `replyTo`');
     }
     this.replyTo = EmailAddress.create(replyTo);
   }
@@ -215,6 +221,13 @@ class Mail {
     if (typeof asm !== 'object') {
       throw new Error('Object expected for `asm`');
     }
+    if (typeof asm.group_id !== 'number') {
+      throw new Error('Expected `asm` to include an integer in its `group_id` field');
+    }
+    if (asm.groups_to_display &&
+      (!Array.isArray(asm.groups_to_display) || !asm.groups_to_display.every(group => typeof group === 'number'))) {
+      throw new Error('Array of integers expected for `asm.groups_to_display`');
+    }
     this.asm = asm;
   }
 
@@ -225,8 +238,9 @@ class Mail {
     if (typeof personalizations === 'undefined') {
       return;
     }
-    if (!Array.isArray(personalizations)) {
-      throw new Error('Array expected for `personalizations`');
+    if (!Array.isArray(personalizations) ||
+      !personalizations.every(personalization => typeof personalization === 'object')) {
+      throw new Error('Array of objects expected for `personalizations`');
     }
 
     //Clear and use add helper to add one by one
@@ -358,6 +372,18 @@ class Mail {
     if (!Array.isArray(content)) {
       throw new Error('Array expected for `content`');
     }
+    if (!content.every(contentField =>
+      typeof contentField === 'object')) {
+      throw new Error('Expected each entry in `content` to be an object');
+    }
+    if (!content.every(contentField =>
+      typeof contentField.type === 'string')) {
+      throw new Error('Expected each `content` entry to contain a `type` string');
+    }
+    if (!content.every(contentField =>
+      typeof contentField.value === 'string')) {
+      throw new Error('Expected each `content` entry to contain a `value` string');
+    }
     this.content = content;
   }
 
@@ -412,6 +438,22 @@ class Mail {
     }
     if (!Array.isArray(attachments)) {
       throw new Error('Array expected for `attachments`');
+    }
+    if (!attachments.every(attachment =>
+      typeof attachment.content === 'string')) {
+      throw new Error('Expected each attachment to contain a `content` string');
+    }
+    if (!attachments.every(attachment =>
+      typeof attachment.filename === 'string')) {
+      throw new Error('Expected each attachment to contain a `filename` string');
+    }
+    if (!attachments.every(attachment =>
+      attachment.type && typeof attachment.type === 'string')) {
+      throw new Error('Expected the attachment\'s `type` field to be a string');
+    }
+    if (!attachments.every(attachment =>
+      attachment.disposition && typeof attachment.disposition === 'string')) {
+      throw new Error('Expected the attachment\'s `disposition` field to be a string');
     }
     this.attachments = attachments;
   }
