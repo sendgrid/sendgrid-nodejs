@@ -10,6 +10,7 @@ const toSnakeCase = require('../helpers/to-snake-case');
 const deepClone = require('../helpers/deep-clone');
 const arrayToJSON = require('../helpers/array-to-json');
 const { DYNAMIC_TEMPLATE_CHAR_WARNING } = require('../constants');
+const {validateMailSettings, validateTrackingSettings} = require('../helpers/validate-settings');
 
 /**
  * Mail class
@@ -219,12 +220,12 @@ class Mail {
     if (typeof asm !== 'object') {
       throw new Error('Object expected for `asm`');
     }
-    if (typeof asm.group_id !== 'number') {
-      throw new Error('Expected `asm` to include an integer in its `group_id` field');
+    if (typeof asm.groupId !== 'number') {
+      throw new Error('Expected `asm` to include an integer in its `groupId` field');
     }
-    if (asm.groups_to_display &&
-      (!Array.isArray(asm.groups_to_display) || !asm.groups_to_display.every(group => typeof group === 'number'))) {
-      throw new Error('Array of integers expected for `asm.groups_to_display`');
+    if (asm.groupsToDisplay &&
+      (!Array.isArray(asm.groupsToDisplay) || !asm.groupsToDisplay.every(group => typeof group === 'number'))) {
+      throw new Error('Array of integers expected for `asm.groupsToDisplay`');
     }
     this.asm = asm;
   }
@@ -565,9 +566,7 @@ class Mail {
     if (typeof settings === 'undefined') {
       return;
     }
-    if (typeof settings !== 'object') {
-      throw new Error('Object expected for `mailSettings`');
-    }
+    validateMailSettings(settings);
     this.mailSettings = settings;
   }
 
