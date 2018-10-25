@@ -553,9 +553,7 @@ class Mail {
     if (typeof settings === 'undefined') {
       return;
     }
-    if (typeof settings !== 'object') {
-      throw new Error('Object expected for `trackingSettings`');
-    }
+    validateTrackingSettings(settings);
     this.trackingSettings = settings;
   }
 
