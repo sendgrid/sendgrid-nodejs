@@ -123,13 +123,13 @@ npm install or yarn install
 #### Package List
 
 **1. Client**
-This is a  wrapper written on top of the ```request``` module to suite the Sendgrid module. All requests made to the Sendgrid API are invoked by the `request` function in the `client.js`.
+This is a  wrapper written on top of the ```request``` module to suite the SendGrid module. All requests made to the SendGrid API are invoked by the `request` function in the `client.js`.
 
 Type declarations: client.d.ts
 Test Cases: client.spec.js
 
 **2. Mail**
-This module exposes the `send` function which sends mail via the sdk. This module can be a good starting point to read the source code. 
+This module exposes the `send` function which sends mail via the sdk. This module can be a good starting point to read the source code.
 
 Type declarations: mail.d.ts
 Test Cases: mail.spec.js
@@ -176,10 +176,10 @@ Please run your code through:
    ```bash
    # Clone your fork of the repo into the current directory
    git clone https://github.com/sendgrid/sendgrid-nodejs
-   
+
    # Navigate to the newly cloned directory
    cd sendgrid-nodejs
-   
+
    # Assign the original repo to a remote called "upstream"
    git remote add upstream https://github.com/sendgrid/sendgrid-nodejs
    ```
