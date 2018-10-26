@@ -121,8 +121,9 @@ class Mail {
     if (typeof from === 'undefined') {
       return;
     }
-    if (typeof from !== 'string') {
-      throw new Error('String expected for `from`');
+    if (typeof from !== 'string' &&
+      !(typeof from === 'object' && typeof from.email === 'string')) {
+      throw new Error('String or address object expected for `from`');
     }
     this.from = EmailAddress.create(from);
   }
@@ -134,8 +135,9 @@ class Mail {
     if (typeof replyTo === 'undefined') {
       return;
     }
-    if (typeof replyTo !== 'string') {
-      throw new Error('String expected for `replyTo`');
+    if (typeof replyTo !== 'string' &&
+      !(typeof replyTo === 'object' && typeof replyTo.email === 'string')) {
+      throw new Error('String or address object expected for `replyTo`');
     }
     this.replyTo = EmailAddress.create(replyTo);
   }
