@@ -83,6 +83,7 @@ class MailService {
           rule.pattern.test('');
           return rule
         } catch (err) {
+          // FIXME?
         }
       }
     });
