@@ -18,9 +18,8 @@ router.post('/', (req, res) => {
     console.log('HEADERS: ' + req.fields.headers)
     console.log()
     console.log('DKIM: ' + req.fields.dkim)
-    // TODO: The server is sending a non JS compliant key name
-    // console.log()
-    // console.log('CONTENT-IDS: ' + req.fields.content-ids)
+    console.log()
+    console.log('CONTENT-IDS: ' + req.fields["content-ids"])
     console.log()
     console.log('TO: ' + req.fields.to)
     console.log()
@@ -37,9 +36,8 @@ router.post('/', (req, res) => {
     console.log('ATTACHMENTS: ' + req.fields.attachments)
     console.log()
     console.log('SPAM-SCORE: ' + req.fields.spam_score)
-    // TODO: The server is sending a non JS compliant key name
-    // console.log()
-    // console.log('ATTACHMENT-INFO: ' + req.fields.attachment-info)
+    console.log()
+    console.log('ATTACHMENT-INFO: ' + req.fields["attachment-info"])
     console.log()
     console.log('CHARSETS: ' + req.fields.charsets)
     console.log()
