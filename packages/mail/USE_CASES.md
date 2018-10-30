@@ -552,7 +552,13 @@ const msg = {
     groupId: 1
   },
   ipPoolName: 'sendgrid-ip-pool-name',
-  mailSettings: {},
+  mailSettings: {
+    {true, 'name@email.com'}, // BCC
+    {true}, // Bypass List Management
+    {true, 'Hello World', 'HTML'}, // Footer
+    {true}, // Sandbox(Test)
+    {true, 5, 'Post URL' // Spam Check
+  },
   trackingSettings: {
     clickTracking: {
       enable: true
