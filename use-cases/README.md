@@ -20,5 +20,5 @@ This documentation provides examples for specific SendGrid v3 API use cases. Ple
   * [Kitchen Sink - an example with all settings used](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/kitchen-sink.md)
 
 # Non-mail Use Cases
-* [How to Setup a Domain Whitelabel](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/domain-white-label.md)
+* [How to Setup a Domain Authentication](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/domain-authentication.md)
 * [How to View Email Statistics](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/email-stats.md)
