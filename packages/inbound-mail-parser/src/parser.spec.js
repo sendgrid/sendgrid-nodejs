@@ -31,7 +31,7 @@ describe('test_parse', () => {
       const parse = new Parse({}, {});
 
       function callback(email) {
-        expect(email).to.be.null;
+        expect(email).to.be.null();
         done();
       }
 

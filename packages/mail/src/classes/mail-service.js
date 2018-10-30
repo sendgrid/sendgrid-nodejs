@@ -16,9 +16,11 @@ class MailService {
    */
   constructor() {
 
-    //Set client and initialize substitution wrappers
+    //Set client, initialize substitution wrappers and secret rules
+    //filter
     this.setClient(new Client());
     this.setSubstitutionWrappers('{{', '}}');
+    this.secretRules = [];
   }
 
   /**
@@ -47,6 +49,78 @@ class MailService {
     }
     this.substitutionWrappers[0] = left;
     this.substitutionWrappers[1] = right;
+  }
+
+  /**
+   * Set secret rules for filtering the e-mail content
+   */
+  setSecretRules(rules) {
+    if (!(rules instanceof Array)) {
+      rules = [rules];
+    }
+
+    const tmpRules = rules.map(function (rule) {
+      const ruleType = typeof rule;
+
+      if (ruleType === 'string') {
+        return {
+          pattern: new RegExp(rule)
+        };
+      } else if (ruleType === 'object') {
+        // normalize rule object
+        if (rule instanceof RegExp) {
+          rule = {
+            pattern: rule
+          }
+        } else if (rule.hasOwnProperty('pattern')
+          && (typeof rule.pattern === 'string')
+        ) {
+            rule.pattern = new RegExp(rule.pattern);
+        }
+
+        try {
+          // test if rule.pattern is a valid regex
+          rule.pattern.test('');
+          return rule
+        } catch (err) {
+        }
+      }
+    });
+
+    this.secretRules = tmpRules.filter(function (val) {
+      return val;
+    });
+  }
+
+  /**
+   * Check if the e-mail is safe to be sent
+   */
+  filterSecrets(body) {
+    if ((typeof body === 'object') && !body.hasOwnProperty('content')) {
+      return;
+    }
+
+    const self = this;
+
+    body.content.forEach(function (data) {
+      self.secretRules.forEach(function (rule) {
+        if (rule.hasOwnProperty('pattern')
+          && !rule.pattern.test(data.value)
+        ) {
+          return;
+        }
+
+        let message = `The pattern '${rule.pattern}'`;
+
+        if (rule.name) {
+          message += `identified by '${rule.name}'`;
+        }
+
+        message += ` was found in the Mail content!`;
+
+        throw new Error(message);
+      });
+    });
   }
 
   /**
@@ -96,6 +170,9 @@ class MailService {
       const mail = Mail.create(data);
       const body = mail.toJSON();
 
+      //Filters the Mail body to avoid sensitive content leakage
+      this.filterSecrets(body);
+
       //Create request
       const request = {
         method: 'POST',
@@ -112,6 +189,7 @@ class MailService {
 
       //Pass to callback if provided
       if (cb) {
+        // eslint-disable-next-line callback-return
         cb(error, null);
       }
 
