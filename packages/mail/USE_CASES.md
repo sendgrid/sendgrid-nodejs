@@ -821,7 +821,7 @@ sgMail.send(msg);
 
 This will enable you to send a simple message to be sent to your email.   
 7. If you have followed all steps till here. Your app should work fine in local. Now it's time to deploy in Azure.  
-8. Follow the guide on [depolying to azure](https://docs.microsoft.com/en-us/azure/app-service/app-service-deploy-local-git) to the word. It might seem a little challenging to navigate with so many options but once you crack it, It will be a cakewalk.  
+8. Follow the guide on [deploying to azure](https://docs.microsoft.com/en-us/azure/app-service/app-service-deploy-local-git) to the word. It might seem a little challenging to navigate with so many options but once you crack it, It will be a cakewalk.  
 9. Now as soon as you deploy your application, it will run on the aforementioned port. You will again receive a message in your inbox.  
 10. And Voila you have your app deployed and sending Emails via Azure. Now you can chain your custom logic if you need to send emails as per some parameters and to specific people as per your requirement.  
  

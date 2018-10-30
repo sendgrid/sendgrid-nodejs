@@ -1,15 +1,10 @@
 const express = require('express')
-const app = express()
+const router = express.Router()
 const formidable = require('express-formidable')
-const port = 3000
 
-app.use(formidable())
+router.use(formidable())
 
-
-
-app.get('/', (req, res) => res.status(200).json({status: 'ok'}))
-
-app.post('/parse_webhook', (req, res) => {
+router.post('/', (req, res) => {
     console.log('---------- START RECEIVED WEBHOOK DATA ----------')
     // Email data comes in as a form.  Using express-formidable to 
     // handle the form data.  Form fields are available in req.fields
@@ -23,9 +18,8 @@ app.post('/parse_webhook', (req, res) => {
     console.log('HEADERS: ' + req.fields.headers)
     console.log()
     console.log('DKIM: ' + req.fields.dkim)
-    // TODO: The server is sending a non JS compliant key name
-    // console.log()
-    // console.log('CONTENT-IDS: ' + req.fields.content-ids)
+    console.log()
+    console.log('CONTENT-IDS: ' + req.fields["content-ids"])
     console.log()
     console.log('TO: ' + req.fields.to)
     console.log()
@@ -42,9 +36,8 @@ app.post('/parse_webhook', (req, res) => {
     console.log('ATTACHMENTS: ' + req.fields.attachments)
     console.log()
     console.log('SPAM-SCORE: ' + req.fields.spam_score)
-    // TODO: The server is sending a non JS compliant key name
-    // console.log()
-    // console.log('ATTACHMENT-INFO: ' + req.fields.attachment-info)
+    console.log()
+    console.log('ATTACHMENT-INFO: ' + req.fields["attachment-info"])
     console.log()
     console.log('CHARSETS: ' + req.fields.charsets)
     console.log()
@@ -57,4 +50,4 @@ app.post('/parse_webhook', (req, res) => {
     res.sendStatus(200)
 })
 
-app.listen(port, () => console.log(`SendGrid Inbound Parse webhook listener started on port ${port}!`))
+module.exports = router

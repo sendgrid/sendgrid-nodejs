@@ -59,36 +59,38 @@ class MailService {
       rules = [rules];
     }
 
-    const tmpRules = rules.map(function (rule) {
+    const tmpRules = rules.map(function(rule) {
       const ruleType = typeof rule;
 
       if (ruleType === 'string') {
         return {
-          pattern: new RegExp(rule)
+          pattern: new RegExp(rule),
         };
-      } else if (ruleType === 'object') {
+      }
+      else if (ruleType === 'object') {
         // normalize rule object
         if (rule instanceof RegExp) {
           rule = {
-            pattern: rule
-          }
-        } else if (rule.hasOwnProperty('pattern')
+            pattern: rule,
+          };
+        }
+        else if (rule.hasOwnProperty('pattern')
           && (typeof rule.pattern === 'string')
         ) {
-            rule.pattern = new RegExp(rule.pattern);
+          rule.pattern = new RegExp(rule.pattern);
         }
 
         try {
           // test if rule.pattern is a valid regex
           rule.pattern.test('');
-          return rule
+          return rule;
         } catch (err) {
           // FIXME?
         }
       }
     });
 
-    this.secretRules = tmpRules.filter(function (val) {
+    this.secretRules = tmpRules.filter(function(val) {
       return val;
     });
   }
@@ -103,8 +105,8 @@ class MailService {
 
     const self = this;
 
-    body.content.forEach(function (data) {
-      self.secretRules.forEach(function (rule) {
+    body.content.forEach(function(data) {
+      self.secretRules.forEach(function(rule) {
         if (rule.hasOwnProperty('pattern')
           && !rule.pattern.test(data.value)
         ) {
