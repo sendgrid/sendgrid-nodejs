@@ -22,7 +22,7 @@ This documentation provides examples for specific email use cases. Please [open 
 * [Deploy a Simple App on Google App Engine with Node.js](#gae)
 * [Deploy a Simple App on Heroku with Node.js](#heroku)
 * [How to Setup Email Sending on Azure](#send_via_azure) 
-* [How to Setup a Domain Whitelabel](#domain-white-label)
+* [How to Setup a Domain Authentication](#domain-authentication)
 * [How to View Email Statistics](#email-stats)
 * [Slack event integration](#slackeventintegration)
 
@@ -825,12 +825,12 @@ This will enable you to send a simple message to be sent to your email.
 9. Now as soon as you deploy your application, it will run on the aforementioned port. You will again receive a message in your inbox.  
 10. And Voila you have your app deployed and sending Emails via Azure. Now you can chain your custom logic if you need to send emails as per some parameters and to specific people as per your requirement.  
  
-<a name="domain-white-label"></a>
-# How to Setup a Domain Whitelabel
+<a name="domain-authentication"></a>
+# How to Setup a Domain authentication
 
-You can find documentation for how to setup a domain whitelabel via the UI [here](https://sendgrid.com/docs/Classroom/Basics/Whitelabel/setup_domain_whitelabel.html) and via API [here](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/client/USAGE.md#whitelabel).
+You can find documentation for how to setup a domain authentication via the UI [here](https://sendgrid.com/docs/ui/account-and-settings/how-to-set-up-domain-authentication/) and via API [here](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/client/USAGE.md#sender-authentication).
 
-Find more information about all of SendGrid's whitelabeling related documentation [here](https://sendgrid.com/docs/Classroom/Basics/Whitelabel/index.html).
+Find more information about all of SendGrid's whitelabeling related documentation [here](https://sendgrid.com/docs/ui/account-and-settings/).
 
 <a name="email-stats"></a>
 # How to View Email Statistics
