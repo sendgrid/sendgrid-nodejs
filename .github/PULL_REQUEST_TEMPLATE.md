@@ -21,4 +21,4 @@ Closes #2
 - 
 - 
 
-If you have questions, please send an email to [SendGrid](mailto:dx@sendgrid.com), or file a Github Issue in this repository.
+If you have questions, please send an email to [SendGrid](mailto:dx@sendgrid.com), or file a GitHub Issue in this repository.

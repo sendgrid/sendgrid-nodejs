@@ -4,7 +4,7 @@
 
 **This package is part of a monorepo, please see [this README](https://github.com/sendgrid/sendgrid-nodejs/blob/master/README.md) for details.**
 
-# Inbound Parse Service for the [Sendgrid Inbound Parse API](https://sendgrid.com/docs/API_Reference/Webhooks/inbound_email.html)
+# Inbound Parse Service for the [SendGrid Inbound Parse API](https://sendgrid.com/docs/API_Reference/Webhooks/inbound_email.html)
 This package helps get you started consuming and processing [Inbound Parse](https://sendgrid.com/docs/API_Reference/Webhooks/inbound_email.html) data.
 
 To be notified when this package is updated, please subscribe to email [notifications](https://dx.sendgrid.com/newsletter/nodejs) for releases and breaking changes.
