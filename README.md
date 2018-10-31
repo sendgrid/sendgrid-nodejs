@@ -49,6 +49,8 @@ This library is broken up into several packages as a monorepo so that you only n
 All updates to this library are documented in our [CHANGELOG](https://github.com/sendgrid/sendgrid-nodejs/blob/master/CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases). You may also subscribe to email [release notifications](https://dx.sendgrid.com/newsletter/nodejs) for releases and breaking changes.
 
 Join an experienced and passionate team that focuses on making an impact. [Opportunities abound](https://sendgrid.com/careers) to grow the product - and grow your career! 
+ # **NEW ANNOUNCEMENT**
+ If you're a software engineer who is passionate about #DeveloperExperience and/or #OpenSource, [this is an incredible opportunity to join our #DX team](https://sendgrid.com/careers/role/1421152/?gh_jid=1421152 "Sendgird DX Engineer Page") as a Developer Experience Engineer and work with [@thinkingserious](https://github.com/thinkingserious) and [@aroach](https://github.com/aroach) ! Tell your friends :)
 
 <a name="roadmap"></a>
 # Roadmap
