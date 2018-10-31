@@ -75,6 +75,11 @@ client.setDefaultHeader('User-Agent', 'Some user agent string');
 client.setDefaultRequest('baseUrl', 'https://api.sendgrid.com/');
 ```
 
+## Set Request Max Sockets
+```js
+client.setMaxSockets(5);
+```
+
 ## Overwrite Promise Implementation
 You can overwrite the promise implementation you want the client to use. Defaults to the ES6 `Promise`:
 

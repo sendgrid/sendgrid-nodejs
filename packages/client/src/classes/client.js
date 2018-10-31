@@ -67,6 +67,16 @@ class Client {
   }
 
   /**
+   * Set request maxSockets
+   */
+  setMaxSockets(value) {
+    this.setDefaultRequest('pool', {
+      maxSockets: value,
+    });
+    return this;
+  }
+
+  /**
    * Create headers for request
    */
   createHeaders(data) {

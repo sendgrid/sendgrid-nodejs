@@ -19,6 +19,11 @@ declare class Client {
   setDefaultRequest<K extends keyof ClientRequest>(key: K, value: ClientRequest[K]): this;
 
   /**
+   * Set request maxSockets
+   */
+  setMaxSockets(value: number): this;
+
+  /**
    * Create headers for request
    */
   createHeaders(data: { [key: string]: string }): { [key: string]: string };
