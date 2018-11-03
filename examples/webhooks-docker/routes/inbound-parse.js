@@ -19,11 +19,7 @@ router.post('/', (req, res) => {
     console.log()
     console.log('DKIM: ' + req.fields.dkim)
     console.log()
-<<<<<<< HEAD:examples/inbound-parse-docker/app.js
-    console.log('CONTENT-IDS: ' + req.fields['content-ids'])
-=======
     console.log('CONTENT-IDS: ' + req.fields["content-ids"])
->>>>>>> master:examples/webhooks-docker/routes/inbound-parse.js
     console.log()
     console.log('TO: ' + req.fields.to)
     console.log()
@@ -40,12 +36,8 @@ router.post('/', (req, res) => {
     console.log('ATTACHMENTS: ' + req.fields.attachments)
     console.log()
     console.log('SPAM-SCORE: ' + req.fields.spam_score)
-<<<<<<< HEAD:examples/inbound-parse-docker/app.js
-    console.log('ATTACHMENT-INFO: ' + req.fields['attachment-info'])
-=======
     console.log()
     console.log('ATTACHMENT-INFO: ' + req.fields["attachment-info"])
->>>>>>> master:examples/webhooks-docker/routes/inbound-parse.js
     console.log()
     console.log('CHARSETS: ' + req.fields.charsets)
     console.log()
@@ -58,8 +50,4 @@ router.post('/', (req, res) => {
     res.sendStatus(200)
 })
 
-<<<<<<< HEAD:examples/inbound-parse-docker/app.js
-app.listen(port, () => console.log(`SendGrid Inbound Parse webhook listener started on port ${port}!`))
-=======
 module.exports = router
->>>>>>> master:examples/webhooks-docker/routes/inbound-parse.js
