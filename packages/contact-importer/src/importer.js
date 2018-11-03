@@ -64,7 +64,7 @@ class ContactImporter extends EventEmitter {
   }
 
   /**
-   * Send a batch of contacts to Sendgrid.
+   * Send a batch of contacts to SendGrid.
    *
    * @param {Object} task Task to be processed (data in 'data' property)
    * @param {Function} callback Callback function.

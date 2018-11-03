@@ -1,6 +1,6 @@
 # SendGrid Community Code of Conduct
 
-The SendGrid open source community is made up of members from around the globe with a diverse set of skills, personalities, and experiences. It is through these differences that our community experiences successes and continued growth. When you're working with members of the community, we encourage you to follow these guidelines, which help steer our interactions and strive to maintain a positive, thriving and growing community. 
+The SendGrid open source community is made up of members from around the globe with a diverse set of skills, personalities, and experiences. It is through these differences that our community experiences successes and continued growth. When you're working with members of the community, we encourage you to follow these guidelines, which help steer our interactions and strive to maintain a positive, thriving and growing community.
 
 ### Be Open
 Members of the community are open to collaboration, whether it's on pull requests, code reviews, approvals, issues or otherwise. We're receptive to constructive comments and criticism, as the experiences and skill sets of all members contribute to the whole of our efforts. We're accepting of all who wish to take part in our activities, fostering an environment where anyone can participate, and everyone can make a difference.
@@ -11,7 +11,7 @@ Members of the community are considerate of their peers, which include other con
 ### Be Respectful
 Members of the community are respectful. We're respectful of others, their positions, their skills, their commitments, and their efforts. We're respectful of the volunteer efforts that permeate the SendGrid community. We're respectful of the processes outlined in the community, and we work within them. When we disagree, we are courteous in raising our issues.  Overall, we're good to each other. We contribute to this community not because we have to, but because we want to. If we remember that, these guidelines will come naturally.
 
-## Additional Guidance 
+## Additional Guidance
 
 ### Disclose Potential Conflicts of Interest
 Community discussions often involve interested parties. We expect participants to be aware when they are conflicted due to employment or other projects they are involved in and disclose those interests to other project members. When in doubt, over-disclose. Perceived conflicts of interest are important to address so that the community’s decisions are credible even when unpopular, difficult or favorable to the interests of one group over another.
@@ -27,15 +27,15 @@ Most members of the SendGrid community always comply with this Code, not because
 
 **Discuss Publicly** - Discussing publicly is always acceptable. Note, though, that approaching the person directly may be better, as it tends to make them less defensive, and it respects the time of other community members, so you probably want to try direct contact first.
 
-**Contact the Moderators** - You can reach the SendGrid moderators by emailing dx@sendgrid.com.
+**Contact the Moderators** - You can reach the SendGrid moderators by emailing dx@SendGrid.com.
 
 ## Submission to SendGrid Repositories
-Finally, just a reminder, changes to the SendGrid repositories will only be accepted upon completion of the [SendGrid Contributor Agreement](https://cla.sendgrid.com). 
+Finally, just a reminder, changes to the SendGrid repositories will only be accepted upon completion of the [SendGrid Contributor Agreement](https://cla.sendgrid.com).
 
 ## Attribution
 
 SendGrid thanks the following, on which it draws for content and inspiration:
 
 * [Python Community Code of Conduct](https://www.python.org/psf/codeofconduct/)  
-* [Open Source Initiative General Code of Conduct](https://opensource.org/codeofconduct/licensing) 
-* [Apache Code of Conduct](https://www.apache.org/foundation/policies/conduct.html) 
+* [Open Source Initiative General Code of Conduct](https://opensource.org/codeofconduct/licensing)
+* [Apache Code of Conduct](https://www.apache.org/foundation/policies/conduct.html)
