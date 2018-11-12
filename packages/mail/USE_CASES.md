@@ -235,8 +235,6 @@ Hello {{ name }},
 <br /><br/>
 I'm glad you are trying out the template feature!
 <br /><br/>
-<%body%>
-<br /><br/>
 I hope you are having a great day in {{ city }} :)
 <br /><br/>
 </body>
