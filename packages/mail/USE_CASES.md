@@ -474,7 +474,11 @@ const msg = {
     groupId: 1
   },
   ipPoolName: 'sendgrid-ip-pool-name',
-  mailSettings: {},
+  mailSettings: {
+    sandbox: {
+      enable: true,
+    },
+  },
   trackingSettings: {},
 };
 sgMail
@@ -489,7 +493,7 @@ sgMail
 Before you begin, setup google app engine and install required packages by following [getting started](https://cloud.google.com/nodejs/getting-started/hello-world) guide.
 
 #### Setup your environment variables
-Include your [SENDGRID_API_KEY](https://app.sendgrid.com/settings/api_keys) in `app.yaml`, for example: 
+Include your [SENDGRID_API_KEY](https://app.sendgrid.com/settings/api_keys) in `app.yaml`, for example:
 
 ```yaml
 # Note: Don't commit the app.yaml file with API key, keep it changed locally - only used in deployment
@@ -527,7 +531,7 @@ const app = express();
 app.get('/send', (req, res) => {
   const {query: {to = 'test@example.com', from = 'test@example.com'}} = req;
   // other options could be customized further
-  
+
   const msg = {
     to,
     from,
@@ -535,7 +539,7 @@ app.get('/send', (req, res) => {
     text: 'and easy to do anywhere, even with Node.js',
     html: '<strong>Hello Email app</strong>',
   };
-  
+
   sgMail.send(msg).then(() => {
     res.status(200).send('Hello, world!').end();
   }).catch(e => {
@@ -558,11 +562,11 @@ app.listen(PORT, () => {
    ```
    gcloud app deploy
    ```
-  
- #### Send email 
- 
+
+ #### Send email
+
  Using the following snippet you should be able to send emails with the deployed app (replace `to` and `from` with your own)
- 
+
  ```curl
  curl -X GET \
   'http://your_project_id.appspot.com/send?to=to%40example.com&from=from%40example.com' \
@@ -580,7 +584,7 @@ Here are step by step instructions to deploy your Node.js app to Heroku (assumin
 - `heroku config:set SENDGRID_API_KEY=SG.YOUR.OWN-API_KEY-HERE` (replace `SG.YOUR.OWN-API_KEY-HERE` with your own [api key from sendgrid](https://app.sendgrid.com/settings/api_keys)
 
 If you run into any other non SendGrid related issues, don't forget to read through [Heroku's deployment documentation](https://devcenter.heroku.com/articles/getting-started-with-nodejs).
- 
+
 <a name="domain-white-label"></a>
 # How to Setup a Domain Whitelabel
 

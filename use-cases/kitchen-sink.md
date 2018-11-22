@@ -40,7 +40,11 @@ const msg = {
     groupId: 1
   },
   ipPoolName: 'sendgrid-ip-pool-name',
-  mailSettings: {},
+  mailSettings: {
+    sandbox: {
+      enable: true,
+    },
+  },
   trackingSettings: {},
 };
 sgMail
