@@ -1,0 +1,12 @@
+version: '2.1'
+
+services:
+  inbound-parse-docker:
+    image: inbound-parse-docker
+    build: .
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3000:3000
+    # volumes:
+    #   - /tmp:/tmp

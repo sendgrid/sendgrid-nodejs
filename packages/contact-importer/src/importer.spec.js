@@ -1,14 +1,14 @@
-const sendgrid = require('sendgrid');
+const sendgrid = require('@sendgrid/client');
 const ContactImporter = require('./importer');
 
 describe('test_contact_importer', function() {
   beforeEach(function() {
     // Create a new SendGrid instance.
     const API_KEY = process.env.API_KEY;
-    const sg = sendgrid(API_KEY);
+    sendgrid.setApiKey(API_KEY);
 
     // Create a new importer with a batch size of 2.
-    this.contactImporter = new ContactImporter(sg, {
+    this.contactImporter = new ContactImporter(sendgrid, {
       batchSize: 2,
     });
     // this.spy = sinon.spy(ContactImporter.prototype, '_sendBatch')

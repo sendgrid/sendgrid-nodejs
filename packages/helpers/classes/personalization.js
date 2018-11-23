@@ -7,6 +7,7 @@ const EmailAddress = require('./email-address');
 const toCamelCase = require('../helpers/to-camel-case');
 const toSnakeCase = require('../helpers/to-snake-case');
 const deepClone = require('../helpers/deep-clone');
+const merge = require('deepmerge');
 const wrapSubstitutions = require('../helpers/wrap-substitutions');
 
 /**
@@ -27,6 +28,7 @@ class Personalization {
     this.customArgs = {};
     this.substitutions = {};
     this.substitutionWrappers = ['{{', '}}'];
+    this.dynamicTemplateData = {};
 
     //Build from data if given
     if (data) {
@@ -47,12 +49,12 @@ class Personalization {
     //Convert to camel case to make it workable, making a copy to prevent
     //changes to the original objects
     data = deepClone(data);
-    data = toCamelCase(data, ['substitutions', 'customArgs', 'headers']);
+    data = toCamelCase(data, ['substitutions', 'dynamicTemplateData', 'customArgs', 'headers']);
 
     //Extract properties from data
     const {
       to, cc, bcc, subject, headers, customArgs, sendAt,
-      substitutions, substitutionWrappers,
+      substitutions, substitutionWrappers, dynamicTemplateData,
     } = data;
 
     //Set data
@@ -64,6 +66,7 @@ class Personalization {
     this.setSubstitutions(substitutions);
     this.setSubstitutionWrappers(substitutionWrappers);
     this.setCustomArgs(customArgs);
+    this.setDynamicTemplateData(dynamicTemplateData);
     this.setSendAt(sendAt);
   }
 
@@ -272,6 +275,34 @@ class Personalization {
   }
 
   /**
+   * Reverse merge dynamic template data, preserving existing ones
+   */
+  deepMergeDynamicTemplateData(dynamicTemplateData) {
+    if (typeof dynamicTemplateData === 'undefined' || dynamicTemplateData === null) {
+      return;
+    }
+    if (typeof dynamicTemplateData !== 'object') {
+      throw new Error(
+        'Object expected for `dynamicTemplateData` in deepMergeDynamicTemplateData'
+      );
+    }
+    this.dynamicTemplateData = merge(dynamicTemplateData, this.dynamicTemplateData);
+  }
+
+  /**
+   * Set dynamic template data
+   */
+  setDynamicTemplateData(dynamicTemplateData) {
+    if (typeof dynamicTemplateData === 'undefined') {
+      return;
+    }
+    if (typeof dynamicTemplateData !== 'object') {
+      throw new Error('Object expected for `dynamicTemplateData`');
+    }
+    this.dynamicTemplateData = dynamicTemplateData;
+  }
+
+  /**
    * To JSON
    */
   toJSON() {
@@ -279,7 +310,7 @@ class Personalization {
     //Get data from self
     const {
       to, cc, bcc, subject, headers, customArgs, sendAt,
-      substitutions, substitutionWrappers,
+      substitutions, substitutionWrappers, dynamicTemplateData,
     } = this;
 
     //Initialize with mandatory values
@@ -297,12 +328,16 @@ class Personalization {
     if (Object.keys(headers).length > 0) {
       json.headers = headers;
     }
-    if (Object.keys(substitutions).length > 0) {
+    if (substitutions && Object.keys(substitutions).length > 0) {
       const [left, right] = substitutionWrappers;
       json.substitutions = wrapSubstitutions(substitutions, left, right);
     }
     if (Object.keys(customArgs).length > 0) {
       json.customArgs = customArgs;
+    }
+
+    if (dynamicTemplateData && Object.keys(dynamicTemplateData).length > 0) {
+      json.dynamicTemplateData = dynamicTemplateData;
     }
 
     //Simple properties
@@ -314,7 +349,7 @@ class Personalization {
     }
 
     //Return as snake cased object
-    return toSnakeCase(json, ['substitutions', 'customArgs', 'headers']);
+    return toSnakeCase(json, ['substitutions', 'dynamicTemplateData', 'customArgs', 'headers']);
   }
 }
 

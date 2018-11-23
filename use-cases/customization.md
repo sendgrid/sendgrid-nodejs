@@ -16,7 +16,7 @@ const msg = {
         'X-Custom-Header': 'Recipient 1',
       },
       customArgs: {
-        myArg: 'Recipient 1',
+        myArg: 'Recipient 1', // must be a string
       },
     },
     {
@@ -30,7 +30,7 @@ const msg = {
         'X-Custom-Header': 'Recipient 2',
       },
       customArgs: {
-        myArg: 'Recipient 1',
+        myArg: 'Recipient 1', // must be a string
       },
       sendAt: 1500077141,
     }

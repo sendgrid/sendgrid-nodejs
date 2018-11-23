@@ -15,10 +15,10 @@ Closes #2
 - [ ] I updated my branch with the master branch.
 - [ ] I have added tests that prove my fix is effective or that my feature works
 - [ ] I have added necessary documentation about the functionality in the appropriate .md file
-- [ ] I have added in line documentation to the code I modified
+- [ ] I have added inline documentation to the code I modified
 
 ### Short description of what this PR does:
 - 
 - 
 
-If you have questions, please send an email to [Sendgrid](mailto:dx@sendgrid.com), or file a Github Issue in this repository.
+If you have questions, please send an email to [SendGrid](mailto:dx@sendgrid.com), or file a Github Issue in this repository.
