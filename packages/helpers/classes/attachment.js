@@ -82,7 +82,7 @@ class Attachment {
     } else if (content instanceof Buffer && content.toString !== undefined) {
       this.content = content.toString();
 
-      if (this.disposition == 'attachment') {
+      if (this.disposition === 'attachment') {
         this.content = content.toString('base64');
       }
 
