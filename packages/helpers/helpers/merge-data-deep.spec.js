@@ -8,7 +8,7 @@ const mergeDataDeep = require('./merge-data-deep');
 /**
  * Tests
  */
-describe('mergeDataDeep', function () {
+describe('mergeDataDeep', function() {
 
   //Test objects
   const obj1 = {
@@ -29,7 +29,7 @@ describe('mergeDataDeep', function () {
   const merged = mergeDataDeep(obj1, obj2);
 
   //Tests
-  it('should merge the two objects', function () {
+  it('should merge the two objects', function() {
     expect(merged).to.have.property('a');
     expect(merged).to.have.property('b');
     expect(merged).to.have.property('c');
@@ -39,15 +39,15 @@ describe('mergeDataDeep', function () {
     expect(merged.e).to.have.property('f');
     expect(merged.e).to.have.property('g');
   });
-  it('should throw on invalid input', function () {
-    expect(function () {
+  it('should throw on invalid input', function() {
+    expect(function() {
       mergeDataDeep(null, obj2);
     }).to.throw(Error);
-    expect(function () {
+    expect(function() {
       mergeDataDeep(obj1, 4);
     }).to.throw(Error);
   });
-  it('should overwrite arrays', function () {
+  it('should overwrite arrays', function() {
     expect(merged).to.have.property('arr');
     expect(merged.arr).to.be.an.instanceof(Array);
     expect(merged.arr).to.have.lengthOf(1);

@@ -9,21 +9,21 @@ const EmailAddress = require('../email-address');
 /**
  * Tests
  */
-describe('Personalization', function () {
+describe('Personalization', function() {
 
   //Create new personalization before each test
   let p;
-  beforeEach(function () {
+  beforeEach(function() {
     p = new Personalization();
   });
 
   //JSON conversion
-  describe('toJSON()', function () {
-    beforeEach(function () {
+  describe('toJSON()', function() {
+    beforeEach(function() {
       p.setTo('test@example.org');
     });
 
-    it('should always have the to field', function () {
+    it('should always have the to field', function() {
       const json = p.toJSON();
       expect(json).to.have.property('to');
       expect(json.to).to.be.an.instanceof(Array);
@@ -31,7 +31,7 @@ describe('Personalization', function () {
       expect(json.to[0]).to.be.an.instanceof(EmailAddress);
       expect(json.to[0].email).to.equal('test@example.org');
     });
-    it('should set the cc field', function () {
+    it('should set the cc field', function() {
       p.setCc('testcc@example.org');
       const json = p.toJSON();
       expect(json).to.have.property('cc');
@@ -40,7 +40,7 @@ describe('Personalization', function () {
       expect(json.cc[0]).to.be.an.instanceof(EmailAddress);
       expect(json.cc[0].email).to.equal('testcc@example.org');
     });
-    it('should set the bcc field', function () {
+    it('should set the bcc field', function() {
       p.setBcc('testbcc@example.org');
       const json = p.toJSON();
       expect(json).to.have.property('bcc');
@@ -49,27 +49,27 @@ describe('Personalization', function () {
       expect(json.bcc[0]).to.be.an.instanceof(EmailAddress);
       expect(json.bcc[0].email).to.equal('testbcc@example.org');
     });
-    it('should set the headers field', function () {
+    it('should set the headers field', function() {
       p.setHeaders({ test: 'Test' });
       const json = p.toJSON();
       expect(json).to.have.property('headers');
       expect(json.headers).to.be.an.instanceof(Object);
       expect(json.headers.test).to.equal('Test');
     });
-    it('should set the custom_args field', function () {
+    it('should set the custom_args field', function() {
       p.setCustomArgs({ test: 'Test' });
       const json = p.toJSON();
       expect(json).to.have.property('custom_args');
       expect(json.custom_args).to.be.an.instanceof(Object);
       expect(json.custom_args.test).to.equal('Test');
     });
-    it('should set the substitutions field', function () {
+    it('should set the substitutions field', function() {
       p.setSubstitutions({ test: 'Test' });
       const json = p.toJSON();
       expect(json).to.have.property('substitutions');
       expect(json.substitutions).to.be.an.instanceof(Object);
     });
-    it('should apply wrappers to the substitutions', function () {
+    it('should apply wrappers to the substitutions', function() {
       p.setSubstitutions({ test: 'Test', otherTest2: 'Test2' });
       p.setSubstitutionWrappers(['{{', '}}']);
       const json = p.toJSON();
@@ -80,19 +80,19 @@ describe('Personalization', function () {
       expect(json.substitutions).not.to.have.property('test');
       expect(json.substitutions).not.to.have.property('otherTest2');
     });
-    it('should set the dynamicTemplateData field', function () {
+    it('should set the dynamicTemplateData field', function() {
       p.setDynamicTemplateData({ test: 'Test' });
       const json = p.toJSON();
       expect(json).to.have.property('dynamic_template_data');
       expect(json.dynamic_template_data).to.be.an.instanceof(Object);
     });
-    it('should set the subject field', function () {
+    it('should set the subject field', function() {
       p.setSubject('Test');
       const json = p.toJSON();
       expect(json).to.have.property('subject');
       expect(json.subject).to.equal('Test');
     });
-    it('should set the send_at field', function () {
+    it('should set the send_at field', function() {
       p.setSendAt(555);
       const json = p.toJSON();
       expect(json).to.have.property('send_at');

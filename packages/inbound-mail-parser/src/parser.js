@@ -23,7 +23,7 @@ const createAttachment = (file) => {
   attachment.setContent(content.toString('base64'));
 
   return attachment;
-}
+};
 
 /**
  * Simple class that parses data received from SendGrid Inbound Parse Webhook
