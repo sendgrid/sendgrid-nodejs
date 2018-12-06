@@ -20,7 +20,7 @@ describe('Attachment', function() {
   //Set content as string
   describe('setContent(), string', function() {
     it('should set string as content', function() {
-      attachment.setContent("Just a string.");
+      attachment.setContent('Just a string.');
       expect(attachment.content).to.equal('Just a string.');
     });
   });
@@ -51,7 +51,7 @@ describe('Attachment', function() {
           disposition: 'attachment',
           contentId: 'myattachment',
           content: '',
-          filePath: ''
+          filePath: '',
         });
       }).to.throw(Error);
     });
@@ -77,7 +77,7 @@ describe('setContent()', function() {
   });
 
   it('should accept a buffer', function() {
-    attachment.setContent(new Buffer("Hello World\n"));
+    attachment.setContent(new Buffer('Hello World\n'));
     expect(attachment.content).to.equal('SGVsbG8gV29ybGQK');
   });
 
@@ -87,7 +87,7 @@ describe('setContent()', function() {
       type: 'plain/text',
       disposition: 'attachment',
       contentId: 'myattachment',
-      filePath: path.resolve(__dirname + '/attachment.js')
+      filePath: path.resolve(path.join(__dirname, '/attachment.js')),
     });
 
     expect(attachment.content).to.be.a('string');

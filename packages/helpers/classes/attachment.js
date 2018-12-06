@@ -47,7 +47,7 @@ class Attachment {
       type,
       disposition,
       contentId,
-      filePath
+      filePath,
     } = data;
 
     if ((typeof content !== 'undefined') && (typeof filePath !== 'undefined')) {
@@ -79,10 +79,11 @@ class Attachment {
     if (typeof content === 'string') {
       this.content = content;
       return;
-    } else if (content instanceof Buffer && content.toString !== undefined) {
+    }
+    else if (content instanceof Buffer && content.toString !== undefined) {
       this.content = content.toString();
 
-      if (this.disposition == 'attachment') {
+      if (this.disposition === 'attachment') {
         this.content = content.toString('base64');
       }
 
