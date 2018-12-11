@@ -39,7 +39,7 @@ class Parse {
   constructor(config, request) {
     this.keys = config.keys;
     this.request = request;
-    this.payload = request.body || {};
+    this.payload = request.body || request.payload || {};
     this.files = request.files || [];
   }
 
