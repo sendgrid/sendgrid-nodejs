@@ -1,0 +1,50 @@
+<script type="text/javascript">
+    RED.nodes.registerType('sendgrid',{
+        category: 'social',
+        color: '#489be8',
+        defaults: {
+            from: {value:""},
+            to: {value:""},
+            name: {value:""}
+        },
+        credentials: {
+            key: {type:"password"},
+        },
+        inputs:1,
+        outputs:0,
+        icon: "envelope.png",
+        align: "right",
+        label: function() {
+            return this.name||"sendgrid";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="sendgrid">
+    <div class="form-row">
+        <label for="node-input-key"><i class="icon-tag"></i> API Key</label>
+        <input type="password" id="node-input-key" placeholder="Paste API Key created in SendGrid settings">
+    </div>
+    <div class="form-row">
+        <label for="node-input-from"><i class="icon-tag"></i> From</label>
+        <input type="text" id="node-input-from" placeholder="example@example.com">
+    </div>
+    <div class="form-row">
+        <label for="node-input-to"><i class="icon-tag"></i> To</label>
+        <input type="text" id="node-input-to" placeholder="youremail@ddress.com">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="sendgrid">
+    <p>E-mail sending node using SendGrid service.</p>
+    <p>You need to get API key from SendGrid website (<a href="https://sendgrid.com" target="_blank">https://sendgrid.com</a>).</p>
+    <p>Sends the <code>msg.payload</code> as an email, with a subject of <code>msg.topic</code>.</p>
+    <p>The default message recipient can be configured in the node, if it is left
+    blank it should be set using the <code>msg.to</code> property of the incoming message.
+    you can also specify <code>msg.cc</code> and/or <code>msg.bcc</code> properties.</p>
+    <p>You can set sender of <code>msg.from</code> in the payload.</p>
+</script>
