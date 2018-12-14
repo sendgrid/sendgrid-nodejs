@@ -10,10 +10,10 @@ Default e-mail node sometimes encounters login problem occurred from unusual beh
 (2) Get API key from SendGrid website ( https://sendgrid.com/ )
 
 (3) Paste the API key on property of SendGrid node
-![property](https://github.com/zuhito/node-red-contrib-sendgrid/raw/master/property.png)
+![property](property.png)
 
 (4) Create flows using SendGrid node
-![flow](https://github.com/zuhito/node-red-contrib-sendgrid/raw/master/flow.png)
+![flow](flow.png)
 
 ## SendGrid node specification
 Sends the <code>msg.payload</code> as an email, with a subject of <code>msg.topic</code>. The default message recipient can be configured in the node, if it is left blank it should be set using the <code>msg.to</code> property of the incoming message. you can also specify <code>msg.cc</code> and/or <code>msg.bcc</code> properties. You can set sender of <code>msg.from</code> in the payload.
