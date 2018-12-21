@@ -165,8 +165,6 @@ For more information, please see our [User Guide](http://sendgrid.com/docs/User_
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/access_settings/whitelist/{rule_id}';
   client.request(request)
@@ -291,8 +289,6 @@ For more information about alerts, please see our [User Guide](https://sendgrid.
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/alerts/{alert_id}';
   client.request(request)
@@ -459,8 +455,6 @@ The API Keys feature allows customers to be able to generate an API Key credenti
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/api_keys/{api_key_id}';
   client.request(request)
@@ -560,8 +554,6 @@ Each user can create up to 25 different suppression groups.
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/asm/groups/{group_id}';
   client.request(request)
@@ -703,8 +695,6 @@ Suppressions are recipient email addresses that are added to [unsubscribe groups
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/asm/groups/{group_id}/suppressions/{email}';
   client.request(request)
@@ -766,8 +756,6 @@ A global suppression (or global unsubscribe) is an email address of a recipient 
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/asm/suppressions/global/{email}';
   client.request(request)
@@ -967,8 +955,6 @@ For more information:
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/campaigns/{campaign_id}';
   client.request(request)
@@ -1014,8 +1000,6 @@ For more information:
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/campaigns/{campaign_id}/schedules';
   client.request(request)
@@ -1106,8 +1090,6 @@ For more information:
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'POST';
   request.url = '/v3/campaigns/{campaign_id}/schedules/now';
   client.request(request)
@@ -1371,8 +1353,6 @@ The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/contactdb/custom_fields/{custom_field_id}';
   client.request(request)
@@ -1474,8 +1454,6 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   const queryParams = {
   'delete_contacts': 'true'
 };
@@ -1596,8 +1574,6 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'POST';
   request.url = '/v3/contactdb/lists/{list_id}/recipients/{recipient_id}';
   client.request(request)
@@ -1616,8 +1592,6 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   const queryParams = {
   'list_id': 1, 
   'recipient_id': 1
@@ -1826,8 +1800,6 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/contactdb/recipients/{recipient_id}';
   client.request(request)
@@ -1989,8 +1961,6 @@ For more information about segments in Marketing Campaigns, please see our [User
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   const queryParams = {
   'delete_contacts': 'true'
 };
@@ -2343,8 +2313,6 @@ If an IP pool is NOT specified for an email, it will use any IP available, inclu
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/ips/pools/{pool_name}';
   client.request(request)
@@ -2411,8 +2379,6 @@ A single IP address or a range of IP addresses may be dedicated to an account to
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/ips/pools/{pool_name}/ips/{ip}';
   client.request(request)
@@ -2493,8 +2459,6 @@ For more general information about warming up IPs, please see our [Classroom](ht
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/ips/warmup/{ip_address}';
   client.request(request)
@@ -2560,8 +2524,6 @@ More Information:
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'POST';
   request.url = '/v3/mail/batch';
   client.request(request)
@@ -3465,8 +3427,6 @@ This endpoint allows you to deny an attempt to access your account.
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/scopes/requests/{request_id}';
   client.request(request)
@@ -3485,8 +3445,6 @@ This endpoint allows you to approve an access attempt.
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'PATCH';
   request.url = '/v3/scopes/requests/{request_id}/approve';
   client.request(request)
@@ -3582,8 +3540,6 @@ Sender Identities are required to be verified before use. If your domain has bee
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/senders/{sender_id}';
   client.request(request)
@@ -3640,8 +3596,6 @@ Sender Identities are required to be verified before use. If your domain has bee
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'POST';
   request.url = '/v3/senders/{sender_id}/resend_verification';
   client.request(request)
@@ -3869,8 +3823,6 @@ For more information about Subusers:
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/subusers/{subuser_name}';
   client.request(request)
@@ -3979,8 +3931,6 @@ Subuser monitor settings allow you to receive a sample of an outgoing message by
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/subusers/{subuser_name}/monitor';
   client.request(request)
@@ -4111,8 +4061,6 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/suppression/blocks/{email}';
   client.request(request)
@@ -4219,8 +4167,6 @@ For more information see:
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   const queryParams = {
   'email_address': 'example@example.com'
 };
@@ -4335,8 +4281,6 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/suppression/invalid_emails/{email}';
   client.request(request)
@@ -4439,8 +4383,6 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/suppression/spam_reports/{email}';
   client.request(request)
@@ -4577,8 +4519,6 @@ This endpoint allows you to delete a pending teammate invite.
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/teammates/pending/{token}';
   client.request(request)
@@ -4597,8 +4537,6 @@ This endpoint allows you to resend a teammate invite.
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'POST';
   request.url = '/v3/teammates/pending/{token}/resend';
   client.request(request)
@@ -4617,8 +4555,6 @@ This endpoint allows you to delete a teammate.
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/teammates/{username}';
   client.request(request)
@@ -4732,8 +4668,6 @@ Transactional templates are templates explicitly created for transactional email
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/templates/{template_id}';
   client.request(request)
@@ -4833,8 +4767,6 @@ For more information about transactional templates, please see our [User Guide](
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/templates/{template_id}/versions/{version_id}';
   client.request(request)
@@ -4922,8 +4854,6 @@ For more information about transactional templates, please see our [User Guide](
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'POST';
   request.url = '/v3/templates/{template_id}/versions/{version_id}/activate';
   client.request(request)
@@ -5386,8 +5316,6 @@ The Cancel Scheduled Sends feature allows the customer to cancel a scheduled sen
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/user/scheduled_sends/{batch_id}';
   client.request(request)
@@ -5666,8 +5594,6 @@ The inbound parse webhook allows you to have incoming emails parsed, extracting 
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/user/webhooks/parse/settings/{hostname}';
   client.request(request)
@@ -5858,8 +5784,6 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/whitelabel/domains/subuser';
   client.request(request)
@@ -5907,8 +5831,6 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/whitelabel/domains/{domain_id}';
   client.request(request)
@@ -6040,8 +5962,6 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/whitelabel/domains/{id}/ips/{ip}';
   client.request(request)
@@ -6067,8 +5987,6 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'POST';
   request.url = '/v3/whitelabel/domains/{id}/validate';
   client.request(request)
@@ -6145,8 +6063,6 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/whitelabel/ips/{id}';
   client.request(request)
@@ -6187,8 +6103,6 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'POST';
   request.url = '/v3/whitelabel/ips/{id}/validate';
   client.request(request)
@@ -6299,8 +6213,6 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   const queryParams = {
   'username': 'test_string'
 };
@@ -6353,8 +6265,6 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/whitelabel/links/{id}';
   client.request(request)
@@ -6419,8 +6329,6 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'POST';
   request.url = '/v3/whitelabel/links/{id}/validate';
   client.request(request)
