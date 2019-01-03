@@ -18,10 +18,10 @@ This documentation provides examples for specific email use cases. Please [open 
   * [Specifying Categories](#categories)
   * [Kitchen Sink - an example with all settings used](#kitchensink)
   * [Managing multiple API keys](#multipleapikeys)
-* [Deploy a simple Hello Email app on Digital Ocean with Node.js](#digitaloceandeploy)  
+* [Deploy a simple Hello Email app on Digital Ocean with Node.js](#digitaloceandeploy)
 * [Deploy a Simple App on Google App Engine with Node.js](#gae)
 * [Deploy a Simple App on Heroku with Node.js](#heroku)
-* [How to Setup Email Sending on Azure](#send_via_azure) 
+* [How to Setup Email Sending on Azure](#send_via_azure)
 * [How to Setup a Domain Whitelabel](#domain-white-label)
 * [How to View Email Statistics](#email-stats)
 * [Slack event integration](#slackeventintegration)
@@ -60,7 +60,7 @@ const msg = {
 sgMail.send(msg);
 ```
 
-If you want to send multiple _individual_ emails to multiple recipient where they don't see each others email addresses, use `sendMultiple` instead:
+If you want to send multiple _individual_ emails to multiple recipient where they don't see each other's email addresses, use `sendMultiple` instead:
 
 ```js
 const sgMail = require('@sendgrid/mail');
@@ -698,7 +698,7 @@ $ node index.js
 Before you begin, setup Google App Engine and install required packages by following [getting started](https://cloud.google.com/nodejs/getting-started/hello-world) guide.
 
 #### Setup your environment variables
-Include your [SENDGRID_API_KEY](https://app.sendgrid.com/settings/api_keys) in `app.yaml`, for example: 
+Include your [SENDGRID_API_KEY](https://app.sendgrid.com/settings/api_keys) in `app.yaml`, for example:
 
 ```yaml
 # Note: Don't commit the app.yaml file with API key, keep it changed locally - only used in deployment
@@ -736,7 +736,7 @@ const app = express();
 app.get('/send', (req, res) => {
   const {query: {to = 'test@example.com', from = 'test@example.com'}} = req;
   // other options could be customized further
-  
+
   const msg = {
     to,
     from,
@@ -744,7 +744,7 @@ app.get('/send', (req, res) => {
     text: 'and easy to do anywhere, even with Node.js',
     html: '<strong>Hello Email app</strong>',
   };
-  
+
   sgMail.send(msg).then(() => {
     res.status(200).send('Hello, world!').end();
   }).catch(e => {
@@ -767,11 +767,11 @@ app.listen(PORT, () => {
    ```
    gcloud app deploy
    ```
-  
- #### Send email 
- 
+
+ #### Send email
+
  Using the following snippet you should be able to send emails with the deployed app (replace `to` and `from` with your own)
- 
+
  ```curl
  curl -X GET \
   'http://your_project_id.appspot.com/send?to=to%40example.com&from=from%40example.com' \
@@ -795,9 +795,9 @@ If you run into any other non SendGrid related issues, don't forget to read thro
 
 1. First, create an account on Azure. You can opt for a free trial here or buy a subscription.
 2. I am assuming you already have a SendGrid API Key with you.
-3. Create a sample node.js App. with an index.js and create a package.json file using npm init or yarn init.   
-4. Install sendgrid-nodejs as a dependency using yarn add @sendgrid/mail.  
-5. Now we need the SendGrid API key to be as an Environment Variable in our application. For that, we will create a sendgrid.env file in our local system. Add it to .gitignore file and refresh the terminal.   
+3. Create a sample node.js App. with an index.js and create a package.json file using npm init or yarn init.
+4. Install sendgrid-nodejs as a dependency using yarn add @sendgrid/mail.
+5. Now we need the SendGrid API key to be as an Environment Variable in our application. For that, we will create a sendgrid.env file in our local system. Add it to .gitignore file and refresh the terminal.
 ```shell
 echo "export SENDGRID_API_KEY='YOUR_API_KEY'" > sendgrid.env
 echo "sendgrid.env" >> .gitignore
@@ -815,14 +815,14 @@ const msg = {
   html: '<strong>and easy to do anywhere, even with Node.js</strong>',
 };
 sgMail.send(msg);
-```  
+```
 
-This will enable you to send a simple message to be sent to your email.   
-7. If you have followed all steps till here. Your app should work fine in local. Now it's time to deploy in Azure.  
-8. Follow the guide on [deploying to azure](https://docs.microsoft.com/en-us/azure/app-service/app-service-deploy-local-git) to the word. It might seem a little challenging to navigate with so many options but once you crack it, It will be a cakewalk.  
-9. Now as soon as you deploy your application, it will run on the aforementioned port. You will again receive a message in your inbox.  
-10. And Voila you have your app deployed and sending Emails via Azure. Now you can chain your custom logic if you need to send emails as per some parameters and to specific people as per your requirement.  
- 
+This will enable you to send a simple message to be sent to your email.
+7. If you have followed all steps till here. Your app should work fine in local. Now it's time to deploy in Azure.
+8. Follow the guide on [deploying to azure](https://docs.microsoft.com/en-us/azure/app-service/app-service-deploy-local-git) to the word. It might seem a little challenging to navigate with so many options but once you crack it, it will be a cakewalk.
+9. Now as soon as you deploy your application, it will run on the aforementioned port. You will again receive a message in your inbox.
+10. And voilà, you have your app deployed and sending Emails via Azure. Now you can chain your custom logic if you need to send emails as per some parameters and to specific people as per your requirement.
+
 <a name="domain-white-label"></a>
 # How to Setup a Domain Whitelabel
 
@@ -844,7 +844,7 @@ Alternatively, we can post events to a URL of your choice via our [Event Webhook
 - Turns "Enable Events" option to "on"
 - Now we need an actual endpoint to put in "Request URL" input box for the verification, so you will need to create an app for receiving Slack webhook and make sure your app can be accessed from the Internet
   - Use any Node.js server of your choice to create an endpoint which accept "POST" method
-  - You can make sure the request is actually from your Slack app by compare the value of "token" key from request body with your "Verification Token" in your app's "App Credentials" section. You could store the token value in your server's environment variable to make it secured.
+  - You can make sure the request is actually from your Slack app by compare the value of "token" key from request body with your "Verification Token" in your app's "App Credentials" section. You could store the token value in your server's environment variable to make it secure.
 
     example request body
     ```
@@ -905,7 +905,7 @@ Alternatively, we can post events to a URL of your choice via our [Event Webhook
 
 - Enter your app's URL in "Request URL" input box *Noted:* your app needs to be able to response back with challenge from request payload as we already did in the first step.
 - Select which events you want to subscribe by going to "Subscribe to Workspace Events". For example if you want to interact with messages posted to a channel you can choose to subscribe to "message.channels"
-- Congratulations!!! Now you can respond to various event types you've subscribed. For example if a user post to a channel there would be a request from Slack with this following body
+- Congratulations! Now you can respond to the various event types you've subscribed to. For example, if a user posts to a channel there would be a request from Slack with the following body:
   ```
   {
     "token": "XXYYZZ",
@@ -925,7 +925,7 @@ Alternatively, we can post events to a URL of your choice via our [Event Webhook
   }
   ```
 
-  Then you could react to user's message, for instance, if a message contains a word "sick" or other similar phrases, we would send an email to HR team telling them this guy won't be coming to work today.
+  You could then react to the user's message. For example, if a message contains the word "sick" or other similar phrases, we would send an email to the HR team telling them this person won't be coming to work today.
 
     To send an email, you should store your Sendgrid API key in an environment variable (`SENDGRID_API_KEY` in this case) on your server.
   ```js
@@ -936,7 +936,7 @@ Alternatively, we can post events to a URL of your choice via our [Event Webhook
     const msg = {
       to: 'hr@example.com',
       from: 'no-reply@example.com',
-      subject: 'Someone will probably take a sick leave',
+      subject: 'Someone will probably take sick leave',
       text: 'Please check messages on Slack. Because someone said "sick" maybe he/she is going to take sick leave.'
     };
     sgMail.send(msg);
