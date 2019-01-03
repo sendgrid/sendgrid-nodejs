@@ -7,7 +7,7 @@ export interface PersonalizationData {
   subject?: string;
   headers?: { [key: string]: string };
   substitutions?: { [key: string]: string };
-  dynamicTemplateData?: { [key: string]: string; };
+  dynamicTemplateData?: { [key: string]: object; };
   customArgs?: { [key: string]: string };
   sendAt?: number;
 }
@@ -18,7 +18,7 @@ export interface PersonalizationJSON {
   bcc?: EmailJSON[];
   headers?: { [key: string]: string; };
   substitutions?: { [key: string]: string; };
-  dynamic_template_data?: { [key: string]: string; };
+  dynamic_template_data?: { [key: string]: object; };
   custom_args?: { [key: string]: string; };
   subject?: string;
   send_at?: number;
