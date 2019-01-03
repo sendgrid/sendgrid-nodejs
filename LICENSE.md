@@ -1,4 +1,4 @@
-Copyright (c) 2012-2018 SendGrid, Inc.
+Copyright (c) 2012-2019 SendGrid, Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
