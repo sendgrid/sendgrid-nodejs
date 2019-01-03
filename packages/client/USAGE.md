@@ -4644,18 +4644,43 @@ Each user can create up to 300 different transactional templates. Transactional 
 
 Transactional templates are templates explicitly created for transactional email and are not to be confused with [Marketing Campaigns templates](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/templates.html). For more information about transactional templates, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Transactional_Templates/index.html).
 
-### GET /templates
-
+### GET all dynamic /templates
 
 ```javascript
   request.method = 'GET';
-  request.url = '/v3/templates';
+  request.url = '/v3/templates?generations=dynamic';
   client.request(request)
   .then(([response, body]) => {
     console.log(response.statusCode);
     console.log(response.body);
   })
 ```
+
+### GET all legacy /templates
+
+
+```javascript
+  request.method = 'GET';
+  request.url = '/v3/templates?generations=legacy';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+
+### GET all /templates
+
+```javascript
+  request.method = 'GET';
+  request.url = '/v3/templates?generations=legacy,dynamic';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+
 ## Delete a template.
 
 **This endpoint allows you to delete a transactional template.**
