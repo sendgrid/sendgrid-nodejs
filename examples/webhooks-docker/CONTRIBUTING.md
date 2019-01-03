@@ -113,7 +113,7 @@ This repo is organized as a monorepo with the packages residing in the `./packag
 <a name="codebase-overview"></a>
 ## Codebase Overview
 
-This repo is subdivided in 6 main [packages](https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages). Each package has its own dependencies (internal or external) and its own source code in the `src` folder. Each package also has its isolated ReadME files, use cases and usage.md files.
+This repo is subdivided in 6 main [packages](https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages). Each package has its own dependencies (internal or external) and its own source code in the `src` folder. Each package also has its isolated README files, use cases and usage.md files.
 
 To install a particular packages' dependencies.
 ```bash
@@ -129,7 +129,7 @@ Type declarations: client.d.ts
 Test Cases: client.spec.js
 
 **2. Mail**
-This module exposes the `send` function which send mails via the sdk. This module can be a good starting point to read the source code. 
+This module exposes the `send` function which send mails via the sdk. This module can be a good starting point to read the source code.
 
 Type declarations: mail.d.ts
 Test Cases: mail.spec.js
@@ -170,10 +170,10 @@ Please run your code through:
    ```bash
    # Clone your fork of the repo into the current directory
    git clone https://github.com/sendgrid/sendgrid-nodejs
-   
+
    # Navigate to the newly cloned directory
    cd sendgrid-nodejs
-   
+
    # Assign the original repo to a remote called "upstream"
    git remote add upstream https://github.com/sendgrid/sendgrid-nodejs
    ```

@@ -15,7 +15,7 @@ const msg = {
 sgMail.send(msg);
 ```
 
-If you want to send multiple _individual_ emails to multiple recipient where they don't see each others email addresses, use `sendMultiple` instead:
+If you want to send multiple _individual_ emails to multiple recipient where they don't see each other's email addresses, use `sendMultiple` instead:
 
 ```js
 const sgMail = require('@sendgrid/mail');

@@ -113,7 +113,7 @@ This repo is organized as a monorepo with the packages residing in the `./packag
 <a name="codebase-overview"></a>
 ## Codebase Overview
 
-This repo is subdivided into 6 main [packages](https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages). Each package has its dependencies (internal or external) and its source code in the `src` folder. Each package also has its isolated ReadME files, use cases, and usage.md files.
+This repo is subdivided into 6 main [packages](https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages). Each package has its dependencies (internal or external) and its source code in the `src` folder. Each package also has its isolated README files, use cases, and usage.md files.
 
 To install a particular packages' dependencies.
 ```bash
@@ -123,7 +123,7 @@ npm install or yarn install
 #### Package List
 
 **1. Client**
-This is a  wrapper written on top of the ```request``` module to suite the sendgrid module. All requests made to the sendgrid API are invoked by the `request` function in the `client.js`.
+This is a  wrapper written on top of the ```request``` module to suite the SendGrid module. All requests made to the SendGrid API are invoked by the `request` function in the `client.js`.
 
 Type declarations: client.d.ts
 Test Cases: client.spec.js
