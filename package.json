@@ -24,6 +24,7 @@
     "sinon": "^2.3.2",
     "sinon-chai": "^2.10.0",
     "typescript": "^3.7.4"
+    "snyk": "^1.122.0"
   },
   "scripts": {
     "lint": "if [ `node --version | cut -d'.' -f1 | cut -c 2` -ge \"8\" ]; then eslint . --fix; else echo \"eslint is not available for node < 8.0\"; fi",
@@ -36,7 +37,7 @@
     "test:files": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"test/files.spec.js\"",
     "test:license": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha license.spec.js",
     "test:typescript": "tsc",
-    "test": "npm run test:all -s",
+    "test": "snyk test && npm run test:all -s",
     "coverage": "open -a \"Google Chrome\" ./coverage/lcov-report/index.html"
   },
   "description": "![Twilio SendGrid Logo](https://github.com/sendgrid/sendgrid-python/raw/master/twilio_sendgrid_logo.png)",
@@ -49,4 +50,10 @@
     "test": "test"
   },
   "author": "Twilio SendGrid"
+  "dependencies": {
+    "esdoc": "^1.1.0",
+    "esdoc-coverage-plugin": "^1.1.0",
+    "esdoc-type-inference-plugin": "^1.0.1"
+  },
+  "author": "SendGrid"
 }

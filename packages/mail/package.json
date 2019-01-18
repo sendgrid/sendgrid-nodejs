@@ -36,5 +36,11 @@
     "api",
     "mail",
     "sendgrid"
-  ]
+  ],
+  "scripts": {
+    "test": "snyk test"
+  },
+  "devDependencies": {
+    "snyk": "^1.122.0"
+  }
 }
