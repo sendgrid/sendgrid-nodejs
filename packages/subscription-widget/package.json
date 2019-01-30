@@ -4,7 +4,7 @@
   "description": "Double opt-in email automation",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "snyk test",
     "dev": "nodemon index.js"
   },
   "author": "",
@@ -22,5 +22,8 @@
   },
   "engines": {
     "node": ">=6.0.0"
+  },
+  "devDependencies": {
+    "snyk": "^1.123.0"
   }
 }
