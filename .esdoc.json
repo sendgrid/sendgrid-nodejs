@@ -1,6 +1,7 @@
 {
     "source": "./packages",
     "destination": "./docs",
+    "excludes": ["node_modules"],
     "plugins": [
       {
         "name": "esdoc-coverage-plugin", 

@@ -9,18 +9,22 @@ This documentation provides examples for specific email use cases. Please [open 
 * [Handling Success/Failure/Errors](#success-failure-errors)
 * [Advanced Usage](#advanced)
   * [Transactional Templates](#transactional-templates)
+  * [Legacy Transactional Templates](#legacy-transactional-templates)
   * [Attachments](#attachments)
   * [Customization Per Recipient](#customization)
   * [Manually Providing Content](#manual-content)
   * [Specifying Time to Send At](#time-to-send)
   * [Specifying Custom Headers](#custom-headers)
   * [Specifying Categories](#categories)
+  * [Kitchen Sink - an example with all settings used](#kitchensink)
   * [Managing multiple API keys](#multipleapikeys)
-  * [Kitchen Sink - an example with all settings used](#kitchen-sink)
+* [Deploy a simple Hello Email app on Digital Ocean with Node.js](#digitaloceandeploy)
 * [Deploy a Simple App on Google App Engine with Node.js](#gae)
 * [Deploy a Simple App on Heroku with Node.js](#heroku)
+* [How to Setup Email Sending on Azure](#send_via_azure)
 * [How to Setup a Domain Whitelabel](#domain-white-label)
 * [How to View Email Statistics](#email-stats)
+* [Slack event integration](#slackeventintegration)
 
 <a name="single-email-single-recipient"></a>
 # Send a Single Email to a Single Recipient
@@ -56,7 +60,7 @@ const msg = {
 sgMail.send(msg);
 ```
 
-If you want to send multiple _individual_ emails to multiple recipient where they don't see each others email addresses, use `sendMultiple` instead:
+If you want to send multiple _individual_ emails to multiple recipient where they don't see each other's email addresses, use `sendMultiple` instead:
 
 ```js
 const sgMail = require('@sendgrid/mail');
@@ -71,12 +75,12 @@ const msg = {
 sgMail.sendMultiple(msg);
 ```
 
-Note that `sendMultiple(msg)` is a convenience shortcut for `send(msg, true)`, and alternatively you can also set the `isMultiple` flag to `true` on your `msg` object.
+Note that `sendMultiple(msg)` is a convenience shortcut for `send(msg, true)`, and alternatively, you can also set the `isMultiple` flag to `true` on your `msg` object.
 
 <a name="multiple-emails-multiple-recipients"></a>
 # Send Multiple Emails to Multiple Recipients
 
-The `send` method also accepts an array of email msg if you want to send multiple different single emails with for example different content and sender values. This will send multiple requests (in parallel), so be aware of any API rate restrictions:
+The `send` method also accepts an array of email msg if you want to send multiple different single emails with, for example, different content and sender values. This will send multiple requests (in parallel), so be aware of any API rate restrictions:
 
 ```js
 const emails = [
@@ -123,13 +127,13 @@ The email address fields (`to`, `from`, `cc`, `bcc`, `replyTo`) are flexible and
 const msg = {
 
   //Simple email address string
-  to: 'someone@example.org',
+  from: 'someone@example.org',
 
   //Email address with name
-  to: 'Some One <someone@example.org>',
+  from: 'Some One <someone@example.org>',
 
   //Object with name/email
-  to: {
+  from: {
     name: 'Some One',
     email: 'someone@example.org',
   },
@@ -143,6 +147,25 @@ const msg = {
       email: 'someone@example.org',
     },
   ],
+};
+```
+
+Another example - for the `from` fields
+```js
+const msg = {
+
+  //Simple email address string
+  from: 'someone@example.org',
+
+  //Email address with name
+  from: 'Some One <someone@example.org>',
+
+  //Object with name/email
+  from: {
+    name: 'Some One',
+    email: 'someone@example.org',
+  },
+
 };
 ```
 
@@ -193,6 +216,56 @@ All other advanced settings are supported and can be passed in through the msg o
 ## Transactional Templates
 
 For this example, we assume you have created a [transactional template](https://sendgrid.com/docs/User_Guide/Transactional_Templates/index.html). Following is the template content we used for testing.
+
+Email Subject:
+
+```text
+{{ subject }}
+```
+
+Template Body:
+
+```html
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+Hello {{ name }},
+<br /><br/>
+I'm glad you are trying out the template feature!
+<br /><br/>
+I hope you are having a great day in {{ city }} :)
+<br /><br/>
+</body>
+</html>
+```
+
+```js
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const msg = {
+  to: 'recipient@example.org',
+  from: 'sender@example.org',
+  subject: 'Hello world',
+  text: 'Hello plain world!',
+  html: '<p>Hello HTML world!</p>',
+  templateId: 'd-f43daeeaef504760851f727007e0b5d0',
+  dynamic_template_data: {
+    subject: 'Testing Templates',
+    name: 'Some One',
+    city: 'Denver',
+  },
+};
+sgMail.send(msg);
+```
+
+There's no need to specify the substitution wrappers as it will assume that you're using [Handlebars]
+
+<a name="legacy-transactional-templates"></a>
+## Legacy Transactional Templates
+
+For this example, we assume you have created a [legacy transactional template](https://sendgrid.com/docs/ui/account-and-settings/mail/#legacy-email-template). Following is the template content we used for testing.
 
 Template ID (replace with your own):
 
@@ -274,7 +347,7 @@ const msg = {
       filename: 'some-attachment.txt',
       type: 'plain/text',
       disposition: 'attachment',
-      contentId: 'mytext'
+      content_id: 'mytext'
     },
   ],
 };
@@ -338,12 +411,12 @@ const msg = {
   subject: 'Hello manual content',
   content: [
     {
-      type: 'text/html',
-      value: '<p>Hello HTML world!</p>',
-    },
-    {
       type: 'text/plain',
       value: 'Hello plain world!',
+    },
+    {
+      type: 'text/html',
+      value: '<p>Hello HTML world!</p>',
     },
   ],
 };
@@ -414,7 +487,7 @@ const msg = {
 ## Managing multiple API keys
 
 In cases where you need to manage multiple instances of the mailer (or underlying client),
-for example when you are using multiple API keys, you can import the mail service class and
+for example, when you are using multiple API keys, you can import the mail service class and
 instantiate new instances as required:
 
 ```js
@@ -443,7 +516,10 @@ const msg = {
   to: 'recipient@example.org',
   cc: 'someone@example.org',
   bcc: ['me@example.org', 'you@example.org'],
-  from: 'sender@example.org',
+  from: {
+    email: 'sender@example.org',
+    name: 'Sender Name'
+  },
   replyTo: 'othersender@example.org',
   subject: 'Hello world',
   text: 'Hello plain world!',
@@ -475,7 +551,17 @@ const msg = {
   },
   ipPoolName: 'sendgrid-ip-pool-name',
   mailSettings: {},
-  trackingSettings: {},
+  trackingSettings: {
+    clickTracking: {
+      enable: true
+    },
+    openTracking: {
+      enable: true
+    },
+    subscriptionTracking: {
+      enable: true
+    }
+  },
 };
 sgMail
   .send(msg)
@@ -483,13 +569,136 @@ sgMail
   .catch(error => console.error(error.toString()));
 ```
 
+<a name="digitaloceandeploy"></a>
+# Deploy a simple Hello Email app on Digital Ocean with Node.js
+
+### Create a DigitalOcean droplet and install Node.js
+[This tutorial by DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-14-04#create-nodejs-application) walks through the process of setting up a Node.js application on Ubuntu. The tutorial will take a simplified, summarized approach.
+
+First, create a [DigitalOcean](https://www.digitalocean.com) droplet.  Then, login to your VPS from command line. Next, install Node.js.  The following commands are explained in detail in the aforementioned tutorial.
+```
+$ sudo apt-get update
+$ sudo apt-get install git
+$ cd ~
+$ wget [Insert Linux Binaries (.tar.xz) download link]
+$ mkdir node
+$ tar xvf node-v*.tar.?z --strip-components=1 -C ./node
+$ cd ~
+$ rm -rf node-v*
+$ mkdir node/etc
+$ echo 'prefix=/usr/local' > node/etc/npmrc
+$ sudo mv node /opt/
+$ sudo chown -R root: /opt/node
+$ sudo ln -s /opt/node/bin/node /usr/local/bin/node
+$ sudo ln -s /opt/node/bin/npm /usr/local/bin/npm
+```
+
+### Creating the repository
+Next, create a directory to house our Node.js application that will send emails. The application will be housed in a directory located at /var/www/domain.com
+```
+$ cd /var
+$ mkdir www & cd www
+$ mkdir domain.com && cd domain.com
+```
+[This tutorial by DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-set-up-automatic-deployment-with-git-with-a-vps) walks through the process of setting up automatic deployment with git with a VPS.  Again, this tutorial will not go into the detail behind the commands but will provide a summary.
+
+```
+$ cd ~/var
+$ mkdir repo && cd repo
+$ mkdir site.git && cd site.git
+$ git init --bare
+$ cd hooks
+$ cat > post-receive
+```
+When you execute this command, you will have a blank line indicating that everything you type will be saved to this file. So let's type:
+```
+#!/bin/sh
+git --work-tree=/var/www/domain.com --git-dir=/var/repo/site.git checkout -f
+```
+When you finish typing, press 'control-d' to save. To execute the file, we need to set the proper permissions using:
+```
+$ chmod +x post-receive
+```
+Then exit and return to local machine
+```
+$ exit
+```
+
+### Create send email repo on local machine
+```
+$ cd /my/workspace
+$ mkdir project && cd project
+$ git init
+$ git remote add live ssh://user@mydomain.com/var/repo/site.git
+```
+
+Install package manager and SendGrid dependency. Interactively create a package.json file using
+```
+$ npm init
+```
+Then follow the prompts. Next, install the SendGrid mail dependency.
+```
+$ npm install --save @sendgrid/mail
+```
+Create an index.js file where we will save our Hello Email script
+```
+$ touch index.js
+```
+
+Insert Hello Email script into index.js
+```javascript
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const msg = {
+  to: 'test@example.com',
+  from: 'test@example.com',
+  subject: 'Sending with SendGrid is Fun',
+  text: 'and easy to do anywhere, even with Node.js',
+  html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+};
+sgMail.send(msg);
+```
+
+Next, add a .gitignore file with your /node_modules.
+
+Then, push code to Digital Ocean
+```
+$ git add .
+$ git commit -m "My project is ready"
+$ git push live master
+  Counting objects: 7, done.Delta compression using up to 4 threads.Compressing objects: 100% (7/7), done.Writing objects: 100% (7/7), 10.56 KiB, done.Total 7 (delta 0), reused 0 (delta 0)To ssh://user@mydomain.com/var/repo/site.git* [new branch]      master -> master
+```
+
+### Final Setup on DigitalOcean
+
+Navigate to app directory on DigitalOcean
+```
+$ ssh root@[your-IP-address]
+$ cd /var/www/domain.com
+```
+
+Install dependencies and set API key.  Install dependencies on your DigitalOcean droplet.
+```
+$ npm install
+```
+Save your SendGrid API key as an environment variable.
+```
+$ export SENDGRID_API_KEY=[your-api-key]
+```
+
+Test that your app works
+```
+$ node index.js
+```
+
+=======
 <a name="gae"></a>
 ## Deploy a Simple App on Google App Engine with Node.js
 
-Before you begin, setup google app engine and install required packages by following [getting started](https://cloud.google.com/nodejs/getting-started/hello-world) guide.
+Before you begin, setup Google App Engine and install required packages by following [getting started](https://cloud.google.com/nodejs/getting-started/hello-world) guide.
 
 #### Setup your environment variables
-Include your [SENDGRID_API_KEY](https://app.sendgrid.com/settings/api_keys) in `app.yaml`, for example: 
+Include your [SENDGRID_API_KEY](https://app.sendgrid.com/settings/api_keys) in `app.yaml`, for example:
 
 ```yaml
 # Note: Don't commit the app.yaml file with API key, keep it changed locally - only used in deployment
@@ -527,7 +736,7 @@ const app = express();
 app.get('/send', (req, res) => {
   const {query: {to = 'test@example.com', from = 'test@example.com'}} = req;
   // other options could be customized further
-  
+
   const msg = {
     to,
     from,
@@ -535,7 +744,7 @@ app.get('/send', (req, res) => {
     text: 'and easy to do anywhere, even with Node.js',
     html: '<strong>Hello Email app</strong>',
   };
-  
+
   sgMail.send(msg).then(() => {
     res.status(200).send('Hello, world!').end();
   }).catch(e => {
@@ -558,11 +767,11 @@ app.listen(PORT, () => {
    ```
    gcloud app deploy
    ```
-  
- #### Send email 
- 
+
+ #### Send email
+
  Using the following snippet you should be able to send emails with the deployed app (replace `to` and `from` with your own)
- 
+
  ```curl
  curl -X GET \
   'http://your_project_id.appspot.com/send?to=to%40example.com&from=from%40example.com' \
@@ -580,7 +789,40 @@ Here are step by step instructions to deploy your Node.js app to Heroku (assumin
 - `heroku config:set SENDGRID_API_KEY=SG.YOUR.OWN-API_KEY-HERE` (replace `SG.YOUR.OWN-API_KEY-HERE` with your own [api key from sendgrid](https://app.sendgrid.com/settings/api_keys)
 
 If you run into any other non SendGrid related issues, don't forget to read through [Heroku's deployment documentation](https://devcenter.heroku.com/articles/getting-started-with-nodejs).
- 
+
+<a name="send_via_azure"></a>
+# How to Setup Email Sending on Azure
+
+1. First, create an account on Azure. You can opt for a free trial here or buy a subscription.
+2. I am assuming you already have a SendGrid API Key with you.
+3. Create a sample node.js App. with an index.js and create a package.json file using npm init or yarn init.
+4. Install sendgrid-nodejs as a dependency using yarn add @sendgrid/mail.
+5. Now we need the SendGrid API key to be as an Environment Variable in our application. For that, we will create a sendgrid.env file in our local system. Add it to .gitignore file and refresh the terminal.
+```shell
+echo "export SENDGRID_API_KEY='YOUR_API_KEY'" > sendgrid.env
+echo "sendgrid.env" >> .gitignore
+source ./sendgrid.env
+```
+6. Now let's go to our index.js file and copy paste the following code.
+```js
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const msg = {
+  to: 'test@example.com',
+  from: 'test@example.com',
+  subject: 'Sending with SendGrid is Fun',
+  text: 'and easy to do anywhere, even with Node.js',
+  html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+};
+sgMail.send(msg);
+```
+
+This will enable you to send a simple message to be sent to your email.
+7. If you have followed all steps till here. Your app should work fine in local. Now it's time to deploy in Azure.
+8. Follow the guide on [deploying to azure](https://docs.microsoft.com/en-us/azure/app-service/app-service-deploy-local-git) to the word. It might seem a little challenging to navigate with so many options but once you crack it, it will be a cakewalk.
+9. Now as soon as you deploy your application, it will run on the aforementioned port. You will again receive a message in your inbox.
+10. And voilà, you have your app deployed and sending Emails via Azure. Now you can chain your custom logic if you need to send emails as per some parameters and to specific people as per your requirement.
+
 <a name="domain-white-label"></a>
 # How to Setup a Domain Whitelabel
 
@@ -594,3 +836,119 @@ Find more information about all of SendGrid's whitelabeling related documentatio
 You can find documentation for how to view your email statistics via the UI [here](https://app.sendgrid.com/statistics) and via API [here](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/client/USAGE.md#stats).
 
 Alternatively, we can post events to a URL of your choice via our [Event Webhook](https://sendgrid.com/docs/API_Reference/Webhooks/event.html) about events that occur as SendGrid processes your email.
+
+<a name="slackeventintegration"></a>
+## Slack event integration
+- Create your Slack app by going to https://api.slack.com/apps/new
+- Go to "Event Subscriptions" configuration page
+- Turns "Enable Events" option to "on"
+- Now we need an actual endpoint to put in "Request URL" input box for the verification, so you will need to create an app for receiving Slack webhook and make sure your app can be accessed from the Internet
+  - Use any Node.js server of your choice to create an endpoint which accept "POST" method
+  - You can make sure the request is actually from your Slack app by compare the value of "token" key from request body with your "Verification Token" in your app's "App Credentials" section. You could store the token value in your server's environment variable to make it secure.
+
+    example request body
+    ```
+    {
+      "token": "Jhj5dZrVaK7ZwHHjRyZWjbDl",
+      "challenge": "3eZbrw1aBm2rZgRNFdxV2595E9CY3gmdALWMmHkvFXO7tYXAYM8P",
+      "type": "url_verification"
+    }
+    ```
+
+  - Respond to the challenge with "challenge" value from request body. You can respond with various formats such as
+
+    ```
+    HTTP 200 OK
+    Content-type: application/x-www-form-urlencoded
+    3eZbrw1aBm2rZgRNFdxV2595E9CY3gmdALWMmHkvFXO7tYXAYM8P (challenge value)
+    ```
+
+    or
+    ```
+    HTTP 200 OK
+    Content-type: application/x-www-form-urlencoded
+    challenge=3eZbrw1aBm2rZgRNFdxV2595E9CY3gmdALWMmHkvFXO7tYXAYM8P
+    ```
+
+    or
+    ```
+    HTTP 200 OK
+    Content-type: application/json
+    {"challenge":"3eZbrw1aBm2rZgRNFdxV2595E9CY3gmdALWMmHkvFXO7tYXAYM8P"}
+    ```
+
+    example code using express.js *Noted:* SLACK_APP_TOKEN is an environment variable storing our Slack app token.
+    ```js
+    const port = process.env.PORT || 8000
+    const express = require('express')
+    const bodyParser = require('body-parser')
+    const app = express()
+
+    app.use(bodyParser.json()) // for parsing application/json
+    app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
+    app.post('/', (req, res) => {
+      const isFromOurSlackApp =
+        req.body.token && req.body.token === process.env.SLACK_APP_TOKEN
+      if (isFromOurSlackApp) {
+        res.send(req.body.challenge, req.body)
+        return
+      }
+
+      res.send('request not from our Slack app')
+    })
+
+    app.listen(port, function() {
+      console.log(`Example app listening on port ${port}!`)
+    })
+    ```
+
+- Enter your app's URL in "Request URL" input box *Noted:* your app needs to be able to response back with challenge from request payload as we already did in the first step.
+- Select which events you want to subscribe by going to "Subscribe to Workspace Events". For example if you want to interact with messages posted to a channel you can choose to subscribe to "message.channels"
+- Congratulations! Now you can respond to the various event types you've subscribed to. For example, if a user posts to a channel there would be a request from Slack with the following body:
+  ```
+  {
+    "token": "XXYYZZ",
+    "team_id": "TXXXXXXXX",
+    "api_app_id": "AXXXXXXXXX",
+    "event": {
+      "type": "message",
+      "channel": "C2147483705",
+      "user": "U2147483697",
+      "text": "I'm sick today",
+      "ts": "1355517523.000005"
+    },
+    "type": "event_callback",
+    "authed_users": ["UXXXXXXX1"],
+    "event_id": "Ev08MFMKH6",
+    "event_time": 1234567890
+  }
+  ```
+
+  You could then react to the user's message. For example, if a message contains the word "sick" or other similar phrases, we would send an email to the HR team telling them this person won't be coming to work today.
+
+    To send an email, you should store your Sendgrid API key in an environment variable (`SENDGRID_API_KEY` in this case) on your server.
+  ```js
+  const sgMail = require('@sendgrid/mail');
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+  function sendEmailIfEmployeeIsSick() {
+    const msg = {
+      to: 'hr@example.com',
+      from: 'no-reply@example.com',
+      subject: 'Someone will probably take sick leave',
+      text: 'Please check messages on Slack. Because someone said "sick" maybe he/she is going to take sick leave.'
+    };
+    sgMail.send(msg);
+  }
+  ```
+
+  Now we could do something like this. *Noted:* I have removed the code to respond back with challenge for simplicity.
+  ```js
+  app.post('/', (req, res) => {
+    if (req.body.event.type === 'message' && req.body.event.text.match('sick')) {
+      sendEmailIfEmployeeIsSick()
+    }
+    res.sendStatus(200)
+  })
+  ```

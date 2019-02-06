@@ -2,12 +2,35 @@ const Parse = require('./parser');
 
 describe('test_parse', () => {
   describe('test_parse_key_values', () => {
-    it('should return the key values specified in the config from the payload', () => {
+    it('should return the key values specified in the config from the body', () => {
       const config = {
         keys: ['to', 'from'],
       };
       const request = {
         body: {
+          to: 'inbound@inbound.example.com',
+          from: 'Test User <test@example.com>',
+          subject: 'Test Subject',
+        },
+      };
+
+      const parse = new Parse(config, request);
+      const keyValues = parse.keyValues();
+      const expectedValues = {
+        to: 'inbound@inbound.example.com',
+        from: 'Test User <test@example.com>',
+      };
+
+      expect(keyValues).to.be.an('object');
+      expect(keyValues).to.deep.equal(expectedValues);
+    });
+
+    it('should return the key values specified in the config from the payload', () => {
+      const config = {
+        keys: ['to', 'from'],
+      };
+      const request = {
+        payload: {
           to: 'inbound@inbound.example.com',
           from: 'Test User <test@example.com>',
           subject: 'Test Subject',
@@ -31,7 +54,7 @@ describe('test_parse', () => {
       const parse = new Parse({}, {});
 
       function callback(email) {
-        expect(email).to.be.null;
+        expect(email).to.be.null();
         done();
       }
 

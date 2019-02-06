@@ -1,6 +1,6 @@
 # CC, BCC and Reply To
 
-You can specify the `cc`, `bcc` and `replyTo` fields for more control over who you send the email to and where people will reply to:
+You can specify the `cc`, `bcc`, and `replyTo` fields for more control over who you send the email to and where people will reply to:
 
 ```js
 const msg = {

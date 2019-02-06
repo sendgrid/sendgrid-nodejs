@@ -152,6 +152,7 @@ export interface MailData {
   substitutionWrappers?: string[],
   
   isMultiple?: boolean,
+  dynamicTemplateData?: { [key: string]: any },
 }
 
 export interface MailJSON {

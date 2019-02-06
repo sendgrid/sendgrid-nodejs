@@ -1,7 +1,7 @@
 # Introduction
 
 This library is broken up into several packages as a monorepo so that you only need to install the packages necessary for your use case. 
-This USAGE.md contains information pertaining to all packages. For examples on how to get started quickly, head over to the READMEs of each individual package (linked and described below), which includes detailed examples.
+This USAGE.md contains information about all packages. For examples on how to get started quickly, head over to the READMEs of each package (linked and described below), which includes detailed examples.
 
 * [@sendgrid/mail](https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages/mail) - if you just want to send email
 * [@sendgrid/client](https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages/client) - to use all other [SendGrid v3 Web API endpoints](https://sendgrid.com/docs/API_Reference/api_v3.html)

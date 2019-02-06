@@ -2,16 +2,10 @@
 
 For this example, we assume you have created a [transactional template](https://sendgrid.com/docs/User_Guide/Transactional_Templates/index.html). Following is the template content we used for testing.
 
-Template ID (replace with your own):
-
-```text
-13b8f94f-bcae-4ec6-b752-70d6cb59f932
-```
-
 Email Subject:
 
 ```text
-<%subject%>
+{{ subject }}
 ```
 
 Template Body:
@@ -22,13 +16,11 @@ Template Body:
     <title></title>
 </head>
 <body>
-Hello {{name}},
+Hello {{ name }},
 <br /><br/>
 I'm glad you are trying out the template feature!
 <br /><br/>
-<%body%>
-<br /><br/>
-I hope you are having a great day in {{city}} :)
+I hope you are having a great day in {{ city }} :)
 <br /><br/>
 </body>
 </html>
@@ -37,15 +29,12 @@ I hope you are having a great day in {{city}} :)
 ```js
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-sgMail.setSubstitutionWrappers('{{', '}}'); // Configure the substitution tag wrappers globally
 const msg = {
   to: 'recipient@example.org',
   from: 'sender@example.org',
-  subject: 'Hello world',
-  text: 'Hello plain world!',
-  html: '<p>Hello HTML world!</p>',
-  templateId: '13b8f94f-bcae-4ec6-b752-70d6cb59f932',
-  substitutions: {
+  templateId: 'd-f43daeeaef504760851f727007e0b5d0',
+  dynamic_template_data: {
+    subject: 'Testing Templates',
     name: 'Some One',
     city: 'Denver',
   },
@@ -53,12 +42,55 @@ const msg = {
 sgMail.send(msg);
 ```
 
-Alternatively, you may specify the substitution wrappers via the msg object as well. This will override any wrappers you may have configured globally.
+There's no need to specify the substitution wrappers as it will assume that you're using [Handlebars](https://handlebarsjs.com/) templating by default.
+
+## Prevent Escaping Characters
+
+Per Handlebars' documentation: If you don't want Handlebars to escape a value, use the "triple-stash", {{{
+
+> If you include the characters ', " or & in a subject line replacement be sure to use three brackets.
+
+Email Subject:
+
+```text
+{{{ subject }}}
+```
+
+Template Body:
+
+```html
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+Hello {{{ name }}},
+<br /><br/>
+I'm glad you are trying out the template feature!
+<br /><br/>
+<%body%>
+<br /><br/>
+I hope you are having a great day in {{{ city }}} :)
+<br /><br/>
+</body>
+</html>
+```
 
 ```js
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const msg = {
-  ...
-  substitutionWrappers: ['{{', '}}'],
-  ...
+  to: 'recipient@example.org',
+  from: 'sender@example.org',
+  subject: 'Hello world',
+  text: 'Hello plain world!',
+  html: '<p>Hello HTML world!</p>',
+  templateId: 'd-f43daeeaef504760851f727007e0b5d0',
+  dynamic_template_data: {
+    subject: 'Testing Templates & Stuff',
+    name: 'Some "Testing" One',
+    city: '<b>Denver<b>',
+  },
 };
+sgMail.send(msg);
 ```

@@ -1,5 +1,24 @@
 # Change Log
 All notable changes to this project will be documented in this file.
+
+## [6.3.1] - 2018-1-18 ##
+
+This minor version bump was due to a hiccup using `lerna` to publish to npm.
+
+## [6.3.0] - 2018-1-18 ##
+
+### Added
+- [PR #691](https://github.com/sendgrid/sendgrid-nodejs/pull/691): Added support for `dynamicTemplateData`. Big thanks to [Raju Mandapati](https://github.com/mvpspl619) for the PR!
+- [PR #510](https://github.com/sendgrid/sendgrid-nodejs/pull/510): A tutorial to deploy a simple Hello Email app on Digital Ocean with Node.js using this SDK. Big thanks to [Devin Chasanoff](https://github.com/devchas) for the PR!
+- [PR #628](https://github.com/sendgrid/sendgrid-nodejs/pull/628): Add a repository overview in CONTRIBUTING.md. Big thanks to [Nitish Phanse](https://github.com/nitish24p) for the PR!
+- [PR #603](https://github.com/sendgrid/sendgrid-nodejs/pull/603): Added links to CONTRIBUTING.md. Big thanks to [John Stevans](https://github.com/jstevans) for the PR!
+
+### Fixed
+- [PR #687](https://github.com/sendgrid/sendgrid-nodejs/pull/687): Exclude sections from camel/snake case conversion in Mail helper class. Big thanks to [Simon Bélanger](https://github.com/simonbelanger) for the PR!
+- [PR #666](https://github.com/sendgrid/sendgrid-nodejs/pull/666): Bumped the moment, chai-as-promised, and dirty-chai version in package.json. Big thanks to [Cory Trimm](https://github.com/ctrimm) for the PR!
+- [PR #651](https://github.com/sendgrid/sendgrid-nodejs/pull/651): Typo - Change `contentId` to `content_id`. Big thanks to [Tak Tran](https://github.com/taktran) for the PR!
+- [PR #610](https://github.com/sendgrid/sendgrid-nodejs/pull/610): Exclude esdoc node modules. Big thanks to [Nitish Phanse](https://github.com/nitish24p) for the PR!
+
 ## [6.2.1] - 2018-1-18 ##
 ### Fixed
 - PR #619, Fixes #618: Update definitions for tsc 2.6

@@ -24,6 +24,7 @@ client.setApiKey(process.env.SENDGRID_API_KEY);
 * [MAIL](#mail)
 * [MAIL SETTINGS](#mail-settings)
 * [MAILBOX PROVIDERS](#mailbox-providers)
+* [MESSAGES](#messages)
 * [PARTNER SETTINGS](#partner-settings)
 * [SCOPES](#scopes)
 * [SENDERS](#senders)
@@ -44,7 +45,7 @@ client.setApiKey(process.env.SENDGRID_API_KEY);
 
 **This endpoint allows you to retrieve a list of all of the IP addresses that recently attempted to access your account either through the User Interface or the API.**
 
-IP Access Management allows you to control which IP addresses can be used to access your account, either through the User Interface or the API. There is no limit to the number of IP addresses that you can add to your whitelist. It is possible to remove your own IP address from the whitelist, thus preventing yourself from accessing your account.
+IP Access Management allows you to control which IP addresses can be used to access your account, either through the User Interface or the API. There is no limit to the number of IP addresses that you can add to your whitelist. It is possible to remove your IP address from the whitelist, thus preventing yourself from accessing your account.
 
 For more information, please see our [User Guide](http://sendgrid.com/docs/User_Guide/Settings/ip_access_management.html).
 
@@ -70,7 +71,7 @@ For more information, please see our [User Guide](http://sendgrid.com/docs/User_
 
 When adding an IP to your whitelist, include the IP address in an array. You can whitelist one IP at a time, or you can whitelist multiple IPs at once.
 
-IP Access Management allows you to control which IP addresses can be used to access your account, either through the User Interface or the API. There is no limit to the number of IP addresses that you can add to your whitelist. It is possible to remove your own IP address from the whitelist, thus preventing yourself from accessing your account.
+IP Access Management allows you to control which IP addresses can be used to access your account, either through the User Interface or the API. There is no limit to the number of IP addresses that you can add to your whitelist. It is possible to remove your IP address from the whitelist, thus preventing yourself from accessing your account.
 
 For more information, please see our [User Guide](http://sendgrid.com/docs/User_Guide/Settings/ip_access_management.html).
 
@@ -106,7 +107,7 @@ For more information, please see our [User Guide](http://sendgrid.com/docs/User_
 
 You can remove one IP at a time, or you can remove multiple IP addresses.
 
-IP Access Management allows you to control which IP addresses can be used to access your account, either through the User Interface or the API. There is no limit to the number of IP addresses that you can add to your whitelist. It is possible to remove your own IP address from the whitelist, thus preventing yourself from accessing your account.
+IP Access Management allows you to control which IP addresses can be used to access your account, either through the User Interface or the API. There is no limit to the number of IP addresses that you can add to your whitelist. It is possible to remove your IP address from the whitelist, thus preventing yourself from accessing your account.
 
 For more information, please see our [User Guide](http://sendgrid.com/docs/User_Guide/Settings/ip_access_management.html).
 
@@ -134,7 +135,7 @@ For more information, please see our [User Guide](http://sendgrid.com/docs/User_
 
 **This endpoint allows you to retrieve a list of IP addresses that are currently whitelisted.**
 
-IP Access Management allows you to control which IP addresses can be used to access your account, either through the User Interface or the API. There is no limit to the number of IP addresses that you can add to your whitelist. It is possible to remove your own IP address from the whitelist, thus preventing yourself from accessing your account.
+IP Access Management allows you to control which IP addresses can be used to access your account, either through the User Interface or the API. There is no limit to the number of IP addresses that you can add to your whitelist. It is possible to remove your IP address from the whitelist, thus preventing yourself from accessing your account.
 
 For more information, please see our [User Guide](http://sendgrid.com/docs/User_Guide/Settings/ip_access_management.html).
 
@@ -156,7 +157,7 @@ For more information, please see our [User Guide](http://sendgrid.com/docs/User_
 
 When removing a specific IP address from your whitelist, you must include the ID in your call.
 
-IP Access Management allows you to control which IP addresses can be used to access your account, either through the User Interface or the API. There is no limit to the number of IP addresses that you can add to your whitelist. It is possible to remove your own IP address from the whitelist, thus preventing yourself from accessing your account.
+IP Access Management allows you to control which IP addresses can be used to access your account, either through the User Interface or the API. There is no limit to the number of IP addresses that you can add to your whitelist. It is possible to remove your IP address from the whitelist, thus preventing yourself from accessing your account.
 
 For more information, please see our [User Guide](http://sendgrid.com/docs/User_Guide/Settings/ip_access_management.html).
 
@@ -164,8 +165,6 @@ For more information, please see our [User Guide](http://sendgrid.com/docs/User_
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/access_settings/whitelist/{rule_id}';
   client.request(request)
@@ -180,7 +179,7 @@ For more information, please see our [User Guide](http://sendgrid.com/docs/User_
 
 You must include the ID for the specific IP address you want to retrieve in your call.
 
-IP Access Management allows you to control which IP addresses can be used to access your account, either through the User Interface or the API. There is no limit to the number of IP addresses that you can add to your whitelist. It is possible to remove your own IP address from the whitelist, thus preventing yourself from accessing your account.
+IP Access Management allows you to control which IP addresses can be used to access your account, either through the User Interface or the API. There is no limit to the number of IP addresses that you can add to your whitelist. It is possible to remove your IP address from the whitelist, thus preventing yourself from accessing your account.
 
 For more information, please see our [User Guide](http://sendgrid.com/docs/User_Guide/Settings/ip_access_management.html).
 
@@ -203,7 +202,7 @@ For more information, please see our [User Guide](http://sendgrid.com/docs/User_
 
 **This endpoint allows you to create a new alert.**
 
-Alerts allow you to specify an email address to receive notifications regarding your email usage or statistics. There are two types of alerts that can be created with this endpoint:
+Alerts allow you to specify an email address to receive notifications regarding your email usage or statistics. There are two types of alerts available with this endpoint:
 
 * `usage_limit` allows you to set the threshold at which an alert will be sent.
 * `stats_notification` allows you to set how frequently you would like to receive email statistics reports. For example, "daily", "weekly", or "monthly".
@@ -290,8 +289,6 @@ For more information about alerts, please see our [User Guide](https://sendgrid.
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/alerts/{alert_id}';
   client.request(request)
@@ -329,7 +326,7 @@ For more information about alerts, please see our [User Guide](https://sendgrid.
 
 **This endpoint allows you to create a new random API Key for the user.**
 
-A JSON request body containing a "name" property is required. If number of maximum keys is reached, HTTP 403 will be returned.
+A JSON request body containing a "name" property is required. If the number of maximum keys is reached, HTTP 403 will be returned.
 
 There is a limit of 100 API Keys on your account.
 
@@ -386,7 +383,7 @@ The API Keys feature allows customers to be able to generate an API Key credenti
 **This endpoint allows you to update the name and scopes of a given API key.**
 
 A JSON request body with a "name" property is required.
-Most provide the list of all the scopes an api key should have.
+Most provide the list of all the scopes an API key should have.
 
 The API Keys feature allows customers to be able to generate an API Key credential which can be used for authentication with the SendGrid v3 Web API or the [Mail API Endpoint](https://sendgrid.com/docs/API_Reference/Web_API/mail.html).
 
@@ -444,7 +441,7 @@ The API Keys feature allows customers to be able to generate an API Key credenti
 
 **This endpoint allows you to revoke an existing API Key**
 
-Authentications using this API Key will fail after this request is made, with some small propagation delay.If the API Key ID does not exist an HTTP 404 will be returned.
+Authentications using this API Key will fail after this request is made, with some small propagation delay. If the API Key ID does not exist an HTTP 404 will be returned.
 
 The API Keys feature allows customers to be able to generate an API Key credential which can be used for authentication with the SendGrid v3 Web API or the [Mail API Endpoint](https://sendgrid.com/docs/API_Reference/Web_API/mail.html).
 
@@ -458,8 +455,6 @@ The API Keys feature allows customers to be able to generate an API Key credenti
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/api_keys/{api_key_id}';
   client.request(request)
@@ -470,7 +465,7 @@ The API Keys feature allows customers to be able to generate an API Key credenti
 ```
 ## Retrieve an existing API Key
 
-**This endpoint allows you to retrieve a single api key.**
+**This endpoint allows you to retrieve a single API key.**
 
 If the API Key ID does not exist an HTTP 404 will be returned.
 
@@ -493,7 +488,7 @@ If the API Key ID does not exist an HTTP 404 will be returned.
 
 **This endpoint allows you to create a new suppression group.**
 
-Suppression groups, or unsubscribe groups, are specific types or categories of email that you would like your recipients to be able to unsubscribe from. For example: Daily Newsletters, Invoices, System Alerts.
+Suppression groups, or unsubscribe groups, are specific types or categories of email that you would like your recipients to be able to unsubscribe from. For example Daily Newsletters, Invoices, System Alerts.
 
 The **name** and **description** of the unsubscribe group will be visible by recipients when they are managing their subscriptions.
 
@@ -521,7 +516,7 @@ Each user can create up to 25 different suppression groups.
 
 **This endpoint allows you to retrieve information about multiple suppression groups.**
 
-This endpoint will return information for each group ID that you include in your request. To add a group ID to your request, simply append `&id=` followed by the group ID.
+This endpoint will return information for each group ID that you include in your request. To add a group ID to your request, just append `&id=` followed by the group ID.
 
 Suppressions are a list of email addresses that will not receive content sent under a given [group](https://sendgrid.com/docs/API_Reference/Web_API_v3/Suppression_Management/groups.html).
 
@@ -549,7 +544,7 @@ Suppression groups, or [unsubscribe groups](https://sendgrid.com/docs/API_Refere
 
 You can only delete groups that have not been attached to sent mail in the last 60 days. If a recipient uses the "one-click unsubscribe" option on an email associated with a deleted group, that recipient will be added to the global suppression list.
 
-Suppression groups, or unsubscribe groups, are specific types or categories of email that you would like your recipients to be able to unsubscribe from. For example: Daily Newsletters, Invoices, System Alerts.
+Suppression groups, or unsubscribe groups, are specific types or categories of email that you would like your recipients to be able to unsubscribe from. For example Daily Newsletters, Invoices, System Alerts.
 
 The **name** and **description** of the unsubscribe group will be visible by recipients when they are managing their subscriptions.
 
@@ -559,8 +554,6 @@ Each user can create up to 25 different suppression groups.
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/asm/groups/{group_id}';
   client.request(request)
@@ -573,7 +566,7 @@ Each user can create up to 25 different suppression groups.
 
 **This endpoint allows you to update or change a suppression group.**
 
-Suppression groups, or unsubscribe groups, are specific types or categories of email that you would like your recipients to be able to unsubscribe from. For example: Daily Newsletters, Invoices, System Alerts.
+Suppression groups, or unsubscribe groups, are specific types or categories of email that you would like your recipients to be able to unsubscribe from. For example Daily Newsletters, Invoices, System Alerts.
 
 The **name** and **description** of the unsubscribe group will be visible by recipients when they are managing their subscriptions.
 
@@ -601,7 +594,7 @@ Each user can create up to 25 different suppression groups.
 
 **This endpoint allows you to retrieve a single suppression group.**
 
-Suppression groups, or unsubscribe groups, are specific types or categories of email that you would like your recipients to be able to unsubscribe from. For example: Daily Newsletters, Invoices, System Alerts.
+Suppression groups, or unsubscribe groups, are specific types or categories of email that you would like your recipients to be able to unsubscribe from. For example Daily Newsletters, Invoices, System Alerts.
 
 The **name** and **description** of the unsubscribe group will be visible by recipients when they are managing their subscriptions.
 
@@ -702,8 +695,6 @@ Suppressions are recipient email addresses that are added to [unsubscribe groups
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/asm/groups/{group_id}/suppressions/{email}';
   client.request(request)
@@ -765,8 +756,6 @@ A global suppression (or global unsubscribe) is an email address of a recipient 
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/asm/suppressions/global/{email}';
   client.request(request)
@@ -816,7 +805,7 @@ Suppressions are a list of email addresses that will not receive content sent un
 <a name="browsers"></a>
 # BROWSERS
 
-## Retrieve email statistics by browser.
+## Retrieve email statistics from a browser.
 
 **This endpoint allows you to retrieve your email statistics segmented by browser type.**
 
@@ -854,7 +843,7 @@ Advanced Stats provide a more in-depth view of your email statistics and the act
 
 Our Marketing Campaigns API lets you create, manage, send, and schedule campaigns.
 
-Note: In order to send or schedule the campaign, you will be required to provide a subject, sender ID, content (we suggest both html and plain text), and at least one list or segment ID. This information is not required when you create a campaign.
+Note: To send or schedule the campaign, you will be required to provide a subject, sender ID, content (we suggest both HTML and Plain Text), and at least one list or segment ID. This information is not required when you create a campaign.
 
 For more information:
 
@@ -966,8 +955,6 @@ For more information:
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/campaigns/{campaign_id}';
   client.request(request)
@@ -1013,8 +1000,6 @@ For more information:
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/campaigns/{campaign_id}/schedules';
   client.request(request)
@@ -1095,7 +1080,7 @@ For more information:
 
 **This endpoint allows you to immediately send a campaign at the time you make the API call.**
 
-Normally a POST would have a request body, but since this endpoint is telling us to send a resource that is already created, a request body is not needed.
+Usually, a POST would have a request body, but since this endpoint is telling us to send a resource that is already created, a request body is not needed.
 
 For more information:
 
@@ -1105,8 +1090,6 @@ For more information:
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'POST';
   request.url = '/v3/campaigns/{campaign_id}/schedules/now';
   client.request(request)
@@ -1148,7 +1131,7 @@ For more information:
 
 **This endpoint allows you to retrieve a list of all of your categories.**
 
-Categories can help organize your email analytics by enabling you to tag emails by type or broad topic. You can define your own custom categories. For more information, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Statistics/categories.html).
+Categories can help organize your email analytics by enabling you to tag emails by type or broad topic. You can define your custom categories. For more information, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Statistics/categories.html).
 
 ### GET /categories
 
@@ -1174,24 +1157,52 @@ Categories can help organize your email analytics by enabling you to tag emails 
 
 If you do not define any query parameters, this endpoint will return a sum for each category in groups of 10.
 
-Categories allow you to group your emails together according to broad topics that you define. For more information, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Statistics/categories.html).
+Categories allow you to group your emails according to broad topics that you define. For more information, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Statistics/categories.html).
 
 ### GET /categories/stats
 
 
 ```javascript
-  const queryParams = {
-  'aggregated_by': 'day', 
-  'categories': 'test_string', 
-  'end_date': '2016-04-01', 
-  'limit': 1, 
-  'offset': 1, 
+const queryParams = {
+  'aggregated_by': 'day',
+  'categories': 'test_string',
+  'end_date': '2016-04-01',
+  'limit': 1,
+  'offset': 1,
   'start_date': '2016-01-01'
 };
-  request.qs = queryParams;
-  request.method = 'GET';
-  request.url = '/v3/categories/stats';
-  client.request(request)
+request.qs = queryParams;
+request.method = 'GET';
+request.url = '/v3/categories/stats';
+client
+  .request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+
+
+**Attention:** in order to receive the email statistics for multiple categories at once, you need to set the `qsStringifyOptions` as follows:
+
+```javascript
+const client = require('@sendgrid/client')
+client.setDefaultRequest('qsStringifyOptions', {arrayFormat: 'repeat'});
+
+const request = {}
+const queryParams = {
+  'aggregated_by': 'day',
+  'categories': ['test_category_1', 'cat facts'],
+  'end_date': '2016-04-01',
+  'limit': 1,
+  'offset': 1,
+  'start_date': '2016-01-01'
+};
+request.qs = queryParams;
+request.method = 'GET';
+request.url = '/v3/categories/stats';
+client
+  .request(request)
   .then(([response, body]) => {
     console.log(response.statusCode);
     console.log(response.body);
@@ -1203,7 +1214,7 @@ Categories allow you to group your emails together according to broad topics tha
 
 If you do not define any query parameters, this endpoint will return a sum for each category in groups of 10.
 
-Categories allow you to group your emails together according to broad topics that you define. For more information, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Statistics/categories.html).
+Categories allow you to group your emails according to broad topics that you define. For more information, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Statistics/categories.html).
 
 ### GET /categories/stats/sums
 
@@ -1342,8 +1353,6 @@ The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/contactdb/custom_fields/{custom_field_id}';
   client.request(request)
@@ -1445,8 +1454,6 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   const queryParams = {
   'delete_contacts': 'true'
 };
@@ -1567,8 +1574,6 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'POST';
   request.url = '/v3/contactdb/lists/{list_id}/recipients/{recipient_id}';
   client.request(request)
@@ -1587,8 +1592,6 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   const queryParams = {
   'list_id': 1, 
   'recipient_id': 1
@@ -1639,7 +1642,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 ```
 ## Delete Recipient
 
-**This endpoint allows you to deletes one or more recipients.**
+**This endpoint allows you to delete one or more recipients.**
 
 The body of an API call to this endpoint must include an array of recipient IDs of the recipients you want to delete.
 
@@ -1763,7 +1766,7 @@ The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](
 field_name:
 
 * is a variable that is substituted for your actual custom field name from your recipient.
-* Text fields must be url-encoded. Date fields are searchable only by unix timestamp (e.g. 2/2/2015 becomes 1422835200)
+* Text fields must be URL encoded. Date fields are searchable only by Unix timestamp (e.g. 2/2/2015 becomes 1422835200)
 * If field_name is a 'reserved' date field, such as created_at or updated_at, the system will internally convert
 your epoch time to a date range encompassing the entire day. For example, an epoch time of 1422835600 converts to
 Mon, 02 Feb 2015 00:06:40 GMT, but internally the system will search from Mon, 02 Feb 2015 00:00:00 GMT through
@@ -1797,8 +1800,6 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/contactdb/recipients/{recipient_id}';
   client.request(request)
@@ -1871,8 +1872,8 @@ All recipients in your contactdb will be added or removed automatically dependin
 
 List Id:
 
-* Send this to segment from an existing list
-* Don't send this in order to segment from your entire contactdb.
+* Send this to segment from an existing list.
+* Don't send this to segment from your entire contactdb.
 
 Valid operators for create and update depend on the type of the field you are segmenting: 
 
@@ -1948,7 +1949,7 @@ For more information about segments in Marketing Campaigns, please see our [User
 ```
 ## Delete a segment
 
-**This endpoint allows you to delete a segment from your recipients database.**
+**This endpoint allows you to delete a segment from your recipients' database.**
 
 You also have the option to delete all the contacts from your Marketing Campaigns recipient database who were in this segment.
 
@@ -1960,8 +1961,6 @@ For more information about segments in Marketing Campaigns, please see our [User
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   const queryParams = {
   'delete_contacts': 'true'
 };
@@ -2088,10 +2087,10 @@ For more information about segments in Marketing Campaigns, please see our [User
 ## Available Device Types
 | **Device** | **Description** | **Example** |
 |---|---|---|
-| Desktop | Email software on desktop computer. | I.E., Outlook, Sparrow, or Apple Mail. |
+| Desktop | Email software on a desktop computer. | I.E., Outlook, Sparrow, or Apple Mail. |
 | Webmail |	A web-based email client. | I.E., Yahoo, Google, AOL, or Outlook.com. |
-| Phone | A smart phone. | iPhone, Android, Blackberry, etc.
-| Tablet | A tablet computer. | iPad, android based tablet, etc. |
+| Phone | A smartphone. | iPhone, Android, Blackberry, etc.
+| Tablet | A tablet computer. | iPad, Android-based tablet, etc. |
 | Other | An unrecognized device. |
 
 Advanced Stats provide a more in-depth view of your email statistics and the actions taken by your recipients. You can segment these statistics by geographic location, device type, client type, browser, and mailbox provider. For more information about statistics, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Statistics/index.html).
@@ -2181,9 +2180,9 @@ This endpoint is for adding a(n) IP Address(es) to your account.
 
 **This endpoint allows you to retrieve a list of all assigned and unassigned IPs.**
 
-Response includes warm up status, pools, assigned subusers, and whitelabel info. The start_date field corresponds to when warmup started for that IP.
+The response includes warm-up status, pools, assigned subusers, and whitelabel info. The start_date field corresponds to when warmup started for that IP.
 
-A single IP address or a range of IP addresses may be dedicated to an account in order to send email for multiple domains. The reputation of this IP is based on the aggregate performance of all the senders who use it.
+A single IP address or a range of IP addresses may be dedicated to an account to send email for multiple domains. The reputation of this IP is based on the aggregate performance of all the senders who use it.
 
 ### GET /ips
 
@@ -2210,7 +2209,7 @@ A single IP address or a range of IP addresses may be dedicated to an account in
 
 **This endpoint allows you to retrieve only assigned IP addresses.**
 
-A single IP address or a range of IP addresses may be dedicated to an account in order to send email for multiple domains. The reputation of this IP is based on the aggregate performance of all the senders who use it.
+A single IP address or a range of IP addresses may be dedicated to an account to send email for multiple domains. The reputation of this IP is based on the aggregate performance of all the senders who use it.
 
 ### GET /ips/assigned
 
@@ -2230,7 +2229,7 @@ A single IP address or a range of IP addresses may be dedicated to an account in
 
 **Each user can create up to 10 different IP pools.**
 
-IP Pools allow you to group your dedicated SendGrid IP addresses together. For example, you could create separate pools for your transactional and marketing email. When sending marketing emails, specify that you want to use the marketing IP pool. This allows you to maintain separate reputations for your different email traffic.
+IP Pools allow you to group your dedicated SendGrid IP addresses. For example, you could create separate pools for your transactional and marketing email. When sending marketing emails, specify that you want to use the marketing IP pool. This allows you to maintain separate reputations for your different email traffic.
 
 IP pools can only be used with whitelabeled IP addresses.
 
@@ -2256,7 +2255,7 @@ If an IP pool is NOT specified for an email, it will use any IP available, inclu
 
 **This endpoint allows you to retrieve all of your IP pools.**
 
-IP Pools allow you to group your dedicated SendGrid IP addresses together. For example, you could create separate pools for your transactional and marketing email. When sending marketing emails, specify that you want to use the marketing IP pool. This allows you to maintain separate reputations for your different email traffic.
+IP Pools allow you to group your dedicated SendGrid IP addresses. For example, you could create separate pools for your transactional and marketing email. When sending marketing emails, specify that you want to use the marketing IP pool. This allows you to maintain separate reputations for your different email traffic.
 
 IP pools can only be used with whitelabeled IP addresses.
 
@@ -2278,7 +2277,7 @@ If an IP pool is NOT specified for an email, it will use any IP available, inclu
 
 **This endpoint allows you to update the name of an IP pool.**
 
-IP Pools allow you to group your dedicated SendGrid IP addresses together. For example, you could create separate pools for your transactional and marketing email. When sending marketing emails, specify that you want to use the marketing IP pool. This allows you to maintain separate reputations for your different email traffic.
+IP Pools allow you to group your dedicated SendGrid IP addresses. For example, you could create separate pools for your transactional and marketing email. When sending marketing emails, specify that you want to use the marketing IP pool. This allows you to maintain separate reputations for your different email traffic.
 
 IP pools can only be used with whitelabeled IP addresses.
 
@@ -2304,7 +2303,7 @@ If an IP pool is NOT specified for an email, it will use any IP available, inclu
 
 **This endpoint allows you to delete an IP pool.**
 
-IP Pools allow you to group your dedicated SendGrid IP addresses together. For example, you could create separate pools for your transactional and marketing email. When sending marketing emails, specify that you want to use the marketing IP pool. This allows you to maintain separate reputations for your different email traffic.
+IP Pools allow you to group your dedicated SendGrid IP addresses. For example, you could create separate pools for your transactional and marketing email. When sending marketing emails, specify that you want to use the marketing IP pool. This allows you to maintain separate reputations for your different email traffic.
 
 IP pools can only be used with whitelabeled IP addresses.
 
@@ -2314,8 +2313,6 @@ If an IP pool is NOT specified for an email, it will use any IP available, inclu
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/ips/pools/{pool_name}';
   client.request(request)
@@ -2328,7 +2325,7 @@ If an IP pool is NOT specified for an email, it will use any IP available, inclu
 
 **This endpoint allows you to list all of the IP addresses that are in a specific IP pool.**
 
-IP Pools allow you to group your dedicated SendGrid IP addresses together. For example, you could create separate pools for your transactional and marketing email. When sending marketing emails, specify that you want to use the marketing IP pool. This allows you to maintain separate reputations for your different email traffic.
+IP Pools allow you to group your dedicated SendGrid IP addresses. For example, you could create separate pools for your transactional and marketing email. When sending marketing emails, specify that you want to use the marketing IP pool. This allows you to maintain separate reputations for your different email traffic.
 
 IP pools can only be used with whitelabeled IP addresses.
 
@@ -2352,7 +2349,7 @@ If an IP pool is NOT specified for an email, it will use any IP available, inclu
 
 You can add the same IP address to multiple pools. It may take up to 60 seconds for your IP address to be added to a pool after your request is made.
 
-A single IP address or a range of IP addresses may be dedicated to an account in order to send email for multiple domains. The reputation of this IP is based on the aggregate performance of all the senders who use it.
+A single IP address or a range of IP addresses may be dedicated to an account to send email for multiple domains. The reputation of this IP is based on the aggregate performance of all the senders who use it.
 
 ### POST /ips/pools/{pool_name}/ips
 
@@ -2376,14 +2373,12 @@ A single IP address or a range of IP addresses may be dedicated to an account in
 
 The same IP address can be added to multiple IP pools.
 
-A single IP address or a range of IP addresses may be dedicated to an account in order to send email for multiple domains. The reputation of this IP is based on the aggregate performance of all the senders who use it.
+A single IP address or a range of IP addresses may be dedicated to an account to send email for multiple domains. The reputation of this IP is based on the aggregate performance of all the senders who use it.
 
 ### DELETE /ips/pools/{pool_name}/ips/{ip}
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/ips/pools/{pool_name}/ips/{ip}';
   client.request(request)
@@ -2394,7 +2389,7 @@ A single IP address or a range of IP addresses may be dedicated to an account in
 ```
 ## Get remaining IPs count
 
-This endpoint gets amount of IP Addresses that can still be created during a given period and the price of those IPs.
+This endpoint gets the amount of IP Addresses that can still be created during a given period and the price of those IPs.
 
 ### GET /ips/remaining
 
@@ -2464,8 +2459,6 @@ For more general information about warming up IPs, please see our [Classroom](ht
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/ips/warmup/{ip_address}';
   client.request(request)
@@ -2500,7 +2493,7 @@ For more general information about warming up IPs, please see our [Classroom](ht
 
 The same IP address can be added to multiple IP pools.
 
-A single IP address or a range of IP addresses may be dedicated to an account in order to send email for multiple domains. The reputation of this IP is based on the aggregate performance of all the senders who use it.
+A single IP address or a range of IP addresses may be dedicated to an account to send email for multiple domains. The reputation of this IP is based on the aggregate performance of all the senders who use it.
 
 ### GET /ips/{ip_address}
 
@@ -2521,7 +2514,7 @@ A single IP address or a range of IP addresses may be dedicated to an account in
 
 **This endpoint allows you to generate a new batch ID. This batch ID can be associated with scheduled sends via the mail/send endpoint.**
 
-If you set the SMTPAPI header `batch_id`, it allows you to then associate multiple scheduled mail/send requests together with the same ID. Then at anytime up to 10 minutes before the schedule date, you can cancel all of the mail/send requests that have this batch ID by calling the Cancel Scheduled Send endpoint. 
+If you set the SMTPAPI header `batch_id`, it allows you to then associate multiple scheduled mail/send requests together with the same ID. Then at any time up to 10 minutes before the scheduled date, you can cancel all of the mail/send requests that have this batch ID by calling the Cancel Scheduled Send endpoint. 
 
 More Information:
 
@@ -2531,8 +2524,6 @@ More Information:
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'POST';
   request.url = '/v3/mail/batch';
   client.request(request)
@@ -2545,7 +2536,7 @@ More Information:
 
 **This endpoint allows you to validate a batch ID.**
 
-If you set the SMTPAPI header `batch_id`, it allows you to then associate multiple scheduled mail/send requests together with the same ID. Then at anytime up to 10 minutes before the schedule date, you can cancel all of the mail/send requests that have this batch ID by calling the Cancel Scheduled Send endpoint. 
+If you set the SMTPAPI header `batch_id`, it allows you to then associate multiple scheduled mail/send requests together with the same ID. Then at any time up to 10 minutes before the scheduled date, you can cancel all of the mail/send requests that have this batch ID by calling the Cancel Scheduled Send endpoint. 
 
 More Information:
 
@@ -2565,7 +2556,7 @@ More Information:
 ```
 ## v3 Mail Send
 
-This endpoint allows you to send email over SendGrids v3 Web API, the most recent version of our API. If you are looking for documentation about the v2 Mail Send endpoint, please see our [v2 API Reference](https://sendgrid.com/docs/API_Reference/Web_API/mail.html).
+This endpoint allows you to send an email over SendGrids v3 Web API, the most recent version of our API. If you are looking for documentation about the v2 Mail Send endpoint, please see our [v2 API Reference](https://sendgrid.com/docs/API_Reference/Web_API/mail.html).
 
 * Top level parameters are referred to as "global".
 * Individual fields within the personalizations array will override any other global, or message level, parameters that are defined outside of personalizations.
@@ -2695,7 +2686,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 
 **This endpoint allows you to update your current BCC mail settings.**
 
-When the BCC mail setting is enabled, SendGrid will automatically send a blind carbon copy (BCC) to an address for every email sent without adding that address to the header. Please note that only one email address may be entered in this field, if you wish to distribute BCCs to multiple addresses you will need to create a distribution group or use forwarding rules.
+When the BCC mail setting is enabled, SendGrid will automatically send a blind carbon copy (BCC) to an address for every email sent without adding that address to the header. Please note that only one email address may be entered in this field if you wish to distribute BCCs to multiple addresses you will need to create a distribution group or use forwarding rules.
 
 Mail settings allow you to tell SendGrid specific things to do to every email that you send to your recipients over SendGrids [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
 
@@ -2720,7 +2711,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 
 **This endpoint allows you to retrieve your current BCC mail settings.**
 
-When the BCC mail setting is enabled, SendGrid will automatically send a blind carbon copy (BCC) to an address for every email sent without adding that address to the header. Please note that only one email address may be entered in this field, if you wish to distribute BCCs to multiple addresses you will need to create a distribution group or use forwarding rules.
+When the BCC mail setting is enabled, SendGrid will automatically send a blind carbon copy (BCC) to an address for every email sent without adding that address to the header. Please note that only one email address may be entered in this field if you wish to distribute BCCs to multiple addresses you will need to create a distribution group or use forwarding rules.
 
 Mail settings allow you to tell SendGrid specific things to do to every email that you send to your recipients over SendGrids [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
 
@@ -3089,6 +3080,225 @@ Advanced Stats provide a more in-depth view of your email statistics and the act
     console.log(response.body);
   })
 ```
+<a name="messages"></a>
+# MESSAGES
+
+## Filter all messages
+> In order to gain access to the Email Activity Feed API, you must purchase [additional email activity history](https://app.sendgrid.com/settings/billing/addons/email_activity). 
+
+Filter all messages to search your Email Activity. All queries need to be [URL encoded](https://meyerweb.com/eric/tools/dencoder/), and have this format:
+
+`query={query_type}="{query_content}"`
+
+encoded, this would look like this:
+
+`query=type%3D%22query_content%22`
+
+for example:
+
+Filter by a specific email - `query=to_email%3D%22example%40example.com%22`
+
+Filter by subject line - `query=subject%3d%22A%20Great%20Subject%22`
+
+You can filter by other operators besides `=`. We also accept `!=`, `<`, and `>`.
+
+For a tutorial on how to get started, check out [Getting Started with the Email Activity API](https://sendgrid.com/docs/API_Reference/Web_API_v3/Tutorials/getting_started_email_activity_api.html).
+
+**Full list of basic query types and examples:**
+(replace the data in quotes with the information you want to query)
+
+<table>
+  <tr>
+    <th><b>Query</b></th>
+    <th><b>Unencoded example</b> (put this one into the try it out query - it'll automatically encode it for you)</th>
+    <th><b>Encoded example</b> (use this one in your code)</th>
+  </tr>
+  <tr>
+    <td><code>msg_id</code></td>
+    <td><code>msg_id="filter0307p1las1-16816-5A023E36-1.0"</code></td>
+    <td><code>msg_id%3D%22filter0307p1las1-16816-5A023E36-1.0%22</code></td>
+  </tr>
+  <tr>
+    <td><code>from_email</code></td>
+    <td><code>from_email="testing@sendgrid.net"</code></td>
+    <td><code>from_email%3D%22testing%40sendgrid.net%22</code></td>
+  </tr>
+  <tr>
+    <td><code>subject</code></td>
+    <td><code>subject="This is a subject test"</code></td>
+    <td><code>subject%22This%20is%20a%20subject%20test%22</code></td>
+  </tr>
+  <tr>
+    <td><code>to_email</code></td>
+    <td><code>to_email="example@example.com"</code></td>
+    <td><code>to_email%3D%22example%40example.com%22</code></td>
+  </tr>
+  <tr>
+    <td><code>status</code></td>
+    <td><code>status="processed"</code></td>
+    <td><code>status%22processed%22</code></td>
+  </tr>
+  <tr>
+    <td><code>template_id</code></td>
+    <td><code>template_id="8f0d27bc-cf8f-42d3-b951-3990af7d0619"</code></td>
+    <td><code>template_id%3D%228f0d27bc-cf8f-42d3-b951-3990af7d0619%22</code></td>
+  </tr>
+  <tr>
+    <td><code>template_name</code></td>
+    <td><code>template_name="example_template"</code></td>
+    <td><code>template_name%3D%22example_template%22</code></td>
+  </tr>
+  <tr>
+    <td><code>campaign_name</code></td>
+    <td><code>campaign_name="example_campaign"</code></td>
+    <td><code>campaign_name%3D%22example_campaign%22</code></td>
+  </tr>
+  <tr>
+    <td><code>campaign_id</code></td>
+    <td><code>campaign_id="1453849"</code></td>
+    <td><code>campaign_id%3D%221453849%22</code></td>
+  </tr>
+  <tr>
+    <td><code>api_key_id</code></td>
+    <td><code>api_key_id="-hVjtoFgGUNPq3DPPPkJN3mCIDIwrl3qdFZcqYKnlq94"</code> (everything after the middle dot in the API key)</td>
+    <td><code>api_key_id%3D%22-hVjtoFgGUNPq3DPPPkJN3mCIDIwrl3qdFZcqYKnlq94%22</code></td>
+  </tr>
+  <tr>
+    <td><code>api_key_name</code></td>
+    <td><code>api_key_name="test_name"</code></td>
+    <td><code>api_key_name%3D%22test_name%22</code></td>
+  </tr>
+  <tr>
+    <td><code>events</code></td>
+    <td><code>status="processed"</code></td>
+    <td><code>status%3D%22processed%22</code></td>
+  </tr>
+  <tr>
+    <td><code>originating_ip</code> - this is the IP address of the person sending the message</td>
+    <td><code>originating_ip="4.77.777.77"</code></td>
+    <td><code>originating_ip%3D%224.77.777.77%22</code></td>
+  </tr>
+  <tr>
+    <td><code>categories</code> - custom tags that you create</td>
+    <td><code>categories="category_example"</code></td>
+    <td><code>categories="category_example"</code></td>
+  </tr>
+  <tr>
+    <td><code>unique_args</code> - custom tracking arguments that you can attach to SMTP API calls</td>
+    <td><code>unique_args="example argument"</code></td>
+    <td><code>unique_args%3D%22example%20argument%22</code></td>
+  </tr>
+  <tr>
+    <td><code>outbound_ip</code> - this is the SendGrid dedicated IP address used to send the email</td>
+    <td><code>outbound_ip="4.77.777.77"</code></td>
+    <td><code>outbound_ip%3D%224.77.777.77%22</code></td>
+  </tr>
+  <tr>
+    <td><code>last_event_time</code></td>
+    <td><code>last_event_time="2017-11-07T23:13:58Z"</code></td>
+    <td><code>last_event_time%3D%E2%80%9C2017-11-07T23%3A13%3A58Z%E2%80%9D</code></td>
+  </tr>
+  <tr>
+    <td><code>clicks</code></td>
+    <td><code>clicks="0"</code></td>
+    <td><code>clicks%3D%220%22</code></td>
+  </tr>
+  <tr>
+    <td><code>unsubscribe_group_name</code></td>
+    <td><code>unsubscribe_group_name="Global Unsubscribes"</code></td>
+    <td><code>unsubscribe_group_name%3D%22Global%20Unsubscribes%22</code></td>
+  </tr>
+  <tr>
+    <td><code>unsubscribe_group_id</code></td>
+    <td><code>unsubscribe_group_id="1041"</code></td>
+    <td><code>unsubscribe_group_id%3D%221041%22</code></td>
+  </tr>
+  <tr>
+    <td><code>teammate</code> - teamates username</td>
+    <td><code>teammate="my_username"</code></td>
+    <td><code>teammate%3D%22my_username%22</code></td>
+  </tr>
+</table>
+
+For information about building combined queries, see [Building compound Email Activity queries](https://sendgrid.com/docs/API_Reference/Web_API_v3/Tutorials/getting_started_email_activity_api.html#-Creating-compound-queries).
+
+### GET /messages
+
+
+```javascript
+  const queryParams = {
+    'limit': 10,
+    'query': 'from_email%3D%22testing%40sendgrid.net%22'
+  };
+  request.qs = queryParams;
+  request.method = 'GET';
+  request.url = '/v3/messages';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+## Filter messages by message ID
+
+> In order to gain access to the Email Activity Feed API, you must purchase [additional email activity history](https://app.sendgrid.com/settings/billing/addons/email_activity).
+
+Get all of the details about the specified message.
+
+### GET /messages/{msg_id}
+
+
+```javascript
+  request.method = 'GET';
+  request.url = '/v3/messages/{msg_id}';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+## Request a CSV
+
+> In order to gain access to the Email Activity Feed API, you must purchase [additional email activity history](https://app.sendgrid.com/settings/billing/addons/email_activity).
+
+This request kicks of a process to generate a CSV file. When the file is generated, the email that is listed as the account owner gets an email that links out to the file that is ready for download. The link expires in 3 days.
+
+The CSV fill contain the last 1 million messages. This endpoint will be rate limited to 1 request every 12 hours.
+
+### POST /messages/download
+
+
+```javascript
+  request.method = 'POST';
+  request.url = '/v3/messages/download';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+## Download CSV
+
+> In order to gain access to the Email Activity Feed API, you must purchase [additional email activity history](https://app.sendgrid.com/settings/billing/addons/email_activity).
+
+Download the CSV that you requested with the POST Request a CSV.
+
+When the file is generated, the email that is listed as the account owner gets an email that links out to the file that is ready for download. The link expires in 3 days.
+
+The CSV fill contain the last 1 million messages. This endpoint will be rate limited to 1 request every 12 hours.
+
+### GET /messages/download/{download_uuid}
+
+
+```javascript
+  request.method = 'POST';
+  request.url = '/v3/messages/download';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
 <a name="partner-settings"></a>
 # PARTNER SETTINGS
 
@@ -3168,7 +3378,7 @@ By integrating with New Relic, you can send your SendGrid email statistics to yo
 
 **This endpoint returns a list of all scopes that this user has access to.**
 
-API Keys can be used to authenticate the use of [SendGrids v3 Web API](https://sendgrid.com/docs/API_Reference/Web_API_v3/index.html), or the [Mail API Endpoint](https://sendgrid.com/docs/API_Reference/Web_API/mail.html). API Keys may be assigned certain permissions, or scopes, that limit which API endpoints they are able to access. For a more detailed explanation of how you can use API Key permissions, please visit our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/api_keys.html#-API-Key-Permissions) or [Classroom](https://sendgrid.com/docs/Classroom/Basics/API/api_key_permissions.html).
+API Keys can be used to authenticate the use of [SendGrids v3 Web API](https://sendgrid.com/docs/API_Reference/Web_API_v3/index.html), or the [Mail API Endpoint](https://sendgrid.com/docs/API_Reference/Web_API/mail.html). API Keys may be assigned specific permissions, or scopes, that limit which API endpoints they can access. For a more detailed explanation of how you can use API Key permissions, please visit our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/api_keys.html#-API-Key-Permissions) or [Classroom](https://sendgrid.com/docs/Classroom/Basics/API/api_key_permissions.html).
 
 ### GET /scopes
 
@@ -3217,8 +3427,6 @@ This endpoint allows you to deny an attempt to access your account.
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/scopes/requests/{request_id}';
   client.request(request)
@@ -3237,8 +3445,6 @@ This endpoint allows you to approve an access attempt.
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'PATCH';
   request.url = '/v3/scopes/requests/{request_id}/approve';
   client.request(request)
@@ -3256,7 +3462,7 @@ This endpoint allows you to approve an access attempt.
 
 *You may create up to 100 unique sender identities.*
 
-Sender Identities are required to be verified before use. If your domain has been whitelabeled it will auto verify on creation. Otherwise an email will be sent to the `from.email`.
+Sender Identities are required to be verified before use. If your domain has been whitelabeled it will auto verify on creation. Otherwise, an email will be sent to the `from.email`.
 
 ### POST /senders
 
@@ -3292,7 +3498,7 @@ Sender Identities are required to be verified before use. If your domain has bee
 
 **This endpoint allows you to retrieve a list of all sender identities that have been created for your account.**
 
-Sender Identities are required to be verified before use. If your domain has been whitelabeled it will auto verify on creation. Otherwise an email will be sent to the `from.email`.
+Sender Identities are required to be verified before use. If your domain has been whitelabeled it will auto verify on creation. Otherwise, an email will be sent to the `from.email`.
 
 ### GET /senders
 
@@ -3310,7 +3516,7 @@ Sender Identities are required to be verified before use. If your domain has bee
 
 **This endpoint allows you to retrieve a specific sender identity.**
 
-Sender Identities are required to be verified before use. If your domain has been whitelabeled it will auto verify on creation. Otherwise an email will be sent to the `from.email`.
+Sender Identities are required to be verified before use. If your domain has been whitelabeled it will auto verify on creation. Otherwise, an email will be sent to the `from.email`.
 
 ### GET /senders/{sender_id}
 
@@ -3328,14 +3534,12 @@ Sender Identities are required to be verified before use. If your domain has bee
 
 **This endpoint allows you to delete one of your sender identities.**
 
-Sender Identities are required to be verified before use. If your domain has been whitelabeled it will auto verify on creation. Otherwise an email will be sent to the `from.email`.
+Sender Identities are required to be verified before use. If your domain has been whitelabeled it will auto verify on creation. Otherwise, an email will be sent to the `from.email`.
 
 ### DELETE /senders/{sender_id}
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/senders/{sender_id}';
   client.request(request)
@@ -3348,7 +3552,7 @@ Sender Identities are required to be verified before use. If your domain has bee
 
 **This endpoint allows you to update a sender identity.**
 
-Updates to `from.email` require re-verification. If your domain has been whitelabeled it will auto verify on creation. Otherwise an email will be sent to the `from.email`.
+Updates to `from.email` require re-verification. If your domain has been whitelabeled it will auto verify on creation. Otherwise, an email will be sent to the `from.email`.
 
 Partial updates are allowed, but fields that are marked as "required" in the POST (create) endpoint must not be nil if that field is included in the PATCH request.
 
@@ -3386,14 +3590,12 @@ Partial updates are allowed, but fields that are marked as "required" in the POS
 
 **This endpoint allows you to resend a sender identity verification email.**
 
-Sender Identities are required to be verified before use. If your domain has been whitelabeled it will auto verify on creation. Otherwise an email will be sent to the `from.email`.
+Sender Identities are required to be verified before use. If your domain has been whitelabeled it will auto verify on creation. Otherwise, an email will be sent to the `from.email`.
 
 ### POST /senders/{sender_id}/resend_verification
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'POST';
   request.url = '/v3/senders/{sender_id}/resend_verification';
   client.request(request)
@@ -3409,7 +3611,7 @@ Sender Identities are required to be verified before use. If your domain has bee
 
 **This endpoint allows you to retrieve all of your global email statistics between a given date range.**
 
-Parent accounts will see aggregated stats for their account and all subuser accounts. Subuser accounts will only see their own stats.
+Parent accounts will see aggregated stats for their account and all subuser accounts. Subuser accounts will only see their stats.
 
 ### GET /stats
 
@@ -3494,7 +3696,7 @@ For more information about Subusers:
 ```
 ## Retrieve Subuser Reputations
 
-Subuser sender reputations give a good idea how well a sender is doing with regards to how recipients and recipient servers react to the mail that is being received. When a bounce, spam report, or other negative action happens on a sent email, it will effect your sender rating.
+Subuser sender reputations give a good idea how well a sender is doing with regards to how recipients and recipient servers react to the mail that is being received. When a bounce, spam report, or other adverse action happens on a sent email, it will affect your sender rating.
 
 This endpoint allows you to request the reputations for your subusers.
 
@@ -3621,8 +3823,6 @@ For more information about Subusers:
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/subusers/{subuser_name}';
   client.request(request)
@@ -3731,8 +3931,6 @@ Subuser monitor settings allow you to receive a sample of an outgoing message by
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/subusers/{subuser_name}/monitor';
   client.request(request)
@@ -3800,7 +3998,7 @@ There are two options for deleting blocked emails:
 1. You can delete all blocked emails by setting `delete_all` to true in the request body. 
 2. You can delete some blocked emails by specifying the email addresses in an array in the request body.
 
-[Blocks](https://sendgrid.com/docs/Glossary/blocks.html) happen when your message was rejected for a reason related to the message, not the recipient address. This can happen when your mail server IP address has been added to a blacklist or blocked by an ISP, or if the message content is flagged by a filter on the receiving server.
+[Blocks](https://sendgrid.com/docs/Glossary/blocks.html) happen when your message was rejected for a reason related to the message, not the recipient address. This can happen when your mail server IP address has been added to a blacklist or blocked by an ISP, or if a filter flags the message content on the receiving server.
 
 For more information, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Suppressions/blocks.html).
 
@@ -3855,7 +4053,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 
 **This endpoint allows you to delete a specific email address from your blocks list.**
 
-[Blocks](https://sendgrid.com/docs/Glossary/blocks.html) happen when your message was rejected for a reason related to the message, not the recipient address. This can happen when your mail server IP address has been added to a blacklist or blocked by an ISP, or if the message content is flagged by a filter on the receiving server.
+[Blocks](https://sendgrid.com/docs/Glossary/blocks.html) happen when your message was rejected for a reason related to the message, not the recipient address. This can happen when your mail server IP address has been added to a blacklist or blocked by an ISP, or if a filter flags the message content on the receiving server.
 
 For more information, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Suppressions/blocks.html).
 
@@ -3863,8 +4061,6 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/suppression/blocks/{email}';
   client.request(request)
@@ -3877,7 +4073,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 
 **This endpoint allows you to retrieve a specific email address from your blocks list.**
 
-[Blocks](https://sendgrid.com/docs/Glossary/blocks.html) happen when your message was rejected for a reason related to the message, not the recipient address. This can happen when your mail server IP address has been added to a blacklist or blocked by an ISP, or if the message content is flagged by a filter on the receiving server.
+[Blocks](https://sendgrid.com/docs/Glossary/blocks.html) happen when your message was rejected for a reason related to the message, not the recipient address. This can happen when your mail server IP address has been added to a blacklist or blocked by an ISP, or if a filter flags the message content on the receiving server.
 
 For more information, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Suppressions/blocks.html).
 
@@ -3959,7 +4155,7 @@ For more information see:
 
 **This endpoint allows you to remove an email address from your bounce list.**
 
-A bounced email is when the message is undeliverable and then returned to the server that sent it. This endpoint allows you to delete a single email addresses from your bounce list. 
+A bounced email is when the message is undeliverable and then returned to the server that sent it. This endpoint allows you to delete a single email address from your bounce list. 
 
 For more information see: 
 
@@ -3971,8 +4167,6 @@ For more information see:
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   const queryParams = {
   'email_address': 'example@example.com'
 };
@@ -4016,11 +4210,11 @@ For more information see:
 There are two options for deleting invalid email addresses: 
 
 1) You can delete all invalid email addresses by setting `delete_all` to true in the request body.
-2) You can delete some invalid email addresses by specifying certain addresses in an array in the request body.
+2) You can delete some invalid email addresses by specifying the addresses in an array in the request body.
 
-An invalid email occurs when you attempt to send email to an address that is formatted in a manner that does not meet internet email format standards or the email does not exist at the recipients mail server.
+An invalid email occurs when you attempt to send email to an address that is formatted in a manner that does not meet internet email format standards or the email does not exist at the recipients' mail server.
 
-Examples include addresses without the @ sign or addresses that include certain special characters and/or spaces. This response can come from our own server or the recipient mail server.
+Examples include addresses without the @ sign or addresses that include certain special characters and/or spaces. This response can come from our server or the recipient mail server.
 
 For more information, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Suppressions/invalid_emails.html).
 
@@ -4048,9 +4242,9 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 
 **This endpoint allows you to retrieve a list of all invalid email addresses.**
 
-An invalid email occurs when you attempt to send email to an address that is formatted in a manner that does not meet internet email format standards or the email does not exist at the recipients mail server.
+An invalid email occurs when you attempt to send email to an address that is formatted in a manner that does not meet internet email format standards or the email does not exist at the recipients' mail server.
 
-Examples include addresses without the @ sign or addresses that include certain special characters and/or spaces. This response can come from our own server or the recipient mail server.
+Examples include addresses without the @ sign or addresses that include certain special characters and/or spaces. This response can come from our server or the recipient mail server.
 
 For more information, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Suppressions/invalid_emails.html).
 
@@ -4077,9 +4271,9 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 
 **This endpoint allows you to remove a specific email address from the invalid email address list.**
 
-An invalid email occurs when you attempt to send email to an address that is formatted in a manner that does not meet internet email format standards or the email does not exist at the recipients mail server.
+An invalid email occurs when you attempt to send email to an address that is formatted in a manner that does not meet internet email format standards or the email does not exist at the recipients' mail server.
 
-Examples include addresses without the @ sign or addresses that include certain special characters and/or spaces. This response can come from our own server or the recipient mail server.
+Examples include addresses without the @ sign or addresses that include certain special characters and/or spaces. This response can come from our server or the recipient mail server.
 
 For more information, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Suppressions/invalid_emails.html).
 
@@ -4087,8 +4281,6 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/suppression/invalid_emails/{email}';
   client.request(request)
@@ -4099,11 +4291,11 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 ```
 ## Retrieve a specific invalid email
 
-**This endpoint allows you to retrieve a specific invalid email addresses.**
+**This endpoint allows you to retrieve a specific invalid email address.**
 
-An invalid email occurs when you attempt to send email to an address that is formatted in a manner that does not meet internet email format standards or the email does not exist at the recipients mail server.
+An invalid email occurs when you attempt to send email to an address that is formatted in a manner that does not meet internet email format standards or the email does not exist at the recipients' mail server.
 
-Examples include addresses without the @ sign or addresses that include certain special characters and/or spaces. This response can come from our own server or the recipient mail server.
+Examples include addresses without the @ sign or addresses that include certain special characters and/or spaces. This response can come from our server or the recipient mail server.
 
 For more information, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Suppressions/invalid_emails.html).
 
@@ -4191,8 +4383,6 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/suppression/spam_reports/{email}';
   client.request(request)
@@ -4223,7 +4413,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 ```
 ## Retrieve all global suppressions
 
-**This endpoint allows you to retrieve a list of all email address that are globally suppressed.**
+**This endpoint allows you to retrieve a list of all email addresses that are globally suppressed.**
 
 A global suppression (or global unsubscribe) is an email address of a recipient who does not want to receive any of your messages. A globally suppressed recipient will be removed from any email you send. For more information, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Suppressions/global_unsubscribes.html).
 
@@ -4329,8 +4519,6 @@ This endpoint allows you to delete a pending teammate invite.
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/teammates/pending/{token}';
   client.request(request)
@@ -4349,8 +4537,6 @@ This endpoint allows you to resend a teammate invite.
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'POST';
   request.url = '/v3/teammates/pending/{token}/resend';
   client.request(request)
@@ -4369,8 +4555,6 @@ This endpoint allows you to delete a teammate.
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/teammates/{username}';
   client.request(request)
@@ -4381,11 +4565,11 @@ This endpoint allows you to delete a teammate.
 ```
 ## Update teammate's permissions
 
-This endpoint allows you to update a teammates permissions.
+This endpoint allows you to update a teammate's permissions.
 
 To turn a teammate into an admin, the request body should contain an `is_admin` set to `true`. Otherwise, set `is_admin` to `false` and pass in all the scopes that a teammate should have.
 
-**Only the parent user or other admin teammates can update another teammates permissions.**
+**Only the parent user or other admin teammates can update another teammate's permissions.**
 
 **Admin users can only update permissions.**
 
@@ -4434,7 +4618,7 @@ This endpoint allows you to retrieve a specific teammate by username.
 
 Each user can create up to 300 different transactional templates. Transactional templates are specific to accounts and subusers. Templates created on a parent account will not be accessible from the subuser accounts.
 
-Transactional templates are templates created specifically for transactional email and are not to be confused with [Marketing Campaigns templates](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/templates.html). For more information about transactional templates, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Transactional_Templates/index.html).
+Transactional templates are templates explicitly created for transactional email and are not to be confused with [Marketing Campaigns templates](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/templates.html). For more information about transactional templates, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Transactional_Templates/index.html).
 
 ### POST /templates
 
@@ -4458,34 +4642,57 @@ Transactional templates are templates created specifically for transactional ema
 
 Each user can create up to 300 different transactional templates. Transactional templates are specific to accounts and subusers. Templates created on a parent account will not be accessible from the subuser accounts.
 
-Transactional templates are templates created specifically for transactional email and are not to be confused with [Marketing Campaigns templates](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/templates.html). For more information about transactional templates, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Transactional_Templates/index.html).
+Transactional templates are templates explicitly created for transactional email and are not to be confused with [Marketing Campaigns templates](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/templates.html). For more information about transactional templates, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Transactional_Templates/index.html).
 
-### GET /templates
-
+### GET all dynamic /templates
 
 ```javascript
   request.method = 'GET';
-  request.url = '/v3/templates';
+  request.url = '/v3/templates?generations=dynamic';
   client.request(request)
   .then(([response, body]) => {
     console.log(response.statusCode);
     console.log(response.body);
   })
 ```
+
+### GET all legacy /templates
+
+
+```javascript
+  request.method = 'GET';
+  request.url = '/v3/templates?generations=legacy';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+
+### GET all /templates
+
+```javascript
+  request.method = 'GET';
+  request.url = '/v3/templates?generations=legacy,dynamic';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+
 ## Delete a template.
 
 **This endpoint allows you to delete a transactional template.**
 
 Each user can create up to 300 different transactional templates. Transactional templates are specific to accounts and subusers. Templates created on a parent account will not be accessible from the subuser accounts.
 
-Transactional templates are templates created specifically for transactional email and are not to be confused with [Marketing Campaigns templates](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/templates.html). For more information about transactional templates, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Transactional_Templates/index.html).
+Transactional templates are templates explicitly created for transactional email and are not to be confused with [Marketing Campaigns templates](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/templates.html). For more information about transactional templates, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Transactional_Templates/index.html).
 
 ### DELETE /templates/{template_id}
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/templates/{template_id}';
   client.request(request)
@@ -4500,7 +4707,7 @@ Transactional templates are templates created specifically for transactional ema
 
 Each user can create up to 300 different transactional templates. Transactional templates are specific to accounts and subusers. Templates created on a parent account will not be accessible from the subuser accounts.
 
-Transactional templates are templates created specifically for transactional email and are not to be confused with [Marketing Campaigns templates](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/templates.html). For more information about transactional templates, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Transactional_Templates/index.html).
+Transactional templates are templates explicitly created for transactional email and are not to be confused with [Marketing Campaigns templates](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/templates.html). For more information about transactional templates, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Transactional_Templates/index.html).
 
 ### PATCH /templates/{template_id}
 
@@ -4524,7 +4731,7 @@ Transactional templates are templates created specifically for transactional ema
 
 Each user can create up to 300 different transactional templates. Transactional templates are specific to accounts and subusers. Templates created on a parent account will not be accessible from the subuser accounts.
 
-Transactional templates are templates created specifically for transactional email and are not to be confused with [Marketing Campaigns templates](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/templates.html). For more information about transactional templates, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Transactional_Templates/index.html).
+Transactional templates are templates explicitly created for transactional email and are not to be confused with [Marketing Campaigns templates](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/templates.html). For more information about transactional templates, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Transactional_Templates/index.html).
 
 ### GET /templates/{template_id}
 
@@ -4542,7 +4749,7 @@ Transactional templates are templates created specifically for transactional ema
 
 **This endpoint allows you to create a new version of a template.**
 
-Each transactional template can have multiple versions, each version with its own subject and content. Each user can have up to 300 versions across across all templates.
+Each transactional template can have multiple versions, each version with unique subject and content. Each user can have up to 300 versions across all templates.
 
 For more information about transactional templates, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Transactional_Templates/index.html).
 
@@ -4571,7 +4778,7 @@ For more information about transactional templates, please see our [User Guide](
 
 **This endpoint allows you to delete one of your transactional template versions.**
 
-Each transactional template can have multiple versions, each version with its own subject and content. Each user can have up to 300 versions across across all templates.
+Each transactional template can have multiple versions, each version with unique subject and content. Each user can have up to 300 versions across all templates.
 
 For more information about transactional templates, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Transactional_Templates/index.html).
 
@@ -4585,8 +4792,6 @@ For more information about transactional templates, please see our [User Guide](
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/templates/{template_id}/versions/{version_id}';
   client.request(request)
@@ -4599,7 +4804,7 @@ For more information about transactional templates, please see our [User Guide](
 
 **This endpoint allows you to edit a version of one of your transactional templates.**
 
-Each transactional template can have multiple versions, each version with its own subject and content. Each user can have up to 300 versions across across all templates.
+Each transactional template can have multiple versions, each version with unique subject and content. Each user can have up to 300 versions across all templates.
 
 For more information about transactional templates, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Transactional_Templates/index.html).
 
@@ -4633,7 +4838,7 @@ For more information about transactional templates, please see our [User Guide](
 
 **This endpoint allows you to retrieve a specific version of a template.**
 
-Each transactional template can have multiple versions, each version with its own subject and content. Each user can have up to 300 versions across across all templates.
+Each transactional template can have multiple versions, each version with unique subject and content. Each user can have up to 300 versions across all templates.
 
 For more information about transactional templates, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Transactional_Templates/index.html).
 
@@ -4659,7 +4864,7 @@ For more information about transactional templates, please see our [User Guide](
 
 **This endpoint allows you to activate a version of one of your templates.**
 
-Each transactional template can have multiple versions, each version with its own subject and content. Each user can have up to 300 versions across across all templates.
+Each transactional template can have multiple versions, each version with unique subject and content. Each user can have up to 300 versions across all templates.
 
 
 For more information about transactional templates, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Transactional_Templates/index.html).
@@ -4674,8 +4879,6 @@ For more information about transactional templates, please see our [User Guide](
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'POST';
   request.url = '/v3/templates/{template_id}/versions/{version_id}/activate';
   client.request(request)
@@ -4817,7 +5020,7 @@ For more information about tracking, please see our [User Guide](https://sendgri
 
 **This endpoint allows you to update your current settings for open tracking.**
 
-Open Tracking adds an invisible image at the end of the email which can track email opens. If the email recipient has images enabled on their email client, a request to SendGrids server for the invisible image is executed and an open event is logged. These events are logged in the Statistics portal, Email Activity interface, and are reported by the Event Webhook.
+Open Tracking adds an invisible image at the end of the email which can track email opens. If the email recipient has images enabled on their email client, a request to SendGrids server for the invisible image is executed and an open event is logged. These events are logged in the Statistics portal, Email Activity interface, and reported by the Event Webhook.
 
 You can track a variety of the actions your recipients may take when interacting with your emails including opening your emails, clicking on links in your emails, and subscribing to (or unsubscribing from) your emails.
 
@@ -4843,7 +5046,7 @@ For more information about tracking, please see our [User Guide](https://sendgri
 
 **This endpoint allows you to retrieve your current settings for open tracking.**
 
-Open Tracking adds an invisible image at the end of the email which can track email opens. If the email recipient has images enabled on their email client, a request to SendGrids server for the invisible image is executed and an open event is logged. These events are logged in the Statistics portal, Email Activity interface, and are reported by the Event Webhook.
+Open Tracking adds an invisible image at the end of the email which can track email opens. If the email recipient has images enabled on their email client, a request to SendGrids server for the invisible image is executed and an open event is logged. These events are logged in the Statistics portal, Email Activity interface, and reported by the Event Webhook.
 
 You can track a variety of the actions your recipients may take when interacting with your emails including opening your emails, clicking on links in your emails, and subscribing to (or unsubscribing from) your emails.
 
@@ -4923,7 +5126,7 @@ For more information about tracking, please see our [User Guide](https://sendgri
 
 Your user's account information includes the user's account type and reputation.
 
-Keeping your user profile up to date is important. This will help SendGrid to verify who you are as well as contact you should we need to.
+Keeping your user profile up to date is essential. This will help SendGrid to verify who you are as well as contact you should we need to.
 
 For more information about your user profile:
 
@@ -4963,7 +5166,7 @@ Your monthly credit allotment limits the number of emails you may send before in
 
 **This endpoint allows you to update the email address currently on file for your account.**
 
-Keeping your user profile up to date is important. This will help SendGrid to verify who you are as well as contact you should we need to.
+Keeping your user profile up to date is essential. This will help SendGrid to verify who you are as well as contact you should we need to.
 
 For more information about your user profile:
 
@@ -4989,7 +5192,7 @@ For more information about your user profile:
 
 **This endpoint allows you to retrieve the email address currently on file for your account.**
 
-Keeping your user profile up to date is important. This will help SendGrid to verify who you are as well as contact you should we need to.
+Keeping your user profile up to date is essential. This will help SendGrid to verify who you are as well as contact you should we need to.
 
 For more information about your user profile:
 
@@ -5011,7 +5214,7 @@ For more information about your user profile:
 
 **This endpoint allows you to update your password.**
 
-Keeping your user profile up to date is important. This will help SendGrid to verify who you are as well as contact you should we need to.
+Keeping your user profile up to date is essential. This will help SendGrid to verify who you are as well as contact you should we need to.
 
 For more information about your user profile:
 
@@ -5038,7 +5241,7 @@ For more information about your user profile:
 
 **This endpoint allows you to update your current profile details.**
 
-Keeping your user profile up to date is important. This will help SendGrid to verify who you are as well as contact you should we need to.
+Keeping your user profile up to date is essential. This will help SendGrid to verify who you are as well as contact you should we need to.
 
 For more information about your user profile:
 
@@ -5066,7 +5269,7 @@ It should be noted that any one or more of the parameters can be updated via the
 ```
 ## Get a user's profile
 
-Keeping your user profile up to date is important. This will help SendGrid to verify who you are as well as contact you should we need to.
+Keeping your user profile up to date is essential. This will help SendGrid to verify who you are as well as contact you should we need to.
 
 For more information about your user profile:
 
@@ -5091,7 +5294,7 @@ For more information about your user profile:
 If the maximum number of cancellations/pauses are added, HTTP 400 will
 be returned.
 
-The Cancel Scheduled Sends feature allows the customer to cancel a scheduled send based on a Batch ID included in the SMTPAPI header. Scheduled sends cancelled less than 10 minutes before the scheduled time are not guaranteed to be cancelled.
+The Cancel Scheduled Sends feature allows the customer to cancel a scheduled send based on a Batch ID included in the SMTPAPI header. Scheduled sends canceled less than 10 minutes before the scheduled time are not guaranteed to be canceled.
 
 ### POST /user/scheduled_sends
 
@@ -5114,7 +5317,7 @@ The Cancel Scheduled Sends feature allows the customer to cancel a scheduled sen
 
 **This endpoint allows you to retrieve all cancel/paused scheduled send information.**
 
-The Cancel Scheduled Sends feature allows the customer to cancel a scheduled send based on a Batch ID included in the SMTPAPI header. Scheduled sends cancelled less than 10 minutes before the scheduled time are not guaranteed to be cancelled.
+The Cancel Scheduled Sends feature allows the customer to cancel a scheduled send based on a Batch ID included in the SMTPAPI header. Scheduled sends canceled less than 10 minutes before the scheduled time are not guaranteed to be canceled.
 
 ### GET /user/scheduled_sends
 
@@ -5132,14 +5335,12 @@ The Cancel Scheduled Sends feature allows the customer to cancel a scheduled sen
 
 **This endpoint allows you to delete the cancellation/pause of a scheduled send.**
 
-The Cancel Scheduled Sends feature allows the customer to cancel a scheduled send based on a Batch ID included in the SMTPAPI header. Scheduled sends cancelled less than 10 minutes before the scheduled time are not guaranteed to be cancelled.
+The Cancel Scheduled Sends feature allows the customer to cancel a scheduled send based on a Batch ID included in the SMTPAPI header. Scheduled sends canceled less than 10 minutes before the scheduled time are not guaranteed to be canceled.
 
 ### DELETE /user/scheduled_sends/{batch_id}
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/user/scheduled_sends/{batch_id}';
   client.request(request)
@@ -5152,7 +5353,7 @@ The Cancel Scheduled Sends feature allows the customer to cancel a scheduled sen
 
 **This endpoint allows you to update the status of a scheduled send for the given `batch_id`.**
 
-The Cancel Scheduled Sends feature allows the customer to cancel a scheduled send based on a Batch ID included in the SMTPAPI header. Scheduled sends cancelled less than 10 minutes before the scheduled time are not guaranteed to be cancelled.
+The Cancel Scheduled Sends feature allows the customer to cancel a scheduled send based on a Batch ID included in the SMTPAPI header. Scheduled sends canceled less than 10 minutes before the scheduled time are not guaranteed to be canceled.
 
 ### PATCH /user/scheduled_sends/{batch_id}
 
@@ -5174,7 +5375,7 @@ The Cancel Scheduled Sends feature allows the customer to cancel a scheduled sen
 
 **This endpoint allows you to retrieve the cancel/paused scheduled send information for a specific `batch_id`.**
 
-The Cancel Scheduled Sends feature allows the customer to cancel a scheduled send based on a Batch ID included in the SMTPAPI header. Scheduled sends cancelled less than 10 minutes before the scheduled time are not guaranteed to be cancelled.
+The Cancel Scheduled Sends feature allows the customer to cancel a scheduled send based on a Batch ID included in the SMTPAPI header. Scheduled sends canceled less than 10 minutes before the scheduled time are not guaranteed to be canceled.
 
 ### GET /user/scheduled_sends/{batch_id}
 
@@ -5237,7 +5438,7 @@ The Enforced TLS settings specify whether or not the recipient is required to su
 
 **This endpoint allows you to update the username for your account.**
 
-Keeping your user profile up to date is important. This will help SendGrid to verify who you are as well as contact you should we need to.
+Keeping your user profile up to date is essential. This will help SendGrid to verify who you are as well as contact you should we need to.
 
 For more information about your user profile:
 
@@ -5263,7 +5464,7 @@ For more information about your user profile:
 
 **This endpoint allows you to retrieve your current account username.**
 
-Keeping your user profile up to date is important. This will help SendGrid to verify who you are as well as contact you should we need to.
+Keeping your user profile up to date is essential. This will help SendGrid to verify who you are as well as contact you should we need to.
 
 For more information about your user profile:
 
@@ -5289,7 +5490,7 @@ If an event type is marked as `true`, then the event webhook will include inform
 
 SendGrids Event Webhook will notify a URL of your choice via HTTP POST with information about events that occur as SendGrid processes your email.
 
-Common uses of this data are to remove unsubscribes, react to spam reports, determine unengaged recipients, identify bounced email addresses, or create advanced analytics of your email program.
+Typical uses of this data are to remove unsubscribes, react to spam reports, determine unengaged recipients, identify bounced email addresses, or create advanced analytics of your email program.
 
 ### PATCH /user/webhooks/event/settings
 
@@ -5327,7 +5528,7 @@ If an event type is marked as `true`, then the event webhook will include inform
 
 SendGrids Event Webhook will notify a URL of your choice via HTTP POST with information about events that occur as SendGrid processes your email.
 
-Common uses of this data are to remove unsubscribes, react to spam reports, determine unengaged recipients, identify bounced email addresses, or create advanced analytics of your email program.
+Typical uses of this data are to remove unsubscribes, react to spam reports, determine unengaged recipients, identify bounced email addresses, or create advanced analytics of your email program.
 
 ### GET /user/webhooks/event/settings
 
@@ -5347,7 +5548,7 @@ Common uses of this data are to remove unsubscribes, react to spam reports, dete
 
 SendGrids Event Webhook will notify a URL of your choice via HTTP POST with information about events that occur as SendGrid processes your email.
 
-Common uses of this data are to remove unsubscribes, react to spam reports, determine unengaged recipients, identify bounced email addresses, or create advanced analytics of your email program.
+Typical uses of this data are to remove unsubscribes, react to spam reports, determine unengaged recipients, identify bounced email addresses, or create advanced analytics of your email program.
 
 ### POST /user/webhooks/event/test
 
@@ -5418,8 +5619,6 @@ The inbound parse webhook allows you to have incoming emails parsed, extracting 
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/user/webhooks/parse/settings/{hostname}';
   client.request(request)
@@ -5476,7 +5675,7 @@ The inbound parse webhook allows you to have incoming emails parsed, extracting 
 
 SendGrid's Inbound Parse Webhook allows you to parse the contents and attachments of incoming emails. The Parse API can then POST the parsed emails to a URL that you specify. The Inbound Parse Webhook cannot parse messages greater than 20MB in size, including all attachments.
 
-There are a number of pre-made integrations for the SendGrid Parse Webhook which make processing events easy. You can find these integrations in the [Library Index](https://sendgrid.com/docs/Integrate/libraries.html#-Webhook-Libraries).
+There are many pre-made integrations for the SendGrid Parse Webhook which make processing events easy. You can find these integrations in the [Library Index](https://sendgrid.com/docs/Integrate/libraries.html#-Webhook-Libraries).
 
 ### GET /user/webhooks/parse/stats
 
@@ -5506,10 +5705,10 @@ There are a number of pre-made integrations for the SendGrid Parse Webhook which
 **This endpoint allows you to create a whitelabel for one of your domains.**
 
 If you are creating a domain whitelabel that you would like a subuser to use, you have two options:
-1. Use the "username" parameter. This allows you to create a whitelabel on behalf of your subuser. This means the subuser is able to see and modify the created whitelabel.
-2. Use the Association workflow (see Associate Domain section). This allows you to assign a whitelabel created by the parent to a subuser. This means the subuser will default to the assigned whitelabel, but will not be able to see or modify that whitelabel. However, if the subuser creates their own whitelabel it will overwrite the assigned whitelabel.
+1. Use the "username" parameter. This allows you to create a whitelabel on behalf of your subuser. This means the subuser can see and modify the created whitelabel.
+2. Use the Association workflow (see Associate Domain section). This allows you to assign a whitelabel created by the parent to a subuser. This means the subuser will default to the assigned whitelabel, but will not be able to see or modify that whitelabel. However, if the subuser creates their whitelabel it will overwrite the assigned whitelabel.
 
-A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your personal sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
+A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
 
 For more information on whitelabeling, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/Whitelabel/index.html)
 
@@ -5542,7 +5741,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 
 **This endpoint allows you to retrieve a list of all domain whitelabels you have created.**
 
-A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your personal sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
+A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
 
 For more information on whitelabeling, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/Whitelabel/index.html)
 
@@ -5570,7 +5769,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 
 **This endpoint allows you to retrieve the default whitelabel for a domain.**
 
-A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your personal sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
+A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
 
 For more information on whitelabeling, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/Whitelabel/index.html)
 
@@ -5595,7 +5794,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 
 **This endpoint allows you to disassociate a specific whitelabel from a subuser.**
 
-A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your personal sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
+A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
 
 Domain whitelabels can be associated with (i.e. assigned to) subusers from a parent account. This functionality allows subusers to send mail using their parent's whitelabels. To associate a whitelabel with a subuser, the parent account must first create the whitelabel and validate it. The parent may then associate the whitelabel via the subuser management tools.
 
@@ -5610,8 +5809,6 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/whitelabel/domains/subuser';
   client.request(request)
@@ -5624,7 +5821,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 
 **This endpoint allows you to retrieve all of the whitelabels that have been assigned to a specific subuser.**
 
-A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your personal sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
+A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
 
 Domain whitelabels can be associated with (i.e. assigned to) subusers from a parent account. This functionality allows subusers to send mail using their parent's whitelabels. To associate a whitelabel with a subuser, the parent account must first create the whitelabel and validate it. The parent may then associate the whitelabel via the subuser management tools.
 
@@ -5651,7 +5848,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 
 **This endpoint allows you to delete a domain whitelabel.**
 
-A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your personal sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
+A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
 
 For more information on whitelabeling, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/Whitelabel/index.html)
 
@@ -5659,8 +5856,6 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/whitelabel/domains/{domain_id}';
   client.request(request)
@@ -5673,7 +5868,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 
 **This endpoint allows you to update the settings for a domain whitelabel.**
 
-A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your personal sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
+A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
 
 For more information on whitelabeling, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/Whitelabel/index.html)
 
@@ -5698,7 +5893,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 
 **This endpoint allows you to retrieve a specific domain whitelabel.**
 
-A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your personal sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
+A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
 
 For more information on whitelabeling, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/Whitelabel/index.html)
 
@@ -5718,7 +5913,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 
 **This endpoint allows you to associate a specific domain whitelabel with a subuser.**
 
-A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your personal sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
+A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
 
 Domain whitelabels can be associated with (i.e. assigned to) subusers from a parent account. This functionality allows subusers to send mail using their parent's whitelabels. To associate a whitelabel with a subuser, the parent account must first create the whitelabel and validate it. The parent may then associate the whitelabel via the subuser management tools.
 
@@ -5749,7 +5944,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 
 **This endpoint allows you to add an IP address to a domain whitelabel.**
 
-A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your personal sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
+A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
 
 For more information on whitelabeling, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/Whitelabel/index.html)
 
@@ -5778,7 +5973,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 
 **This endpoint allows you to remove a domain's IP address from that domain's whitelabel.**
 
-A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your personal sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
+A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
 
 For more information on whitelabeling, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/Whitelabel/index.html)
 
@@ -5792,8 +5987,6 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/whitelabel/domains/{id}/ips/{ip}';
   client.request(request)
@@ -5806,7 +5999,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 
 **This endpoint allows you to validate a domain whitelabel. If it fails, it will return an error message describing why the whitelabel could not be validated.**
 
-A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your personal sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
+A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
 
 For more information on whitelabeling, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/Whitelabel/index.html)
 
@@ -5819,8 +6012,6 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'POST';
   request.url = '/v3/whitelabel/domains/{id}/validate';
   client.request(request)
@@ -5897,8 +6088,6 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/whitelabel/ips/{id}';
   client.request(request)
@@ -5939,8 +6128,6 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'POST';
   request.url = '/v3/whitelabel/ips/{id}/validate';
   client.request(request)
@@ -6008,7 +6195,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
 
 **This endpoint allows you to retrieve the default link whitelabel.**
 
-Default link whitelabel is the actual link whitelabel to be used when sending messages. If there are multiple link whitelabels, the default is determined by the following order:
+Default link whitelabel is the actual link whitelabel to be used when sending messages. If there are multiple link whitelabels, the following order will determine the default:
 <ul>
   <li>Validated link whitelabels marked as "default"</li>
   <li>Legacy link whitelabels (migrated from the whitelabel wizard)</li>
@@ -6051,8 +6238,6 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   const queryParams = {
   'username': 'test_string'
 };
@@ -6105,8 +6290,6 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/whitelabel/links/{id}';
   client.request(request)
@@ -6171,8 +6354,6 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'POST';
   request.url = '/v3/whitelabel/links/{id}/validate';
   client.request(request)
