@@ -575,9 +575,6 @@ class Mail {
     if (Object.keys(trackingSettings).length > 0) {
       json.trackingSettings = trackingSettings;
     }
-    if (substitutions && Object.keys(substitutions).length > 0) {
-      json.substitutions = substitutions;
-    }
     if (dynamicTemplateData && Object.keys(dynamicTemplateData).length > 0) {
       json.dynamicTemplateData = dynamicTemplateData;
     }
