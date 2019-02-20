@@ -165,6 +165,8 @@ class Mail {
    * Set template ID, also checks if the template is dynamic or legacy
    */
   setTemplateId(templateId) {
+    
+    //Validate
     if (typeof templateId === 'undefined') {
       return;
     }
@@ -172,10 +174,12 @@ class Mail {
       throw new Error('String expected for `templateId`');
     }
 
+    //Mark as dynamic if template ID starts with d-
     if (templateId.indexOf('d-') === 0) {
       this.isDynamic = true;
     }
-
+  
+    //Set ID
     this.templateId = templateId;
   }
 
@@ -541,7 +545,7 @@ class Mail {
       from, replyTo, sendAt, subject, content, templateId,
       personalizations, attachments, ipPoolName, batchId, asm,
       sections, headers, categories, customArgs, mailSettings,
-      trackingSettings,
+      trackingSettings, substitutions, dynamicTemplateData
     } = this;
 
     //Initialize with mandatory values
@@ -571,6 +575,12 @@ class Mail {
     if (Object.keys(trackingSettings).length > 0) {
       json.trackingSettings = trackingSettings;
     }
+    if (substitutions && Object.keys(substitutions).length > 0) {
+      json.substitutions = substitutions;
+    }
+    if (dynamicTemplateData && Object.keys(dynamicTemplateData).length > 0) {
+      json.dynamicTemplateData = dynamicTemplateData;
+    }
     if (Object.keys(customArgs).length > 0) {
       json.customArgs = customArgs;
     }
@@ -599,7 +609,10 @@ class Mail {
     }
 
     //Return as snake cased object
-    return toSnakeCase(json, ['substitutions', 'dynamicTemplateData', 'customArgs', 'headers', 'sections']);
+    return toSnakeCase(json, [
+      'substitutions', 'dynamicTemplateData', 
+      'customArgs', 'headers', 'sections',
+    ]);
   }
 
   /**************************************************************************
