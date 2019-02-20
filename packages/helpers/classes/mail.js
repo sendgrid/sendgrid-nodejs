@@ -545,7 +545,7 @@ class Mail {
       from, replyTo, sendAt, subject, content, templateId,
       personalizations, attachments, ipPoolName, batchId, asm,
       sections, headers, categories, customArgs, mailSettings,
-      trackingSettings, substitutions, dynamicTemplateData
+      trackingSettings, dynamicTemplateData
     } = this;
 
     //Initialize with mandatory values
