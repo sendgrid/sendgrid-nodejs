@@ -18,6 +18,7 @@ This documentation provides examples for specific email use cases. Please [open 
   * [Specifying Categories](#categories)
   * [Kitchen Sink - an example with all settings used](#kitchensink)
   * [Managing multiple API keys](#multipleapikeys)
+  * [Timeout](#timeout)
 * [Deploy a simple Hello Email app on Digital Ocean with Node.js](#digitaloceandeploy)
 * [Deploy a Simple App on Google App Engine with Node.js](#gae)
 * [Deploy a Simple App on Heroku with Node.js](#heroku)
@@ -567,6 +568,16 @@ sgMail
   .send(msg)
   .then(() => console.log('Mail sent successfully'))
   .catch(error => console.error(error.toString()));
+```
+
+<a name="timeout"></a>
+## Timeout
+
+The `setTimeout` method allows you to set a timeout on a request. It controls two timeouts: `read timeout` and `connection timeout` ([details](https://github.com/request/request#requestoptions-callback)).  The request will be aborted after the timeout. Note that the timeout is in milliseconds.
+
+```
+const sgMail = require('@sendgrid/mail');
+sgMail.setTimeout(3000);
 ```
 
 <a name="digitaloceandeploy"></a>
