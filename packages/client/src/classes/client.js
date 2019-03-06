@@ -136,7 +136,7 @@ class Client {
 
     //Execute callback if provided
     if (cb) {
-      promise
+      return promise
         .then(result => cb(null, result))
         .catch(error => cb(error, null));
     }
