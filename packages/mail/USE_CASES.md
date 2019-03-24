@@ -16,7 +16,7 @@ This documentation provides examples for specific email use cases. Please [open 
   * [Specifying Time to Send At](#time-to-send)
   * [Specifying Custom Headers](#custom-headers)
   * [Specifying Categories](#categories)
-  * [Kitchen Sink - an example with all settings used](#kitchensink)
+  * [Kitchen Sink - an example with all settings used](#kitchen-sink)
   * [Managing multiple API keys](#multipleapikeys)
 * [Deploy a simple Hello Email app on Digital Ocean with Node.js](#digitaloceandeploy)
 * [Deploy a Simple App on Google App Engine with Node.js](#gae)
