@@ -13,10 +13,10 @@
     "chai": "^4.0.1",
     "chai-as-promised": "^7.1.1",
     "dirty-chai": "^2.0.1",
-    "eslint": "^4.19.1",
+    "eslint": "^5.16.0",
     "istanbul": "^1.0.0-alpha.2",
-    "lerna": "^2.0.0-rc.5",
-    "mocha": "^3.4.2",
+    "lerna": "^3.13.4",
+    "mocha": "^6.1.4",
     "mocha-clean": "^1.0.0",
     "mocha-sinon": "^2.0.0",
     "moment": "^2.19.3",
@@ -53,7 +53,7 @@
   },
   "dependencies": {
     "chai": "^4.0.1",
-    "esdoc": "^1.0.3",
+    "esdoc": "^1.1.0",
     "esdoc-coverage-plugin": "^1.1.0",
     "esdoc-type-inference-plugin": "^1.0.1"
   },
