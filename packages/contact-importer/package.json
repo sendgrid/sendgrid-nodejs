@@ -1,8 +1,8 @@
 {
   "name": "@sendgrid/contact-importer",
-  "description": "SendGrid NodeJS contact importer",
+  "description": "Twilio SendGrid NodeJS contact importer",
   "version": "6.2.1",
-  "author": "SendGrid <dx@sendgrid.com> (sendgrid.com)",
+  "author": "Twilio SendGrid <dx@sendgrid.com> (sendgrid.com)",
   "contributors": [
     "Kyle Partridge <kyle.partridge@sendgrid.com>",
     "David Tomberlin <david.tomberlin@sendgrid.com>",
