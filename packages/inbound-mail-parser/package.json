@@ -1,8 +1,8 @@
 {
   "name": "@sendgrid/inbound-mail-parser",
-  "description": "SendGrid NodeJS inbound mail parser",
+  "description": "Twilio SendGrid NodeJS inbound mail parser",
   "version": "6.3.0",
-  "author": "SendGrid <dx@sendgrid.com> (sendgrid.com)",
+  "author": "Twilio SendGrid <dx@sendgrid.com> (sendgrid.com)",
   "contributors": [
     "Kyle Partridge <kyle.partridge@sendgrid.com>",
     "David Tomberlin <david.tomberlin@sendgrid.com>",

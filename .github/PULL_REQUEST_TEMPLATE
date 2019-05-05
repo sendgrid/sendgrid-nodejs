@@ -1,6 +1,7 @@
 <!--
 We appreciate the effort for this pull request but before that please make sure you read the contribution guidelines given above, then fill out the blanks below.
 
+**All third party contributors acknowledge that any contributions they provide will be made under the same open source license that the open source project is provided under.**
 
 Please enter each Issue number you are resolving in your PR after one of the following words [Fixes, Closes, Resolves]. This will auto-link these issues and close them when this PR is merged!
 e.g. 
@@ -10,6 +11,7 @@ Closes #2
 # Fixes # 
 
 ### Checklist
+- [ ] I acknowledge that all my contributions will be made under the project's license
 - [ ] I have made a material change to the repo (functionality, testing, spelling, grammar)
 - [ ] I have read the [Contribution Guide] and my PR follows them.
 - [ ] I updated my branch with the development branch.
@@ -21,4 +23,4 @@ Closes #2
 - 
 - 
 
-If you have questions, please send an email to [SendGrid](mailto:dx@sendgrid.com), or file a Github Issue in this repository.
+If you have questions, please send an email to [Twilio SendGrid](mailto:dx@sendgrid.com), or file a Github Issue in this repository.

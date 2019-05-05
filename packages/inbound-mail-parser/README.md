@@ -12,11 +12,11 @@ To be notified when this package is updated, please subscribe to email [notifica
 ## Prerequisites
 
 - Node.js version 6, 7 or 8
-- A SendGrid account, [sign up for free](https://sendgrid.com/free?source=sendgrid-nodejs) to send up to 40,000 emails for the first 30 days or check out [our pricing](https://sendgrid.com/pricing?source=sendgrid-nodejs).
+- A Twilio SendGrid account, [sign up for free](https://sendgrid.com/free?source=sendgrid-nodejs) to send up to 40,000 emails for the first 30 days or check out [our pricing](https://sendgrid.com/pricing?source=sendgrid-nodejs).
 
 ## Obtain an API Key
 
-Grab your API Key from the [SendGrid UI](https://app.sendgrid.com/settings/api_keys).
+Grab your API Key from the [Twilio SendGrid UI](https://app.sendgrid.com/settings/api_keys).
 
 # Install Package
 
@@ -49,8 +49,8 @@ Please see our [troubleshooting guide](https://github.com/sendgrid/sendgrid-node
 <a name="about"></a>
 # About
 
-@sendgrid/inbound-mail-parser is guided and supported by the SendGrid [Developer Experience Team](mailto:dx@sendgrid.com).
+@sendgrid/inbound-mail-parser is guided and supported by the Twilio SendGrid [Developer Experience Team](mailto:dx@sendgrid.com).
 
-@sendgrid/inbound-mail-parser is maintained and funded by SendGrid, Inc. The names and logos for @sendgrid/inbound-mail-parser are trademarks of SendGrid, Inc.
+@sendgrid/inbound-mail-parser is maintained and funded by Twilio SendGrid, Inc. The names and logos for @sendgrid/inbound-mail-parser are trademarks of Twilio SendGrid, Inc.
 
-![SendGrid Logo](https://uiux.s3.amazonaws.com/2016-logos/email-logo%402x.png)
+![Twilio SendGrid Logo](https://github.com/sendgrid/sendgrid-python/raw/master/twilio_sendgrid_logo.png)

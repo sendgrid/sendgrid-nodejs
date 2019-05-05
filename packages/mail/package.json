@@ -1,8 +1,8 @@
 {
   "name": "@sendgrid/mail",
-  "description": "SendGrid NodeJS mail service",
+  "description": "Twilio SendGrid NodeJS mail service",
   "version": "6.3.1",
-  "author": "SendGrid <dx@sendgrid.com> (sendgrid.com)",
+  "author": "Twilio SendGrid <dx@sendgrid.com> (sendgrid.com)",
   "contributors": [
     "Kyle Partridge <kyle.partridge@sendgrid.com>",
     "David Tomberlin <david.tomberlin@sendgrid.com>",

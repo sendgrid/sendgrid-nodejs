@@ -1,21 +1,21 @@
 # Email Subscription Widget with Double Opt-In
 
-Note: This is not an officially supported SendGrid library
+Note: This is not an officially supported Twilio SendGrid library
 
-This is an open source repository to add a flexible email subscription widget, like the one shown below, to any website using [SendGrid](https://sendgrid.com/). After following these directions, you'll be able to add a snippet of HTML to any website that will collect email addresses for your app or business. This widget utilizes [double opt-in](https://sendgrid.com/docs/Glossary/opt_in_email.html) functionality, which means users must confirm their email addresses by clicking an email that is automatically sent to their provided email address.
+This is an open source repository to add a flexible email subscription widget, like the one shown below, to any website using [Twilio SendGrid](https://sendgrid.com/). After following these directions, you'll be able to add a snippet of HTML to any website that will collect email addresses for your app or business. This widget utilizes [double opt-in](https://sendgrid.com/docs/Glossary/opt_in_email.html) functionality, which means users must confirm their email addresses by clicking an email that is automatically sent to their provided email address.
 
 ![alt text](https://github.com/devchas/sendgrid_subscription_widget/blob/master/server/static/sample-form.png "Sample Form")
 
 ## Requirements
 
 Before following these instructions, you must:
-* Have a SendGrid account - [sign up here](https://sendgrid.com/pricing/)
+* Have a Twilio SendGrid account - [sign up here](https://sendgrid.com/pricing/)
 * Sign up for a [free Heroku account](https://signup.heroku.com/)
 
 ## Instructions
 
-### Initial SendGrid Set-up - Create API Key & Contact List
-To begin, you will first need to create an API key on SendGrid's website. Once logged in, go to Settings -> API Keys, and click the blue button in the top right corner of the website.  You will be creating a General API key, which must have *Full Access* to *Mail Send* and *Marketing Campaigns*.  Keep this API key in a *safe* and *private* location.  You will need it later.
+### Initial Twilio SendGrid Set-up - Create API Key & Contact List
+To begin, you will first need to create an API key on Twilio SendGrid's website. Once logged in, go to Settings -> API Keys, and click the blue button in the top right corner of the website.  You will be creating a General API key, which must have *Full Access* to *Mail Send* and *Marketing Campaigns*.  Keep this API key in a *safe* and *private* location.  You will need it later.
 
 ### Fork this Repository to Create Your Copy
 If you are unfamiliar with Github, just click the button that reads *Fork* in the top right of this page. Doing this will provide you with your copy.  You'll need to change a few basic settings in your copy.
@@ -77,7 +77,7 @@ Navigate to the index.html file (server -> static -> index.html) and change the 
 Next, configure your API key as an environmental variable, which can be done either through Heroku's user interface or the Heroku CLI as shown in [these directions](https://devcenter.heroku.com/articles/config-vars). Updating the environment variable in your Heroku account can be done by logging into your Heroku account, navigate to your newly deployed app, and clicking settings. Inside the settings page, you will see an option to "Reveal Config Vars".  You must name your variable holding your API key *SG_API_KEY*.
 
 ### Enable Event Webhook
-The final step is to enable the event webhook on your SendGrid account. This will allow the opt-in component of the signup to function correctly. To set up an event webhook, navigate to Settings -> Mail Settings, and then click on *Event Notification*.  
+The final step is to enable the event webhook on your Twilio SendGrid account. This will allow the opt-in component of the signup to function correctly. To set up an event webhook, navigate to Settings -> Mail Settings, and then click on *Event Notification*.  
 
 Make sure the toggle in the top left of that section is set to *ON*. Click edit. Enter the root URL of your Heroku app + '/signup'. The following is an example URL: https://your_heroku_app_name.herokuapp.com/signup. 
 
@@ -85,7 +85,7 @@ For the types of events to receive, make sure to select only *Clicked*. Then, cl
 
 
 ### Test Your Widget
-To quickly test that your subscription widget is working correctly, you may navigate to the root URL of your Heroku app and enter an email that you have access to. If everything is working, you should receive an email with a link to confirm your subscription. Upon clicking this link, the email should be added to the SendGrid contact list you created earlier.
+To quickly test that your subscription widget is working correctly, you may navigate to the root URL of your Heroku app and enter an email that you have access to. If everything is working, you should receive an email with a link to confirm your subscription. Upon clicking this link, the email should be added to the Twilio SendGrid contact list you created earlier.
 
 ## Usage and Customization
 
@@ -98,7 +98,7 @@ To use this widget, once you've followed the setup steps above, drop all of the 
 You may change the look and feel of the form or create a new one.  The form will continue to work so long as the action is what you specified earlier, the method is a POST, and there is an input element with name *email*.  The default widget comes with three fields: 1) email, 2) first name, 3) last name.  You may remove first and/or last name if you so choose.  Also, you may change the form's styling by adjusting the CSS contained in index.html.
 
 #### Adding New Fields
-You may also add [custom fields](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/custom_fields.html) to the form to save other information about your users during the sign up process. To do so, simply add an input field with the name(s) of your custom field(s). If you add a custom field to your form that does not already exist in your SendGrid account, one will automatically be created with the name specified in the form. The example below shows a form with the custom field "favorite_color".
+You may also add [custom fields](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/custom_fields.html) to the form to save other information about your users during the sign up process. To do so, simply add an input field with the name(s) of your custom field(s). If you add a custom field to your form that does not already exist in your Twilio SendGrid account, one will automatically be created with the name specified in the form. The example below shows a form with the custom field "favorite_color".
 
 ```html
 <form action="https://your_heroku_app_name.herokuapp.com/confirmEmail" method="post">

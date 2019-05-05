@@ -3,7 +3,7 @@ const ContactImporter = require('./importer');
 
 describe('test_contact_importer', function() {
   beforeEach(function() {
-    // Create a new SendGrid instance.
+    // Create a new Twilio SendGrid instance.
     const API_KEY = process.env.API_KEY;
     sendgrid.setApiKey(API_KEY);
 
