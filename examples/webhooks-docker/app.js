@@ -11,4 +11,4 @@ app.use('/event_webhook', eventWebhook)
 app.use('/parse_webhook', parseWebhook)
 
 
-app.listen(port, () => console.log(`SendGrid webhook listener started on port ${port}!`))
+app.listen(port, () => console.log(`Twilio SendGrid webhook listener started on port ${port}!`))

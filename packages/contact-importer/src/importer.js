@@ -64,7 +64,7 @@ class ContactImporter extends EventEmitter {
   }
 
   /**
-   * Send a batch of contacts to SendGrid.
+   * Send a batch of contacts to Twilio SendGrid.
    *
    * @param {Object} task Task to be processed (data in 'data' property)
    * @param {Function} callback Callback function.

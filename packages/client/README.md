@@ -5,7 +5,7 @@
 **This package is part of a monorepo, please see [this README](https://github.com/sendgrid/sendgrid-nodejs/blob/master/README.md) for details.**
 
 # Client for the Sendgrid v3 Web API
-This client library is used by the other [SendGrid service packages](https://www.npmjs.com/org/sendgrid) to make requests to the [Sendgrid v3 Web API](https://sendgrid.com/docs/API_Reference/api_v3.html). You can also use it independently to make custom requests to the SendGrid v3 Web API and other HTTP APIs.
+This client library is used by the other [Twilio SendGrid service packages](https://www.npmjs.com/org/sendgrid) to make requests to the [Twilio SendGrid v3 Web API](https://sendgrid.com/docs/API_Reference/api_v3.html). You can also use it independently to make custom requests to the Twilio SendGrid v3 Web API and other HTTP APIs.
 
 To be notified when this package is updated, please subscribe to email [notifications](https://dx.sendgrid.com/newsletter/nodejs) for releases and breaking changes.
 
@@ -14,15 +14,15 @@ To be notified when this package is updated, please subscribe to email [notifica
 ## Prerequisites
 
 - Node.js version 6, 7 or 8
-- A SendGrid account, [sign up for free](https://sendgrid.com/free?source=sendgrid-nodejs) to send up to 40,000 emails for the first 30 days or check out [our pricing](https://sendgrid.com/pricing?source=sendgrid-nodejs).
+- A Twilio SendGrid account, [sign up for free](https://sendgrid.com/free?source=sendgrid-nodejs) to send up to 40,000 emails for the first 30 days or check out [our pricing](https://sendgrid.com/pricing?source=sendgrid-nodejs).
 
 ## Obtain an API Key
 
-Grab your API Key from the [SendGrid UI](https://app.sendgrid.com/settings/api_keys).
+Grab your API Key from the [Twilio SendGrid UI](https://app.sendgrid.com/settings/api_keys).
 
 ## Setup Environment Variables
 
-Do not hardcode your [SendGrid API Key](https://app.sendgrid.com/settings/api_keys) into your code. Instead, use an environment variable or some other secure means of protecting your SendGrid API Key. Following is an example of using an environment variable.
+Do not hardcode your [Twilio SendGrid API Key](https://app.sendgrid.com/settings/api_keys) into your code. Instead, use an environment variable or some other secure means of protecting your Twilio SendGrid API Key. Following is an example of using an environment variable.
 
 Update the development environment with your [SENDGRID_API_KEY](https://app.sendgrid.com/settings/api_keys), for example:
 
@@ -49,7 +49,7 @@ yarn add @sendgrid/client
 <a name="general"></a>
 ## General v3 Web API Usage Example
 
-Please see [USAGE.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/client/USAGE.md) for all endpoint examples for the [SendGrid v3 Web API](https://sendgrid.com/docs/API_Reference/api_v3.html).
+Please see [USAGE.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/client/USAGE.md) for all endpoint examples for the [Twilio SendGrid v3 Web API](https://sendgrid.com/docs/API_Reference/api_v3.html).
 
 ```js
 const client = require('@sendgrid/client');
@@ -118,8 +118,8 @@ Please see our [troubleshooting guide](https://github.com/sendgrid/sendgrid-node
 <a name="about"></a>
 # About
 
-@sendgrid/client is guided and supported by the SendGrid [Developer Experience Team](mailto:dx@sendgrid.com).
+@sendgrid/client is guided and supported by the Twilio SendGrid [Developer Experience Team](mailto:dx@sendgrid.com).
 
-@sendgrid/client is maintained and funded by SendGrid, Inc. The names and logos for @sendgrid/client are trademarks of SendGrid, Inc.
+@sendgrid/client is maintained and funded by Twilio SendGrid, Inc. The names and logos for @sendgrid/client are trademarks of Twilio SendGrid, Inc.
 
-![SendGrid Logo](https://uiux.s3.amazonaws.com/2016-logos/email-logo%402x.png)
+![Twilio SendGrid Logo](https://github.com/sendgrid/sendgrid-python/raw/master/twilio_sendgrid_logo.png)

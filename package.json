@@ -41,7 +41,7 @@
     "test": "npm run test:all -s",
     "coverage": "open -a \"Google Chrome\" ./coverage/lcov-report/index.html"
   },
-  "description": "![SendGrid Logo](https://uiux.s3.amazonaws.com/2016-logos/email-logo%402x.png)",
+  "description": "![Twilio SendGrid Logo](https://github.com/sendgrid/sendgrid-python/raw/master/twilio_sendgrid_logo.png)",
   "bugs": {
     "url": "https://github.com/sendgrid/sendgrid-nodejs/issues"
   },
@@ -57,5 +57,5 @@
     "esdoc-coverage-plugin": "^1.1.0",
     "esdoc-type-inference-plugin": "^1.0.1"
   },
-  "author": "SendGrid"
+  "author": "Twilio SendGrid"
 }

@@ -64,7 +64,7 @@ describe('test_parse', () => {
     it('should parse raw email from payload and return a mail object', (done) => {
       const request = {
         body: {
-          email: 'MIME-Version: 1.0\r\nReceived: by 0.0.0.0 with HTTP; Wed, 10 Aug 2016 14:44:21 -0700 (PDT)\r\nFrom: Example User <test@example.com>\r\nDate: Wed, 10 Aug 2016 14:44:21 -0700\r\nSubject: Inbound Parse Test Raw Data\r\nTo: inbound@inbound.inbound.com\r\nContent-Type: multipart/alternative; boundary=001a113ee97c89842f0539be8e7a\r\n\r\n--001a113ee97c89842f0539be8e7a\r\nContent-Type: text/plain; charset=UTF-8\r\n\r\nHello SendGrid!\r\n\r\n--001a113ee97c89842f0539be8e7a\r\nContent-Type: text/html; charset=UTF-8\r\nContent-Transfer-Encoding: quoted-printable\r\n\r\n<html><body><strong>Hello SendGrid!</body></html>\r\n\r\n--001a113ee97c89842f0539be8e7a--\r\n',
+          email: 'MIME-Version: 1.0\r\nReceived: by 0.0.0.0 with HTTP; Wed, 10 Aug 2016 14:44:21 -0700 (PDT)\r\nFrom: Example User <test@example.com>\r\nDate: Wed, 10 Aug 2016 14:44:21 -0700\r\nSubject: Inbound Parse Test Raw Data\r\nTo: inbound@inbound.inbound.com\r\nContent-Type: multipart/alternative; boundary=001a113ee97c89842f0539be8e7a\r\n\r\n--001a113ee97c89842f0539be8e7a\r\nContent-Type: text/plain; charset=UTF-8\r\n\r\nHello Twilio SendGrid!\r\n\r\n--001a113ee97c89842f0539be8e7a\r\nContent-Type: text/html; charset=UTF-8\r\nContent-Transfer-Encoding: quoted-printable\r\n\r\n<html><body><strong>Hello Twilio SendGrid!</body></html>\r\n\r\n--001a113ee97c89842f0539be8e7a--\r\n',
         },
       };
 
