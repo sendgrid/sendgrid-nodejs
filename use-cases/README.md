@@ -17,6 +17,7 @@ This documentation provides examples for specific Twilio SendGrid v3 API use cas
   * [Specifying Time to Send At](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/time-to-send.md)
   * [Specifying Custom Headers](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/custom-headers.md)
   * [Specifying Categories](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/categories.md)
+  * [Timeout](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/timeout.md)
   * [Kitchen Sink - an example with all settings used](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/kitchen-sink.md)
 
 # Non-Email Use Cases
