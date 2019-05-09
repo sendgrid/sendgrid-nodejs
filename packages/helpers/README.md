@@ -39,8 +39,8 @@ We encourage contribution to our libraries (you might even score some nifty swag
 <a name="about"></a>
 # About
 
-@sendgrid/helpers are guided and supported by the SendGrid [Developer Experience Team](mailto:dx@sendgrid.com).
+@sendgrid/helpers are guided and supported by the Twilio SendGrid [Developer Experience Team](mailto:dx@sendgrid.com).
 
-@sendgrid/helpers are maintained and funded by SendGrid, Inc. The names and logos for @sendgrid/helpers are trademarks of SendGrid, Inc.
+@sendgrid/helpers are maintained and funded by Twilio SendGrid, Inc. The names and logos for @sendgrid/helpers are trademarks of Twilio SendGrid, Inc.
 
-![SendGrid Logo](https://uiux.s3.amazonaws.com/2016-logos/email-logo%402x.png)
+![Twilio SendGrid Logo](https://github.com/sendgrid/sendgrid-python/raw/master/twilio_sendgrid_logo.png)

@@ -15,7 +15,7 @@ const {
 } = require('@sendgrid/helpers');
 
 /**
- * SendGrid REST Client
+ * Twilio SendGrid REST Client
  */
 class Client {
 
