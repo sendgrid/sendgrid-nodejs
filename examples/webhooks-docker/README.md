@@ -1,14 +1,14 @@
 # Introduction
 
-This is an example project for using a Docker container as a [SendGrid](https://sendgrid.com) [inbound parse email](https://sendgrid.com/docs/for-developers/parsing-email/setting-up-the-inbound-parse-webhook/) webhooks and [event webhooks](https://sendgrid.com/docs/for-developers/tracking-events/getting-started-event-webhook/)
+This is an example project for using a Docker container as a [Twilio SendGrid](https://sendgrid.com) [inbound parse email](https://sendgrid.com/docs/for-developers/parsing-email/setting-up-the-inbound-parse-webhook/) webhooks and [event webhooks](https://sendgrid.com/docs/for-developers/tracking-events/getting-started-event-webhook/)
 
 # Prerequisites
 
 * [Docker CE 18](https://www.docker.com/get-started)
 * (Optional for development) A local Kubernetes installation
-* SendGrid Account with inbound parse enabled to send form data (default)
+* Twilio SendGrid Account with inbound parse enabled to send form data (default)
     * [Setup Inbound Parse Webhook](https://sendgrid.com/docs/for-developers/parsing-email/setting-up-the-inbound-parse-webhook/)
-* SendGrid Account with event webhooks enabled
+* Twilio SendGrid Account with event webhooks enabled
     * [Getting Started with Event Webhook](https://sendgrid.com/docs/for-developers/tracking-events/getting-started-event-webhook/)
 * [Ngrok](https://ngrok.com/) or Internet accessible URL
 
@@ -39,7 +39,7 @@ At the moment, the `app.js` only prints data to the console.  You can extend thi
 
 ### Inbound Parse Webhook
 
-The [routes/inbound-parse.js](routes/inbound-parse.js) route uses the [express-formidable](https://github.com/utatti/express-formidable) middleware to process the form data sent by SendGrid's Inbound Parse Webhook.  
+The [routes/inbound-parse.js](routes/inbound-parse.js) route uses the [express-formidable](https://github.com/utatti/express-formidable) middleware to process the form data sent by Twilio SendGrid's Inbound Parse Webhook.  
 
 The events are available in the `/parse_webhook` route in the `req.fields` object.  The [app.js](app.js) contains logging statements for the elements that are available to you.  It may be useful to review the [example-webhook-payload.txt](example-webhook-payload.txt) for what the form data looks like when extending this application.
 

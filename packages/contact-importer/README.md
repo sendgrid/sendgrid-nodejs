@@ -23,8 +23,8 @@ Please see our [troubleshooting guide](https://github.com/sendgrid/sendgrid-node
 <a name="about"></a>
 # About
 
-@sendgrid/contact-importer is guided and supported by the SendGrid [Developer Experience Team](mailto:dx@sendgrid.com).
+@sendgrid/contact-importer is guided and supported by the Twilio SendGrid [Developer Experience Team](mailto:dx@sendgrid.com).
 
-@sendgrid/contact-importer is maintained and funded by SendGrid, Inc. The names and logos for @sendgrid/contact-importer are trademarks of SendGrid, Inc.
+@sendgrid/contact-importer is maintained and funded by Twilio SendGrid, Inc. The names and logos for @sendgrid/contact-importer are trademarks of Twilio SendGrid, Inc.
 
-![SendGrid Logo](https://uiux.s3.amazonaws.com/2016-logos/email-logo%402x.png)
+![Twilio SendGrid Logo](https://github.com/sendgrid/sendgrid-python/raw/master/twilio_sendgrid_logo.png)
