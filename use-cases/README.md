@@ -11,6 +11,7 @@ This documentation provides examples for specific Twilio SendGrid v3 API use cas
 * [Advanced Usage](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/advanced.md)
   * [Transactional Templates](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/transactional-templates.md)
   * [Legacy Transactional Templates](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/transactional-legacy-templates.md)
+  * [Hide Warnings](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/hide-warnings.md)
   * [Attachments](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/attachments.md)
   * [Customization Per Recipient](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/customization.md)
   * [Manually Providing Content](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/manual-content.md)
