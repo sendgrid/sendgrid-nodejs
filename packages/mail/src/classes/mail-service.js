@@ -38,6 +38,17 @@ class MailService {
   }
 
   /**
+   * Set client timeout
+   */
+  setTimeout(timeout) {
+    if (typeof timeout === 'undefined') {
+      return;
+    }
+
+    this.client.setDefaultRequest('timeout', timeout);
+  }
+
+  /**
    * Set substitution wrappers
    */
   setSubstitutionWrappers(left, right) {
