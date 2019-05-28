@@ -1619,13 +1619,13 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 ```javascript
   const data = [
   {
-    "age": 25, 
+    "age": "25", 
     "email": "example@example.com", 
     "first_name": "", 
     "last_name": "User"
   }, 
   {
-    "age": 25, 
+    "age": "25", 
     "email": "example2@example.com", 
     "first_name": "Example", 
     "last_name": "User"
