@@ -7,7 +7,7 @@ export interface PersonalizationData {
   subject?: string;
   headers?: { [key: string]: string };
   substitutions?: { [key: string]: string };
-  dynamicTemplateData?: { [key: string]: string; };
+  dynamicTemplateData?: { [key: string]: any; };
   customArgs?: { [key: string]: string };
   sendAt?: number;
 }
