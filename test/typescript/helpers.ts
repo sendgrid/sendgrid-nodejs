@@ -10,7 +10,13 @@ new helpers.classes.EmailAddress({ name: "Some One", email: "someone@example.org
 
 new helpers.classes.Personalization({
     to: "someone@example.org",
-    subject: "Hello Some One"
+    subject: "Hello Some One",
+    dynamicTemplateData: {
+        translations: {
+            hello: "Привет!"
+        },
+        count: 1
+    }
 });
 
 new helpers.classes.Mail({

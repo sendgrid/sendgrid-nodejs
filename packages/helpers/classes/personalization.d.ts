@@ -112,7 +112,7 @@ export default class Personalization {
   /**
    * Set dynamic template data
    */
-  setDynamicTemplateData(dynamicTemplateData: { [key: string]: string }): void;
+  setDynamicTemplateData(dynamicTemplateData: { [key: string]: any }): void;
 
   /**
    * To JSON
