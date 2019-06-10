@@ -248,7 +248,7 @@ class Mail {
     if (this.isDynamic && personalization.substitutions) {
       delete personalization.substitutions;
     }
-    else if (personalization.dynamicTemplateData) {
+    else if (!this.isDynamic && personalization.dynamicTemplateData) {
       delete personalization.dynamicTemplateData;
     }
 
