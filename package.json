@@ -13,6 +13,9 @@
     "chai": "^4.0.1",
     "chai-as-promised": "^7.1.1",
     "dirty-chai": "^2.0.1",
+    "esdoc": "^1.0.3",
+    "esdoc-coverage-plugin": "^1.1.0",
+    "esdoc-type-inference-plugin": "^1.0.1",
     "eslint": "^4.19.1",
     "istanbul": "^1.0.0-alpha.2",
     "lerna": "^2.0.0-rc.5",
@@ -51,11 +54,6 @@
     "doc": "docs",
     "test": "test"
   },
-  "dependencies": {
-    "chai": "^4.0.1",
-    "esdoc": "^1.0.3",
-    "esdoc-coverage-plugin": "^1.1.0",
-    "esdoc-type-inference-plugin": "^1.0.1"
-  },
+  "dependencies": {},
   "author": "Twilio SendGrid"
 }
