@@ -80,7 +80,7 @@ class ContactImporter extends EventEmitter {
 
     const request = {
       method: 'POST',
-      path: '/v3/contactdb/recipients',
+      uri: '/v3/contactdb/recipients',
       body: data,
     };
 
