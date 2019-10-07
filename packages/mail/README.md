@@ -5,6 +5,7 @@
 **This package is part of a monorepo, please see [this README](https://github.com/sendgrid/sendgrid-nodejs/blob/master/README.md) for details.**
 
 # Mail Service for the Sendgrid v3 Web API
+
 This is a dedicated service for interaction with the mail endpoint of the [Sendgrid v3 API](https://sendgrid.com/docs/API_Reference/api_v3.html).
 
 To be notified when this package is updated, please subscribe to email [notifications](https://dx.sendgrid.com/newsletter/nodejs) for releases and breaking changes.
@@ -47,6 +48,7 @@ yarn add @sendgrid/mail
 ```
 
 <a name="quick-start"></a>
+
 # Quick Start, Hello Email
 
 The following is the minimum needed code to send a simple email. Use this example, and modify the `to` and `from` variables:
@@ -54,50 +56,63 @@ The following is the minimum needed code to send a simple email. Use this exampl
 For more complex use cases, please see [USE_CASES.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/README.md#email-use-cases).
 
 ```js
-const sgMail = require('@sendgrid/mail');
+const sgMail = require("@sendgrid/mail");
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const msg = {
-  to: 'test@example.com',
-  from: 'test@example.com',
-  subject: 'Sending with Twilio SendGrid is Fun',
-  text: 'and easy to do anywhere, even with Node.js',
-  html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+  to: "test@example.com",
+  from: "test@example.com",
+  subject: "Sending with Twilio SendGrid is Fun",
+  text: "and easy to do anywhere, even with Node.js",
+  html: "<strong>and easy to do anywhere, even with Node.js</strong>"
 };
-sgMail.send(msg);
+sgMail
+  .send(msg)
+  .then(res => {
+    /*Resolved*/
+  })
+  .catch(error => {
+    /*Rejected*/
+  });
 ```
 
 After executing the above code, you should have an email in the inbox of the recipient. You can check the status of your email [in the UI](https://app.sendgrid.com/email_activity?). Alternatively, we can post events to a URL of your choice using our [Event Webhook](https://sendgrid.com/docs/API_Reference/Webhooks/event.html). This gives you data about the events that occur as Twilio SendGrid processes your email.
 
 <a name="troubleshooting"></a>
+
 # Troubleshooting
 
 Please see our [troubleshooting guide](https://github.com/sendgrid/sendgrid-nodejs/blob/master/TROUBLESHOOTING.md) for common library issues.
 
 <a name="announcements"></a>
+
 # Announcements
 
 All updates to this library are documented in our [CHANGELOG](https://github.com/sendgrid/sendgrid-nodejs/blob/master/CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases). You may also subscribe to email [release notifications](https://dx.sendgrid.com/newsletter/nodejs) for releases and breaking changes.
 
 <a name="roadmap"></a>
+
 # Roadmap
 
 If you are interested in the future direction of this project, please take a look at our open [issues](https://github.com/sendgrid/sendgrid-nodejs/issues) and [pull requests](https://github.com/sendgrid/sendgrid-nodejs/pulls). We would love to hear your feedback!
 
 <a name="contribute"></a>
+
 # How to Contribute
 
 We encourage contribution to our libraries (you might even score some nifty swag), please see our [CONTRIBUTING](https://github.com/sendgrid/sendgrid-nodejs/blob/master/CONTRIBUTING.md) guide for details.
 
-* [Feature Request](https://github.com/sendgrid/sendgrid-nodejs/tree/master/CONTRIBUTING.md#feature-request)
-* [Bug Reports](https://github.com/sendgrid/sendgrid-nodejs/tree/master/CONTRIBUTING.md#submit-a-bug-report)
-* [Improvements to the Codebase](https://github.com/sendgrid/sendgrid-nodejs/tree/master/CONTRIBUTING.md#improvements-to-the-codebase)
+- [Feature Request](https://github.com/sendgrid/sendgrid-nodejs/tree/master/CONTRIBUTING.md#feature-request)
+- [Bug Reports](https://github.com/sendgrid/sendgrid-nodejs/tree/master/CONTRIBUTING.md#submit-a-bug-report)
+- [Improvements to the Codebase](https://github.com/sendgrid/sendgrid-nodejs/tree/master/CONTRIBUTING.md#improvements-to-the-codebase)
 
 <a name="troubleshooting"></a>
+
 # Troubleshooting
 
 Please see our [troubleshooting guide](https://github.com/sendgrid/sendgrid-nodejs/blob/master/TROUBLESHOOTING.md) for common library issues.
 
 <a name="about"></a>
+
 # About
 
 @sendgrid/mail is guided and supported by the Twilio SendGrid [Developer Experience Team](mailto:dx@sendgrid.com).
