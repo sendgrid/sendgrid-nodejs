@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.7.7",
+    "@babel/node": "^7.7.7",
     "chai": "^4.0.1",
     "chai-as-promised": "^7.1.1",
     "dirty-chai": "^2.0.1",
