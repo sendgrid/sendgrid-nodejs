@@ -23,7 +23,6 @@ script:
 - yarn test:helpers
 - yarn test:typescript
 - yarn lint
-- yarn doc
 notifications:
   hipchat:
     rooms:

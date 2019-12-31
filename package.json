@@ -8,15 +8,15 @@
     "url": "git://github.com/sendgrid/sendgrid-nodejs.git"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-preset-es2015": "^6.24.1",
+    "@babel/cli": "^7.7.7",
+    "@babel/node": "^7.7.7",
     "chai": "^4.0.1",
     "chai-as-promised": "^7.1.1",
     "dirty-chai": "^2.0.1",
     "eslint": "^4.19.1",
     "istanbul": "^1.0.0-alpha.2",
-    "lerna": "^2.0.0-rc.5",
-    "mocha": "^3.4.2",
+    "lerna": "^3.19.0",
+    "mocha": "^6.2.2",
     "mocha-clean": "^1.0.0",
     "mocha-sinon": "^2.0.0",
     "moment": "^2.19.3",
@@ -25,7 +25,6 @@
     "typescript": "~2.4.2"
   },
   "scripts": {
-    "doc": "esdoc",
     "lint": "eslint . --fix",
     "prism:install": "curl https://raw.githubusercontent.com/stoplightio/prism/master/install.sh | sh",
     "prism": "prism run --mock --list --spec https://raw.githubusercontent.com/sendgrid/sendgrid-oai/master/oai_stoplight.json",
@@ -48,14 +47,10 @@
   "homepage": "https://github.com/sendgrid/sendgrid-nodejs#readme",
   "main": "index.js",
   "directories": {
-    "doc": "docs",
     "test": "test"
   },
   "dependencies": {
-    "chai": "^4.0.1",
-    "esdoc": "^1.0.3",
-    "esdoc-coverage-plugin": "^1.1.0",
-    "esdoc-type-inference-plugin": "^1.0.1"
+    "chai": "^4.0.1"
   },
   "author": "Twilio SendGrid"
 }
