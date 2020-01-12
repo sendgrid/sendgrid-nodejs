@@ -24,6 +24,39 @@ Used by the Mail class to compose `Personalization` objects.
 ## Email address
 `Helper` class to represent an email address with name/email. Used by both the `Mail` and `Personalization` classes to deal with email addresses of various formats.
 
+### Usage
+
+```javascript
+
+// ES5
+const sgHelpers = require('@sendgrid/helpers');
+const sgMail = require('@sendgrid/mail'); // NOT REQUIRED, JUST FOR ILLUSTRATION
+
+const msg = {
+  from: new sgHelpers.classes.EmailAddress({
+    name: _NAME OF THE SENDER_,
+    email: _EMAIL OF THE SENDER_
+   })
+}
+
+sgMail.send(msg)
+
+
+// ES6
+import { classes } from '@sendgrid/helpers';
+import sgMail from '@sendgrid/mail'; // NOT REQUIRED, JUST FOR ILLUSTRATION
+
+const msg = {
+  from: classes.EmailAddress({
+    name: _NAME OF THE SENDER_,
+    email: _EMAIL OF THE SENDER_
+  })
+}
+
+sgMail.send(msg);
+
+```
+
 ## Helpers
 Internal helpers that mostly speak for themselves.
 
