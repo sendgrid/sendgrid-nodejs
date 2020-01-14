@@ -7,3 +7,4 @@ test/config.js
 .vscode/
 prism_darwin_amd64
 docs/
+prism/

@@ -1,8 +1,8 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## [6.4.0] - 2019-05-06 ##
-
+[2019-05-06] Version 6.4.0
+--------------------------
 ### Added
 - [PR #720](https://github.com/sendgrid/sendgrid-nodejs/pull/720): Updated README tags. Big thanks to [Anshul Singhal](https://github.com/af4ro) for the PR!
 - [PR #726](https://github.com/sendgrid/sendgrid-nodejs/pull/726): Readability updates. Big thanks to [Anshul Singhal](https://github.com/af4ro) for the PR!
@@ -425,4 +425,3 @@ That is, in both cases, error.response is present
 ### Added
 - ASM Group ID support
 - CHANGELOG.md
-
