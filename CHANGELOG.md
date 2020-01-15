@@ -1,6 +1,31 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2020-01-15] Version 6.5.0
+--------------------------
+**Library - Docs**
+- [PR #943](https://github.com/sendgrid/sendgrid-nodejs/pull/943): Update url in "DYNAMIC_TEMPLATE_CHAR_WARNING" to point to a working current link. Thanks to [@NickFoden](https://github.com/NickFoden)!
+
+**Library - Fix**
+- [PR #900](https://github.com/sendgrid/sendgrid-nodejs/pull/900): Return promise with catch handler if callback provided. Thanks to [@adamreisnz](https://github.com/adamreisnz)!
+- [PR #935](https://github.com/sendgrid/sendgrid-nodejs/pull/935): Fixed deepmerge module export naming issue. Thanks to [@chrisamador](https://github.com/chrisamador)!
+- [PR #1010](https://github.com/sendgrid/sendgrid-nodejs/pull/1010): Cleanup dependencies. Thanks to [@thinkingserious](https://github.com/thinkingserious)!
+
+**Library - Feature**
+- [PR #932](https://github.com/sendgrid/sendgrid-nodejs/pull/932): Allow hiding warnings. Thanks to [@albertor24](https://github.com/albertor24)!
+
+**Library - Chore**
+- [PR #1011](https://github.com/sendgrid/sendgrid-nodejs/pull/1011): Bump extend from 3.0.1 to 3.0.2 in /packages/subscription-widget. Thanks to [@dependabot](https://github.com/dependabot)!
+- [PR #1012](https://github.com/sendgrid/sendgrid-nodejs/pull/1012): Bump sshpk from 1.13.1 to 1.16.1 in /packages/subscription-widget. Thanks to [@dependabot](https://github.com/dependabot)!
+- [PR #1015](https://github.com/sendgrid/sendgrid-nodejs/pull/1015): Bump fstream from 1.0.11 to 1.0.12 in /packages/subscription-widget. Thanks to [@dependabot](https://github.com/dependabot)!
+- [PR #1016](https://github.com/sendgrid/sendgrid-nodejs/pull/1016): Bump atob from 2.0.3 to 2.1.2 in /packages/subscription-widget. Thanks to [@dependabot](https://github.com/dependabot)!
+- [PR #1018](https://github.com/sendgrid/sendgrid-nodejs/pull/1018): Bump lodash from 4.17.11 to 4.17.15 in /packages/inbound-mail-parser. Thanks to [@dependabot](https://github.com/dependabot)!
+- [PR #1014](https://github.com/sendgrid/sendgrid-nodejs/pull/1014): Bump mixin-deep from 1.3.0 to 1.3.2 in /packages/subscription-widget. Thanks to [@dependabot](https://github.com/dependabot)!
+- [PR #1017](https://github.com/sendgrid/sendgrid-nodejs/pull/1017): Bump tar from 2.2.1 to 2.2.2 in /packages/subscription-widget. Thanks to [@dependabot](https://github.com/dependabot)!
+- [PR #1019](https://github.com/sendgrid/sendgrid-nodejs/pull/1019): Bump stringstream from 0.0.5 to 0.0.6 in /packages/subscription-widget. Thanks to [@dependabot](https://github.com/dependabot)!
+- [PR #1026](https://github.com/sendgrid/sendgrid-nodejs/pull/1026): prep the repo for automated releasing. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+
 [2019-05-06] Version 6.4.0
 --------------------------
 ### Added
