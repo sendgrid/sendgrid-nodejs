@@ -8,3 +8,5 @@ test/config.js
 prism_darwin_amd64
 docs/
 prism/
+package-lock.json
+*.bak
