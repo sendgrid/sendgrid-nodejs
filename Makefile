@@ -7,6 +7,6 @@ install: clean
 	npm install
 
 test: install
-	yarn test:files
-	yarn test:license
-	yarn test:typescript
+	npm run test:files
+	npm run test:license
+	npm run test:typescript
