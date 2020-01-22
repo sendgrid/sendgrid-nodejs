@@ -48,8 +48,5 @@
   "directories": {
     "test": "test"
   },
-  "dependencies": {
-    "chai": "^4.0.1"
-  },
   "author": "Twilio SendGrid"
 }
