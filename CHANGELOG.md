@@ -1,6 +1,15 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2020-01-24] Version 6.5.1
+--------------------------
+**Library - Fix**
+- [PR #1030](https://github.com/sendgrid/sendgrid-nodejs/pull/1030): remove chai from dependencies. Thanks to [@thinkingserious](https://github.com/thinkingserious)!
+
+**Library - Docs**
+- [PR #1028](https://github.com/sendgrid/sendgrid-nodejs/pull/1028): baseline all the templated markdown docs. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+
 [2020-01-15] Version 6.5.0
 --------------------------
 **Library - Docs**
