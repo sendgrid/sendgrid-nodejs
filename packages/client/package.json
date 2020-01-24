@@ -28,10 +28,8 @@
   },
   "dependencies": {
     "@sendgrid/helpers": "^6.5.1",
+    "@types/request": "^2.48.4",
     "request": "^2.88.0"
-  },
-  "devDependencies": {
-    "@types/request": "^2.0.3"
   },
   "tags": [
     "http",
