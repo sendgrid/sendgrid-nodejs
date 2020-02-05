@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2020-02-05] Version 6.5.2
+--------------------------
+**Library - Fix**
+- [PR #1035](https://github.com/sendgrid/sendgrid-nodejs/pull/1035): Move @types/request back to dependencies. Thanks to [@hlian](https://github.com/hlian)!
+
+
 [2020-01-24] Version 6.5.1
 --------------------------
 **Library - Fix**
