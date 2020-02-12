@@ -34,5 +34,5 @@ declare class Client {
   request(data: ClientRequest, cb?: (err: ResponseError, response: [ClientResponse, any]) => void): Promise<[ClientResponse, any]>;
 }
 
-declare const client: Client & { Client: Client }
+declare const client: Client & { Client: typeof Client };
 export = client
