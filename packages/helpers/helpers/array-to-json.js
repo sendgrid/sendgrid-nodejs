@@ -5,10 +5,8 @@
  */
 module.exports = function arrayToJSON(arr) {
   return arr.map(item => {
-    if (typeof item === 'object' && !item) {
-      if (typeof item.toJSON === 'function') {
-        return item.toJSON();
-      }
+    if (typeof item === 'object' && !item && typeof item.toJSON === 'function') {
+      return item.toJSON();
     }
     return item;
   });

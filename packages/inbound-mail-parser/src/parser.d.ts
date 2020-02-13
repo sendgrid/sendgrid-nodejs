@@ -6,6 +6,7 @@ declare interface ParseConfig {
 
 declare interface ParseRequest {
   body?: {};
+  payload?: {};
   files?: any[];
 }
 

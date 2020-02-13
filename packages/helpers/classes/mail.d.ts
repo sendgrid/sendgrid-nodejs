@@ -152,6 +152,9 @@ export interface MailData {
   substitutionWrappers?: string[],
   
   isMultiple?: boolean,
+  dynamicTemplateData?: { [key: string]: any },
+
+  hideWarnings?: boolean,
 }
 
 export interface MailJSON {
@@ -322,6 +325,11 @@ export default class Mail {
    * Set mail settings
    */
   setMailSettings(settings: MailSettings): void;
+
+  /**
+   * Set hide warnings
+   */
+  setHideWarnings(hide: boolean): void;
 
   /**
    * To JSON

@@ -1,31 +1,30 @@
 language: node_js
 node_js:
-- "6"
-- "7"
-- "8"
-before_install:
-- npm install -g npm@2
+  - 6
+  - 7
+  - 8
+  - 10
+  - lts/*
+  - node
 before_script:
-- mkdir prism
-- mkdir prism/bin
-- export PATH=$PATH:$PWD/prism/bin/
-- ./test/prism.sh
-- yarn prism &
-- sleep 5 # give it some time to start
+  - lerna bootstrap
+  - ./test/prism.sh &
+  - sleep 5
 script:
-- lerna bootstrap
-- yarn test:mail
-- yarn test:client
-- yarn test:helpers
-- yarn test:typescript
-- yarn test:license
-notifications:
-  hipchat:
-    rooms:
-      secure: UVH1YNXLzilBEQQblcNrkqIDn36OdSpVjAPJGiSnjox04Ze+PO6T3KZqAwoR/ODYu0ujR4aRrJ/84/OR3U+VorzqcNWodiVXPxR7jgG9BuFH5/XXDB0nTj4MVS5aCivwPuBQB3asNHOogQ4EWLZVw80XIw2pov5GEl1Pc9lN+CE=
-    template:
-    - '<a href="https://travis-ci.org/%{repository}/builds/%{build_id}">%{repository}
-      Build %{build_number}</a> on branch <i>%{branch}</i> by %{author}: <strong>%{message}</strong>
-      <a href="https://github.com/%{repository}/commits/%{commit}">View on GitHub</a>'
-    format: html
-    notify: true
+  - yarn test:files
+  - yarn test:license
+  - yarn test:typescript
+  - yarn test:mail
+  - yarn test:client
+  - yarn test:helpers
+  - yarn lint
+before_deploy:
+  - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> $HOME/.npmrc 2> /dev/null
+  - git reset HEAD --hard
+deploy:
+  - provider: script
+    script: "lerna publish from-package --yes"
+    skip_cleanup: true
+    on:
+      tags: true
+      node: 10
