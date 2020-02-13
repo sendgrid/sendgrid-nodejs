@@ -15,7 +15,7 @@ const {
 } = require('@sendgrid/helpers');
 
 /**
- * SendGrid REST Client
+ * Twilio SendGrid REST Client
  */
 class Client {
 
@@ -136,7 +136,7 @@ class Client {
 
     //Execute callback if provided
     if (cb) {
-      promise
+      return promise
         .then(result => cb(null, result))
         .catch(error => cb(error, null));
     }

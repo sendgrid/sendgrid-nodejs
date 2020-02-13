@@ -1,4 +1,4 @@
-This documentation provides examples for specific SendGrid v3 API use cases. Please [open an issue](https://github.com/sendgrid/sendgrid-nodejs/issues) or make a pull request for any email use cases you would like us to document here. Thank you!
+This documentation provides examples for specific Twilio SendGrid v3 API use cases. Please [open an issue](https://github.com/sendgrid/sendgrid-nodejs/issues) or make a pull request for any email use cases you would like us to document here. Thank you!
 
 # Email Use Cases
 * [Send a Single Email to a Single Recipient](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/single-email-single-recipient.md)
@@ -11,14 +11,17 @@ This documentation provides examples for specific SendGrid v3 API use cases. Ple
 * [Advanced Usage](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/advanced.md)
   * [Transactional Templates](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/transactional-templates.md)
   * [Legacy Transactional Templates](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/transactional-legacy-templates.md)
+  * [Hide Warnings](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/hide-warnings.md)
   * [Attachments](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/attachments.md)
   * [Customization Per Recipient](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/customization.md)
   * [Manually Providing Content](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/manual-content.md)
   * [Specifying Time to Send At](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/time-to-send.md)
   * [Specifying Custom Headers](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/custom-headers.md)
   * [Specifying Categories](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/categories.md)
+  * [Timeout](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/timeout.md)
   * [Kitchen Sink - an example with all settings used](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/kitchen-sink.md)
 
-# Non-mail Use Cases
+# Non-Email Use Cases
+* [Send a SMS Message](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/sms.md)
 * [How to Setup a Domain Whitelabel](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/domain-white-label.md)
 * [How to View Email Statistics](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/email-stats.md)

@@ -1,7 +1,7 @@
 {
   "name": "inbound-parse-docker",
   "version": "1.0.0",
-  "description": "A containter to capture webhook data from SendGrid inbound parse",
+  "description": "A containter to capture webhook data from Twilio SendGrid inbound parse",
   "main": "app.js",
   "dependencies": {
     "body-parser": "^1.18.3",

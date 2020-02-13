@@ -1,8 +1,8 @@
 {
   "name": "@sendgrid/contact-importer",
-  "description": "SendGrid NodeJS contact importer",
-  "version": "6.2.1",
-  "author": "SendGrid <dx@sendgrid.com> (sendgrid.com)",
+  "description": "Twilio SendGrid NodeJS contact importer",
+  "version": "6.5.2",
+  "author": "Twilio SendGrid <dx@sendgrid.com> (sendgrid.com)",
   "contributors": [
     "Kyle Partridge <kyle.partridge@sendgrid.com>",
     "David Tomberlin <david.tomberlin@sendgrid.com>",
@@ -26,7 +26,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@sendgrid/client": "^6.3.0",
+    "@sendgrid/client": "^6.5.2",
     "async.ensureasync": "^0.5.2",
     "async.queue": "^0.5.2",
     "bottleneck": "^1.12.0",
