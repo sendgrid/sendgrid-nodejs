@@ -63,9 +63,18 @@ const msg = {
   text: 'and easy to do anywhere, even with Node.js',
   html: '<strong>and easy to do anywhere, even with Node.js</strong>',
 };
-sgMail.send(msg)
-.then((res) => //resolved )
-.catch((error) => //rejected )
+//ES6
+sgMail
+  .send(msg)
+  .then(() => {}, console.error);
+//ES8
+(async () => {
+  try {
+    await sgMail.send(msg);
+  } catch (err) {
+    console.error(err.toString());
+  }
+})();
 ```
 
 After executing the above code, you should have an email in the inbox of the recipient. You can check the status of your email [in the UI](https://app.sendgrid.com/email_activity?). Alternatively, we can post events to a URL of your choice using our [Event Webhook](https://sendgrid.com/docs/API_Reference/Webhooks/event.html). This gives you data about the events that occur as Twilio SendGrid processes your email.
