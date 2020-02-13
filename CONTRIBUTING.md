@@ -43,7 +43,7 @@ A software bug is a demonstrable issue in the code base. For us to diagnose the 
 
 Before you decide to create a new issue, please try the following:
 
-1. [Check the Github issues tab](https://github.com/sendgrid/sendgrid-nodejs/issues) if the identified issue has already been reported, if so, please add a +1 to the existing post.
+1. [Check the GitHub issues tab](https://github.com/sendgrid/sendgrid-nodejs/issues) if the identified issue has already been reported, if so, please add a +1 to the existing post.
 2. Update to the latest version of this code and check if the issue has already been fixed
 3. Copy and fill in the Bug Report Template we have provided below
 
@@ -224,4 +224,4 @@ If you have any additional questions, please feel free to [email](mailto:dx@send
 <a name="code-reviews"></a>
 ## Code Reviews
 
-If you can, please look at open PRs and review them. Give feedback and help us merge these PRs much faster! If you don't know how Github has some [great information on how to review a Pull Request](https://help.github.com/articles/about-pull-request-reviews/).
+If you can, please look at open PRs and review them. Give feedback and help us merge these PRs much faster! If you don't know how GitHub has some [great information on how to review a Pull Request](https://help.github.com/articles/about-pull-request-reviews/).

@@ -18,7 +18,7 @@ Before following these instructions, you must:
 To begin, you will first need to create an API key on Twilio SendGrid's website. Once logged in, go to Settings -> API Keys, and click the blue button in the top right corner of the website.  You will be creating a General API key, which must have *Full Access* to *Mail Send* and *Marketing Campaigns*.  Keep this API key in a *safe* and *private* location.  You will need it later.
 
 ### Fork this Repository to Create Your Copy
-If you are unfamiliar with Github, just click the button that reads *Fork* in the top right of this page. Doing this will provide you with your copy.  You'll need to change a few basic settings in your copy.
+If you are unfamiliar with GitHub, just click the button that reads *Fork* in the top right of this page. Doing this will provide you with your copy.  You'll need to change a few basic settings in your copy.
 
 ### Deploy to Heroku
 
@@ -28,9 +28,9 @@ Click the button below to deploy this app to the Heroku account you created earl
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-Once the app is deployed, you may want to connect your forked Github repository to your Heroku app for easy deployment. You can do this by navigating to the *Deploy* tab within your app on Heroku and following the instructions.
+Once the app is deployed, you may want to connect your forked GitHub repository to your Heroku app for easy deployment. You can do this by navigating to the *Deploy* tab within your app on Heroku and following the instructions.
 
-### Update Your App Settings in Your Forked Repository on Github
+### Update Your App Settings in Your Forked Repository on GitHub
 Navigate to settings.js in your forked copy of the repository and change each of the four variables to the appropriate values. You can find your app's URL by opening your app or navigating to the *Activity* tab in Heroku and scrolling to the middle of the page to the domains section. See the example below.
 
 ```javascript
