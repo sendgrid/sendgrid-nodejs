@@ -3102,6 +3102,8 @@ Filter by subject line - `query=subject%3d%22A%20Great%20Subject%22`
 
 You can filter by other operators besides `=`. We also accept `!=`, `<`, and `>`.
 
+If you use the `@sendgrid/client` library, you do not have to encode anything (it will end up being double encoded).
+
 For a tutorial on how to get started, check out [Getting Started with the Email Activity API](https://sendgrid.com/docs/API_Reference/Web_API_v3/Tutorials/getting_started_email_activity_api.html).
 
 **Full list of basic query types and examples:**
@@ -3228,7 +3230,7 @@ For information about building combined queries, see [Building compound Email Ac
 ```javascript
   const queryParams = {
     'limit': 10,
-    'query': 'from_email%3D%22testing%40sendgrid.net%22'
+    'query': 'from_email="testing@sendgrid.net"'
   };
   request.qs = queryParams;
   request.method = 'GET';
