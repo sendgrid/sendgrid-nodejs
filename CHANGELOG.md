@@ -1,6 +1,25 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2020-02-19] Version 6.5.3
+--------------------------
+**Library - Docs**
+- [PR #877](https://github.com/sendgrid/sendgrid-nodejs/pull/877): Improve the mail package's README to handle the async send(). Thanks to [@Berkmann18](https://github.com/Berkmann18)!
+- [PR #827](https://github.com/sendgrid/sendgrid-nodejs/pull/827): Fix grammatical errors in README. Thanks to [@chaman-1](https://github.com/chaman-1)!
+- [PR #825](https://github.com/sendgrid/sendgrid-nodejs/pull/825): Properly capitalize Brands. Thanks to [@aslafy-z](https://github.com/aslafy-z)!
+- [PR #989](https://github.com/sendgrid/sendgrid-nodejs/pull/989): Update README.md to explicitly state that 'send()' returns a promise. Thanks to [@Ifunanyacollins](https://github.com/Ifunanyacollins)!
+- [PR #878](https://github.com/sendgrid/sendgrid-nodejs/pull/878): Update USAGE.md to prevent query double encoding. Thanks to [@sigginet](https://github.com/sigginet)!
+- [PR #984](https://github.com/sendgrid/sendgrid-nodejs/pull/984): fix typo 'Feild' to 'Field'. Thanks to [@kendalled](https://github.com/kendalled)!
+
+**Library - Chore**
+- [PR #942](https://github.com/sendgrid/sendgrid-nodejs/pull/942): Bump braces from 2.3.0 to 2.3.2 in /packages/subscription-widget. Thanks to [@dependabot](https://github.com/dependabot)!
+
+**Library - Fix**
+- [PR #1040](https://github.com/sendgrid/sendgrid-nodejs/pull/1040): update Client constructor property definition in TS declaration. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #1039](https://github.com/sendgrid/sendgrid-nodejs/pull/1039): upgrade deepmerge to resolve webpack import issue. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #921](https://github.com/sendgrid/sendgrid-nodejs/pull/921): update MailService constructor property definition in TypeScript declaration. Thanks to [@dhritzkiv](https://github.com/dhritzkiv)!
+
+
 [2020-02-05] Version 6.5.2
 --------------------------
 **Library - Fix**
