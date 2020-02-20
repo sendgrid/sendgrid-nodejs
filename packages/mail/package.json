@@ -1,7 +1,7 @@
 {
   "name": "@sendgrid/mail",
   "description": "Twilio SendGrid NodeJS mail service",
-  "version": "6.5.2",
+  "version": "6.5.3",
   "author": "Twilio SendGrid <dx@sendgrid.com> (sendgrid.com)",
   "contributors": [
     "Kyle Partridge <kyle.partridge@sendgrid.com>",
@@ -27,8 +27,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@sendgrid/client": "^6.5.2",
-    "@sendgrid/helpers": "^6.5.1"
+    "@sendgrid/client": "^6.5.3",
+    "@sendgrid/helpers": "^6.5.3"
   },
   "tags": [
     "http",
