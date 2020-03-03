@@ -27,9 +27,9 @@
     "node": ">=6.0.0"
   },
   "dependencies": {
-    "@sendgrid/helpers": "^6.5.3",
-    "@types/request": "^2.48.4",
-    "request": "^2.88.0"
+    "@types/got": "^9.6.9",
+    "got": "^10.6.0",
+    "@sendgrid/helpers": "^6.5.3"
   },
   "tags": [
     "http",

@@ -3,7 +3,7 @@
 /**
  * Dependencies
  */
-const http = require('request');
+const http = require('got');
 const pkg = require('../../package.json');
 const {
   helpers: {
@@ -35,8 +35,8 @@ class Client {
 
     //Empty default request
     this.defaultRequest = {
-      json: true,
-      baseUrl: 'https://api.sendgrid.com/',
+      json: {},
+      prefixUrl: 'https://api.sendgrid.com/',
       url: '',
       method: 'GET',
       headers: {},
