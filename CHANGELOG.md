@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2020-03-04] Version 6.5.4
+--------------------------
+**Library - Fix**
+- [PR #1041](https://github.com/sendgrid/sendgrid-nodejs/pull/1041): require in TS at least 1 type of content for sending mail. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+
 [2020-02-19] Version 6.5.3
 --------------------------
 **Library - Docs**
