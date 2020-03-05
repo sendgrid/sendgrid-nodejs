@@ -158,7 +158,7 @@ export interface MailData {
 }
 
 export type MailDataRequired = MailData & (
-    { text: string } | { html: string } | { content: MailContent[] & { 0: MailContent } });
+    { text: string } | { html: string } | { templateId: string } | { content: MailContent[] & { 0: MailContent } });
 
 export interface MailJSON {
   from: EmailJSON;
