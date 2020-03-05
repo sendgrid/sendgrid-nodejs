@@ -1,9 +1,6 @@
 import {ClientResponse} from "@sendgrid/client/src/response";
 import {ResponseError} from "@sendgrid/helpers/classes";
-import {MailContent, MailData} from "@sendgrid/helpers/classes/mail";
-
-type MailDataRequired = MailData & (
-  { text: string } | { html: string } | { content: MailContent[] & { 0: MailContent } });
+import {MailDataRequired} from "@sendgrid/helpers/classes/mail";
 
 declare class MailService {
   /**
