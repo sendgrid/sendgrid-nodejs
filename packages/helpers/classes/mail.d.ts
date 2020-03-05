@@ -157,6 +157,9 @@ export interface MailData {
   hideWarnings?: boolean,
 }
 
+export type MailDataRequired = MailData & (
+    { text: string } | { html: string } | { content: MailContent[] & { 0: MailContent } });
+
 export interface MailJSON {
   from: EmailJSON;
   subject: string;
