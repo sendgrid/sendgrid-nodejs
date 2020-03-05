@@ -3,7 +3,7 @@ import {ResponseError} from "@sendgrid/helpers/classes";
 import {MailContent, MailData} from "@sendgrid/helpers/classes/mail";
 
 type MailDataRequired = MailData & (
-  { text: string } | { html: string } | { content: MailContent[] & { 0: MailContent } });
+  { text: string } | { html: string } | { templateId: string } | { content: MailContent[] & { 0: MailContent } });
 
 declare class MailService {
   /**
