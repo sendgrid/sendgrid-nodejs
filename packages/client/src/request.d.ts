@@ -1,3 +1,3 @@
-import {OptionsWithUrl} from "request";
+import {AxiosRequestConfig} from "axios";
 
-export type ClientRequest = OptionsWithUrl;
+export type ClientRequest = AxiosRequestConfig;

@@ -56,7 +56,7 @@ For more information, please see our [User Guide](http://sendgrid.com/docs/User_
   const queryParams = {
   'limit': 1
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/access_settings/activity';
   client.request(request)
@@ -92,7 +92,7 @@ For more information, please see our [User Guide](http://sendgrid.com/docs/User_
     }
   ]
 };
-  request.body = data;
+  request.data = data;
   request.method = 'POST';
   request.url = '/v3/access_settings/whitelist';
   client.request(request)
@@ -122,7 +122,7 @@ For more information, please see our [User Guide](http://sendgrid.com/docs/User_
     3
   ]
 };
-  request.body = data;
+  request.data = data;
   request.method = 'DELETE';
   request.url = '/v3/access_settings/whitelist';
   client.request(request)

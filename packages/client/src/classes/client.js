@@ -3,7 +3,7 @@
 /**
  * Dependencies
  */
-const http = require('request');
+const axios = require('axios');
 const pkg = require('../../package.json');
 const {
   helpers: {
@@ -30,13 +30,14 @@ class Client {
     //Default headers
     this.defaultHeaders = {
       'Accept': 'application/json',
+      'Content-Type': 'application/json',
       'User-agent': 'sendgrid/' + pkg.version + ';nodejs',
     };
 
     //Empty default request
     this.defaultRequest = {
-      json: true,
-      baseUrl: 'https://api.sendgrid.com/',
+      data: {},
+      baseURL: 'https://api.sendgrid.com/',
       url: '',
       method: 'GET',
       headers: {},
@@ -94,6 +95,12 @@ class Client {
       delete data.uri;
     }
 
+    // Ensure backwards compatibility from request module
+    data.data = data.body ? data.body : undefined;
+    delete data.body;
+    data.params = data.qs ? data.qs : undefined;
+    delete data.qs;
+
     //Merge data with empty request
     const request = mergeData(this.defaultRequest, data);
 
@@ -112,21 +119,25 @@ class Client {
 
     //Perform request
     const promise = new Promise((resolve, reject) => {
-      http(request, (error, response, body) => {
-
-        //Request error
-        if (error) {
+      axios(request)
+        .then(response => {
+          // Successful response
+          var parsedResponse = {
+            statusCode: response.status,
+            body: response.data,
+          };
+          return resolve([parsedResponse, response.data]);
+        })
+        .catch(error => {
+          // Response error
+          if (error.response) {
+            if (error.response.status >= 400) {
+              return reject(new ResponseError(error.response));
+            }
+          }
+          // Request error
           return reject(error);
-        }
-
-        //Response error
-        if (response.statusCode >= 400) {
-          return reject(new ResponseError(response));
-        }
-
-        //Successful response
-        resolve([response, body]);
-      });
+        });
     });
 
     // Throw and error incase function not passed

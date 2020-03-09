@@ -1,3 +1,3 @@
-import {RequestResponse} from "request";
+import {AxiosResponse} from "axios";
 
-export type ClientResponse = RequestResponse;
+export type ClientResponse = AxiosResponse;

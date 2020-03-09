@@ -72,7 +72,7 @@ client.setDefaultHeader('User-Agent', 'Some user agent string');
 
 ## Change Request Defaults
 ```js
-client.setDefaultRequest('baseUrl', 'https://api.sendgrid.com/');
+client.setDefaultRequest('baseURL', 'https://api.sendgrid.com/');
 ```
 
 ## Overwrite Promise Implementation
