@@ -94,12 +94,15 @@ class Client {
       data.url = data.uri;
       delete data.uri;
     }
-
     // Ensure backwards compatibility from request module
-    data.data = data.body ? data.body : undefined;
-    delete data.body;
-    data.params = data.qs ? data.qs : undefined;
-    delete data.qs;
+    if (data.body) {
+      data.data = data.body;
+      delete data.body;
+    }
+    if (data.qs) {
+      data.params = data.qs;
+      delete data.qs;
+    }
 
     //Merge data with empty request
     const request = mergeData(this.defaultRequest, data);
