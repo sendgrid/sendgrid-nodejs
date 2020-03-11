@@ -5,18 +5,18 @@ var _ = require('lodash');
 class Request {
   constructor(opts) {
     opts = opts || {};
+    this.ANY = '*'
 
-    this.method = opts.method || Request.ANY;
-    this.url = opts.url || Request.ANY;
-    this.auth = opts.auth || Request.ANY;
-    this.params = opts.params || Request.ANY;
-    this.data = opts.data || Request.ANY;
-    this.headers = opts.headers || Request.ANY;
-    return this;
+    this.method = opts.method || this.ANY;
+    this.url = opts.url || this.ANY;
+    this.auth = opts.auth || this.ANY;
+    this.params = opts.params || this.ANY;
+    this.data = opts.data || this.ANY;
+    this.headers = opts.headers || this.ANY;
   }
 
-  #attributeEqual(lhs, rhs) {
-    if (lhs === Request.ANY || rhs === Request.ANY) {
+  attributeEqual(lhs, rhs) {
+    if (lhs === this.ANY || rhs === this.ANY) {
       return true;
     }
 
@@ -27,29 +27,29 @@ class Request {
   }
 
   isEqual(other) {
-    return (#attributeEqual(this.method, other.method) &&
-      #attributeEqual(this.url, other.url) &&
-      #attributeEqual(this.auth, other.auth) &&
-      #attributeEqual(this.params, other.params) &&
-      #attributeEqual(this.data, other.data) &&
-      #attributeEqual(this.headers, other.headers));
+    return (attributeEqual(this.method, other.method) &&
+      attributeEqual(this.url, other.url) &&
+      attributeEqual(this.auth, other.auth) &&
+      attributeEqual(this.params, other.params) &&
+      attributeEqual(this.data, other.data) &&
+      attributeEqual(this.headers, other.headers));
   }
 
   toString() {
     var auth = '';
-    if (this.auth && this.auth !== Request.ANY) {
+    if (this.auth && this.auth !== this.ANY) {
       auth = this.auth + ' ';
     }
 
     var params = '';
-    if (this.params && this.params !== Request.ANY) {
+    if (this.params && this.params !== this.ANY) {
       params = '?' + _.join(_.chain(_.keys(this.params))
         .map(function(key) { return key + '=' + this.params[key]; }.bind(this))
         .value(), '&');
     }
 
     var data = '';
-    if (this.data && this.data !== Request.ANY) {
+    if (this.data && this.data !== this.ANY) {
       if (this.method === 'GET') {
         data = '\n -G';
       }
@@ -61,7 +61,7 @@ class Request {
     }
 
     var headers = '';
-    if (this.headers && this.headers !== Request.ANY) {
+    if (this.headers && this.headers !== this.ANY) {
       headers = '\n' + _.join(
         _.map(this.headers, function(value, key) {
           return ' -H ' + key + '='  + value;
@@ -71,6 +71,5 @@ class Request {
     return auth + this.method + ' ' + this.url + params + data + headers;
   }
 }
-Request.ANY = '*';
 
 module.exports = Request;
