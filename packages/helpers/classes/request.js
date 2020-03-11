@@ -3,8 +3,6 @@
 var _ = require('lodash');
 
 class Request {
-  static ANY = '*';
-
   constructor(opts) {
     opts = opts || {};
 
@@ -73,5 +71,6 @@ class Request {
     return auth + this.method + ' ' + this.url + params + data + headers;
   }
 }
+Request.ANY = '*';
 
 module.exports = Request;
