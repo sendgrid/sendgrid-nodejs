@@ -92,7 +92,7 @@ class Client {
 
     let options = {
       url: opts.url || opts.uri,
-      data: opts.data || opts.body,
+      data: opts.data ? opts.data : opts.body ? opts.body : {},
       params: opts.qs ? opts.qs : opts.params ? opts.params : {},
     };
 
