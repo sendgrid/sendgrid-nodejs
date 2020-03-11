@@ -7,7 +7,9 @@ const Attachment = require('./attachment');
 const EmailAddress = require('./email-address');
 const Mail = require('./mail');
 const Personalization = require('./personalization');
+const Request = require('./request');
 const ResponseError = require('./response-error');
+const Response = require('./response');
 const Statistics = require('./statistics');
 
 /**
@@ -18,6 +20,8 @@ module.exports = {
   EmailAddress,
   Mail,
   Personalization,
+  Request,
   ResponseError,
+  Response,
   Statistics,
 };

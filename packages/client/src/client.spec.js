@@ -24,7 +24,20 @@ describe('test_access_settings_activity_get', () => {
   request.method = 'GET';
   request.url = '/v3/access_settings/activity';
   it('should have the correct response code', () => {
+<<<<<<< HEAD
     return testRequest(request, 200);
+=======
+    const sgClient = require('./client');
+    sgClient.setApiKey('SendGrid API Key');
+    sgClient.setDefaultRequest('baseURL', baseURL);
+    sgClient.setDefaultHeader('X-Mock', 200);
+    return sgClient
+      .request(request)
+      .then(([response, body]) => {
+        expect(response.statusCode).to.equal(200);
+        expect(sgClient.lastRequest).toBeDefined();
+      });
+>>>>>>> this fails
   });
 });
 

@@ -1,3 +1,3 @@
-import {AxiosRequestConfig} from "axios";
+import Request from "@sendgrid/helpers/classes/request";
 
-export type ClientRequest = AxiosRequestConfig;
+export type ClientRequest = Request;

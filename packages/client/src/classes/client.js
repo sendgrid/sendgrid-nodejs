@@ -10,7 +10,9 @@ const {
     mergeData,
   },
   classes: {
+    Request,
     ResponseError,
+    Response,
   },
 } = require('@sendgrid/helpers');
 
@@ -18,7 +20,6 @@ const {
  * Twilio SendGrid REST Client
  */
 class Client {
-
   /**
    * Constructor
    */
@@ -73,7 +74,7 @@ class Client {
   createHeaders(data) {
 
     //Merge data with default headers
-    const headers = mergeData(this.defaultHeaders, data);
+    let headers = mergeData(this.defaultHeaders, data);
 
     //Add API key, but don't overwrite if header already set
     if (typeof headers.Authorization === 'undefined' && this.apiKey) {
@@ -87,49 +88,39 @@ class Client {
   /**
    * Create request
    */
-  createRequest(data) {
+  createRequest(opts) {
 
-    //Keep URL parameter consistent
-    if (data.uri) {
-      data.url = data.uri;
-      delete data.uri;
-    }
-    // Ensure backwards compatibility from request module
-    if (data.body) {
-      data.data = data.body;
-      delete data.body;
-    }
-    if (data.qs) {
-      data.params = data.qs;
-      delete data.qs;
-    }
+    let options = {
+      url: opts.url || opts.uri,
+      data: opts.data || opts.body,
+      params: opts.qs ? opts.qs : opts.params ? opts.params : {},
+    };
 
     //Merge data with empty request
-    const request = mergeData(this.defaultRequest, data);
+    options = mergeData(this.defaultRequest, options);
 
-    //Add headers
-    request.headers = this.createHeaders(request.headers);
-    return request;
+    options.headers = this.createHeaders(options.headers);
+    return options;
   }
 
   /**
    * Do a request
    */
-  request(data, cb) {
+  request(opts, cb) {
 
     //Create request
-    const request = this.createRequest(data);
+    opts = this.createRequest(opts);
+    this.lastResponse = undefined;
+    this.lastRequest = new Request(opts);
+    let _this = this;
 
     //Perform request
     const promise = new Promise((resolve, reject) => {
-      axios(request)
+      axios(opts)
         .then(response => {
           // Successful response
-          var parsedResponse = {
-            statusCode: response.status,
-            body: response.data,
-          };
-          return resolve([parsedResponse, response.data]);
+          _this.lastResponse = new Response(response.status, response.data);
+          return resolve([_this.lastResponse, response.data]);
         })
         .catch(error => {
           // Response error

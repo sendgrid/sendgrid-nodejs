@@ -1,3 +1,3 @@
-import {AxiosResponse} from "axios";
+import Response from "@sendgrid/helpers/classes/response";
 
-export type ClientResponse = AxiosResponse;
+export type ClientResponse = Response;
