@@ -8,8 +8,8 @@ const EmailAddress = require('./email-address');
 const Mail = require('./mail');
 const Personalization = require('./personalization');
 const Request = require('./request');
-const ResponseError = require('./response-error');
 const Response = require('./response');
+const ResponseError = require('./response-error');
 const Statistics = require('./statistics');
 
 /**
@@ -21,7 +21,7 @@ module.exports = {
   Mail,
   Personalization,
   Request,
-  ResponseError,
   Response,
+  ResponseError,
   Statistics,
 };
