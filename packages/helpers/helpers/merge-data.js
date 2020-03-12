@@ -22,11 +22,9 @@ module.exports = function mergeData(base, data) {
     if (data.hasOwnProperty(key)) {
       if (data[key] && Array.isArray(data[key])) {
         merged[key] = data[key];
-      }
-      else if (data[key] && typeof data[key] === 'object') {
+      } else if (data[key] && typeof data[key] === 'object') {
         merged[key] = Object.assign({}, data[key]);
-      }
-      else {
+      } else {
         merged[key] = data[key];
       }
     }
