@@ -92,8 +92,11 @@ class Client {
 
     let options = {
       url: opts.url || opts.uri,
+      baseURL: opts.baseURL || this.defaultRequest.baseURL,
+      method: opts.method || this.defaultRequest.method,
       data: opts.data ? opts.data : opts.body ? opts.body : {},
       params: opts.qs ? opts.qs : opts.params ? opts.params : {},
+      headers: opts.headers || {},
     };
 
     //Merge data with empty request

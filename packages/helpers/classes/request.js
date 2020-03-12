@@ -5,7 +5,7 @@ var _ = require('lodash');
 class Request {
   constructor(opts) {
     opts = opts || {};
-    this.ANY = '*'
+    this.ANY = '*';
 
     this.method = opts.method || this.ANY;
     this.url = opts.url || this.ANY;
@@ -44,7 +44,9 @@ class Request {
     var params = '';
     if (this.params && this.params !== this.ANY) {
       params = '?' + _.join(_.chain(_.keys(this.params))
-        .map(function(key) { return key + '=' + this.params[key]; }.bind(this))
+        .map(function(key) {
+          return key + '=' + this.params[key];
+        }.bind(this))
         .value(), '&');
     }
 
@@ -64,7 +66,7 @@ class Request {
     if (this.headers && this.headers !== this.ANY) {
       headers = '\n' + _.join(
         _.map(this.headers, function(value, key) {
-          return ' -H ' + key + '='  + value;
+          return ' -H ' + key + '=' + value;
         }), '\n');
     }
 

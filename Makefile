@@ -5,6 +5,7 @@ clean:
 
 install: clean
 	npm install
+	npx lerna bootstrap
 
 test: install
 	yarn test:files
