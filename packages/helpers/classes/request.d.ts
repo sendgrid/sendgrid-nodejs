@@ -14,7 +14,4 @@ declare namespace Request {
 
 export default class Request<TData = any> {
     constructor(opts: Request.RequestOptions<TData>);
-    private attributeEqual(lhs: any, rhs: any): boolean;
-    isEqual(other: Request<any>): boolean;
-    toString(): string;
 }
