@@ -52,7 +52,7 @@ class Attachment {
 
     if ((typeof content !== 'undefined') && (typeof filePath !== 'undefined')) {
       throw new Error(
-        'The props \'content\' and \'filePath\' cannot be used together.'
+        "The props 'content' and 'filePath' cannot be used together."
       );
     }
 

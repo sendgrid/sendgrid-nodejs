@@ -14,7 +14,7 @@
     "chai": "^4.0.1",
     "chai-as-promised": "^7.1.1",
     "dirty-chai": "^2.0.1",
-    "eslint": "^5.16.0",
+    "eslint": "^6.8.0",
     "istanbul": "^1.0.0-alpha.2",
     "lerna": "^3.19.0",
     "mocha": "^6.2.2",
