@@ -74,7 +74,7 @@ class Client {
   createHeaders(data) {
 
     //Merge data with default headers
-    let headers = mergeData(this.defaultHeaders, data);
+    const headers = mergeData(this.defaultHeaders, data);
 
     //Add API key, but don't overwrite if header already set
     if (typeof headers.Authorization === 'undefined' && this.apiKey) {
@@ -91,9 +91,9 @@ class Client {
   createRequest(opts) {
 
     let options = {
-      url: opts.url || opts.uri,
-      baseURL: opts.baseURL || this.defaultRequest.baseURL,
-      method: opts.method || this.defaultRequest.method,
+      url: opts.uri || opts.url,
+      baseURL: opts.baseURL,
+      method: opts.method,
       data: opts.data ? opts.data : opts.body ? opts.body : {},
       params: opts.qs ? opts.qs : opts.params ? opts.params : {},
       headers: opts.headers || {},
