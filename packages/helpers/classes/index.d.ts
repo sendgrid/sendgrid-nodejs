@@ -13,5 +13,5 @@ export {
   Personalization,
   Request,
   Response,
-  ResponseError
+  ResponseError,
 }
