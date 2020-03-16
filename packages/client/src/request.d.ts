@@ -1,3 +1,4 @@
-import Request from "@sendgrid/helpers/classes/request";
+import { Request, RequestOptions } from "@sendgrid/helpers/classes/request";
 
-export type ClientRequest = Request;
+export { Request as ClientRequest };
+export { RequestOptions };

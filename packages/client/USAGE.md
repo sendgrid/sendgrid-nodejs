@@ -218,7 +218,7 @@ For more information about alerts, please see our [User Guide](https://sendgrid.
   "frequency": "daily", 
   "type": "stats_notification"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'POST';
   request.url = '/v3/alerts';
   client.request(request)
@@ -266,7 +266,7 @@ For more information about alerts, please see our [User Guide](https://sendgrid.
   const data = {
   "email_to": "example@example.com"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PATCH';
   request.url = '/v3/alerts/{alert_id}';
   client.request(request)
@@ -347,7 +347,7 @@ See the [API Key Permissions List](https://sendgrid.com/docs/API_Reference/Web_A
     "alerts.read"
   ]
 };
-  request.body = data;
+  request.data = data;
   request.method = 'POST';
   request.url = '/v3/api_keys';
   client.request(request)
@@ -369,7 +369,7 @@ The API Keys feature allows customers to be able to generate an API Key credenti
   const queryParams = {
   'limit': 1
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/api_keys';
   client.request(request)
@@ -398,7 +398,7 @@ The API Keys feature allows customers to be able to generate an API Key credenti
     "user.profile.update"
   ]
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PUT';
   request.url = '/v3/api_keys/{api_key_id}';
   client.request(request)
@@ -428,7 +428,7 @@ The API Keys feature allows customers to be able to generate an API Key credenti
   const data = {
   "name": "A New Hope"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PATCH';
   request.url = '/v3/api_keys/{api_key_id}';
   client.request(request)
@@ -503,7 +503,7 @@ Each user can create up to 25 different suppression groups.
   "is_default": true, 
   "name": "Product Suggestions"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'POST';
   request.url = '/v3/asm/groups';
   client.request(request)
@@ -529,7 +529,7 @@ Suppression groups, or [unsubscribe groups](https://sendgrid.com/docs/API_Refere
   const queryParams = {
   'id': 1
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/asm/groups';
   client.request(request)
@@ -581,7 +581,7 @@ Each user can create up to 25 different suppression groups.
   "id": 103, 
   "name": "Item Suggestions"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PATCH';
   request.url = '/v3/asm/groups/{group_id}';
   client.request(request)
@@ -630,7 +630,7 @@ Suppressions are recipient email addresses that are added to [unsubscribe groups
     "test2@example.com"
   ]
 };
-  request.body = data;
+  request.data = data;
   request.method = 'POST';
   request.url = '/v3/asm/groups/{group_id}/suppressions';
   client.request(request)
@@ -676,7 +676,7 @@ Suppressions are a list of email addresses that will not receive content sent un
     "doesnotexists@example.com"
   ]
 };
-  request.body = data;
+  request.data = data;
   request.method = 'POST';
   request.url = '/v3/asm/groups/{group_id}/suppressions/search';
   client.request(request)
@@ -737,7 +737,7 @@ A global suppression (or global unsubscribe) is an email address of a recipient 
     "test2@example.com"
   ]
 };
-  request.body = data;
+  request.data = data;
   request.method = 'POST';
   request.url = '/v3/asm/suppressions/global';
   client.request(request)
@@ -825,7 +825,7 @@ Advanced Stats provide a more in-depth view of your email statistics and the act
   'offset': 'test_string', 
   'start_date': '2016-01-01'
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/browsers/stats';
   client.request(request)
@@ -873,7 +873,7 @@ For more information:
   "suppression_group_id": 42, 
   "title": "March Newsletter"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'POST';
   request.url = '/v3/campaigns';
   client.request(request)
@@ -902,7 +902,7 @@ For more information:
   'limit': 1, 
   'offset': 1
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/campaigns';
   client.request(request)
@@ -932,7 +932,7 @@ For more information:
   "subject": "New Products for Summer!", 
   "title": "May Newsletter"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PATCH';
   request.url = '/v3/campaigns/{campaign_id}';
   client.request(request)
@@ -1023,7 +1023,7 @@ For more information:
   const data = {
   "send_at": 1489771528
 };
-  request.body = data;
+  request.data = data;
   request.method = 'POST';
   request.url = '/v3/campaigns/{campaign_id}/schedules';
   client.request(request)
@@ -1067,7 +1067,7 @@ For more information:
   const data = {
   "send_at": 1489451436
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PATCH';
   request.url = '/v3/campaigns/{campaign_id}/schedules';
   client.request(request)
@@ -1115,7 +1115,7 @@ For more information:
   const data = {
   "to": "your.email@example.com"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'POST';
   request.url = '/v3/campaigns/{campaign_id}/schedules/test';
   client.request(request)
@@ -1142,7 +1142,7 @@ Categories can help organize your email analytics by enabling you to tag emails 
   'limit': 1, 
   'offset': 1
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/categories';
   client.request(request)
@@ -1171,7 +1171,7 @@ const queryParams = {
   'offset': 1,
   'start_date': '2016-01-01'
 };
-request.qs = queryParams;
+request.params = queryParams;
 request.method = 'GET';
 request.url = '/v3/categories/stats';
 client
@@ -1198,7 +1198,7 @@ const queryParams = {
   'offset': 1,
   'start_date': '2016-01-01'
 };
-request.qs = queryParams;
+request.params = queryParams;
 request.method = 'GET';
 request.url = '/v3/categories/stats';
 client
@@ -1229,7 +1229,7 @@ Categories allow you to group your emails according to broad topics that you def
   'sort_by_metric': 'test_string', 
   'start_date': '2016-01-01'
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/categories/stats/sums';
   client.request(request)
@@ -1258,7 +1258,7 @@ Advanced Stats provide a more in-depth view of your email statistics and the act
   'end_date': '2016-04-01', 
   'start_date': '2016-01-01'
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/clients/stats';
   client.request(request)
@@ -1290,7 +1290,7 @@ Advanced Stats provide a more in-depth view of your email statistics and the act
   'end_date': '2016-04-01', 
   'start_date': '2016-01-01'
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/clients/{client_type}/stats';
   client.request(request)
@@ -1316,7 +1316,7 @@ The contactdb is a database of your contacts for [Twilio SendGrid Marketing Camp
   "name": "pet", 
   "type": "text"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'POST';
   request.url = '/v3/contactdb/custom_fields';
   client.request(request)
@@ -1392,7 +1392,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
   const data = {
   "name": "your list name"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'POST';
   request.url = '/v3/contactdb/lists';
   client.request(request)
@@ -1417,7 +1417,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
   3, 
   4
 ];
-  request.body = data;
+  request.data = data;
   request.method = 'DELETE';
   request.url = '/v3/contactdb/lists';
   client.request(request)
@@ -1457,7 +1457,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
   const queryParams = {
   'delete_contacts': 'true'
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'DELETE';
   request.url = '/v3/contactdb/lists/{list_id}';
   client.request(request)
@@ -1480,11 +1480,11 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
   const data = {
   "name": "newlistname"
 };
-  request.body = data;
+  request.data = data;
   const queryParams = {
   'list_id': 1
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'PATCH';
   request.url = '/v3/contactdb/lists/{list_id}';
   client.request(request)
@@ -1506,7 +1506,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
   const queryParams = {
   'list_id': 1
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/contactdb/lists/{list_id}';
   client.request(request)
@@ -1531,7 +1531,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
   "recipient_id1", 
   "recipient_id2"
 ];
-  request.body = data;
+  request.data = data;
   request.method = 'POST';
   request.url = '/v3/contactdb/lists/{list_id}/recipients';
   client.request(request)
@@ -1554,7 +1554,7 @@ const queryParams = {
   'page': 1, 
   'page_size': 1
 };
-request.qs = queryParams;
+request.params = queryParams;
 request.method = 'GET';
 var list_id = 1;
 request.url = '/v3/contactdb/lists/{list_id}/recipients';
@@ -1596,7 +1596,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
   'list_id': 1, 
   'recipient_id': 1
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'DELETE';
   request.url = '/v3/contactdb/lists/{list_id}/recipients/{recipient_id}';
   client.request(request)
@@ -1631,7 +1631,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
     "last_name": "User"
   }
 ];
-  request.body = data;
+  request.data = data;
   request.method = 'POST';
   request.url = '/v3/contactdb/recipients';
   client.request(request)
@@ -1656,7 +1656,7 @@ The contactdb is a database of your contacts for [Twilio SendGrid Marketing Camp
   "recipient_id1", 
   "recipient_id2"
 ];
-  request.body = data;
+  request.data = data;
   request.method = 'DELETE';
   request.url = '/v3/contactdb/recipients';
   client.request(request)
@@ -1682,7 +1682,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
   'page': 1, 
   'page_size': 1
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/contactdb/recipients';
   client.request(request)
@@ -1712,7 +1712,7 @@ The contactdb is a database of your contacts for [Twilio SendGrid Marketing Camp
     "last_name": "Jones"
   }
 ];
-  request.body = data;
+  request.data = data;
   request.method = 'PATCH';
   request.url = '/v3/contactdb/recipients';
   client.request(request)
@@ -1781,7 +1781,7 @@ The contactdb is a database of your contacts for [Twilio SendGrid Marketing Camp
   const queryParams = {
   '{field_name}': 'test_string'
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/contactdb/recipients/search';
   client.request(request)
@@ -1918,7 +1918,7 @@ For more information about segments in Marketing Campaigns, please see our [User
   "list_id": 4, 
   "name": "Last Name Miller"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'POST';
   request.url = '/v3/contactdb/segments';
   client.request(request)
@@ -1964,7 +1964,7 @@ For more information about segments in Marketing Campaigns, please see our [User
   const queryParams = {
   'delete_contacts': 'true'
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'DELETE';
   request.url = '/v3/contactdb/segments/{segment_id}';
   client.request(request)
@@ -1997,11 +1997,11 @@ For more information about segments in Marketing Campaigns, please see our [User
   "list_id": 5, 
   "name": "The Millers"
 };
-  request.body = data;
+  request.data = data;
   const queryParams = {
   'segment_id': 'test_string'
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'PATCH';
   request.url = '/v3/contactdb/segments/{segment_id}';
   client.request(request)
@@ -2025,7 +2025,7 @@ For more information about segments in Marketing Campaigns, please see our [User
   const queryParams = {
   'segment_id': 1
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/contactdb/segments/{segment_id}';
   client.request(request)
@@ -2050,7 +2050,7 @@ For more information about segments in Marketing Campaigns, please see our [User
   'page': 1, 
   'page_size': 1
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/contactdb/segments/{segment_id}/recipients';
   client.request(request)
@@ -2106,7 +2106,7 @@ Advanced Stats provide a more in-depth view of your email statistics and the act
   'offset': 1, 
   'start_date': '2016-01-01'
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/devices/stats';
   client.request(request)
@@ -2138,7 +2138,7 @@ Advanced Stats provide a more in-depth view of your email statistics and the act
   'offset': 1, 
   'start_date': '2016-01-01'
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/geo/stats';
   client.request(request)
@@ -2167,7 +2167,7 @@ This endpoint is for adding a(n) IP Address(es) to your account.
   "user_can_send": true, 
   "warmup": true
 };
-  request.body = data;
+  request.data = data;
   request.method = 'POST';
   request.url = '/v3/ips';
   client.request(request)
@@ -2196,7 +2196,7 @@ A single IP address or a range of IP addresses may be dedicated to an account to
   'sort_by_direction': 'asc', 
   'subuser': 'test_string'
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/ips';
   client.request(request)
@@ -2242,7 +2242,7 @@ If an IP pool is NOT specified for an email, it will use any IP available, inclu
   const data = {
   "name": "marketing"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'POST';
   request.url = '/v3/ips/pools';
   client.request(request)
@@ -2290,7 +2290,7 @@ If an IP pool is NOT specified for an email, it will use any IP available, inclu
   const data = {
   "name": "new_pool_name"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PUT';
   request.url = '/v3/ips/pools/{pool_name}';
   client.request(request)
@@ -2358,7 +2358,7 @@ A single IP address or a range of IP addresses may be dedicated to an account to
   const data = {
   "ip": "0.0.0.0"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'POST';
   request.url = '/v3/ips/pools/{pool_name}/ips';
   client.request(request)
@@ -2418,7 +2418,7 @@ For more general information about warming up IPs, please see our [Classroom](ht
   const data = {
   "ip": "0.0.0.0"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'POST';
   request.url = '/v3/ips/warmup';
   client.request(request)
@@ -2599,7 +2599,7 @@ For more detailed information about how to use the v3 Mail Send endpoint, please
   }, 
   "subject": "Hello, World!"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'POST';
   request.url = '/v3/mail/send';
   client.request(request)
@@ -2625,7 +2625,7 @@ Mail settings allow you to tell Twilio SendGrid specific things to do to every e
   'limit': 1, 
   'offset': 1
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/mail_settings';
   client.request(request)
@@ -2653,7 +2653,7 @@ Mail settings allow you to tell Twilio SendGrid specific things to do to every e
     "example.com"
   ]
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PATCH';
   request.url = '/v3/mail_settings/address_whitelist';
   client.request(request)
@@ -2698,7 +2698,7 @@ Mail settings allow you to tell Twilio SendGrid specific things to do to every e
   "email": "email@example.com", 
   "enabled": false
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PATCH';
   request.url = '/v3/mail_settings/bcc';
   client.request(request)
@@ -2744,7 +2744,7 @@ Mail settings allow you to tell Twilio SendGrid specific things to do to every e
   "hard_bounces": 5, 
   "soft_bounces": 5
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PATCH';
   request.url = '/v3/mail_settings/bounce_purge';
   client.request(request)
@@ -2790,7 +2790,7 @@ Mail settings allow you to tell Twilio SendGrid specific things to do to every e
   "html_content": "...", 
   "plain_content": "..."
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PATCH';
   request.url = '/v3/mail_settings/footer';
   client.request(request)
@@ -2835,7 +2835,7 @@ Mail settings allow you to tell Twilio SendGrid specific things to do to every e
   "email": "example@example.com", 
   "enabled": true
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PATCH';
   request.url = '/v3/mail_settings/forward_bounce';
   client.request(request)
@@ -2880,7 +2880,7 @@ Mail settings allow you to tell Twilio SendGrid specific things to do to every e
   "email": "", 
   "enabled": false
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PATCH';
   request.url = '/v3/mail_settings/forward_spam';
   client.request(request)
@@ -2924,7 +2924,7 @@ Mail settings allow you to tell Twilio SendGrid specific things to do to every e
   const data = {
   "enabled": false
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PATCH';
   request.url = '/v3/mail_settings/plain_content';
   client.request(request)
@@ -2970,7 +2970,7 @@ Mail settings allow you to tell Twilio SendGrid specific things to do to every e
   "max_score": 5, 
   "url": "url"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PATCH';
   request.url = '/v3/mail_settings/spam_check';
   client.request(request)
@@ -3017,7 +3017,7 @@ Mail settings allow you to tell Twilio SendGrid specific things to do to every e
   "enabled": true, 
   "html_content": "<% body %>"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PATCH';
   request.url = '/v3/mail_settings/template';
   client.request(request)
@@ -3071,7 +3071,7 @@ Advanced Stats provide a more in-depth view of your email statistics and the act
   'offset': 1, 
   'start_date': '2016-01-01'
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/mailbox_providers/stats';
   client.request(request)
@@ -3232,7 +3232,7 @@ For information about building combined queries, see [Building compound Email Ac
     'limit': 10,
     'query': 'from_email="testing@sendgrid.net"'
   };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/messages';
   client.request(request)
@@ -3318,7 +3318,7 @@ Our partner settings allow you to integrate your Twilio SendGrid account with ou
   'limit': 1, 
   'offset': 1
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/partner_settings';
   client.request(request)
@@ -3344,7 +3344,7 @@ By integrating with New Relic, you can send your Twilio SendGrid email statistic
   "enabled": true, 
   "license_key": ""
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PATCH';
   request.url = '/v3/partner_settings/new_relic';
   client.request(request)
@@ -3410,7 +3410,7 @@ link: ```<https://api.sendgrid.com/v3/scopes/requests?limit=10&offset=0>; rel="f
   'limit': 1, 
   'offset': 1
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/scopes/requests';
   client.request(request)
@@ -3487,7 +3487,7 @@ Sender Identities are required to be verified before use. If your domain has bee
   "state": "Colorado", 
   "zip": "80202"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'POST';
   request.url = '/v3/senders';
   client.request(request)
@@ -3579,7 +3579,7 @@ Partial updates are allowed, but fields that are marked as "required" in the POS
   "state": "Colorado", 
   "zip": "80202"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PATCH';
   request.url = '/v3/senders/{sender_id}';
   client.request(request)
@@ -3626,7 +3626,7 @@ Parent accounts will see aggregated stats for their account and all subuser acco
   'offset': 1, 
   'start_date': '2016-01-01'
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/stats';
   client.request(request)
@@ -3660,7 +3660,7 @@ For more information about Subusers:
   "password": "johns_password", 
   "username": "John@example.com"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'POST';
   request.url = '/v3/subusers';
   client.request(request)
@@ -3687,7 +3687,7 @@ For more information about Subusers:
   'offset': 1, 
   'username': 'test_string'
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/subusers';
   client.request(request)
@@ -3709,7 +3709,7 @@ This endpoint allows you to request the reputations for your subusers.
   const queryParams = {
   'usernames': 'test_string'
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/subusers/reputations';
   client.request(request)
@@ -3740,7 +3740,7 @@ For more information, see our [User Guide](https://sendgrid.com/docs/User_Guide/
   'start_date': '2016-01-01', 
   'subusers': 'test_string'
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/subusers/stats';
   client.request(request)
@@ -3772,7 +3772,7 @@ For more information, see our [User Guide](https://sendgrid.com/docs/User_Guide/
   'sort_by_metric': 'test_string', 
   'subuser': 'test_string'
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/subusers/stats/monthly';
   client.request(request)
@@ -3803,7 +3803,7 @@ For more information, see our [User Guide](https://sendgrid.com/docs/User_Guide/
   'sort_by_metric': 'test_string', 
   'start_date': '2016-01-01'
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/subusers/stats/sums';
   client.request(request)
@@ -3849,7 +3849,7 @@ For more information about Subusers:
   const data = {
   "disabled": false
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PATCH';
   request.url = '/v3/subusers/{subuser_name}';
   client.request(request)
@@ -3874,7 +3874,7 @@ More information:
   const data = [
   "127.0.0.1"
 ];
-  request.body = data;
+  request.data = data;
   request.method = 'PUT';
   request.url = '/v3/subusers/{subuser_name}/ips';
   client.request(request)
@@ -3895,7 +3895,7 @@ Subuser monitor settings allow you to receive a sample of an outgoing message by
   "email": "example@example.com", 
   "frequency": 500
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PUT';
   request.url = '/v3/subusers/{subuser_name}/monitor';
   client.request(request)
@@ -3916,7 +3916,7 @@ Subuser monitor settings allow you to receive a sample of an outgoing message by
   "email": "example@example.com", 
   "frequency": 50000
 };
-  request.body = data;
+  request.data = data;
   request.method = 'POST';
   request.url = '/v3/subusers/{subuser_name}/monitor';
   client.request(request)
@@ -3979,7 +3979,7 @@ For more information, see our [User Guide](https://sendgrid.com/docs/User_Guide/
   'sort_by_direction': 'asc', 
   'sort_by_metric': 'test_string'
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/subusers/{subuser_name}/stats/monthly';
   client.request(request)
@@ -4015,7 +4015,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
     "example2@example.com"
   ]
 };
-  request.body = data;
+  request.data = data;
   request.method = 'DELETE';
   request.url = '/v3/suppression/blocks';
   client.request(request)
@@ -4042,7 +4042,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
   'offset': 1, 
   'start_time': 1
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/suppression/blocks';
   client.request(request)
@@ -4116,7 +4116,7 @@ Note: the `delete_all` and `emails` parameters should be used independently of e
     "example2@example.com"
   ]
 };
-  request.body = data;
+  request.data = data;
   request.method = 'DELETE';
   request.url = '/v3/suppression/bounces';
   client.request(request)
@@ -4144,7 +4144,7 @@ For more information see:
   'end_time': 1, 
   'start_time': 1
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/suppression/bounces';
   client.request(request)
@@ -4172,7 +4172,7 @@ For more information see:
   const queryParams = {
   'email_address': 'example@example.com'
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'DELETE';
   request.url = '/v3/suppression/bounces/{email}';
   client.request(request)
@@ -4231,7 +4231,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
     "example2@example.com"
   ]
 };
-  request.body = data;
+  request.data = data;
   request.method = 'DELETE';
   request.url = '/v3/suppression/invalid_emails';
   client.request(request)
@@ -4260,7 +4260,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
   'offset': 1, 
   'start_time': 1
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/suppression/invalid_emails';
   client.request(request)
@@ -4337,7 +4337,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
     "example2@example.com"
   ]
 };
-  request.body = data;
+  request.data = data;
   request.method = 'DELETE';
   request.url = '/v3/suppression/spam_reports';
   client.request(request)
@@ -4364,7 +4364,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
   'offset': 1, 
   'start_time': 1
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/suppression/spam_reports';
   client.request(request)
@@ -4429,7 +4429,7 @@ A global suppression (or global unsubscribe) is an email address of a recipient 
   'offset': 1, 
   'start_time': 1
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/suppression/unsubscribes';
   client.request(request)
@@ -4461,7 +4461,7 @@ Essentials, [Legacy Lite](https://sendgrid.com/docs/Classroom/Basics/Billing/leg
     "user.profile.update"
   ]
 };
-  request.body = data;
+  request.data = data;
   request.method = 'POST';
   request.url = '/v3/teammates';
   client.request(request)
@@ -4486,7 +4486,7 @@ link: ```<https://api.sendgrid.com/v3/teammates?limit=10&offset=0>; rel="first";
   'limit': 1, 
   'offset': 1
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/teammates';
   client.request(request)
@@ -4586,7 +4586,7 @@ To turn a teammate into an admin, the request body should contain an `is_admin` 
     "user.profile.edit"
   ]
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PATCH';
   request.url = '/v3/teammates/{username}';
   client.request(request)
@@ -4629,7 +4629,7 @@ Transactional templates are templates explicitly created for transactional email
   const data = {
   "name": "example_name"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'POST';
   request.url = '/v3/templates';
   client.request(request)
@@ -4718,7 +4718,7 @@ Transactional templates are templates explicitly created for transactional email
   const data = {
   "name": "new_example_name"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PATCH';
   request.url = '/v3/templates/{template_id}';
   client.request(request)
@@ -4767,7 +4767,7 @@ For more information about transactional templates, please see our [User Guide](
   "subject": "<%subject%>", 
   "template_id": "ddb96bbc-9b92-425e-8979-99464621b543"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'POST';
   request.url = '/v3/templates/{template_id}/versions';
   client.request(request)
@@ -4827,7 +4827,7 @@ For more information about transactional templates, please see our [User Guide](
   "plain_content": "<%body%>", 
   "subject": "<%subject%>"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PATCH';
   request.url = '/v3/templates/{template_id}/versions/{version_id}';
   client.request(request)
@@ -4908,7 +4908,7 @@ For more information about tracking, please see our [User Guide](https://sendgri
   'limit': 1, 
   'offset': 1
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/tracking_settings';
   client.request(request)
@@ -4932,7 +4932,7 @@ For more information about tracking, please see our [User Guide](https://sendgri
   const data = {
   "enabled": true
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PATCH';
   request.url = '/v3/tracking_settings/click';
   client.request(request)
@@ -4985,7 +4985,7 @@ For more information about tracking, please see our [User Guide](https://sendgri
   "utm_source": "sendgrid.com", 
   "utm_term": ""
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PATCH';
   request.url = '/v3/tracking_settings/google_analytics';
   client.request(request)
@@ -5035,7 +5035,7 @@ For more information about tracking, please see our [User Guide](https://sendgri
   const data = {
   "enabled": true
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PATCH';
   request.url = '/v3/tracking_settings/open';
   client.request(request)
@@ -5088,7 +5088,7 @@ For more information about tracking, please see our [User Guide](https://sendgri
   "replace": "replacement tag", 
   "url": "url"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PATCH';
   request.url = '/v3/tracking_settings/subscription';
   client.request(request)
@@ -5181,7 +5181,7 @@ For more information about your user profile:
   const data = {
   "email": "example@example.com"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PUT';
   request.url = '/v3/user/email';
   client.request(request)
@@ -5230,7 +5230,7 @@ For more information about your user profile:
   "new_password": "new_password", 
   "old_password": "old_password"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PUT';
   request.url = '/v3/user/password';
   client.request(request)
@@ -5260,7 +5260,7 @@ It should be noted that any one or more of the parameters can be updated via the
   "first_name": "Example", 
   "last_name": "User"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PATCH';
   request.url = '/v3/user/profile';
   client.request(request)
@@ -5306,7 +5306,7 @@ The Cancel Scheduled Sends feature allows the customer to cancel a scheduled sen
   "batch_id": "YOUR_BATCH_ID", 
   "status": "pause"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'POST';
   request.url = '/v3/user/scheduled_sends';
   client.request(request)
@@ -5364,7 +5364,7 @@ The Cancel Scheduled Sends feature allows the customer to cancel a scheduled sen
   const data = {
   "status": "pause"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PATCH';
   request.url = '/v3/user/scheduled_sends/{batch_id}';
   client.request(request)
@@ -5407,7 +5407,7 @@ The Enforced TLS settings specify whether or not the recipient is required to su
   "require_tls": true, 
   "require_valid_cert": false
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PATCH';
   request.url = '/v3/user/settings/enforced_tls';
   client.request(request)
@@ -5453,7 +5453,7 @@ For more information about your user profile:
   const data = {
   "username": "test_username"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PUT';
   request.url = '/v3/user/username';
   client.request(request)
@@ -5513,7 +5513,7 @@ Typical uses of this data are to remove unsubscribes, react to spam reports, det
   "unsubscribe": true, 
   "url": "url"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PATCH';
   request.url = '/v3/user/webhooks/event/settings';
   client.request(request)
@@ -5559,7 +5559,7 @@ Typical uses of this data are to remove unsubscribes, react to spam reports, det
   const data = {
   "url": "url"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'POST';
   request.url = '/v3/user/webhooks/event/test';
   client.request(request)
@@ -5584,7 +5584,7 @@ The inbound parse webhook allows you to have incoming emails parsed, extracting 
   "spam_check": true, 
   "url": "http://email.myhosthame.com"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'POST';
   request.url = '/v3/user/webhooks/parse/settings';
   client.request(request)
@@ -5644,7 +5644,7 @@ The inbound parse webhook allows you to have incoming emails parsed, extracting 
   "spam_check": false, 
   "url": "http://newdomain.com/parse"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PATCH';
   request.url = '/v3/user/webhooks/parse/settings/{hostname}';
   client.request(request)
@@ -5690,7 +5690,7 @@ There are many pre-made integrations for the Twilio SendGrid Parse Webhook which
   'offset': 'test_string', 
   'start_date': '2016-01-01'
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/user/webhooks/parse/stats';
   client.request(request)
@@ -5730,7 +5730,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
   "subdomain": "news", 
   "username": "john@example.com"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'POST';
   request.url = '/v3/whitelabel/domains';
   client.request(request)
@@ -5758,7 +5758,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
   'offset': 1, 
   'username': 'test_string'
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/whitelabel/domains';
   client.request(request)
@@ -5882,7 +5882,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
   "custom_spf": true, 
   "default": false
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PATCH';
   request.url = '/v3/whitelabel/domains/{domain_id}';
   client.request(request)
@@ -5933,7 +5933,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
   const data = {
   "username": "jane@example.com"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'POST';
   request.url = '/v3/whitelabel/domains/{domain_id}/subuser';
   client.request(request)
@@ -5962,7 +5962,7 @@ For more information on whitelabeling, please see our [User Guide](https://sendg
   const data = {
   "ip": "192.168.0.1"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'POST';
   request.url = '/v3/whitelabel/domains/{id}/ips';
   client.request(request)
@@ -6041,7 +6041,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
   "ip": "192.168.1.1", 
   "subdomain": "email"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'POST';
   request.url = '/v3/whitelabel/ips';
   client.request(request)
@@ -6069,7 +6069,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
   'limit': 1, 
   'offset': 1
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/whitelabel/ips';
   client.request(request)
@@ -6155,12 +6155,12 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
   "domain": "example.com", 
   "subdomain": "mail"
 };
-  request.body = data;
+  request.data = data;
   const queryParams = {
   'limit': 1, 
   'offset': 1
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'POST';
   request.url = '/v3/whitelabel/links';
   client.request(request)
@@ -6184,7 +6184,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
   const queryParams = {
   'limit': 1
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/whitelabel/links';
   client.request(request)
@@ -6215,7 +6215,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
   const queryParams = {
   'domain': 'test_string'
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/whitelabel/links/default';
   client.request(request)
@@ -6243,7 +6243,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
   const queryParams = {
   'username': 'test_string'
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'DELETE';
   request.url = '/v3/whitelabel/links/subuser';
   client.request(request)
@@ -6271,7 +6271,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
   const queryParams = {
   'username': 'test_string'
 };
-  request.qs = queryParams;
+  request.params = queryParams;
   request.method = 'GET';
   request.url = '/v3/whitelabel/links/subuser';
   client.request(request)
@@ -6315,7 +6315,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
   const data = {
   "default": true
 };
-  request.body = data;
+  request.data = data;
   request.method = 'PATCH';
   request.url = '/v3/whitelabel/links/{id}';
   client.request(request)
@@ -6383,7 +6383,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/API_
   const data = {
   "username": "jane@example.com"
 };
-  request.body = data;
+  request.data = data;
   request.method = 'POST';
   request.url = '/v3/whitelabel/links/{link_id}/subuser';
   client.request(request)

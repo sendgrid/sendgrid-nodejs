@@ -1,17 +1,15 @@
-type HttpMethod = 'get'|'post'|'put'|'patch'|'delete';
+type HttpMethod = 'get'| 'GET'|'post'|'POST'|'put'|'PUT'|'patch'|'PATCH'|'delete'|'DELETE';
 
-declare namespace Request {
-    export interface RequestOptions<TData = any, TParams = object> {
-        method?: HttpMethod | '*';
-        url?: string;
-        auth?: string;
-        params?: TParams;
-        data?: TData | '*';
-        headers?: object | '*';
-        ca?: string;
-    }
+export interface RequestOptions<TData = any, TParams = object> {
+    method?: HttpMethod | '*';
+    url?: string;
+    auth?: string;
+    params?: TParams;
+    data?: TData | '*';
+    headers?: object | '*';
+    ca?: string;
 }
 
-export default class Request<TData = any> {
-    constructor(opts: Request.RequestOptions<TData>);
+export class Request<TData = any> {
+    constructor(opts: RequestOptions<TData>);
 }

@@ -122,7 +122,7 @@ class Client {
       axios(opts)
         .then(response => {
           // Successful response
-          _this.lastResponse = new Response(response.status, response.data);
+          _this.lastResponse = new Response(response.status, response.data, response.headers);
           return resolve([_this.lastResponse, response.data]);
         })
         .catch(error => {

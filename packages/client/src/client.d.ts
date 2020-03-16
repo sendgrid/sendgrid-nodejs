@@ -1,8 +1,6 @@
 import {ResponseError} from "@sendgrid/helpers/classes";
-import {ClientRequest} from "@sendgrid/client/src/request";
+import {ClientRequest, RequestOptions} from "@sendgrid/client/src/request";
 import {ClientResponse} from "@sendgrid/client/src/response";
-
-type HttpMethod = 'get'| 'GET'|'post'|'POST'|'put'|'PUT'|'patch'|'PATCH'|'delete'|'DELETE';
 
 declare class Client {
   constructor();
@@ -19,7 +17,7 @@ declare class Client {
   /**
    * Set default request
    */
-  setDefaultRequest<K extends keyof Client.RequestOptions>(key: K, value: Client.RequestOptions[K]): this;
+  setDefaultRequest<K extends keyof RequestOptions>(key: K, value: RequestOptions[K]): this;
 
   /**
    * Create headers for request
@@ -29,49 +27,12 @@ declare class Client {
   /**
    * Create request
    */
-  createRequest<TData>(data: Client.RequestOptions<TData>): ClientRequest;
+  createRequest<TData>(data: RequestOptions<TData>): ClientRequest;
 
   /**
    * Do a request
    */
-  request<TData>(opts: Client.RequestOptions<TData>, cb?: (err: ResponseError, response: [ClientResponse, any]) => void): Promise<[ClientResponse, any]>;
-}
-
-declare namespace Client {
-  export interface RequestOptions<TData = any, TParams = object> {
-    /**
-     * The HTTP method
-     */
-    method?: HttpMethod;
-    /**
-     * The request URI
-     */
-    url: string;
-    /**
-     * The username used for auth
-     */
-    username?: string;
-    /**
-     * The password used for auth
-     */
-    password?: string;
-    /**
-     * The request headers
-     */
-    headers?: Headers;
-    /**
-     * The object of params added as query string to the request
-     */
-    params?: TParams;
-    /**
-     * The form data that should be submitted
-     */
-    data?: TData;
-  }
-
-  export interface Headers {
-    [header: string]: string;
-  }
+  request<TData>(opts: RequestOptions<TData>, cb?: (err: ResponseError, response: [ClientResponse, any]) => void): Promise<[ClientResponse, any]>;
 }
 
 declare const client: Client & { Client: typeof Client };
