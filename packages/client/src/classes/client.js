@@ -122,8 +122,9 @@ class Client {
       axios(opts)
         .then(response => {
           // Successful response
-          _this.lastResponse = new Response(response.status, response.data, response.headers);
-          return resolve([_this.lastResponse, response.data]);
+          const response = new Response(response.status, response.data, response.headers);
+          _this.lastResponse = response;
+          return resolve([response, response.data]);
         })
         .catch(error => {
           // Response error
