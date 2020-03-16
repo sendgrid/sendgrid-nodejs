@@ -1,4 +1,4 @@
-type HttpMethod = 'get'| 'GET'|'post'|'POST'|'put'|'PUT'|'patch'|'PATCH'|'delete'|'DELETE';
+type HttpMethod = 'get'|'GET'|'post'|'POST'|'put'|'PUT'|'patch'|'PATCH'|'delete'|'DELETE';
 
 export interface RequestOptions<TData = any, TParams = object> {
     method?: HttpMethod | '*';
