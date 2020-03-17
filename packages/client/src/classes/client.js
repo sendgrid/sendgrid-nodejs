@@ -10,7 +10,6 @@ const {
     mergeData,
   },
   classes: {
-    Request,
     ResponseError,
     Response,
   },
@@ -64,7 +63,11 @@ class Client {
    * Set default request
    */
   setDefaultRequest(key, value) {
-    this.defaultRequest[key] = value;
+    if (key === 'baseUrl') {
+      this.defaultRequest.baseURL = value;
+    } else {
+      this.defaultRequest[key] = value;
+    }
     return this;
   }
 
@@ -92,10 +95,10 @@ class Client {
 
     let options = {
       url: opts.uri || opts.url,
-      baseURL: opts.baseURL,
+      baseURL: opts.baseUrl,
       method: opts.method,
-      data: opts.data ? opts.data : opts.body ? opts.body : {},
-      params: opts.qs ? opts.qs : opts.params ? opts.params : {},
+      data: opts.body || {},
+      params: opts.qs || {},
       headers: opts.headers || {},
     };
 
@@ -113,18 +116,16 @@ class Client {
 
     //Create request
     opts = this.createRequest(opts);
-    this.lastResponse = undefined;
-    this.lastRequest = new Request(opts);
-    let _this = this;
 
     //Perform request
     const promise = new Promise((resolve, reject) => {
       axios(opts)
         .then(response => {
           // Successful response
-          const resp = new Response(response.status, response.data, response.headers);
-          _this.lastResponse = resp;
-          return resolve([resp, response.data]);
+          return resolve([
+            new Response(response.status, response.data, response.headers),
+            response.data,
+          ]);
         })
         .catch(error => {
           // Response error
