@@ -1,6 +1,13 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2020-03-18] Version 6.5.5
+--------------------------
+**Library - Chore**
+- [PR #1069](https://github.com/sendgrid/sendgrid-nodejs/pull/1069): refactor duplicate code in client tests. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #1053](https://github.com/sendgrid/sendgrid-nodejs/pull/1053): export type MailDataRequired. Thanks to [@antonsamper](https://github.com/antonsamper)!
+
+
 [2020-03-04] Version 6.5.4
 --------------------------
 **Library - Fix**
