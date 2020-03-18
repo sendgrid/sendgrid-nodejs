@@ -10,8 +10,8 @@ const {
     mergeData,
   },
   classes: {
-    ResponseError,
     Response,
+    ResponseError,
   },
 } = require('@sendgrid/helpers');
 
@@ -36,7 +36,6 @@ class Client {
 
     //Empty default request
     this.defaultRequest = {
-      data: {},
       baseURL: 'https://api.sendgrid.com/',
       url: '',
       method: 'GET',
@@ -97,9 +96,9 @@ class Client {
       url: opts.uri || opts.url,
       baseURL: opts.baseUrl,
       method: opts.method,
-      data: opts.body || {},
-      params: opts.qs || {},
-      headers: opts.headers || {},
+      data: opts.body,
+      params: opts.qs,
+      headers: opts.headers,
     };
 
     //Merge data with empty request

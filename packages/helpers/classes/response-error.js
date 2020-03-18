@@ -24,7 +24,7 @@ class ResponseError extends Error {
     //Set data
     this.code = status;
     this.message = statusText;
-    this.response = {headers, data};
+    this.response = {headers, body: data};
 
     //Capture stack trace
     if (!this.stack) {
