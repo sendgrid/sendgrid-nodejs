@@ -36,7 +36,7 @@ class Client {
 
     //Empty default request
     this.defaultRequest = {
-      baseURL: 'https://api.sendgrid.com/',
+      baseUrl: 'https://api.sendgrid.com/',
       url: '',
       method: 'GET',
       headers: {},
@@ -62,11 +62,7 @@ class Client {
    * Set default request
    */
   setDefaultRequest(key, value) {
-    if (key === 'baseUrl') {
-      this.defaultRequest.baseURL = value;
-    } else {
-      this.defaultRequest[key] = value;
-    }
+    this.defaultRequest[key] = value;
     return this;
   }
 
@@ -94,7 +90,7 @@ class Client {
 
     let options = {
       url: opts.uri || opts.url,
-      baseURL: opts.baseUrl,
+      baseUrl: opts.baseUrl,
       method: opts.method,
       data: opts.body,
       params: opts.qs,
@@ -103,8 +99,10 @@ class Client {
 
     //Merge data with empty request
     options = mergeData(this.defaultRequest, options);
-
     options.headers = this.createHeaders(options.headers);
+    options.baseURL = options.baseUrl;
+    delete options.baseUrl;
+
     return options;
   }
 
