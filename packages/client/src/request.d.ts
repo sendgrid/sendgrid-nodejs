@@ -1,3 +1,3 @@
 import RequestOptions from "@sendgrid/helpers/classes/request";
 
-export default RequestOptions;
+export type ClientRequest = RequestOptions;

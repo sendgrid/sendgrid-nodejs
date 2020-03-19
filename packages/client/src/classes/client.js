@@ -86,15 +86,15 @@ class Client {
   /**
    * Create request
    */
-  createRequest(opts) {
+  createRequest(data) {
 
     let options = {
-      url: opts.uri || opts.url,
-      baseUrl: opts.baseUrl,
-      method: opts.method,
-      data: opts.body,
-      params: opts.qs,
-      headers: opts.headers,
+      url: data.uri || data.url,
+      baseUrl: data.baseUrl,
+      method: data.method,
+      data: data.body,
+      params: data.qs,
+      headers: data.headers,
     };
 
     //Merge data with empty request
@@ -109,14 +109,14 @@ class Client {
   /**
    * Do a request
    */
-  request(opts, cb) {
+  request(data, cb) {
 
     //Create request
-    opts = this.createRequest(opts);
+    data = this.createRequest(data);
 
     //Perform request
     const promise = new Promise((resolve, reject) => {
-      axios(opts)
+      axios(data)
         .then(response => {
           // Successful response
           return resolve([

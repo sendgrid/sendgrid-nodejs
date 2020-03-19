@@ -1,5 +1,5 @@
 import {ResponseError} from "@sendgrid/helpers/classes";
-import RequestOptions from "@sendgrid/client/src/request";
+import {ClientRequest} from "@sendgrid/client/src/request";
 import {ClientResponse} from "@sendgrid/client/src/response";
 
 declare class Client {
@@ -17,7 +17,7 @@ declare class Client {
   /**
    * Set default request
    */
-  setDefaultRequest<K extends keyof RequestOptions>(key: K, value: RequestOptions[K]): this;
+  setDefaultRequest<K extends keyof ClientRequest>(key: K, value: ClientRequest[K]): this;
 
   /**
    * Create headers for request
@@ -27,12 +27,12 @@ declare class Client {
   /**
    * Create request
    */
-  createRequest<TData>(data: RequestOptions<TData>): RequestOptions<TData>;
+  createRequest(data: ClientRequest): ClientRequest;
 
   /**
    * Do a request
    */
-  request<TData>(opts: RequestOptions<TData>, cb?: (err: ResponseError, response: [ClientResponse, any]) => void): Promise<[ClientResponse, any]>;
+  request(data: ClientRequest, cb?: (err: ResponseError, response: [ClientResponse, any]) => void): Promise<[ClientResponse, any]>;
 }
 
 declare const client: Client & { Client: typeof Client };
