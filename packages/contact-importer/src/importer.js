@@ -51,9 +51,8 @@ class ContactImporter extends EventEmitter {
       // If this batch is full or the queue is empty queue it for processing.
       if (batch.length === this.batchSize || !this.queue.length()) {
         this._pushToQueue(batch);
-      }
+      } else {
       // Otherwise, it store it for later.
-      else {
         debug('the last batch with only %s item is deferred (partial batch)', batch.length);
         this.pendingItems = batch;
       }

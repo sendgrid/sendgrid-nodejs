@@ -97,8 +97,7 @@ class Statistics {
     if (typeof aggregatedBy === 'string' &&
         AggregatedByOptions.includes(aggregatedBy.toLowerCase())) {
       this.aggregatedBy = aggregatedBy;
-    }
-    else {
+    } else {
       throw new Error('Incorrect value for `aggregatedBy`');
     }
   }

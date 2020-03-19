@@ -92,8 +92,7 @@ class Mail {
 
     if (this.isDynamic) {
       this.setDynamicTemplateData(dynamicTemplateData);
-    }
-    else {
+    } else {
       this.setSubstitutions(substitutions);
       this.setSubstitutionWrappers(substitutionWrappers);
     }
@@ -105,15 +104,11 @@ class Mail {
     //Using "to" property for personalizations
     if (personalizations) {
       this.setPersonalizations(personalizations);
-    }
-
-    //Multiple individual emails
-    else if (isMultiple && Array.isArray(to)) {
+    } else if (isMultiple && Array.isArray(to)) {
+      //Multiple individual emails
       to.forEach(to => this.addTo(to, cc, bcc));
-    }
-
-    //Single email (possibly with multiple recipients in the to field)
-    else {
+    } else {
+      //Single email (possibly with multiple recipients in the to field)
       this.addTo(to, cc, bcc);
     }
   }
@@ -247,8 +242,7 @@ class Mail {
     //depending on the templateId
     if (this.isDynamic && personalization.substitutions) {
       delete personalization.substitutions;
-    }
-    else if (!this.isDynamic && personalization.dynamicTemplateData) {
+    } else if (!this.isDynamic && personalization.dynamicTemplateData) {
       delete personalization.dynamicTemplateData;
     }
 
@@ -260,8 +254,7 @@ class Mail {
     //If this is dynamic, set dynamicTemplateData, or set substitutions
     if (this.isDynamic) {
       this.applyDynamicTemplateData(personalization);
-    }
-    else {
+    } else {
       this.applySubstitutions(personalization);
     }
 
