@@ -1,4 +1,3 @@
-import {Request, RequestOptions} from "@sendgrid/helpers/classes/request";
+import RequestOptions from "@sendgrid/helpers/classes/request";
 
-export {Request as ClientRequest};
-export {RequestOptions};
+export default RequestOptions;

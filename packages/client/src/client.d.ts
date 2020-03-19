@@ -1,5 +1,5 @@
 import {ResponseError} from "@sendgrid/helpers/classes";
-import {ClientRequest, RequestOptions} from "@sendgrid/client/src/request";
+import RequestOptions from "@sendgrid/client/src/request";
 import {ClientResponse} from "@sendgrid/client/src/response";
 
 declare class Client {
@@ -27,7 +27,7 @@ declare class Client {
   /**
    * Create request
    */
-  createRequest<TData>(data: RequestOptions<TData>): ClientRequest;
+  createRequest<TData>(data: RequestOptions<TData>): RequestOptions<TData>;
 
   /**
    * Do a request

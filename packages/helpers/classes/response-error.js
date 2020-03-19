@@ -40,10 +40,10 @@ class ResponseError extends Error {
    * Convert to string
    */
   toString() {
-    const {data} = this.response;
+    const {body} = this.response;
     let err = chalk.red(`${this.message} (${this.code})`);
-    if (data && Array.isArray(data.errors)) {
-      data.errors.forEach(error => {
+    if (body && Array.isArray(body.errors)) {
+      body.errors.forEach(error => {
         const message = chalk.yellow(error.message);
         const field = chalk.grey(error.field);
         const help = chalk.grey(error.help);
