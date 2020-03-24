@@ -46,7 +46,7 @@ This library is broken up into several packages as a monorepo so that you only n
 
 <a name="announcements"></a>
 # Announcements
-**NEW:** If you're a software engineer who is passionate about #DeveloperExperience and/or #OpenSource, [this is an incredible opportunity to join our #DX team](https://sendgrid.com/careers/role/1421152/?gh_jid=1421152) as a Developer Experience Engineer and work with [@thinkingserious](https://github.com/thinkingserious) and [@aroach](https://github.com/aroach)! Tell your friends :)
+**NEW:** **BREAKING CHANGE:** Please see the [Twilio SendGrid Node.js Migration Guide 6.X.X -> 7.X.X](https://github.com/sendgrid/sendgrid-nodejs/blob/master/docs/migration-guides/migrating-from-version-6-to-7.md) for details.
 
 All updates to this library are documented in our [CHANGELOG](https://github.com/sendgrid/sendgrid-nodejs/blob/master/CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases). You may also subscribe to email [release notifications](https://dx.sendgrid.com/newsletter/nodejs) for releases and breaking changes.
 
