@@ -51,7 +51,7 @@ yarn add @sendgrid/mail
 
 The following is the minimum needed code to send a simple email. Use this example, and modify the `to` and `from` variables:
 
-For more complex use cases, please see [USE_CASES.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/use-cases/README.md#email-use-cases).
+For more complex use cases, please see [USE_CASES.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/docs/use-cases/README.md#email-use-cases).
 
 ```js
 const sgMail = require('@sendgrid/mail');
