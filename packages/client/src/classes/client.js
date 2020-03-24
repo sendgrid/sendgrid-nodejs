@@ -3,13 +3,14 @@
 /**
  * Dependencies
  */
-const http = require('request');
+const axios = require('axios');
 const pkg = require('../../package.json');
 const {
   helpers: {
     mergeData,
   },
   classes: {
+    Response,
     ResponseError,
   },
 } = require('@sendgrid/helpers');
@@ -18,7 +19,6 @@ const {
  * Twilio SendGrid REST Client
  */
 class Client {
-
   /**
    * Constructor
    */
@@ -29,13 +29,13 @@ class Client {
 
     //Default headers
     this.defaultHeaders = {
-      Accept: 'application/json',
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
       'User-agent': 'sendgrid/' + pkg.version + ';nodejs',
     };
 
     //Empty default request
     this.defaultRequest = {
-      json: true,
       baseUrl: 'https://api.sendgrid.com/',
       url: '',
       method: 'GET',
@@ -88,18 +88,22 @@ class Client {
    */
   createRequest(data) {
 
-    //Keep URL parameter consistent
-    if (data.uri) {
-      data.url = data.uri;
-      delete data.uri;
-    }
+    let options = {
+      url: data.uri || data.url,
+      baseUrl: data.baseUrl,
+      method: data.method,
+      data: data.body,
+      params: data.qs,
+      headers: data.headers,
+    };
 
     //Merge data with empty request
-    const request = mergeData(this.defaultRequest, data);
+    options = mergeData(this.defaultRequest, options);
+    options.headers = this.createHeaders(options.headers);
+    options.baseURL = options.baseUrl;
+    delete options.baseUrl;
 
-    //Add headers
-    request.headers = this.createHeaders(request.headers);
-    return request;
+    return options;
   }
 
   /**
@@ -108,25 +112,28 @@ class Client {
   request(data, cb) {
 
     //Create request
-    const request = this.createRequest(data);
+    data = this.createRequest(data);
 
     //Perform request
     const promise = new Promise((resolve, reject) => {
-      http(request, (error, response, body) => {
-
-        //Request error
-        if (error) {
+      axios(data)
+        .then(response => {
+          // Successful response
+          return resolve([
+            new Response(response.status, response.data, response.headers),
+            response.data,
+          ]);
+        })
+        .catch(error => {
+          // Response error
+          if (error.response) {
+            if (error.response.status >= 400) {
+              return reject(new ResponseError(error.response));
+            }
+          }
+          // Request error
           return reject(error);
-        }
-
-        //Response error
-        if (response.statusCode >= 400) {
-          return reject(new ResponseError(response));
-        }
-
-        //Successful response
-        resolve([response, body]);
-      });
+        });
     });
 
     // Throw and error incase function not passed

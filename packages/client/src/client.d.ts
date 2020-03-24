@@ -3,6 +3,7 @@ import {ClientRequest} from "@sendgrid/client/src/request";
 import {ClientResponse} from "@sendgrid/client/src/response";
 
 declare class Client {
+  constructor();
   /**
    * Set API key
    */

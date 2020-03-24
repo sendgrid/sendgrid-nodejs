@@ -24,7 +24,7 @@ module.exports = function mergeData(base, data) {
         merged[key] = data[key];
       } else if (data[key] && typeof data[key] === 'object') {
         merged[key] = Object.assign({}, data[key]);
-      } else {
+      } else if (data[key]) {
         merged[key] = data[key];
       }
     }

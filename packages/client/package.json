@@ -28,8 +28,7 @@
   },
   "dependencies": {
     "@sendgrid/helpers": "^6.5.5",
-    "@types/request": "^2.48.4",
-    "request": "^2.88.0"
+    "axios": "^0.19.2"
   },
   "tags": [
     "http",
