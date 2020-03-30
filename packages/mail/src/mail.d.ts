@@ -9,6 +9,11 @@ declare class MailService {
   setApiKey(apiKey: string): void;
 
   /**
+   * Set the default request timeout (in milliseconds).
+   */
+  setTimeout(timeout: number): void;
+
+  /**
    * Set substitution wrappers
    */
   setSubstitutionWrappers(left: string, right: string): void;
