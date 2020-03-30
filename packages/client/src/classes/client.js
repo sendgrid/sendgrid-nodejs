@@ -35,7 +35,7 @@ class Client {
     this.apiKey = apiKey;
 
     if (!this.isValidApiKey(apiKey)) {
-      console.warn(`API key does not start with ${API_KEY_PREFIX}`);
+      console.warn(`API key does not start with "${API_KEY_PREFIX}".`);
     }
   }
 
@@ -109,7 +109,7 @@ class Client {
         });
     });
 
-    // Throw an error in case a callback function was not passed/
+    // Throw an error in case a callback function was not passed.
     if (cb && typeof cb !== 'function') {
       throw new Error('Callback passed is not a function.');
     }
