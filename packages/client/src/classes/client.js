@@ -1,8 +1,4 @@
 'use strict';
-
-/**
- * Dependencies
- */
 const axios = require('axios');
 const pkg = require('../../package.json');
 const {
@@ -15,26 +11,18 @@ const {
   },
 } = require('@sendgrid/helpers');
 
-/**
- * Twilio SendGrid REST Client
- */
-class Client {
-  /**
-   * Constructor
-   */
-  constructor() {
+const API_KEY_PREFIX = 'SG.';
 
-    //API key
+class Client {
+  constructor() {
     this.apiKey = '';
 
-    //Default headers
     this.defaultHeaders = {
-      'Accept': 'application/json',
+      Accept: 'application/json',
       'Content-Type': 'application/json',
       'User-agent': 'sendgrid/' + pkg.version + ';nodejs',
     };
 
-    //Empty default request
     this.defaultRequest = {
       baseUrl: 'https://api.sendgrid.com/',
       url: '',
@@ -43,51 +31,45 @@ class Client {
     };
   }
 
-  /**
-   * Set API key
-   */
   setApiKey(apiKey) {
     this.apiKey = apiKey;
+
+    if (!this.isValidApiKey(apiKey)) {
+      console.warn(`API key does not start with ${API_KEY_PREFIX}`);
+    }
   }
 
-  /**
-   * Set default header
-   */
+  isValidApiKey(apiKey) {
+    return this.isString(apiKey) && apiKey.trim().startsWith(API_KEY_PREFIX);
+  }
+
+  isString(value) {
+    return typeof value === 'string' || value instanceof String;
+  }
+
   setDefaultHeader(key, value) {
     this.defaultHeaders[key] = value;
     return this;
   }
 
-  /**
-   * Set default request
-   */
   setDefaultRequest(key, value) {
     this.defaultRequest[key] = value;
     return this;
   }
 
-  /**
-   * Create headers for request
-   */
   createHeaders(data) {
-
-    //Merge data with default headers
+    // Merge data with default headers.
     const headers = mergeData(this.defaultHeaders, data);
 
-    //Add API key, but don't overwrite if header already set
+    // Add API key, but don't overwrite if header already set.
     if (typeof headers.Authorization === 'undefined' && this.apiKey) {
       headers.Authorization = 'Bearer ' + this.apiKey;
     }
 
-    //Return
     return headers;
   }
 
-  /**
-   * Create request
-   */
   createRequest(data) {
-
     let options = {
       url: data.uri || data.url,
       baseUrl: data.baseUrl,
@@ -97,7 +79,7 @@ class Client {
       headers: data.headers,
     };
 
-    //Merge data with empty request
+    // Merge data with default request.
     options = mergeData(this.defaultRequest, options);
     options.headers = this.createHeaders(options.headers);
     options.baseURL = options.baseUrl;
@@ -106,52 +88,40 @@ class Client {
     return options;
   }
 
-  /**
-   * Do a request
-   */
   request(data, cb) {
-
-    //Create request
     data = this.createRequest(data);
 
-    //Perform request
     const promise = new Promise((resolve, reject) => {
       axios(data)
         .then(response => {
-          // Successful response
           return resolve([
             new Response(response.status, response.data, response.headers),
             response.data,
           ]);
         })
         .catch(error => {
-          // Response error
           if (error.response) {
             if (error.response.status >= 400) {
               return reject(new ResponseError(error.response));
             }
           }
-          // Request error
           return reject(error);
         });
     });
 
-    // Throw and error incase function not passed
+    // Throw an error in case a callback function was not passed/
     if (cb && typeof cb !== 'function') {
       throw new Error('Callback passed is not a function.');
     }
 
-    //Execute callback if provided
     if (cb) {
       return promise
         .then(result => cb(null, result))
         .catch(error => cb(error, null));
     }
 
-    //Return promise
     return promise;
   }
 }
 
-//Export class
 module.exports = Client;

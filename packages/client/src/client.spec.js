@@ -13,9 +13,32 @@ const testRequest = (request, statusCode) => {
     });
 };
 
-/**
- * Tests
- */
+describe('client', () => {
+  const sgClient = require('./client');
+
+  describe('setApiKey', () => {
+    let consoleWarnSpy;
+
+    beforeEach(() => {
+      consoleWarnSpy = sinon.spy(console, 'warn');
+    });
+
+    afterEach(() => {
+      console.warn.restore();
+    });
+
+    it('should not log a warning for a proper API key value', () => {
+      sgClient.setApiKey('SG.1234567890');
+      expect(consoleWarnSpy.notCalled).to.equal(true);
+    });
+
+    it('should log a warning for an undefined API key value', () => {
+      sgClient.setApiKey(undefined);
+      expect(consoleWarnSpy.calledOnce).to.equal(true);
+    });
+  });
+});
+
 describe('test_access_settings_activity_get', () => {
   const request = {};
   request.qs = {
