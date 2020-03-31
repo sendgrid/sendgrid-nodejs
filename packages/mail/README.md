@@ -66,13 +66,23 @@ const msg = {
 //ES6
 sgMail
   .send(msg)
-  .then(() => {}, console.error);
+  .then(() => {}, error => {
+    console.error(error);
+
+    if (error.response) {
+      console.error(error.response.body)
+    }
+  });
 //ES8
 (async () => {
   try {
     await sgMail.send(msg);
-  } catch (err) {
-    console.error(err.toString());
+  } catch (error) {
+    console.error(error);
+
+    if (error.response) {
+      console.error(error.response.body)
+    }
   }
 })();
 ```
