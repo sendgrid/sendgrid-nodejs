@@ -14,9 +14,9 @@ const msg = {
   subject: 'Hello world',
   text: 'Hello plain world!',
   html: '<p>Hello HTML world!</p>',
-  templateId: 'sendgrid-template-id',
+  templateId: 'd-12345678901234567890123456789012',
   substitutionWrappers: ['{{', '}}'],
-  substitutions: {
+  dynamicTemplateData: {
     name: 'Some One',
     id: '123',
   },
@@ -46,7 +46,13 @@ const msg = {
 sgMail
   .send(msg)
   .then(() => console.log('Mail sent successfully'))
-  .catch(error => console.error(error.toString()));
+  .catch(error => {
+    console.error(error);
+
+    if (error.response) {
+      console.error(error.response.body)
+    }
+  });
 ```
 
 ### Caveats:

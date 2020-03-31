@@ -8,7 +8,7 @@ const msg = {
     {
       to: 'recipient1@example.org',
       subject: 'Hello recipient 1',
-      substitutions: {
+      dynamicTemplateData: {
         name: 'Recipient 1',
         id: '123',
       },
@@ -22,7 +22,7 @@ const msg = {
     {
       to: 'recipient2@example.org',
       subject: 'Hello recipient 2',
-      substitutions: {
+      dynamicTemplateData: {
         name: 'Recipient 2',
         id: '456',
       },
@@ -36,9 +36,8 @@ const msg = {
     }
   ],
   from: 'sender@example.org',
-  text: 'Hello plain world!',
-  html: '<p>Hello HTML world!</p>',
+  templateId: 'd-12345678901234567890123456789012',
 };
 ```
 
-If the `substitutions` field is provided globally as well, these substitutions will be merged with any custom substitutions you provide in the `personalizations`.
+If the `dynamicTemplateData` field is provided globally as well, these substitutions will be merged with any custom `dynamicTemplateData` you provide in the `personalizations`.
