@@ -1,6 +1,25 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2020-04-01] Version 7.0.0
+--------------------------
+**Library - Docs**
+- [PR #1078](https://github.com/sendgrid/sendgrid-nodejs/pull/1078): support verbiage for login issues. Thanks to [@adamchasetaylor](https://github.com/adamchasetaylor)!
+- [PR #1073](https://github.com/sendgrid/sendgrid-nodejs/pull/1073): reorg docs and add migration guide. Thanks to [@thinkingserious](https://github.com/thinkingserious)!
+
+**Library - Fix**
+- [PR #985](https://github.com/sendgrid/sendgrid-nodejs/pull/985): options.uri must be string. Thanks to [@shrujalshah28](https://github.com/shrujalshah28)!
+- [PR #852](https://github.com/sendgrid/sendgrid-nodejs/pull/852): correct the attachment file path test. Thanks to [@digitalica](https://github.com/digitalica)!
+- [PR #1076](https://github.com/sendgrid/sendgrid-nodejs/pull/1076): add 'setTimeout' to the MailService TS definition. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Library - Feature**
+- [PR #1077](https://github.com/sendgrid/sendgrid-nodejs/pull/1077): console warning added when using an invalid API key. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #1058](https://github.com/sendgrid/sendgrid-nodejs/pull/1058): migrate from deprecated request module to axios. Thanks to [@eshanholtz](https://github.com/eshanholtz)! **(breaking change)**
+
+**Library - Chore**
+- [PR #1063](https://github.com/sendgrid/sendgrid-nodejs/pull/1063): upgrade dev dependencies and fix eslint warnings/errors. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+
 [2020-03-18] Version 6.5.5
 --------------------------
 **Library - Chore**
