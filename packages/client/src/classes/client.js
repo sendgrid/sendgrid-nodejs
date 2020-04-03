@@ -20,7 +20,7 @@ class Client {
     this.defaultHeaders = {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      'User-agent': 'sendgrid/' + pkg.version + ';nodejs',
+      'User-Agent': 'sendgrid/' + pkg.version + ';nodejs',
     };
 
     this.defaultRequest = {
