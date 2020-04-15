@@ -1,7 +1,7 @@
 {
   "name": "@sendgrid/inbound-mail-parser",
   "description": "Twilio SendGrid NodeJS inbound mail parser",
-  "version": "7.0.0",
+  "version": "7.0.1",
   "author": "Twilio SendGrid <help@twilio.com> (sendgrid.com)",
   "contributors": [
     "Kyle Partridge <kyle.partridge@sendgrid.com>",
@@ -26,7 +26,7 @@
     "node": ">=6.0.0"
   },
   "dependencies": {
-    "@sendgrid/helpers": "^7.0.0",
+    "@sendgrid/helpers": "^7.0.1",
     "mailparser": "^2.3.4"
   },
   "tags": [
