@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2020-04-15] Version 7.0.1
+--------------------------
+**Library - Fix**
+- [PR #1084](https://github.com/sendgrid/sendgrid-nodejs/pull/1084): correct the User-Agent casing. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+
 [2020-04-01] Version 7.0.0
 --------------------------
 **Library - Docs**
