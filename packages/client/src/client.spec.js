@@ -1,9 +1,11 @@
 'use strict';
+const nock = require('nock');
+
 const baseUrl = 'http://localhost:4010/';
 
 const testRequest = (request, statusCode) => {
   const sgClient = require('./client');
-  sgClient.setApiKey('SendGrid API Key');
+  sgClient.setApiKey('SG.API Key');
   sgClient.setDefaultRequest('baseUrl', baseUrl);
   sgClient.setDefaultHeader('X-Mock', statusCode);
   return sgClient
@@ -15,18 +17,17 @@ const testRequest = (request, statusCode) => {
 
 describe('client', () => {
   const sgClient = require('./client');
+  let consoleWarnSpy;
+
+  beforeEach(() => {
+    consoleWarnSpy = sinon.spy(console, 'warn');
+  });
+
+  afterEach(() => {
+    console.warn.restore();
+  });
 
   describe('setApiKey', () => {
-    let consoleWarnSpy;
-
-    beforeEach(() => {
-      consoleWarnSpy = sinon.spy(console, 'warn');
-    });
-
-    afterEach(() => {
-      console.warn.restore();
-    });
-
     it('should not log a warning for a proper API key value', () => {
       sgClient.setApiKey('SG.1234567890');
       expect(consoleWarnSpy.notCalled).to.equal(true);
@@ -35,6 +36,42 @@ describe('client', () => {
     it('should log a warning for an undefined API key value', () => {
       sgClient.setApiKey(undefined);
       expect(consoleWarnSpy.calledOnce).to.equal(true);
+    });
+
+    it('should send requests to the SendGrid path', () => {
+      const scope = nock('https://api.sendgrid.com')
+        .matchHeader('Authorization', /^Bearer SG\.1234567890$/)
+        .get('/')
+        .reply(200, 'test response');
+
+      sgClient.setApiKey('SG.1234567890');
+
+      return sgClient.request({})
+        .then(() => scope.done());
+    });
+  });
+
+  describe('setTwilioEmailAuth', () => {
+    it('should not log a warning for proper creds', () => {
+      sgClient.setTwilioEmailAuth('username', 'password');
+      expect(consoleWarnSpy.notCalled).to.equal(true);
+    });
+
+    it('should log a warning for a null password', () => {
+      sgClient.setTwilioEmailAuth('username', null);
+      expect(consoleWarnSpy.calledOnce).to.equal(true);
+    });
+
+    it('should send requests to the Twilio Email path', () => {
+      const scope = nock('https://email.twilio.com')
+        .matchHeader('Authorization', /^Basic dXNlcm5hbWU6cGFzc3dvcmQ=$/)
+        .get('/')
+        .reply(200, 'test response');
+
+      sgClient.setTwilioEmailAuth('username', 'password');
+
+      return sgClient.request({})
+        .then(() => scope.done());
     });
   });
 });

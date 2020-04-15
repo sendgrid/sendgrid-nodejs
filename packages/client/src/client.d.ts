@@ -4,10 +4,16 @@ import {ClientResponse} from "@sendgrid/client/src/response";
 
 declare class Client {
   constructor();
+
   /**
-   * Set API key
+   * Set the SendGrid API key.
    */
   setApiKey(apiKey: string): void;
+
+  /**
+   * Set the Twilio Email credentials.
+   */
+  setTwilioEmailAuth(username: string, password: string): void;
 
   /**
    * Set default header

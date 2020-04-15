@@ -30,6 +30,9 @@
     "@sendgrid/helpers": "^7.0.0",
     "axios": "^0.19.2"
   },
+  "devDependencies": {
+    "nock": "^12.0.3"
+  },
   "tags": [
     "http",
     "rest",

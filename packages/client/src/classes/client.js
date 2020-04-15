@@ -12,10 +12,12 @@ const {
 } = require('@sendgrid/helpers');
 
 const API_KEY_PREFIX = 'SG.';
+const SENDGRID_BASE_URL = 'https://api.sendgrid.com/';
+const TWILIO_BASE_URL = 'https://email.twilio.com/';
 
 class Client {
   constructor() {
-    this.apiKey = '';
+    this.auth = '';
 
     this.defaultHeaders = {
       Accept: 'application/json',
@@ -24,7 +26,7 @@ class Client {
     };
 
     this.defaultRequest = {
-      baseUrl: 'https://api.sendgrid.com/',
+      baseUrl: SENDGRID_BASE_URL,
       url: '',
       method: 'GET',
       headers: {},
@@ -32,15 +34,31 @@ class Client {
   }
 
   setApiKey(apiKey) {
-    this.apiKey = apiKey;
+    this.auth = 'Bearer ' + apiKey;
+    this.setDefaultRequest('baseUrl', SENDGRID_BASE_URL);
 
     if (!this.isValidApiKey(apiKey)) {
       console.warn(`API key does not start with "${API_KEY_PREFIX}".`);
     }
   }
 
+  setTwilioEmailAuth(username, password) {
+    const b64Auth = Buffer.from(username + ':' + password).toString('base64');
+    this.auth = 'Basic ' + b64Auth;
+    this.setDefaultRequest('baseUrl', TWILIO_BASE_URL);
+
+    if (!this.isValidTwilioAuth(username, password)) {
+      console.warn('Twilio Email credentials must be non-empty strings.');
+    }
+  }
+
   isValidApiKey(apiKey) {
     return this.isString(apiKey) && apiKey.trim().startsWith(API_KEY_PREFIX);
+  }
+
+  isValidTwilioAuth(username, password) {
+    return this.isString(username) && username
+      && this.isString(password) && password;
   }
 
   isString(value) {
@@ -61,9 +79,9 @@ class Client {
     // Merge data with default headers.
     const headers = mergeData(this.defaultHeaders, data);
 
-    // Add API key, but don't overwrite if header already set.
-    if (typeof headers.Authorization === 'undefined' && this.apiKey) {
-      headers.Authorization = 'Bearer ' + this.apiKey;
+    // Add auth, but don't overwrite if header already set.
+    if (typeof headers.Authorization === 'undefined' && this.auth) {
+      headers.Authorization = this.auth;
     }
 
     return headers;

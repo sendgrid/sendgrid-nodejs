@@ -16,8 +16,7 @@ class MailService {
    */
   constructor() {
 
-    //Set client, initialize substitution wrappers and secret rules
-    //filter
+    // Set client, initialize substitution wrappers and secret rules filter.
     this.setClient(new Client());
     this.setSubstitutionWrappers('{{', '}}');
     this.secretRules = [];
@@ -31,10 +30,17 @@ class MailService {
   }
 
   /**
-   * API key pass through for convenience
+   * SendGrid API key passthrough for convenience.
    */
   setApiKey(apiKey) {
     this.client.setApiKey(apiKey);
+  }
+
+  /**
+   * Twilio Email Auth passthrough for convenience.
+   */
+  setTwilioEmailAuth(username, password) {
+    this.client.setTwilioEmailAuth(username, password);
   }
 
   /**
@@ -70,7 +76,7 @@ class MailService {
       rules = [rules];
     }
 
-    const tmpRules = rules.map(function(rule) {
+    const tmpRules = rules.map(function (rule) {
       const ruleType = typeof rule;
 
       if (ruleType === 'string') {
@@ -99,7 +105,7 @@ class MailService {
       }
     });
 
-    this.secretRules = tmpRules.filter(function(val) {
+    this.secretRules = tmpRules.filter(function (val) {
       return val;
     });
   }
@@ -114,8 +120,8 @@ class MailService {
 
     const self = this;
 
-    body.content.forEach(function(data) {
-      self.secretRules.forEach(function(rule) {
+    body.content.forEach(function (data) {
+      self.secretRules.forEach(function (rule) {
         if (rule.hasOwnProperty('pattern')
           && !rule.pattern.test(data.value)
         ) {
