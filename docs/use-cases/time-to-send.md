@@ -10,4 +10,11 @@ const msg = {
   html: '<p>Some email content</p>',
   sendAt: 1500077141,
 };
+
+await sgMail.send(msg);
 ```
+
+Keep in mind the following limitations:
+
+1. Emails can only be scheduled at most 72 hours in advance.
+2. If successful, the call to `sgMail.send()` does not return anything. Currently, cancelling or updating a scheduled email is not possible.
