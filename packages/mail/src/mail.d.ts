@@ -4,9 +4,14 @@ import {MailDataRequired} from "@sendgrid/helpers/classes/mail";
 
 declare class MailService {
   /**
-   * API key pass through for convenience
+   * SendGrid API key passthrough for convenience.
    */
   setApiKey(apiKey: string): void;
+
+  /**
+   * Twilio Email Auth passthrough for convenience.
+   */
+  setTwilioEmailAuth(username: string, password: string): void;
 
   /**
    * Set the default request timeout (in milliseconds).
