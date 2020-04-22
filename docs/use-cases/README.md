@@ -15,7 +15,7 @@ This documentation provides examples for specific Twilio SendGrid v3 API use cas
   * [Attachments](attachments.md)
   * [Customization Per Recipient](customization.md)
   * [Manually Providing Content](manual-content.md)
-  * [Specifying Time to Send At](time-to-send.md)
+  * [Scheduled Send](scheduled-send.md)
   * [Specifying Custom Headers](custom-headers.md)
   * [Specifying Categories](categories.md)
   * [Timeout](timeout.md)
