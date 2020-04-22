@@ -22,7 +22,7 @@ await sgMail.send(msg);
 ## [To Cancel or Pause Your Scheduled Send](https://sendgrid.com/docs/for-developers/sending-email/stopping-a-scheduled-send/#canceling-transactional-email):
 
 1. Create a [Batch ID](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/client/USAGE.md#create-a-batch-id).
-2. Assign Batch ID to a `msg`:
+2. Assign Batch ID to a `msg` object:
 ```js
 const msg = {
   to: 'recipient@example.org',
@@ -35,4 +35,4 @@ const msg = {
 
 await sgMail.send(msg);
 ```
-3. [Update your Batch ID](https://github.com/sendgrid/sendgrid-nodejs/blob/1b3a81f390f33de9a361489321804db49293b64b/packages/client/USAGE.md#post-userscheduled_sends) with a `cancel` or `pause` status.
+3. [Update your Batch ID](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/client/USAGE.md#post-userscheduled_sends) with a `cancel` or `pause` status.
