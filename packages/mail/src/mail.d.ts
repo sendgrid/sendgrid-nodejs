@@ -39,5 +39,9 @@ declare class MailService {
   sendMultiple(data: MailDataRequired, cb?: (error: Error | ResponseError, result: [ClientResponse, {}]) => void): Promise<[ClientResponse, {}]>;
 }
 
-declare const mail: MailService & { MailService: typeof MailService };
-export = mail
+declare const mail: MailService;
+// @ts-ignore
+export = mail;
+
+export {MailService};
+export {MailDataRequired};
