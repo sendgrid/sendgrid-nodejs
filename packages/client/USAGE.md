@@ -37,6 +37,27 @@ client.setApiKey(process.env.SENDGRID_API_KEY);
 * [USER](#user)
 * [WHITELABEL](#whitelabel)
 
+# On behalf of subusers
+
+Most API calls will accept an `on-behalf-of` header
+in order to make API calls as a given subuser:
+
+```javascript
+  // create an API key for the given subuser
+  const data = {
+    name: 'subuser API key',
+    scopes: ['mail.send'],
+  };
+  request.body = data;
+  request.method = 'POST';
+  request.url = '/v3/api_keys';
+  request.headers = { 'on-behalf-of': 'subuser username' };
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
 
 <a name="access-settings"></a>
 # ACCESS SETTINGS
