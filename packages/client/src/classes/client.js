@@ -18,6 +18,7 @@ const TWILIO_BASE_URL = 'https://email.twilio.com/';
 class Client {
   constructor() {
     this.auth = '';
+    this.impersonateSubuser = '';
 
     this.defaultHeaders = {
       Accept: 'application/json',
@@ -65,6 +66,10 @@ class Client {
     return typeof value === 'string' || value instanceof String;
   }
 
+  setImpersonateSubuser(subuser) {
+    this.impersonateSubuser = subuser;
+  }
+
   setDefaultHeader(key, value) {
     this.defaultHeaders[key] = value;
     return this;
@@ -82,6 +87,10 @@ class Client {
     // Add auth, but don't overwrite if header already set.
     if (typeof headers.Authorization === 'undefined' && this.auth) {
       headers.Authorization = this.auth;
+    }
+
+    if (this.impersonateSubuser) {
+      headers['On-Behalf-Of'] = this.impersonateSubuser;
     }
 
     return headers;

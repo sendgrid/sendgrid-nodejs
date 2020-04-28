@@ -76,6 +76,16 @@ describe('client', () => {
   });
 });
 
+describe('setImpersonateSubuser', () => {
+  const impersonateSubuser = 'abcxyz@this.is.a.test.subuser';
+  const sgClient = require('./client');
+  sgClient.setImpersonateSubuser(impersonateSubuser);
+
+  it('should set the imperonate subuser header', () => {
+    expect(sgClient.impersonateSubuser).to.equal(impersonateSubuser);
+  });
+});
+
 describe('test_access_settings_activity_get', () => {
   const request = {};
   request.qs = {

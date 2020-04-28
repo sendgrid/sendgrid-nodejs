@@ -16,6 +16,11 @@ declare class Client {
   setTwilioEmailAuth(username: string, password: string): void;
 
   /**
+   * Set client requests to impersonate a subuser
+   */
+  setImpersonateSubuser(subuser: string): void;
+
+  /**
    * Set default header
    */
   setDefaultHeader(key: string, value: string): this;
