@@ -76,21 +76,13 @@ describe('client', () => {
   });
 });
 
-describe('test_client_request_headers', () => {
-  const headers = {
-    'apiKey': 'SendGrid API Key',
-    'impersonateSubuser': 'abcxyz@this.is.a.test.subuser',
-  };
+describe('setImpersonateSubuser', () => {
+  const impersonateSubuser = 'abcxyz@this.is.a.test.subuser';
   const sgClient = require('./client');
-  sgClient.setApiKey(headers.apiKey);
-  sgClient.setImpersonateSubuser(headers.impersonateSubuser);
-
-  it('should set the API Key', () => {
-    expect(sgClient.apiKey).to.equal(headers.apiKey);
-  });
+  sgClient.setImpersonateSubuser(impersonateSubuser);
 
   it('should set the imperonate subuser header', () => {
-    expect(sgClient.impersonateSubuser).to.equal(headers.impersonateSubuser);
+    expect(sgClient.impersonateSubuser).to.equal(impersonateSubuser);
   });
 });
 
