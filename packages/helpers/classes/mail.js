@@ -9,6 +9,7 @@ const toCamelCase = require('../helpers/to-camel-case');
 const toSnakeCase = require('../helpers/to-snake-case');
 const deepClone = require('../helpers/deep-clone');
 const arrayToJSON = require('../helpers/array-to-json');
+const { DYNAMIC_TEMPLATE_CHAR_WARNING } = require('../constants');
 
 /**
  * Mail class
@@ -21,6 +22,8 @@ class Mail {
   constructor(data) {
 
     //Initialize array and object properties
+    this.isDynamic = false;
+    this.hideWarnings = false;
     this.personalizations = [];
     this.attachments = [];
     this.content = [];
@@ -35,6 +38,7 @@ class Mail {
     //Helper properties
     this.substitutions = null;
     this.substitutionWrappers = null;
+    this.dynamicTemplateData = null;
 
     //Process data if given
     if (data) {
@@ -55,14 +59,15 @@ class Mail {
     //Convert to camel case to make it workable, making a copy to prevent
     //changes to the original objects
     data = deepClone(data);
-    data = toCamelCase(data, ['substitutions', 'customArgs', 'headers']);
+    data = toCamelCase(data, ['substitutions', 'dynamicTemplateData', 'customArgs', 'headers', 'sections']);
 
     //Extract properties from data
     const {
       to, from, replyTo, cc, bcc, sendAt, subject, text, html, content,
       templateId, personalizations, attachments, ipPoolName, batchId,
       sections, headers, categories, category, customArgs, asm, mailSettings,
-      trackingSettings, substitutions, substitutionWrappers, isMultiple,
+      trackingSettings, substitutions, substitutionWrappers, dynamicTemplateData, isMultiple,
+      hideWarnings,
     } = data;
 
     //Set data
@@ -83,8 +88,14 @@ class Mail {
     this.setAsm(asm);
     this.setMailSettings(mailSettings);
     this.setTrackingSettings(trackingSettings);
-    this.setSubstitutions(substitutions);
-    this.setSubstitutionWrappers(substitutionWrappers);
+    this.setHideWarnings(hideWarnings);
+
+    if (this.isDynamic) {
+      this.setDynamicTemplateData(dynamicTemplateData);
+    } else {
+      this.setSubstitutions(substitutions);
+      this.setSubstitutionWrappers(substitutionWrappers);
+    }
 
     //Add contents from text/html properties
     this.addTextContent(text);
@@ -93,15 +104,11 @@ class Mail {
     //Using "to" property for personalizations
     if (personalizations) {
       this.setPersonalizations(personalizations);
-    }
-
-    //Multiple individual emails
-    else if (isMultiple && Array.isArray(to)) {
+    } else if (isMultiple && Array.isArray(to)) {
+      //Multiple individual emails
       to.forEach(to => this.addTo(to, cc, bcc));
-    }
-
-    //Single email (possibly with multiple recipients in the to field)
-    else {
+    } else {
+      //Single email (possibly with multiple recipients in the to field)
       this.addTo(to, cc, bcc);
     }
   }
@@ -153,7 +160,7 @@ class Mail {
   }
 
   /**
-   * Set template ID
+   * Set template ID, also checks if the template is dynamic or legacy
    */
   setTemplateId(templateId) {
     if (typeof templateId === 'undefined') {
@@ -162,6 +169,11 @@ class Mail {
     if (typeof templateId !== 'string') {
       throw new Error('String expected for `templateId`');
     }
+
+    if (templateId.indexOf('d-') === 0) {
+      this.isDynamic = true;
+    }
+
     this.templateId = templateId;
   }
 
@@ -226,13 +238,27 @@ class Mail {
    */
   addPersonalization(personalization) {
 
+    //We should either send substitutions or dynamicTemplateData
+    //depending on the templateId
+    if (this.isDynamic && personalization.substitutions) {
+      delete personalization.substitutions;
+    } else if (!this.isDynamic && personalization.dynamicTemplateData) {
+      delete personalization.dynamicTemplateData;
+    }
+
     //Convert to class if needed
     if (!(personalization instanceof Personalization)) {
       personalization = new Personalization(personalization);
     }
 
-    //Apply substitutions and push to array
-    this.applySubstitutions(personalization);
+    //If this is dynamic, set dynamicTemplateData, or set substitutions
+    if (this.isDynamic) {
+      this.applyDynamicTemplateData(personalization);
+    } else {
+      this.applySubstitutions(personalization);
+    }
+
+    //Push personalization to array
     this.personalizations.push(personalization);
   }
 
@@ -286,6 +312,38 @@ class Mail {
       personalization.reverseMergeSubstitutions(this.substitutions);
       personalization.setSubstitutionWrappers(this.substitutionWrappers);
     }
+  }
+
+  /**
+   * Helper which applies globally set dynamic_template_data to personalizations
+   */
+  applyDynamicTemplateData(personalization) {
+    if (personalization instanceof Personalization) {
+      personalization.deepMergeDynamicTemplateData(this.dynamicTemplateData);
+    }
+  }
+
+  /**
+   * Set dynamicTemplateData
+   */
+  setDynamicTemplateData(dynamicTemplateData) {
+    if (typeof dynamicTemplateData === 'undefined') {
+      return;
+    }
+    if (typeof dynamicTemplateData !== 'object') {
+      throw new Error('Object expected for `dynamicTemplateData`');
+    }
+
+    // Check dynamic template for non-escaped characters and warn if found
+    if (!this.hideWarnings) {
+      Object.values(dynamicTemplateData).forEach(value => {
+        if (/['"&]/.test(value)) {
+          console.warn(DYNAMIC_TEMPLATE_CHAR_WARNING);
+        }
+      });
+    }
+
+    this.dynamicTemplateData = dynamicTemplateData;
   }
 
   /**
@@ -377,7 +435,7 @@ class Mail {
       categories = [categories];
     }
     if (!Array.isArray(categories) ||
-        !categories.every(cat => typeof cat === 'string')) {
+      !categories.every(cat => typeof cat === 'string')) {
       throw new Error('Array of strings expected for `categories`');
     }
     this.categories = categories;
@@ -472,6 +530,19 @@ class Mail {
   }
 
   /**
+   * Set hide warnings
+   */
+  setHideWarnings(hide) {
+    if (typeof hide === 'undefined') {
+      return;
+    }
+    if (typeof hide !== 'boolean') {
+      throw new Error('Boolean expected for `hideWarnings`');
+    }
+    this.hideWarnings = hide;
+  }
+
+  /**
    * To JSON
    */
   toJSON() {
@@ -539,7 +610,7 @@ class Mail {
     }
 
     //Return as snake cased object
-    return toSnakeCase(json, ['substitutions', 'customArgs', 'headers']);
+    return toSnakeCase(json, ['substitutions', 'dynamicTemplateData', 'customArgs', 'headers', 'sections']);
   }
 
   /**************************************************************************

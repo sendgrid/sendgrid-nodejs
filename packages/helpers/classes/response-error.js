@@ -19,12 +19,12 @@ class ResponseError extends Error {
     super();
 
     //Extract data from response
-    const {headers, statusCode, statusMessage, body} = response;
+    const {headers, status, statusText, data} = response;
 
     //Set data
-    this.code = statusCode;
-    this.message = statusMessage;
-    this.response = {headers, body};
+    this.code = status;
+    this.message = statusText;
+    this.response = {headers, body: data};
 
     //Capture stack trace
     if (!this.stack) {
@@ -42,7 +42,7 @@ class ResponseError extends Error {
   toString() {
     const {body} = this.response;
     let err = chalk.red(`${this.message} (${this.code})`);
-    if (Array.isArray(body.errors)) {
+    if (body && Array.isArray(body.errors)) {
       body.errors.forEach(error => {
         const message = chalk.yellow(error.message);
         const field = chalk.grey(error.field);

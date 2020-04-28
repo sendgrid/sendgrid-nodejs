@@ -12,7 +12,7 @@ const {
  * Normalises attachment files retrieved from file system or parsed raw email
  *
  * @param {Object} file The file object returned by file system or parsed email
- * @return {Object} A SendGrid Attachment object with the file data
+ * @return {Object} A Twilio SendGrid Attachment object with the file data
  */
 const createAttachment = (file) => {
   const {originalname, fileName, mimetype, contentType, content} = file;
@@ -23,10 +23,10 @@ const createAttachment = (file) => {
   attachment.setContent(content.toString('base64'));
 
   return attachment;
-}
+};
 
 /**
- * Simple class that parses data received from SendGrid Inbound Parse Webhook
+ * Simple class that parses data received from the Twilio SendGrid Inbound Parse Webhook
  *
  */
 class Parse {
@@ -39,7 +39,7 @@ class Parse {
   constructor(config, request) {
     this.keys = config.keys;
     this.request = request;
-    this.payload = request.body || {};
+    this.payload = request.body || request.payload || {};
     this.files = request.files || [];
   }
 

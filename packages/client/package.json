@@ -1,8 +1,8 @@
 {
   "name": "@sendgrid/client",
-  "description": "SendGrid NodeJS API client",
-  "version": "6.1.5",
-  "author": "SendGrid <dx@sendgrid.com> (sendgrid.com)",
+  "description": "Twilio SendGrid NodeJS API client",
+  "version": "7.0.1",
+  "author": "Twilio SendGrid <help@twilio.com> (sendgrid.com)",
   "contributors": [
     "Kyle Partridge <kyle.partridge@sendgrid.com>",
     "David Tomberlin <david.tomberlin@sendgrid.com>",
@@ -10,7 +10,7 @@
     "Brandon West <brandon.west@sendgrid.com>",
     "Scott Motte <scott.motte@sendgrid.com>",
     "Robert Acosta <robert.acosta@sendgrid.com>",
-    "Elmer Thomas <elmer.thomas@sendgrid.com>",
+    "Elmer Thomas <ethomas@twilio.com>",
     "Adam Reis <adam@reis.nz>"
   ],
   "license": "MIT",
@@ -22,14 +22,16 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "src/client.js",
+  "main": "index.js",
   "engines": {
     "node": ">=6.0.0"
   },
   "dependencies": {
-    "@sendgrid/helpers": "^6.1.5",
-    "@types/request": "^2.0.3",
-    "request": "^2.81.0"
+    "@sendgrid/helpers": "^7.0.1",
+    "axios": "^0.19.2"
+  },
+  "devDependencies": {
+    "nock": "^10.0.6"
   },
   "tags": [
     "http",
