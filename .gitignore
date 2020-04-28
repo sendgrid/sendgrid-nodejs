@@ -5,8 +5,7 @@ test/config.js
 .env*
 *.log
 .vscode/
-prism_darwin_amd64
-prism/
+prism
 package-lock.json
 yarn.lock
 *.bak

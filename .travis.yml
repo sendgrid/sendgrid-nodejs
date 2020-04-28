@@ -1,23 +1,15 @@
 language: node_js
-node_js:
-  - 6
-  - 7
-  - 8
-  - 10
-  - lts/*
-  - node
-before_script:
-  - lerna bootstrap
-  - ./test/prism.sh &
-  - sleep 5
+env:
+  - version=6
+  - version=7
+  - version=8
+  - version=10
+  - version=lts
+  - version=latest
+services:
+  - docker
 script:
-  - yarn test:files
-  - yarn test:license
-  - yarn test:typescript
-  - yarn test:mail
-  - yarn test:client
-  - yarn test:helpers
-  - yarn lint
+  - make test-docker
 before_deploy:
   - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> $HOME/.npmrc 2> /dev/null
   - git reset HEAD --hard
@@ -27,7 +19,7 @@ deploy:
     skip_cleanup: true
     on:
       tags: true
-      node: 10
+      condition: $version=10
 
 notifications:
   slack:

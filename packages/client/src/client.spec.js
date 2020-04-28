@@ -1,12 +1,9 @@
 'use strict';
 const nock = require('nock');
 
-const baseUrl = 'http://localhost:4010/';
-
 const testRequest = (request, statusCode) => {
   const sgClient = require('./client');
   sgClient.setApiKey('SG.API Key');
-  sgClient.setDefaultRequest('baseUrl', baseUrl);
   sgClient.setDefaultHeader('X-Mock', statusCode);
   return sgClient
     .request(request)
@@ -25,6 +22,7 @@ describe('client', () => {
 
   afterEach(() => {
     console.warn.restore();
+    nock.cleanAll();
   });
 
   describe('setApiKey', () => {
