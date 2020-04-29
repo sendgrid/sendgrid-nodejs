@@ -1,6 +1,21 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2020-04-29] Version 7.1.0
+--------------------------
+**Library - Feature**
+- [PR #600](https://github.com/sendgrid/sendgrid-nodejs/pull/600): Add subuser impersonation to client. Thanks to [@CaptainYarb](https://github.com/CaptainYarb)!
+- [PR #1093](https://github.com/sendgrid/sendgrid-nodejs/pull/1093): add support for Twilio Email. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Library - Docs**
+- [PR #1104](https://github.com/sendgrid/sendgrid-nodejs/pull/1104): add documentation on the on-behalf-of header usage. Thanks to [@ayandyl](https://github.com/ayandyl)!
+- [PR #1100](https://github.com/sendgrid/sendgrid-nodejs/pull/1100): clarify cancel and pause capabilities for scheduled sends. Thanks to [@thinkingserious](https://github.com/thinkingserious)!
+- [PR #1097](https://github.com/sendgrid/sendgrid-nodejs/pull/1097): document sendAt limitations. Thanks to [@dandv](https://github.com/dandv)!
+
+**Library - Fix**
+- [PR #1102](https://github.com/sendgrid/sendgrid-nodejs/pull/1102): correct the mail TS exports. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+
 [2020-04-15] Version 7.0.1
 --------------------------
 **Library - Fix**
