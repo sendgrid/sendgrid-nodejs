@@ -74,6 +74,28 @@ describe('client', () => {
         .then(() => scope.done());
     });
   });
+
+  it('should allow large payloads', () => {
+    const request = {
+      body: {
+        content: [
+          {
+            type: 'text/plain',
+            value: '#'.repeat(1024 * 1024 * 25), // 25 MB,
+          },
+        ],
+        from: {
+          email: 'me@you.com',
+        },
+        personalizations: [],
+        subject: 'Hello, World!',
+      },
+      method: 'POST',
+      url: '/v3/mail/send',
+    };
+
+    return testRequest(request, 202);
+  });
 });
 
 describe('setImpersonateSubuser', () => {
@@ -81,7 +103,7 @@ describe('setImpersonateSubuser', () => {
   const sgClient = require('./client');
   sgClient.setImpersonateSubuser(impersonateSubuser);
 
-  it('should set the imperonate subuser header', () => {
+  it('should set the impersonate subuser header', () => {
     expect(sgClient.impersonateSubuser).to.equal(impersonateSubuser);
   });
 });
