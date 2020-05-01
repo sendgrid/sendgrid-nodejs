@@ -4,7 +4,7 @@ clean:
 	@rm -rf node_modules
 
 install: clean
-	npm install
+	npm install --quiet
 	./node_modules/.bin/lerna bootstrap
 
 test:
