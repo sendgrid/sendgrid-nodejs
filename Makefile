@@ -18,5 +18,6 @@ test-integ: test
 	yarn test:helpers
 	yarn lint
 
+version ?= lts
 test-docker:
-	curl -s https://raw.githubusercontent.com/sendgrid/sendgrid-oai/master/prism/prism.sh | bash
+	curl -s https://raw.githubusercontent.com/sendgrid/sendgrid-oai/master/prism/prism.sh | version=$(version) bash
