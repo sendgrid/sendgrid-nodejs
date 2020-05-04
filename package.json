@@ -23,7 +23,7 @@
     "moment": "^2.19.3",
     "sinon": "^2.3.2",
     "sinon-chai": "^2.10.0",
-    "typescript": "^3.7.4"
+    "typescript": "^3.7.4",
     "snyk": "^1.123.0"
   },
   "scripts": {
@@ -49,11 +49,10 @@
   "directories": {
     "test": "test"
   },
-  "author": "Twilio SendGrid"
+  "author": "Twilio SendGrid",
   "dependencies": {
     "esdoc": "^1.1.0",
     "esdoc-coverage-plugin": "^1.1.0",
     "esdoc-type-inference-plugin": "^1.0.1"
-  },
-  "author": "SendGrid"
+  }
 }
