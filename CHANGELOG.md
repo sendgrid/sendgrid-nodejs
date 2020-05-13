@@ -1,6 +1,13 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2020-05-13] Version 7.1.1
+--------------------------
+**Library - Fix**
+- [PR #1112](https://github.com/sendgrid/sendgrid-nodejs/pull/1112): migrate to common prism setup. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #1113](https://github.com/sendgrid/sendgrid-nodejs/pull/1113): don't limit the request content length. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+
 [2020-04-29] Version 7.1.0
 --------------------------
 **Library - Feature**
