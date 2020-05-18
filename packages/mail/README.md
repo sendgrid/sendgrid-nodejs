@@ -27,7 +27,7 @@ Do not hardcode your [Twilio SendGrid API Key](https://app.sendgrid.com/settings
 Update the development environment with your [SENDGRID_API_KEY](https://app.sendgrid.com/settings/api_keys), for example:
 
 ```bash
-echo "export SENDGRID_API_KEY='YOUR_API_KEY'" > sendgrid.env
+echo "export SENDGRID_API_KEY=YOUR_API_KEY" > sendgrid.env
 echo "sendgrid.env" >> .gitignore
 source ./sendgrid.env
 ```
