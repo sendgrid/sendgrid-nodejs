@@ -560,10 +560,7 @@ const msg = {
     },
     subscriptionTracking: {
       enable: true
-    },
-    sandbox: {
-      enable: true
-    },
+    }
   },
 };
 sgMail
