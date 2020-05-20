@@ -698,7 +698,7 @@ $ node index.js
 Before you begin, setup Google App Engine and install required packages by following [getting started](https://cloud.google.com/nodejs/getting-started/hello-world) guide.
 
 #### Setup your environment variables
-Include your [SENDGRID_API_KEY](https://app.sendgrid.com/settings/api_keys) in `app.yaml`, for example:
+Include your [SENDGRID_API_KEY](https://app.sendgrid.com/settings/api_keys) in `app.yaml`, for example: 
 
 ```yaml
 # Note: Don't commit the app.yaml file with API key, keep it changed locally - only used in deployment
@@ -736,7 +736,7 @@ const app = express();
 app.get('/send', (req, res) => {
   const {query: {to = 'test@example.com', from = 'test@example.com'}} = req;
   // other options could be customized further
-
+  
   const msg = {
     to,
     from,
@@ -744,7 +744,7 @@ app.get('/send', (req, res) => {
     text: 'and easy to do anywhere, even with Node.js',
     html: '<strong>Hello Email app</strong>',
   };
-
+  
   sgMail.send(msg).then(() => {
     res.status(200).send('Hello, world!').end();
   }).catch(e => {
@@ -767,11 +767,11 @@ app.listen(PORT, () => {
    ```
    gcloud app deploy
    ```
-
- #### Send email
-
+  
+ #### Send email 
+ 
  Using the following snippet you should be able to send emails with the deployed app (replace `to` and `from` with your own)
-
+ 
  ```curl
  curl -X GET \
   'http://your_project_id.appspot.com/send?to=to%40example.com&from=from%40example.com' \
