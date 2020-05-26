@@ -41,7 +41,7 @@ const msg = {
   },
   ipPoolName: 'sendgrid-ip-pool-name',
   mailSettings: {
-    sandbox: {
+    sandboxMode: {
       enable: true,
     },
   },
