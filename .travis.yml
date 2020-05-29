@@ -21,7 +21,7 @@ deploy:
     skip_cleanup: true
     on:
       tags: true
-      condition: $version=10
+      condition: $version = 10
 
 notifications:
   slack:
