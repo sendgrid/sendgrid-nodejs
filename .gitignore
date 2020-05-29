@@ -5,7 +5,7 @@ test/config.js
 .env*
 *.log
 .vscode/
-prism
+prism*
 package-lock.json
 yarn.lock
 *.bak
