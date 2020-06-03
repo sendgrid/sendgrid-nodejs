@@ -31,6 +31,7 @@
     "test:helpers": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/helpers/**/*.spec.js\"",
     "test:client": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/client/**/*.spec.js\"",
     "test:mail": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/mail/**/*.spec.js\"",
+    "test:eventwebhook": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/eventwebhook/**/*.spec.js\"",
     "test:inbound": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/inbound-mail-parser/**/*.spec.js\"",
     "test:contact": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/contact-importer/**/*.spec.js\"",
     "test:files": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"test/files.spec.js\"",
