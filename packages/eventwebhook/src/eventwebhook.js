@@ -5,8 +5,13 @@ const Ecdsa = ecdsa.Ecdsa;
 const Signature = ecdsa.Signature;
 const PublicKey = ecdsa.PublicKey;
 
+/*
+ * This class allows you to use the Event Webhook feature. Read the docs for
+ * more details: https://sendgrid.com/docs/for-developers/tracking-events/event
+ */
 class EventWebhook {
   /**
+   * Convert the public key string to a ECPublicKey.
    *
    * @param {string} publicKey verification key under Mail Settings
    * @return {PublicKey} A public key using the ECDSA algorithm
@@ -16,6 +21,7 @@ class EventWebhook {
   }
 
   /**
+   * Verify signed event webhook requests.
    *
    * @param {PublicKey} publicKey elliptic curve public key
    * @param {Object|string} payload event payload in the request body
