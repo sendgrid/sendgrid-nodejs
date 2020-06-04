@@ -3,7 +3,6 @@ node_js:
   - 10
 env:
   - version=6
-  - version=7
   - version=8
   - version=10
   - version=lts
