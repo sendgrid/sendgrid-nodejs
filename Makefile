@@ -11,6 +11,7 @@ test:
 	yarn test:files
 	yarn test:license
 	yarn test:typescript
+	yarn test:eventwebhook
 
 test-integ: test
 	yarn test:mail
