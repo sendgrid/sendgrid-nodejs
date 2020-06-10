@@ -1,6 +1,21 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2020-06-10] Version 7.2.0
+--------------------------
+**Library - Fix**
+- [PR #1141](https://github.com/sendgrid/sendgrid-nodejs/pull/1141): request validation test fix. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #1133](https://github.com/sendgrid/sendgrid-nodejs/pull/1133): travis autodeploy. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+- [PR #1123](https://github.com/sendgrid/sendgrid-nodejs/pull/1123): update node version in travis for deploy via lerna. Thanks to [@thinkingserious](https://github.com/thinkingserious)!
+
+**Library - Feature**
+- [PR #1136](https://github.com/sendgrid/sendgrid-nodejs/pull/1136): verify signature from event webhook. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+**Library - Docs**
+- [PR #1131](https://github.com/sendgrid/sendgrid-nodejs/pull/1131): Fixing sandbox key in kitchen-sink documentation. Thanks to [@itsjoekent](https://github.com/itsjoekent)!
+- [PR #850](https://github.com/sendgrid/sendgrid-nodejs/pull/850): Add sandbox setting to kitchen-sink documentation. Thanks to [@notdmart](https://github.com/notdmart)!
+
+
 [2020-05-13] Version 7.1.1
 --------------------------
 **Library - Fix**
