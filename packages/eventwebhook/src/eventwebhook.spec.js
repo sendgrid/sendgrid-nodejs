@@ -5,8 +5,8 @@ describe('EventWebhook', () => {
   const SIGNATURE = 'MEUCIQCtIHJeH93Y+qpYeWrySphQgpNGNr/U+UyUlBkU6n7RAwIgJTz2C+8a8xonZGi6BpSzoQsbVRamr2nlxFDWYNH2j/0=';
   const TIMESTAMP = '1588788367';
   const PAYLOAD = {
-    event: 'test_event',
     category: 'example_payload',
+    event: 'test_event',
     message_id: 'message_id',
   };
 
@@ -17,7 +17,7 @@ describe('EventWebhook', () => {
         PAYLOAD,
         SIGNATURE,
         TIMESTAMP
-      )).to.be.true;
+      )).to.equal(true);
     });
 
     it('should reject for invalid key', () => {
@@ -26,7 +26,7 @@ describe('EventWebhook', () => {
         PAYLOAD,
         SIGNATURE,
         TIMESTAMP
-      )).to.be.false;
+      )).to.equal(false);
     });
 
     it('should reject for bad payload', () => {
@@ -35,7 +35,7 @@ describe('EventWebhook', () => {
         'payload',
         SIGNATURE,
         TIMESTAMP
-      )).to.be.false;
+      )).to.equal(false);
     });
 
     it('should reject for bad signature', () => {
@@ -44,7 +44,7 @@ describe('EventWebhook', () => {
         PAYLOAD,
         'MEUCIQCtIHJeH93Y+qpYeWrySphQgpNGNr/U+UyUlBkU6n7RAwIgJTz2C+8a8xonZGi6BpSzoQsbVRamr2nlxFDWYNH3j/0=',
         TIMESTAMP
-      )).to.be.false;
+      )).to.equal(false);
     });
 
     it('should reject for bad timestamp', () => {
@@ -53,7 +53,7 @@ describe('EventWebhook', () => {
         PAYLOAD,
         SIGNATURE,
         'timestamp'
-      )).to.be.false;
+      )).to.equal(false);
     });
   });
 });
