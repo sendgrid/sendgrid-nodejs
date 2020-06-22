@@ -33,7 +33,7 @@ const msg = {
   to: 'recipient@example.org',
   from: 'sender@example.org',
   templateId: 'd-f43daeeaef504760851f727007e0b5d0',
-  dynamic_template_data: {
+  dynamicTemplateData: {
     subject: 'Testing Templates',
     name: 'Some One',
     city: 'Denver',
