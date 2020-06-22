@@ -11,12 +11,12 @@ declare class EventWebhook {
     /**
      *
      * @param {PublicKey} publicKey elliptic curve public key
-     * @param {object|string} payload event payload in the request body
+     * @param {string|Buffer} payload event payload in the request body
      * @param {string} signature value obtained from the 'X-Twilio-Email-Event-Webhook-Signature' header
      * @param {string} timestamp value obtained from the 'X-Twilio-Email-Event-Webhook-Timestamp' header
      * @return {Boolean} true or false if signature is valid
      */
-    verifySignature(publicKey: PublicKey, payload: object|string, signature: string, timestamp: string): boolean;
+    verifySignature(publicKey: PublicKey, payload: string|Buffer, signature: string, timestamp: string): boolean;
 }
 
 export = EventWebhook;

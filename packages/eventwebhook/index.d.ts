@@ -1,3 +1,6 @@
-import EventWebhook = require('./src/eventwebhook');
+import {EventWebhook, EventWebhookHeader} = require('./src/eventwebhook');
 
-export = EventWebhook;
+export {
+    EventWebhook,
+    EventWebhookHeader
+};
