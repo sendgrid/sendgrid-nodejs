@@ -100,8 +100,7 @@ exports.sendConfirmation = (req, res, next) => {
 
     if (response.statusCode >= 200 && response.statusCode < 300) {
       res.sendFile(path.join(__dirname, '../static/check-inbox.html'));
-    }
-    else {
+    } else {
       res.sendFile(path.join(__dirname, '../static/error.html'));
     }
   });
@@ -179,13 +178,11 @@ function addUserToList(emailBody, callback) {
 
             callback();
           });
-        }
-        else {
+        } else {
           return callback();
         }
       });
-    }
-    else {
+    } else {
       return callback();
     }
   });
@@ -220,8 +217,7 @@ function checkAndAddCustomFields(submittedFields, callback) {
 
     if (fieldsToCreate.length === 0) {
       return callback();
-    }
-    else {
+    } else {
       fieldsToCreate.map((fieldsToCreate) => {
         var body = { name: fieldsToCreate, type: 'text' };
 

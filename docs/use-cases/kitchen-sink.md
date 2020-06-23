@@ -14,9 +14,9 @@ const msg = {
   subject: 'Hello world',
   text: 'Hello plain world!',
   html: '<p>Hello HTML world!</p>',
-  templateId: 'sendgrid-template-id',
+  templateId: 'd-12345678901234567890123456789012',
   substitutionWrappers: ['{{', '}}'],
-  substitutions: {
+  dynamicTemplateData: {
     name: 'Some One',
     id: '123',
   },
@@ -40,15 +40,25 @@ const msg = {
     groupId: 1
   },
   ipPoolName: 'sendgrid-ip-pool-name',
-  mailSettings: {},
+  mailSettings: {
+    sandboxMode: {
+      enable: true,
+    },
+  },
   trackingSettings: {},
 };
 sgMail
   .send(msg)
   .then(() => console.log('Mail sent successfully'))
-  .catch(error => console.error(error.toString()));
+  .catch(error => {
+    console.error(error);
+
+    if (error.response) {
+      console.error(error.response.body)
+    }
+  });
 ```
 
 ### Caveats:
 
-As per [issue #288](https://github.com/sendgrid/sendgrid-nodejs/issues/288), please note that the `customArgs` feild *must* have a string value. 
+As per [issue #288](https://github.com/sendgrid/sendgrid-nodejs/issues/288), please note that the `customArgs` field *must* have a string value. 

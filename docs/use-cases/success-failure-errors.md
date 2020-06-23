@@ -6,18 +6,21 @@ The `send` and `sendMultiple` methods return a `Promise`, so you can handle succ
 sgMail
   .send(msg)
   .then(() => {
-    //Celebrate
+    // Celebrate
   })
   .catch(error => {
+    // Log friendly error
+    console.error(error);
 
-    //Log friendly error
-    console.error(error.toString());
+    if (error.response) {
+      // Extract error msg
+      const {message, code, response} = error;
 
-    //Extract error msg
-    const {message, code, response} = error;
+      // Extract response msg
+      const {headers, body} = response;
 
-    //Extract response msg
-    const {headers, body} = response;
+      console.error(body);
+    }
   });
 ```
 
@@ -27,10 +30,10 @@ Alternatively, pass a callback function as the last parameter:
 sgMail
   .send(msg, (error, result) => {
     if (error) {
-      //Do something with the error
+      // Do something with the error
     }
     else {
-      //Celebrate
+      // Celebrate
     }
   });
 ```

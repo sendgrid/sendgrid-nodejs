@@ -4,7 +4,7 @@
 
 **This package is part of a monorepo, please see [this README](https://github.com/sendgrid/sendgrid-nodejs/blob/master/README.md) for details.**
 
-# Client for the Sendgrid v3 Web API
+# Client for the SendGrid v3 Web API
 This client library is used by the other [Twilio SendGrid service packages](https://www.npmjs.com/org/sendgrid) to make requests to the [Twilio SendGrid v3 Web API](https://sendgrid.com/docs/API_Reference/api_v3.html). You can also use it independently to make custom requests to the Twilio SendGrid v3 Web API and other HTTP APIs.
 
 To be notified when this package is updated, please subscribe to email [notifications](https://dx.sendgrid.com/newsletter/nodejs) for releases and breaking changes.
@@ -13,7 +13,7 @@ To be notified when this package is updated, please subscribe to email [notifica
 
 ## Prerequisites
 
-- Node.js version 6, 7 or 8
+- Node.js version 6, 8 or >=10
 - A Twilio SendGrid account, [sign up for free](https://sendgrid.com/free?source=sendgrid-nodejs) to send up to 40,000 emails for the first 30 days or check out [our pricing](https://sendgrid.com/pricing?source=sendgrid-nodejs).
 
 ## Obtain an API Key
@@ -118,8 +118,10 @@ Please see our [troubleshooting guide](https://github.com/sendgrid/sendgrid-node
 <a name="about"></a>
 # About
 
-@sendgrid/client is guided and supported by the Twilio SendGrid [Developer Experience Team](mailto:dx@sendgrid.com).
-
 @sendgrid/client is maintained and funded by Twilio SendGrid, Inc. The names and logos for @sendgrid/client are trademarks of Twilio SendGrid, Inc.
+
+If you need help installing or using the library, please check the [Twilio SendGrid Support Help Center](https://support.sendgrid.com).
+
+If you've instead found a bug in the library or would like new features added, go ahead and open issues or pull requests against this repo!
 
 ![Twilio SendGrid Logo](https://github.com/sendgrid/sendgrid-python/raw/master/twilio_sendgrid_logo.png)

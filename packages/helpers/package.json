@@ -1,8 +1,8 @@
 {
   "name": "@sendgrid/helpers",
   "description": "Twilio SendGrid NodeJS internal helpers",
-  "version": "6.4.0",
-  "author": "Twilio SendGrid <dx@sendgrid.com> (sendgrid.com)",
+  "version": "7.2.0",
+  "author": "Twilio SendGrid <help@twilio.com> (sendgrid.com)",
   "contributors": [
     "Kyle Partridge <kyle.partridge@sendgrid.com>",
     "David Tomberlin <david.tomberlin@sendgrid.com>",
@@ -10,7 +10,7 @@
     "Brandon West <brandon.west@sendgrid.com>",
     "Scott Motte <scott.motte@sendgrid.com>",
     "Robert Acosta <robert.acosta@sendgrid.com>",
-    "Elmer Thomas <elmer.thomas@sendgrid.com>",
+    "Elmer Thomas <ethomas@twilio.com>",
     "Adam Reis <adam@reis.nz>"
   ],
   "license": "MIT",
@@ -31,6 +31,6 @@
   ],
   "dependencies": {
     "chalk": "^2.0.1",
-    "deepmerge": "^2.1.1"
+    "deepmerge": "^4.2.2"
   }
 }

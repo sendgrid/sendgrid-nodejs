@@ -16,8 +16,7 @@ class MailService {
    */
   constructor() {
 
-    //Set client, initialize substitution wrappers and secret rules
-    //filter
+    // Set client, initialize substitution wrappers and secret rules filter.
     this.setClient(new Client());
     this.setSubstitutionWrappers('{{', '}}');
     this.secretRules = [];
@@ -31,10 +30,17 @@ class MailService {
   }
 
   /**
-   * API key pass through for convenience
+   * SendGrid API key passthrough for convenience.
    */
   setApiKey(apiKey) {
     this.client.setApiKey(apiKey);
+  }
+
+  /**
+   * Twilio Email Auth passthrough for convenience.
+   */
+  setTwilioEmailAuth(username, password) {
+    this.client.setTwilioEmailAuth(username, password);
   }
 
   /**
@@ -70,22 +76,20 @@ class MailService {
       rules = [rules];
     }
 
-    const tmpRules = rules.map(function(rule) {
+    const tmpRules = rules.map(function (rule) {
       const ruleType = typeof rule;
 
       if (ruleType === 'string') {
         return {
           pattern: new RegExp(rule),
         };
-      }
-      else if (ruleType === 'object') {
+      } else if (ruleType === 'object') {
         // normalize rule object
         if (rule instanceof RegExp) {
           rule = {
             pattern: rule,
           };
-        }
-        else if (rule.hasOwnProperty('pattern')
+        } else if (rule.hasOwnProperty('pattern')
           && (typeof rule.pattern === 'string')
         ) {
           rule.pattern = new RegExp(rule.pattern);
@@ -95,14 +99,13 @@ class MailService {
           // test if rule.pattern is a valid regex
           rule.pattern.test('');
           return rule;
-        }
-        catch (err) {
+        } catch (err) {
           // continue regardless of error
         }
       }
     });
 
-    this.secretRules = tmpRules.filter(function(val) {
+    this.secretRules = tmpRules.filter(function (val) {
       return val;
     });
   }
@@ -117,8 +120,8 @@ class MailService {
 
     const self = this;
 
-    body.content.forEach(function(data) {
-      self.secretRules.forEach(function(rule) {
+    body.content.forEach(function (data) {
+      self.secretRules.forEach(function (rule) {
         if (rule.hasOwnProperty('pattern')
           && !rule.pattern.test(data.value)
         ) {
@@ -131,7 +134,7 @@ class MailService {
           message += `identified by '${rule.name}'`;
         }
 
-        message += ` was found in the Mail content!`;
+        message += ' was found in the Mail content!';
 
         throw new Error(message);
       });
@@ -197,10 +200,7 @@ class MailService {
 
       //Send
       return this.client.request(request, cb);
-    }
-
-    //Catch sync errors
-    catch (error) {
+    } catch (error) {
 
       //Pass to callback if provided
       if (cb) {

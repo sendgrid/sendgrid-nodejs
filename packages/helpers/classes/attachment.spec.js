@@ -87,7 +87,7 @@ describe('setContent()', function() {
       type: 'plain/text',
       disposition: 'attachment',
       contentId: 'myattachment',
-      filePath: path.resolve(path.join(__dirname, '/attachment.js')),
+      filePath: path.join(__dirname, '/attachment.js'),
     });
 
     expect(attachment.content).to.be.a('string');
