@@ -1,14 +1,14 @@
-const EventWebhook = require('./eventwebhook');
+const {EventWebhook, EventWebhookHeader} = require('./eventwebhook');
 
 describe('EventWebhook', () => {
   const PUBLIC_KEY = 'MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEEDr2LjtURuePQzplybdC+u4CwrqDqBaWjcMMsTbhdbcwHBcepxo7yAQGhHPTnlvFYPAZFceEu/1FwCM/QmGUhA==';
   const SIGNATURE = 'MEUCIQCtIHJeH93Y+qpYeWrySphQgpNGNr/U+UyUlBkU6n7RAwIgJTz2C+8a8xonZGi6BpSzoQsbVRamr2nlxFDWYNH2j/0=';
   const TIMESTAMP = '1588788367';
-  const PAYLOAD = {
+  const PAYLOAD = JSON.stringify({
     category: 'example_payload',
     event: 'test_event',
     message_id: 'message_id',
-  };
+  });
 
   describe('#verifySignature()', () => {
     it('should verify a valid signature', () => {
@@ -55,6 +55,16 @@ describe('EventWebhook', () => {
         'timestamp'
       )).to.equal(false);
     });
+  });
+});
+
+describe('EventWebhookHeader', () => {
+  it('sets the signature header', () => {
+    expect(EventWebhookHeader.SIGNATURE()).to.equal('X-Twilio-Email-Event-Webhook-Signature');
+  });
+
+  it('sets the timestamp header', () => {
+    expect(EventWebhookHeader.TIMESTAMP()).to.equal('X-Twilio-Email-Event-Webhook-Timestamp');
   });
 });
 
