@@ -20,8 +20,8 @@ app.use(bodyParser.text({ type: 'application/json' }));
 app.post("/sendgrid/webhook", async (req, resp) => {
   try {
     const key = '<your_public_key>';
-    const signature = req.get('X-Twilio-Email-Event-Webhook-Signature');
-    const timestamp = req.get('X-Twilio-Email-Event-Webhook-Timestamp');
+    const signature = req.get(EventWebhookHeader.SIGNATURE());
+    const timestamp = req.get(EventWebhookHeader.TIMESTAMP());
 
     if (verifyRequest(key, req.body, signature, timestamp)) {
       resp.send(204);
@@ -36,8 +36,8 @@ app.post("/sendgrid/webhook", async (req, resp) => {
 // Example using firebase functions
 app.post("/sendgrid/webhook", async (req, resp) => {
   try {
-    const signature = req.header(EventWebhookHeader::SIGNATURE);
-    const timestamp = req.header(EventWebhookHeader::TIMESTAMP);
+    const signature = req.header(EventWebhookHeader.SIGNATURE());
+    const timestamp = req.header(EventWebhookHeader.TIMESTAMP());
 
     //getConfig is mostly a wrapper to functions.config() to get cloud function configuration json
     const key = getConfig().sendgrid.webhook_verification_key;

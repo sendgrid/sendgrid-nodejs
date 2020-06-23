@@ -43,11 +43,16 @@ class EventWebhook {
  * more details: https://sendgrid.com/docs/for-developers/tracking-events/event
  */
 class EventWebhookHeader {
-  SIGNATURE = 'X-Twilio-Email-Event-Webhook-Signature';
-  TIMESTAMP = 'X-Twilio-Email-Event-Webhook-Timestamp';
+  static SIGNATURE() {
+    return 'X-Twilio-Email-Event-Webhook-Signature';
+  }
+
+  static TIMESTAMP() {
+    return 'X-Twilio-Email-Event-Webhook-Timestamp';
+  }
 }
 
 module.exports = {
   EventWebhook,
-  EventWebhookHeader
+  EventWebhookHeader,
 };
