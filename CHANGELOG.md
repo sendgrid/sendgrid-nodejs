@@ -1,6 +1,17 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2020-06-24] Version 7.2.1
+--------------------------
+**Library - Docs**
+- [PR #907](https://github.com/sendgrid/sendgrid-nodejs/pull/907): Add generation field to create template call otherwise legacy template will be created. Thanks to [@vinu-phoenix](https://github.com/vinu-phoenix)!
+- [PR #1151](https://github.com/sendgrid/sendgrid-nodejs/pull/1151): Update transactional-templates.md to use dynamicTemplateData instead of dynamic_template_data. Thanks to [@bttf](https://github.com/bttf)!
+- [PR #1145](https://github.com/sendgrid/sendgrid-nodejs/pull/1145): Update docs for domain or email verification. Thanks to [@GeoFro](https://github.com/GeoFro)!
+
+**Library - Fix**
+- [PR #1153](https://github.com/sendgrid/sendgrid-nodejs/pull/1153): event webhook interface to process raw body. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+
 [2020-06-10] Version 7.2.0
 --------------------------
 **Library - Fix**
