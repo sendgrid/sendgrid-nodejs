@@ -4653,6 +4653,7 @@ Transactional templates are templates explicitly created for transactional email
   request.body = data;
   request.method = 'POST';
   request.url = '/v3/templates';
+  request.generation = 'dynamic'
   client.request(request)
   .then(([response, body]) => {
     console.log(response.statusCode);
