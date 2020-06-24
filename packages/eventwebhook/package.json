@@ -1,0 +1,28 @@
+{
+  "name": "@sendgrid/eventwebhook",
+  "description": "Twilio SendGrid NodeJS Event Webhook",
+  "version": "7.2.0",
+  "author": "Twilio SendGrid <help@twilio.com> (sendgrid.com)",
+  "contributors": [
+    "Elise Shanholtz <eshanholtz@twilio.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://sendgrid.com",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sendgrid/sendgrid-nodejs.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "src/eventwebhook.js",
+  "engines": {
+    "node": "6.* || 8.* || >=10.*"
+  },
+  "dependencies": {
+    "@starkbank/ecdsa": "^0.0.3"
+  },
+  "tags": [
+    "sendgrid"
+  ]
+}

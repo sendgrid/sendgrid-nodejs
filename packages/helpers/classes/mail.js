@@ -23,6 +23,7 @@ class Mail {
 
     //Initialize array and object properties
     this.isDynamic = false;
+    this.hideWarnings = false;
     this.personalizations = [];
     this.attachments = [];
     this.content = [];
@@ -66,6 +67,7 @@ class Mail {
       templateId, personalizations, attachments, ipPoolName, batchId,
       sections, headers, categories, category, customArgs, asm, mailSettings,
       trackingSettings, substitutions, substitutionWrappers, dynamicTemplateData, isMultiple,
+      hideWarnings,
     } = data;
 
     //Set data
@@ -86,11 +88,11 @@ class Mail {
     this.setAsm(asm);
     this.setMailSettings(mailSettings);
     this.setTrackingSettings(trackingSettings);
+    this.setHideWarnings(hideWarnings);
 
     if (this.isDynamic) {
       this.setDynamicTemplateData(dynamicTemplateData);
-    }
-    else {
+    } else {
       this.setSubstitutions(substitutions);
       this.setSubstitutionWrappers(substitutionWrappers);
     }
@@ -102,15 +104,11 @@ class Mail {
     //Using "to" property for personalizations
     if (personalizations) {
       this.setPersonalizations(personalizations);
-    }
-
-    //Multiple individual emails
-    else if (isMultiple && Array.isArray(to)) {
+    } else if (isMultiple && Array.isArray(to)) {
+      //Multiple individual emails
       to.forEach(to => this.addTo(to, cc, bcc));
-    }
-
-    //Single email (possibly with multiple recipients in the to field)
-    else {
+    } else {
+      //Single email (possibly with multiple recipients in the to field)
       this.addTo(to, cc, bcc);
     }
   }
@@ -244,8 +242,7 @@ class Mail {
     //depending on the templateId
     if (this.isDynamic && personalization.substitutions) {
       delete personalization.substitutions;
-    }
-    else if (personalization.dynamicTemplateData) {
+    } else if (!this.isDynamic && personalization.dynamicTemplateData) {
       delete personalization.dynamicTemplateData;
     }
 
@@ -257,8 +254,7 @@ class Mail {
     //If this is dynamic, set dynamicTemplateData, or set substitutions
     if (this.isDynamic) {
       this.applyDynamicTemplateData(personalization);
-    }
-    else {
+    } else {
       this.applySubstitutions(personalization);
     }
 
@@ -339,11 +335,13 @@ class Mail {
     }
 
     // Check dynamic template for non-escaped characters and warn if found
-    Object.values(dynamicTemplateData).forEach(value => {
-      if (/['"&]/.test(value)) {
-        console.warn(DYNAMIC_TEMPLATE_CHAR_WARNING);
-      }
-    });
+    if (!this.hideWarnings) {
+      Object.values(dynamicTemplateData).forEach(value => {
+        if (/['"&]/.test(value)) {
+          console.warn(DYNAMIC_TEMPLATE_CHAR_WARNING);
+        }
+      });
+    }
 
     this.dynamicTemplateData = dynamicTemplateData;
   }
@@ -529,6 +527,19 @@ class Mail {
       throw new Error('Object expected for `mailSettings`');
     }
     this.mailSettings = settings;
+  }
+
+  /**
+   * Set hide warnings
+   */
+  setHideWarnings(hide) {
+    if (typeof hide === 'undefined') {
+      return;
+    }
+    if (typeof hide !== 'boolean') {
+      throw new Error('Boolean expected for `hideWarnings`');
+    }
+    this.hideWarnings = hide;
   }
 
   /**
