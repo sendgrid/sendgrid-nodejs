@@ -49,8 +49,5 @@
   "directories": {
     "test": "test"
   },
-  "author": "Twilio SendGrid",
-  "dependencies": {
-    "@sendgrid/mail": "^7.2.1"
-  }
+  "author": "Twilio SendGrid"
 }
