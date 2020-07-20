@@ -27,5 +27,5 @@ This documentation provides examples for specific Twilio SendGrid v3 API use cas
 * [Send an SMS Message](sms.md)
 
 # Non-Email Use Cases
-* [How to Set up a Domain Whitelabel](domain-white-label.md)
+* [How to Set up a Domain Authentication](domain-authentication.md)
 * [How to View Email Statistics](email-stats.md)
