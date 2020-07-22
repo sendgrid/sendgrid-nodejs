@@ -1,7 +1,7 @@
 {
   "name": "@sendgrid/client",
   "description": "Twilio SendGrid NodeJS API client",
-  "version": "7.2.1",
+  "version": "7.2.2",
   "author": "Twilio SendGrid <help@twilio.com> (sendgrid.com)",
   "contributors": [
     "Kyle Partridge <kyle.partridge@sendgrid.com>",
