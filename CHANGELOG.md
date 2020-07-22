@@ -1,6 +1,16 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2020-07-22] Version 7.2.2
+--------------------------
+**Library - Chore**
+- [PR #1165](https://github.com/sendgrid/sendgrid-nodejs/pull/1165): migrate to new default sendgrid-oai branch. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+**Library - Docs**
+- [PR #836](https://github.com/sendgrid/sendgrid-nodejs/pull/836): Remove references to legacy "Whitelabel" Verbiage. Thanks to [@crweiner](https://github.com/crweiner)!
+- [PR #858](https://github.com/sendgrid/sendgrid-nodejs/pull/858): add more use cases for adding attachments. Thanks to [@cesargamboa](https://github.com/cesargamboa)!
+
+
 [2020-06-24] Version 7.2.1
 --------------------------
 **Library - Docs**
