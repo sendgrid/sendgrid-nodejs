@@ -35,7 +35,7 @@ module.exports = {
 
   validateTrackingSettings(settings) {
     if (typeof settings !== 'object') {
-      throw new Error('Object expected for `mailSettings`');
+      throw new Error('Object expected for `trackingSettings`');
     }
     const {
       clickTracking,

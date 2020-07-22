@@ -121,8 +121,7 @@ class Mail {
     if (typeof from === 'undefined') {
       return;
     }
-    if (typeof from !== 'string' &&
-      !(typeof from === 'object' && typeof from.email === 'string')) {
+    if (typeof from !== 'object' || typeof from.email !== 'string') {
       throw new Error('String or address object expected for `from`');
     }
     this.from = EmailAddress.create(from);
@@ -135,8 +134,7 @@ class Mail {
     if (typeof replyTo === 'undefined') {
       return;
     }
-    if (typeof replyTo !== 'string' &&
-      !(typeof replyTo === 'object' && typeof replyTo.email === 'string')) {
+    if (typeof replyTo !== 'object' || typeof replyTo.email !== 'string') {
       throw new Error('String or address object expected for `replyTo`');
     }
     this.replyTo = EmailAddress.create(replyTo);
@@ -373,16 +371,13 @@ class Mail {
     if (!Array.isArray(content)) {
       throw new Error('Array expected for `content`');
     }
-    if (!content.every(contentField =>
-      typeof contentField === 'object')) {
+    if (!content.every(contentField => typeof contentField === 'object')) {
       throw new Error('Expected each entry in `content` to be an object');
     }
-    if (!content.every(contentField =>
-      typeof contentField.type === 'string')) {
+    if (!content.every(contentField => typeof contentField.type === 'string')) {
       throw new Error('Expected each `content` entry to contain a `type` string');
     }
-    if (!content.every(contentField =>
-      typeof contentField.value === 'string')) {
+    if (!content.every(contentField => typeof contentField.value === 'string')) {
       throw new Error('Expected each `content` entry to contain a `value` string');
     }
     this.content = content;
@@ -440,20 +435,16 @@ class Mail {
     if (!Array.isArray(attachments)) {
       throw new Error('Array expected for `attachments`');
     }
-    if (!attachments.every(attachment =>
-      typeof attachment.content === 'string')) {
+    if (!attachments.every(attachment => typeof attachment.content === 'string')) {
       throw new Error('Expected each attachment to contain a `content` string');
     }
-    if (!attachments.every(attachment =>
-      typeof attachment.filename === 'string')) {
+    if (!attachments.every(attachment => typeof attachment.filename === 'string')) {
       throw new Error('Expected each attachment to contain a `filename` string');
     }
-    if (!attachments.every(attachment =>
-      attachment.type && typeof attachment.type === 'string')) {
+    if (!attachments.every(attachment => attachment.type && typeof attachment.type === 'string')) {
       throw new Error('Expected the attachment\'s `type` field to be a string');
     }
-    if (!attachments.every(attachment =>
-      attachment.disposition && typeof attachment.disposition === 'string')) {
+    if (!attachments.every(attachment => attachment.disposition && typeof attachment.disposition === 'string')) {
       throw new Error('Expected the attachment\'s `disposition` field to be a string');
     }
     this.attachments = attachments;
