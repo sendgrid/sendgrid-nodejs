@@ -51,9 +51,8 @@ class ContactImporter extends EventEmitter {
       // If this batch is full or the queue is empty queue it for processing.
       if (batch.length === this.batchSize || !this.queue.length()) {
         this._pushToQueue(batch);
-      }
+      } else {
       // Otherwise, it store it for later.
-      else {
         debug('the last batch with only %s item is deferred (partial batch)', batch.length);
         this.pendingItems = batch;
       }
@@ -64,7 +63,7 @@ class ContactImporter extends EventEmitter {
   }
 
   /**
-   * Send a batch of contacts to SendGrid.
+   * Send a batch of contacts to Twilio SendGrid.
    *
    * @param {Object} task Task to be processed (data in 'data' property)
    * @param {Function} callback Callback function.
@@ -80,7 +79,7 @@ class ContactImporter extends EventEmitter {
 
     const request = {
       method: 'POST',
-      path: '/v3/contactdb/recipients',
+      uri: '/v3/contactdb/recipients',
       body: data,
     };
 

@@ -1,30 +1,26 @@
-Hello! Thank you for choosing to help contribute to one of the SendGrid open source libraries. There are many ways you can contribute and help is always welcome.  We simply ask that you follow the following contribution policies.
+Hello! Thank you for choosing to help contribute to one of the Twilio SendGrid open source libraries. There are many ways you can contribute and help is always welcome.  We simply ask that you follow the following contribution policies.
 
-- [CLAs and CCLAs](#cla)
-- [Roadmap & Milestones](#roadmap)
+**All third party contributors acknowledge that any contributions they provide will be made under the same open source license that the open source project is provided under.**
 - [Feature Request](#feature-request)
 - [Submit a Bug Report](#submit-a-bug-report)
+  - [Please use our Bug Report Template](#please-use-our-bug-report-template)
 - [Improvements to the Codebase](#improvements-to-the-codebase)
-- [Understanding the Code Base](#understanding-the-codebase)
+  - [Development Environment](#development-environment)
+    - [Install and Run Locally](#install-and-run-locally)
+      - [Prerequisites](#prerequisites)
+      - [Initial setup:](#initial-setup)
+- [Environment Variables](#environment-variables)
+      - [Execute:](#execute)
+- [Understanding the Code Base](#understanding-the-code-base)
 - [Codebase Overview](#codebase-overview)
+    - [Package List](#package-list)
 - [Testing](#testing)
-- [Style Guidelines & Naming Conventions](#style-guidelines-and-naming-conventions)
-- [Creating a Pull Request](#creating-a-pull-request)
+- [Style Guidelines & Naming Conventions](#style-guidelines--naming-conventions)
+- [Creating a Pull Request<a name="creating-a-pull-request"></a>](#creating-a-pull-requesta-name%22creating-a-pull-request%22a)
 - [Code Reviews](#code-reviews)
 
 <a name="roadmap"></a>
 We use [Milestones](https://github.com/sendgrid/sendgrid-nodejs/milestones) to help define current roadmaps, please feel free to grab an issue from the current milestone. Please indicate that you have begun work on it to avoid collisions. Once a PR is made, community review, comments, suggestions, and additional PRs are welcomed and encouraged.
-
-<a name="cla"></a>
-## CLAs and CCLAs
-
-Before you get started, SendGrid requires that a SendGrid Contributor License Agreement (CLA) be filled out by every contributor to a SendGrid open source project.
-
-Our goal with the CLA is to clarify the rights of our contributors and reduce other risks arising from inappropriate contributions.  The CLA also clarifies the rights SendGrid holds in each contribution and helps to avoid misunderstandings over what rights each contributor is required to grant to SendGrid when contributing.  In this way, the CLA encourages broad participation by our open source community and helps us build strong open source projects, free from any individual contributor withholding or revoking rights to any contribution.
-
-SendGrid does not merge a pull request made against a SendGrid open source project until that pull request is associated with a signed CLA. Copies of the CLA are available [here](https://gist.github.com/SendGridDX/98b42c0a5d500058357b80278fde3be8#file-sendgrid_cla).
-
-When you create a Pull Request, after a few seconds, a comment will appear with a link to the CLA. Click the link and fill out the brief form and then click the "I agree" button and you are all set. You will not be asked to re-sign the CLA unless we make a change.
 
 There are a few ways to contribute, which we'll enumerate below:
 
@@ -47,13 +43,13 @@ A software bug is a demonstrable issue in the code base. For us to diagnose the 
 
 Before you decide to create a new issue, please try the following:
 
-1. [Check the Github issues tab](https://github.com/sendgrid/sendgrid-nodejs/issues) if the identified issue has already been reported, if so, please add a +1 to the existing post.
+1. [Check the GitHub issues tab](https://github.com/sendgrid/sendgrid-nodejs/issues) if the identified issue has already been reported, if so, please add a +1 to the existing post.
 2. Update to the latest version of this code and check if the issue has already been fixed
 3. Copy and fill in the Bug Report Template we have provided below
 
 ### Please use our Bug Report Template
 
-To make the process easier, we've included a [sample bug report template](https://github.com/sendgrid/sendgrid-nodejs/blob/master/.github/ISSUE_TEMPLATE) (borrowed from [Ghost](https://github.com/TryGhost/Ghost/)). The template uses [GitHub flavored markdown](https://help.github.com/articles/github-flavored-markdown/) for formatting.
+In order to make the process easier, we've included a [sample bug report template](ISSUE_TEMPLATE.md).
 
 <a name="improvements-to-the-codebase"></a>
 ## Improvements to the Codebase
@@ -66,7 +62,7 @@ We welcome direct contributions to the sendgrid-nodejs code base. Thank you!
 
 ##### Prerequisites #####
 
-- Node.js version 6, 7 or 8
+- Node.js version 6, 8 or >=10
 - Please see [package.json](https://github.com/sendgrid/sendgrid-nodejs/tree/master/package.json)
 
 ##### Initial setup: #####
@@ -79,9 +75,9 @@ npm install
 
 ## Environment Variables
 
-First, get your free SendGrid account [here](https://sendgrid.com/free?source=sendgrid-nodejs).
+First, get your free Twilio SendGrid account [here](https://sendgrid.com/free?source=sendgrid-nodejs).
 
-You will need to setup the following environment to use the SendGrid examples in the [README](README.md), [USAGE](USAGE.md) and [USE_CASES](use-cases/README.md) files:
+You will need to setup the following environment to use the Twilio SendGrid examples in the [README](README.md), [USAGE](USAGE.md) and [USE_CASES](use-cases/README.md) files:
 
 ```bash
 echo "export SENDGRID_API_KEY='YOUR_API_KEY'" > sendgrid.env
@@ -99,7 +95,7 @@ touch example.js
 
 Copy the desired code into `example.js`. For this example, I'm assuming you create this file in the root of this project.
 
-Change the path to the SendGrid library to the relative path, for example: `./packages/mail/mail`.
+Change the path to the Twilio SendGrid library to the relative path, for example: `./packages/mail/mail`.
 
 ```bash
 node example.js
@@ -113,7 +109,7 @@ This repo is organized as a monorepo with the packages residing in the `./packag
 <a name="codebase-overview"></a>
 ## Codebase Overview
 
-This repo is subdivided into 6 main [packages](https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages). Each package has its dependencies (internal or external) and its source code in the `src` folder. Each package also has its isolated ReadME files, use cases, and usage.md files.
+This repo is subdivided into 6 main [packages](https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages). Each package has its dependencies (internal or external) and its source code in the `src` folder. Each package also has its isolated README files, use cases, and usage.md files.
 
 To install a particular packages' dependencies.
 ```bash
@@ -123,7 +119,7 @@ npm install or yarn install
 #### Package List
 
 **1. Client**
-This is a  wrapper written on top of the ```request``` module to suite the sendgrid module. All requests made to the sendgrid API are invoked by the `request` function in the `client.js`.
+This is a  wrapper written on top of the ```request``` module to suite the Twilio SendGrid module. All requests made to the Twilio SendGrid API are invoked by the `request` function in the `client.js`.
 
 Type declarations: client.d.ts
 Test Cases: client.spec.js
@@ -211,7 +207,7 @@ Please run your code through:
 5. Locally merge (or rebase) the upstream development branch into your topic branch:
 
    ```bash
-   git pull [--rebase] upstream master
+   git pull [--rebase] upstream development
    ```
 
 6. Push your topic branch up to your fork:
@@ -221,11 +217,9 @@ Please run your code through:
    ```
 
 7. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/)
-    with a clear title and description against the `master` branch. All tests must be passing before we will review the PR.
-
-If you have any additional questions, please feel free to [email](mailto:dx@sendgrid.com) us or create an issue in this repo.
+    with a clear title and description against the `development` branch. All tests must be passing before we will review the PR.
 
 <a name="code-reviews"></a>
 ## Code Reviews
 
-If you can, please look at open PRs and review them. Give feedback and help us merge these PRs much faster! If you don't know how Github has some [great information on how to review a Pull Request](https://help.github.com/articles/about-pull-request-reviews/).
+If you can, please look at open PRs and review them. Give feedback and help us merge these PRs much faster! If you don't know how GitHub has some [great information on how to review a Pull Request](https://help.github.com/articles/about-pull-request-reviews/).

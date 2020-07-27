@@ -122,42 +122,42 @@ describe('Mail', function() {
       expect(mail.personalizations[0].dynamicTemplateData).to.deep.equal({ test1: 'Test 1', test2: 'Testy 2', test3: 'Testy 3' });
 
       expect(mail.toJSON()).to.deep.equal({
-        'content': [
+        content: [
           {
-            'type': 'text/plain',
-            'value': 'test',
+            type: 'text/plain',
+            value: 'test',
           },
         ],
-        'from': {
-          'email': 'test@example.com',
+        from: {
+          email: 'test@example.com',
         },
-        'personalizations': [
+        personalizations: [
           {
-            'dynamic_template_data': {
-              'test1': 'Test 1',
-              'test2': 'Testy 2',
-              'test3': 'Testy 3',
+            dynamic_template_data: {
+              test1: 'Test 1',
+              test2: 'Testy 2',
+              test3: 'Testy 3',
             },
-            'headers': {
+            headers: {
               'test-header': 'test',
             },
-            'to': [
+            to: [
               {
-                'email': 'test@example.com',
-                'name': '',
+                email: 'test@example.com',
+                name: '',
               },
             ],
           },
         ],
-        'subject': 'test',
-        'template_id': 'd-df80613cccc6441ea5cd7c95377bc1ef',
+        subject: 'test',
+        template_id: 'd-df80613cccc6441ea5cd7c95377bc1ef',
       });
     });
 
   });
 
   describe('dynamic template handlebars substitutions', () => {
-    let logSpy, data;
+    let logSpy; let data;
 
     beforeEach(() => {
       logSpy = sinon.spy(console, 'warn');

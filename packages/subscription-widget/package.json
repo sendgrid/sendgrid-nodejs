@@ -1,6 +1,6 @@
 {
   "name": "@sendgrid/subscription-widget",
-  "version": "6.2.1",
+  "version": "7.2.0",
   "description": "Double opt-in email automation",
   "main": "index.js",
   "scripts": {
@@ -12,15 +12,15 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "morgan": "^1.7.0",
+    "morgan": "^1.9.1",
     "nodemon": "^1.9.2",
     "sendgrid": "^4.0.2",
-    "sendgrid-rest": "^2.2.1"
+    "sendgrid-rest": "^2.5.0"
   },
   "publishConfig": {
     "access": "public"
   },
   "engines": {
-    "node": ">=6.0.0"
+    "node": "6.* || 8.* || >=10.*"
   }
 }

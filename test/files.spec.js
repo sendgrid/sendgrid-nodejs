@@ -40,16 +40,16 @@ describe('sendgrid-nodejs repo', function() {
     assert(fileExists('CONTRIBUTING.md'));
   });
 
-  it('should have ./.github/ISSUE_TEMPLATE file', function() {
-    assert(fileExists('.github/ISSUE_TEMPLATE'));
+  it('should have ./ISSUE_TEMPLATE.md file', function() {
+    assert(fileExists('ISSUE_TEMPLATE.md'));
   });
 
   it('should have ./LICENSE.md file', function() {
     assert(fileExists('LICENSE.md'));
   });
 
-  it('should have ./.github/PULL_REQUEST_TEMPLATE file', function() {
-    assert(fileExists('.github/PULL_REQUEST_TEMPLATE'));
+  it('should have ./PULL_REQUEST_TEMPLATE.md file', function() {
+    assert(fileExists('PULL_REQUEST_TEMPLATE.md'));
   });
 
   it('should have ./README.md file', function() {

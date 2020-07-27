@@ -10,7 +10,7 @@ const Statistics = require('./statistics');
  */
 describe('Statistics', function() {
 
-    //Test data
+  //Test data
   const data = {
     startDate: new Date(),
     endDate: new Date('2017-10-21'),

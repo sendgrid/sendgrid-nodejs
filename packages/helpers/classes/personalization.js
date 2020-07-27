@@ -7,7 +7,7 @@ const EmailAddress = require('./email-address');
 const toCamelCase = require('../helpers/to-camel-case');
 const toSnakeCase = require('../helpers/to-snake-case');
 const deepClone = require('../helpers/deep-clone');
-const merge = require('deepmerge');
+const deepMerge = require('deepmerge');
 const wrapSubstitutions = require('../helpers/wrap-substitutions');
 
 /**
@@ -286,7 +286,7 @@ class Personalization {
         'Object expected for `dynamicTemplateData` in deepMergeDynamicTemplateData'
       );
     }
-    this.dynamicTemplateData = merge(dynamicTemplateData, this.dynamicTemplateData);
+    this.dynamicTemplateData = deepMerge(dynamicTemplateData, this.dynamicTemplateData);
   }
 
   /**

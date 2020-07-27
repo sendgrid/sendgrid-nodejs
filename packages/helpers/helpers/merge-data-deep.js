@@ -20,14 +20,15 @@ module.exports = function mergeDeep(base, data) {
   if (isObject(base) && isObject(data)) {
     Object.keys(data).forEach(key => {
       if (isObject(data[key])) {
-        if (!(key in base))
+        if (!(key in base)) {
           Object.assign(output, { [key]: data[key] });
-        else
+        } else {
           output[key] = mergeDeep(base[key], data[key]);
+        }
       } else {
         Object.assign(output, { [key]: data[key] });
       }
     });
   }
   return output;
-}
+};
