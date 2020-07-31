@@ -24,6 +24,11 @@ declare class MailService {
   setSubstitutionWrappers(left: string, right: string): void;
 
   /**
+   * Set default data to for all requests. Can be overwritten by incoming data on send
+   */
+  setDefaultData(data: Partial<MailDataRequired>): void;
+
+  /**
    * Send email
    */
   send(data: MailDataRequired, isMultiple?: boolean, cb?: (err: Error | ResponseError, result: [ClientResponse, {}]) => void): Promise<[ClientResponse, {}]>;

@@ -5,6 +5,7 @@
  */
 const {Client} = require('@sendgrid/client');
 const {classes: {Mail}} = require('@sendgrid/helpers');
+const deepmerge = require('deepmerge');
 
 /**
  * Mail service class
@@ -20,6 +21,7 @@ class MailService {
     this.setClient(new Client());
     this.setSubstitutionWrappers('{{', '}}');
     this.secretRules = [];
+    this.defaultData = {};
   }
 
   /**
@@ -111,6 +113,17 @@ class MailService {
   }
 
   /**
+   * Set default data to for all requests. Can be overwritten by incoming data on send
+   */
+  setDefaultData(data) {
+    if (Object.prototype.toString.call(data) !== "[object Object]") {
+      return;
+    }
+
+    this.defaultData = data;
+  }
+
+  /**
    * Check if the e-mail is safe to be sent
    */
   filterSecrets(body) {
@@ -184,8 +197,11 @@ class MailService {
         data.substitutionWrappers = this.substitutionWrappers;
       }
 
+      //Deep merge default data
+      const dataWithDefaults = deepmerge(this.defaultData, data);
+
       //Create Mail instance from data and get JSON body for request
-      const mail = Mail.create(data);
+      const mail = Mail.create(dataWithDefaults);
       const body = mail.toJSON();
 
       //Filters the Mail body to avoid sensitive content leakage
