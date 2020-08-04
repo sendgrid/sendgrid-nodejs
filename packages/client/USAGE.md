@@ -2589,7 +2589,7 @@ For more detailed information about how to use the v3 Mail Send endpoint, please
 
 ### POST /mail/send
 
-// This endpoint has a helper, check it out [here](https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages/mail).
+// This endpoint has a helper, check it out [here](https://github.com/sendgrid/sendgrid-nodejs/tree/HEAD/packages/mail).
 
 ```javascript
   const data = {

@@ -37,7 +37,7 @@
  6. __Locally merge (or rebase)__ the upstream development branch into your topic branch:
 
    ```    
-    git pull [--rebase] upstream master
+    git pull [--rebase] upstream main
    ``` 
    
  7. __Push__ your topic branch up to your fork:
@@ -45,7 +45,7 @@
    git push origin <topic-branch-name>
    ```
  8. __[Open a Pull Request](https://help.github.com/articles/creating-a-pull-request/#changing-the-branch-range-and-destination-repository/)__
-    with a clear title and description against the `master` branch. All tests must be passing before we will review the PR.
+    with a clear title and description against the `main` branch. All tests must be passing before we will review the PR.
 
  ### Important notice
  Before creating a pull request, make sure that you respect the repository's constraints regarding contributions. You can find them in the [CONTRIBUTING.md](./CONTRIBUTING.md) file.
