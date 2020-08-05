@@ -119,7 +119,7 @@ export interface MailData {
   cc?: EmailData|EmailData[],
   bcc?: EmailData|EmailData[],
 
-  from?: EmailData,
+  from: EmailData,
   replyTo?: EmailData,
 
   sendAt?: number,
