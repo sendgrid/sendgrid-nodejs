@@ -23,7 +23,7 @@ A short description of what this PR does.
 - [ ] I have made a material change to the repo (functionality, testing, spelling, grammar)
 - [ ] I have read the [Contribution Guidelines](CONTRIBUTING.md) and my PR follows them
 - [ ] I have titled the PR appropriately
-- [ ] I have updated my branch with the master branch
+- [ ] I have updated my branch with the main branch
 - [ ] I have added tests that prove my fix is effective or that my feature works
 - [ ] I have added necessary documentation about the functionality in the appropriate .md file
 - [ ] I have added inline documentation to the code I modified
