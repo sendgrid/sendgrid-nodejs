@@ -26,12 +26,7 @@ declare class MailService {
   /**
    * Send email
    */
-  send(data: MailDataRequired, isMultiple?: boolean, cb?: (err: Error | ResponseError, result: [ClientResponse, {}]) => void): Promise<[ClientResponse, {}]>;
-
-  /**
-   * Send emails
-   */
-  send(data: MailDataRequired[], isMultiple?: boolean, cb?: (err: Error | ResponseError, result: [ClientResponse, {}]) => void): Promise<[ClientResponse, {}]>;
+  send(data: MailDataRequired | MailDataRequired[], isMultiple?: boolean, cb?: (err: Error | ResponseError, result: [ClientResponse, {}]) => void): Promise<[ClientResponse, {}]>;
 
   /**
    * Send multiple emails (shortcut)
