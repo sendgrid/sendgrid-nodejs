@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2020-08-05] Version 7.2.3
+--------------------------
+**Library - Chore**
+- [PR #1172](https://github.com/sendgrid/sendgrid-nodejs/pull/1172): collapse multiple mail-send TS signatures. Thanks to [@seromenho](https://github.com/seromenho)!
+
+
 [2020-07-22] Version 7.2.2
 --------------------------
 **Library - Chore**
