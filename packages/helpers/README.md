@@ -2,7 +2,7 @@
 [![npm version](https://badge.fury.io/js/%40sendgrid%2Fclient.svg)](https://www.npmjs.com/org/sendgrid)
 [![Email Notifications Badge](https://dx.sendgrid.com/badge/nodejs)](https://dx.sendgrid.com/newsletter/nodejs)
 
-**This package is part of a monorepo, please see [this README](https://github.com/sendgrid/sendgrid-nodejs/blob/HEAD/README.md) for details.**
+**This package is part of a monorepo, please see [this README](../../README.md) for details.**
 
 # Support classes and helpers for the SendGrid NodeJS libraries
 This is a collection of classes and helpers used internally by the
@@ -32,9 +32,9 @@ Internal helpers that mostly speak for themselves.
 
 We encourage contribution to our libraries (you might even score some nifty swag), please see our [CONTRIBUTING](https://github.com/sendgrid/sendgrid-nodejs/blob/HEAD/CONTRIBUTING.md) guide for details.
 
-* [Feature Request](https://github.com/sendgrid/sendgrid-nodejs/tree/HEAD/CONTRIBUTING.md#feature-request)
-* [Bug Reports](https://github.com/sendgrid/sendgrid-nodejs/tree/HEAD/CONTRIBUTING.md#submit-a-bug-report)
-* [Improvements to the Codebase](https://github.com/sendgrid/sendgrid-nodejs/tree/HEAD/CONTRIBUTING.md#improvements-to-the-codebase)
+* [Feature Request](../../CONTRIBUTING.md#feature-request)
+* [Bug Reports](../../CONTRIBUTING.md#submit-a-bug-report)
+* [Improvements to the Codebase](../../CONTRIBUTING.md#improvements-to-the-codebase)
 
 <a name="about"></a>
 # About
@@ -45,4 +45,4 @@ If you need help installing or using the library, please check the [Twilio SendG
 
 If you've instead found a bug in the library or would like new features added, go ahead and open issues or pull requests against this repo!
 
-![Twilio SendGrid Logo](https://github.com/sendgrid/sendgrid-python/raw/HEAD/twilio_sendgrid_logo.png)
+![Twilio SendGrid Logo](../../twilio_sendgrid_logo.png)

@@ -40,7 +40,7 @@
     "test": "npm run test:all -s",
     "coverage": "open -a \"Google Chrome\" ./coverage/lcov-report/index.html"
   },
-  "description": "![Twilio SendGrid Logo](https://github.com/sendgrid/sendgrid-python/raw/HEAD/twilio_sendgrid_logo.png)",
+  "description": "![Twilio SendGrid Logo](https://github.com/sendgrid/sendgrid-nodejs/raw/HEAD/twilio_sendgrid_logo.png)",
   "bugs": {
     "url": "https://github.com/sendgrid/sendgrid-nodejs/issues"
   },

@@ -313,8 +313,8 @@ This minor version bump was due to a hiccup using `lerna` to publish to npm.
 ### BREAKING CHANGE
 - BIG, HUGE, MEGA THANKS to [Adam Reis](https://github.com/adamreisnz) for this amazing PR!!!
 - Pull #407 via #378: API Simplification
-- v6.0.0 is a complete rewrite of this SDK for all endpoints. To upgrade from v5.X and lower, we suggest you update your code based on the examples found [here](https://github.com/sendgrid/sendgrid-nodejs/blob/HEAD/packages/mail/USE_CASES.md) for mail send and [here](https://github.com/sendgrid/sendgrid-nodejs/blob/HEAD/packages/client/USAGE.md) for all other endpoints.
-- Please do not hesitate to [open an issue](https://github.com/sendgrid/sendgrid-nodejs/issues) if there are any challenges and/or feedback. [PRs](https://github.com/sendgrid/sendgrid-nodejs/blob/HEAD/CONTRIBUTING.md) are also welcome.
+- v6.0.0 is a complete rewrite of this SDK for all endpoints. To upgrade from v5.X and lower, we suggest you update your code based on the examples found [here](packages/mail/USE_CASES.md) for mail send and [here](packages/client/USAGE.md) for all other endpoints.
+- Please do not hesitate to [open an issue](https://github.com/sendgrid/sendgrid-nodejs/issues) if there are any challenges and/or feedback. [PRs](CONTRIBUTING.md) are also welcome.
 
 ## [5.2.2] - 2017-08-14 ##
 ### Fix
@@ -468,7 +468,7 @@ That is, in both cases, error.response is present
 ## [4.0.2] - 2016-08-24 ##
 ### Added
 - Table of Contents in the README
-- Added a [USE_CASES.md](https://github.com/sendgrid/sendgrid-nodejs/blob/HEAD/USE_CASES.md) section, with the first use case example for transactional templates
+- Added a [USE_CASES.md](USE_CASES.md) section, with the first use case example for transactional templates
 
 ## [4.0.1] - 2016-08-02 ##
 ### Fixed
@@ -497,7 +497,7 @@ That is, in both cases, error.response is present
 
 ## [3.0.11] - 2016-07-26 ##
 ### Added
-- [Troubleshooting](https://github.com/sendgrid/sendgrid-python/blob/HEAD/TROUBLESHOOTING.md) section
+- [Troubleshooting](TROUBLESHOOTING.md) section
 
 ## [3.0.10] - 2016-07-23
 ### Fixed
