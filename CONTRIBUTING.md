@@ -138,13 +138,9 @@ These are a set of utility functions which all the modules use. Some of them are
 
 All PRs require passing tests before the PR will be reviewed.
 
-To run tests, please install Prism first by either running `yarn prism:install` or manually downloading from [the Prism website](https://stoplight.io/platform/prism/).
+The integration tests require a Twilio SendGrid mock API in order to execute. We've simplified setting this up using Docker to run the tests. You will just need [Docker Desktop](https://docs.docker.com/get-docker/) and `make`.
 
-Next, start Prism in one console window using `yarn prism`.
-
-Open a new console window and run `lerna bootstrap`.
-
-And finally, run `yarn test`, or specific tests e.g. `yarn test:mail` or `yarn test:client`.
+Once these are available, simply execute the Docker test target to run all tests: `make test-docker`. This command can also be used to open an interactive shell into the container where this library is installed. To start a *bash* shell for example, use this command: `command=bash make test-docker`.
 
 <a name="style-guidelines-and-naming-conventions"></a>
 ## Style Guidelines & Naming Conventions
