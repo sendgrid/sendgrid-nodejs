@@ -63,7 +63,7 @@ We welcome direct contributions to the sendgrid-nodejs code base. Thank you!
 ##### Prerequisites #####
 
 - Node.js version 6, 8 or >=10
-- Please see [package.json](HEAD/package.json)
+- Please see [package.json](package.json)
 
 ##### Initial setup: #####
 
