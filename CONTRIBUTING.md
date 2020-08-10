@@ -104,12 +104,12 @@ node example.js
 <a name="understanding-the-codebase"></a>
 ## Understanding the Code Base
 
-This repo is organized as a monorepo with the packages residing in the `./packages` directory. Please see the root [README.md](HEAD/README.md) for details.
+This repo is organized as a monorepo with the packages residing in the `./packages` directory. Please see the root [README.md](README.md) for details.
 
 <a name="codebase-overview"></a>
 ## Codebase Overview
 
-This repo is subdivided into 6 main [packages](HEAD/packages). Each package has its dependencies (internal or external) and its source code in the `src` folder. Each package also has its isolated README files, use cases, and usage.md files.
+This repo is subdivided into 6 main [packages](packages). Each package has its dependencies (internal or external) and its source code in the `src` folder. Each package also has its isolated README files, use cases, and usage.md files.
 
 To install a particular packages' dependencies.
 ```bash
