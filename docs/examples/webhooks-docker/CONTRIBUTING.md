@@ -50,7 +50,7 @@ Before you decide to create a new issue, please try the following:
 
 ### Please use our Bug Report Template
 
-In order to make the process easier, we've included a [sample bug report template](https://github.com/sendgrid/sendgrid-nodejs/blob/master/ISSUE_TEMPLATE.md) (borrowed from [Ghost](https://github.com/TryGhost/Ghost/)). The template uses [GitHub flavored markdown](https://help.github.com/articles/github-flavored-markdown/) for formatting.
+In order to make the process easier, we've included a [sample bug report template](../../../ISSUE_TEMPLATE.md) (borrowed from [Ghost](https://github.com/TryGhost/Ghost/)). The template uses [GitHub flavored markdown](https://help.github.com/articles/github-flavored-markdown/) for formatting.
 
 <a name="improvements-to-the-codebase"></a>
 ## Improvements to the Codebase
@@ -64,7 +64,7 @@ We welcome direct contributions to the sendgrid-nodejs code base. Thank you!
 ##### Prerequisites #####
 
 - Node.js versions 6, 8, or >=10
-- Please see [package.json](https://github.com/sendgrid/sendgrid-nodejs/tree/master/package.json)
+- Please see [package.json](../../../package.json)
 
 ##### Initial setup: #####
 
@@ -78,7 +78,7 @@ npm install
 
 First, get your free Twilio SendGrid account [here](https://sendgrid.com/free?source=sendgrid-nodejs).
 
-You will need to setup the following environment to use the Twilio SendGrid examples in the [README.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/README.md), [USAGE.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/USAGE.MD) and [USE_CASES.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/USE_CASES.md) files:
+You will need to setup the following environment to use the Twilio SendGrid examples in the [README.md](../../../README.md), [USAGE.md](../../../USAGE.MD) and [USE_CASES.md](../../../USE_CASES.md) files:
 
 ```bash
 echo "export SENDGRID_API_KEY='YOUR_API_KEY'" > sendgrid.env
@@ -105,12 +105,12 @@ node example.js
 <a name="understanding-the-codebase"></a>
 ## Understanding the Code Base
 
-This repo is organized as a monorepo with the packages residing in the `./packages` directory. Please see the root [README.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/README.md) for details.
+This repo is organized as a monorepo with the packages residing in the `./packages` directory. Please see the root [README.md](../../../README.md) for details.
 
 <a name="codebase-overview"></a>
 ## Codebase Overview
 
-This repo is subdivided in 6 main [packages](https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages). Each package has its own dependencies (internal or external) and its own source code in the `src` folder. Each package also has its isolated README files, use cases and usage.md files.
+This repo is subdivided in 6 main [packages](../../../packages). Each package has its own dependencies (internal or external) and its own source code in the `src` folder. Each package also has its isolated README files, use cases and usage.md files.
 
 To install a particular packages' dependencies.
 ```bash
@@ -157,7 +157,7 @@ Generally, we follow the style guidelines as suggested by the official language.
 Please run your code through:
 
 - [ESLint](http://eslint.org/) with the standard style guide.
-- [esdoc](https://github.com/sendgrid/sendgrid-nodejs/blob/master/USAGE.md) to check the documentation coverage of your added code.
+- [esdoc](../../../USAGE.md) to check the documentation coverage of your added code.
 
 ## Creating a Pull Request<a name="creating-a-pull-request"></a>
 
@@ -202,7 +202,7 @@ Please run your code through:
 5. Locally merge (or rebase) the upstream development branch into your topic branch:
 
    ```bash
-   git pull [--rebase] upstream master
+   git pull [--rebase] upstream main
    ```
 
 6. Push your topic branch up to your fork:
@@ -212,7 +212,7 @@ Please run your code through:
    ```
 
 7. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/)
-    with a clear title and description against the `master` branch. All tests must be passing before we will review the PR.
+    with a clear title and description against the `main` branch. All tests must be passing before we will review the PR.
 
 <a name="code-reviews"></a>
 ## Code Reviews

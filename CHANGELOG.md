@@ -216,7 +216,7 @@ All notable changes to this project will be documented in this file.
 - [PR #779](https://github.com/sendgrid/sendgrid-nodejs/pull/779): Contributing.md broken links fix. Big thanks to [Arshad Kazmi](https://github.com/arshadkazmi42) for the PR!
 - [PR #583](https://github.com/sendgrid/sendgrid-nodejs/pull/583): Fix README instructions and replace stray tab indentation by spaces. Big thanks to [Adam Reis](https://github.com/adamreisnz) for the PR!
 - [PR #522](https://github.com/sendgrid/sendgrid-nodejs/pull/522): Comma bug in name. Big thanks to [Jordan Tepper](https://github.com/HeroProtagonist) for the PR!
-- [PR #824](https://github.com/sendgrid/sendgrid-nodejs/pull/824): Fix Travis CI build failures on master. Big thanks to [Tony Ho](https://github.com/tony-ho) for the PR!
+- [PR #824](https://github.com/sendgrid/sendgrid-nodejs/pull/824): Fix Travis CI build failures on main. Big thanks to [Tony Ho](https://github.com/tony-ho) for the PR!
 - [PR #798](https://github.com/sendgrid/sendgrid-nodejs/pull/798): Update transactional-templates.md. Big thanks to [Kyle Roberts](https://github.com/kylearoberts) for the PR!
 
 ## [6.3.1] - 2018-1-18 ##
@@ -319,8 +319,8 @@ This minor version bump was due to a hiccup using `lerna` to publish to npm.
 ### BREAKING CHANGE
 - BIG, HUGE, MEGA THANKS to [Adam Reis](https://github.com/adamreisnz) for this amazing PR!!!
 - Pull #407 via #378: API Simplification
-- v6.0.0 is a complete rewrite of this SDK for all endpoints. To upgrade from v5.X and lower, we suggest you update your code based on the examples found [here](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/mail/USE_CASES.md) for mail send and [here](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/client/USAGE.md) for all other endpoints.
-- Please do not hesitate to [open an issue](https://github.com/sendgrid/sendgrid-nodejs/issues) if there are any challenges and/or feedback. [PRs](https://github.com/sendgrid/sendgrid-nodejs/blob/master/CONTRIBUTING.md) are also welcome.
+- v6.0.0 is a complete rewrite of this SDK for all endpoints. To upgrade from v5.X and lower, we suggest you update your code based on the examples found [here](packages/mail/USE_CASES.md) for mail send and [here](packages/client/USAGE.md) for all other endpoints.
+- Please do not hesitate to [open an issue](https://github.com/sendgrid/sendgrid-nodejs/issues) if there are any challenges and/or feedback. [PRs](CONTRIBUTING.md) are also welcome.
 
 ## [5.2.2] - 2017-08-14 ##
 ### Fix
@@ -474,7 +474,7 @@ That is, in both cases, error.response is present
 ## [4.0.2] - 2016-08-24 ##
 ### Added
 - Table of Contents in the README
-- Added a [USE_CASES.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/USE_CASES.md) section, with the first use case example for transactional templates
+- Added a [USE_CASES.md](USE_CASES.md) section, with the first use case example for transactional templates
 
 ## [4.0.1] - 2016-08-02 ##
 ### Fixed
@@ -503,7 +503,7 @@ That is, in both cases, error.response is present
 
 ## [3.0.11] - 2016-07-26 ##
 ### Added
-- [Troubleshooting](https://github.com/sendgrid/sendgrid-python/blob/master/TROUBLESHOOTING.md) section
+- [Troubleshooting](TROUBLESHOOTING.md) section
 
 ## [3.0.10] - 2016-07-23
 ### Fixed

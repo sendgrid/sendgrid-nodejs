@@ -1,8 +1,8 @@
-[![BuildStatus](https://travis-ci.org/sendgrid/sendgrid-nodejs.svg?branch=master)](https://travis-ci.org/sendgrid/sendgrid-nodejs)
+[![BuildStatus](https://travis-ci.org/sendgrid/sendgrid-nodejs.svg?branch=main)](https://travis-ci.org/sendgrid/sendgrid-nodejs)
 [![npm version](https://badge.fury.io/js/%40sendgrid%2Fclient.svg)](https://www.npmjs.com/org/sendgrid)
 [![Email Notifications Badge](https://dx.sendgrid.com/badge/nodejs)](https://dx.sendgrid.com/newsletter/nodejs)
 
-**This package is part of a monorepo, please see [this README](https://github.com/sendgrid/sendgrid-nodejs/blob/master/README.md) for details.**
+**This package is part of a monorepo, please see [this README](../../README.md) for details.**
 
 # Mail Service for the SendGrid v3 Web API
 This is a dedicated service for interaction with the mail endpoint of the [SendGrid v3 API](https://sendgrid.com/docs/API_Reference/api_v3.html).
@@ -49,7 +49,7 @@ Verify an email address or domain in the [Sender Authentication tab](https://app
 # Quick Start, Hello Email
 The following is the minimum needed code to send a simple email. Use this example, and modify the `to` and `from` variables:
 
-For more complex use cases, please see [USE_CASES.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/docs/use-cases/README.md#email-use-cases).
+For more complex use cases, please see [USE_CASES.md](../../docs/use-cases/README.md#email-use-cases).
 
 ```js
 const sgMail = require('@sendgrid/mail');
@@ -88,21 +88,21 @@ sgMail
 After executing the above code, you should have an email in the inbox of the recipient. You can check the status of your email [in the UI](https://app.sendgrid.com/email_activity?). Alternatively, we can post events to a URL of your choice using our [Event Webhook](https://sendgrid.com/docs/API_Reference/Webhooks/event.html). This gives you data about the events that occur as Twilio SendGrid processes your email.
 
 # Troubleshooting
-Please see our [troubleshooting guide](https://github.com/sendgrid/sendgrid-nodejs/blob/master/TROUBLESHOOTING.md) for common library issues.
+Please see our [troubleshooting guide](../../TROUBLESHOOTING.md) for common library issues.
 
 # Announcements
-All updates to this library are documented in our [CHANGELOG](https://github.com/sendgrid/sendgrid-nodejs/blob/master/CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases). You may also subscribe to email [release notifications](https://dx.sendgrid.com/newsletter/nodejs) for releases and breaking changes.
+All updates to this library are documented in our [CHANGELOG](../../CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases). You may also subscribe to email [release notifications](https://dx.sendgrid.com/newsletter/nodejs) for releases and breaking changes.
 
 # Roadmap
 If you are interested in the future direction of this project, please take a look at our open [issues](https://github.com/sendgrid/sendgrid-nodejs/issues) and [pull requests](https://github.com/sendgrid/sendgrid-nodejs/pulls). We would love to hear your feedback!
 
 <a name="contribute"></a>
 # How to Contribute
-We encourage contribution to our libraries (you might even score some nifty swag), please see our [CONTRIBUTING](https://github.com/sendgrid/sendgrid-nodejs/blob/master/CONTRIBUTING.md) guide for details.
+We encourage contribution to our libraries (you might even score some nifty swag), please see our [CONTRIBUTING](https://github.com/sendgrid/sendgrid-nodejs/blob/HEAD/CONTRIBUTING.md) guide for details.
 
-* [Feature Request](https://github.com/sendgrid/sendgrid-nodejs/tree/master/CONTRIBUTING.md#feature-request)
-* [Bug Reports](https://github.com/sendgrid/sendgrid-nodejs/tree/master/CONTRIBUTING.md#submit-a-bug-report)
-* [Improvements to the Codebase](https://github.com/sendgrid/sendgrid-nodejs/tree/master/CONTRIBUTING.md#improvements-to-the-codebase)
+* [Feature Request](../../CONTRIBUTING.md#feature-request)
+* [Bug Reports](../../CONTRIBUTING.md#submit-a-bug-report)
+* [Improvements to the Codebase](../../CONTRIBUTING.md#improvements-to-the-codebase)
 
 # About
 @sendgrid/mail is maintained and funded by Twilio SendGrid, Inc. The names and logos for @sendgrid/mail are trademarks of Twilio SendGrid, Inc.
@@ -111,4 +111,4 @@ If you need help installing or using the library, please check the [Twilio SendG
 
 If you've instead found a bug in the library or would like new features added, go ahead and open issues or pull requests against this repo!
 
-![Twilio SendGrid Logo](https://github.com/sendgrid/sendgrid-python/raw/master/twilio_sendgrid_logo.png)
+![Twilio SendGrid Logo](../../twilio_sendgrid_logo.png)
