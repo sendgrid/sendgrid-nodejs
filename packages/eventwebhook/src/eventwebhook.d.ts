@@ -19,4 +19,16 @@ declare class EventWebhook {
     verifySignature(publicKey: PublicKey, payload: string|Buffer, signature: string, timestamp: string): boolean;
 }
 
-export = EventWebhook;
+/*
+ * This class lists headers that get posted to the webhook. Read the docs for
+ * more details: https://sendgrid.com/docs/for-developers/tracking-events/event
+ */
+declare class EventWebhookHeader {
+    static SIGNATURE(): string;
+    static TIMESTAMP(): string
+}
+
+export {
+    EventWebhook,
+    EventWebhookHeader,
+};
