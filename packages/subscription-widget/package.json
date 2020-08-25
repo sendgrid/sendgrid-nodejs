@@ -1,6 +1,6 @@
 {
   "name": "@sendgrid/subscription-widget",
-  "version": "7.2.0",
+  "version": "7.2.4",
   "description": "Double opt-in email automation",
   "main": "index.js",
   "scripts": {

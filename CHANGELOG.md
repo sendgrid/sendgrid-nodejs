@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2020-08-19] Version 7.2.4
+--------------------------
+**Library - Chore**
+- [PR #1171](https://github.com/sendgrid/sendgrid-nodejs/pull/1171): update GitHub branch references to use HEAD. Thanks to [@thinkingserious](https://github.com/thinkingserious)!
+
+
 [2020-08-05] Version 7.2.3
 --------------------------
 **Library - Chore**
