@@ -10,7 +10,7 @@ const app = express();
 const {EventWebhook, EventWebhookHeader} = require('@sendgrid/eventwebhook');
 
 const verifyRequest = function (publicKey, payload, signature, timestamp) {
-  const eventWebhook = EventWebhook();
+  const eventWebhook = new EventWebhook();
   const ecPublicKey = eventWebhook.convertPublicKeyToECDSA(publicKey);
   return eventWebhook.verifySignature(ecPublicKey, payload, signature, timestamp);
 }
