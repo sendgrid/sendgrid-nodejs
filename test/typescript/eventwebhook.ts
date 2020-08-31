@@ -1,4 +1,4 @@
-import EventWebhook = require('@sendgrid/eventwebhook');
+import { EventWebhook } from '@sendgrid/eventwebhook';
 
 var ew = new EventWebhook();
 const PUBLIC_KEY = "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEEDr2LjtURuePQzplybdC+u4CwrqDqBaWjcMMsTbhdbcwHBcepxo7yAQGhHPTnlvFYPAZFceEu/1FwCM/QmGUhA==";
