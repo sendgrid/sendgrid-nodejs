@@ -1,6 +1,15 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2020-09-02] Version 7.2.5
+--------------------------
+**Library - Docs**
+- [PR #1186](https://github.com/sendgrid/sendgrid-nodejs/pull/1186): Fix EventWebhook example in use case docs. Thanks to [@jstayton](https://github.com/jstayton)!
+
+**Library - Fix**
+- [PR #1180](https://github.com/sendgrid/sendgrid-nodejs/pull/1180): Fix typings for @sendgrid/eventwebhook. Thanks to [@igrayson](https://github.com/igrayson)!
+
+
 [2020-08-19] Version 7.2.4
 --------------------------
 **Library - Chore**
