@@ -1,6 +1,6 @@
 'use strict';
 
-const ecdsa = require('@starkbank/ecdsa');
+const ecdsa = require('starkbank-ecdsa');
 const Ecdsa = ecdsa.Ecdsa;
 const Signature = ecdsa.Signature;
 const PublicKey = ecdsa.PublicKey;

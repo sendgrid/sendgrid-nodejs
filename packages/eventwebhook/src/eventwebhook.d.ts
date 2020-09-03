@@ -1,4 +1,4 @@
-import {PublicKey} from "@starkbank/ecdsa";
+import {PublicKey} from "starkbank-ecdsa";
 
 declare class EventWebhook {
     /**

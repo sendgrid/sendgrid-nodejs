@@ -20,7 +20,7 @@
     "node": "6.* || 8.* || >=10.*"
   },
   "dependencies": {
-    "@starkbank/ecdsa": "^0.0.3"
+    "starkbank-ecdsa": "^1.1.1"
   },
   "tags": [
     "sendgrid"
