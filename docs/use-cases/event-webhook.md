@@ -27,14 +27,15 @@ app.post("/sendgrid/webhook", async (req, resp) => {
     const signature = req.get(EventWebhookHeader.SIGNATURE());
     const timestamp = req.get(EventWebhookHeader.TIMESTAMP());
 
+    // Be sure to _not_ remove any leading/trailing whitespace characters (e.g., '\r\n').
     const requestBody = req.body;
     // Alternatively, if using firebase cloud functions, remove the middleware and use:
     // const requestBody = (req as functions.https.Request).rawBody;
 
     if (verifyRequest(key, requestBody, signature, timestamp)) {
-      resp.send(204);
+      resp.sendStatus(204);
     } else {
-      resp.send(403);
+      resp.sendStatus(403);
     }
   } catch (error) {
     resp.status(500).send(error);
