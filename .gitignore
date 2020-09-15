@@ -10,3 +10,4 @@ package-lock.json
 yarn.lock
 *.bak
 .idea/
+sendgrid.env

@@ -52,5 +52,30 @@ describe('sgMail.send()', () => {
       sgMail.send(data, false, {});
     }).to.throw(Error);
   });
-});
 
+  it('should throw an error if both "text" and "dynamicTemplateData" have values', () => {
+    return expect(function() {
+      const conflictingDynamicTemplateData = {
+        to: 'recipient@example.org',
+        from: 'sender@example.org',
+        subject: 'Hello world',
+        text: 'Hello plain world!',
+        dynamicTemplateData: 'Some fancy template data'
+      }
+      sgMail.send(conflictingDynamicTemplateData, false, {});
+    }).to.throw(Error);
+  });
+
+  it('should throw an error if both "text" and "html" have values', () => {
+    return expect(function() {
+      const conflictingTextandHTML = {
+        to: 'recipient@example.org',
+        from: 'sender@example.org',
+        subject: 'Hello world',
+        text: 'Hello plain world!',
+        html: '<p>Hello HTML world!</p>',
+      };
+      sgMail.send(conflictingTextandHTML, false, {});
+    }).to.throw(Error);
+  });
+});

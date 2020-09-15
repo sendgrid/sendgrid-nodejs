@@ -184,6 +184,15 @@ class MailService {
         data.substitutionWrappers = this.substitutionWrappers;
       }
 
+      //Tests to make sure the email will not crash when sent
+      if ('text' in data && 'dynamicTemplateData' in data) {
+        throw new Error ('text and dynamicTemplateData fields cannot both have values');
+      }
+
+      if ('html' in data && 'dynamicTemplateData' in data)
+      throw new Error ('html and dynamicTemplateData fields cannot both have values');
+      }
+
       //Create Mail instance from data and get JSON body for request
       const mail = Mail.create(data);
       const body = mail.toJSON();
