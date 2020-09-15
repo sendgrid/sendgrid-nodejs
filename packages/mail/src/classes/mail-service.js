@@ -190,7 +190,7 @@ class MailService {
       }
 
       if ('html' in data && 'dynamicTemplateData' in data)
-      throw new Error ('html and dynamicTemplateData fields cannot both have values');
+        throw new Error ('html and dynamicTemplateData fields cannot both have values');
       }
 
       //Create Mail instance from data and get JSON body for request
