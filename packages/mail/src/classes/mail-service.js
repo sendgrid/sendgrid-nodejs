@@ -189,7 +189,7 @@ class MailService {
         throw new Error ('text and dynamicTemplateData fields cannot both have values');
       }
 
-      if ('html' in data && 'dynamicTemplateData' in data)
+      if ('html' in data && 'dynamicTemplateData' in data) {
         throw new Error ('html and dynamicTemplateData fields cannot both have values');
       }
 
