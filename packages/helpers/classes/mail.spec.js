@@ -10,8 +10,7 @@ const { DYNAMIC_TEMPLATE_CHAR_WARNING } = require('../constants');
  * Tests
  */
 describe('Mail', function() {
-
-  describe('#527', function() {
+  describe('construct', function() {
     it('shouldn\'t convert the headers to camel/snake case', function() {
       const mail = new Mail({
         personalizations: [{
@@ -40,8 +39,6 @@ describe('Mail', function() {
       expect(mail.toJSON().headers['List-Unsubscribe']).to
         .equal('<mailto:test@test.com>');
     });
-  });
-  describe('#689', function() {
 
     it('should detect dynamic template id', function() {
       const mail = new Mail({
@@ -63,6 +60,7 @@ describe('Mail', function() {
       });
       expect(mail.isDynamic).to.equal(true);
     });
+
     it('should detect legacy template id', function() {
       const mail = new Mail({
         personalizations: [{
@@ -83,6 +81,7 @@ describe('Mail', function() {
       });
       expect(mail.isDynamic).to.equal(false);
     });
+
     it('should ignore substitutions if templateId is dynamic', function() {
       const mail = new Mail({
         personalizations: [{
@@ -154,6 +153,39 @@ describe('Mail', function() {
       });
     });
 
+    describe('attachments', () => {
+      it('handles multiple attachments', () => {
+        const mail = new Mail({
+          to: 'recipient@example.org',
+          attachments: [{
+            content: 'test-content',
+            filename: 'name-that-file',
+            type: 'file-type',
+          }, {
+            content: 'other-content',
+            filename: 'name-this-file',
+            disposition: 'inline',
+          }],
+        });
+        expect(mail.toJSON()['attachments']).to.have.a.lengthOf(2);
+      });
+
+      it('requires content', () => {
+        expect(() => new Mail({
+          attachments: [{
+            filename: 'missing content',
+          }],
+        })).to.throw('content');
+      });
+
+      it('requires filename', () => {
+        expect(() => new Mail({
+          attachments: [{
+            content: 'missing filename',
+          }],
+        })).to.throw('filename');
+      });
+    });
   });
 
   describe('dynamic template handlebars substitutions', () => {

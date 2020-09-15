@@ -441,10 +441,10 @@ class Mail {
     if (!attachments.every(attachment => typeof attachment.filename === 'string')) {
       throw new Error('Expected each attachment to contain a `filename` string');
     }
-    if (!attachments.every(attachment => attachment.type && typeof attachment.type === 'string')) {
+    if (!attachments.every(attachment => !attachment.type || typeof attachment.type === 'string')) {
       throw new Error('Expected the attachment\'s `type` field to be a string');
     }
-    if (!attachments.every(attachment => attachment.disposition && typeof attachment.disposition === 'string')) {
+    if (!attachments.every(attachment => !attachment.disposition || typeof attachment.disposition === 'string')) {
       throw new Error('Expected the attachment\'s `disposition` field to be a string');
     }
     this.attachments = attachments;
