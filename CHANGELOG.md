@@ -1,6 +1,14 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2020-09-16] Version 7.2.6
+--------------------------
+**Library - Fix**
+- [PR #1190](https://github.com/sendgrid/sendgrid-nodejs/pull/1190): do not wrap names with commas in quotes. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+- [PR #1198](https://github.com/sendgrid/sendgrid-nodejs/pull/1198): make attachment type and disposition optional. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #1189](https://github.com/sendgrid/sendgrid-nodejs/pull/1189): change @starkbank/ecdsa dependency v0.0.3 to updated starkbank-e…. Thanks to [@cdottori-stark](https://github.com/cdottori-stark)!
+
+
 [2020-09-02] Version 7.2.5
 --------------------------
 **Library - Docs**
