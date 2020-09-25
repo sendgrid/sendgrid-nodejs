@@ -264,7 +264,7 @@ class Mail {
    */
   setSubstitutionWrappers(wrappers) {
     let lengthCheck = (propertyName, value) => {
-      if(wrappers.length !== 2) {
+      if (wrappers.length !== 2) {
         throw new Error(
           'Array expected with two elements for `substitutionWrappers`'
         );
@@ -340,7 +340,7 @@ class Mail {
    * Add content
    */
   addContent(content) {
-    if(this._checkProperty('content', content, [this._createTypeCheck('object')])) {
+    if (this._checkProperty('content', content, [this._createTypeCheck('object')])) {
       this.content.push(content);
     }
   }
@@ -404,7 +404,7 @@ class Mail {
    */
   setCategories(categories) {
     let allElementsAreStrings = (cats) => {
-      if(!cats.every(cat => typeof cat === 'string')) {
+      if (!cats.every(cat => typeof cat === 'string')) {
         throw new Error('Array of strings expected for `categories`');
       }
     };
@@ -599,7 +599,7 @@ class Mail {
    */
   _checkProperty(propertyName, value, checks) {
     let failure = false;
-    let onFailed = () => { failure = true };
+    let onFailed = () => { failure = true; };
     let allChecks = checks.forEach((e) => e(propertyName, value, onFailed));
 
     if (failure) {
@@ -618,9 +618,9 @@ class Mail {
       value,
       [this._checkUndefined, this._createTypeCheck(propertyType)]);
 
-    if(propertyChecksPassed) {
-        this[propertyname] = value;
-      }
+    if (propertyChecksPassed) {
+      this[propertyName] = value;
+    }
   }
 
   /**
@@ -637,10 +637,10 @@ class Mail {
    */
   _createTypeCheck(propertyType) {
     return (propertyName, value) => {
-        if (typeof value !== propertyType) {
-          throw new Error(propertyType + ' expected for `' + propertyName + '`');
-        }
+      if (typeof value !== propertyType) {
+        throw new Error(propertyType + ' expected for `' + propertyName + '`');
       }
+    };
   }
 
   /**
@@ -649,10 +649,10 @@ class Mail {
    */
   _createCheckThatThrows(check, errorString) {
     return (propertyName, value) => {
-      if(!check(propertyName, value)) {
+      if (!check(propertyName, value)) {
         throw new Error(errorString);
       }
-    }
+    };
   }
 
   /**
@@ -660,7 +660,7 @@ class Mail {
    * array.
    */
   _setArrayProperty(propertyName, value) {
-    if(this._doArrayCheck(propertyName, value)) {
+    if (this._doArrayCheck(propertyName, value)) {
       this[propertyName] = value;
     }
   }
@@ -672,7 +672,7 @@ class Mail {
     return this._checkProperty(
       propertyName,
       value,
-      [_checkUndefined, _createCheckThatThrows(Array.isArray, 'Array expected for`' + propertyname +'`')]);
+      [_checkUndefined, _createCheckThatThrows(Array.isArray, 'Array expected for`' + propertyname + '`')]);
   }
 }
 
