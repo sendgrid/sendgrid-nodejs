@@ -30,7 +30,6 @@
     "helpers"
   ],
   "dependencies": {
-    "chalk": "^2.0.1",
     "deepmerge": "^4.2.2"
   }
 }
