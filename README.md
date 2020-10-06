@@ -44,6 +44,7 @@ This library is broken up into several packages as a monorepo so that you only n
 * [@sendgrid/inbound-mail-parser](packages/inbound-mail-parser) - help with parsing the Twilio SendGrid Inbound Parse API
 * [@sendgrid/contact-importer](packages/contact-importer) - help with importing contacts into the ContactDB
 * [@sendgrid/helpers](packages/helpers) - a collection of classes and helpers used internally by the above packages
+* [@sendgrid/eventwebhook](packages/eventwebhook) - help with validating events sent by SendGrid to your event webhook
 
 <a name="announcements"></a>
 # Announcements
