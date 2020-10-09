@@ -23,12 +23,12 @@ declare class Client {
   /**
    * Set default header
    */
-  setDefaultHeader(key: string, value: string): this;
+  setDefaultHeader(key: string | { [s: string]: string }, value ?: string): this;
 
   /**
    * Set default request
    */
-  setDefaultRequest<K extends keyof ClientRequest>(key: K, value: ClientRequest[K]): this;
+  setDefaultRequest<K extends keyof ClientRequest>(key: K | ClientRequest, value ?: ClientRequest[K]): this;
 
   /**
    * Create headers for request

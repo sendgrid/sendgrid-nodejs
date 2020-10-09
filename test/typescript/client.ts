@@ -4,13 +4,14 @@ import Client = require("@sendgrid/client");
 Client.setApiKey("MY_SENDGRID_API_KEY");
 
 // Test setDefaultHeader() method
-Client.setDefaultHeader("X-Testing", "yes")
-      .setDefaultHeader("X-Testing-Type", "TypeScript");
+Client.setDefaultHeader({
+  "X-Testing-Type": "TypeScript",
+}).setDefaultHeader("X-Testing", "yes");
 
 // Test setDefaultRequest() method
-Client.setDefaultRequest("method", "POST");
-Client.setDefaultRequest("method", "POST")
-      .setDefaultRequest("url", "/test");
+Client.setDefaultRequest({
+  url: "/test",
+}).setDefaultRequest("method", "POST");
 
 // Test createHeaders() method
 Client.createHeaders({
