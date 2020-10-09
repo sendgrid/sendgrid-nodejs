@@ -10,6 +10,7 @@ const toSnakeCase = require('../helpers/to-snake-case');
 const deepClone = require('../helpers/deep-clone');
 const arrayToJSON = require('../helpers/array-to-json');
 const { DYNAMIC_TEMPLATE_CHAR_WARNING } = require('../constants');
+const {validateMailSettings, validateTrackingSettings} = require('../helpers/validate-settings');
 
 /**
  * Mail class
@@ -23,6 +24,7 @@ class Mail {
 
     //Initialize array and object properties
     this.isDynamic = false;
+    this.hideWarnings = false;
     this.personalizations = [];
     this.attachments = [];
     this.content = [];
@@ -66,6 +68,7 @@ class Mail {
       templateId, personalizations, attachments, ipPoolName, batchId,
       sections, headers, categories, category, customArgs, asm, mailSettings,
       trackingSettings, substitutions, substitutionWrappers, dynamicTemplateData, isMultiple,
+      hideWarnings,
     } = data;
 
     //Set data
@@ -86,11 +89,11 @@ class Mail {
     this.setAsm(asm);
     this.setMailSettings(mailSettings);
     this.setTrackingSettings(trackingSettings);
+    this.setHideWarnings(hideWarnings);
 
     if (this.isDynamic) {
       this.setDynamicTemplateData(dynamicTemplateData);
-    }
-    else {
+    } else {
       this.setSubstitutions(substitutions);
       this.setSubstitutionWrappers(substitutionWrappers);
     }
@@ -102,15 +105,11 @@ class Mail {
     //Using "to" property for personalizations
     if (personalizations) {
       this.setPersonalizations(personalizations);
-    }
-
-    //Multiple individual emails
-    else if (isMultiple && Array.isArray(to)) {
+    } else if (isMultiple && Array.isArray(to)) {
+      //Multiple individual emails
       to.forEach(to => this.addTo(to, cc, bcc));
-    }
-
-    //Single email (possibly with multiple recipients in the to field)
-    else {
+    } else {
+      //Single email (possibly with multiple recipients in the to field)
       this.addTo(to, cc, bcc);
     }
   }
@@ -122,6 +121,9 @@ class Mail {
     if (typeof from === 'undefined') {
       return;
     }
+    if (typeof from !== 'string' && typeof from.email !== 'string') {
+      throw new Error('String or address object expected for `from`');
+    }
     this.from = EmailAddress.create(from);
   }
 
@@ -131,6 +133,9 @@ class Mail {
   setReplyTo(replyTo) {
     if (typeof replyTo === 'undefined') {
       return;
+    }
+    if (typeof replyTo !== 'string' && typeof replyTo.email !== 'string') {
+      throw new Error('String or address object expected for `replyTo`');
     }
     this.replyTo = EmailAddress.create(replyTo);
   }
@@ -215,6 +220,13 @@ class Mail {
     if (typeof asm !== 'object') {
       throw new Error('Object expected for `asm`');
     }
+    if (typeof asm.groupId !== 'number') {
+      throw new Error('Expected `asm` to include an integer in its `groupId` field');
+    }
+    if (asm.groupsToDisplay &&
+      (!Array.isArray(asm.groupsToDisplay) || !asm.groupsToDisplay.every(group => typeof group === 'number'))) {
+      throw new Error('Array of integers expected for `asm.groupsToDisplay`');
+    }
     this.asm = asm;
   }
 
@@ -225,8 +237,9 @@ class Mail {
     if (typeof personalizations === 'undefined') {
       return;
     }
-    if (!Array.isArray(personalizations)) {
-      throw new Error('Array expected for `personalizations`');
+    if (!Array.isArray(personalizations) ||
+      !personalizations.every(personalization => typeof personalization === 'object')) {
+      throw new Error('Array of objects expected for `personalizations`');
     }
 
     //Clear and use add helper to add one by one
@@ -244,8 +257,7 @@ class Mail {
     //depending on the templateId
     if (this.isDynamic && personalization.substitutions) {
       delete personalization.substitutions;
-    }
-    else if (personalization.dynamicTemplateData) {
+    } else if (!this.isDynamic && personalization.dynamicTemplateData) {
       delete personalization.dynamicTemplateData;
     }
 
@@ -257,8 +269,7 @@ class Mail {
     //If this is dynamic, set dynamicTemplateData, or set substitutions
     if (this.isDynamic) {
       this.applyDynamicTemplateData(personalization);
-    }
-    else {
+    } else {
       this.applySubstitutions(personalization);
     }
 
@@ -339,11 +350,13 @@ class Mail {
     }
 
     // Check dynamic template for non-escaped characters and warn if found
-    Object.values(dynamicTemplateData).forEach(value => {
-      if (/['"&]/.test(value)) {
-        console.warn(DYNAMIC_TEMPLATE_CHAR_WARNING);
-      }
-    });
+    if (!this.hideWarnings) {
+      Object.values(dynamicTemplateData).forEach(value => {
+        if (/['"&]/.test(value)) {
+          console.warn(DYNAMIC_TEMPLATE_CHAR_WARNING);
+        }
+      });
+    }
 
     this.dynamicTemplateData = dynamicTemplateData;
   }
@@ -357,6 +370,15 @@ class Mail {
     }
     if (!Array.isArray(content)) {
       throw new Error('Array expected for `content`');
+    }
+    if (!content.every(contentField => typeof contentField === 'object')) {
+      throw new Error('Expected each entry in `content` to be an object');
+    }
+    if (!content.every(contentField => typeof contentField.type === 'string')) {
+      throw new Error('Expected each `content` entry to contain a `type` string');
+    }
+    if (!content.every(contentField => typeof contentField.value === 'string')) {
+      throw new Error('Expected each `content` entry to contain a `value` string');
     }
     this.content = content;
   }
@@ -412,6 +434,18 @@ class Mail {
     }
     if (!Array.isArray(attachments)) {
       throw new Error('Array expected for `attachments`');
+    }
+    if (!attachments.every(attachment => typeof attachment.content === 'string')) {
+      throw new Error('Expected each attachment to contain a `content` string');
+    }
+    if (!attachments.every(attachment => typeof attachment.filename === 'string')) {
+      throw new Error('Expected each attachment to contain a `filename` string');
+    }
+    if (!attachments.every(attachment => !attachment.type || typeof attachment.type === 'string')) {
+      throw new Error('Expected the attachment\'s `type` field to be a string');
+    }
+    if (!attachments.every(attachment => !attachment.disposition || typeof attachment.disposition === 'string')) {
+      throw new Error('Expected the attachment\'s `disposition` field to be a string');
     }
     this.attachments = attachments;
   }
@@ -512,9 +546,7 @@ class Mail {
     if (typeof settings === 'undefined') {
       return;
     }
-    if (typeof settings !== 'object') {
-      throw new Error('Object expected for `trackingSettings`');
-    }
+    validateTrackingSettings(settings);
     this.trackingSettings = settings;
   }
 
@@ -525,10 +557,21 @@ class Mail {
     if (typeof settings === 'undefined') {
       return;
     }
-    if (typeof settings !== 'object') {
-      throw new Error('Object expected for `mailSettings`');
-    }
+    validateMailSettings(settings);
     this.mailSettings = settings;
+  }
+
+  /**
+   * Set hide warnings
+   */
+  setHideWarnings(hide) {
+    if (typeof hide === 'undefined') {
+      return;
+    }
+    if (typeof hide !== 'boolean') {
+      throw new Error('Boolean expected for `hideWarnings`');
+    }
+    this.hideWarnings = hide;
   }
 
   /**

@@ -16,8 +16,7 @@ class MailService {
    */
   constructor() {
 
-    //Set client, initialize substitution wrappers and secret rules
-    //filter
+    // Set client, initialize substitution wrappers and secret rules filter.
     this.setClient(new Client());
     this.setSubstitutionWrappers('{{', '}}');
     this.secretRules = [];
@@ -31,10 +30,28 @@ class MailService {
   }
 
   /**
-   * API key pass through for convenience
+   * SendGrid API key passthrough for convenience.
    */
   setApiKey(apiKey) {
     this.client.setApiKey(apiKey);
+  }
+
+  /**
+   * Twilio Email Auth passthrough for convenience.
+   */
+  setTwilioEmailAuth(username, password) {
+    this.client.setTwilioEmailAuth(username, password);
+  }
+
+  /**
+   * Set client timeout
+   */
+  setTimeout(timeout) {
+    if (typeof timeout === 'undefined') {
+      return;
+    }
+
+    this.client.setDefaultRequest('timeout', timeout);
   }
 
   /**
@@ -64,25 +81,26 @@ class MailService {
 
       if (ruleType === 'string') {
         return {
-          pattern: new RegExp(rule)
+          pattern: new RegExp(rule),
         };
       } else if (ruleType === 'object') {
         // normalize rule object
         if (rule instanceof RegExp) {
           rule = {
-            pattern: rule
-          }
+            pattern: rule,
+          };
         } else if (rule.hasOwnProperty('pattern')
           && (typeof rule.pattern === 'string')
         ) {
-            rule.pattern = new RegExp(rule.pattern);
+          rule.pattern = new RegExp(rule.pattern);
         }
 
         try {
           // test if rule.pattern is a valid regex
           rule.pattern.test('');
-          return rule
+          return rule;
         } catch (err) {
+          // continue regardless of error
         }
       }
     });
@@ -116,7 +134,7 @@ class MailService {
           message += `identified by '${rule.name}'`;
         }
 
-        message += ` was found in the Mail content!`;
+        message += ' was found in the Mail content!';
 
         throw new Error(message);
       });
@@ -182,10 +200,7 @@ class MailService {
 
       //Send
       return this.client.request(request, cb);
-    }
-
-    //Catch sync errors
-    catch (error) {
+    } catch (error) {
 
       //Pass to callback if provided
       if (cb) {

@@ -43,9 +43,9 @@ class Statistics {
     data = toCamelCase(data, ['substitutions', 'customArgs']);
 
     const { startDate,
-            endDate,
-            aggregatedBy,
-        } = data;
+      endDate,
+      aggregatedBy,
+    } = data;
 
     this.setStartDate(startDate);
     this.setEndDate(endDate);
@@ -97,8 +97,7 @@ class Statistics {
     if (typeof aggregatedBy === 'string' &&
         AggregatedByOptions.includes(aggregatedBy.toLowerCase())) {
       this.aggregatedBy = aggregatedBy;
-    }
-    else {
+    } else {
       throw new Error('Incorrect value for `aggregatedBy`');
     }
   }

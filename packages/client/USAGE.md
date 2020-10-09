@@ -28,6 +28,7 @@ client.setApiKey(process.env.SENDGRID_API_KEY);
 * [PARTNER SETTINGS](#partner-settings)
 * [SCOPES](#scopes)
 * [SENDERS](#senders)
+* [SENDER AUTHENTICATION](#sender-authentication)
 * [STATS](#stats)
 * [SUBUSERS](#subusers)
 * [SUPPRESSION](#suppression)
@@ -35,8 +36,28 @@ client.setApiKey(process.env.SENDGRID_API_KEY);
 * [TEMPLATES](#templates)
 * [TRACKING SETTINGS](#tracking-settings)
 * [USER](#user)
-* [WHITELABEL](#whitelabel)
 
+# On behalf of subusers
+
+Most API calls will accept an `on-behalf-of` header
+in order to make API calls as a given subuser:
+
+```javascript
+  // create an API key for the given subuser
+const data = {
+  name: 'subuser API key',
+  scopes: ['mail.send'],
+};
+request.body = data;
+request.method = 'POST';
+request.url = '/v3/api_keys';
+request.headers = { 'On-Behalf-Of': 'subuser username' };
+client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  });
+```
 
 <a name="access-settings"></a>
 # ACCESS SETTINGS
@@ -83,10 +104,10 @@ For more information, please see our [User Guide](http://sendgrid.com/docs/User_
   "ips": [
     {
       "ip": "192.168.1.1"
-    }, 
+    },
     {
       "ip": "192.*.*.*"
-    }, 
+    },
     {
       "ip": "192.168.1.3/32"
     }
@@ -117,8 +138,8 @@ For more information, please see our [User Guide](http://sendgrid.com/docs/User_
 ```javascript
   const data = {
   "ids": [
-    1, 
-    2, 
+    1,
+    2,
     3
   ]
 };
@@ -165,8 +186,6 @@ For more information, please see our [User Guide](http://sendgrid.com/docs/User_
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/access_settings/whitelist/{rule_id}';
   client.request(request)
@@ -216,8 +235,8 @@ For more information about alerts, please see our [User Guide](https://sendgrid.
 
 ```javascript
   const data = {
-  "email_to": "example@example.com", 
-  "frequency": "daily", 
+  "email_to": "example@example.com",
+  "frequency": "daily",
   "type": "stats_notification"
 };
   request.body = data;
@@ -233,7 +252,7 @@ For more information about alerts, please see our [User Guide](https://sendgrid.
 
 **This endpoint allows you to retrieve all of your alerts.**
 
-Alerts allow you to specify an email address to receive notifications regarding your email usage or statistics. 
+Alerts allow you to specify an email address to receive notifications regarding your email usage or statistics.
 * Usage alerts allow you to set the threshold at which an alert will be sent.
 * Stats notifications allow you to set how frequently you would like to receive email statistics reports. For example, "daily", "weekly", or "monthly".
 
@@ -255,7 +274,7 @@ For more information about alerts, please see our [User Guide](https://sendgrid.
 
 **This endpoint allows you to update an alert.**
 
-Alerts allow you to specify an email address to receive notifications regarding your email usage or statistics. 
+Alerts allow you to specify an email address to receive notifications regarding your email usage or statistics.
 * Usage alerts allow you to set the threshold at which an alert will be sent.
 * Stats notifications allow you to set how frequently you would like to receive email statistics reports. For example, "daily", "weekly", or "monthly".
 
@@ -281,7 +300,7 @@ For more information about alerts, please see our [User Guide](https://sendgrid.
 
 **This endpoint allows you to delete an alert.**
 
-Alerts allow you to specify an email address to receive notifications regarding your email usage or statistics. 
+Alerts allow you to specify an email address to receive notifications regarding your email usage or statistics.
 * Usage alerts allow you to set the threshold at which an alert will be sent.
 * Stats notifications allow you to set how frequently you would like to receive email statistics reports. For example, "daily", "weekly", or "monthly".
 
@@ -291,8 +310,6 @@ For more information about alerts, please see our [User Guide](https://sendgrid.
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/alerts/{alert_id}';
   client.request(request)
@@ -305,7 +322,7 @@ For more information about alerts, please see our [User Guide](https://sendgrid.
 
 **This endpoint allows you to retrieve a specific alert.**
 
-Alerts allow you to specify an email address to receive notifications regarding your email usage or statistics. 
+Alerts allow you to specify an email address to receive notifications regarding your email usage or statistics.
 * Usage alerts allow you to set the threshold at which an alert will be sent.
 * Stats notifications allow you to set how frequently you would like to receive email statistics reports. For example, "daily", "weekly", or "monthly".
 
@@ -334,7 +351,7 @@ A JSON request body containing a "name" property is required. If the number of m
 
 There is a limit of 100 API Keys on your account.
 
-The API Keys feature allows customers to be able to generate an API Key credential which can be used for authentication with the SendGrid v3 Web API or the [Mail API Endpoint](https://sendgrid.com/docs/API_Reference/Web_API/mail.html).
+The API Keys feature allows customers to be able to generate an API Key credential which can be used for authentication with the Twilio SendGrid v3 Web API or the [Mail API Endpoint](https://sendgrid.com/docs/API_Reference/Web_API/mail.html).
 
 See the [API Key Permissions List](https://sendgrid.com/docs/API_Reference/Web_API_v3/API_Keys/api_key_permissions_list.html) for a list of all available scopes.
 
@@ -343,11 +360,11 @@ See the [API Key Permissions List](https://sendgrid.com/docs/API_Reference/Web_A
 
 ```javascript
   const data = {
-  "name": "My API Key", 
-  "sample": "data", 
+  "name": "My API Key",
+  "sample": "data",
   "scopes": [
-    "mail.send", 
-    "alerts.create", 
+    "mail.send",
+    "alerts.create",
     "alerts.read"
   ]
 };
@@ -364,7 +381,7 @@ See the [API Key Permissions List](https://sendgrid.com/docs/API_Reference/Web_A
 
 **This endpoint allows you to retrieve all API Keys that belong to the authenticated user.**
 
-The API Keys feature allows customers to be able to generate an API Key credential which can be used for authentication with the SendGrid v3 Web API or the [Mail API Endpoint](https://sendgrid.com/docs/API_Reference/Web_API/mail.html).
+The API Keys feature allows customers to be able to generate an API Key credential which can be used for authentication with the Twilio SendGrid v3 Web API or the [Mail API Endpoint](https://sendgrid.com/docs/API_Reference/Web_API/mail.html).
 
 ### GET /api_keys
 
@@ -389,16 +406,16 @@ The API Keys feature allows customers to be able to generate an API Key credenti
 A JSON request body with a "name" property is required.
 Most provide the list of all the scopes an API key should have.
 
-The API Keys feature allows customers to be able to generate an API Key credential which can be used for authentication with the SendGrid v3 Web API or the [Mail API Endpoint](https://sendgrid.com/docs/API_Reference/Web_API/mail.html).
+The API Keys feature allows customers to be able to generate an API Key credential which can be used for authentication with the Twilio SendGrid v3 Web API or the [Mail API Endpoint](https://sendgrid.com/docs/API_Reference/Web_API/mail.html).
 
 ### PUT /api_keys/{api_key_id}
 
 
 ```javascript
   const data = {
-  "name": "A New Hope", 
+  "name": "A New Hope",
   "scopes": [
-    "user.profile.read", 
+    "user.profile.read",
     "user.profile.update"
   ]
 };
@@ -417,7 +434,7 @@ The API Keys feature allows customers to be able to generate an API Key credenti
 
 A JSON request body with a "name" property is required.
 
-The API Keys feature allows customers to be able to generate an API Key credential which can be used for authentication with the SendGrid v3 Web API or the [Mail API Endpoint](https://sendgrid.com/docs/API_Reference/Web_API/mail.html).
+The API Keys feature allows customers to be able to generate an API Key credential which can be used for authentication with the Twilio SendGrid v3 Web API or the [Mail API Endpoint](https://sendgrid.com/docs/API_Reference/Web_API/mail.html).
 
 ## URI Parameters
 
@@ -447,7 +464,7 @@ The API Keys feature allows customers to be able to generate an API Key credenti
 
 Authentications using this API Key will fail after this request is made, with some small propagation delay. If the API Key ID does not exist an HTTP 404 will be returned.
 
-The API Keys feature allows customers to be able to generate an API Key credential which can be used for authentication with the SendGrid v3 Web API or the [Mail API Endpoint](https://sendgrid.com/docs/API_Reference/Web_API/mail.html).
+The API Keys feature allows customers to be able to generate an API Key credential which can be used for authentication with the Twilio SendGrid v3 Web API or the [Mail API Endpoint](https://sendgrid.com/docs/API_Reference/Web_API/mail.html).
 
 ## URI Parameters
 
@@ -459,8 +476,6 @@ The API Keys feature allows customers to be able to generate an API Key credenti
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/api_keys/{api_key_id}';
   client.request(request)
@@ -505,8 +520,8 @@ Each user can create up to 25 different suppression groups.
 
 ```javascript
   const data = {
-  "description": "Suggestions for products our users might like.", 
-  "is_default": true, 
+  "description": "Suggestions for products our users might like.",
+  "is_default": true,
   "name": "Product Suggestions"
 };
   request.body = data;
@@ -560,8 +575,6 @@ Each user can create up to 25 different suppression groups.
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/asm/groups/{group_id}';
   client.request(request)
@@ -585,8 +598,8 @@ Each user can create up to 25 different suppression groups.
 
 ```javascript
   const data = {
-  "description": "Suggestions for items our users might like.", 
-  "id": 103, 
+  "description": "Suggestions for items our users might like.",
+  "id": 103,
   "name": "Item Suggestions"
 };
   request.body = data;
@@ -634,7 +647,7 @@ Suppressions are recipient email addresses that are added to [unsubscribe groups
 ```javascript
   const data = {
   "recipient_emails": [
-    "test1@example.com", 
+    "test1@example.com",
     "test2@example.com"
   ]
 };
@@ -679,8 +692,8 @@ Suppressions are a list of email addresses that will not receive content sent un
 ```javascript
   const data = {
   "recipient_emails": [
-    "exists1@example.com", 
-    "exists2@example.com", 
+    "exists1@example.com",
+    "exists2@example.com",
     "doesnotexists@example.com"
   ]
 };
@@ -703,8 +716,6 @@ Suppressions are recipient email addresses that are added to [unsubscribe groups
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/asm/groups/{group_id}/suppressions/{email}';
   client.request(request)
@@ -743,7 +754,7 @@ A global suppression (or global unsubscribe) is an email address of a recipient 
 ```javascript
   const data = {
   "recipient_emails": [
-    "test1@example.com", 
+    "test1@example.com",
     "test2@example.com"
   ]
 };
@@ -766,8 +777,6 @@ A global suppression (or global unsubscribe) is an email address of a recipient 
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/asm/suppressions/global/{email}';
   client.request(request)
@@ -830,11 +839,11 @@ Advanced Stats provide a more in-depth view of your email statistics and the act
 
 ```javascript
   const queryParams = {
-  'aggregated_by': 'day', 
-  'browsers': 'test_string', 
-  'end_date': '2016-04-01', 
-  'limit': 'test_string', 
-  'offset': 'test_string', 
+  'aggregated_by': 'day',
+  'browsers': 'test_string',
+  'end_date': '2016-04-01',
+  'limit': 'test_string',
+  'offset': 'test_string',
   'start_date': '2016-01-01'
 };
   request.qs = queryParams;
@@ -868,21 +877,21 @@ For more information:
   const data = {
   "categories": [
     "spring line"
-  ], 
-  "custom_unsubscribe_url": "", 
-  "html_content": "<html><head><title></title></head><body><p>Check out our spring line!</p></body></html>", 
-  "ip_pool": "marketing", 
+  ],
+  "custom_unsubscribe_url": "",
+  "html_content": "<html><head><title></title></head><body><p>Check out our spring line!</p></body></html>",
+  "ip_pool": "marketing",
   "list_ids": [
-    110, 
+    110,
     124
-  ], 
-  "plain_content": "Check out our spring line!", 
+  ],
+  "plain_content": "Check out our spring line!",
   "segment_ids": [
     110
-  ], 
-  "sender_id": 124451, 
-  "subject": "New Products for Spring!", 
-  "suppression_group_id": 42, 
+  ],
+  "sender_id": 124451,
+  "subject": "New Products for Spring!",
+  "suppression_group_id": 42,
   "title": "March Newsletter"
 };
   request.body = data;
@@ -911,7 +920,7 @@ For more information:
 
 ```javascript
   const queryParams = {
-  'limit': 1, 
+  'limit': 1,
   'offset': 1
 };
   request.qs = queryParams;
@@ -938,10 +947,10 @@ For more information:
   const data = {
   "categories": [
     "summer line"
-  ], 
-  "html_content": "<html><head><title></title></head><body><p>Check out our summer line!</p></body></html>", 
-  "plain_content": "Check out our summer line!", 
-  "subject": "New Products for Summer!", 
+  ],
+  "html_content": "<html><head><title></title></head><body><p>Check out our summer line!</p></body></html>",
+  "plain_content": "Check out our summer line!",
+  "subject": "New Products for Summer!",
   "title": "May Newsletter"
 };
   request.body = data;
@@ -967,8 +976,6 @@ For more information:
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/campaigns/{campaign_id}';
   client.request(request)
@@ -1014,8 +1021,6 @@ For more information:
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/campaigns/{campaign_id}/schedules';
   client.request(request)
@@ -1106,8 +1111,6 @@ For more information:
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'POST';
   request.url = '/v3/campaigns/{campaign_id}/schedules/now';
   client.request(request)
@@ -1156,8 +1159,8 @@ Categories can help organize your email analytics by enabling you to tag emails 
 
 ```javascript
   const queryParams = {
-  'category': 'test_string', 
-  'limit': 1, 
+  'category': 'test_string',
+  'limit': 1,
   'offset': 1
 };
   request.qs = queryParams;
@@ -1239,12 +1242,12 @@ Categories allow you to group your emails according to broad topics that you def
 
 ```javascript
   const queryParams = {
-  'aggregated_by': 'day', 
-  'end_date': '2016-04-01', 
-  'limit': 1, 
-  'offset': 1, 
-  'sort_by_direction': 'asc', 
-  'sort_by_metric': 'test_string', 
+  'aggregated_by': 'day',
+  'end_date': '2016-04-01',
+  'limit': 1,
+  'offset': 1,
+  'sort_by_direction': 'asc',
+  'sort_by_metric': 'test_string',
   'start_date': '2016-01-01'
 };
   request.qs = queryParams;
@@ -1272,8 +1275,8 @@ Advanced Stats provide a more in-depth view of your email statistics and the act
 
 ```javascript
   const queryParams = {
-  'aggregated_by': 'day', 
-  'end_date': '2016-04-01', 
+  'aggregated_by': 'day',
+  'end_date': '2016-04-01',
   'start_date': '2016-01-01'
 };
   request.qs = queryParams;
@@ -1304,8 +1307,8 @@ Advanced Stats provide a more in-depth view of your email statistics and the act
 
 ```javascript
   const queryParams = {
-  'aggregated_by': 'day', 
-  'end_date': '2016-04-01', 
+  'aggregated_by': 'day',
+  'end_date': '2016-04-01',
   'start_date': '2016-01-01'
 };
   request.qs = queryParams;
@@ -1324,14 +1327,14 @@ Advanced Stats provide a more in-depth view of your email statistics and the act
 
 **This endpoint allows you to create a custom field.**
 
-The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/index.html).
+The contactdb is a database of your contacts for [Twilio SendGrid Marketing Campaigns](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/index.html).
 
 ### POST /contactdb/custom_fields
 
 
 ```javascript
   const data = {
-  "name": "pet", 
+  "name": "pet",
   "type": "text"
 };
   request.body = data;
@@ -1345,9 +1348,9 @@ The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](
 ```
 ## Retrieve all custom fields
 
-**This endpoint allows you to retrieve all custom fields.** 
+**This endpoint allows you to retrieve all custom fields.**
 
-The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/index.html).
+The contactdb is a database of your contacts for [Twilio SendGrid Marketing Campaigns](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/index.html).
 
 ### GET /contactdb/custom_fields
 
@@ -1365,14 +1368,12 @@ The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](
 
 **This endpoint allows you to delete a custom field by ID.**
 
-The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/index.html).
+The contactdb is a database of your contacts for [Twilio SendGrid Marketing Campaigns](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/index.html).
 
 ### DELETE /contactdb/custom_fields/{custom_field_id}
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/contactdb/custom_fields/{custom_field_id}';
   client.request(request)
@@ -1385,7 +1386,7 @@ The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](
 
 **This endpoint allows you to retrieve a custom field by ID.**
 
-The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/index.html).
+The contactdb is a database of your contacts for [Twilio SendGrid Marketing Campaigns](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/index.html).
 
 ### GET /contactdb/custom_fields/{custom_field_id}
 
@@ -1432,9 +1433,9 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 
 ```javascript
   const data = [
-  1, 
-  2, 
-  3, 
+  1,
+  2,
+  3,
   4
 ];
   request.body = data;
@@ -1474,8 +1475,6 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   const queryParams = {
   'delete_contacts': 'true'
 };
@@ -1550,7 +1549,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 
 ```javascript
   const data = [
-  "recipient_id1", 
+  "recipient_id1",
   "recipient_id2"
 ];
   request.body = data;
@@ -1564,7 +1563,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 ```
 ## Retrieve all recipients on a List
 
-**This endpoint allows you to retrieve all recipients on the list with the given ID.** 
+**This endpoint allows you to retrieve all recipients on the list with the given ID.**
 
 The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/index.html) recipients.
 
@@ -1573,7 +1572,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 
 ```javascript
 const queryParams = {
-  'page': 1, 
+  'page': 1,
   'page_size': 1
 };
 request.qs = queryParams;
@@ -1596,8 +1595,6 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'POST';
   request.url = '/v3/contactdb/lists/{list_id}/recipients/{recipient_id}';
   client.request(request)
@@ -1616,10 +1613,8 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   const queryParams = {
-  'list_id': 1, 
+  'list_id': 1,
   'recipient_id': 1
 };
   request.qs = queryParams;
@@ -1635,7 +1630,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 
 **This endpoint allows you to add a Marketing Campaigns recipient.**
 
-You can add custom field data as a parameter on this endpoint. We have provided an example using some of the default custom fields SendGrid provides.
+You can add custom field data as a parameter on this endpoint. We have provided an example using some of the default custom fields Twilio SendGrid provides.
 
 The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/index.html) recipients.
 
@@ -1645,15 +1640,15 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 ```javascript
   const data = [
   {
-    "age": 25, 
-    "email": "example@example.com", 
-    "first_name": "", 
+    "age": "25",
+    "email": "example@example.com",
+    "first_name": "",
     "last_name": "User"
-  }, 
+  },
   {
-    "age": 25, 
-    "email": "example2@example.com", 
-    "first_name": "Example", 
+    "age": "25",
+    "email": "example2@example.com",
+    "first_name": "Example",
     "last_name": "User"
   }
 ];
@@ -1672,14 +1667,14 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 
 The body of an API call to this endpoint must include an array of recipient IDs of the recipients you want to delete.
 
-The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/index.html).
+The contactdb is a database of your contacts for [Twilio SendGrid Marketing Campaigns](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/index.html).
 
 ### DELETE /contactdb/recipients
 
 
 ```javascript
   const data = [
-  "recipient_id1", 
+  "recipient_id1",
   "recipient_id2"
 ];
   request.body = data;
@@ -1705,7 +1700,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 
 ```javascript
   const queryParams = {
-  'page': 1, 
+  'page': 1,
   'page_size': 1
 };
   request.qs = queryParams;
@@ -1723,9 +1718,9 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 
 The body of an API call to this endpoint must include an array of one or more recipient objects.
 
-It is of note that you can add custom field data as parameters on recipient objects. We have provided an example using some of the default custom fields SendGrid provides.
+It is of note that you can add custom field data as parameters on recipient objects. We have provided an example using some of the default custom fields Twilio SendGrid provides.
 
-The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/index.html).
+The contactdb is a database of your contacts for [Twilio SendGrid Marketing Campaigns](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/index.html).
 
 ### PATCH /contactdb/recipients
 
@@ -1733,8 +1728,8 @@ The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](
 ```javascript
   const data = [
   {
-    "email": "jones@example.com", 
-    "first_name": "Guy", 
+    "email": "jones@example.com",
+    "first_name": "Guy",
     "last_name": "Jones"
   }
 ];
@@ -1771,7 +1766,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 
 **This endpoint allows you to retrieve the total number of Marketing Campaigns recipients.**
 
-The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/index.html).
+The contactdb is a database of your contacts for [Twilio SendGrid Marketing Campaigns](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/index.html).
 
 ### GET /contactdb/recipients/count
 
@@ -1798,7 +1793,7 @@ your epoch time to a date range encompassing the entire day. For example, an epo
 Mon, 02 Feb 2015 00:06:40 GMT, but internally the system will search from Mon, 02 Feb 2015 00:00:00 GMT through
 Mon, 02 Feb 2015 23:59:59 GMT.
 
-The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/index.html).
+The contactdb is a database of your contacts for [Twilio SendGrid Marketing Campaigns](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/index.html).
 
 ### GET /contactdb/recipients/search
 
@@ -1826,8 +1821,6 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/contactdb/recipients/{recipient_id}';
   client.request(request)
@@ -1878,7 +1871,7 @@ The Contacts API helps you manage your [Marketing Campaigns](https://sendgrid.co
 
 **This endpoint allows you to list all fields that are reserved and can't be used for custom field names.**
 
-The contactdb is a database of your contacts for [SendGrid Marketing Campaigns](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/index.html).
+The contactdb is a database of your contacts for [Twilio SendGrid Marketing Campaigns](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/index.html).
 
 ### GET /contactdb/reserved_fields
 
@@ -1903,14 +1896,14 @@ List Id:
 * Send this to segment from an existing list.
 * Don't send this to segment from your entire contactdb.
 
-Valid operators for create and update depend on the type of the field you are segmenting: 
+Valid operators for create and update depend on the type of the field you are segmenting:
 
-* **Dates:** "eq", "ne", "lt" (before), "gt" (after) 
-* **Text:** "contains", "eq" (is - matches the full field), "ne" (is not - matches any field where the entire field is not the condition value) 
-* **Numbers:** "eq", "lt", "gt" 
-* **Email Clicks and Opens:** "eq" (opened), "ne" (not opened) 
+* **Dates:** "eq", "ne", "lt" (before), "gt" (after)
+* **Text:** "contains", "eq" (is - matches the full field), "ne" (is not - matches any field where the entire field is not the condition value)
+* **Numbers:** "eq", "lt", "gt"
+* **Email Clicks and Opens:** "eq" (opened), "ne" (not opened)
 
-Segment conditions using "eq" or "ne" for email clicks and opens should provide a "field" of either *clicks.campaign_identifier* or *opens.campaign_identifier*. The condition value should be a string containing the id of a completed campaign. 
+Segment conditions using "eq" or "ne" for email clicks and opens should provide a "field" of either *clicks.campaign_identifier* or *opens.campaign_identifier*. The condition value should be a string containing the id of a completed campaign.
 
 Segments may contain multiple conditions, joined by an "and" or "or" in the "and_or" field. The first condition in the conditions list must have an empty "and_or", and subsequent conditions must all specify an "and_or".
 
@@ -1925,25 +1918,25 @@ For more information about segments in Marketing Campaigns, please see our [User
   const data = {
   "conditions": [
     {
-      "and_or": "", 
-      "field": "last_name", 
-      "operator": "eq", 
+      "and_or": "",
+      "field": "last_name",
+      "operator": "eq",
       "value": "Miller"
-    }, 
+    },
     {
-      "and_or": "and", 
-      "field": "last_clicked", 
-      "operator": "gt", 
+      "and_or": "and",
+      "field": "last_clicked",
+      "operator": "gt",
       "value": "01/02/2015"
-    }, 
+    },
     {
-      "and_or": "or", 
-      "field": "clicks.campaign_identifier", 
-      "operator": "eq", 
+      "and_or": "or",
+      "field": "clicks.campaign_identifier",
+      "operator": "eq",
       "value": "513"
     }
-  ], 
-  "list_id": 4, 
+  ],
+  "list_id": 4,
   "name": "Last Name Miller"
 };
   request.body = data;
@@ -1989,8 +1982,6 @@ For more information about segments in Marketing Campaigns, please see our [User
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   const queryParams = {
   'delete_contacts': 'true'
 };
@@ -2018,13 +2009,13 @@ For more information about segments in Marketing Campaigns, please see our [User
   const data = {
   "conditions": [
     {
-      "and_or": "", 
-      "field": "last_name", 
-      "operator": "eq", 
+      "and_or": "",
+      "field": "last_name",
+      "operator": "eq",
       "value": "Miller"
     }
-  ], 
-  "list_id": 5, 
+  ],
+  "list_id": 5,
   "name": "The Millers"
 };
   request.body = data;
@@ -2077,7 +2068,7 @@ For more information about segments in Marketing Campaigns, please see our [User
 
 ```javascript
   const queryParams = {
-  'page': 1, 
+  'page': 1,
   'page_size': 1
 };
   request.qs = queryParams;
@@ -2130,10 +2121,10 @@ Advanced Stats provide a more in-depth view of your email statistics and the act
 
 ```javascript
   const queryParams = {
-  'aggregated_by': 'day', 
-  'end_date': '2016-04-01', 
-  'limit': 1, 
-  'offset': 1, 
+  'aggregated_by': 'day',
+  'end_date': '2016-04-01',
+  'limit': 1,
+  'offset': 1,
   'start_date': '2016-01-01'
 };
   request.qs = queryParams;
@@ -2161,11 +2152,11 @@ Advanced Stats provide a more in-depth view of your email statistics and the act
 
 ```javascript
   const queryParams = {
-  'aggregated_by': 'day', 
-  'country': 'US', 
-  'end_date': '2016-04-01', 
-  'limit': 1, 
-  'offset': 1, 
+  'aggregated_by': 'day',
+  'country': 'US',
+  'end_date': '2016-04-01',
+  'limit': 1,
+  'offset': 1,
   'start_date': '2016-01-01'
 };
   request.qs = queryParams;
@@ -2189,12 +2180,12 @@ This endpoint is for adding a(n) IP Address(es) to your account.
 
 ```javascript
   const data = {
-  "count": 90323478, 
+  "count": 90323478,
   "subusers": [
-    "subuser1", 
+    "subuser1",
     "subuser2"
-  ], 
-  "user_can_send": true, 
+  ],
+  "user_can_send": true,
   "warmup": true
 };
   request.body = data;
@@ -2210,7 +2201,7 @@ This endpoint is for adding a(n) IP Address(es) to your account.
 
 **This endpoint allows you to retrieve a list of all assigned and unassigned IPs.**
 
-The response includes warm-up status, pools, assigned subusers, and whitelabel info. The start_date field corresponds to when warmup started for that IP.
+The response includes warm-up status, pools, assigned subusers, and authentication info. The start_date field corresponds to when warmup started for that IP.
 
 A single IP address or a range of IP addresses may be dedicated to an account to send email for multiple domains. The reputation of this IP is based on the aggregate performance of all the senders who use it.
 
@@ -2219,11 +2210,11 @@ A single IP address or a range of IP addresses may be dedicated to an account to
 
 ```javascript
   const queryParams = {
-  'exclude_whitelabels': 'true', 
-  'ip': 'test_string', 
-  'limit': 1, 
-  'offset': 1, 
-  'sort_by_direction': 'asc', 
+  'exclude_whitelabels': 'true',
+  'ip': 'test_string',
+  'limit': 1,
+  'offset': 1,
+  'sort_by_direction': 'asc',
   'subuser': 'test_string'
 };
   request.qs = queryParams;
@@ -2259,9 +2250,9 @@ A single IP address or a range of IP addresses may be dedicated to an account to
 
 **Each user can create up to 10 different IP pools.**
 
-IP Pools allow you to group your dedicated SendGrid IP addresses. For example, you could create separate pools for your transactional and marketing email. When sending marketing emails, specify that you want to use the marketing IP pool. This allows you to maintain separate reputations for your different email traffic.
+IP Pools allow you to group your dedicated Twilio SendGrid IP addresses. For example, you could create separate pools for your transactional and marketing email. When sending marketing emails, specify that you want to use the marketing IP pool. This allows you to maintain separate reputations for your different email traffic.
 
-IP pools can only be used with whitelabeled IP addresses.
+IP pools can only be used with authenticated IP addresses.
 
 If an IP pool is NOT specified for an email, it will use any IP available, including ones in pools.
 
@@ -2285,9 +2276,9 @@ If an IP pool is NOT specified for an email, it will use any IP available, inclu
 
 **This endpoint allows you to retrieve all of your IP pools.**
 
-IP Pools allow you to group your dedicated SendGrid IP addresses. For example, you could create separate pools for your transactional and marketing email. When sending marketing emails, specify that you want to use the marketing IP pool. This allows you to maintain separate reputations for your different email traffic.
+IP Pools allow you to group your dedicated Twilio SendGrid IP addresses. For example, you could create separate pools for your transactional and marketing email. When sending marketing emails, specify that you want to use the marketing IP pool. This allows you to maintain separate reputations for your different email traffic.
 
-IP pools can only be used with whitelabeled IP addresses.
+IP pools can only be used with authenticated IP addresses.
 
 If an IP pool is NOT specified for an email, it will use any IP available, including ones in pools.
 
@@ -2307,9 +2298,9 @@ If an IP pool is NOT specified for an email, it will use any IP available, inclu
 
 **This endpoint allows you to update the name of an IP pool.**
 
-IP Pools allow you to group your dedicated SendGrid IP addresses. For example, you could create separate pools for your transactional and marketing email. When sending marketing emails, specify that you want to use the marketing IP pool. This allows you to maintain separate reputations for your different email traffic.
+IP Pools allow you to group your dedicated Twilio SendGrid IP addresses. For example, you could create separate pools for your transactional and marketing email. When sending marketing emails, specify that you want to use the marketing IP pool. This allows you to maintain separate reputations for your different email traffic.
 
-IP pools can only be used with whitelabeled IP addresses.
+IP pools can only be used with authenticated IP addresses.
 
 If an IP pool is NOT specified for an email, it will use any IP available, including ones in pools.
 
@@ -2333,9 +2324,9 @@ If an IP pool is NOT specified for an email, it will use any IP available, inclu
 
 **This endpoint allows you to delete an IP pool.**
 
-IP Pools allow you to group your dedicated SendGrid IP addresses. For example, you could create separate pools for your transactional and marketing email. When sending marketing emails, specify that you want to use the marketing IP pool. This allows you to maintain separate reputations for your different email traffic.
+IP Pools allow you to group your dedicated Twilio SendGrid IP addresses. For example, you could create separate pools for your transactional and marketing email. When sending marketing emails, specify that you want to use the marketing IP pool. This allows you to maintain separate reputations for your different email traffic.
 
-IP pools can only be used with whitelabeled IP addresses.
+IP pools can only be used with authenticated IP addresses.
 
 If an IP pool is NOT specified for an email, it will use any IP available, including ones in pools.
 
@@ -2343,8 +2334,6 @@ If an IP pool is NOT specified for an email, it will use any IP available, inclu
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/ips/pools/{pool_name}';
   client.request(request)
@@ -2357,9 +2346,9 @@ If an IP pool is NOT specified for an email, it will use any IP available, inclu
 
 **This endpoint allows you to list all of the IP addresses that are in a specific IP pool.**
 
-IP Pools allow you to group your dedicated SendGrid IP addresses. For example, you could create separate pools for your transactional and marketing email. When sending marketing emails, specify that you want to use the marketing IP pool. This allows you to maintain separate reputations for your different email traffic.
+IP Pools allow you to group your dedicated Twilio SendGrid IP addresses. For example, you could create separate pools for your transactional and marketing email. When sending marketing emails, specify that you want to use the marketing IP pool. This allows you to maintain separate reputations for your different email traffic.
 
-IP pools can only be used with whitelabeled IP addresses.
+IP pools can only be used with authenticated IP addresses.
 
 If an IP pool is NOT specified for an email, it will use any IP available, including ones in pools.
 
@@ -2411,8 +2400,6 @@ A single IP address or a range of IP addresses may be dedicated to an account to
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/ips/pools/{pool_name}/ips/{ip}';
   client.request(request)
@@ -2441,7 +2428,7 @@ This endpoint gets the amount of IP Addresses that can still be created during a
 
 **This endpoint allows you to enter an IP address into warmup mode.**
 
-SendGrid can automatically warm up dedicated IP addresses by limiting the amount of mail that can be sent through them per hour, with the limit determined by how long the IP address has been in warmup. See the [warmup schedule](https://sendgrid.com/docs/API_Reference/Web_API_v3/IP_Management/ip_warmup_schedule.html) for more details on how SendGrid limits your email traffic for IPs in warmup.
+Twilio SendGrid can automatically warm up dedicated IP addresses by limiting the amount of mail that can be sent through them per hour, with the limit determined by how long the IP address has been in warmup. See the [warmup schedule](https://sendgrid.com/docs/API_Reference/Web_API_v3/IP_Management/ip_warmup_schedule.html) for more details on how Twilio SendGrid limits your email traffic for IPs in warmup.
 
 For more general information about warming up IPs, please see our [Classroom](https://sendgrid.com/docs/Classroom/Deliver/Delivery_Introduction/warming_up_ips.html).
 
@@ -2465,7 +2452,7 @@ For more general information about warming up IPs, please see our [Classroom](ht
 
 **This endpoint allows you to retrieve all of your IP addresses that are currently warming up.**
 
-SendGrid can automatically warm up dedicated IP addresses by limiting the amount of mail that can be sent through them per hour, with the limit determined by how long the IP address has been in warmup. See the [warmup schedule](https://sendgrid.com/docs/API_Reference/Web_API_v3/IP_Management/ip_warmup_schedule.html) for more details on how SendGrid limits your email traffic for IPs in warmup.
+Twilio SendGrid can automatically warm up dedicated IP addresses by limiting the amount of mail that can be sent through them per hour, with the limit determined by how long the IP address has been in warmup. See the [warmup schedule](https://sendgrid.com/docs/API_Reference/Web_API_v3/IP_Management/ip_warmup_schedule.html) for more details on how Twilio SendGrid limits your email traffic for IPs in warmup.
 
 For more general information about warming up IPs, please see our [Classroom](https://sendgrid.com/docs/Classroom/Deliver/Delivery_Introduction/warming_up_ips.html).
 
@@ -2485,7 +2472,7 @@ For more general information about warming up IPs, please see our [Classroom](ht
 
 **This endpoint allows you to remove an IP address from warmup mode.**
 
-SendGrid can automatically warm up dedicated IP addresses by limiting the amount of mail that can be sent through them per hour, with the limit determined by how long the IP address has been in warmup. See the [warmup schedule](https://sendgrid.com/docs/API_Reference/Web_API_v3/IP_Management/ip_warmup_schedule.html) for more details on how SendGrid limits your email traffic for IPs in warmup.
+Twilio SendGrid can automatically warm up dedicated IP addresses by limiting the amount of mail that can be sent through them per hour, with the limit determined by how long the IP address has been in warmup. See the [warmup schedule](https://sendgrid.com/docs/API_Reference/Web_API_v3/IP_Management/ip_warmup_schedule.html) for more details on how Twilio SendGrid limits your email traffic for IPs in warmup.
 
 For more general information about warming up IPs, please see our [Classroom](https://sendgrid.com/docs/Classroom/Deliver/Delivery_Introduction/warming_up_ips.html).
 
@@ -2493,8 +2480,6 @@ For more general information about warming up IPs, please see our [Classroom](ht
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/ips/warmup/{ip_address}';
   client.request(request)
@@ -2507,7 +2492,7 @@ For more general information about warming up IPs, please see our [Classroom](ht
 
 **This endpoint allows you to retrieve the warmup status for a specific IP address.**
 
-SendGrid can automatically warm up dedicated IP addresses by limiting the amount of mail that can be sent through them per hour, with the limit determined by how long the IP address has been in warmup. See the [warmup schedule](https://sendgrid.com/docs/API_Reference/Web_API_v3/IP_Management/ip_warmup_schedule.html) for more details on how SendGrid limits your email traffic for IPs in warmup.
+Twilio SendGrid can automatically warm up dedicated IP addresses by limiting the amount of mail that can be sent through them per hour, with the limit determined by how long the IP address has been in warmup. See the [warmup schedule](https://sendgrid.com/docs/API_Reference/Web_API_v3/IP_Management/ip_warmup_schedule.html) for more details on how Twilio SendGrid limits your email traffic for IPs in warmup.
 
 For more general information about warming up IPs, please see our [Classroom](https://sendgrid.com/docs/Classroom/Deliver/Delivery_Introduction/warming_up_ips.html).
 
@@ -2550,7 +2535,7 @@ A single IP address or a range of IP addresses may be dedicated to an account to
 
 **This endpoint allows you to generate a new batch ID. This batch ID can be associated with scheduled sends via the mail/send endpoint.**
 
-If you set the SMTPAPI header `batch_id`, it allows you to then associate multiple scheduled mail/send requests together with the same ID. Then at any time up to 10 minutes before the scheduled date, you can cancel all of the mail/send requests that have this batch ID by calling the Cancel Scheduled Send endpoint. 
+If you set the SMTPAPI header `batch_id`, it allows you to then associate multiple scheduled mail/send requests together with the same ID. Then at any time up to 10 minutes before the scheduled date, you can cancel all of the mail/send requests that have this batch ID by calling the Cancel Scheduled Send endpoint.
 
 More Information:
 
@@ -2560,8 +2545,6 @@ More Information:
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'POST';
   request.url = '/v3/mail/batch';
   client.request(request)
@@ -2574,7 +2557,7 @@ More Information:
 
 **This endpoint allows you to validate a batch ID.**
 
-If you set the SMTPAPI header `batch_id`, it allows you to then associate multiple scheduled mail/send requests together with the same ID. Then at any time up to 10 minutes before the scheduled date, you can cancel all of the mail/send requests that have this batch ID by calling the Cancel Scheduled Send endpoint. 
+If you set the SMTPAPI header `batch_id`, it allows you to then associate multiple scheduled mail/send requests together with the same ID. Then at any time up to 10 minutes before the scheduled date, you can cancel all of the mail/send requests that have this batch ID by calling the Cancel Scheduled Send endpoint.
 
 More Information:
 
@@ -2594,47 +2577,47 @@ More Information:
 ```
 ## v3 Mail Send
 
-This endpoint allows you to send an email over SendGrids v3 Web API, the most recent version of our API. If you are looking for documentation about the v2 Mail Send endpoint, please see our [v2 API Reference](https://sendgrid.com/docs/API_Reference/Web_API/mail.html).
+This endpoint allows you to send an email over Twilio SendGrid's v3 Web API, the most recent version of our API. If you are looking for documentation about the v2 Mail Send endpoint, please see our [v2 API Reference](https://sendgrid.com/docs/API_Reference/Web_API/mail.html).
 
 * Top level parameters are referred to as "global".
 * Individual fields within the personalizations array will override any other global, or message level, parameters that are defined outside of personalizations.
- 
-**SendGrid provides libraries to help you quickly and easily integrate with the v3 Web API in 7 different languages: [C#](https://github.com/sendgrid/sendgrid-csharp), [Go](https://github.com/sendgrid/sendgrid-go), [Java](https://github.com/sendgrid/sendgrid-java), [Node JS](https://github.com/sendgrid/sendgrid-nodejs), [PHP](https://github.com/sendgrid/sendgrid-php), [Python](https://github.com/sendgrid/sendgrid-python), and [Ruby](https://github.com/sendgrid/sendgrid-ruby).**
+
+**Twilio SendGrid provides libraries to help you quickly and easily integrate with the v3 Web API in 7 different languages: [C#](https://github.com/sendgrid/sendgrid-csharp), [Go](https://github.com/sendgrid/sendgrid-go), [Java](https://github.com/sendgrid/sendgrid-java), [Node JS](https://github.com/sendgrid/sendgrid-nodejs), [PHP](https://github.com/sendgrid/sendgrid-php), [Python](https://github.com/sendgrid/sendgrid-python), and [Ruby](https://github.com/sendgrid/sendgrid-ruby).**
 
 
 For more detailed information about how to use the v3 Mail Send endpoint, please visit our [Classroom](https://sendgrid.com/docs/Classroom/Send/v3_Mail_Send/index.html).
 
 ### POST /mail/send
 
-// This endpoint has a helper, check it out [here](https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages/mail).
+// This endpoint has a helper, check it out [here](../mail).
 
 ```javascript
   const data = {
   "content": [
     {
-      "type": "text/html", 
+      "type": "text/html",
       "value": "<html><p>Hello, world!</p></html>"
     }
-  ], 
+  ],
   "from": {
-    "email": "sam.smith@example.com", 
+    "email": "sam.smith@example.com",
     "name": "Sam Smith"
-  }, 
+  },
   "personalizations": [
     {
-      "subject": "Hello, World!", 
+      "subject": "Hello, World!",
       "to": [
         {
-          "email": "john.doe@example.com", 
+          "email": "john.doe@example.com",
           "name": "John Doe"
         }
       ]
     }
-  ], 
+  ],
   "reply_to": {
-    "email": "sam.smith@example.com", 
+    "email": "sam.smith@example.com",
     "name": "Sam Smith"
-  }, 
+  },
   "subject": "Hello, World!"
 };
   request.body = data;
@@ -2653,14 +2636,14 @@ For more detailed information about how to use the v3 Mail Send endpoint, please
 
 **This endpoint allows you to retrieve a list of all mail settings.**
 
-Mail settings allow you to tell SendGrid specific things to do to every email that you send to your recipients over SendGrids [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
+Mail settings allow you to tell Twilio SendGrid specific things to do to every email that you send to your recipients over Twilio SendGrid's [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
 
 ### GET /mail_settings
 
 
 ```javascript
   const queryParams = {
-  'limit': 1, 
+  'limit': 1,
   'offset': 1
 };
   request.qs = queryParams;
@@ -2678,16 +2661,16 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 
 The address whitelist setting whitelists a specified email address or domain for which mail should never be suppressed. For example, you own the domain example.com, and one or more of your recipients use email@example.com addresses, by placing example.com in the address whitelist setting, all bounces, blocks, and unsubscribes logged for that domain will be ignored and sent as if under normal sending conditions.
 
-Mail settings allow you to tell SendGrid specific things to do to every email that you send to your recipients over SendGrids [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
+Mail settings allow you to tell Twilio SendGrid specific things to do to every email that you send to your recipients over Twilio SendGrid's [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
 
 ### PATCH /mail_settings/address_whitelist
 
 
 ```javascript
   const data = {
-  "enabled": true, 
+  "enabled": true,
   "list": [
-    "email1@example.com", 
+    "email1@example.com",
     "example.com"
   ]
 };
@@ -2706,7 +2689,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 
 The address whitelist setting whitelists a specified email address or domain for which mail should never be suppressed. For example, you own the domain example.com, and one or more of your recipients use email@example.com addresses, by placing example.com in the address whitelist setting, all bounces, blocks, and unsubscribes logged for that domain will be ignored and sent as if under normal sending conditions.
 
-Mail settings allow you to tell SendGrid specific things to do to every email that you send to your recipients over SendGrids [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
+Mail settings allow you to tell Twilio SendGrid specific things to do to every email that you send to your recipients over Twilio SendGrid's [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
 
 ### GET /mail_settings/address_whitelist
 
@@ -2724,16 +2707,16 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 
 **This endpoint allows you to update your current BCC mail settings.**
 
-When the BCC mail setting is enabled, SendGrid will automatically send a blind carbon copy (BCC) to an address for every email sent without adding that address to the header. Please note that only one email address may be entered in this field if you wish to distribute BCCs to multiple addresses you will need to create a distribution group or use forwarding rules.
+When the BCC mail setting is enabled, Twilio SendGrid will automatically send a blind carbon copy (BCC) to an address for every email sent without adding that address to the header. Please note that only one email address may be entered in this field if you wish to distribute BCCs to multiple addresses you will need to create a distribution group or use forwarding rules.
 
-Mail settings allow you to tell SendGrid specific things to do to every email that you send to your recipients over SendGrids [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
+Mail settings allow you to tell Twilio SendGrid specific things to do to every email that you send to your recipients over Twilio SendGrid's [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
 
 ### PATCH /mail_settings/bcc
 
 
 ```javascript
   const data = {
-  "email": "email@example.com", 
+  "email": "email@example.com",
   "enabled": false
 };
   request.body = data;
@@ -2749,9 +2732,9 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 
 **This endpoint allows you to retrieve your current BCC mail settings.**
 
-When the BCC mail setting is enabled, SendGrid will automatically send a blind carbon copy (BCC) to an address for every email sent without adding that address to the header. Please note that only one email address may be entered in this field if you wish to distribute BCCs to multiple addresses you will need to create a distribution group or use forwarding rules.
+When the BCC mail setting is enabled, Twilio SendGrid will automatically send a blind carbon copy (BCC) to an address for every email sent without adding that address to the header. Please note that only one email address may be entered in this field if you wish to distribute BCCs to multiple addresses you will need to create a distribution group or use forwarding rules.
 
-Mail settings allow you to tell SendGrid specific things to do to every email that you send to your recipients over SendGrids [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
+Mail settings allow you to tell Twilio SendGrid specific things to do to every email that you send to your recipients over Twilio SendGrid's [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
 
 ### GET /mail_settings/bcc
 
@@ -2769,17 +2752,17 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 
 **This endpoint allows you to update your current bounce purge settings.**
 
-This setting allows you to set a schedule for SendGrid to automatically delete contacts from your soft and hard bounce suppression lists.
+This setting allows you to set a schedule for Twilio SendGrid to automatically delete contacts from your soft and hard bounce suppression lists.
 
-Mail settings allow you to tell SendGrid specific things to do to every email that you send to your recipients over SendGrids [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
+Mail settings allow you to tell Twilio SendGrid specific things to do to every email that you send to your recipients over Twilio SendGrid's [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
 
 ### PATCH /mail_settings/bounce_purge
 
 
 ```javascript
   const data = {
-  "enabled": true, 
-  "hard_bounces": 5, 
+  "enabled": true,
+  "hard_bounces": 5,
   "soft_bounces": 5
 };
   request.body = data;
@@ -2795,9 +2778,9 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 
 **This endpoint allows you to retrieve your current bounce purge settings.**
 
-This setting allows you to set a schedule for SendGrid to automatically delete contacts from your soft and hard bounce suppression lists.
+This setting allows you to set a schedule for Twilio SendGrid to automatically delete contacts from your soft and hard bounce suppression lists.
 
-Mail settings allow you to tell SendGrid specific things to do to every email that you send to your recipients over SendGrids [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
+Mail settings allow you to tell Twilio SendGrid specific things to do to every email that you send to your recipients over Twilio SendGrid's [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
 
 ### GET /mail_settings/bounce_purge
 
@@ -2817,15 +2800,15 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 
 The footer setting will insert a custom footer at the bottom of the text and HTML bodies. Use the embedded HTML editor and plain text entry fields to create the content of the footers to be inserted into your emails.
 
-Mail settings allow you to tell SendGrid specific things to do to every email that you send to your recipients over SendGrids [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
+Mail settings allow you to tell Twilio SendGrid specific things to do to every email that you send to your recipients over Twilio SendGrid's [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
 
 ### PATCH /mail_settings/footer
 
 
 ```javascript
   const data = {
-  "enabled": true, 
-  "html_content": "...", 
+  "enabled": true,
+  "html_content": "...",
   "plain_content": "..."
 };
   request.body = data;
@@ -2843,7 +2826,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 
 The footer setting will insert a custom footer at the bottom of the text and HTML bodies. Use the embedded HTML editor and plain text entry fields to create the content of the footers to be inserted into your emails.
 
-Mail settings allow you to tell SendGrid specific things to do to every email that you send to your recipients over SendGrids [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
+Mail settings allow you to tell Twilio SendGrid specific things to do to every email that you send to your recipients over Twilio SendGrid's [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
 
 ### GET /mail_settings/footer
 
@@ -2863,14 +2846,14 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 
 Activating this setting allows you to specify an email address to which bounce reports are forwarded.
 
-Mail settings allow you to tell SendGrid specific things to do to every email that you send to your recipients over SendGrids [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
+Mail settings allow you to tell Twilio SendGrid specific things to do to every email that you send to your recipients over Twilio SendGrid's [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
 
 ### PATCH /mail_settings/forward_bounce
 
 
 ```javascript
   const data = {
-  "email": "example@example.com", 
+  "email": "example@example.com",
   "enabled": true
 };
   request.body = data;
@@ -2888,7 +2871,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 
 Activating this setting allows you to specify an email address to which bounce reports are forwarded.
 
-Mail settings allow you to tell SendGrid specific things to do to every email that you send to your recipients over SendGrids [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
+Mail settings allow you to tell Twilio SendGrid specific things to do to every email that you send to your recipients over Twilio SendGrid's [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
 
 ### GET /mail_settings/forward_bounce
 
@@ -2908,14 +2891,14 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 
 Enabling the forward spam setting allows you to specify an email address to which spam reports will be forwarded.
 
-Mail settings allow you to tell SendGrid specific things to do to every email that you send to your recipients over SendGrids [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
+Mail settings allow you to tell Twilio SendGrid specific things to do to every email that you send to your recipients over Twilio SendGrid's [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
 
 ### PATCH /mail_settings/forward_spam
 
 
 ```javascript
   const data = {
-  "email": "", 
+  "email": "",
   "enabled": false
 };
   request.body = data;
@@ -2933,7 +2916,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 
 Enabling the forward spam setting allows you to specify an email address to which spam reports will be forwarded.
 
-Mail settings allow you to tell SendGrid specific things to do to every email that you send to your recipients over SendGrids [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
+Mail settings allow you to tell Twilio SendGrid specific things to do to every email that you send to your recipients over Twilio SendGrid's [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
 
 ### GET /mail_settings/forward_spam
 
@@ -2953,7 +2936,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 
 The plain content setting will automatically convert any plain text emails that you send to HTML before sending.
 
-Mail settings allow you to tell SendGrid specific things to do to every email that you send to your recipients over SendGrids [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
+Mail settings allow you to tell Twilio SendGrid specific things to do to every email that you send to your recipients over Twilio SendGrid's [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
 
 ### PATCH /mail_settings/plain_content
 
@@ -2977,7 +2960,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 
 The plain content setting will automatically convert any plain text emails that you send to HTML before sending.
 
-Mail settings allow you to tell SendGrid specific things to do to every email that you send to your recipients over SendGrids [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
+Mail settings allow you to tell Twilio SendGrid specific things to do to every email that you send to your recipients over Twilio SendGrid's [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
 
 ### GET /mail_settings/plain_content
 
@@ -2997,15 +2980,15 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 
 The spam checker filter notifies you when emails are detected that exceed a predefined spam threshold.
 
-Mail settings allow you to tell SendGrid specific things to do to every email that you send to your recipients over SendGrids [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
+Mail settings allow you to tell Twilio SendGrid specific things to do to every email that you send to your recipients over Twilio SendGrid's [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
 
 ### PATCH /mail_settings/spam_check
 
 
 ```javascript
   const data = {
-  "enabled": true, 
-  "max_score": 5, 
+  "enabled": true,
+  "max_score": 5,
   "url": "url"
 };
   request.body = data;
@@ -3023,7 +3006,7 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 
 The spam checker filter notifies you when emails are detected that exceed a predefined spam threshold.
 
-Mail settings allow you to tell SendGrid specific things to do to every email that you send to your recipients over SendGrids [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
+Mail settings allow you to tell Twilio SendGrid specific things to do to every email that you send to your recipients over Twilio SendGrid's [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
 
 ### GET /mail_settings/spam_check
 
@@ -3041,18 +3024,18 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 
 **This endpoint allows you to update your current legacy email template settings.**
 
-This setting refers to our original email templates. We currently support more fully featured [transactional templates](https://sendgrid.com/docs/User_Guide/Transactional_Templates/index.html). 
+This setting refers to our original email templates. We currently support more fully featured [transactional templates](https://sendgrid.com/docs/User_Guide/Transactional_Templates/index.html).
 
 The legacy email template setting wraps an HTML template around your email content. This can be useful for sending out marketing email and/or other HTML formatted messages.
 
-Mail settings allow you to tell SendGrid specific things to do to every email that you send to your recipients over SendGrids [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
+Mail settings allow you to tell Twilio SendGrid specific things to do to every email that you send to your recipients over Twilio SendGrid's [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
 
 ### PATCH /mail_settings/template
 
 
 ```javascript
   const data = {
-  "enabled": true, 
+  "enabled": true,
   "html_content": "<% body %>"
 };
   request.body = data;
@@ -3068,11 +3051,11 @@ Mail settings allow you to tell SendGrid specific things to do to every email th
 
 **This endpoint allows you to retrieve your current legacy email template settings.**
 
-This setting refers to our original email templates. We currently support more fully featured [transactional templates](https://sendgrid.com/docs/User_Guide/Transactional_Templates/index.html). 
+This setting refers to our original email templates. We currently support more fully featured [transactional templates](https://sendgrid.com/docs/User_Guide/Transactional_Templates/index.html).
 
 The legacy email template setting wraps an HTML template around your email content. This can be useful for sending out marketing email and/or other HTML formatted messages.
 
-Mail settings allow you to tell SendGrid specific things to do to every email that you send to your recipients over SendGrids [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
+Mail settings allow you to tell Twilio SendGrid specific things to do to every email that you send to your recipients over Twilio SendGrid's [Web API](https://sendgrid.com/docs/API_Reference/Web_API/mail.html) or [SMTP Relay](https://sendgrid.com/docs/API_Reference/SMTP_API/index.html).
 
 ### GET /mail_settings/template
 
@@ -3102,11 +3085,11 @@ Advanced Stats provide a more in-depth view of your email statistics and the act
 
 ```javascript
   const queryParams = {
-  'aggregated_by': 'day', 
-  'end_date': '2016-04-01', 
-  'limit': 1, 
-  'mailbox_providers': 'test_string', 
-  'offset': 1, 
+  'aggregated_by': 'day',
+  'end_date': '2016-04-01',
+  'limit': 1,
+  'mailbox_providers': 'test_string',
+  'offset': 1,
   'start_date': '2016-01-01'
 };
   request.qs = queryParams;
@@ -3122,7 +3105,7 @@ Advanced Stats provide a more in-depth view of your email statistics and the act
 # MESSAGES
 
 ## Filter all messages
-> In order to gain access to the Email Activity Feed API, you must purchase [additional email activity history](https://app.sendgrid.com/settings/billing/addons/email_activity). 
+> In order to gain access to the Email Activity Feed API, you must purchase [additional email activity history](https://app.sendgrid.com/settings/billing/addons/email_activity).
 
 Filter all messages to search your Email Activity. All queries need to be [URL encoded](https://meyerweb.com/eric/tools/dencoder/), and have this format:
 
@@ -3139,6 +3122,8 @@ Filter by a specific email - `query=to_email%3D%22example%40example.com%22`
 Filter by subject line - `query=subject%3d%22A%20Great%20Subject%22`
 
 You can filter by other operators besides `=`. We also accept `!=`, `<`, and `>`.
+
+If you use the `@sendgrid/client` library, you do not have to encode anything (it will end up being double encoded).
 
 For a tutorial on how to get started, check out [Getting Started with the Email Activity API](https://sendgrid.com/docs/API_Reference/Web_API_v3/Tutorials/getting_started_email_activity_api.html).
 
@@ -3227,7 +3212,7 @@ For a tutorial on how to get started, check out [Getting Started with the Email 
     <td><code>unique_args%3D%22example%20argument%22</code></td>
   </tr>
   <tr>
-    <td><code>outbound_ip</code> - this is the SendGrid dedicated IP address used to send the email</td>
+    <td><code>outbound_ip</code> - this is the Twilio SendGrid dedicated IP address used to send the email</td>
     <td><code>outbound_ip="4.77.777.77"</code></td>
     <td><code>outbound_ip%3D%224.77.777.77%22</code></td>
   </tr>
@@ -3266,7 +3251,7 @@ For information about building combined queries, see [Building compound Email Ac
 ```javascript
   const queryParams = {
     'limit': 10,
-    'query': 'from_email%3D%22testing%40sendgrid.net%22'
+    'query': 'from_email="testing@sendgrid.net"'
   };
   request.qs = queryParams;
   request.method = 'GET';
@@ -3344,14 +3329,14 @@ The CSV fill contain the last 1 million messages. This endpoint will be rate lim
 
 **This endpoint allows you to retrieve a list of all partner settings that you can enable.**
 
-Our partner settings allow you to integrate your SendGrid account with our partners to increase your SendGrid experience and functionality. For more information about our partners, and how you can begin integrating with them, please visit our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/partners.html).
+Our partner settings allow you to integrate your Twilio SendGrid account with our partners to increase your Twilio SendGrid experience and functionality. For more information about our partners, and how you can begin integrating with them, please visit our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/partners.html).
 
 ### GET /partner_settings
 
 
 ```javascript
   const queryParams = {
-  'limit': 1, 
+  'limit': 1,
   'offset': 1
 };
   request.qs = queryParams;
@@ -3367,17 +3352,17 @@ Our partner settings allow you to integrate your SendGrid account with our partn
 
 **This endpoint allows you to update or change your New Relic partner settings.**
 
-Our partner settings allow you to integrate your SendGrid account with our partners to increase your SendGrid experience and functionality. For more information about our partners, and how you can begin integrating with them, please visit our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/partners.html).
+Our partner settings allow you to integrate your Twilio SendGrid account with our partners to increase your Twilio SendGrid experience and functionality. For more information about our partners, and how you can begin integrating with them, please visit our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/partners.html).
 
-By integrating with New Relic, you can send your SendGrid email statistics to your New Relic Dashboard. If you enable this setting, your stats will be sent to New Relic every 5 minutes. You will need your New Relic License Key to enable this setting. For more information, please see our [Classroom](https://sendgrid.com/docs/Classroom/Track/Collecting_Data/new_relic.html).
+By integrating with New Relic, you can send your Twilio SendGrid email statistics to your New Relic Dashboard. If you enable this setting, your stats will be sent to New Relic every 5 minutes. You will need your New Relic License Key to enable this setting. For more information, please see our [Classroom](https://sendgrid.com/docs/Classroom/Track/Collecting_Data/new_relic.html).
 
 ### PATCH /partner_settings/new_relic
 
 
 ```javascript
   const data = {
-  "enable_subuser_statistics": true, 
-  "enabled": true, 
+  "enable_subuser_statistics": true,
+  "enabled": true,
   "license_key": ""
 };
   request.body = data;
@@ -3393,9 +3378,9 @@ By integrating with New Relic, you can send your SendGrid email statistics to yo
 
 **This endpoint allows you to retrieve your current New Relic partner settings.**
 
-Our partner settings allow you to integrate your SendGrid account with our partners to increase your SendGrid experience and functionality. For more information about our partners, and how you can begin integrating with them, please visit our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/partners.html).
+Our partner settings allow you to integrate your Twilio SendGrid account with our partners to increase your Twilio SendGrid experience and functionality. For more information about our partners, and how you can begin integrating with them, please visit our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/partners.html).
 
-By integrating with New Relic, you can send your SendGrid email statistics to your New Relic Dashboard. If you enable this setting, your stats will be sent to New Relic every 5 minutes. You will need your New Relic License Key to enable this setting. For more information, please see our [Classroom](https://sendgrid.com/docs/Classroom/Track/Collecting_Data/new_relic.html).
+By integrating with New Relic, you can send your Twilio SendGrid email statistics to your New Relic Dashboard. If you enable this setting, your stats will be sent to New Relic every 5 minutes. You will need your New Relic License Key to enable this setting. For more information, please see our [Classroom](https://sendgrid.com/docs/Classroom/Track/Collecting_Data/new_relic.html).
 
 ### GET /partner_settings/new_relic
 
@@ -3416,7 +3401,7 @@ By integrating with New Relic, you can send your SendGrid email statistics to yo
 
 **This endpoint returns a list of all scopes that this user has access to.**
 
-API Keys can be used to authenticate the use of [SendGrids v3 Web API](https://sendgrid.com/docs/API_Reference/Web_API_v3/index.html), or the [Mail API Endpoint](https://sendgrid.com/docs/API_Reference/Web_API/mail.html). API Keys may be assigned specific permissions, or scopes, that limit which API endpoints they can access. For a more detailed explanation of how you can use API Key permissions, please visit our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/api_keys.html#-API-Key-Permissions) or [Classroom](https://sendgrid.com/docs/Classroom/Basics/API/api_key_permissions.html).
+API Keys can be used to authenticate the use of [Twilio SendGrid's v3 Web API](https://sendgrid.com/docs/API_Reference/Web_API_v3/index.html), or the [Mail API Endpoint](https://sendgrid.com/docs/API_Reference/Web_API/mail.html). API Keys may be assigned specific permissions, or scopes, that limit which API endpoints they can access. For a more detailed explanation of how you can use API Key permissions, please visit our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/api_keys.html#-API-Key-Permissions) or [Classroom](https://sendgrid.com/docs/Classroom/Basics/API/api_key_permissions.html).
 
 ### GET /scopes
 
@@ -3443,7 +3428,7 @@ link: ```<https://api.sendgrid.com/v3/scopes/requests?limit=10&offset=0>; rel="f
 
 ```javascript
   const queryParams = {
-  'limit': 1, 
+  'limit': 1,
   'offset': 1
 };
   request.qs = queryParams;
@@ -3465,8 +3450,6 @@ This endpoint allows you to deny an attempt to access your account.
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/scopes/requests/{request_id}';
   client.request(request)
@@ -3485,8 +3468,6 @@ This endpoint allows you to approve an access attempt.
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'PATCH';
   request.url = '/v3/scopes/requests/{request_id}/approve';
   client.request(request)
@@ -3504,27 +3485,27 @@ This endpoint allows you to approve an access attempt.
 
 *You may create up to 100 unique sender identities.*
 
-Sender Identities are required to be verified before use. If your domain has been whitelabeled it will auto verify on creation. Otherwise, an email will be sent to the `from.email`.
+Sender Identities are required to be verified before use. If your domain has been authenticated it will auto verify on creation. Otherwise, an email will be sent to the `from.email`.
 
 ### POST /senders
 
 
 ```javascript
   const data = {
-  "address": "123 Elm St.", 
-  "address_2": "Apt. 456", 
-  "city": "Denver", 
-  "country": "United States", 
+  "address": "123 Elm St.",
+  "address_2": "Apt. 456",
+  "city": "Denver",
+  "country": "United States",
   "from": {
-    "email": "from@example.com", 
+    "email": "from@example.com",
     "name": "Example INC"
-  }, 
-  "nickname": "My Sender ID", 
+  },
+  "nickname": "My Sender ID",
   "reply_to": {
-    "email": "replyto@example.com", 
+    "email": "replyto@example.com",
     "name": "Example INC"
-  }, 
-  "state": "Colorado", 
+  },
+  "state": "Colorado",
   "zip": "80202"
 };
   request.body = data;
@@ -3540,7 +3521,7 @@ Sender Identities are required to be verified before use. If your domain has bee
 
 **This endpoint allows you to retrieve a list of all sender identities that have been created for your account.**
 
-Sender Identities are required to be verified before use. If your domain has been whitelabeled it will auto verify on creation. Otherwise, an email will be sent to the `from.email`.
+Sender Identities are required to be verified before use. If your domain has been authenticated it will auto verify on creation. Otherwise, an email will be sent to the `from.email`.
 
 ### GET /senders
 
@@ -3558,7 +3539,7 @@ Sender Identities are required to be verified before use. If your domain has bee
 
 **This endpoint allows you to retrieve a specific sender identity.**
 
-Sender Identities are required to be verified before use. If your domain has been whitelabeled it will auto verify on creation. Otherwise, an email will be sent to the `from.email`.
+Sender Identities are required to be verified before use. If your domain has been authenticated it will auto verify on creation. Otherwise, an email will be sent to the `from.email`.
 
 ### GET /senders/{sender_id}
 
@@ -3576,14 +3557,12 @@ Sender Identities are required to be verified before use. If your domain has bee
 
 **This endpoint allows you to delete one of your sender identities.**
 
-Sender Identities are required to be verified before use. If your domain has been whitelabeled it will auto verify on creation. Otherwise, an email will be sent to the `from.email`.
+Sender Identities are required to be verified before use. If your domain has been authenticated it will auto verify on creation. Otherwise, an email will be sent to the `from.email`.
 
 ### DELETE /senders/{sender_id}
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/senders/{sender_id}';
   client.request(request)
@@ -3596,7 +3575,7 @@ Sender Identities are required to be verified before use. If your domain has bee
 
 **This endpoint allows you to update a sender identity.**
 
-Updates to `from.email` require re-verification. If your domain has been whitelabeled it will auto verify on creation. Otherwise, an email will be sent to the `from.email`.
+Updates to `from.email` require re-verification. If your domain has been authenticated it will auto verify on creation. Otherwise, an email will be sent to the `from.email`.
 
 Partial updates are allowed, but fields that are marked as "required" in the POST (create) endpoint must not be nil if that field is included in the PATCH request.
 
@@ -3605,20 +3584,20 @@ Partial updates are allowed, but fields that are marked as "required" in the POS
 
 ```javascript
   const data = {
-  "address": "123 Elm St.", 
-  "address_2": "Apt. 456", 
-  "city": "Denver", 
-  "country": "United States", 
+  "address": "123 Elm St.",
+  "address_2": "Apt. 456",
+  "city": "Denver",
+  "country": "United States",
   "from": {
-    "email": "from@example.com", 
+    "email": "from@example.com",
     "name": "Example INC"
-  }, 
-  "nickname": "My Sender ID", 
+  },
+  "nickname": "My Sender ID",
   "reply_to": {
-    "email": "replyto@example.com", 
+    "email": "replyto@example.com",
     "name": "Example INC"
-  }, 
-  "state": "Colorado", 
+  },
+  "state": "Colorado",
   "zip": "80202"
 };
   request.body = data;
@@ -3634,14 +3613,12 @@ Partial updates are allowed, but fields that are marked as "required" in the POS
 
 **This endpoint allows you to resend a sender identity verification email.**
 
-Sender Identities are required to be verified before use. If your domain has been whitelabeled it will auto verify on creation. Otherwise, an email will be sent to the `from.email`.
+Sender Identities are required to be verified before use. If your domain has been authenticated it will auto verify on creation. Otherwise, an email will be sent to the `from.email`.
 
 ### POST /senders/{sender_id}/resend_verification
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'POST';
   request.url = '/v3/senders/{sender_id}/resend_verification';
   client.request(request)
@@ -3650,6 +3627,720 @@ Sender Identities are required to be verified before use. If your domain has bee
     console.log(response.body);
   })
 ```
+
+<a name="sender-authentication"></a>
+# SENDER AUTHENTICATION
+
+## Create a domain authentication.
+
+**This endpoint allows you to create an authentication for one of your domains.**
+
+If you are creating a domain authentication that you would like a subuser to use, you have two options:
+1. Use the "username" parameter. This allows you to create an authenticated domain on behalf of your subuser. This means the subuser can see and modify the created authenticated domain.
+2. Use the Association workflow (see Associate Domain section). This allows you to assign a domain authentication created by the parent to a subuser. This means the subuser will default to the assigned authenticated domain, but will not be able to see or modify that authentication. However, if the subuser creates their domain authentication it will overwrite the assigned domain authentication.
+
+A domain authentication allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Authenticating a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that Twilio SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, Twilio SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
+
+For more information on domain authentication, please see our [User Guide](https://sendgrid.com/docs/ui/account-and-settings/how-to-set-up-domain-authentication/)
+
+### POST /whitelabel/domains
+
+
+```javascript
+  const data = {
+  "automatic_security": false,
+  "custom_spf": true,
+  "default": true,
+  "domain": "example.com",
+  "ips": [
+    "192.168.1.1",
+    "192.168.1.2"
+  ],
+  "subdomain": "news",
+  "username": "john@example.com"
+};
+  request.body = data;
+  request.method = 'POST';
+  request.url = '/v3/whitelabel/domains';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+## List all domain authentications.
+
+**This endpoint allows you to retrieve a list of all domain authentications you have created.**
+
+A domain authentication allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Authenticating a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that Twilio SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, Twilio SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
+
+For more information on domain authentication, please see our [User Guide](https://sendgrid.com/docs/ui/account-and-settings/how-to-set-up-domain-authentication/)
+
+### GET /whitelabel/domains
+
+
+```javascript
+  const queryParams = {
+  'domain': 'test_string',
+  'exclude_subusers': 'true',
+  'limit': 1,
+  'offset': 1,
+  'username': 'test_string'
+};
+  request.qs = queryParams;
+  request.method = 'GET';
+  request.url = '/v3/whitelabel/domains';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+## Get the default domain authentication.
+
+**This endpoint allows you to retrieve the default authentication for a domain.**
+
+A domain authentication allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Authenticating a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that Twilio SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, Twilio SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
+
+For more information on domain authentication, please see our [User Guide](https://sendgrid.com/docs/ui/account-and-settings/how-to-set-up-domain-authentication/)
+
+## URI Parameters
+| URI Parameter   | Type   | Description  |
+|---|---|---|
+| domain | string  |The domain to find a default domain whitelabel for. |
+
+### GET /whitelabel/domains/default
+
+
+```javascript
+  request.method = 'GET';
+  request.url = '/v3/whitelabel/domains/default';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+## Disassociate a domain authentication from a given user.
+
+**This endpoint allows you to disassociate a specific authentication from a subuser.**
+
+A domain authentication allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Authenticating a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that Twilio SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, Twilio SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
+
+Domain authentications can be associated with (i.e. assigned to) subusers from a parent account. This functionality allows subusers to send mail using their parent's authenticated domains. To associate a domain authentication with a subuser, the parent account must first create the domain authentication and validate it. The parent may then associate the domain authentication via the subuser management tools.
+
+For more information on domain authentication, please see our [User Guide](https://sendgrid.com/docs/ui/account-and-settings/how-to-set-up-domain-authentication/)
+
+## URI Parameters
+| URI Parameter   | Type  | Required?  | Description  |
+|---|---|---|---|
+| username | string  | required  | Username for the subuser to find associated whitelabels for. |
+
+### DELETE /whitelabel/domains/subuser
+
+
+```javascript
+  const data = None;
+  request.body = data;
+  request.method = 'DELETE';
+  request.url = '/v3/whitelabel/domains/subuser';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+## List the domain authentications associated with the given user.
+
+**This endpoint allows you to retrieve all of the domain authentications that have been assigned to a specific subuser.**
+
+A domain authentication allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Authenticating a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that Twilio SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, Twilio SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
+
+Domain authentications can be associated with (i.e. assigned to) subusers from a parent account. This functionality allows subusers to send mail using their parent's authenticated domains. To associate a domain authentication with a subuser, the parent account must first create the domain authentication and validate it. The parent may then associate the domain authentication via the subuser management tools.
+
+For more information on domain authentication, please see our [User Guide](https://sendgrid.com/docs/ui/account-and-settings/how-to-set-up-domain-authentication/)
+
+## URI Parameters
+| URI Parameter   | Type  | Description  |
+|---|---|---|
+| username | string  | Username of the subuser to find associated whitelabels for. |
+
+### GET /whitelabel/domains/subuser
+
+
+```javascript
+  request.method = 'GET';
+  request.url = '/v3/whitelabel/domains/subuser';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+## Delete a domain authentication.
+
+**This endpoint allows you to delete a domain authentication.**
+
+A domain authentication allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Authenticating a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that Twilio SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, Twilio SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
+
+For more information on domain authentication, please see our [User Guide](https://sendgrid.com/docs/ui/account-and-settings/how-to-set-up-domain-authentication/)
+
+### DELETE /whitelabel/domains/{domain_id}
+
+
+```javascript
+  const data = None;
+  request.body = data;
+  request.method = 'DELETE';
+  request.url = '/v3/whitelabel/domains/{domain_id}';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+## Update a domain authentication.
+
+**This endpoint allows you to update the settings for a domain authentication.**
+
+A domain authentication allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Authenticating a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that Twilio SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, Twilio SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
+
+For more information on domain authentication, please see our [User Guide](https://sendgrid.com/docs/ui/account-and-settings/how-to-set-up-domain-authentication/)
+
+### PATCH /whitelabel/domains/{domain_id}
+
+
+```javascript
+  const data = {
+  "custom_spf": true,
+  "default": false
+};
+  request.body = data;
+  request.method = 'PATCH';
+  request.url = '/v3/whitelabel/domains/{domain_id}';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+## Retrieve a domain authentication.
+
+**This endpoint allows you to retrieve a specific domain authentication.**
+
+A domain authentication allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Authenticating a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that Twilio SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, Twilio SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
+
+For more information on domain authentication, please see our [User Guide](https://sendgrid.com/docs/ui/account-and-settings/how-to-set-up-domain-authentication/)
+
+### GET /whitelabel/domains/{domain_id}
+
+
+```javascript
+  request.method = 'GET';
+  request.url = '/v3/whitelabel/domains/{domain_id}';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+## Associate a domain authentication with a given user.
+
+**This endpoint allows you to associate a specific domain authentication with a subuser.**
+
+A domain authentication allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Authenticating a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that Twilio SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, Twilio SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
+
+Domain authentications can be associated with (i.e. assigned to) subusers from a parent account. This functionality allows subusers to send mail using their parent's authenticated domains. To associate a domain authentication with a subuser, the parent account must first create the domain authentication and validate it. The parent may then associate the domain authentication via the subuser management tools.
+
+For more information on domain authentication, please see our [User Guide](https://sendgrid.com/docs/ui/account-and-settings/how-to-set-up-domain-authentication/)
+
+## URI Parameters
+| URI Parameter   | Type   | Description  |
+|---|---|---|
+| domain_id | integer   | ID of the domain whitelabel to associate with the subuser. |
+
+### POST /whitelabel/domains/{domain_id}/subuser
+
+
+```javascript
+  const data = {
+  "username": "jane@example.com"
+};
+  request.body = data;
+  request.method = 'POST';
+  request.url = '/v3/whitelabel/domains/{domain_id}/subuser';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+## Add an IP to a domain authentication.
+
+**This endpoint allows you to add an IP address to a domain authentication.**
+
+A domain authentication allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Authenticating a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that Twilio SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, Twilio SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
+
+For more information on domain authentication, please see our [User Guide](https://sendgrid.com/docs/ui/account-and-settings/how-to-set-up-domain-authentication/)
+
+## URI Parameters
+| URI Parameter   | Type  |  Description  |
+|---|---|---|
+| id | integer  | ID of the domain to which you are adding an IP |
+
+### POST /whitelabel/domains/{id}/ips
+
+
+```javascript
+  const data = {
+  "ip": "192.168.0.1"
+};
+  request.body = data;
+  request.method = 'POST';
+  request.url = '/v3/whitelabel/domains/{id}/ips';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+## Remove an IP from a domain authentication.
+
+**This endpoint allows you to remove a domain's IP address from that domain's authentication.**
+
+A domain authentication allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Authenticating a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that Twilio SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, Twilio SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
+
+For more information on domain authentication, please see our [User Guide](https://sendgrid.com/docs/ui/account-and-settings/how-to-set-up-domain-authentication/)
+
+## URI Parameters
+| URI Parameter   | Type  | Description  |
+|---|---|---|
+| id | integer  | ID of the domain whitelabel to delete the IP from. |
+| ip | string | IP to remove from the domain whitelabel. |
+
+### DELETE /whitelabel/domains/{id}/ips/{ip}
+
+
+```javascript
+  const data = None;
+  request.body = data;
+  request.method = 'DELETE';
+  request.url = '/v3/whitelabel/domains/{id}/ips/{ip}';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+## Validate a domain authentication.
+
+**This endpoint allows you to validate a domain authentication. If it fails, it will return an error message describing why the domain authentication could not be validated.**
+
+A domain authentication allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Authenticating a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that Twilio SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, Twilio SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
+
+For more information on domain authentication, please see our [User Guide](https://sendgrid.com/docs/ui/account-and-settings/how-to-set-up-domain-authentication/)
+
+## URI Parameters
+| URI Parameter   | Type   | Description  |
+|---|---|---|
+| id | integer  |ID of the domain whitelabel to validate. |
+
+### POST /whitelabel/domains/{id}/validate
+
+
+```javascript
+  const data = None;
+  request.body = data;
+  request.method = 'POST';
+  request.url = '/v3/whitelabel/domains/{id}/validate';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+## Create reverse DNS record
+
+**This endpoint allows you to create a reverse DNS record.**
+
+When creating a reverse DNS record, you should use the same subdomain that you used when you created a domain authentication.
+
+Reverse DNS consists of a subdomain and domain that will be used to generate a record for a given IP. Once Twilio SendGrid has verified that the appropriate A record for the IP has been created, the appropriate reverse DNS record for the IP is generated.
+
+For more information, please see our [User Guide](https://sendgrid.com/docs/ui/account-and-settings/how-to-set-up-reverse-dns/).
+
+### POST /whitelabel/ips
+
+
+```javascript
+  const data = {
+  "domain": "example.com",
+  "ip": "192.168.1.1",
+  "subdomain": "email"
+};
+  request.body = data;
+  request.method = 'POST';
+  request.url = '/v3/whitelabel/ips';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+## Retrieve all reverse DNS records
+
+**This endpoint allows you to retrieve all of the reverse DNS records that have been created by this account.**
+
+You may include a search key by using the "ip" parameter. This enables you to perform a prefix search for a given IP segment (e.g. "192.").
+
+Reverse DNS consists of a subdomain and domain that will be used to generate a record for a given IP. Once Twilio SendGrid has verified that the appropriate A record for the IP has been created, the appropriate reverse DNS record for the IP is generated.
+
+For more information, please see our [User Guide](https://sendgrid.com/docs/ui/account-and-settings/how-to-set-up-reverse-dns/).
+
+### GET /whitelabel/ips
+
+
+```javascript
+  const queryParams = {
+  'ip': 'test_string',
+  'limit': 1,
+  'offset': 1
+};
+  request.qs = queryParams;
+  request.method = 'GET';
+  request.url = '/v3/whitelabel/ips';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+## Delete an reverse DNS record
+
+**This endpoint allows you to delete an reverse DNS record.**
+
+Reverse DNS consists of a subdomain and domain that will be used to generate a record for a given IP. Once Twilio SendGrid has verified that the appropriate A record for the IP has been created, the appropriate reverse DNS record for the IP is generated.
+
+For more information, please see our [User Guide](https://sendgrid.com/docs/ui/account-and-settings/how-to-set-up-reverse-dns/).
+
+### DELETE /whitelabel/ips/{id}
+
+
+```javascript
+  const data = None;
+  request.body = data;
+  request.method = 'DELETE';
+  request.url = '/v3/whitelabel/ips/{id}';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+## Retrieve an reverse DNS record
+
+**This endpoint allows you to retrieve an reverse DNS record.**
+
+Reverse DNS consists of a subdomain and domain that will be used to generate a record for a given IP. Once Twilio SendGrid has verified that the appropriate A record for the IP has been created, the appropriate reverse DNS record for the IP is generated.
+
+For more information, please see our [User Guide](https://sendgrid.com/docs/ui/account-and-settings/how-to-set-up-reverse-dns/).
+
+### GET /whitelabel/ips/{id}
+
+
+```javascript
+  request.method = 'GET';
+  request.url = '/v3/whitelabel/ips/{id}';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+## Validate an reverse DNS record
+
+**This endpoint allows you to validate an reverse DNS record.**
+
+Reverse DNS consists of a subdomain and domain that will be used to generate a record for a given IP. Once Twilio SendGrid has verified that the appropriate A record for the IP has been created, the appropriate reverse DNS record for the IP is generated.
+
+For more information, please see our [User Guide](https://sendgrid.com/docs/ui/account-and-settings/how-to-set-up-reverse-dns/).
+
+### POST /whitelabel/ips/{id}/validate
+
+
+```javascript
+  const data = None;
+  request.body = data;
+  request.method = 'POST';
+  request.url = '/v3/whitelabel/ips/{id}/validate';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+## Create a Branded Link
+
+**This endpoint allows you to create a new link branding.**
+
+Email link branding allow all of the click-tracked links you send in your emails to include the URL of your domain instead of sendgrid.net.
+
+For more information, please see our [User Guide](https://sendgrid.com/docs/ui/account-and-settings/how-to-set-up-link-branding/).
+
+### POST /whitelabel/links
+
+
+```javascript
+  const data = {
+  "default": true,
+  "domain": "example.com",
+  "subdomain": "mail"
+};
+  request.body = data;
+  const queryParams = {
+  'limit': 1,
+  'offset': 1
+};
+  request.qs = queryParams;
+  request.method = 'POST';
+  request.url = '/v3/whitelabel/links';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+## Retrieve all link brandings
+
+**This endpoint allows you to retrieve all link brandings.**
+
+Email link branding allow all of the click-tracked links you send in your emails to include the URL of your domain instead of sendgrid.net.
+
+For more information, please see our [User Guide](https://sendgrid.com/docs/ui/account-and-settings/how-to-set-up-link-branding/).
+
+### GET /whitelabel/links
+
+
+```javascript
+  const queryParams = {
+  'limit': 1
+};
+  request.qs = queryParams;
+  request.method = 'GET';
+  request.url = '/v3/whitelabel/links';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+## Retrieve a Default Link Branding
+
+**This endpoint allows you to retrieve the default link branding.**
+
+Default link branding is the actual link branding to be used when sending messages. If there are multiple link brandings, the default is determined by the following order:
+<ul>
+  <li>Validated link branding marked as "default"</li>
+  <li>Legacy link brands (migrated from the whitelabel wizard)</li>
+  <li>Default SendGrid link whitelabel (i.e. 100.ct.sendgrid.net)</li>
+</ul>
+
+Email link branding allow all of the click-tracked links you send in your emails to include the URL of your domain instead of sendgrid.net.
+
+For more information, please see our [User Guide](https://sendgrid.com/docs/ui/account-and-settings/how-to-set-up-link-branding/).
+
+### GET /whitelabel/links/default
+
+
+```javascript
+  const queryParams = {
+  'domain': 'test_string'
+};
+  request.qs = queryParams;
+  request.method = 'GET';
+  request.url = '/v3/whitelabel/links/default';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+
+### DELETE /whitelabel/links/subuser
+
+
+```javascript
+  const data = None;
+  request.body = data;
+  const queryParams = {
+  'username': 'test_string'
+};
+  request.qs = queryParams;
+  request.method = 'DELETE';
+  request.url = '/v3/whitelabel/links/subuser';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+## Retrieve Associated Link Branding
+
+**This endpoint allows you to retrieve the associated link branding for a subuser.**
+
+Link branding can be associated with subusers from the parent account. This functionality allows
+subusers to send mail using their parent's link brands. To associate a link branding, the parent account
+must first create a branded link and validate it. The parent may then associate that branded link with a subuser via the API or the Subuser Management page in the user interface.
+
+Email link branding allow all of the click-tracked links you send in your emails to include the URL of your domain instead of sendgrid.net.
+
+For more information, please see our [User Guide](https://sendgrid.com/docs/ui/account-and-settings/how-to-set-up-link-branding/).
+
+### GET /whitelabel/links/subuser
+
+
+```javascript
+  const queryParams = {
+  'username': 'test_string'
+};
+  request.qs = queryParams;
+  request.method = 'GET';
+  request.url = '/v3/whitelabel/links/subuser';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+## Disassociate a Link Branding
+
+**This endpoint allows you to disassociate a link branding from a subuser.**
+
+Link branding can be associated with subusers from the parent account. This functionality allows
+subusers to send mail using their parent's link brands. To associate a link branding, the parent account
+must first create a branded link and validate it. The parent may then associate that branded link with a subuser via the API or the Subuser Management page in the user interface.
+
+Email link branding allow all of the click-tracked links you send in your emails to include the URL of your domain instead of sendgrid.net.
+
+For more information, please see our [User Guide](https://sendgrid.com/docs/ui/account-and-settings/how-to-set-up-link-branding/).
+
+## Delete a Link Branding
+
+**This endpoint allows you to delete a link branding.**
+
+Email link branding allow all of the click-tracked links you send in your emails to include the URL of your domain instead of sendgrid.net.
+
+For more information, please see our [User Guide](https://sendgrid.com/docs/ui/account-and-settings/how-to-set-up-link-branding/).
+
+### DELETE /whitelabel/links/{id}
+
+
+```javascript
+  const data = None;
+  request.body = data;
+  request.method = 'DELETE';
+  request.url = '/v3/whitelabel/links/{id}';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+## Update a Link Branding
+
+**This endpoint allows you to update a specific link branding. You can use this endpoint to change a branded link's default status.**
+
+Email link branding allow all of the click-tracked links you send in your emails to include the URL of your domain instead of sendgrid.net.
+
+For more information, please see our [User Guide](https://sendgrid.com/docs/ui/account-and-settings/how-to-set-up-link-branding/).
+
+### PATCH /whitelabel/links/{id}
+
+
+```javascript
+  const data = {
+  "default": true
+};
+  request.body = data;
+  request.method = 'PATCH';
+  request.url = '/v3/whitelabel/links/{id}';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+## Retrieve a Link Branding
+
+**This endpoint allows you to retrieve a specific link branding.**
+
+Email link branding allow all of the click-tracked links you send in your emails to include the URL of your domain instead of sendgrid.net.
+
+For more information, please see our [User Guide](https://sendgrid.com/docs/ui/account-and-settings/how-to-set-up-link-branding/).
+
+### GET /whitelabel/links/{id}
+
+
+```javascript
+  request.method = 'GET';
+  request.url = '/v3/whitelabel/links/{id}';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+## Validate a Link Branding
+
+**This endpoint allows you to validate a link branding.**
+
+Email link branding allow all of the click-tracked links you send in your emails to include the URL of your domain instead of sendgrid.net.
+
+For more information, please see our [User Guide](https://sendgrid.com/docs/ui/account-and-settings/how-to-set-up-link-branding/).
+
+### POST /whitelabel/links/{id}/validate
+
+
+```javascript
+  const data = None;
+  request.body = data;
+  request.method = 'POST';
+  request.url = '/v3/whitelabel/links/{id}/validate';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+# Associate a Link Branding
+
+**This endpoint allows you to associate a link branding with a subuser account.**
+
+Link branding can be associated with subusers from the parent account. This functionality allows
+subusers to send mail using their parent's link brands. To associate a link branding, the parent account
+must first create a branded link and validate it. The parent may then associate that branded link with a subuser via the API or the Subuser Management page in the user interface.
+
+Email link branding allow all of the click-tracked links you send in your emails to include the URL of your domain instead of sendgrid.net.
+
+For more information, please see our [User Guide](https://sendgrid.com/docs/ui/account-and-settings/how-to-set-up-link-branding/).
+
+### POST /whitelabel/links/{link_id}/subuser
+
+
+```javascript
+  const data = {
+  "username": "jane@example.com"
+};
+  request.body = data;
+  request.method = 'POST';
+  request.url = '/v3/whitelabel/links/{link_id}/subuser';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+
 <a name="stats"></a>
 # STATS
 
@@ -3664,10 +4355,10 @@ Parent accounts will see aggregated stats for their account and all subuser acco
 
 ```javascript
   const queryParams = {
-  'aggregated_by': 'day', 
-  'end_date': '2016-04-01', 
-  'limit': 1, 
-  'offset': 1, 
+  'aggregated_by': 'day',
+  'end_date': '2016-04-01',
+  'limit': 1,
+  'offset': 1,
   'start_date': '2016-01-01'
 };
   request.qs = queryParams;
@@ -3696,12 +4387,12 @@ For more information about Subusers:
 
 ```javascript
   const data = {
-  "email": "John@example.com", 
+  "email": "John@example.com",
   "ips": [
-    "1.1.1.1", 
+    "1.1.1.1",
     "2.2.2.2"
-  ], 
-  "password": "johns_password", 
+  ],
+  "password": "johns_password",
   "username": "John@example.com"
 };
   request.body = data;
@@ -3727,8 +4418,8 @@ For more information about Subusers:
 
 ```javascript
   const queryParams = {
-  'limit': 1, 
-  'offset': 1, 
+  'limit': 1,
+  'offset': 1,
   'username': 'test_string'
 };
   request.qs = queryParams;
@@ -3777,11 +4468,11 @@ For more information, see our [User Guide](https://sendgrid.com/docs/User_Guide/
 
 ```javascript
   const queryParams = {
-  'aggregated_by': 'day', 
-  'end_date': '2016-04-01', 
-  'limit': 1, 
-  'offset': 1, 
-  'start_date': '2016-01-01', 
+  'aggregated_by': 'day',
+  'end_date': '2016-04-01',
+  'limit': 1,
+  'offset': 1,
+  'start_date': '2016-01-01',
   'subusers': 'test_string'
 };
   request.qs = queryParams;
@@ -3809,11 +4500,11 @@ For more information, see our [User Guide](https://sendgrid.com/docs/User_Guide/
 
 ```javascript
   const queryParams = {
-  'date': 'test_string', 
-  'limit': 1, 
-  'offset': 1, 
-  'sort_by_direction': 'asc', 
-  'sort_by_metric': 'test_string', 
+  'date': 'test_string',
+  'limit': 1,
+  'offset': 1,
+  'sort_by_direction': 'asc',
+  'sort_by_metric': 'test_string',
   'subuser': 'test_string'
 };
   request.qs = queryParams;
@@ -3839,12 +4530,12 @@ For more information, see our [User Guide](https://sendgrid.com/docs/User_Guide/
 
 ```javascript
   const queryParams = {
-  'aggregated_by': 'day', 
-  'end_date': '2016-04-01', 
-  'limit': 1, 
-  'offset': 1, 
-  'sort_by_direction': 'asc', 
-  'sort_by_metric': 'test_string', 
+  'aggregated_by': 'day',
+  'end_date': '2016-04-01',
+  'limit': 1,
+  'offset': 1,
+  'sort_by_direction': 'asc',
+  'sort_by_metric': 'test_string',
   'start_date': '2016-01-01'
 };
   request.qs = queryParams;
@@ -3869,8 +4560,6 @@ For more information about Subusers:
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/subusers/{subuser_name}';
   client.request(request)
@@ -3906,12 +4595,12 @@ For more information about Subusers:
 ```
 ## Update IPs assigned to a subuser
 
-Each subuser should be assigned to an IP address, from which all of this subuser's mail will be sent. Often, this is the same IP as the parent account, but each subuser can have their own, or multiple, IP addresses as well. 
+Each subuser should be assigned to an IP address, from which all of this subuser's mail will be sent. Often, this is the same IP as the parent account, but each subuser can have their own, or multiple, IP addresses as well.
 
 More information:
 
 * [How to request more IPs](https://sendgrid.com/docs/Classroom/Basics/Account/adding_an_additional_dedicated_ip_to_your_account.html)
-* [IPs can be whitelabeled](https://sendgrid.com/docs/User_Guide/Settings/Whitelabel/ips.html)
+* [How to setup reverse DNS](https://sendgrid.com/docs/ui/account-and-settings/how-to-set-up-reverse-dns/)
 
 ### PUT /subusers/{subuser_name}/ips
 
@@ -3938,7 +4627,7 @@ Subuser monitor settings allow you to receive a sample of an outgoing message by
 
 ```javascript
   const data = {
-  "email": "example@example.com", 
+  "email": "example@example.com",
   "frequency": 500
 };
   request.body = data;
@@ -3959,7 +4648,7 @@ Subuser monitor settings allow you to receive a sample of an outgoing message by
 
 ```javascript
   const data = {
-  "email": "example@example.com", 
+  "email": "example@example.com",
   "frequency": 50000
 };
   request.body = data;
@@ -3979,8 +4668,6 @@ Subuser monitor settings allow you to receive a sample of an outgoing message by
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/subusers/{subuser_name}/monitor';
   client.request(request)
@@ -4021,10 +4708,10 @@ For more information, see our [User Guide](https://sendgrid.com/docs/User_Guide/
 
 ```javascript
   const queryParams = {
-  'date': 'test_string', 
-  'limit': 1, 
-  'offset': 1, 
-  'sort_by_direction': 'asc', 
+  'date': 'test_string',
+  'limit': 1,
+  'offset': 1,
+  'sort_by_direction': 'asc',
   'sort_by_metric': 'test_string'
 };
   request.qs = queryParams;
@@ -4043,9 +4730,9 @@ For more information, see our [User Guide](https://sendgrid.com/docs/User_Guide/
 
 **This endpoint allows you to delete all email addresses on your blocks list.**
 
-There are two options for deleting blocked emails: 
+There are two options for deleting blocked emails:
 
-1. You can delete all blocked emails by setting `delete_all` to true in the request body. 
+1. You can delete all blocked emails by setting `delete_all` to true in the request body.
 2. You can delete some blocked emails by specifying the email addresses in an array in the request body.
 
 [Blocks](https://sendgrid.com/docs/Glossary/blocks.html) happen when your message was rejected for a reason related to the message, not the recipient address. This can happen when your mail server IP address has been added to a blacklist or blocked by an ISP, or if a filter flags the message content on the receiving server.
@@ -4057,9 +4744,9 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 
 ```javascript
   const data = {
-  "delete_all": false, 
+  "delete_all": false,
   "emails": [
-    "example1@example.com", 
+    "example1@example.com",
     "example2@example.com"
   ]
 };
@@ -4085,9 +4772,9 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 
 ```javascript
   const queryParams = {
-  'end_time': 1, 
-  'limit': 1, 
-  'offset': 1, 
+  'end_time': 1,
+  'limit': 1,
+  'offset': 1,
   'start_time': 1
 };
   request.qs = queryParams;
@@ -4111,8 +4798,6 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/suppression/blocks/{email}';
   client.request(request)
@@ -4147,7 +4832,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 
 A bounced email is when the message is undeliverable and then returned to the server that sent it.
 
-For more information see: 
+For more information see:
 
 * [User Guide > Bounces](https://sendgrid.com/docs/User_Guide/Suppressions/bounces.html) for more information
 * [Glossary > Bounces](https://sendgrid.com/docs/Glossary/Bounces.html)
@@ -4160,9 +4845,9 @@ Note: the `delete_all` and `emails` parameters should be used independently of e
 
 ```javascript
   const data = {
-  "delete_all": true, 
+  "delete_all": true,
   "emails": [
-    "example@example.com", 
+    "example@example.com",
     "example2@example.com"
   ]
 };
@@ -4179,9 +4864,9 @@ Note: the `delete_all` and `emails` parameters should be used independently of e
 
 **This endpoint allows you to retrieve all of your bounces.**
 
-A bounced email is when the message is undeliverable and then returned to the server that sent it.  
+A bounced email is when the message is undeliverable and then returned to the server that sent it.
 
-For more information see: 
+For more information see:
 
 * [User Guide > Bounces](https://sendgrid.com/docs/User_Guide/Suppressions/bounces.html) for more information
 * [Glossary > Bounces](https://sendgrid.com/docs/Glossary/Bounces.html)
@@ -4191,7 +4876,7 @@ For more information see:
 
 ```javascript
   const queryParams = {
-  'end_time': 1, 
+  'end_time': 1,
   'start_time': 1
 };
   request.qs = queryParams;
@@ -4207,9 +4892,9 @@ For more information see:
 
 **This endpoint allows you to remove an email address from your bounce list.**
 
-A bounced email is when the message is undeliverable and then returned to the server that sent it. This endpoint allows you to delete a single email address from your bounce list. 
+A bounced email is when the message is undeliverable and then returned to the server that sent it. This endpoint allows you to delete a single email address from your bounce list.
 
-For more information see: 
+For more information see:
 
 * [User Guide > Bounces](https://sendgrid.com/docs/User_Guide/Suppressions/bounces.html) for more information
 * [Glossary > Bounces](https://sendgrid.com/docs/Glossary/Bounces.html)
@@ -4219,8 +4904,6 @@ For more information see:
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   const queryParams = {
   'email_address': 'example@example.com'
 };
@@ -4239,7 +4922,7 @@ For more information see:
 
 A bounced email is when the message is undeliverable and then returned to the server that sent it.
 
-For more information see: 
+For more information see:
 
 * [User Guide > Bounces](https://sendgrid.com/docs/User_Guide/Suppressions/bounces.html) for more information
 * [Glossary > Bounces](https://sendgrid.com/docs/Glossary/Bounces.html)
@@ -4261,7 +4944,7 @@ For more information see:
 
 **This endpoint allows you to remove email addresses from your invalid email address list.**
 
-There are two options for deleting invalid email addresses: 
+There are two options for deleting invalid email addresses:
 
 1) You can delete all invalid email addresses by setting `delete_all` to true in the request body.
 2) You can delete some invalid email addresses by specifying the addresses in an array in the request body.
@@ -4277,9 +4960,9 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 
 ```javascript
   const data = {
-  "delete_all": false, 
+  "delete_all": false,
   "emails": [
-    "example1@example.com", 
+    "example1@example.com",
     "example2@example.com"
   ]
 };
@@ -4307,9 +4990,9 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 
 ```javascript
   const queryParams = {
-  'end_time': 1, 
-  'limit': 1, 
-  'offset': 1, 
+  'end_time': 1,
+  'limit': 1,
+  'offset': 1,
   'start_time': 1
 };
   request.qs = queryParams;
@@ -4335,8 +5018,6 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/suppression/invalid_emails/{email}';
   client.request(request)
@@ -4371,12 +5052,12 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 
 **This endpoint allows you to delete your spam reports.**
 
-There are two options for deleting spam reports: 
+There are two options for deleting spam reports:
 
-1) You can delete all spam reports by setting "delete_all" to true in the request body. 
+1) You can delete all spam reports by setting "delete_all" to true in the request body.
 2) You can delete some spam reports by specifying the email addresses in an array in the request body.
 
-[Spam reports](https://sendgrid.com/docs/Glossary/spam_reports.html) happen when a recipient indicates that they think your email is [spam](https://sendgrid.com/docs/Glossary/spam.html) and then their email provider reports this to SendGrid.
+[Spam reports](https://sendgrid.com/docs/Glossary/spam_reports.html) happen when a recipient indicates that they think your email is [spam](https://sendgrid.com/docs/Glossary/spam.html) and then their email provider reports this to Twilio SendGrid.
 
 For more information, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Suppressions/spam_reports.html).
 
@@ -4385,9 +5066,9 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 
 ```javascript
   const data = {
-  "delete_all": false, 
+  "delete_all": false,
   "emails": [
-    "example1@example.com", 
+    "example1@example.com",
     "example2@example.com"
   ]
 };
@@ -4404,7 +5085,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 
 **This endpoint allows you to retrieve all spam reports.**
 
-[Spam reports](https://sendgrid.com/docs/Glossary/spam_reports.html) happen when a recipient indicates that they think your email is [spam](https://sendgrid.com/docs/Glossary/spam.html) and then their email provider reports this to SendGrid.
+[Spam reports](https://sendgrid.com/docs/Glossary/spam_reports.html) happen when a recipient indicates that they think your email is [spam](https://sendgrid.com/docs/Glossary/spam.html) and then their email provider reports this to Twilio SendGrid.
 
 For more information, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Suppressions/spam_reports.html).
 
@@ -4413,9 +5094,9 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 
 ```javascript
   const queryParams = {
-  'end_time': 1, 
-  'limit': 1, 
-  'offset': 1, 
+  'end_time': 1,
+  'limit': 1,
+  'offset': 1,
   'start_time': 1
 };
   request.qs = queryParams;
@@ -4431,7 +5112,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 
 **This endpoint allows you to delete a specific spam report.**
 
-[Spam reports](https://sendgrid.com/docs/Glossary/spam_reports.html) happen when a recipient indicates that they think your email is [spam](https://sendgrid.com/docs/Glossary/spam.html) and then their email provider reports this to SendGrid.
+[Spam reports](https://sendgrid.com/docs/Glossary/spam_reports.html) happen when a recipient indicates that they think your email is [spam](https://sendgrid.com/docs/Glossary/spam.html) and then their email provider reports this to Twilio SendGrid.
 
 For more information, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Suppressions/spam_reports.html).
 
@@ -4439,8 +5120,6 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/suppression/spam_reports/{email}';
   client.request(request)
@@ -4453,7 +5132,7 @@ For more information, please see our [User Guide](https://sendgrid.com/docs/User
 
 **This endpoint allows you to retrieve a specific spam report.**
 
-[Spam reports](https://sendgrid.com/docs/Glossary/spam_reports.html) happen when a recipient indicates that they think your email is [spam](https://sendgrid.com/docs/Glossary/spam.html) and then their email provider reports this to SendGrid.
+[Spam reports](https://sendgrid.com/docs/Glossary/spam_reports.html) happen when a recipient indicates that they think your email is [spam](https://sendgrid.com/docs/Glossary/spam.html) and then their email provider reports this to Twilio SendGrid.
 
 For more information, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Suppressions/spam_reports.html).
 
@@ -4480,9 +5159,9 @@ A global suppression (or global unsubscribe) is an email address of a recipient 
 
 ```javascript
   const queryParams = {
-  'end_time': 1, 
-  'limit': 1, 
-  'offset': 1, 
+  'end_time': 1,
+  'limit': 1,
+  'offset': 1,
   'start_time': 1
 };
   request.qs = queryParams;
@@ -4510,10 +5189,10 @@ Essentials, [Legacy Lite](https://sendgrid.com/docs/Classroom/Basics/Billing/leg
 
 ```javascript
   const data = {
-  "email": "teammate1@example.com", 
-  "is_admin": false, 
+  "email": "teammate1@example.com",
+  "is_admin": false,
   "scopes": [
-    "user.profile.read", 
+    "user.profile.read",
     "user.profile.update"
   ]
 };
@@ -4539,7 +5218,7 @@ link: ```<https://api.sendgrid.com/v3/teammates?limit=10&offset=0>; rel="first";
 
 ```javascript
   const queryParams = {
-  'limit': 1, 
+  'limit': 1,
   'offset': 1
 };
   request.qs = queryParams;
@@ -4577,8 +5256,6 @@ This endpoint allows you to delete a pending teammate invite.
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/teammates/pending/{token}';
   client.request(request)
@@ -4597,8 +5274,6 @@ This endpoint allows you to resend a teammate invite.
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'POST';
   request.url = '/v3/teammates/pending/{token}/resend';
   client.request(request)
@@ -4617,8 +5292,6 @@ This endpoint allows you to delete a teammate.
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/teammates/{username}';
   client.request(request)
@@ -4642,9 +5315,9 @@ To turn a teammate into an admin, the request body should contain an `is_admin` 
 
 ```javascript
   const data = {
-  "is_admin": false, 
+  "is_admin": false,
   "scopes": [
-    "user.profile.read", 
+    "user.profile.read",
     "user.profile.edit"
   ]
 };
@@ -4694,6 +5367,7 @@ Transactional templates are templates explicitly created for transactional email
   request.body = data;
   request.method = 'POST';
   request.url = '/v3/templates';
+  request.generation = 'dynamic'
   client.request(request)
   .then(([response, body]) => {
     console.log(response.statusCode);
@@ -4708,18 +5382,43 @@ Each user can create up to 300 different transactional templates. Transactional 
 
 Transactional templates are templates explicitly created for transactional email and are not to be confused with [Marketing Campaigns templates](https://sendgrid.com/docs/User_Guide/Marketing_Campaigns/templates.html). For more information about transactional templates, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Transactional_Templates/index.html).
 
-### GET /templates
-
+### GET all dynamic /templates
 
 ```javascript
   request.method = 'GET';
-  request.url = '/v3/templates';
+  request.url = '/v3/templates?generations=dynamic';
   client.request(request)
   .then(([response, body]) => {
     console.log(response.statusCode);
     console.log(response.body);
   })
 ```
+
+### GET all legacy /templates
+
+
+```javascript
+  request.method = 'GET';
+  request.url = '/v3/templates?generations=legacy';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+
+### GET all /templates
+
+```javascript
+  request.method = 'GET';
+  request.url = '/v3/templates?generations=legacy,dynamic';
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+```
+
 ## Delete a template.
 
 **This endpoint allows you to delete a transactional template.**
@@ -4732,8 +5431,6 @@ Transactional templates are templates explicitly created for transactional email
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/templates/{template_id}';
   client.request(request)
@@ -4799,11 +5496,11 @@ For more information about transactional templates, please see our [User Guide](
 
 ```javascript
   const data = {
-  "active": 1, 
-  "html_content": "<%body%>", 
-  "name": "example_version_name", 
-  "plain_content": "<%body%>", 
-  "subject": "<%subject%>", 
+  "active": 1,
+  "html_content": "<%body%>",
+  "name": "example_version_name",
+  "plain_content": "<%body%>",
+  "subject": "<%subject%>",
   "template_id": "ddb96bbc-9b92-425e-8979-99464621b543"
 };
   request.body = data;
@@ -4833,8 +5530,6 @@ For more information about transactional templates, please see our [User Guide](
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/templates/{template_id}/versions/{version_id}';
   client.request(request)
@@ -4862,10 +5557,10 @@ For more information about transactional templates, please see our [User Guide](
 
 ```javascript
   const data = {
-  "active": 1, 
-  "html_content": "<%body%>", 
-  "name": "updated_example_name", 
-  "plain_content": "<%body%>", 
+  "active": 1,
+  "html_content": "<%body%>",
+  "name": "updated_example_name",
+  "plain_content": "<%body%>",
   "subject": "<%subject%>"
 };
   request.body = data;
@@ -4922,8 +5617,6 @@ For more information about transactional templates, please see our [User Guide](
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'POST';
   request.url = '/v3/templates/{template_id}/versions/{version_id}/activate';
   client.request(request)
@@ -4948,7 +5641,7 @@ For more information about tracking, please see our [User Guide](https://sendgri
 
 ```javascript
   const queryParams = {
-  'limit': 1, 
+  'limit': 1,
   'offset': 1
 };
   request.qs = queryParams;
@@ -5021,11 +5714,11 @@ For more information about tracking, please see our [User Guide](https://sendgri
 
 ```javascript
   const data = {
-  "enabled": true, 
-  "utm_campaign": "website", 
-  "utm_content": "", 
-  "utm_medium": "email", 
-  "utm_source": "sendgrid.com", 
+  "enabled": true,
+  "utm_campaign": "website",
+  "utm_content": "",
+  "utm_medium": "email",
+  "utm_source": "sendgrid.com",
   "utm_term": ""
 };
   request.body = data;
@@ -5065,7 +5758,7 @@ For more information about tracking, please see our [User Guide](https://sendgri
 
 **This endpoint allows you to update your current settings for open tracking.**
 
-Open Tracking adds an invisible image at the end of the email which can track email opens. If the email recipient has images enabled on their email client, a request to SendGrids server for the invisible image is executed and an open event is logged. These events are logged in the Statistics portal, Email Activity interface, and reported by the Event Webhook.
+Open Tracking adds an invisible image at the end of the email which can track email opens. If the email recipient has images enabled on their email client, a request to Twilio SendGrid's server for the invisible image is executed and an open event is logged. These events are logged in the Statistics portal, Email Activity interface, and reported by the Event Webhook.
 
 You can track a variety of the actions your recipients may take when interacting with your emails including opening your emails, clicking on links in your emails, and subscribing to (or unsubscribing from) your emails.
 
@@ -5091,7 +5784,7 @@ For more information about tracking, please see our [User Guide](https://sendgri
 
 **This endpoint allows you to retrieve your current settings for open tracking.**
 
-Open Tracking adds an invisible image at the end of the email which can track email opens. If the email recipient has images enabled on their email client, a request to SendGrids server for the invisible image is executed and an open event is logged. These events are logged in the Statistics portal, Email Activity interface, and reported by the Event Webhook.
+Open Tracking adds an invisible image at the end of the email which can track email opens. If the email recipient has images enabled on their email client, a request to Twilio SendGrid's server for the invisible image is executed and an open event is logged. These events are logged in the Statistics portal, Email Activity interface, and reported by the Event Webhook.
 
 You can track a variety of the actions your recipients may take when interacting with your emails including opening your emails, clicking on links in your emails, and subscribing to (or unsubscribing from) your emails.
 
@@ -5124,11 +5817,11 @@ For more information about tracking, please see our [User Guide](https://sendgri
 
 ```javascript
   const data = {
-  "enabled": true, 
-  "html_content": "html content", 
-  "landing": "landing page html", 
-  "plain_content": "text content", 
-  "replace": "replacement tag", 
+  "enabled": true,
+  "html_content": "html content",
+  "landing": "landing page html",
+  "plain_content": "text content",
+  "replace": "replacement tag",
   "url": "url"
 };
   request.body = data;
@@ -5171,11 +5864,11 @@ For more information about tracking, please see our [User Guide](https://sendgri
 
 Your user's account information includes the user's account type and reputation.
 
-Keeping your user profile up to date is essential. This will help SendGrid to verify who you are as well as contact you should we need to.
+Keeping your user profile up to date is essential. This will help Twilio SendGrid to verify who you are as well as contact you should we need to.
 
 For more information about your user profile:
 
-* [SendGrid Account Settings](https://sendgrid.com/docs/User_Guide/Settings/account.html)
+* [Twilio SendGrid Account Settings](https://sendgrid.com/docs/User_Guide/Settings/account.html)
 
 ### GET /user/account
 
@@ -5211,11 +5904,11 @@ Your monthly credit allotment limits the number of emails you may send before in
 
 **This endpoint allows you to update the email address currently on file for your account.**
 
-Keeping your user profile up to date is essential. This will help SendGrid to verify who you are as well as contact you should we need to.
+Keeping your user profile up to date is essential. This will help Twilio SendGrid to verify who you are as well as contact you should we need to.
 
 For more information about your user profile:
 
-* [SendGrid Account Settings](https://sendgrid.com/docs/User_Guide/Settings/account.html)
+* [Twilio SendGrid Account Settings](https://sendgrid.com/docs/User_Guide/Settings/account.html)
 
 ### PUT /user/email
 
@@ -5237,11 +5930,11 @@ For more information about your user profile:
 
 **This endpoint allows you to retrieve the email address currently on file for your account.**
 
-Keeping your user profile up to date is essential. This will help SendGrid to verify who you are as well as contact you should we need to.
+Keeping your user profile up to date is essential. This will help Twilio SendGrid to verify who you are as well as contact you should we need to.
 
 For more information about your user profile:
 
-* [SendGrid Account Settings](https://sendgrid.com/docs/User_Guide/Settings/account.html)
+* [Twilio SendGrid Account Settings](https://sendgrid.com/docs/User_Guide/Settings/account.html)
 
 ### GET /user/email
 
@@ -5259,18 +5952,18 @@ For more information about your user profile:
 
 **This endpoint allows you to update your password.**
 
-Keeping your user profile up to date is essential. This will help SendGrid to verify who you are as well as contact you should we need to.
+Keeping your user profile up to date is essential. This will help Twilio SendGrid to verify who you are as well as contact you should we need to.
 
 For more information about your user profile:
 
-* [SendGrid Account Settings](https://sendgrid.com/docs/User_Guide/Settings/account.html)
+* [Twilio SendGrid Account Settings](https://sendgrid.com/docs/User_Guide/Settings/account.html)
 
 ### PUT /user/password
 
 
 ```javascript
   const data = {
-  "new_password": "new_password", 
+  "new_password": "new_password",
   "old_password": "old_password"
 };
   request.body = data;
@@ -5286,11 +5979,11 @@ For more information about your user profile:
 
 **This endpoint allows you to update your current profile details.**
 
-Keeping your user profile up to date is essential. This will help SendGrid to verify who you are as well as contact you should we need to.
+Keeping your user profile up to date is essential. This will help Twilio SendGrid to verify who you are as well as contact you should we need to.
 
 For more information about your user profile:
 
-* [SendGrid Account Settings](https://sendgrid.com/docs/User_Guide/Settings/account.html)
+* [Twilio SendGrid Account Settings](https://sendgrid.com/docs/User_Guide/Settings/account.html)
 
 It should be noted that any one or more of the parameters can be updated via the PATCH /user/profile endpoint. The only requirement is that you include at least one when you PATCH.
 
@@ -5299,8 +5992,8 @@ It should be noted that any one or more of the parameters can be updated via the
 
 ```javascript
   const data = {
-  "city": "Orange", 
-  "first_name": "Example", 
+  "city": "Orange",
+  "first_name": "Example",
   "last_name": "User"
 };
   request.body = data;
@@ -5314,11 +6007,11 @@ It should be noted that any one or more of the parameters can be updated via the
 ```
 ## Get a user's profile
 
-Keeping your user profile up to date is essential. This will help SendGrid to verify who you are as well as contact you should we need to.
+Keeping your user profile up to date is essential. This will help Twilio SendGrid to verify who you are as well as contact you should we need to.
 
 For more information about your user profile:
 
-* [SendGrid Account Settings](https://sendgrid.com/docs/User_Guide/Settings/account.html)
+* [Twilio SendGrid Account Settings](https://sendgrid.com/docs/User_Guide/Settings/account.html)
 
 ### GET /user/profile
 
@@ -5346,7 +6039,7 @@ The Cancel Scheduled Sends feature allows the customer to cancel a scheduled sen
 
 ```javascript
   const data = {
-  "batch_id": "YOUR_BATCH_ID", 
+  "batch_id": "YOUR_BATCH_ID",
   "status": "pause"
 };
   request.body = data;
@@ -5386,8 +6079,6 @@ The Cancel Scheduled Sends feature allows the customer to cancel a scheduled sen
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/user/scheduled_sends/{batch_id}';
   client.request(request)
@@ -5449,7 +6140,7 @@ The Enforced TLS settings specify whether or not the recipient is required to su
 
 ```javascript
   const data = {
-  "require_tls": true, 
+  "require_tls": true,
   "require_valid_cert": false
 };
   request.body = data;
@@ -5485,11 +6176,11 @@ The Enforced TLS settings specify whether or not the recipient is required to su
 
 **This endpoint allows you to update the username for your account.**
 
-Keeping your user profile up to date is essential. This will help SendGrid to verify who you are as well as contact you should we need to.
+Keeping your user profile up to date is essential. This will help Twilio SendGrid to verify who you are as well as contact you should we need to.
 
 For more information about your user profile:
 
-* [SendGrid Account Settings](https://sendgrid.com/docs/User_Guide/Settings/account.html)
+* [Twilio SendGrid Account Settings](https://sendgrid.com/docs/User_Guide/Settings/account.html)
 
 ### PUT /user/username
 
@@ -5511,11 +6202,11 @@ For more information about your user profile:
 
 **This endpoint allows you to retrieve your current account username.**
 
-Keeping your user profile up to date is essential. This will help SendGrid to verify who you are as well as contact you should we need to.
+Keeping your user profile up to date is essential. This will help Twilio SendGrid to verify who you are as well as contact you should we need to.
 
 For more information about your user profile:
 
-* [SendGrid Account Settings](https://sendgrid.com/docs/User_Guide/Settings/account.html)
+* [Twilio SendGrid Account Settings](https://sendgrid.com/docs/User_Guide/Settings/account.html)
 
 ### GET /user/username
 
@@ -5535,7 +6226,7 @@ For more information about your user profile:
 
 If an event type is marked as `true`, then the event webhook will include information about that event.
 
-SendGrids Event Webhook will notify a URL of your choice via HTTP POST with information about events that occur as SendGrid processes your email.
+Twilio SendGrid's Event Webhook will notify a URL of your choice via HTTP POST with information about events that occur as Twilio SendGrid processes your email.
 
 Typical uses of this data are to remove unsubscribes, react to spam reports, determine unengaged recipients, identify bounced email addresses, or create advanced analytics of your email program.
 
@@ -5544,18 +6235,18 @@ Typical uses of this data are to remove unsubscribes, react to spam reports, det
 
 ```javascript
   const data = {
-  "bounce": true, 
-  "click": true, 
-  "deferred": true, 
-  "delivered": true, 
-  "dropped": true, 
-  "enabled": true, 
-  "group_resubscribe": true, 
-  "group_unsubscribe": true, 
-  "open": true, 
-  "processed": true, 
-  "spam_report": true, 
-  "unsubscribe": true, 
+  "bounce": true,
+  "click": true,
+  "deferred": true,
+  "delivered": true,
+  "dropped": true,
+  "enabled": true,
+  "group_resubscribe": true,
+  "group_unsubscribe": true,
+  "open": true,
+  "processed": true,
+  "spam_report": true,
+  "unsubscribe": true,
   "url": "url"
 };
   request.body = data;
@@ -5573,7 +6264,7 @@ Typical uses of this data are to remove unsubscribes, react to spam reports, det
 
 If an event type is marked as `true`, then the event webhook will include information about that event.
 
-SendGrids Event Webhook will notify a URL of your choice via HTTP POST with information about events that occur as SendGrid processes your email.
+Twilio SendGrid's Event Webhook will notify a URL of your choice via HTTP POST with information about events that occur as Twilio SendGrid processes your email.
 
 Typical uses of this data are to remove unsubscribes, react to spam reports, determine unengaged recipients, identify bounced email addresses, or create advanced analytics of your email program.
 
@@ -5593,7 +6284,7 @@ Typical uses of this data are to remove unsubscribes, react to spam reports, det
 
 **This endpoint allows you to test your event webhook by sending a fake event notification post to the provided URL.**
 
-SendGrids Event Webhook will notify a URL of your choice via HTTP POST with information about events that occur as SendGrid processes your email.
+Twilio SendGrid's Event Webhook will notify a URL of your choice via HTTP POST with information about events that occur as Twilio SendGrid processes your email.
 
 Typical uses of this data are to remove unsubscribes, react to spam reports, determine unengaged recipients, identify bounced email addresses, or create advanced analytics of your email program.
 
@@ -5617,16 +6308,16 @@ Typical uses of this data are to remove unsubscribes, react to spam reports, det
 
 **This endpoint allows you to create a new inbound parse setting.**
 
-The inbound parse webhook allows you to have incoming emails parsed, extracting some or all of the content, and then have that content POSTed by SendGrid to a URL of your choosing. For more information, please see our [User Guide](https://sendgrid.com/docs/API_Reference/Webhooks/parse.html).
+The inbound parse webhook allows you to have incoming emails parsed, extracting some or all of the content, and then have that content POSTed by Twilio SendGrid to a URL of your choosing. For more information, please see our [User Guide](https://sendgrid.com/docs/API_Reference/Webhooks/parse.html).
 
 ### POST /user/webhooks/parse/settings
 
 
 ```javascript
   const data = {
-  "hostname": "myhostname.com", 
-  "send_raw": false, 
-  "spam_check": true, 
+  "hostname": "myhostname.com",
+  "send_raw": false,
+  "spam_check": true,
   "url": "http://email.myhosthame.com"
 };
   request.body = data;
@@ -5642,7 +6333,7 @@ The inbound parse webhook allows you to have incoming emails parsed, extracting 
 
 **This endpoint allows you to retrieve all of your current inbound parse settings.**
 
-The inbound parse webhook allows you to have incoming emails parsed, extracting some or all of the content, and then have that content POSTed by SendGrid to a URL of your choosing. For more information, please see our [User Guide](https://sendgrid.com/docs/API_Reference/Webhooks/parse.html).
+The inbound parse webhook allows you to have incoming emails parsed, extracting some or all of the content, and then have that content POSTed by Twilio SendGrid to a URL of your choosing. For more information, please see our [User Guide](https://sendgrid.com/docs/API_Reference/Webhooks/parse.html).
 
 ### GET /user/webhooks/parse/settings
 
@@ -5660,14 +6351,12 @@ The inbound parse webhook allows you to have incoming emails parsed, extracting 
 
 **This endpoint allows you to delete a specific inbound parse setting.**
 
-The inbound parse webhook allows you to have incoming emails parsed, extracting some or all of the content, and then have that content POSTed by SendGrid to a URL of your choosing. For more information, please see our [User Guide](https://sendgrid.com/docs/API_Reference/Webhooks/parse.html).
+The inbound parse webhook allows you to have incoming emails parsed, extracting some or all of the content, and then have that content POSTed by Twilio SendGrid to a URL of your choosing. For more information, please see our [User Guide](https://sendgrid.com/docs/API_Reference/Webhooks/parse.html).
 
 ### DELETE /user/webhooks/parse/settings/{hostname}
 
 
 ```javascript
-  const data = None;
-  request.body = data;
   request.method = 'DELETE';
   request.url = '/v3/user/webhooks/parse/settings/{hostname}';
   client.request(request)
@@ -5680,15 +6369,15 @@ The inbound parse webhook allows you to have incoming emails parsed, extracting 
 
 **This endpoint allows you to update a specific inbound parse setting.**
 
-The inbound parse webhook allows you to have incoming emails parsed, extracting some or all of the content, and then have that content POSTed by SendGrid to a URL of your choosing. For more information, please see our [User Guide](https://sendgrid.com/docs/API_Reference/Webhooks/parse.html).
+The inbound parse webhook allows you to have incoming emails parsed, extracting some or all of the content, and then have that content POSTed by Twilio SendGrid to a URL of your choosing. For more information, please see our [User Guide](https://sendgrid.com/docs/API_Reference/Webhooks/parse.html).
 
 ### PATCH /user/webhooks/parse/settings/{hostname}
 
 
 ```javascript
   const data = {
-  "send_raw": true, 
-  "spam_check": false, 
+  "send_raw": true,
+  "spam_check": false,
   "url": "http://newdomain.com/parse"
 };
   request.body = data;
@@ -5704,7 +6393,7 @@ The inbound parse webhook allows you to have incoming emails parsed, extracting 
 
 **This endpoint allows you to retrieve a specific inbound parse setting.**
 
-The inbound parse webhook allows you to have incoming emails parsed, extracting some or all of the content, and then have that content POSTed by SendGrid to a URL of your choosing. For more information, please see our [User Guide](https://sendgrid.com/docs/API_Reference/Webhooks/parse.html).
+The inbound parse webhook allows you to have incoming emails parsed, extracting some or all of the content, and then have that content POSTed by Twilio SendGrid to a URL of your choosing. For more information, please see our [User Guide](https://sendgrid.com/docs/API_Reference/Webhooks/parse.html).
 
 ### GET /user/webhooks/parse/settings/{hostname}
 
@@ -5722,19 +6411,19 @@ The inbound parse webhook allows you to have incoming emails parsed, extracting 
 
 **This endpoint allows you to retrieve the statistics for your Parse Webhook usage.**
 
-SendGrid's Inbound Parse Webhook allows you to parse the contents and attachments of incoming emails. The Parse API can then POST the parsed emails to a URL that you specify. The Inbound Parse Webhook cannot parse messages greater than 20MB in size, including all attachments.
+Twilio SendGrid's Inbound Parse Webhook allows you to parse the contents and attachments of incoming emails. The Parse API can then POST the parsed emails to a URL that you specify. The Inbound Parse Webhook cannot parse messages greater than 20MB in size, including all attachments.
 
-There are many pre-made integrations for the SendGrid Parse Webhook which make processing events easy. You can find these integrations in the [Library Index](https://sendgrid.com/docs/Integrate/libraries.html#-Webhook-Libraries).
+There are many pre-made integrations for the Twilio SendGrid Parse Webhook which make processing events easy. You can find these integrations in the [Library Index](https://sendgrid.com/docs/Integrate/libraries.html#-Webhook-Libraries).
 
 ### GET /user/webhooks/parse/stats
 
 
 ```javascript
   const queryParams = {
-  'aggregated_by': 'day', 
-  'end_date': '2016-04-01', 
-  'limit': 'test_string', 
-  'offset': 'test_string', 
+  'aggregated_by': 'day',
+  'end_date': '2016-04-01',
+  'limit': 'test_string',
+  'offset': 'test_string',
   'start_date': '2016-01-01'
 };
   request.qs = queryParams;
@@ -5746,715 +6435,3 @@ There are many pre-made integrations for the SendGrid Parse Webhook which make p
     console.log(response.body);
   })
 ```
-<a name="whitelabel"></a>
-# WHITELABEL
-
-## Create a domain whitelabel.
-
-**This endpoint allows you to create a whitelabel for one of your domains.**
-
-If you are creating a domain whitelabel that you would like a subuser to use, you have two options:
-1. Use the "username" parameter. This allows you to create a whitelabel on behalf of your subuser. This means the subuser can see and modify the created whitelabel.
-2. Use the Association workflow (see Associate Domain section). This allows you to assign a whitelabel created by the parent to a subuser. This means the subuser will default to the assigned whitelabel, but will not be able to see or modify that whitelabel. However, if the subuser creates their whitelabel it will overwrite the assigned whitelabel.
-
-A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
-
-For more information on whitelabeling, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/Whitelabel/index.html)
-
-### POST /whitelabel/domains
-
-
-```javascript
-  const data = {
-  "automatic_security": false, 
-  "custom_spf": true, 
-  "default": true, 
-  "domain": "example.com", 
-  "ips": [
-    "192.168.1.1", 
-    "192.168.1.2"
-  ], 
-  "subdomain": "news", 
-  "username": "john@example.com"
-};
-  request.body = data;
-  request.method = 'POST';
-  request.url = '/v3/whitelabel/domains';
-  client.request(request)
-  .then(([response, body]) => {
-    console.log(response.statusCode);
-    console.log(response.body);
-  })
-```
-## List all domain whitelabels.
-
-**This endpoint allows you to retrieve a list of all domain whitelabels you have created.**
-
-A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
-
-For more information on whitelabeling, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/Whitelabel/index.html)
-
-### GET /whitelabel/domains
-
-
-```javascript
-  const queryParams = {
-  'domain': 'test_string', 
-  'exclude_subusers': 'true', 
-  'limit': 1, 
-  'offset': 1, 
-  'username': 'test_string'
-};
-  request.qs = queryParams;
-  request.method = 'GET';
-  request.url = '/v3/whitelabel/domains';
-  client.request(request)
-  .then(([response, body]) => {
-    console.log(response.statusCode);
-    console.log(response.body);
-  })
-```
-## Get the default domain whitelabel.
-
-**This endpoint allows you to retrieve the default whitelabel for a domain.**
-
-A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
-
-For more information on whitelabeling, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/Whitelabel/index.html)
-
-## URI Parameters
-| URI Parameter   | Type   | Description  |
-|---|---|---|
-| domain | string  |The domain to find a default domain whitelabel for. |
-
-### GET /whitelabel/domains/default
-
-
-```javascript
-  request.method = 'GET';
-  request.url = '/v3/whitelabel/domains/default';
-  client.request(request)
-  .then(([response, body]) => {
-    console.log(response.statusCode);
-    console.log(response.body);
-  })
-```
-## Disassociate a domain whitelabel from a given user.
-
-**This endpoint allows you to disassociate a specific whitelabel from a subuser.**
-
-A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
-
-Domain whitelabels can be associated with (i.e. assigned to) subusers from a parent account. This functionality allows subusers to send mail using their parent's whitelabels. To associate a whitelabel with a subuser, the parent account must first create the whitelabel and validate it. The parent may then associate the whitelabel via the subuser management tools.
-
-For more information on whitelabeling, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/Whitelabel/index.html)
-
-## URI Parameters
-| URI Parameter   | Type  | Required?  | Description  |
-|---|---|---|---|
-| username | string  | required  | Username for the subuser to find associated whitelabels for. |
-
-### DELETE /whitelabel/domains/subuser
-
-
-```javascript
-  const data = None;
-  request.body = data;
-  request.method = 'DELETE';
-  request.url = '/v3/whitelabel/domains/subuser';
-  client.request(request)
-  .then(([response, body]) => {
-    console.log(response.statusCode);
-    console.log(response.body);
-  })
-```
-## List the domain whitelabel associated with the given user.
-
-**This endpoint allows you to retrieve all of the whitelabels that have been assigned to a specific subuser.**
-
-A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
-
-Domain whitelabels can be associated with (i.e. assigned to) subusers from a parent account. This functionality allows subusers to send mail using their parent's whitelabels. To associate a whitelabel with a subuser, the parent account must first create the whitelabel and validate it. The parent may then associate the whitelabel via the subuser management tools.
-
-For more information on whitelabeling, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/Whitelabel/index.html)
-
-## URI Parameters
-| URI Parameter   | Type  | Description  |
-|---|---|---|
-| username | string  | Username of the subuser to find associated whitelabels for. |
-
-### GET /whitelabel/domains/subuser
-
-
-```javascript
-  request.method = 'GET';
-  request.url = '/v3/whitelabel/domains/subuser';
-  client.request(request)
-  .then(([response, body]) => {
-    console.log(response.statusCode);
-    console.log(response.body);
-  })
-```
-## Delete a domain whitelabel.
-
-**This endpoint allows you to delete a domain whitelabel.**
-
-A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
-
-For more information on whitelabeling, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/Whitelabel/index.html)
-
-### DELETE /whitelabel/domains/{domain_id}
-
-
-```javascript
-  const data = None;
-  request.body = data;
-  request.method = 'DELETE';
-  request.url = '/v3/whitelabel/domains/{domain_id}';
-  client.request(request)
-  .then(([response, body]) => {
-    console.log(response.statusCode);
-    console.log(response.body);
-  })
-```
-## Update a domain whitelabel.
-
-**This endpoint allows you to update the settings for a domain whitelabel.**
-
-A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
-
-For more information on whitelabeling, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/Whitelabel/index.html)
-
-### PATCH /whitelabel/domains/{domain_id}
-
-
-```javascript
-  const data = {
-  "custom_spf": true, 
-  "default": false
-};
-  request.body = data;
-  request.method = 'PATCH';
-  request.url = '/v3/whitelabel/domains/{domain_id}';
-  client.request(request)
-  .then(([response, body]) => {
-    console.log(response.statusCode);
-    console.log(response.body);
-  })
-```
-## Retrieve a domain whitelabel.
-
-**This endpoint allows you to retrieve a specific domain whitelabel.**
-
-A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
-
-For more information on whitelabeling, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/Whitelabel/index.html)
-
-### GET /whitelabel/domains/{domain_id}
-
-
-```javascript
-  request.method = 'GET';
-  request.url = '/v3/whitelabel/domains/{domain_id}';
-  client.request(request)
-  .then(([response, body]) => {
-    console.log(response.statusCode);
-    console.log(response.body);
-  })
-```
-## Associate a domain whitelabel with a given user.
-
-**This endpoint allows you to associate a specific domain whitelabel with a subuser.**
-
-A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
-
-Domain whitelabels can be associated with (i.e. assigned to) subusers from a parent account. This functionality allows subusers to send mail using their parent's whitelabels. To associate a whitelabel with a subuser, the parent account must first create the whitelabel and validate it. The parent may then associate the whitelabel via the subuser management tools.
-
-For more information on whitelabeling, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/Whitelabel/index.html)
-
-## URI Parameters
-| URI Parameter   | Type   | Description  |
-|---|---|---|
-| domain_id | integer   | ID of the domain whitelabel to associate with the subuser. |
-
-### POST /whitelabel/domains/{domain_id}/subuser
-
-
-```javascript
-  const data = {
-  "username": "jane@example.com"
-};
-  request.body = data;
-  request.method = 'POST';
-  request.url = '/v3/whitelabel/domains/{domain_id}/subuser';
-  client.request(request)
-  .then(([response, body]) => {
-    console.log(response.statusCode);
-    console.log(response.body);
-  })
-```
-## Add an IP to a domain whitelabel.
-
-**This endpoint allows you to add an IP address to a domain whitelabel.**
-
-A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
-
-For more information on whitelabeling, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/Whitelabel/index.html)
-
-## URI Parameters
-| URI Parameter   | Type  |  Description  |
-|---|---|---|
-| id | integer  | ID of the domain to which you are adding an IP |
-
-### POST /whitelabel/domains/{id}/ips
-
-
-```javascript
-  const data = {
-  "ip": "192.168.0.1"
-};
-  request.body = data;
-  request.method = 'POST';
-  request.url = '/v3/whitelabel/domains/{id}/ips';
-  client.request(request)
-  .then(([response, body]) => {
-    console.log(response.statusCode);
-    console.log(response.body);
-  })
-```
-## Remove an IP from a domain whitelabel.
-
-**This endpoint allows you to remove a domain's IP address from that domain's whitelabel.**
-
-A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
-
-For more information on whitelabeling, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/Whitelabel/index.html)
-
-## URI Parameters
-| URI Parameter   | Type  | Description  |
-|---|---|---|
-| id | integer  | ID of the domain whitelabel to delete the IP from. |
-| ip | string | IP to remove from the domain whitelabel. |
-
-### DELETE /whitelabel/domains/{id}/ips/{ip}
-
-
-```javascript
-  const data = None;
-  request.body = data;
-  request.method = 'DELETE';
-  request.url = '/v3/whitelabel/domains/{id}/ips/{ip}';
-  client.request(request)
-  .then(([response, body]) => {
-    console.log(response.statusCode);
-    console.log(response.body);
-  })
-```
-## Validate a domain whitelabel.
-
-**This endpoint allows you to validate a domain whitelabel. If it fails, it will return an error message describing why the whitelabel could not be validated.**
-
-A domain whitelabel allows you to remove the via or sent on behalf of message that your recipients see when they read your emails. Whitelabeling a domain allows you to replace sendgrid.net with your sending domain. You will be required to create a subdomain so that SendGrid can generate the DNS records which you must give to your host provider. If you choose to use Automated Security, SendGrid will provide you with 3 CNAME records. If you turn Automated Security off, you will be given 2 TXT records and 1 MX record.
-
-For more information on whitelabeling, please see our [User Guide](https://sendgrid.com/docs/User_Guide/Settings/Whitelabel/index.html)
-
-## URI Parameters
-| URI Parameter   | Type   | Description  |
-|---|---|---|
-| id | integer  |ID of the domain whitelabel to validate. |
-
-### POST /whitelabel/domains/{id}/validate
-
-
-```javascript
-  const data = None;
-  request.body = data;
-  request.method = 'POST';
-  request.url = '/v3/whitelabel/domains/{id}/validate';
-  client.request(request)
-  .then(([response, body]) => {
-    console.log(response.statusCode);
-    console.log(response.body);
-  })
-```
-## Create an IP whitelabel
-
-**This endpoint allows you to create an IP whitelabel.**
-
-When creating an IP whitelable, you should use the same subdomain that you used when you created a domain whitelabel.
-
-A IP whitelabel consists of a subdomain and domain that will be used to generate a reverse DNS record for a given IP. Once SendGrid has verified that the appropriate A record for the IP has been created, the appropriate reverse DNS record for the IP is generated.
-
-For more information, please see our [User Guide](https://sendgrid.com/docs/API_Reference/Web_API_v3/Whitelabel/ips.html).
-
-### POST /whitelabel/ips
-
-
-```javascript
-  const data = {
-  "domain": "example.com", 
-  "ip": "192.168.1.1", 
-  "subdomain": "email"
-};
-  request.body = data;
-  request.method = 'POST';
-  request.url = '/v3/whitelabel/ips';
-  client.request(request)
-  .then(([response, body]) => {
-    console.log(response.statusCode);
-    console.log(response.body);
-  })
-```
-## Retrieve all IP whitelabels
-
-**This endpoint allows you to retrieve all of the IP whitelabels that have been created by this account.**
-
-You may include a search key by using the "ip" parameter. This enables you to perform a prefix search for a given IP segment (e.g. "192.").
-
-A IP whitelabel consists of a subdomain and domain that will be used to generate a reverse DNS record for a given IP. Once SendGrid has verified that the appropriate A record for the IP has been created, the appropriate reverse DNS record for the IP is generated.
-
-For more information, please see our [User Guide](https://sendgrid.com/docs/API_Reference/Web_API_v3/Whitelabel/ips.html).
-
-### GET /whitelabel/ips
-
-
-```javascript
-  const queryParams = {
-  'ip': 'test_string', 
-  'limit': 1, 
-  'offset': 1
-};
-  request.qs = queryParams;
-  request.method = 'GET';
-  request.url = '/v3/whitelabel/ips';
-  client.request(request)
-  .then(([response, body]) => {
-    console.log(response.statusCode);
-    console.log(response.body);
-  })
-```
-## Delete an IP whitelabel
-
-**This endpoint allows you to delete an IP whitelabel.**
-
-A IP whitelabel consists of a subdomain and domain that will be used to generate a reverse DNS record for a given IP. Once SendGrid has verified that the appropriate A record for the IP has been created, the appropriate reverse DNS record for the IP is generated.
-
-For more information, please see our [User Guide](https://sendgrid.com/docs/API_Reference/Web_API_v3/Whitelabel/ips.html).
-
-### DELETE /whitelabel/ips/{id}
-
-
-```javascript
-  const data = None;
-  request.body = data;
-  request.method = 'DELETE';
-  request.url = '/v3/whitelabel/ips/{id}';
-  client.request(request)
-  .then(([response, body]) => {
-    console.log(response.statusCode);
-    console.log(response.body);
-  })
-```
-## Retrieve an IP whitelabel
-
-**This endpoint allows you to retrieve an IP whitelabel.**
-
-A IP whitelabel consists of a subdomain and domain that will be used to generate a reverse DNS record for a given IP. Once SendGrid has verified that the appropriate A record for the IP has been created, the appropriate reverse DNS record for the IP is generated.
-
-For more information, please see our [User Guide](https://sendgrid.com/docs/API_Reference/Web_API_v3/Whitelabel/ips.html).
-
-### GET /whitelabel/ips/{id}
-
-
-```javascript
-  request.method = 'GET';
-  request.url = '/v3/whitelabel/ips/{id}';
-  client.request(request)
-  .then(([response, body]) => {
-    console.log(response.statusCode);
-    console.log(response.body);
-  })
-```
-## Validate an IP whitelabel
-
-**This endpoint allows you to validate an IP whitelabel.**
-
-A IP whitelabel consists of a subdomain and domain that will be used to generate a reverse DNS record for a given IP. Once SendGrid has verified that the appropriate A record for the IP has been created, the appropriate reverse DNS record for the IP is generated.
-
-For more information, please see our [User Guide](https://sendgrid.com/docs/API_Reference/Web_API_v3/Whitelabel/ips.html).
-
-### POST /whitelabel/ips/{id}/validate
-
-
-```javascript
-  const data = None;
-  request.body = data;
-  request.method = 'POST';
-  request.url = '/v3/whitelabel/ips/{id}/validate';
-  client.request(request)
-  .then(([response, body]) => {
-    console.log(response.statusCode);
-    console.log(response.body);
-  })
-```
-## Create a Link Whitelabel
-
-**This endpoint allows you to create a new link whitelabel.**
-
-Email link whitelabels allow all of the click-tracked links you send in your emails to include the URL of your domain instead of sendgrid.net.
-
-For more information, please see our [User Guide](https://sendgrid.com/docs/API_Reference/Web_API_v3/Whitelabel/links.html).
-
-### POST /whitelabel/links
-
-
-```javascript
-  const data = {
-  "default": true, 
-  "domain": "example.com", 
-  "subdomain": "mail"
-};
-  request.body = data;
-  const queryParams = {
-  'limit': 1, 
-  'offset': 1
-};
-  request.qs = queryParams;
-  request.method = 'POST';
-  request.url = '/v3/whitelabel/links';
-  client.request(request)
-  .then(([response, body]) => {
-    console.log(response.statusCode);
-    console.log(response.body);
-  })
-```
-## Retrieve all link whitelabels
-
-**This endpoint allows you to retrieve all link whitelabels.**
-
-Email link whitelabels allow all of the click-tracked links you send in your emails to include the URL of your domain instead of sendgrid.net.
-
-For more information, please see our [User Guide](https://sendgrid.com/docs/API_Reference/Web_API_v3/Whitelabel/links.html).
-
-### GET /whitelabel/links
-
-
-```javascript
-  const queryParams = {
-  'limit': 1
-};
-  request.qs = queryParams;
-  request.method = 'GET';
-  request.url = '/v3/whitelabel/links';
-  client.request(request)
-  .then(([response, body]) => {
-    console.log(response.statusCode);
-    console.log(response.body);
-  })
-```
-## Retrieve a Default Link Whitelabel
-
-**This endpoint allows you to retrieve the default link whitelabel.**
-
-Default link whitelabel is the actual link whitelabel to be used when sending messages. If there are multiple link whitelabels, the following order will determine the default:
-<ul>
-  <li>Validated link whitelabels marked as "default"</li>
-  <li>Legacy link whitelabels (migrated from the whitelabel wizard)</li>
-  <li>Default SendGrid link whitelabel (i.e. 100.ct.sendgrid.net)</li>
-</ul>
-
-Email link whitelabels allow all of the click-tracked links you send in your emails to include the URL of your domain instead of sendgrid.net.
-
-For more information, please see our [User Guide](https://sendgrid.com/docs/API_Reference/Web_API_v3/Whitelabel/links.html).
-
-### GET /whitelabel/links/default
-
-
-```javascript
-  const queryParams = {
-  'domain': 'test_string'
-};
-  request.qs = queryParams;
-  request.method = 'GET';
-  request.url = '/v3/whitelabel/links/default';
-  client.request(request)
-  .then(([response, body]) => {
-    console.log(response.statusCode);
-    console.log(response.body);
-  })
-```
-## Disassociate a Link Whitelabel
-
-**This endpoint allows you to disassociate a link whitelabel from a subuser.**
-
-Link whitelables can be associated with subusers from the parent account. This functionality allows
-subusers to send mail using their parent's link whitelabels. To associate a link whitelabel, the parent account
-must first create a whitelabel and validate it. The parent may then associate that whitelabel with a subuser via the API or the Subuser Management page in the user interface.
-
-Email link whitelabels allow all of the click-tracked links you send in your emails to include the URL of your domain instead of sendgrid.net.
-
-For more information, please see our [User Guide](https://sendgrid.com/docs/API_Reference/Web_API_v3/Whitelabel/links.html).
-
-### DELETE /whitelabel/links/subuser
-
-
-```javascript
-  const data = None;
-  request.body = data;
-  const queryParams = {
-  'username': 'test_string'
-};
-  request.qs = queryParams;
-  request.method = 'DELETE';
-  request.url = '/v3/whitelabel/links/subuser';
-  client.request(request)
-  .then(([response, body]) => {
-    console.log(response.statusCode);
-    console.log(response.body);
-  })
-```
-## Retrieve Associated Link Whitelabel
-
-**This endpoint allows you to retrieve the associated link whitelabel for a subuser.**
-
-Link whitelables can be associated with subusers from the parent account. This functionality allows
-subusers to send mail using their parent's link whitelabels. To associate a link whitelabel, the parent account
-must first create a whitelabel and validate it. The parent may then associate that whitelabel with a subuser via the API or the Subuser Management page in the user interface.
-
-Email link whitelabels allow all of the click-tracked links you send in your emails to include the URL of your domain instead of sendgrid.net.
-
-For more information, please see our [User Guide](https://sendgrid.com/docs/API_Reference/Web_API_v3/Whitelabel/links.html).
-
-### GET /whitelabel/links/subuser
-
-
-```javascript
-  const queryParams = {
-  'username': 'test_string'
-};
-  request.qs = queryParams;
-  request.method = 'GET';
-  request.url = '/v3/whitelabel/links/subuser';
-  client.request(request)
-  .then(([response, body]) => {
-    console.log(response.statusCode);
-    console.log(response.body);
-  })
-```
-## Delete a Link Whitelabel
-
-**This endpoint allows you to delete a link whitelabel.**
-
-Email link whitelabels allow all of the click-tracked links you send in your emails to include the URL of your domain instead of sendgrid.net.
-
-For more information, please see our [User Guide](https://sendgrid.com/docs/API_Reference/Web_API_v3/Whitelabel/links.html).
-
-### DELETE /whitelabel/links/{id}
-
-
-```javascript
-  const data = None;
-  request.body = data;
-  request.method = 'DELETE';
-  request.url = '/v3/whitelabel/links/{id}';
-  client.request(request)
-  .then(([response, body]) => {
-    console.log(response.statusCode);
-    console.log(response.body);
-  })
-```
-## Update a Link Whitelabel
-
-**This endpoint allows you to update a specific link whitelabel. You can use this endpoint to change a link whitelabel's default status.**
-
-Email link whitelabels allow all of the click-tracked links you send in your emails to include the URL of your domain instead of sendgrid.net.
-
-For more information, please see our [User Guide](https://sendgrid.com/docs/API_Reference/Web_API_v3/Whitelabel/links.html).
-
-### PATCH /whitelabel/links/{id}
-
-
-```javascript
-  const data = {
-  "default": true
-};
-  request.body = data;
-  request.method = 'PATCH';
-  request.url = '/v3/whitelabel/links/{id}';
-  client.request(request)
-  .then(([response, body]) => {
-    console.log(response.statusCode);
-    console.log(response.body);
-  })
-```
-## Retrieve a Link Whitelabel
-
-**This endpoint allows you to retrieve a specific link whitelabel.**
-
-Email link whitelabels allow all of the click-tracked links you send in your emails to include the URL of your domain instead of sendgrid.net.
-
-For more information, please see our [User Guide](https://sendgrid.com/docs/API_Reference/Web_API_v3/Whitelabel/links.html).
-
-### GET /whitelabel/links/{id}
-
-
-```javascript
-  request.method = 'GET';
-  request.url = '/v3/whitelabel/links/{id}';
-  client.request(request)
-  .then(([response, body]) => {
-    console.log(response.statusCode);
-    console.log(response.body);
-  })
-```
-## Validate a Link Whitelabel
-
-**This endpoint allows you to validate a link whitelabel.**
-
-Email link whitelabels allow all of the click-tracked links you send in your emails to include the URL of your domain instead of sendgrid.net.
-
-For more information, please see our [User Guide](https://sendgrid.com/docs/API_Reference/Web_API_v3/Whitelabel/links.html).
-
-### POST /whitelabel/links/{id}/validate
-
-
-```javascript
-  const data = None;
-  request.body = data;
-  request.method = 'POST';
-  request.url = '/v3/whitelabel/links/{id}/validate';
-  client.request(request)
-  .then(([response, body]) => {
-    console.log(response.statusCode);
-    console.log(response.body);
-  })
-```
-## Associate a Link Whitelabel
-
-**This endpoint allows you to associate a link whitelabel with a subuser account.**
-
-Link whitelables can be associated with subusers from the parent account. This functionality allows
-subusers to send mail using their parent's link whitelabels. To associate a link whitelabel, the parent account
-must first create a whitelabel and validate it. The parent may then associate that whitelabel with a subuser via the API or the Subuser Management page in the user interface.
-
-Email link whitelabels allow all of the click-tracked links you send in your emails to include the URL of your domain instead of sendgrid.net.
-
-For more information, please see our [User Guide](https://sendgrid.com/docs/API_Reference/Web_API_v3/Whitelabel/links.html).
-
-### POST /whitelabel/links/{link_id}/subuser
-
-
-```javascript
-  const data = {
-  "username": "jane@example.com"
-};
-  request.body = data;
-  request.method = 'POST';
-  request.url = '/v3/whitelabel/links/{link_id}/subuser';
-  client.request(request)
-  .then(([response, body]) => {
-    console.log(response.statusCode);
-    console.log(response.body);
-  })
-```
-

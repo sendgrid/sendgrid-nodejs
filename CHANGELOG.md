@@ -1,6 +1,247 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2020-09-16] Version 7.2.6
+--------------------------
+**Library - Fix**
+- [PR #1190](https://github.com/sendgrid/sendgrid-nodejs/pull/1190): do not wrap names with commas in quotes. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+- [PR #1198](https://github.com/sendgrid/sendgrid-nodejs/pull/1198): make attachment type and disposition optional. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #1189](https://github.com/sendgrid/sendgrid-nodejs/pull/1189): change @starkbank/ecdsa dependency v0.0.3 to updated starkbank-e…. Thanks to [@cdottori-stark](https://github.com/cdottori-stark)!
+
+
+[2020-09-02] Version 7.2.5
+--------------------------
+**Library - Docs**
+- [PR #1186](https://github.com/sendgrid/sendgrid-nodejs/pull/1186): Fix EventWebhook example in use case docs. Thanks to [@jstayton](https://github.com/jstayton)!
+
+**Library - Fix**
+- [PR #1180](https://github.com/sendgrid/sendgrid-nodejs/pull/1180): Fix typings for @sendgrid/eventwebhook. Thanks to [@igrayson](https://github.com/igrayson)!
+
+
+[2020-08-19] Version 7.2.4
+--------------------------
+**Library - Chore**
+- [PR #1171](https://github.com/sendgrid/sendgrid-nodejs/pull/1171): update GitHub branch references to use HEAD. Thanks to [@thinkingserious](https://github.com/thinkingserious)!
+
+
+[2020-08-05] Version 7.2.3
+--------------------------
+**Library - Chore**
+- [PR #1172](https://github.com/sendgrid/sendgrid-nodejs/pull/1172): collapse multiple mail-send TS signatures. Thanks to [@seromenho](https://github.com/seromenho)!
+
+
+[2020-07-22] Version 7.2.2
+--------------------------
+**Library - Chore**
+- [PR #1165](https://github.com/sendgrid/sendgrid-nodejs/pull/1165): migrate to new default sendgrid-oai branch. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+**Library - Docs**
+- [PR #836](https://github.com/sendgrid/sendgrid-nodejs/pull/836): Remove references to legacy "Whitelabel" Verbiage. Thanks to [@crweiner](https://github.com/crweiner)!
+- [PR #858](https://github.com/sendgrid/sendgrid-nodejs/pull/858): add more use cases for adding attachments. Thanks to [@cesargamboa](https://github.com/cesargamboa)!
+
+
+[2020-06-24] Version 7.2.1
+--------------------------
+**Library - Docs**
+- [PR #907](https://github.com/sendgrid/sendgrid-nodejs/pull/907): Add generation field to create template call otherwise legacy template will be created. Thanks to [@vinu-phoenix](https://github.com/vinu-phoenix)!
+- [PR #1151](https://github.com/sendgrid/sendgrid-nodejs/pull/1151): Update transactional-templates.md to use dynamicTemplateData instead of dynamic_template_data. Thanks to [@bttf](https://github.com/bttf)!
+- [PR #1145](https://github.com/sendgrid/sendgrid-nodejs/pull/1145): Update docs for domain or email verification. Thanks to [@GeoFro](https://github.com/GeoFro)!
+
+**Library - Fix**
+- [PR #1153](https://github.com/sendgrid/sendgrid-nodejs/pull/1153): event webhook interface to process raw body. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+
+[2020-06-10] Version 7.2.0
+--------------------------
+**Library - Fix**
+- [PR #1141](https://github.com/sendgrid/sendgrid-nodejs/pull/1141): request validation test fix. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #1133](https://github.com/sendgrid/sendgrid-nodejs/pull/1133): travis autodeploy. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+- [PR #1123](https://github.com/sendgrid/sendgrid-nodejs/pull/1123): update node version in travis for deploy via lerna. Thanks to [@thinkingserious](https://github.com/thinkingserious)!
+
+**Library - Feature**
+- [PR #1136](https://github.com/sendgrid/sendgrid-nodejs/pull/1136): verify signature from event webhook. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+**Library - Docs**
+- [PR #1131](https://github.com/sendgrid/sendgrid-nodejs/pull/1131): Fixing sandbox key in kitchen-sink documentation. Thanks to [@itsjoekent](https://github.com/itsjoekent)!
+- [PR #850](https://github.com/sendgrid/sendgrid-nodejs/pull/850): Add sandbox setting to kitchen-sink documentation. Thanks to [@notdmart](https://github.com/notdmart)!
+
+
+[2020-05-13] Version 7.1.1
+--------------------------
+**Library - Fix**
+- [PR #1112](https://github.com/sendgrid/sendgrid-nodejs/pull/1112): migrate to common prism setup. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #1113](https://github.com/sendgrid/sendgrid-nodejs/pull/1113): don't limit the request content length. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+
+[2020-04-29] Version 7.1.0
+--------------------------
+**Library - Feature**
+- [PR #600](https://github.com/sendgrid/sendgrid-nodejs/pull/600): Add subuser impersonation to client. Thanks to [@CaptainYarb](https://github.com/CaptainYarb)!
+- [PR #1093](https://github.com/sendgrid/sendgrid-nodejs/pull/1093): add support for Twilio Email. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Library - Docs**
+- [PR #1104](https://github.com/sendgrid/sendgrid-nodejs/pull/1104): add documentation on the on-behalf-of header usage. Thanks to [@ayandyl](https://github.com/ayandyl)!
+- [PR #1100](https://github.com/sendgrid/sendgrid-nodejs/pull/1100): clarify cancel and pause capabilities for scheduled sends. Thanks to [@thinkingserious](https://github.com/thinkingserious)!
+- [PR #1097](https://github.com/sendgrid/sendgrid-nodejs/pull/1097): document sendAt limitations. Thanks to [@dandv](https://github.com/dandv)!
+
+**Library - Fix**
+- [PR #1102](https://github.com/sendgrid/sendgrid-nodejs/pull/1102): correct the mail TS exports. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+
+[2020-04-15] Version 7.0.1
+--------------------------
+**Library - Fix**
+- [PR #1084](https://github.com/sendgrid/sendgrid-nodejs/pull/1084): correct the User-Agent casing. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+
+[2020-04-01] Version 7.0.0
+--------------------------
+**Library - Docs**
+- [PR #1078](https://github.com/sendgrid/sendgrid-nodejs/pull/1078): support verbiage for login issues. Thanks to [@adamchasetaylor](https://github.com/adamchasetaylor)!
+- [PR #1073](https://github.com/sendgrid/sendgrid-nodejs/pull/1073): reorg docs and add migration guide. Thanks to [@thinkingserious](https://github.com/thinkingserious)!
+
+**Library - Fix**
+- [PR #985](https://github.com/sendgrid/sendgrid-nodejs/pull/985): options.uri must be string. Thanks to [@shrujalshah28](https://github.com/shrujalshah28)!
+- [PR #852](https://github.com/sendgrid/sendgrid-nodejs/pull/852): correct the attachment file path test. Thanks to [@digitalica](https://github.com/digitalica)!
+- [PR #1076](https://github.com/sendgrid/sendgrid-nodejs/pull/1076): add 'setTimeout' to the MailService TS definition. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Library - Feature**
+- [PR #1077](https://github.com/sendgrid/sendgrid-nodejs/pull/1077): console warning added when using an invalid API key. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #1058](https://github.com/sendgrid/sendgrid-nodejs/pull/1058): migrate from deprecated request module to axios. Thanks to [@eshanholtz](https://github.com/eshanholtz)! **(breaking change)**
+
+**Library - Chore**
+- [PR #1063](https://github.com/sendgrid/sendgrid-nodejs/pull/1063): upgrade dev dependencies and fix eslint warnings/errors. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+
+[2020-03-18] Version 6.5.5
+--------------------------
+**Library - Chore**
+- [PR #1069](https://github.com/sendgrid/sendgrid-nodejs/pull/1069): refactor duplicate code in client tests. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #1053](https://github.com/sendgrid/sendgrid-nodejs/pull/1053): export type MailDataRequired. Thanks to [@antonsamper](https://github.com/antonsamper)!
+
+
+[2020-03-04] Version 6.5.4
+--------------------------
+**Library - Fix**
+- [PR #1041](https://github.com/sendgrid/sendgrid-nodejs/pull/1041): require in TS at least 1 type of content for sending mail. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+
+[2020-02-19] Version 6.5.3
+--------------------------
+**Library - Docs**
+- [PR #877](https://github.com/sendgrid/sendgrid-nodejs/pull/877): Improve the mail package's README to handle the async send(). Thanks to [@Berkmann18](https://github.com/Berkmann18)!
+- [PR #827](https://github.com/sendgrid/sendgrid-nodejs/pull/827): Fix grammatical errors in README. Thanks to [@chaman-1](https://github.com/chaman-1)!
+- [PR #825](https://github.com/sendgrid/sendgrid-nodejs/pull/825): Properly capitalize Brands. Thanks to [@aslafy-z](https://github.com/aslafy-z)!
+- [PR #989](https://github.com/sendgrid/sendgrid-nodejs/pull/989): Update README.md to explicitly state that 'send()' returns a promise. Thanks to [@Ifunanyacollins](https://github.com/Ifunanyacollins)!
+- [PR #878](https://github.com/sendgrid/sendgrid-nodejs/pull/878): Update USAGE.md to prevent query double encoding. Thanks to [@sigginet](https://github.com/sigginet)!
+- [PR #984](https://github.com/sendgrid/sendgrid-nodejs/pull/984): fix typo 'Feild' to 'Field'. Thanks to [@kendalled](https://github.com/kendalled)!
+
+**Library - Chore**
+- [PR #942](https://github.com/sendgrid/sendgrid-nodejs/pull/942): Bump braces from 2.3.0 to 2.3.2 in /packages/subscription-widget. Thanks to [@dependabot](https://github.com/dependabot)!
+
+**Library - Fix**
+- [PR #1040](https://github.com/sendgrid/sendgrid-nodejs/pull/1040): update Client constructor property definition in TS declaration. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #1039](https://github.com/sendgrid/sendgrid-nodejs/pull/1039): upgrade deepmerge to resolve webpack import issue. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #921](https://github.com/sendgrid/sendgrid-nodejs/pull/921): update MailService constructor property definition in TypeScript declaration. Thanks to [@dhritzkiv](https://github.com/dhritzkiv)!
+
+
+[2020-02-05] Version 6.5.2
+--------------------------
+**Library - Fix**
+- [PR #1035](https://github.com/sendgrid/sendgrid-nodejs/pull/1035): Move @types/request back to dependencies. Thanks to [@hlian](https://github.com/hlian)!
+
+
+[2020-01-24] Version 6.5.1
+--------------------------
+**Library - Fix**
+- [PR #1030](https://github.com/sendgrid/sendgrid-nodejs/pull/1030): remove chai from dependencies. Thanks to [@thinkingserious](https://github.com/thinkingserious)!
+
+**Library - Docs**
+- [PR #1028](https://github.com/sendgrid/sendgrid-nodejs/pull/1028): baseline all the templated markdown docs. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+
+[2020-01-15] Version 6.5.0
+--------------------------
+**Library - Docs**
+- [PR #943](https://github.com/sendgrid/sendgrid-nodejs/pull/943): Update url in "DYNAMIC_TEMPLATE_CHAR_WARNING" to point to a working current link. Thanks to [@NickFoden](https://github.com/NickFoden)!
+
+**Library - Fix**
+- [PR #900](https://github.com/sendgrid/sendgrid-nodejs/pull/900): Return promise with catch handler if callback provided. Thanks to [@adamreisnz](https://github.com/adamreisnz)!
+- [PR #935](https://github.com/sendgrid/sendgrid-nodejs/pull/935): Fixed deepmerge module export naming issue. Thanks to [@chrisamador](https://github.com/chrisamador)!
+- [PR #1010](https://github.com/sendgrid/sendgrid-nodejs/pull/1010): Cleanup dependencies. Thanks to [@thinkingserious](https://github.com/thinkingserious)!
+
+**Library - Feature**
+- [PR #932](https://github.com/sendgrid/sendgrid-nodejs/pull/932): Allow hiding warnings. Thanks to [@albertor24](https://github.com/albertor24)!
+
+**Library - Chore**
+- [PR #1011](https://github.com/sendgrid/sendgrid-nodejs/pull/1011): Bump extend from 3.0.1 to 3.0.2 in /packages/subscription-widget. Thanks to [@dependabot](https://github.com/dependabot)!
+- [PR #1012](https://github.com/sendgrid/sendgrid-nodejs/pull/1012): Bump sshpk from 1.13.1 to 1.16.1 in /packages/subscription-widget. Thanks to [@dependabot](https://github.com/dependabot)!
+- [PR #1015](https://github.com/sendgrid/sendgrid-nodejs/pull/1015): Bump fstream from 1.0.11 to 1.0.12 in /packages/subscription-widget. Thanks to [@dependabot](https://github.com/dependabot)!
+- [PR #1016](https://github.com/sendgrid/sendgrid-nodejs/pull/1016): Bump atob from 2.0.3 to 2.1.2 in /packages/subscription-widget. Thanks to [@dependabot](https://github.com/dependabot)!
+- [PR #1018](https://github.com/sendgrid/sendgrid-nodejs/pull/1018): Bump lodash from 4.17.11 to 4.17.15 in /packages/inbound-mail-parser. Thanks to [@dependabot](https://github.com/dependabot)!
+- [PR #1014](https://github.com/sendgrid/sendgrid-nodejs/pull/1014): Bump mixin-deep from 1.3.0 to 1.3.2 in /packages/subscription-widget. Thanks to [@dependabot](https://github.com/dependabot)!
+- [PR #1017](https://github.com/sendgrid/sendgrid-nodejs/pull/1017): Bump tar from 2.2.1 to 2.2.2 in /packages/subscription-widget. Thanks to [@dependabot](https://github.com/dependabot)!
+- [PR #1019](https://github.com/sendgrid/sendgrid-nodejs/pull/1019): Bump stringstream from 0.0.5 to 0.0.6 in /packages/subscription-widget. Thanks to [@dependabot](https://github.com/dependabot)!
+- [PR #1026](https://github.com/sendgrid/sendgrid-nodejs/pull/1026): prep the repo for automated releasing. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+
+[2019-05-06] Version 6.4.0
+--------------------------
+### Added
+- [PR #720](https://github.com/sendgrid/sendgrid-nodejs/pull/720): Updated README tags. Big thanks to [Anshul Singhal](https://github.com/af4ro) for the PR!
+- [PR #726](https://github.com/sendgrid/sendgrid-nodejs/pull/726): Readability updates. Big thanks to [Anshul Singhal](https://github.com/af4ro) for the PR!
+- [PR #728](https://github.com/sendgrid/sendgrid-nodejs/pull/728): Added link to docs from README. Big thanks to [Agnes Jang](https://github.com/agnesjang98) for the PR!
+- [PR #490](https://github.com/sendgrid/sendgrid-nodejs/pull/490): Added how to deploy simple hello world app on Azure. Big thanks to [Saras Arya](https://github.com/SarasArya) for the PR!
+- [PR #731](https://github.com/sendgrid/sendgrid-nodejs/pull/731): Update USE_CASES.md for Dynamic Templates. Big thanks to [Houssem Yahiaoui](https://github.com/houssem-yahiaoui) for the PR!
+- [PR #514](https://github.com/sendgrid/sendgrid-nodejs/pull/514): Allow readable stream as email attachments. Big thanks to [TunedMidja](https://github.com/TunedMidja) for the PR!
+- [PR #749](https://github.com/sendgrid/sendgrid-nodejs/pull/749): Update docs to show an example on how to enable tracking settings. Big thanks to [Carlos Henrique Merces Moreira](https://github.com/carloshmm) for the PR!
+- [PR #751](https://github.com/sendgrid/sendgrid-nodejs/pull/751): Update README.md to include the CLA. Big thanks to [Bharat Raghunathan](https://github.com/Bharat123rox) for the PR!
+- [PR #759](https://github.com/sendgrid/sendgrid-nodejs/pull/759): Add documentation for Email Activity API. Big thanks to [Stuart Reed](https://github.com/reedsa) for the PR!
+- [PR #792](https://github.com/sendgrid/sendgrid-nodejs/pull/792): Add inbound parse webhook example. Big thanks to [Ashley Roach](https://github.com/aroach) for the PR!
+- [PR #795](https://github.com/sendgrid/sendgrid-nodejs/pull/795): Add first-timers.md file for newcomers. Big thanks to [Dmitriy Danilov](https://github.com/daniloff200) for the PR!
+- [PR #768](https://github.com/sendgrid/sendgrid-nodejs/pull/768): Documentation updated for `from` field. Big thanks to [Valerian Pereira](https://github.com/valerianpereira) for the PR!
+- [PR #802](https://github.com/sendgrid/sendgrid-nodejs/pull/802): Update OSI code of conduct link. Big thanks to [José Antonio Chio](https://github.com/imagentleman) for the PR!
+- [PR #793](https://github.com/sendgrid/sendgrid-nodejs/pull/793): Warn if dynamic template contains non-escaped character. Big thanks to [Stuart Reed](https://github.com/reedsa) for the PR!
+- [PR #785](https://github.com/sendgrid/sendgrid-nodejs/pull/785): Updating TROUBLESHOOTING.md with text wrapping example. Big thanks to [Siddhant Sharma](https://github.com/ssiddhantsharma) for the PR!
+- [PR #784](https://github.com/sendgrid/sendgrid-nodejs/pull/784): Update docs: specify custom arguments must have string values. Big thanks to [Ishaan Malhi](https://github.com/OrthoDex) for the PR!
+- [PR #774](https://github.com/sendgrid/sendgrid-nodejs/pull/774): Run *.md Documents Through Grammerly & Update Accordingly. Big thanks to [Alan Unruh](https://github.com/alanunruh) for the PR!
+- [PR #770](https://github.com/sendgrid/sendgrid-nodejs/pull/770): [contact-importer] Update to support @sendgrid/client v6.X. Big thanks to [Zadkiel](https://github.com/aslafy-z) for the PR!
+- [PR #767](https://github.com/sendgrid/sendgrid-nodejs/pull/767): Add conformance to style standards. Big thanks to [Tony Ho](https://github.com/tony-ho) for the PR!
+- [PR #645](https://github.com/sendgrid/sendgrid-nodejs/pull/645): Clarified how you can change the sender name. Big thanks to [Sundin](https://github.com/Sundin) for the PR!
+- [PR #586](https://github.com/sendgrid/sendgrid-nodejs/pull/586): Expanded Travis.yml. Big thanks to [Vivek Iyer](https://github.com/Remorax) for the PR!
+- [PR #585](https://github.com/sendgrid/sendgrid-nodejs/pull/585): Updated usage for /categories/stats. Big thanks to [Poschacher Michael](https://github.com/mp-ffx) for the PR!
+- [PR #525](https://github.com/sendgrid/sendgrid-nodejs/pull/525): Add statistics helper class. Big thanks to [Devan Patel](https://github.com/devanp92) for the PR!
+- [PR #502](https://github.com/sendgrid/sendgrid-nodejs/pull/502): Prevent secrets from sending in email. Big thanks to [Hugo do Carmo](https://github.com/spelcaster) for the PR!
+- [PR #488](https://github.com/sendgrid/sendgrid-nodejs/pull/488): Add example use case for Slack event integration. Big thanks to [Mahatthana Nomsawadi](https://github.com/WiNloSt) for the PR!
+- [PR #826](https://github.com/sendgrid/sendgrid-nodejs/pull/826): Fixed capitalization for "SendGrid" in Contact the Moderators. Big thanks to [Joe Romeo](https://github.com/JoeRomeo) for the PR!
+- [PR #819](https://github.com/sendgrid/sendgrid-nodejs/pull/819): Fix typo in USE_CASES.md. Big thanks to [Byungjin Park](https://github.com/posquit0) for the PR!
+- [PR #809](https://github.com/sendgrid/sendgrid-nodejs/pull/809): Properly capitalize "SendGrid" brand. Big thanks to [Zadkiel](https://github.com/aslafy-z) for the PR!
+- [PR #804](https://github.com/sendgrid/sendgrid-nodejs/pull/804): Add Event Webhook docker. Big thanks to [Ashley Roach](https://github.com/aroach) for the PR!
+- [PR #831](https://github.com/sendgrid/sendgrid-nodejs/pull/831):Add our Developer Experience Engineer career opportunity to the README. Big thanks to [Manjiri Tapaswi](https://github.com/mptap) for the PR!
+- [PR #847](https://github.com/sendgrid/sendgrid-nodejs/pull/847): Remove <%body%> from transactional template example. Big thanks to [Ashley Roach](https://github.com/aroach) for the PR!
+- [PR #505](https://github.com/sendgrid/sendgrid-nodejs/pull/505): Attachment helper for base64 encoding. Big thanks to [Hugo do Carmo](https://github.com/spelcaster) for the PR!
+- [PR #855](https://github.com/sendgrid/sendgrid-nodejs/pull/855): Linter Fixes. 
+- [PR #812](https://github.com/sendgrid/sendgrid-nodejs/pull/812): Fix parser constructor error when passing payload. Big thanks to [Felipe](https://github.com/valtlfelipe) for the PR!
+- [PR #862](https://github.com/sendgrid/sendgrid-nodejs/pull/862): Fix const data = None; in client/USAGE.md.
+- [PR #866](https://github.com/sendgrid/sendgrid-nodejs/pull/866): Not able to get the template list. 
+- [PR #803](https://github.com/sendgrid/sendgrid-nodejs/pull/803): Update documentation with new Git workflow. Big thanks to [Tony Ho](https://github.com/tony-ho) for the PR!
+- [PR #925](https://github.com/sendgrid/sendgrid-nodejs/pull/925): Twilio Branding and SMS update.
+
+### Fixed
+- [PR #735](https://github.com/sendgrid/sendgrid-nodejs/pull/735): Fix outdated careers link. Big thanks to [Ashley Roach](https://github.com/aroach) for the PR!
+- [PR #754](https://github.com/sendgrid/sendgrid-nodejs/pull/754): Fix subscription-widget node engine version. Big thanks to [Rafael Almeida](https://github.com/rafaelalmeidatk) for the PR!
+- [PR #757](https://github.com/sendgrid/sendgrid-nodejs/pull/757): Upgrade request to 2.88.0 (latest). Big thanks to [Guy Khmelnitsky](https://github.com/GuyKh) for the PR!
+- [PR #716](https://github.com/sendgrid/sendgrid-nodejs/pull/716): MailData must have dynamicTemplateData property. Big thanks to [Marat Dyatko](https://github.com/dyatko) for the PR!
+- [PR #763](https://github.com/sendgrid/sendgrid-nodejs/pull/): [inbound-mail-parser] fix(deps): Update mailparser to 2.3.4. Big thanks to [Zadkiel](https://github.com/aslafy-z) for the PR!
+- [PR #773](https://github.com/sendgrid/sendgrid-nodejs/pull/773): Kubernetes secrets "\n" problem fix. Big thanks to [Daksh](https://github.com/DakshMiglani) for the PR!
+- [PR #789](https://github.com/sendgrid/sendgrid-nodejs/pull/789): Correct link for environment variables setup. Big thanks to [PyroclasticMayhem](https://github.com/PyroclasticMayhem) for the PR!
+- [PR #780](https://github.com/sendgrid/sendgrid-nodejs/pull/780): v3 send email broken link fixed in TROUBLESHOOTING.md. Big thanks to [Arshad Kazmi](https://github.com/arshadkazmi42) for the PR!
+- [PR #779](https://github.com/sendgrid/sendgrid-nodejs/pull/779): Contributing.md broken links fix. Big thanks to [Arshad Kazmi](https://github.com/arshadkazmi42) for the PR!
+- [PR #583](https://github.com/sendgrid/sendgrid-nodejs/pull/583): Fix README instructions and replace stray tab indentation by spaces. Big thanks to [Adam Reis](https://github.com/adamreisnz) for the PR!
+- [PR #522](https://github.com/sendgrid/sendgrid-nodejs/pull/522): Comma bug in name. Big thanks to [Jordan Tepper](https://github.com/HeroProtagonist) for the PR!
+- [PR #824](https://github.com/sendgrid/sendgrid-nodejs/pull/824): Fix Travis CI build failures on main. Big thanks to [Tony Ho](https://github.com/tony-ho) for the PR!
+- [PR #798](https://github.com/sendgrid/sendgrid-nodejs/pull/798): Update transactional-templates.md. Big thanks to [Kyle Roberts](https://github.com/kylearoberts) for the PR!
+
 ## [6.3.1] - 2018-1-18 ##
 
 This minor version bump was due to a hiccup using `lerna` to publish to npm.
@@ -101,8 +342,8 @@ This minor version bump was due to a hiccup using `lerna` to publish to npm.
 ### BREAKING CHANGE
 - BIG, HUGE, MEGA THANKS to [Adam Reis](https://github.com/adamreisnz) for this amazing PR!!!
 - Pull #407 via #378: API Simplification
-- v6.0.0 is a complete rewrite of this SDK for all endpoints. To upgrade from v5.X and lower, we suggest you update your code based on the examples found [here](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/mail/USE_CASES.md) for mail send and [here](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/client/USAGE.md) for all other endpoints.
-- Please do not hesitate to [open an issue](https://github.com/sendgrid/sendgrid-nodejs/issues) if there are any challenges and/or feedback. [PRs](https://github.com/sendgrid/sendgrid-nodejs/blob/master/CONTRIBUTING.md) are also welcome.
+- v6.0.0 is a complete rewrite of this SDK for all endpoints. To upgrade from v5.X and lower, we suggest you update your code based on the examples found [here](packages/mail/USE_CASES.md) for mail send and [here](packages/client/USAGE.md) for all other endpoints.
+- Please do not hesitate to [open an issue](https://github.com/sendgrid/sendgrid-nodejs/issues) if there are any challenges and/or feedback. [PRs](CONTRIBUTING.md) are also welcome.
 
 ## [5.2.2] - 2017-08-14 ##
 ### Fix
@@ -256,7 +497,7 @@ That is, in both cases, error.response is present
 ## [4.0.2] - 2016-08-24 ##
 ### Added
 - Table of Contents in the README
-- Added a [USE_CASES.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/USE_CASES.md) section, with the first use case example for transactional templates
+- Added a [USE_CASES.md](USE_CASES.md) section, with the first use case example for transactional templates
 
 ## [4.0.1] - 2016-08-02 ##
 ### Fixed
@@ -285,7 +526,7 @@ That is, in both cases, error.response is present
 
 ## [3.0.11] - 2016-07-26 ##
 ### Added
-- [Troubleshooting](https://github.com/sendgrid/sendgrid-python/blob/master/TROUBLESHOOTING.md) section
+- [Troubleshooting](TROUBLESHOOTING.md) section
 
 ## [3.0.10] - 2016-07-23
 ### Fixed
@@ -368,4 +609,3 @@ That is, in both cases, error.response is present
 ### Added
 - ASM Group ID support
 - CHANGELOG.md
-

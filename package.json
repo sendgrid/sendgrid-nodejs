@@ -8,31 +8,30 @@
     "url": "git://github.com/sendgrid/sendgrid-nodejs.git"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-preset-es2015": "^6.24.1",
+    "@babel/cli": "^7.7.7",
+    "@babel/core": "^7.7.7",
+    "@babel/node": "^7.7.7",
     "chai": "^4.0.1",
     "chai-as-promised": "^7.1.1",
     "dirty-chai": "^2.0.1",
-    "eslint": "^4.19.1",
+    "eslint": "^6.8.0",
     "istanbul": "^1.0.0-alpha.2",
-    "lerna": "^2.0.0-rc.5",
-    "mocha": "^3.4.2",
+    "lerna": "^3.19.0",
+    "mocha": "^6.2.2",
     "mocha-clean": "^1.0.0",
     "mocha-sinon": "^2.0.0",
     "moment": "^2.19.3",
     "sinon": "^2.3.2",
     "sinon-chai": "^2.10.0",
-    "typescript": "~2.4.2"
+    "typescript": "^3.7.4"
   },
   "scripts": {
-    "doc": "esdoc",
-    "lint": "eslint . --fix",
-    "prism:install": "curl https://raw.githubusercontent.com/stoplightio/prism/master/install.sh | sh",
-    "prism": "prism run --mock --list --spec https://raw.githubusercontent.com/sendgrid/sendgrid-oai/master/oai_stoplight.json",
+    "lint": "if [ `node --version | cut -d'.' -f1 | cut -c 2` -ge \"8\" ]; then eslint . --fix; else echo \"eslint is not available for node < 8.0\"; fi",
     "test:all": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"**/*.spec.js\"",
     "test:helpers": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/helpers/**/*.spec.js\"",
     "test:client": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/client/**/*.spec.js\"",
     "test:mail": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/mail/**/*.spec.js\"",
+    "test:eventwebhook": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/eventwebhook/**/*.spec.js\"",
     "test:inbound": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/inbound-mail-parser/**/*.spec.js\"",
     "test:contact": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/contact-importer/**/*.spec.js\"",
     "test:files": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"test/files.spec.js\"",
@@ -41,21 +40,14 @@
     "test": "npm run test:all -s",
     "coverage": "open -a \"Google Chrome\" ./coverage/lcov-report/index.html"
   },
-  "description": "![SendGrid Logo](https://uiux.s3.amazonaws.com/2016-logos/email-logo%402x.png)",
+  "description": "![Twilio SendGrid Logo](https://github.com/sendgrid/sendgrid-nodejs/raw/HEAD/twilio_sendgrid_logo.png)",
   "bugs": {
     "url": "https://github.com/sendgrid/sendgrid-nodejs/issues"
   },
   "homepage": "https://github.com/sendgrid/sendgrid-nodejs#readme",
   "main": "index.js",
   "directories": {
-    "doc": "docs",
     "test": "test"
   },
-  "dependencies": {
-    "chai": "^4.0.1",
-    "esdoc": "^1.0.3",
-    "esdoc-coverage-plugin": "^1.1.0",
-    "esdoc-type-inference-plugin": "^1.0.1"
-  },
-  "author": "SendGrid"
+  "author": "Twilio SendGrid"
 }

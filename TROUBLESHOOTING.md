@@ -1,7 +1,8 @@
+If you have an issue logging into your Twilio SendGrid account, please read this [document](https://sendgrid.com/docs/ui/account-and-settings/troubleshooting-login/). For any questions regarding login issues, please contact our [support team](https://support.sendgrid.com).
+
 If you have a non-library SendGrid issue, please contact our [support team](https://support.sendgrid.com).
 
 If you can't find a solution below, please open an [issue](https://github.com/sendgrid/sendgrid-nodejs/issues).
-
 
 ## Table of Contents
 
@@ -65,12 +66,12 @@ Click the "Clone or download" green button in [GitHub](https://github.com/sendgr
 <a name="error"></a>
 ## Error Messages
 
-To read the error message returned by SendGrid's API, please see [this example](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/mail/USE_CASES.md#success-failure-errors).
+To read the error message returned by SendGrid's API, please see [this example](packages/mail/USE_CASES.md#success-failure-errors).
 
 <a name="versions"></a>
 ## Versions
 
-We follow the MAJOR.MINOR.PATCH versioning scheme as described by [SemVer.org](http://semver.org). Therefore, we recommend that you always pin (or vendor) the particular version you are utilizing with your code and never auto-update to the latest version. Especially when there is a MAJOR point release since that is guaranteed to be a breaking change. Changes are documented in the [CHANGELOG](https://github.com/sendgrid/sendgrid-nodejs/blob/master/CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases) section.
+We follow the MAJOR.MINOR.PATCH versioning scheme as described by [SemVer.org](http://semver.org). Therefore, we recommend that you always pin (or vendor) the particular version you are utilizing with your code and never auto-update to the latest version. Especially when there is a MAJOR point release since that is guaranteed to be a breaking change. Changes are documented in the [CHANGELOG](CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases) section.
 
 <a name="environment"></a>
 ## Environment Variables and Your SendGrid API Key

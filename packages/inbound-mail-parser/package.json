@@ -1,8 +1,8 @@
 {
   "name": "@sendgrid/inbound-mail-parser",
-  "description": "SendGrid NodeJS inbound mail parser",
-  "version": "6.3.0",
-  "author": "SendGrid <dx@sendgrid.com> (sendgrid.com)",
+  "description": "Twilio SendGrid NodeJS inbound mail parser",
+  "version": "7.2.6",
+  "author": "Twilio SendGrid <help@twilio.com> (sendgrid.com)",
   "contributors": [
     "Kyle Partridge <kyle.partridge@sendgrid.com>",
     "David Tomberlin <david.tomberlin@sendgrid.com>",
@@ -10,7 +10,7 @@
     "Brandon West <brandon.west@sendgrid.com>",
     "Scott Motte <scott.motte@sendgrid.com>",
     "Robert Acosta <robert.acosta@sendgrid.com>",
-    "Elmer Thomas <elmer.thomas@sendgrid.com>"
+    "Elmer Thomas <ethomas@twilio.com>"
   ],
   "license": "MIT",
   "homepage": "https://sendgrid.com",
@@ -23,10 +23,10 @@
   },
   "main": "src/parser.js",
   "engines": {
-    "node": ">=6.0.0"
+    "node": "6.* || 8.* || >=10.*"
   },
   "dependencies": {
-    "@sendgrid/helpers": "^6.3.0",
+    "@sendgrid/helpers": "^7.2.6",
     "mailparser": "^2.3.4"
   },
   "tags": [

@@ -10,8 +10,7 @@ const { DYNAMIC_TEMPLATE_CHAR_WARNING } = require('../constants');
  * Tests
  */
 describe('Mail', function() {
-
-  describe('#527', function() {
+  describe('construct', function() {
     it('shouldn\'t convert the headers to camel/snake case', function() {
       const mail = new Mail({
         personalizations: [{
@@ -40,8 +39,6 @@ describe('Mail', function() {
       expect(mail.toJSON().headers['List-Unsubscribe']).to
         .equal('<mailto:test@test.com>');
     });
-  });
-  describe('#689', function() {
 
     it('should detect dynamic template id', function() {
       const mail = new Mail({
@@ -63,6 +60,7 @@ describe('Mail', function() {
       });
       expect(mail.isDynamic).to.equal(true);
     });
+
     it('should detect legacy template id', function() {
       const mail = new Mail({
         personalizations: [{
@@ -83,6 +81,7 @@ describe('Mail', function() {
       });
       expect(mail.isDynamic).to.equal(false);
     });
+
     it('should ignore substitutions if templateId is dynamic', function() {
       const mail = new Mail({
         personalizations: [{
@@ -122,42 +121,75 @@ describe('Mail', function() {
       expect(mail.personalizations[0].dynamicTemplateData).to.deep.equal({ test1: 'Test 1', test2: 'Testy 2', test3: 'Testy 3' });
 
       expect(mail.toJSON()).to.deep.equal({
-        'content': [
+        content: [
           {
-            'type': 'text/plain',
-            'value': 'test',
+            type: 'text/plain',
+            value: 'test',
           },
         ],
-        'from': {
-          'email': 'test@example.com',
+        from: {
+          email: 'test@example.com',
         },
-        'personalizations': [
+        personalizations: [
           {
-            'dynamic_template_data': {
-              'test1': 'Test 1',
-              'test2': 'Testy 2',
-              'test3': 'Testy 3',
+            dynamic_template_data: {
+              test1: 'Test 1',
+              test2: 'Testy 2',
+              test3: 'Testy 3',
             },
-            'headers': {
+            headers: {
               'test-header': 'test',
             },
-            'to': [
+            to: [
               {
-                'email': 'test@example.com',
-                'name': '',
+                email: 'test@example.com',
+                name: '',
               },
             ],
           },
         ],
-        'subject': 'test',
-        'template_id': 'd-df80613cccc6441ea5cd7c95377bc1ef',
+        subject: 'test',
+        template_id: 'd-df80613cccc6441ea5cd7c95377bc1ef',
       });
     });
 
+    describe('attachments', () => {
+      it('handles multiple attachments', () => {
+        const mail = new Mail({
+          to: 'recipient@example.org',
+          attachments: [{
+            content: 'test-content',
+            filename: 'name-that-file',
+            type: 'file-type',
+          }, {
+            content: 'other-content',
+            filename: 'name-this-file',
+            disposition: 'inline',
+          }],
+        });
+        expect(mail.toJSON()['attachments']).to.have.a.lengthOf(2);
+      });
+
+      it('requires content', () => {
+        expect(() => new Mail({
+          attachments: [{
+            filename: 'missing content',
+          }],
+        })).to.throw('content');
+      });
+
+      it('requires filename', () => {
+        expect(() => new Mail({
+          attachments: [{
+            content: 'missing filename',
+          }],
+        })).to.throw('filename');
+      });
+    });
   });
 
   describe('dynamic template handlebars substitutions', () => {
-    let logSpy, data;
+    let logSpy; let data;
 
     beforeEach(() => {
       logSpy = sinon.spy(console, 'warn');

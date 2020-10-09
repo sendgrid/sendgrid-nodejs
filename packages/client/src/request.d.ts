@@ -1,3 +1,3 @@
-import {OptionsWithUrl} from "request";
+import RequestOptions from "@sendgrid/helpers/classes/request";
 
-export type ClientRequest = OptionsWithUrl;
+export type ClientRequest = RequestOptions;

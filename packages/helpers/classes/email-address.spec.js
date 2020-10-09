@@ -55,9 +55,9 @@ describe('EmailAddress', function() {
       expect(email.name).to.equal('Test');
     });
 
-    it('should wrap name in quotes if a comma is present', function() {
+    it('should not wrap name in quotes if a comma is present', function() {
       email.setName('Doe, John');
-      expect(email.name).to.equal('\"Doe, John\"');
+      expect(email.name).to.equal('Doe, John');
     });
 
     it('should not double wrap in quotes', function() {

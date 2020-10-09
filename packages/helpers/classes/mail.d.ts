@@ -153,7 +153,12 @@ export interface MailData {
   
   isMultiple?: boolean,
   dynamicTemplateData?: { [key: string]: any },
+
+  hideWarnings?: boolean,
 }
+
+export type MailDataRequired = MailData & (
+    { text: string } | { html: string } | { templateId: string } | { content: MailContent[] & { 0: MailContent } });
 
 export interface MailJSON {
   from: EmailJSON;
@@ -323,6 +328,11 @@ export default class Mail {
    * Set mail settings
    */
   setMailSettings(settings: MailSettings): void;
+
+  /**
+   * Set hide warnings
+   */
+  setHideWarnings(hide: boolean): void;
 
   /**
    * To JSON

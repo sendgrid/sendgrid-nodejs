@@ -27,5 +27,5 @@ const req = Client.createRequest({
 Client.request({
   url: "/test"
 }).then(res => {
-  res[0].headers
-})
+  res[0].statusCode;
+});

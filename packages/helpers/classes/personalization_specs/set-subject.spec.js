@@ -9,7 +9,7 @@ const EmailAddress = require('../email-address');
 /**
  * Tests
  */
- describe('Personalization', function() {
+describe('Personalization', function() {
 
   //Create new personalization before each test
   let p;
