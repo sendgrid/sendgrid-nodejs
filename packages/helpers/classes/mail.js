@@ -142,14 +142,14 @@ class Mail {
    * Set subject
    */
   setSubject(subject) {
-    this._setProperty('subject', 'string', subject);
+    this._setProperty('subject', subject, 'string');
   }
 
   /**
    * Set send at
    */
   setSendAt(sendAt) {
-    if (this._checkProperty('sendAt', sendAt, [this._checkUndefined, _createCheckThatThrows(Number.isInteger, 'Integer expected for `sendAt`')])) {
+    if (this._checkProperty('sendAt', sendAt, [this._checkUndefined, this._createCheckThatThrows(Number.isInteger, 'Integer expected for `sendAt`')])) {
       this.sendAt = sendAt;
     }
   }
@@ -158,10 +158,10 @@ class Mail {
    * Set template ID, also checks if the template is dynamic or legacy
    */
   setTemplateId(templateId) {
-    this._setProperty('templateId', 'string', templateId);
-
-    if (templateId.indexOf('d-') === 0) {
-      this.isDynamic = true;
+    if (this._setProperty('templateId', templateId, 'string')) {
+      if (templateId.indexOf('d-') === 0) {
+        this.isDynamic = true;
+      }
     }
   }
 
@@ -169,14 +169,14 @@ class Mail {
    * Set batch ID
    */
   setBatchId(batchId) {
-    this._setProperty('batchId', 'string', batchId);
+    this._setProperty('batchId', batchId, 'string');
   }
 
   /**
    * Set IP pool name
    */
   setIpPoolName(ipPoolName) {
-    this._setProperty('ipPoolName', 'string', ipPoolName);
+    this._setProperty('ipPoolName', ipPoolName, 'string');
   }
 
   /**
@@ -199,10 +199,14 @@ class Mail {
    * Set personalizations
    */
   setPersonalizations(personalizations) {
-    if (!this._doArrayCheck('personalizations', personalizations) ||
-        !personalizations.every(personalization => typeof personalization === 'object')) {
+    if (!this._doArrayCheck('personalizations', personalizations)) {
+      return;
+    }
+
+    if (!personalizations.every(personalization => typeof personalization === 'object')) {
       throw new Error('Array of objects expected for `personalizations`');
     }
+
     //Clear and use add helper to add one by one
     this.personalizations = [];
     personalizations
@@ -213,7 +217,6 @@ class Mail {
    * Add personalization
    */
   addPersonalization(personalization) {
-
     //We should either send substitutions or dynamicTemplateData
     //depending on the templateId
     if (this.isDynamic && personalization.substitutions) {
@@ -256,23 +259,21 @@ class Mail {
    * Set substitutions
    */
   setSubstitutions(substitutions) {
-    this._setProperty('substitutions', 'object', substitutions);
+    this._setProperty('substitutions', substitutions, 'object');
   }
 
   /**
    * Set substitution wrappers
    */
-  setSubstitutionWrappers(wrappers) {
+  setSubstitutionWrappers(substitutionWrappers) {
     let lengthCheck = (propertyName, value) => {
-      if (wrappers.length !== 2) {
-        throw new Error(
-          'Array expected with two elements for `substitutionWrappers`'
-        );
+      if (!Array.isArray(value) || value.length !== 2) {
+        throw new Error('Array expected with two elements for `' + propertyName + '`');
       }
     };
 
-    if (this._checkProperty('wrappers', wrappers, [this._checkUndefined, this._doArrayCheck, lengthCheck])) {
-      this.substitutionWrappers = wrappers;
+    if (this._checkProperty('substitutionWrappers', substitutionWrappers, [this._checkUndefined, lengthCheck])) {
+      this.substitutionWrappers = substitutionWrappers;
     }
   }
 
@@ -332,8 +333,8 @@ class Mail {
       if (!content.every(contentField => typeof contentField.value === 'string')) {
         throw new Error('Expected each `content` entry to contain a `value` string');
       }
+      this.content = content;
     }
-    this.content = content;
   }
 
   /**
@@ -403,18 +404,19 @@ class Mail {
    * Set categories
    */
   setCategories(categories) {
-    let allElementsAreStrings = (cats) => {
-      if (!cats.every(cat => typeof cat === 'string')) {
-        throw new Error('Array of strings expected for `categories`');
+    let allElementsAreStrings = (propertyName, value) => {
+      if (!Array.isArray(value) || !value.every(item => typeof item === 'string')) {
+        throw new Error('Array of strings expected for `' + propertyName + '`');
       }
     };
 
-    if (!this._checkProperty('categories', categories, [this._checkUndefined, this._doArrayCheck, allElementsAreStrings])) {
-      return;
-    } else if (typeof categories === 'string') {
+    if (typeof categories === 'string') {
       categories = [categories];
     }
-    this.categories = categories;
+
+    if (this._checkProperty('categories', categories, [this._checkUndefined, allElementsAreStrings])) {
+      this.categories = categories;
+    }
   }
 
   /**
@@ -430,7 +432,7 @@ class Mail {
    * Set headers
    */
   setHeaders(headers) {
-    this._setProperty('headers', 'object', headers);
+    this._setProperty('headers', headers, 'object');
   }
 
   /**
@@ -447,14 +449,14 @@ class Mail {
    * Set sections
    */
   setSections(sections) {
-    this._setProperty('sections', 'object', sections);
+    this._setProperty('sections', sections, 'object');
   }
 
   /**
    * Set custom args
    */
   setCustomArgs(customArgs) {
-    this._setProperty('customArgs', 'object', customArgs);
+    this._setProperty('customArgs', customArgs, 'object');
   }
 
   /**
@@ -593,20 +595,11 @@ class Mail {
    ***/
 
   /**
-   * Perform a set of checks on the new property value. If all checks complete
-   * successfully without throwing errors or calling their onFailed callback
-   * argument, the _checkProperty call will return true.
+   * Perform a set of checks on the new property value. Returns true if all
+   * checks complete successfully without throwing errors or returning true.
    */
   _checkProperty(propertyName, value, checks) {
-    let failure = false;
-    let onFailed = () => { failure = true; };
-    let allChecks = checks.forEach((e) => e(propertyName, value, onFailed));
-
-    if (failure) {
-      return false;
-    }
-
-    return true;
+    return !checks.some((e) => e(propertyName, value));
   }
 
   /**
@@ -621,15 +614,15 @@ class Mail {
     if (propertyChecksPassed) {
       this[propertyName] = value;
     }
+
+    return propertyChecksPassed;
   }
 
   /**
    * Fail if the value is undefined.
    */
-  _checkUndefined(propertyName, value, onFailed) {
-    if (typeof value === 'undefined') {
-      onFailed();
-    }
+  _checkUndefined(propertyName, value) {
+    return typeof value === 'undefined';
   }
 
   /**
@@ -649,7 +642,7 @@ class Mail {
    */
   _createCheckThatThrows(check, errorString) {
     return (propertyName, value) => {
-      if (!check(propertyName, value)) {
+      if (!check(value)) {
         throw new Error(errorString);
       }
     };
@@ -672,7 +665,7 @@ class Mail {
     return this._checkProperty(
       propertyName,
       value,
-      [_checkUndefined, _createCheckThatThrows(Array.isArray, 'Array expected for`' + propertyname + '`')]);
+      [this._checkUndefined, this._createCheckThatThrows(Array.isArray, 'Array expected for`' + propertyName + '`')]);
   }
 }
 
