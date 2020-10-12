@@ -68,11 +68,15 @@ client.request(request)
 ## Add a Custom Default Header
 ```js
 client.setDefaultHeader('User-Agent', 'Some user agent string');
+// or
+client.setDefaultHeader({'User-Agent': 'Some user agent string'});
 ```
 
 ## Change Request Defaults
 ```js
 client.setDefaultRequest('baseUrl', 'https://api.sendgrid.com/');
+// or
+client.setDefaultRequest({baseUrl: 'https://api.sendgrid.com/'});
 ```
 
 ## Overwrite Promise Implementation

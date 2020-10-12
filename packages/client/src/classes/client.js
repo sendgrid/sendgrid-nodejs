@@ -72,11 +72,23 @@ class Client {
   }
 
   setDefaultHeader(key, value) {
+    if (key !== null && typeof key === 'object') {
+      // key is an object
+      Object.assign(this.defaultHeaders, key);
+      return this;
+    }
+
     this.defaultHeaders[key] = value;
     return this;
   }
 
   setDefaultRequest(key, value) {
+    if (key !== null && typeof key === 'object') {
+      // key is an object
+      Object.assign(this.defaultRequest, key);
+      return this;
+    }
+
     this.defaultRequest[key] = value;
     return this;
   }
