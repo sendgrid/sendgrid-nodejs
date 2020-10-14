@@ -1,6 +1,18 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2020-10-14] Version 7.3.0
+--------------------------
+**Library - Feature**
+- [PR #771](https://github.com/sendgrid/sendgrid-nodejs/pull/771): Extend client.setDefault[Request,Headers] to accept objects. Thanks to [@aslafy-z](https://github.com/aslafy-z)!
+
+**Library - Docs**
+- [PR #1208](https://github.com/sendgrid/sendgrid-nodejs/pull/1208): Add eventwebhook package to main README. Thanks to [@chammaaomar](https://github.com/chammaaomar)!
+
+**Library - Chore**
+- [PR #1203](https://github.com/sendgrid/sendgrid-nodejs/pull/1203): remove chalk dependency. Thanks to [@nck](https://github.com/nck)!
+
+
 [2020-09-16] Version 7.2.6
 --------------------------
 **Library - Fix**
