@@ -19,13 +19,13 @@ Closes #2
 A short description of what this PR does.
 
 ### Checklist
-- [ ] I acknowledge that all my contributions will be made under the project's license
+- [x] I acknowledge that all my contributions will be made under the project's license
 - [ ] I have made a material change to the repo (functionality, testing, spelling, grammar)
-- [ ] I have read the [Contribution Guidelines](CONTRIBUTING.md) and my PR follows them
+- [ ] I have read the [Contribution Guidelines](https://github.com/sendgrid/sendgrid-nodejs/blob/main/CONTRIBUTING.md) and my PR follows them
 - [ ] I have titled the PR appropriately
 - [ ] I have updated my branch with the main branch
 - [ ] I have added tests that prove my fix is effective or that my feature works
-- [ ] I have added necessary documentation about the functionality in the appropriate .md file
+- [ ] I have added the necessary documentation about the functionality in the appropriate .md file
 - [ ] I have added inline documentation to the code I modified
 
 If you have questions, please file a [support ticket](https://twilio.com/help/contact), or create a GitHub Issue in this repository.
