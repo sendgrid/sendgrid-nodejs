@@ -28,4 +28,4 @@ A short description of what this PR does.
 - [ ] I have added the necessary documentation about the functionality in the appropriate .md file
 - [ ] I have added inline documentation to the code I modified
 
-If you have questions, please file a [support ticket](https://twilio.com/help/contact), or create a GitHub Issue in this repository.
+If you have questions, please file a [support ticket](https://support.sendgrid.com/hc/en-us), or create a GitHub Issue in this repository.
