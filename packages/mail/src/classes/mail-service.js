@@ -27,6 +27,8 @@ class MailService {
    */
   setClient(client) {
     this.client = client;
+
+    return this;
   }
 
   /**
@@ -34,6 +36,8 @@ class MailService {
    */
   setApiKey(apiKey) {
     this.client.setApiKey(apiKey);
+
+    return this;
   }
 
   /**
@@ -66,6 +70,8 @@ class MailService {
     }
     this.substitutionWrappers[0] = left;
     this.substitutionWrappers[1] = right;
+
+    return this;
   }
 
   /**
