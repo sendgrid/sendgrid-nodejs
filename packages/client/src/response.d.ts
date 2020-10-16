@@ -1,3 +1,3 @@
-import {RequestResponse} from "request";
+import Response from "@sendgrid/helpers/classes/response";
 
-export type ClientResponse = RequestResponse;
+export type ClientResponse = Response;

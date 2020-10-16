@@ -7,7 +7,7 @@ export interface PersonalizationData {
   subject?: string;
   headers?: { [key: string]: string };
   substitutions?: { [key: string]: string };
-  dynamicTemplateData?: { [key: string]: string; };
+  dynamicTemplateData?: { [key: string]: any; };
   customArgs?: { [key: string]: string };
   sendAt?: number;
 }
@@ -112,7 +112,7 @@ export default class Personalization {
   /**
    * Set dynamic template data
    */
-  setDynamicTemplateData(dynamicTemplateData: { [key: string]: string }): void;
+  setDynamicTemplateData(dynamicTemplateData: { [key: string]: any }): void;
 
   /**
    * To JSON

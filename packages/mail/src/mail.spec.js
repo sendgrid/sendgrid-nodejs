@@ -5,14 +5,12 @@
  */
 const sgMail = require('./mail');
 const sgClient = sgMail.client;
-const baseUrl = 'http://localhost:4010/';
 
 /**
  * Setup client
  */
 before(() => {
   sgClient.setApiKey('SendGrid API Key');
-  sgClient.setDefaultRequest('baseUrl', baseUrl);
 });
 
 /**

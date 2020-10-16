@@ -1,32 +1,32 @@
 language: node_js
 node_js:
-- "6"
-- "7"
-- "8"
-before_install:
-- npm install -g npm@2
-before_script:
-- mkdir prism
-- mkdir prism/bin
-- export PATH=$PATH:$PWD/prism/bin/
-- ./test/prism.sh
-- yarn prism &
-- sleep 5 # give it some time to start
+  - 10
+env:
+  - version=6
+  - version=8
+  - version=10
+  - version=lts
+  - version=latest
+services:
+  - docker
 script:
-- lerna bootstrap
-- yarn test:files
-- yarn test:license
-- yarn test:mail
-- yarn test:client
-- yarn test:helpers
-- yarn test:typescript
+  - make test-docker
+before_deploy:
+  - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> $HOME/.npmrc 2> /dev/null
+  - git reset HEAD --hard
+deploy:
+  - provider: script
+    script: "lerna publish from-package --yes"
+    skip_cleanup: true
+    on:
+      tags: true
+      condition: $version = 10
+
 notifications:
-  hipchat:
+  slack:
+    if: branch = main
+    on_pull_requests: false
+    on_success: never
+    on_failure: change
     rooms:
-      secure: UVH1YNXLzilBEQQblcNrkqIDn36OdSpVjAPJGiSnjox04Ze+PO6T3KZqAwoR/ODYu0ujR4aRrJ/84/OR3U+VorzqcNWodiVXPxR7jgG9BuFH5/XXDB0nTj4MVS5aCivwPuBQB3asNHOogQ4EWLZVw80XIw2pov5GEl1Pc9lN+CE=
-    template:
-    - '<a href="https://travis-ci.org/%{repository}/builds/%{build_id}">%{repository}
-      Build %{build_number}</a> on branch <i>%{branch}</i> by %{author}: <strong>%{message}</strong>
-      <a href="https://github.com/%{repository}/commits/%{commit}">View on GitHub</a>'
-    format: html
-    notify: true
+      - secure: i4B6L4/Wv1Z9jLSIH6UDa/rgARh472iCd44zLGYjHjXu7RRmDYrS4ZtE3vl5N/Xd8PVpBpAhsFXC8rG5zYEWCsU7UdRlKaHHz5CcLWFX25QP2PQaK5cKMR64mUgHi0lKQmt258HPrvPV1JqxF3nP+yJLWnB65QLMyEukCTK5N1c=
