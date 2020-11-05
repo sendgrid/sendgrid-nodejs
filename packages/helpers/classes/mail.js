@@ -118,127 +118,92 @@ class Mail {
    * Set from email
    */
   setFrom(from) {
-    if (typeof from === 'undefined') {
-      return;
+    if (this._checkProperty('from', from, [this._checkUndefined])) {
+      if (typeof from !== 'string' && typeof from.email !== 'string') {
+        throw new Error('String or address object expected for `from`');
+      }
+      this.from = EmailAddress.create(from);
     }
-    if (typeof from !== 'string' && typeof from.email !== 'string') {
-      throw new Error('String or address object expected for `from`');
-    }
-    this.from = EmailAddress.create(from);
   }
 
   /**
    * Set reply to
    */
   setReplyTo(replyTo) {
-    if (typeof replyTo === 'undefined') {
-      return;
+    if (this._checkProperty('replyTo', replyTo, [this._checkUndefined])) {
+      if (typeof replyTo !== 'string' && typeof replyTo.email !== 'string') {
+        throw new Error('String or address object expected for `replyTo`');
+      }
+      this.replyTo = EmailAddress.create(replyTo);
     }
-    if (typeof replyTo !== 'string' && typeof replyTo.email !== 'string') {
-      throw new Error('String or address object expected for `replyTo`');
-    }
-    this.replyTo = EmailAddress.create(replyTo);
   }
 
   /**
    * Set subject
    */
   setSubject(subject) {
-    if (typeof subject === 'undefined') {
-      return;
-    }
-    if (typeof subject !== 'string') {
-      throw new Error('String expected for `subject`');
-    }
-    this.subject = subject;
+    this._setProperty('subject', subject, 'string');
   }
 
   /**
    * Set send at
    */
   setSendAt(sendAt) {
-    if (typeof sendAt === 'undefined') {
-      return;
+    if (this._checkProperty('sendAt', sendAt, [this._checkUndefined, this._createCheckThatThrows(Number.isInteger, 'Integer expected for `sendAt`')])) {
+      this.sendAt = sendAt;
     }
-    if (!Number.isInteger(sendAt)) {
-      throw new Error('Integer expected for `sendAt`');
-    }
-    this.sendAt = sendAt;
   }
 
   /**
    * Set template ID, also checks if the template is dynamic or legacy
    */
   setTemplateId(templateId) {
-    if (typeof templateId === 'undefined') {
-      return;
+    if (this._setProperty('templateId', templateId, 'string')) {
+      if (templateId.indexOf('d-') === 0) {
+        this.isDynamic = true;
+      }
     }
-    if (typeof templateId !== 'string') {
-      throw new Error('String expected for `templateId`');
-    }
-
-    if (templateId.indexOf('d-') === 0) {
-      this.isDynamic = true;
-    }
-
-    this.templateId = templateId;
   }
 
   /**
    * Set batch ID
    */
   setBatchId(batchId) {
-    if (typeof batchId === 'undefined') {
-      return;
-    }
-    if (typeof batchId !== 'string') {
-      throw new Error('String expected for `batchId`');
-    }
-    this.batchId = batchId;
+    this._setProperty('batchId', batchId, 'string');
   }
 
   /**
    * Set IP pool name
    */
   setIpPoolName(ipPoolName) {
-    if (typeof ipPoolName === 'undefined') {
-      return;
-    }
-    if (typeof ipPoolName !== 'string') {
-      throw new Error('String expected for `ipPoolName`');
-    }
-    this.ipPoolName = ipPoolName;
+    this._setProperty('ipPoolName', ipPoolName, 'string');
   }
 
   /**
    * Set ASM
    */
   setAsm(asm) {
-    if (typeof asm === 'undefined') {
-      return;
+    if (this._checkProperty('asm', asm, [this._checkUndefined, this._createTypeCheck('object')])) {
+      if (typeof asm.groupId !== 'number') {
+        throw new Error('Expected `asm` to include an integer in its `groupId` field');
+      }
+      if (asm.groupsToDisplay &&
+        (!Array.isArray(asm.groupsToDisplay) || !asm.groupsToDisplay.every(group => typeof group === 'number'))) {
+        throw new Error('Array of integers expected for `asm.groupsToDisplay`');
+      }
+      this.asm = asm;
     }
-    if (typeof asm !== 'object') {
-      throw new Error('Object expected for `asm`');
-    }
-    if (typeof asm.groupId !== 'number') {
-      throw new Error('Expected `asm` to include an integer in its `groupId` field');
-    }
-    if (asm.groupsToDisplay &&
-      (!Array.isArray(asm.groupsToDisplay) || !asm.groupsToDisplay.every(group => typeof group === 'number'))) {
-      throw new Error('Array of integers expected for `asm.groupsToDisplay`');
-    }
-    this.asm = asm;
   }
 
   /**
    * Set personalizations
    */
   setPersonalizations(personalizations) {
-    if (typeof personalizations === 'undefined') {
+    if (!this._doArrayCheck('personalizations', personalizations)) {
       return;
     }
-    if (!Array.isArray(personalizations) ||
-      !personalizations.every(personalization => typeof personalization === 'object')) {
+
+    if (!personalizations.every(personalization => typeof personalization === 'object')) {
       throw new Error('Array of objects expected for `personalizations`');
     }
 
@@ -252,7 +217,6 @@ class Mail {
    * Add personalization
    */
   addPersonalization(personalization) {
-
     //We should either send substitutions or dynamicTemplateData
     //depending on the templateId
     if (this.isDynamic && personalization.substitutions) {
@@ -295,28 +259,22 @@ class Mail {
    * Set substitutions
    */
   setSubstitutions(substitutions) {
-    if (typeof substitutions === 'undefined') {
-      return;
-    }
-    if (typeof substitutions !== 'object') {
-      throw new Error('Object expected for `substitutions`');
-    }
-    this.substitutions = substitutions;
+    this._setProperty('substitutions', substitutions, 'object');
   }
 
   /**
    * Set substitution wrappers
    */
-  setSubstitutionWrappers(wrappers) {
-    if (typeof wrappers === 'undefined') {
-      return;
+  setSubstitutionWrappers(substitutionWrappers) {
+    let lengthCheck = (propertyName, value) => {
+      if (!Array.isArray(value) || value.length !== 2) {
+        throw new Error('Array expected with two elements for `' + propertyName + '`');
+      }
+    };
+
+    if (this._checkProperty('substitutionWrappers', substitutionWrappers, [this._checkUndefined, lengthCheck])) {
+      this.substitutionWrappers = substitutionWrappers;
     }
-    if (!Array.isArray(wrappers) || wrappers.length !== 2) {
-      throw new Error(
-        'Array expected with two elements for `substitutionWrappers`'
-      );
-    }
-    this.substitutionWrappers = wrappers;
   }
 
   /**
@@ -365,178 +323,140 @@ class Mail {
    * Set content
    */
   setContent(content) {
-    if (typeof content === 'undefined') {
-      return;
+    if (this._doArrayCheck('content', content)) {
+      if (!content.every(contentField => typeof contentField === 'object')) {
+        throw new Error('Expected each entry in `content` to be an object');
+      }
+      if (!content.every(contentField => typeof contentField.type === 'string')) {
+        throw new Error('Expected each `content` entry to contain a `type` string');
+      }
+      if (!content.every(contentField => typeof contentField.value === 'string')) {
+        throw new Error('Expected each `content` entry to contain a `value` string');
+      }
+      this.content = content;
     }
-    if (!Array.isArray(content)) {
-      throw new Error('Array expected for `content`');
-    }
-    if (!content.every(contentField => typeof contentField === 'object')) {
-      throw new Error('Expected each entry in `content` to be an object');
-    }
-    if (!content.every(contentField => typeof contentField.type === 'string')) {
-      throw new Error('Expected each `content` entry to contain a `type` string');
-    }
-    if (!content.every(contentField => typeof contentField.value === 'string')) {
-      throw new Error('Expected each `content` entry to contain a `value` string');
-    }
-    this.content = content;
   }
 
   /**
    * Add content
    */
   addContent(content) {
-    if (typeof content !== 'object') {
-      throw new Error('Object expected for `content`');
+    if (this._checkProperty('content', content, [this._createTypeCheck('object')])) {
+      this.content.push(content);
     }
-    this.content.push(content);
   }
 
   /**
    * Add text content
    */
   addTextContent(text) {
-    if (typeof text === 'undefined') {
-      return;
+    if (this._checkProperty('text', text, [this._checkUndefined, this._createTypeCheck('string')])) {
+      this.addContent({
+        value: text,
+        type: 'text/plain',
+      });
     }
-    if (typeof text !== 'string') {
-      throw new Error('String expected for `text`');
-    }
-    this.addContent({
-      value: text,
-      type: 'text/plain',
-    });
   }
 
   /**
    * Add HTML content
    */
   addHtmlContent(html) {
-    if (typeof html === 'undefined') {
-      return;
+    if (this._checkProperty('html', html, [this._checkUndefined, this._createTypeCheck('string')])) {
+      this.addContent({
+        value: html,
+        type: 'text/html',
+      });
     }
-    if (typeof html !== 'string') {
-      throw new Error('String expected for `html`');
-    }
-    this.addContent({
-      value: html,
-      type: 'text/html',
-    });
   }
 
   /**
    * Set attachments
    */
   setAttachments(attachments) {
-    if (typeof attachments === 'undefined') {
-      return;
+    if (this._doArrayCheck('attachments', attachments)) {
+      if (!attachments.every(attachment => typeof attachment.content === 'string')) {
+        throw new Error('Expected each attachment to contain a `content` string');
+      }
+      if (!attachments.every(attachment => typeof attachment.filename === 'string')) {
+        throw new Error('Expected each attachment to contain a `filename` string');
+      }
+      if (!attachments.every(attachment => !attachment.type || typeof attachment.type === 'string')) {
+        throw new Error('Expected the attachment\'s `type` field to be a string');
+      }
+      if (!attachments.every(attachment => !attachment.disposition || typeof attachment.disposition === 'string')) {
+        throw new Error('Expected the attachment\'s `disposition` field to be a string');
+      }
+      this.attachments = attachments;
     }
-    if (!Array.isArray(attachments)) {
-      throw new Error('Array expected for `attachments`');
-    }
-    if (!attachments.every(attachment => typeof attachment.content === 'string')) {
-      throw new Error('Expected each attachment to contain a `content` string');
-    }
-    if (!attachments.every(attachment => typeof attachment.filename === 'string')) {
-      throw new Error('Expected each attachment to contain a `filename` string');
-    }
-    if (!attachments.every(attachment => !attachment.type || typeof attachment.type === 'string')) {
-      throw new Error('Expected the attachment\'s `type` field to be a string');
-    }
-    if (!attachments.every(attachment => !attachment.disposition || typeof attachment.disposition === 'string')) {
-      throw new Error('Expected the attachment\'s `disposition` field to be a string');
-    }
-    this.attachments = attachments;
   }
 
   /**
    * Add attachment
    */
   addAttachment(attachment) {
-    if (typeof attachment !== 'object') {
-      throw new Error('Object expected for `attachment`');
+    if (this._checkProperty('attachment', attachment, [this._checkUndefined, this._createTypeCheck('object')])) {
+      this.attachments.push(attachment);
     }
-    this.attachments.push(attachment);
   }
 
   /**
    * Set categories
    */
   setCategories(categories) {
-    if (typeof categories === 'undefined') {
-      return;
-    }
+    let allElementsAreStrings = (propertyName, value) => {
+      if (!Array.isArray(value) || !value.every(item => typeof item === 'string')) {
+        throw new Error('Array of strings expected for `' + propertyName + '`');
+      }
+    };
+
     if (typeof categories === 'string') {
       categories = [categories];
     }
-    if (!Array.isArray(categories) ||
-      !categories.every(cat => typeof cat === 'string')) {
-      throw new Error('Array of strings expected for `categories`');
+
+    if (this._checkProperty('categories', categories, [this._checkUndefined, allElementsAreStrings])) {
+      this.categories = categories;
     }
-    this.categories = categories;
   }
 
   /**
    * Add category
    */
   addCategory(category) {
-    if (typeof category !== 'string') {
-      throw new Error('String expected for `category`');
+    if (this._checkProperty('category', category, [this._createTypeCheck('string')])) {
+      this.categories.push(category);
     }
-    this.categories.push(category);
   }
 
   /**
    * Set headers
    */
   setHeaders(headers) {
-    if (typeof headers === 'undefined') {
-      return;
-    }
-    if (typeof headers !== 'object') {
-      throw new Error('Object expected for `headers`');
-    }
-    this.headers = headers;
+    this._setProperty('headers', headers, 'object');
   }
 
   /**
    * Add a header
    */
   addHeader(key, value) {
-    if (typeof key !== 'string') {
-      throw new Error('String expected for header key');
+    if (this._checkProperty('key', key, [this._createTypeCheck('string')])
+      && this._checkProperty('value', value, [this._createTypeCheck('string')])) {
+      this.headers[key] = value;
     }
-    if (typeof value !== 'string') {
-      throw new Error('String expected for header value');
-    }
-    this.headers[key] = value;
   }
 
   /**
    * Set sections
    */
   setSections(sections) {
-    if (typeof sections === 'undefined') {
-      return;
-    }
-    if (typeof sections !== 'object') {
-      throw new Error('Object expected for `sections`');
-    }
-    this.sections = sections;
+    this._setProperty('sections', sections, 'object');
   }
 
   /**
    * Set custom args
    */
   setCustomArgs(customArgs) {
-    if (typeof customArgs === 'undefined') {
-      return;
-    }
-    if (typeof customArgs !== 'object') {
-      throw new Error('Object expected for `customArgs`');
-    }
-    this.customArgs = customArgs;
+    this._setProperty('customArgs', customArgs, 'object');
   }
 
   /**
@@ -668,6 +588,84 @@ class Mail {
 
     //Create instance
     return new Mail(data);
+  }
+
+  /**************************************************************************
+   * helpers for property-setting checks
+   ***/
+
+  /**
+   * Perform a set of checks on the new property value. Returns true if all
+   * checks complete successfully without throwing errors or returning true.
+   */
+  _checkProperty(propertyName, value, checks) {
+    return !checks.some((e) => e(propertyName, value));
+  }
+
+  /**
+   * Set a property with normal undefined and type-checks
+   */
+  _setProperty(propertyName, value, propertyType) {
+    let propertyChecksPassed = this._checkProperty(
+      propertyName,
+      value,
+      [this._checkUndefined, this._createTypeCheck(propertyType)]);
+
+    if (propertyChecksPassed) {
+      this[propertyName] = value;
+    }
+
+    return propertyChecksPassed;
+  }
+
+  /**
+   * Fail if the value is undefined.
+   */
+  _checkUndefined(propertyName, value) {
+    return typeof value === 'undefined';
+  }
+
+  /**
+   * Create and return a function that checks for a given type
+   */
+  _createTypeCheck(propertyType) {
+    return (propertyName, value) => {
+      if (typeof value !== propertyType) {
+        throw new Error(propertyType + ' expected for `' + propertyName + '`');
+      }
+    };
+  }
+
+  /**
+   * Create a check out of a callback. If the callback
+   * returns false, the check will throw an error.
+   */
+  _createCheckThatThrows(check, errorString) {
+    return (propertyName, value) => {
+      if (!check(value)) {
+        throw new Error(errorString);
+      }
+    };
+  }
+
+  /**
+   * Set an array property after checking that the new value is an
+   * array.
+   */
+  _setArrayProperty(propertyName, value) {
+    if (this._doArrayCheck(propertyName, value)) {
+      this[propertyName] = value;
+    }
+  }
+
+  /**
+   * Check that a value isn't undefined and is an array.
+   */
+  _doArrayCheck(propertyName, value) {
+    return this._checkProperty(
+      propertyName,
+      value,
+      [this._checkUndefined, this._createCheckThatThrows(Array.isArray, 'Array expected for`' + propertyName + '`')]);
   }
 }
 
