@@ -1,41 +1,73 @@
-# SendGrid Community Code of Conduct
+# Contributor Covenant Code of Conduct
 
-The SendGrid open source community is made up of members from around the globe with a diverse set of skills, personalities, and experiences. It is through these differences that our community experiences successes and continued growth. When you're working with members of the community, we encourage you to follow these guidelines, which help steer our interactions and strive to maintain a positive, successful and growing community. 
+## Our Pledge
 
-### Be Open
-Members of the community are open to collaboration, whether it's on pull requests, code reviews, approvals, issues or otherwise. We're receptive to constructive comments and criticism, as the experiences and skill sets of all members contribute to the whole of our efforts. We're accepting of all who wish to take part in our activities, fostering an environment where anyone can participate, and everyone can make a difference.
+In the interest of fostering an open and welcoming environment, we as
+contributors and maintainers pledge to making participation in our project and
+our community a harassment-free experience for everyone, regardless of age, body
+size, disability, ethnicity, sex characteristics, gender identity and expression,
+level of experience, education, socio-economic status, nationality, personal
+appearance, race, religion, or sexual identity and orientation.
 
-### Be Considerate
-Members of the community are considerate of their peers, which include other contributors and users of SendGrid. We're thoughtful when addressing the efforts of others, keeping in mind that often the labor was completed with the intent of the good of the community. We're attentive in our communications, whether in person or online, and we're tactful when approaching differing views.
+## Our Standards
 
-### Be Respectful
-Members of the community are respectful. We're respectful of others, their positions, their skills, their commitments and their efforts. We're respectful of the volunteer efforts that permeate the SendGrid community. We're respectful of the processes outlined in the community, and we work within them. When we disagree, we are courteous in raising our issues.  Overall, we're good to each other. We contribute to this community not because we have to, but because we want to. If we remember that, these guidelines will come naturally.
+Examples of behavior that contributes to creating a positive environment
+include:
 
-## Additional Guidance 
+- Using welcoming and inclusive language
+- Being respectful of differing viewpoints and experiences
+- Gracefully accepting constructive criticism
+- Focusing on what is best for the community
+- Showing empathy towards other community members
 
-### Disclose Potential Conflicts of Interest
-Community discussions often involve interested parties. We expect participants to be aware when they are conflicted due to employment or other projects they are involved in and disclose those interests to other project members. When in doubt, over-disclose. Perceived conflicts of interest are important to address so that the community’s decisions are credible even when unpopular, difficult or favorable to the interests of one group over another.
+Examples of unacceptable behavior by participants include:
 
-### Interpretation
-This Code is not exhaustive or complete. It is not a rulebook; it serves to distill our common understanding of a collaborative, shared environment and goals. We expect it to be followed in spirit as much as in the letter.  When in doubt, try to abide by [SendGrid’s cultural values](https://sendgrid.com/blog/employee-engagement-the-4h-way) defined by our “4H’s”: Happy, Hungry, Humble and Honest.  
+- The use of sexualized language or imagery and unwelcome sexual attention or
+  advances
+- Trolling, insulting/derogatory comments, and personal or political attacks
+- Public or private harassment
+- Publishing others' private information, such as a physical or electronic
+  address, without explicit permission
+- Other conduct which could reasonably be considered inappropriate in a
+  professional setting
 
-### Enforcement
-Most members of the SendGrid community always comply with this Code, not because of the existence of this Code, but because they have long experience participating in open source communities where the conduct described above is normal and expected. However, failure to observe this Code may be grounds for suspension, reporting the user for abuse or changing permissions for outside contributors.
+## Our Responsibilities
 
-## If you have concerns about someone’s conduct
-**Initiate Direct Contact** - It is always appropriate to email a community member (if contact information is available), mention that you think their behavior was out of line, and (if necessary) point them to this Code.
+Project maintainers are responsible for clarifying the standards of acceptable
+behavior and are expected to take appropriate and fair corrective action in
+response to any instances of unacceptable behavior.
 
-**Discuss Publicly** - Discussing publicly is always acceptable. Note, though, that approaching the person directly may be better, as it tends to make them less defensive, and it respects the time of other community members, so you probably want to try direct contact first.
+Project maintainers have the right and responsibility to remove, edit, or
+reject comments, commits, code, wiki edits, issues, and other contributions
+that are not aligned to this Code of Conduct, or to ban temporarily or
+permanently any contributor for other behaviors that they deem inappropriate,
+threatening, offensive, or harmful.
 
-**Contact the Moderators** - You can reach the SendGrid moderators by emailing dx@sendgrid.com.
+## Scope
 
-## Submission to SendGrid Repositories
-Finally, just a reminder, changes to the SendGrid repositories will only be accepted upon completion of the [SendGrid Contributor Agreement](https://cla.sendgrid.com). 
+This Code of Conduct applies both within project spaces and in public spaces
+when an individual is representing the project or its community. Examples of
+representing a project or community include using an official project e-mail
+address, posting via an official social media account, or acting as an appointed
+representative at an online or offline event. Representation of a project may be
+further defined and clarified by project maintainers.
+
+## Enforcement
+
+Instances of abusive, harassing, or otherwise unacceptable behavior may be
+reported by contacting the project team at open-source@twilio.com. All
+complaints will be reviewed and investigated and will result in a response that
+is deemed necessary and appropriate to the circumstances. The project team is
+obligated to maintain confidentiality with regard to the reporter of an incident.
+Further details of specific enforcement policies may be posted separately.
+
+Project maintainers who do not follow or enforce the Code of Conduct in good
+faith may face temporary or permanent repercussions as determined by other
+members of the project's leadership.
 
 ## Attribution
 
-SendGrid thanks the following, on which it draws for content and inspiration:
+This Code of Conduct is adapted from the [Contributor Covenant][homepage], version 1.4,
+available at https://www.contributor-covenant.org/version/1/4/code-of-conduct.html
 
-* [Python Community Code of Conduct](https://www.python.org/psf/codeofconduct/)  
-* [Open Source Initiative General Code of Conduct](https://opensource.org/codeofconduct) 
-* [Apache Code of Conduct](https://www.apache.org/foundation/policies/conduct.html) 
+[homepage]: https://www.contributor-covenant.org

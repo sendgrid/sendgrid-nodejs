@@ -1,136 +1,88 @@
-root: true
-extends: eslint:recommended
-parserOptions:
-  ecmaVersion: 6
-  ecmaFeatures:
-    impliedStrict: true
-  sourceType: module
 env:
   es6: true
   node: true
   mocha: true
   jasmine: true
 rules:
-  linebreak-style:
-    - error
-    - unix
-  max-len:
-    - warn
-    - code: 80
-      tabWidth: 2
-      ignoreComments: true
-      ignoreUrls: true
-  indent:
-    - error
-    - 2
-    - SwitchCase: 1
-      VariableDeclarator:
-        let: 2
-        const: 3
-  semi:
-    - error
-    - always
-  consistent-this:
-    - error
-    - self
-    - $ctrl
-  quotes:
-    - error
-    - single
-    - allowTemplateLiterals: true
-  curly:
-    - error
-    - all
-  comma-dangle:
-    - error
-    - always-multiline
-  new-cap:
-    - error
-    - newIsCap: true
-      capIsNew: true
-      properties: false
   array-bracket-spacing:
-    - error
-    - never
-  arrow-spacing:
-    - error
-    - before: true
-      after: true
-  block-spacing:
-    - error
-    - always
-  comma-spacing:
-    - error
-    - before: false
-      after: true
-  computed-property-spacing:
-    - error
-    - never
-  generator-star-spacing:
-    - error
-    - before: true
-      after: false
-  key-spacing:
-    - error
-    - beforeColon: false
-      afterColon: true
-      mode: minimum
-  keyword-spacing:
-    - error
-    - before: true
-  semi-spacing:
-    - error
-    - before: false
-      after: true
-  space-in-parens:
-    - error
-    - never
-  space-unary-ops:
-    - error
-    - words: true
-      nonwords: false
-  space-before-function-paren:
-    - error
-    - never
-  space-before-blocks:
-    - error
-    - always
-  yoda:
-    - error
-    - never
-  wrap-iife:
-    - error
-    - outside
-  eqeqeq:
-    - error
-    - always
-  newline-per-chained-call:
-    - error
-    - ignoreChainWithDepth: 3
-  one-var-declaration-per-line:
-    - error
-    - initializations
+  - 2
+  - never
+  - {}
   brace-style:
-    - error
-    - stroustrup
-  no-implicit-coercion:
-    - error
-    - boolean: false
-  no-multiple-empty-lines:
-    - error
-    - max: 1
-  eol-last: error
-  dot-notation: error
-  space-infix-ops: error
-  no-with: error
-  no-unreachable: error
-  no-redeclare: error
-  no-unexpected-multiline: error
-  no-multi-spaces: error
-  no-multi-str: error
-  no-trailing-spaces: error
-  no-mixed-spaces-and-tabs: error
-  no-spaced-func: error
-  no-whitespace-before-property: error
-  no-lonely-if: error
-  no-console: off
+  - 2
+  - 1tbs
+  - allowSingleLine: true
+  camelcase: 0
+  comma-dangle:
+  - 2
+  - always-multiline
+  comma-spacing:
+  - 2
+  - after: true
+    before: false
+  comma-style:
+  - 2
+  - last
+  curly:
+  - 2
+  - all
+  dot-notation: 0
+  eol-last: 2
+  indent:
+  - 2
+  - 2
+  - SwitchCase: 1
+  key-spacing:
+  - 2
+  - afterColon: true
+    beforeColon: false
+  keyword-spacing:
+  - 2
+  - {}
+  linebreak-style:
+  - 2
+  - unix
+  no-empty:
+  - 2
+  - allowEmptyCatch: true
+  no-mixed-spaces-and-tabs: 2
+  no-multi-str: 2
+  no-multiple-empty-lines: 2
+  no-spaced-func: 2
+  no-trailing-spaces: 2
+  no-with: 2
+  one-var:
+  - 2
+  - never
+  quote-props:
+  - 2
+  - as-needed
+  quotes:
+  - 2
+  - single
+  semi:
+  - 2
+  - always
+  semi-spacing:
+  - 2
+  - after: true
+    before: false
+  space-before-blocks:
+  - 2
+  - always
+  space-before-function-paren:
+  - 2
+  - anonymous: ignore
+    named: never
+  space-in-parens:
+  - 2
+  - never
+  space-infix-ops: 2
+  space-unary-ops:
+  - 2
+  - nonwords: false
+    words: false
+  wrap-iife: 2
+  yoda:
+  - 2
+  - never

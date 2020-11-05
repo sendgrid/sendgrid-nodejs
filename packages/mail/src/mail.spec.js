@@ -5,14 +5,12 @@
  */
 const sgMail = require('./mail');
 const sgClient = sgMail.client;
-const baseUrl = 'http://localhost:4010/';
 
 /**
  * Setup client
  */
 before(() => {
   sgClient.setApiKey('SendGrid API Key');
-  sgClient.setDefaultRequest('baseUrl', baseUrl);
 });
 
 /**
@@ -48,4 +46,11 @@ describe('sgMail.send()', () => {
         expect(response.statusCode).to.equal(201);
       });
   });
+
+  it('should throw an error if callback is not a function', () => {
+    return expect(function() {
+      sgMail.send(data, false, {});
+    }).to.throw(Error);
+  });
 });
+

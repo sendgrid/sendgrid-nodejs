@@ -1,22 +1,24 @@
-import {EmailData, EmailJSON} from "./email-address";
+import { EmailData, EmailJSON } from "./email-address";
 
 export interface PersonalizationData {
-  to: EmailData|EmailData[],
-  cc?: EmailData|EmailData[],
-  bcc?: EmailData|EmailData[],
+  to: EmailData | EmailData[],
+  cc?: EmailData | EmailData[],
+  bcc?: EmailData | EmailData[],
   subject?: string;
   headers?: { [key: string]: string };
   substitutions?: { [key: string]: string };
+  dynamicTemplateData?: { [key: string]: any; };
   customArgs?: { [key: string]: string };
   sendAt?: number;
 }
 
 export interface PersonalizationJSON {
-  to: EmailJSON|EmailJSON[];
+  to: EmailJSON | EmailJSON[];
   cc?: EmailJSON[];
   bcc?: EmailJSON[];
   headers?: { [key: string]: string; };
   substitutions?: { [key: string]: string; };
+  dynamic_template_data?: { [key: string]: string; };
   custom_args?: { [key: string]: string; };
   subject?: string;
   send_at?: number;
@@ -26,7 +28,7 @@ export default class Personalization {
   constructor(data?: PersonalizationData);
 
   fromData(data: PersonalizationData): void;
-  
+
   /**
    * Set subject
    */
@@ -40,7 +42,7 @@ export default class Personalization {
   /**
    * Set to
    */
-  setTo(to: EmailData|EmailData[]): void;
+  setTo(to: EmailData | EmailData[]): void;
 
   /**
    * Add a single to
@@ -50,7 +52,7 @@ export default class Personalization {
   /**
    * Set cc
    */
-  setCc(cc: EmailData|EmailData[]): void;
+  setCc(cc: EmailData | EmailData[]): void;
 
   /**
    * Add a single cc
@@ -60,7 +62,7 @@ export default class Personalization {
   /**
    * Set bcc
    */
-  setBcc(bcc: EmailData|EmailData[]): void;
+  setBcc(bcc: EmailData | EmailData[]): void;
 
   /**
    * Add a single bcc
@@ -106,6 +108,11 @@ export default class Personalization {
    * Set substitution wrappers
    */
   setSubstitutionWrappers(wrappers: string[]): void;
+
+  /**
+   * Set dynamic template data
+   */
+  setDynamicTemplateData(dynamicTemplateData: { [key: string]: any }): void;
 
   /**
    * To JSON

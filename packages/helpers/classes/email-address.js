@@ -10,7 +10,7 @@ const splitNameEmail = require('../helpers/split-name-email');
  */
 class EmailAddress {
 
-	/**
+  /**
 	 * Constructor
 	 */
   constructor(data) {
@@ -71,7 +71,7 @@ class EmailAddress {
     this.email = email;
   }
 
-	/**
+  /**
 	 * To JSON
 	 */
   toJSON() {

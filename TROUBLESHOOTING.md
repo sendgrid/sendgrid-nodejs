@@ -1,7 +1,8 @@
+If you have an issue logging into your Twilio SendGrid account, please read this [document](https://sendgrid.com/docs/ui/account-and-settings/troubleshooting-login/). For any questions regarding login issues, please contact our [support team](https://support.sendgrid.com).
+
 If you have a non-library SendGrid issue, please contact our [support team](https://support.sendgrid.com).
 
 If you can't find a solution below, please open an [issue](https://github.com/sendgrid/sendgrid-nodejs/issues).
-
 
 ## Table of Contents
 
@@ -13,6 +14,7 @@ If you can't find a solution below, please open an [issue](https://github.com/se
 * [Environment Variables and Your SendGrid API Key](#environment)
 * [Using the Package Manager](#package-manager)
 * [Viewing the Request Body](#request-body)
+* [Wrapping Text](#wrapping-text)
 
 <a name="migrating"></a>
 ## Migrating from v2 to v3
@@ -24,7 +26,7 @@ Please review [our guide](https://sendgrid.com/docs/Classroom/Send/v3_Mail_Send/
 
 [Here](https://github.com/sendgrid/sendgrid-nodejs/tree/b57b32caa47608a15d23940a0dedc82a91e7b6aa) is the last working version with v2 support.
 
-The following recommended installation requires [npm](https://npmjs.org/). If you are unfamiliar with npm, see the [npm docs](https://npmjs.org/doc/). Npm comes installed with Node.js since node version 0.8.x therefore you likely already have it.
+The following recommended installation requires [npm](https://npmjs.org/). If you are unfamiliar with npm, see the [npm docs](https://npmjs.org/doc/). Npm comes installed with Node.js since node version 0.8.x, therefore, you likely already have it.
 
 Add the following to your `package.json` file:
 
@@ -59,22 +61,22 @@ Click the "Clone or download" green button in [GitHub](https://github.com/sendgr
 <a name="testing"></a>
 ## Testing v3 /mail/send Calls Directly
 
-[Here](https://sendgrid.com/docs/Classroom/Send/v3_Mail_Send/curl_examples.html) are some cURL examples for common use cases.
+[Here](https://sendgrid.com/docs/for-developers/sending-email/curl-examples/) are some cURL examples for everyday use cases.
 
 <a name="error"></a>
 ## Error Messages
 
-To read the error message returned by SendGrid's API, please see [this example](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/mail/USE_CASES.md#successfailureerrors).
+To read the error message returned by SendGrid's API, please see [this example](packages/mail/USE_CASES.md#success-failure-errors).
 
 <a name="versions"></a>
 ## Versions
 
-We follow the MAJOR.MINOR.PATCH versioning scheme as described by [SemVer.org](http://semver.org). Therefore, we recommend that you always pin (or vendor) the particular version you are working with to your code and never auto-update to the latest version. Especially when there is a MAJOR point release, since that is guaranteed to be a breaking change. Changes are documented in the [CHANGELOG](https://github.com/sendgrid/sendgrid-nodejs/blob/master/CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases) section.
+We follow the MAJOR.MINOR.PATCH versioning scheme as described by [SemVer.org](http://semver.org). Therefore, we recommend that you always pin (or vendor) the particular version you are utilizing with your code and never auto-update to the latest version. Especially when there is a MAJOR point release since that is guaranteed to be a breaking change. Changes are documented in the [CHANGELOG](CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases) section.
 
 <a name="environment"></a>
 ## Environment Variables and Your SendGrid API Key
 
-All of our examples assume you are using [environment variables](https://github.com/sendgrid/sendgrid-nodejs#setup-environment-variables) to hold your SendGrid API key.
+All of our examples assume you are using [environment variables](packages/client#setup-environment-variables) to hold your SendGrid API key.
 
 If you choose to add your SendGrid API key directly (not recommended):
 
@@ -84,7 +86,13 @@ becomes
 
 `'SENDGRID_API_KEY'`
 
-In the first case SENDGRID_API_KEY is in reference to the name of the environment variable, while the second case references the actual SendGrid API Key.
+In the first case, SENDGRID_API_KEY is in reference to the name of the environment variable, while the second case references the actual SendGrid API Key.
+
+If you're using Kubernetes Secrets and passing the API Keys to the Environment using it, You may find that there is a `\n` character in the environment variable. You can use the trim function to remove it like this:
+
+```
+process.env.SENDGRID_API_KEY.trim();
+```
 
 <a name="package-manager"></a>
 ## Using the Package Manager
@@ -126,3 +134,27 @@ const mail = Mail.create(data);
 const body = mail.toJSON();
 console.log(body);
 ```
+
+<a name="wrapping-text"></a>
+## Wrapping Text
+
+You can write blog posts using e-mail with the help of SendGrid API, like so:
+```javascript
+sgMail.setApiKey(process.env.SendGrid_API_KEY);
+let msg = {
+  to: '<your-name>@blogger.com',
+  from: '<your-name>@gmail.com',
+  subject: title,
+  html: html,
+};
+sgMail.send(msg);
+``` 
+You can also wrap the text in the HTML to make a multi-line blog post:
+```javascript
+<div style="white-space: pre-wrap;">
+  <code>
+    int a = 10;
+    int b = 10;
+    int d = 10;
+  </code>
+</div>
