@@ -19,9 +19,6 @@ Hello! Thank you for choosing to help contribute to one of the Twilio SendGrid o
 - [Creating a Pull Request<a name="creating-a-pull-request"></a>](#creating-a-pull-requesta-name%22creating-a-pull-request%22a)
 - [Code Reviews](#code-reviews)
 
-<a name="roadmap"></a>
-We use [Milestones](https://github.com/sendgrid/sendgrid-nodejs/milestones) to help define current roadmaps, please feel free to grab an issue from the current milestone. Please indicate that you have begun work on it to avoid collisions. Once a PR is made, community review, comments, suggestions, and additional PRs are welcomed and encouraged.
-
 There are a few ways to contribute, which we'll enumerate below:
 
 <a name="feature-request"></a>
@@ -49,7 +46,7 @@ Before you decide to create a new issue, please try the following:
 
 ### Please use our Bug Report Template
 
-To make the process easier, we've included a [sample bug report template](https://github.com/sendgrid/sendgrid-nodejs/blob/master/ISSUE_TEMPLATE.md) (borrowed from [Ghost](https://github.com/TryGhost/Ghost/)). The template uses [GitHub flavored markdown](https://help.github.com/articles/github-flavored-markdown/) for formatting.
+In order to make the process easier, we've included a [sample bug report template](ISSUE_TEMPLATE.md).
 
 <a name="improvements-to-the-codebase"></a>
 ## Improvements to the Codebase
@@ -62,8 +59,8 @@ We welcome direct contributions to the sendgrid-nodejs code base. Thank you!
 
 ##### Prerequisites #####
 
-- Node.js version 6, 7 or 8
-- Please see [package.json](https://github.com/sendgrid/sendgrid-nodejs/tree/master/package.json)
+- Node.js version 6, 8 or >=10
+- Please see [package.json](package.json)
 
 ##### Initial setup: #####
 
@@ -104,12 +101,12 @@ node example.js
 <a name="understanding-the-codebase"></a>
 ## Understanding the Code Base
 
-This repo is organized as a monorepo with the packages residing in the `./packages` directory. Please see the root [README.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/README.md) for details.
+This repo is organized as a monorepo with the packages residing in the `./packages` directory. Please see the root [README.md](README.md) for details.
 
 <a name="codebase-overview"></a>
 ## Codebase Overview
 
-This repo is subdivided into 6 main [packages](https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages). Each package has its dependencies (internal or external) and its source code in the `src` folder. Each package also has its isolated README files, use cases, and usage.md files.
+This repo is subdivided into 6 main [packages](packages). Each package has its dependencies (internal or external) and its source code in the `src` folder. Each package also has its isolated README files, use cases, and usage.md files.
 
 To install a particular packages' dependencies.
 ```bash
@@ -138,13 +135,9 @@ These are a set of utility functions which all the modules use. Some of them are
 
 All PRs require passing tests before the PR will be reviewed.
 
-To run tests, please install Prism first by either running `yarn prism:install` or manually downloading from [the Prism website](https://stoplight.io/platform/prism/).
+The integration tests require a Twilio SendGrid mock API in order to execute. We've simplified setting this up using Docker to run the tests. You will just need [Docker Desktop](https://docs.docker.com/get-docker/) and `make`.
 
-Next, start Prism in one console window using `yarn prism`.
-
-Open a new console window and run `lerna bootstrap`.
-
-And finally, run `yarn test`, or specific tests e.g. `yarn test:mail` or `yarn test:client`.
+Once these are available, simply execute the Docker test target to run all tests: `make test-docker`. This command can also be used to open an interactive shell into the container where this library is installed. To start a *bash* shell for example, use this command: `command=bash make test-docker`.
 
 <a name="style-guidelines-and-naming-conventions"></a>
 ## Style Guidelines & Naming Conventions

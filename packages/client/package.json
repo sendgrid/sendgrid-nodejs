@@ -1,7 +1,7 @@
 {
   "name": "@sendgrid/client",
   "description": "Twilio SendGrid NodeJS API client",
-  "version": "7.1.0",
+  "version": "7.3.0",
   "author": "Twilio SendGrid <help@twilio.com> (sendgrid.com)",
   "contributors": [
     "Kyle Partridge <kyle.partridge@sendgrid.com>",
@@ -24,10 +24,10 @@
   },
   "main": "index.js",
   "engines": {
-    "node": ">=6.0.0"
+    "node": "6.* || 8.* || >=10.*"
   },
   "dependencies": {
-    "@sendgrid/helpers": "^7.0.1",
+    "@sendgrid/helpers": "^7.3.0",
     "axios": "^0.19.2"
   },
   "devDependencies": {

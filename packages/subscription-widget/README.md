@@ -4,7 +4,7 @@ Note: This is not an officially supported Twilio SendGrid library
 
 This is an open source repository to add a flexible email subscription widget, like the one shown below, to any website using [Twilio SendGrid](https://sendgrid.com/). After following these directions, you'll be able to add a snippet of HTML to any website that will collect email addresses for your app or business. This widget utilizes [double opt-in](https://sendgrid.com/docs/Glossary/opt_in_email.html) functionality, which means users must confirm their email addresses by clicking an email that is automatically sent to their provided email address.
 
-![alt text](https://github.com/devchas/sendgrid_subscription_widget/blob/master/server/static/sample-form.png "Sample Form")
+![alt text](https://github.com/devchas/sendgrid_subscription_widget/blob/HEAD/server/static/sample-form.png "Sample Form")
 
 ## Requirements
 
@@ -46,12 +46,12 @@ exports.templateId = "dbc810ec-b776-4345-b0c7-02e2bbcd2ab4"
 ```
 
 #### Add Contact to a Custom Marketing List (Optional)
-By default, the widget is configured to save a new contact to your master list of ALL CONTACTS. However, you may choose to save new contacts to a specified custom list as well. To do so, you must first create a new contact list by navigating to Marketing Campaigns -> Contacts, and then click the blue button in the top right corner of the page. Once the list is created, you will require the list ID.  You can find this number by navigating to the list and looking at the URL.  The list ID will be the numbers following the last forward slash.  For example, the list ID of a list with URL of https://sendgrid.com/marketing_campaigns/lists/651138 would be 651138. Once you have created a new list, change the value of exports.listId to the ID of that marketing list.  This value is null by default.
+By default, the widget is configured to save a new contact to your main list of ALL CONTACTS. However, you may choose to save new contacts to a specified custom list as well. To do so, you must first create a new contact list by navigating to Marketing Campaigns -> Contacts, and then click the blue button in the top right corner of the page. Once the list is created, you will require the list ID.  You can find this number by navigating to the list and looking at the URL.  The list ID will be the numbers following the last forward slash.  For example, the list ID of a list with URL of https://sendgrid.com/marketing_campaigns/lists/651138 would be 651138. Once you have created a new list, change the value of exports.listId to the ID of that marketing list.  This value is null by default.
 
 #### Use a Transactional Template (Optional)
 You may also send your confirmation email using [transactional email templates](https://sendgrid.com/solutions/transactional-email-templates/) to give your email a more professional look and feel.  To do so, you must first create a template by following the steps provided in [this guide](https://sendgrid.com/docs/User_Guide/Transactional_Templates/index.html). Once you have created a custom transactional email template, change the value of the exports.templateId to the ID of the template you created. If you choose to use templates, **you must include a substitution tag named "link_insert"**. This will be substituted with the link that signs up a user in the double opt-in process. (Example template below)
 
-![alt text](https://github.com/devchas/sendgrid_subscription_widget/blob/master/server/static/template.png "Transactional Email Template")
+![alt text](https://github.com/devchas/sendgrid_subscription_widget/blob/HEAD/server/static/template.png "Transactional Email Template")
 
 #### Edit the Form with Your Custom URL
 Navigate to the index.html file (server -> static -> index.html) and change the action in the form to reflect your app's URL. Remember to leave "/confirmEmail" at the end. The text in this file is what you will embed in your website. See below for an example.

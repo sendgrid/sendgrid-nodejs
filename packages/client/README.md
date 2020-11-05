@@ -1,8 +1,8 @@
-[![BuildStatus](https://travis-ci.org/sendgrid/sendgrid-nodejs.svg?branch=master)](https://travis-ci.org/sendgrid/sendgrid-nodejs)
+[![BuildStatus](https://travis-ci.com/sendgrid/sendgrid-nodejs.svg?branch=main)](https://travis-ci.com/sendgrid/sendgrid-nodejs)
 [![npm version](https://badge.fury.io/js/%40sendgrid%2Fclient.svg)](https://www.npmjs.com/org/sendgrid)
 [![Email Notifications Badge](https://dx.sendgrid.com/badge/nodejs)](https://dx.sendgrid.com/newsletter/nodejs)
 
-**This package is part of a monorepo, please see [this README](https://github.com/sendgrid/sendgrid-nodejs/blob/master/README.md) for details.**
+**This package is part of a monorepo, please see [this README](../../README.md) for details.**
 
 # Client for the SendGrid v3 Web API
 This client library is used by the other [Twilio SendGrid service packages](https://www.npmjs.com/org/sendgrid) to make requests to the [Twilio SendGrid v3 Web API](https://sendgrid.com/docs/API_Reference/api_v3.html). You can also use it independently to make custom requests to the Twilio SendGrid v3 Web API and other HTTP APIs.
@@ -13,7 +13,7 @@ To be notified when this package is updated, please subscribe to email [notifica
 
 ## Prerequisites
 
-- Node.js version 6, 7 or 8
+- Node.js version 6, 8 or >=10
 - A Twilio SendGrid account, [sign up for free](https://sendgrid.com/free?source=sendgrid-nodejs) to send up to 40,000 emails for the first 30 days or check out [our pricing](https://sendgrid.com/pricing?source=sendgrid-nodejs).
 
 ## Obtain an API Key
@@ -49,7 +49,7 @@ yarn add @sendgrid/client
 <a name="general"></a>
 ## General v3 Web API Usage Example
 
-Please see [USAGE.md](https://github.com/sendgrid/sendgrid-nodejs/blob/master/packages/client/USAGE.md) for all endpoint examples for the [Twilio SendGrid v3 Web API](https://sendgrid.com/docs/API_Reference/api_v3.html).
+Please see [USAGE.md](USAGE.md) for all endpoint examples for the [Twilio SendGrid v3 Web API](https://sendgrid.com/docs/API_Reference/api_v3.html).
 
 ```js
 const client = require('@sendgrid/client');
@@ -68,11 +68,15 @@ client.request(request)
 ## Add a Custom Default Header
 ```js
 client.setDefaultHeader('User-Agent', 'Some user agent string');
+// or
+client.setDefaultHeader({'User-Agent': 'Some user agent string'});
 ```
 
 ## Change Request Defaults
 ```js
 client.setDefaultRequest('baseUrl', 'https://api.sendgrid.com/');
+// or
+client.setDefaultRequest({baseUrl: 'https://api.sendgrid.com/'});
 ```
 
 ## Overwrite Promise Implementation
@@ -94,26 +98,21 @@ sgClient2.setApiKey('KEY2');
 <a name="announcements"></a>
 # Announcements
 
-All updates to this library are documented in our [CHANGELOG](https://github.com/sendgrid/sendgrid-nodejs/blob/master/CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases). You may also subscribe to email [release notifications](https://dx.sendgrid.com/newsletter/nodejs) for releases and breaking changes.
-
-<a name="roadmap"></a>
-# Roadmap
-
-If you are interested in the future direction of this project, please take a look at our open [issues](https://github.com/sendgrid/sendgrid-nodejs/issues) and [pull requests](https://github.com/sendgrid/sendgrid-nodejs/pulls). We would love to hear your feedback.
+All updates to this library are documented in our [CHANGELOG](../../CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases). You may also subscribe to email [release notifications](https://dx.sendgrid.com/newsletter/nodejs) for releases and breaking changes.
 
 <a name="contribute"></a>
 # How to Contribute
 
-We encourage contribution to our libraries (you might even score some nifty swag), please see our [CONTRIBUTING](https://github.com/sendgrid/sendgrid-nodejs/blob/master/CONTRIBUTING.md) guide for details.
+We encourage contribution to our libraries (you might even score some nifty swag), please see our [CONTRIBUTING](../../CONTRIBUTING.md) guide for details.
 
-* [Feature Request](https://github.com/sendgrid/sendgrid-nodejs/tree/master/CONTRIBUTING.md#feature-request)
-* [Bug Reports](https://github.com/sendgrid/sendgrid-nodejs/tree/master/CONTRIBUTING.md#submit-a-bug-report)
-* [Improvements to the Codebase](https://github.com/sendgrid/sendgrid-nodejs/tree/master/CONTRIBUTING.md#improvements-to-the-codebase)
+* [Feature Request](../../CONTRIBUTING.md#feature-request)
+* [Bug Reports](../../CONTRIBUTING.md#submit-a-bug-report)
+* [Improvements to the Codebase](../../CONTRIBUTING.md#improvements-to-the-codebase)
 
 <a name="troubleshooting"></a>
 # Troubleshooting
 
-Please see our [troubleshooting guide](https://github.com/sendgrid/sendgrid-nodejs/blob/master/TROUBLESHOOTING.md) for common library issues.
+Please see our [troubleshooting guide](../../TROUBLESHOOTING.md) for common library issues.
 
 <a name="about"></a>
 # About
@@ -124,4 +123,4 @@ If you need help installing or using the library, please check the [Twilio SendG
 
 If you've instead found a bug in the library or would like new features added, go ahead and open issues or pull requests against this repo!
 
-![Twilio SendGrid Logo](https://github.com/sendgrid/sendgrid-python/raw/master/twilio_sendgrid_logo.png)
+![Twilio SendGrid Logo](../../twilio_sendgrid_logo.png)

@@ -1,6 +1,6 @@
 {
   "name": "@sendgrid/subscription-widget",
-  "version": "7.0.0",
+  "version": "7.2.4",
   "description": "Double opt-in email automation",
   "main": "index.js",
   "scripts": {
@@ -21,7 +21,7 @@
     "access": "public"
   },
   "engines": {
-    "node": ">=6.0.0"
+    "node": "6.* || 8.* || >=10.*"
   },
   "devDependencies": {
     "snyk": "^1.123.0"

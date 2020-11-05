@@ -1,6 +1,6 @@
 # Transactional Templates
 
-For this example, we assume you have created a [transactional template](https://sendgrid.com/docs/User_Guide/Transactional_Templates/index.html) in the UI or via the API. Following is the template content we used for testing.
+For this example, we assume you have created a [dynamic transactional template](https://sendgrid.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/) in the UI or via the API. Following is the template content we used for testing.
 
 Email Subject:
 
@@ -33,7 +33,7 @@ const msg = {
   to: 'recipient@example.org',
   from: 'sender@example.org',
   templateId: 'd-f43daeeaef504760851f727007e0b5d0',
-  dynamic_template_data: {
+  dynamicTemplateData: {
     subject: 'Testing Templates',
     name: 'Some One',
     city: 'Denver',

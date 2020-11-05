@@ -1,6 +1,6 @@
 # (LEGACY) Transactional Templates
 
-For this example, we assume you have created a [legacy transactional template](https://sendgrid.com/docs/ui/account-and-settings/mail/#legacy-email-template). Following is the template content we used for testing.
+For this example, we assume you have created a [legacy transactional template](https://sendgrid.com/docs/User_Guide/Transactional_Templates/index.html) in the UI or via the API. Following is the template content we used for testing.
 
 Template ID (replace with your own):
 

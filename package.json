@@ -2,7 +2,7 @@
   "name": "sendgrid",
   "version": "6.0.0",
   "private": false,
-  "license": "SEE LICENSE IN LICENSE.md",
+  "license": "SEE LICENSE",
   "repository": {
     "type": "git",
     "url": "git://github.com/sendgrid/sendgrid-nodejs.git"
@@ -32,6 +32,7 @@
     "test:helpers": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/helpers/**/*.spec.js\"",
     "test:client": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/client/**/*.spec.js\"",
     "test:mail": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/mail/**/*.spec.js\"",
+    "test:eventwebhook": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/eventwebhook/**/*.spec.js\"",
     "test:inbound": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/inbound-mail-parser/**/*.spec.js\"",
     "test:contact": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"packages/contact-importer/**/*.spec.js\"",
     "test:files": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"test/files.spec.js\"",
@@ -40,7 +41,7 @@
     "test": "snyk test && npm run test:all -s",
     "coverage": "open -a \"Google Chrome\" ./coverage/lcov-report/index.html"
   },
-  "description": "![Twilio SendGrid Logo](https://github.com/sendgrid/sendgrid-python/raw/master/twilio_sendgrid_logo.png)",
+  "description": "![Twilio SendGrid Logo](https://github.com/sendgrid/sendgrid-nodejs/raw/HEAD/twilio_sendgrid_logo.png)",
   "bugs": {
     "url": "https://github.com/sendgrid/sendgrid-nodejs/issues"
   },
