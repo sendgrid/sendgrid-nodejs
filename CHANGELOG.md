@@ -1,6 +1,15 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2020-11-05] Version 7.4.0
+--------------------------
+**Library - Chore**
+- [PR #602](https://github.com/sendgrid/sendgrid-nodejs/pull/602): Deduplicate typechecks in setters. Thanks to [@jstevans](https://github.com/jstevans)!
+
+**Library - Feature**
+- [PR #712](https://github.com/sendgrid/sendgrid-nodejs/pull/712): Add method chaining in mail-service.js. Thanks to [@hjmsw](https://github.com/hjmsw)!
+
+
 [2020-10-14] Version 7.3.0
 --------------------------
 **Library - Feature**

@@ -1,7 +1,7 @@
 {
   "name": "@sendgrid/helpers",
   "description": "Twilio SendGrid NodeJS internal helpers",
-  "version": "7.3.0",
+  "version": "7.4.0",
   "author": "Twilio SendGrid <help@twilio.com> (sendgrid.com)",
   "contributors": [
     "Kyle Partridge <kyle.partridge@sendgrid.com>",
