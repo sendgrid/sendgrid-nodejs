@@ -3,6 +3,7 @@
 /**
  * Dependencies
  */
+const Agent = require('http').Agent;
 const {Client} = require('@sendgrid/client');
 const {classes: {Mail}} = require('@sendgrid/helpers');
 
@@ -50,7 +51,7 @@ class MailService {
 
     this.client.setDefaultRequest('agent', new Agent({ keepAlive: true }));
   }
-  
+
   /**
    * Twilio Email Auth passthrough for convenience.
    */
