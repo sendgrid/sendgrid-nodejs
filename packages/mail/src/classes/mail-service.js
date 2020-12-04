@@ -40,6 +40,17 @@ class MailService {
     return this;
   }
 
+   /**
+   * Reuse connections
+   */
+  setKeepAlive(keepAlive) {
+    if (keepAlive === false) {
+      return;
+    }
+
+    this.client.setDefaultRequest('agent', new Agent({ keepAlive: true }));
+  }
+  
   /**
    * Twilio Email Auth passthrough for convenience.
    */

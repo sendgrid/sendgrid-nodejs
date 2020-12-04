@@ -9,6 +9,11 @@ declare class MailService {
   setApiKey(apiKey: string): void;
 
   /**
+   * Reuse connections
+   */
+  setKeepAlive(keepAlive: boolean): void;
+
+  /**
    * Twilio Email Auth passthrough for convenience.
    */
   setTwilioEmailAuth(username: string, password: string): void;
