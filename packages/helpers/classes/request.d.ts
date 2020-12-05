@@ -1,3 +1,5 @@
+import * as https from 'https';
+
 type HttpMethod = 'get'|'GET'|'post'|'POST'|'put'|'PUT'|'patch'|'PATCH'|'delete'|'DELETE';
 
 export default interface RequestOptions<TData = any, TParams = object> {
@@ -7,4 +9,5 @@ export default interface RequestOptions<TData = any, TParams = object> {
     qs?: TParams;
     body?: TData;
     headers?: object;
+    httpsAgent?: https.Agent;
 }

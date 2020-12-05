@@ -1,3 +1,4 @@
+import { Client } from "@sendgrid/client";
 import {ClientResponse} from "@sendgrid/client/src/response";
 import {ResponseError} from "@sendgrid/helpers/classes";
 import {MailDataRequired} from "@sendgrid/helpers/classes/mail";
@@ -7,6 +8,11 @@ declare class MailService {
    * SendGrid API key passthrough for convenience.
    */
   setApiKey(apiKey: string): void;
+
+  /**
+   * Client to use for invoking underlying API
+   */
+  setClient(client: Client): void;
 
   /**
    * Twilio Email Auth passthrough for convenience.
