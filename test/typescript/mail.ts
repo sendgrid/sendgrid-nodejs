@@ -3,6 +3,9 @@ import sgMail = require("@sendgrid/mail");
 // Test setApiKey() method
 sgMail.setApiKey("MY_SENDGRID_API_KEY");
 
+// Test setKeepAlive() method
+sgMail.setKeepAlive(true);
+
 // Test setSubstitutionWrappers() method
 sgMail.setSubstitutionWrappers("{{", "}}")
 

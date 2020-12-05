@@ -41,7 +41,7 @@ class MailService {
     return this;
   }
 
-   /**
+  /**
    * Reuse connections
    */
   setKeepAlive(keepAlive) {
