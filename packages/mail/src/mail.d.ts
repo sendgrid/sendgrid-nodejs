@@ -1,4 +1,4 @@
-import { Client } from "@sendgrid/client";
+import {Client} from "@sendgrid/client";
 import {ClientResponse} from "@sendgrid/client/src/response";
 import {ResponseError} from "@sendgrid/helpers/classes";
 import {MailDataRequired} from "@sendgrid/helpers/classes/mail";
