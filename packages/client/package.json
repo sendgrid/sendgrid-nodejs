@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@sendgrid/helpers": "^7.4.0",
-    "axios": "^0.21.1"
+    "axios": "^0.19.2"
   },
   "devDependencies": {
     "nock": "^10.0.6"
