@@ -1,4 +1,5 @@
 import Client = require("@sendgrid/client");
+import * as https from 'https';
 
 // Test setApiKey() method
 Client.setApiKey("MY_SENDGRID_API_KEY");
@@ -11,7 +12,8 @@ Client.setDefaultHeader({
 // Test setDefaultRequest() method
 Client.setDefaultRequest({
   url: "/test",
-}).setDefaultRequest("method", "POST");
+}).setDefaultRequest("method", "POST")
+  .setDefaultRequest('httpsAgent', new https.Agent())
 
 // Test createHeaders() method
 Client.createHeaders({
