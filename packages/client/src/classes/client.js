@@ -32,6 +32,7 @@ class Client {
       method: 'GET',
       headers: {},
       maxContentLength: Infinity, // Don't limit the content length.
+      maxBodyLength: Infinity,
     };
   }
 

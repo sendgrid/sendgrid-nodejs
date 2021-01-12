@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2021-01-06] Version 7.4.1
+--------------------------
+**Library - Chore**
+- [PR #1239](https://github.com/sendgrid/sendgrid-nodejs/pull/1239): bump axios version. Thanks to [@fileformat](https://github.com/fileformat)!
+
+
 [2020-11-05] Version 7.4.0
 --------------------------
 **Library - Chore**
