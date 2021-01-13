@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2021-01-13] Version 7.4.2
+--------------------------
+**Library - Chore**
+- [PR #1227](https://github.com/sendgrid/sendgrid-nodejs/pull/1227): enhance client-related typings. Thanks to [@kyle221b](https://github.com/kyle221b)!
+
+
 [2021-01-06] Version 7.4.1
 --------------------------
 **Library - Chore**
