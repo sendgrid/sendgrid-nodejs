@@ -1,6 +1,6 @@
 # Attachments
 
-Attachments can be sent by providing an array of `attachments` as per the [API specification](https://sendgrid.com/docs/API_Reference/api_v3.html):
+Attachments can be sent by providing an array of `attachments` as per the [API specification](https://sendgrid.com/docs/api-reference/):
 
 ```js
 const sgMail = require('@sendgrid/mail');
