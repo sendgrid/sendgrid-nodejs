@@ -4,7 +4,7 @@ This library is broken up into several packages as a monorepo so that you only n
 This USAGE.md contains information about all packages. For examples on how to get started quickly, head over to the READMEs of each package (linked and described below), which includes detailed examples.
 
 * [@sendgrid/mail](packages/mail) - if you just want to send email
-* [@sendgrid/client](packages/client) - to use all other [SendGrid v3 Web API endpoints](https://sendgrid.com/docs/API_Reference/api_v3.html)
+* [@sendgrid/client](packages/client) - to use all other [SendGrid v3 Web API endpoints](https://sendgrid.com/docs/api-reference/)
 * [@sendgrid/inbound-mail-parser](packages/inbound-mail-parser) - help with parsing the SendGrid Inbound Parse API
 * [@sendgrid/contact-importer](packages/contact-importer) - help with importing contacts into the ContactDB
 * [@sendgrid/helpers](packages/helpers) - a collection of classes and helpers used internally by the above packages
