@@ -13,7 +13,7 @@ Note that not all objects represented in the SendGrid API have helper classes as
 To be notified when this package is updated, please subscribe to email [notifications](https://dx.sendgrid.com/newsletter/nodejs) for releases and breaking changes.
 
 ## Mail class
-Used to compose a `Mail` object that converts itself to proper JSON for use with the [SendGrid v3 API](https://sendgrid.com/docs/API_Reference/api_v3.html). This class supports a slightly different API to make sending emails easier in many cases by not having to deal with personalization arrays, instead offering a more straightforward interface for composing emails.
+Used to compose a `Mail` object that converts itself to proper JSON for use with the [SendGrid v3 API](https://sendgrid.com/docs/api-reference/). This class supports a slightly different API to make sending emails easier in many cases by not having to deal with personalization arrays, instead offering a more straightforward interface for composing emails.
 
 ## Attachment class
 Used by the inbound mail parser to compose `Attachment` objects.
