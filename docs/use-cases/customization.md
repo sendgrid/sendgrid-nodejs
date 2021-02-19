@@ -1,6 +1,6 @@
 # Customization Per Recipient
 
-To send multiple individual emails to multiple recipients with additional customization (like a different subject), use the `personalizations` field as per the [API definition](https://sendgrid.com/docs/API_Reference/api_v3.html) instead of `to`, leveraging all customization options:
+To send multiple individual emails to multiple recipients with additional customization (like a different subject), use the `personalizations` field as per the [API definition](https://sendgrid.com/docs/api-reference/) instead of `to`, leveraging all customization options:
 
 ```js
 const msg = {

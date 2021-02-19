@@ -5,7 +5,7 @@
 **This package is part of a monorepo, please see [this README](../../README.md) for details.**
 
 # Client for the SendGrid v3 Web API
-This client library is used by the other [Twilio SendGrid service packages](https://www.npmjs.com/org/sendgrid) to make requests to the [Twilio SendGrid v3 Web API](https://sendgrid.com/docs/API_Reference/api_v3.html). You can also use it independently to make custom requests to the Twilio SendGrid v3 Web API and other HTTP APIs.
+This client library is used by the other [Twilio SendGrid service packages](https://www.npmjs.com/org/sendgrid) to make requests to the [Twilio SendGrid v3 Web API](https://sendgrid.com/docs/api-reference/). You can also use it independently to make custom requests to the Twilio SendGrid v3 Web API and other HTTP APIs.
 
 To be notified when this package is updated, please subscribe to email [notifications](https://dx.sendgrid.com/newsletter/nodejs) for releases and breaking changes.
 

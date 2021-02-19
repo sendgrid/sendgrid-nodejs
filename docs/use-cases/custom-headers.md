@@ -1,6 +1,6 @@
 # Specifying Custom Headers
 
-Use the `headers` property to specify any custom headers (note that these can also be set globally per the [API specification](https://sendgrid.com/docs/API_Reference/api_v3.html):
+Use the `headers` property to specify any custom headers (note that these can also be set globally per the [API specification](https://sendgrid.com/docs/api-reference/):
 
 ```js
 const msg = {
