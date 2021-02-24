@@ -25,6 +25,9 @@
     "sinon-chai": "^2.10.0",
     "typescript": "^3.7.4"
   },
+  "peerDependencies": {
+    "chai": "~4.2.0"
+  },
   "scripts": {
     "lint": "if [ `node --version | cut -d'.' -f1 | cut -c 2` -ge \"8\" ]; then eslint . --fix; else echo \"eslint is not available for node < 8.0\"; fi",
     "test:all": "babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha \"**/*.spec.js\"",
