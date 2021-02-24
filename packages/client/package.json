@@ -31,6 +31,7 @@
     "axios": "^0.21.1"
   },
   "devDependencies": {
+    "chai": "4.2.0",
     "nock": "^10.0.6"
   },
   "tags": [
