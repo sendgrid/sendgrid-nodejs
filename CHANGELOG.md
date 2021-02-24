@@ -1,6 +1,15 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2021-02-24] Version 7.4.3
+--------------------------
+**Library - Fix**
+- [PR #1257](https://github.com/sendgrid/sendgrid-nodejs/pull/1257): Node 6 build failure. Thanks to [@thinkingserious](https://github.com/thinkingserious)!
+
+**Library - Docs**
+- [PR #1252](https://github.com/sendgrid/sendgrid-nodejs/pull/1252): Update API Docs link in Readme's. Thanks to [@TylerAHolden](https://github.com/TylerAHolden)!
+
+
 [2021-01-13] Version 7.4.2
 --------------------------
 **Library - Chore**
