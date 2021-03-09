@@ -48,7 +48,10 @@ This library is broken up into several packages as a monorepo so that you only n
 
 <a name="announcements"></a>
 # Announcements
-**NEW:** **BREAKING CHANGE:** Please see the [Twilio SendGrid Node.js Migration Guide 6.X.X -> 7.X.X](docs/migration-guides/migrating-from-version-6-to-7.md) for details.
+
+Our Developer Experience team is conducting planned maintenance from 03/09/2021 until 03/11/2021. Our next release is scheduled for 03/15/2021.
+
+**BREAKING CHANGE:** Please see the [Twilio SendGrid Node.js Migration Guide 6.X.X -> 7.X.X](docs/migration-guides/migrating-from-version-6-to-7.md) for details.
 
 All updates to this library are documented in our [CHANGELOG](CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases). You may also subscribe to email [release notifications](https://dx.sendgrid.com/newsletter/nodejs) for releases and breaking changes.
 
