@@ -1,27 +1,26 @@
 language: node_js
 node_js:
-  - 10
+- 10
 env:
-  - version=6
-  - version=8
-  - version=10
-  - version=lts
-  - version=latest
+- version=6
+- version=8
+- version=10
+- version=lts
+- version=latest
 services:
-  - docker
+- docker
 script:
-  - make test-docker
+- make test-docker
 before_deploy:
-  - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> $HOME/.npmrc 2> /dev/null
-  - git reset HEAD --hard
+- echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> $HOME/.npmrc 2> /dev/null
+- git reset HEAD --hard
 deploy:
-  - provider: script
-    script: "lerna publish from-package --yes"
-    skip_cleanup: true
-    on:
-      tags: true
-      condition: $version = 10
-
+- provider: script
+  script: lerna publish from-package --yes
+  skip_cleanup: true
+  on:
+    tags: true
+    condition: "$version = 10"
 notifications:
   slack:
     if: branch = main
@@ -29,4 +28,4 @@ notifications:
     on_success: never
     on_failure: change
     rooms:
-      - secure: i4B6L4/Wv1Z9jLSIH6UDa/rgARh472iCd44zLGYjHjXu7RRmDYrS4ZtE3vl5N/Xd8PVpBpAhsFXC8rG5zYEWCsU7UdRlKaHHz5CcLWFX25QP2PQaK5cKMR64mUgHi0lKQmt258HPrvPV1JqxF3nP+yJLWnB65QLMyEukCTK5N1c=
+      secure: MTt+Nc0wyi1RKQt42tAw1DdZ1/5nvnXbBEwVmbw1b3NmJBrDplKuU1WK5TDGpWr62VZdMd1x54LPQ7BZp2osTuhOfZ6vt44dU5sk2V3d52VUg+/wzFYrSyy5a6jS6hoK08RLvu89CNgNpXTHdAgMwOVuy0FcTu192rVckqFgIAY=
