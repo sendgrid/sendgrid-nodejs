@@ -201,6 +201,7 @@ class MailService {
       const request = {
         method: 'POST',
         url: '/v3/mail/send',
+        headers: mail.headers,
         body,
       };
 

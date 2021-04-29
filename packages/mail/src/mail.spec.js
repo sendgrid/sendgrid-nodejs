@@ -52,5 +52,20 @@ describe('sgMail.send()', () => {
       sgMail.send(data, false, {});
     }).to.throw(Error);
   });
+
+  it('should include custom headers to the request', () => {
+    sgClient.setDefaultHeader('X-Mock', 201);
+    const clientSpy = sinon.spy(sgClient, "request")
+    return sgMail
+      .send(Object.assign(data, { headers: { customHeader: "Custom Header Content" } }))
+      .then(([response, body]) => {
+        expect(response.statusCode).to.equal(201);
+        expect(clientSpy).to.have.been.calledWith(sinon.match({
+          url: "/v3/mail/send",
+          method: "POST",
+          headers: { customHeader: "Custom Header Content" }
+        }));
+      });
+  });
 });
 
