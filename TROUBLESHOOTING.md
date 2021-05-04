@@ -132,7 +132,7 @@ const {
 } = require('@sendgrid/helpers');
 const mail = Mail.create(data);
 const body = mail.toJSON();
-console.log(body);
+console.log(JSON.stringify(body));
 ```
 
 <a name="wrapping-text"></a>
