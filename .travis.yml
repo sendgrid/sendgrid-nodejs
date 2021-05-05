@@ -16,7 +16,7 @@ before_deploy:
 - git reset HEAD --hard
 deploy:
 - provider: script
-  script: lerna publish from-package --yes
+  script: lerna publish from-package --yes --no-verify-access
   skip_cleanup: true
   on:
     tags: true
