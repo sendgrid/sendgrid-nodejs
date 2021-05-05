@@ -1,6 +1,19 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2021-05-05] Version 7.4.4
+--------------------------
+**Library - Docs**
+- [PR #1272](https://github.com/sendgrid/sendgrid-nodejs/pull/1272): Update TROUBLESHOOTING.md - add JSON.stringify. Thanks to [@svitekpavel](https://github.com/svitekpavel)!
+
+**Library - Fix**
+- [PR #1256](https://github.com/sendgrid/sendgrid-nodejs/pull/1256): send email with custom headers at mail-service.js. Thanks to [@TondaHack](https://github.com/TondaHack)!
+- [PR #1261](https://github.com/sendgrid/sendgrid-nodejs/pull/1261): docs for content_id field. Thanks to [@thinkingserious](https://github.com/thinkingserious)!
+
+**Library - Chore**
+- [PR #1271](https://github.com/sendgrid/sendgrid-nodejs/pull/1271): add signed webhook test for multi event payload. Thanks to [@shwetha-manvinkurke](https://github.com/shwetha-manvinkurke)!
+
+
 [2021-02-24] Version 7.4.3
 --------------------------
 **Library - Fix**
