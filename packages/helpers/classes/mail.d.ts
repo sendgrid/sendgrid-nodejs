@@ -129,6 +129,7 @@ export interface MailData {
   html?: string,
   content?: MailContent[],
   templateId?: string,
+  versionIdOverride?: string,
 
   personalizations?: PersonalizationData[],
   attachments?: AttachmentData[],

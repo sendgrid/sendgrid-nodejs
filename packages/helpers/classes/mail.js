@@ -68,7 +68,7 @@ class Mail {
       templateId, personalizations, attachments, ipPoolName, batchId,
       sections, headers, categories, category, customArgs, asm, mailSettings,
       trackingSettings, substitutions, substitutionWrappers, dynamicTemplateData, isMultiple,
-      hideWarnings,
+      hideWarnings, versionIdOverride,
     } = data;
 
     //Set data
@@ -90,6 +90,7 @@ class Mail {
     this.setMailSettings(mailSettings);
     this.setTrackingSettings(trackingSettings);
     this.setHideWarnings(hideWarnings);
+    this.setVersionIdOverride(versionIdOverride);
 
     if (this.isDynamic) {
       this.setDynamicTemplateData(dynamicTemplateData);
@@ -164,6 +165,14 @@ class Mail {
       }
     }
   }
+
+  /**
+   * Set version ID override
+   */
+  setVersionIdOverride(versionIdOverride) {
+    this._setProperty('versionIdOverride', versionIdOverride, 'string');
+  }
+
 
   /**
    * Set batch ID
@@ -504,7 +513,7 @@ class Mail {
       from, replyTo, sendAt, subject, content, templateId,
       personalizations, attachments, ipPoolName, batchId, asm,
       sections, headers, categories, customArgs, mailSettings,
-      trackingSettings,
+      trackingSettings, versionIdOverride,
     } = this;
 
     //Initialize with mandatory values
@@ -560,6 +569,10 @@ class Mail {
     if (typeof ipPoolName !== 'undefined') {
       json.ipPoolName = ipPoolName;
     }
+    if (typeof versionIdOverride !== 'undefined') {
+      json.versionIdOverride = versionIdOverride;
+    }
+
 
     //Return as snake cased object
     return toSnakeCase(json, ['substitutions', 'dynamicTemplateData', 'customArgs', 'headers', 'sections']);
