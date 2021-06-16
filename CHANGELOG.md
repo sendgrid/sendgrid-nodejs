@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2021-06-16] Version 7.4.5
+--------------------------
+**Library - Fix**
+- [PR #1274](https://github.com/sendgrid/sendgrid-nodejs/pull/1274): re-export ClientResponse and ResponseError. Thanks to [@brc-dd](https://github.com/brc-dd)!
+
+
 [2021-05-05] Version 7.4.4
 --------------------------
 **Library - Docs**
