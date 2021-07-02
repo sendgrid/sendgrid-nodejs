@@ -8,7 +8,7 @@
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Open Source Helpers](https://www.codetriage.com/sendgrid/sendgrid-nodejs/badges/users.svg)](https://www.codetriage.com/sendgrid/sendgrid-nodejs)
 
-[Twilio SendGrid Docs](https://sendgrid.com/docs/index.html)
+[Twilio SendGrid Docs](https://docs.sendgrid.com/)
 
 **The default branch name for this repository has been changed to `main` as of 07/27/2020.**
 
