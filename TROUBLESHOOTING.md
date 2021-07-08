@@ -120,7 +120,7 @@ If you are using a `package.json` file:
 <a name="request-body"></a>
 ## Viewing the Request Body
 
-When debugging or testing, it may be useful to examine the raw request body to compare against the [documented format](https://sendgrid.com/docs/API_Reference/api_v3.html).
+When debugging or testing, it may be useful to examine the raw request body to compare against the [documented format](https://docs.sendgrid.com/api-reference/how-to-use-the-sendgrid-v3-api).
 
 You can do this right before you call `sgMail.send(msg);` like so:
 
