@@ -14,7 +14,13 @@ export interface AttachmentJSON {
   content_id?: string;
 }
 
-export default class Attachment {
+export default class Attachment implements AttachmentData {
+  content: string;
+  filename: string;
+  type?: string;
+  disposition?: string;
+  contentId?: string;
+  
   constructor(data?: AttachmentData);
 
   fromData(data: AttachmentData): void;
