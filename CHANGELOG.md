@@ -1,6 +1,15 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2021-08-11] Version 7.4.6
+--------------------------
+**Library - Fix**
+- [PR #1287](https://github.com/sendgrid/sendgrid-nodejs/pull/1287): Updating attachment types. Thanks to [@aequasi](https://github.com/aequasi)!
+
+**Library - Docs**
+- [PR #1281](https://github.com/sendgrid/sendgrid-nodejs/pull/1281): fix broken docs link. Thanks to [@GregTCLTK](https://github.com/GregTCLTK)!
+
+
 [2021-06-16] Version 7.4.5
 --------------------------
 **Library - Fix**
