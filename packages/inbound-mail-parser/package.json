@@ -26,8 +26,8 @@
     "node": "6.* || 8.* || >=10.*"
   },
   "dependencies": {
-    "mailparser": "^3.3.0"
-    "@sendgrid/helpers": "^7.4.6",
+    "mailparser": "^3.3.0",
+    "@sendgrid/helpers": "^7.4.6"
   },
   "tags": [
     "sendgrid"
