@@ -155,6 +155,8 @@ export interface MailData {
   dynamicTemplateData?: { [key: string]: any },
 
   hideWarnings?: boolean,
+
+  replyToList?: EmailJSON | EmailJSON[],
 }
 
 export type MailDataRequired = MailData & (
