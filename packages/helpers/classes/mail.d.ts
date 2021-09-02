@@ -179,6 +179,7 @@ export interface MailJSON {
   batch_id?: string;
   template_id?: string;
   ip_pool_name?: string;
+  reply_to_list?: EmailJSON[];
 }
 
 export default class Mail {
@@ -353,4 +354,9 @@ export default class Mail {
    * Create a Mail instance from given data
    */
   static create(data: MailData[]): Mail[];
+
+  /**
+   * Set reply_to_list header from given data
+   */
+  setReplyToList(replyToList: EmailJSON[]): void;
 }

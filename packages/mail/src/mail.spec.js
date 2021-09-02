@@ -67,5 +67,11 @@ describe('sgMail.send()', () => {
         }));
       });
   });
+
+  // it('should have multiple replyTo emails', () => {
+  //   sgClient.setDefaultHeader('X-Mock', 201);
+  //   const clientSpy = sinon.spy(sgClient, "request");
+  //   debugger;
+  // })
 });
 

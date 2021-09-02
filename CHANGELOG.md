@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2021-09-02] Version 7.4.7
+- Changes done by subinoy locally
+
 [2021-08-11] Version 7.4.6
 --------------------------
 **Library - Fix**
