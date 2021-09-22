@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2021-09-22] Version 7.4.7
+--------------------------
+**Library - Chore**
+- [PR #1296](https://github.com/sendgrid/sendgrid-nodejs/pull/1296): Bump Axios to 0.21.4 to fix ReDoS. Thanks to [@LuisOsta](https://github.com/LuisOsta)!
+
+
 [2021-08-11] Version 7.4.6
 --------------------------
 **Library - Fix**
