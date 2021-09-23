@@ -73,11 +73,11 @@ describe('sgMail.send()', () => {
     data["replyToList"] = [
       {
         "name": "Test Team",
-        "email": "test@twilio.com"
+        "email": "test@example.org"
       },
       {
         "name": "Support Test Team",
-        "email": "support.test@twilio.com"
+        "email": "support.test@example.org"
       }
     ];
     return sgMail
@@ -91,7 +91,7 @@ describe('sgMail.send()', () => {
     sgClient.setDefaultHeader('X-Mock', 202);
     data["replyToList"] = {
       "name": "Support Test Team",
-      "email": "support.test@twilio.com"
+      "email": "support.test@example.org"
     };
     return expect(function() {
       sgMail.send(data, false, {});
@@ -102,7 +102,7 @@ describe('sgMail.send()', () => {
     data["replyToList"] = [
       {
         "name": "Test Team",
-        "email": "test@twilio.com"
+        "email": "test@example.org"
       },
       {
         "name": "Support Test Team"
@@ -115,17 +115,17 @@ describe('sgMail.send()', () => {
 
   it('should throw error if both replyTo and replyToList are mentioned', async () => {
     data["replyTo"] = {
-        "name": "Test Team234234",
-        "email": "test234235@twilio.com"
+        "name": "Manual Tester",
+        "email": "manual.test@example.org"
       };
     data["replyToList"] = [
       {
         "name": "Test Team",
-        "email": "test@twilio.com"
+        "email": "test@example.org"
       },
       {
         "name": "Support Test Team",
-        "email": "support.test@twilio.com"
+        "email": "support.test@example.org"
       }
     ];
     return expect(function() {
