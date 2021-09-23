@@ -68,7 +68,7 @@ class Mail {
       templateId, personalizations, attachments, ipPoolName, batchId,
       sections, headers, categories, category, customArgs, asm, mailSettings,
       trackingSettings, substitutions, substitutionWrappers, dynamicTemplateData, isMultiple,
-      hideWarnings,
+      hideWarnings, replyToList,
     } = data;
 
     //Set data
@@ -90,6 +90,7 @@ class Mail {
     this.setMailSettings(mailSettings);
     this.setTrackingSettings(trackingSettings);
     this.setHideWarnings(hideWarnings);
+    this.setReplyToList(replyToList);
 
     if (this.isDynamic) {
       this.setDynamicTemplateData(dynamicTemplateData);
@@ -504,7 +505,7 @@ class Mail {
       from, replyTo, sendAt, subject, content, templateId,
       personalizations, attachments, ipPoolName, batchId, asm,
       sections, headers, categories, customArgs, mailSettings,
-      trackingSettings,
+      trackingSettings, replyToList,
     } = this;
 
     //Initialize with mandatory values
@@ -559,6 +560,9 @@ class Mail {
     }
     if (typeof ipPoolName !== 'undefined') {
       json.ipPoolName = ipPoolName;
+    }
+    if(typeof replyToList !== 'undefined') {
+      json.replyToList = replyToList;
     }
 
     //Return as snake cased object
@@ -666,6 +670,19 @@ class Mail {
       propertyName,
       value,
       [this._checkUndefined, this._createCheckThatThrows(Array.isArray, 'Array expected for`' + propertyName + '`')]);
+  }
+
+  /**
+   * Set the replyToList from email body
+   */
+   setReplyToList(replyToList) {
+    if (this._doArrayCheck('replyToList', replyToList) && replyToList.length) {
+      if (!replyToList.every(replyTo => replyTo && typeof replyTo.email === 'string')) {
+        throw new Error('Expected each replyTo to contain a `email` string');
+      }
+      // this.replyToList = EmailAddress.create(replyToList);
+      this.replyToList = replyToList;
+    }
   }
 }
 
