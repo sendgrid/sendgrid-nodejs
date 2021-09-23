@@ -672,13 +672,13 @@ class Mail {
       [this._checkUndefined, this._createCheckThatThrows(Array.isArray, 'Array expected for`' + propertyName + '`')]);
   }
 
-  setReplyToList(replyToList) {
-    if (this._doArrayCheck('replyToList', replyToList)) {
-      if (!replyToList.every(replyTo => typeof replyTo.email === 'string')) {
+  /**
+   * Set the replyToList from email body
+   */
+   setReplyToList(replyToList) {
+    if (this._doArrayCheck('replyToList', replyToList) && replyToList.length) {
+      if (!replyToList.every(replyTo => replyTo && typeof replyTo.email === 'string')) {
         throw new Error('Expected each replyTo to contain a `email` string');
-      }
-      if (!replyToList.every(replyTo => typeof replyTo.name === 'string')) {
-        throw new Error('Expected each replyTo to contain a `name` string');
       }
       // this.replyToList = EmailAddress.create(replyToList);
       this.replyToList = replyToList;
