@@ -1,11 +1,11 @@
 import { Client } from "@sendgrid/client";
 import sgMail = require("@sendgrid/mail");
 
-// Test setApiKey() method
-sgMail.setApiKey("MY_SENDGRID_API_KEY");
-
 // Test setClient() method
 sgMail.setClient(new Client());
+
+// Test setApiKey() method
+sgMail.setApiKey("MY_SENDGRID_API_KEY");
 
 // Test setSubstitutionWrappers() method
 sgMail.setSubstitutionWrappers("{{", "}}")
