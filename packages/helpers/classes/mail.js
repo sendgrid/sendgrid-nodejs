@@ -678,9 +678,8 @@ class Mail {
    setReplyToList(replyToList) {
     if (this._doArrayCheck('replyToList', replyToList) && replyToList.length) {
       if (!replyToList.every(replyTo => replyTo && typeof replyTo.email === 'string')) {
-        throw new Error('Expected each replyTo to contain a `email` string');
+        throw new Error('Expected each replyTo to contain an `email` string');
       }
-      // this.replyToList = EmailAddress.create(replyToList);
       this.replyToList = replyToList;
     }
   }
