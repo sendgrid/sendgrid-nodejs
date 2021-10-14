@@ -23,6 +23,7 @@ describe('Personalization', function() {
     //Data
     const data = {
       to: 'to@example.org',
+      from: 'from@example.org',
       cc: ['cc1@example.org', 'cc2@example.org'],
       bcc: ['bcc1@example.org', 'bcc2@example.org'],
       subject: 'Test',
@@ -47,6 +48,7 @@ describe('Personalization', function() {
     it('should have set all properties', () => {
       p.fromData(data);
       expect(p.to[0].email).to.equal('to@example.org');
+      expect(p.from.email).to.equal('from@example.org');
       expect(p.cc[0].email).to.equal('cc1@example.org');
       expect(p.cc[1].email).to.equal('cc2@example.org');
       expect(p.bcc[0].email).to.equal('bcc1@example.org');
