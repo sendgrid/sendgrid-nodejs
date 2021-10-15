@@ -38,7 +38,7 @@ describe('sgMail.send()', () => {
     return expect(sgMail.send()).to.eventually.be.rejectedWith(Error);
   });
 
-  it('should send a basic email', async () => {
+  it('should send a basic email', () => {
     sgClient.setDefaultHeader('X-Mock', 202);
     return sgMail
       .send(data)
@@ -53,7 +53,7 @@ describe('sgMail.send()', () => {
     }).to.throw(Error);
   });
 
-  it('should include custom headers to the request', async () => {
+  it('should include custom headers to the request', () => {
     sgClient.setDefaultHeader('X-Mock', 202);
     const clientSpy = sinon.spy(sgClient, "request")
     return sgMail
@@ -68,7 +68,7 @@ describe('sgMail.send()', () => {
       });
   });
 
-  it('should send email with correct replyToList format', async () => {
+  it('should send email with correct replyToList format', () => {
     sgClient.setDefaultHeader('X-Mock', 202);
     data["replyToList"] = [
       {
@@ -87,7 +87,7 @@ describe('sgMail.send()', () => {
       });
   });
 
-  it('should throw error with wrong replyToList format', async () => {
+  it('should throw error with wrong replyToList format', () => {
     sgClient.setDefaultHeader('X-Mock', 202);
     data["replyToList"] = {
       "name": "Support Test Team",
@@ -98,7 +98,7 @@ describe('sgMail.send()', () => {
     }).to.throw(Error);
   });
 
-  it('should throw error if any record in replyToList is without email', async () => {
+  it('should throw error if any record in replyToList is without email', () => {
     data["replyToList"] = [
       {
         "name": "Test Team",
@@ -113,7 +113,7 @@ describe('sgMail.send()', () => {
     }).to.throw(Error);
   });
 
-  it('should throw error if both replyTo and replyToList are mentioned', async () => {
+  it('should throw error if both replyTo and replyToList are mentioned', () => {
     data["replyTo"] = {
         "name": "Manual Tester",
         "email": "manual.test@example.org"
