@@ -1,6 +1,18 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2021-10-18] Version 7.5.0
+--------------------------
+**Library - Feature**
+- [PR #1303](https://github.com/sendgrid/sendgrid-nodejs/pull/1303): Added support of replyToList in the library, #339:. Thanks to [@subinoy7](https://github.com/subinoy7)!
+
+**Library - Docs**
+- [PR #1308](https://github.com/sendgrid/sendgrid-nodejs/pull/1308): improve signed webhook validation instruction. Thanks to [@shwetha-manvinkurke](https://github.com/shwetha-manvinkurke)!
+
+**Library - Test**
+- [PR #1305](https://github.com/sendgrid/sendgrid-nodejs/pull/1305): fix issue with new client overriding previously set api key. Thanks to [@seantcanavan](https://github.com/seantcanavan)!
+
+
 [2021-09-22] Version 7.4.7
 --------------------------
 **Library - Chore**
