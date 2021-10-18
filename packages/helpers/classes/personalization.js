@@ -53,12 +53,13 @@ class Personalization {
 
     //Extract properties from data
     const {
-      to, cc, bcc, subject, headers, customArgs, sendAt,
+      to, from, cc, bcc, subject, headers, customArgs, sendAt,
       substitutions, substitutionWrappers, dynamicTemplateData,
     } = data;
 
     //Set data
     this.setTo(to);
+    this.setFrom(from);
     this.setCc(cc);
     this.setBcc(bcc);
     this.setSubject(subject);
@@ -107,6 +108,16 @@ class Personalization {
       to = [to];
     }
     this.to = EmailAddress.create(to);
+  }
+
+  /**
+   * Set from
+   * */
+  setFrom(from) {
+    if (typeof from === 'undefined') {
+      return;
+    }
+    this.from = EmailAddress.create(from);
   }
 
   /**
@@ -309,7 +320,7 @@ class Personalization {
 
     //Get data from self
     const {
-      to, cc, bcc, subject, headers, customArgs, sendAt,
+      to, from, cc, bcc, subject, headers, customArgs, sendAt,
       substitutions, substitutionWrappers, dynamicTemplateData,
     } = this;
 
@@ -346,6 +357,9 @@ class Personalization {
     }
     if (typeof sendAt !== 'undefined') {
       json.sendAt = sendAt;
+    }
+    if (typeof from !== 'undefined') {
+      json.from = from;
     }
 
     //Return as snake cased object

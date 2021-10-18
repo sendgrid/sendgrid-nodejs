@@ -2,6 +2,7 @@ import { EmailData, EmailJSON } from "./email-address";
 
 export interface PersonalizationData {
   to: EmailData | EmailData[],
+  from?: EmailData,
   cc?: EmailData | EmailData[],
   bcc?: EmailData | EmailData[],
   subject?: string;
@@ -14,6 +15,7 @@ export interface PersonalizationData {
 
 export interface PersonalizationJSON {
   to: EmailJSON | EmailJSON[];
+  from?: EmailJSON;
   cc?: EmailJSON[];
   bcc?: EmailJSON[];
   headers?: { [key: string]: string; };
@@ -43,6 +45,11 @@ export default class Personalization {
    * Set to
    */
   setTo(to: EmailData | EmailData[]): void;
+
+  /**
+   * Set from
+   */
+  setFrom(from: EmailData): void;
 
   /**
    * Add a single to

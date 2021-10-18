@@ -31,6 +31,13 @@ describe('Personalization', function() {
       expect(json.to[0]).to.be.an.instanceof(EmailAddress);
       expect(json.to[0].email).to.equal('test@example.org');
     });
+    it('should set the from field', function() {
+      p.setFrom('testfrom@example.org');
+      const json = p.toJSON();
+      expect(json).to.have.property('from');
+      expect(json.from).to.be.an.instanceof(EmailAddress);
+      expect(json.from.email).to.equal('testfrom@example.org');
+    });
     it('should set the cc field', function() {
       p.setCc('testcc@example.org');
       const json = p.toJSON();
