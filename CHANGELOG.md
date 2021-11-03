@@ -1,6 +1,15 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2021-11-03] Version 7.6.0
+--------------------------
+**Library - Docs**
+- [PR #1314](https://github.com/sendgrid/sendgrid-nodejs/pull/1314): Fix example of creating a transactional template in usage.md. Thanks to [@robbieaverill](https://github.com/robbieaverill)!
+
+**Library - Feature**
+- [PR #1312](https://github.com/sendgrid/sendgrid-nodejs/pull/1312): allow personalization of the From name & email for each email recipient. Thanks to [@beebzz](https://github.com/beebzz)!
+
+
 [2021-10-18] Version 7.5.0
 --------------------------
 **Library - Feature**
