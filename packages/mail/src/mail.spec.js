@@ -48,7 +48,6 @@ describe('sgMail.send()', () => {
   });
 
   it('should not be null(error) in callBack function for unsuccessfully delivered emails', (done) => {
-    sgClient.setDefaultHeader('X-Mock', 202);
     sgMail.send({}, false, (error, response) => {
       expect(error).to.not.be.null();
       done();
