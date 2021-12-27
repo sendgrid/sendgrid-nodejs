@@ -62,7 +62,6 @@ describe('sgMail.send()', () => {
     });
   });
 
-
   it('should throw an error if callback is not a function', () => {
     return expect(function() {
       sgMail.send(data, false, {});
