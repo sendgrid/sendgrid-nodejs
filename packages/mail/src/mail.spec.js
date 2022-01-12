@@ -47,21 +47,6 @@ describe('sgMail.send()', () => {
       });
   });
 
-  it('should not be null(error) in callBack function for unsuccessfully delivered emails', (done) => {
-    sgMail.send({}, false, (error, response) => {
-      expect(error).to.not.be.null();
-      done();
-    });
-  });
-
-  it('should be null(error) in callBack function for successfully delivered emails', (done) => {
-    sgClient.setDefaultHeader('X-Mock', 202);
-    sgMail.send(data, false, (error, response) => {
-      expect(error).to.be.null();
-      done();
-    });
-  });
-
   it('should throw an error if callback is not a function', () => {
     return expect(function() {
       sgMail.send(data, false, {});

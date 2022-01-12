@@ -32,12 +32,12 @@ declare class MailService {
   /**
    * Send email
    */
-  send(data: MailDataRequired | MailDataRequired[], isMultiple?: boolean, cb?: (err: Error | ResponseError | null, result: [ClientResponse, {}]) => void): Promise<[ClientResponse, {}]>;
+  send(data: MailDataRequired | MailDataRequired[], isMultiple?: boolean, cb?: (err: Error | ResponseError, result: [ClientResponse, {}]) => void): Promise<[ClientResponse, {}]>;
 
   /**
    * Send multiple emails (shortcut)
    */
-  sendMultiple(data: MailDataRequired, cb?: (error: Error | ResponseError | null, result: [ClientResponse, {}]) => void): Promise<[ClientResponse, {}]>;
+  sendMultiple(data: MailDataRequired, cb?: (error: Error | ResponseError, result: [ClientResponse, {}]) => void): Promise<[ClientResponse, {}]>;
 }
 
 declare const mail: MailService;
