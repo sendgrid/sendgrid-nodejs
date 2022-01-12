@@ -1,4 +1,4 @@
 --recursive
---timeout 5000
+--timeout 10000
 --require mocha-clean
 ./test/mocha.js
