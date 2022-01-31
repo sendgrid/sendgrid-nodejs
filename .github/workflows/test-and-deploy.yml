@@ -18,6 +18,8 @@ jobs:
     strategy:
       matrix:
         node: [ 6, 7, 8, 10, lts/* ]
+    env:
+      version: ${{ matrix.node }}
     steps:
       - name: Checkout sendgrid-nodejs
         uses: actions/checkout@v2
@@ -32,6 +34,10 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node }}
+
+      - name: Reset env vars
+        if: env.version == 'lts/*'
+        run: echo "version=lts" >> "$GITHUB_ENV"
 
       - run: npm install
       - name: Run Tests
