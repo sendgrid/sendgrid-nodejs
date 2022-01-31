@@ -24,10 +24,6 @@ describe('sendgrid-nodejs repo', function() {
     assert(fileExists('.github/workflows/test-and-deploy.yml'));
   });
 
-  it('should have ./.codeclimate.yml file', function() {
-    assert(fileExists('.codeclimate.yml'));
-  });
-
   it('should have ./CHANGELOG.md file', function() {
     assert(fileExists('CHANGELOG.md'));
   });
