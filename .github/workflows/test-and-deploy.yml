@@ -30,16 +30,10 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_AUTH_TOKEN }}
 
-      - name: Set up Node
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node }}
-
       - name: Reset env vars
         if: env.version == 'lts/*'
         run: echo "version=lts" >> "$GITHUB_ENV"
 
-      - run: npm install
       - name: Run Tests
         run: make test-docker
 
