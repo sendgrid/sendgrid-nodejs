@@ -72,7 +72,7 @@ jobs:
         env:
           SLACK_COLOR: failure
           SLACK_ICON_EMOJI: ':github:'
-          SLACK_MESSAGE: ${{ format('Tests *{0}*, Deploy *{1}*, {2}/{3}/actions/runs/{4}', needs.test.result, needs.deploy.result, github.server_url, github.repository, github.run_id) }}
+          SLACK_MESSAGE: ${{ format('Test *{0}*, Deploy *{1}*, {2}/{3}/actions/runs/{4}', needs.test.result, needs.deploy.result, github.server_url, github.repository, github.run_id) }}
           SLACK_TITLE: Action Failure - ${{ github.repository }}
           SLACK_USERNAME: GitHub Actions
           SLACK_MSG_AUTHOR: twilio-dx
