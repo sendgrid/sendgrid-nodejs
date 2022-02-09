@@ -1,6 +1,25 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2022-02-09] Version 7.6.1
+--------------------------
+**Library - Chore**
+- [PR #1334](https://github.com/sendgrid/sendgrid-nodejs/pull/1334): upgrade supported language versions. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #1329](https://github.com/sendgrid/sendgrid-nodejs/pull/1329): migrate to gh actions. Thanks to [@shwetha-manvinkurke](https://github.com/shwetha-manvinkurke)!
+- [PR #1320](https://github.com/sendgrid/sendgrid-nodejs/pull/1320): adjust 'packages/mail/src/mail.d.ts'. Thanks to [@collierrgbsitisfise](https://github.com/collierrgbsitisfise)!
+- [PR #1325](https://github.com/sendgrid/sendgrid-nodejs/pull/1325): update license year. Thanks to [@JenniferMah](https://github.com/JenniferMah)!
+
+**Library - Test**
+- [PR #1330](https://github.com/sendgrid/sendgrid-nodejs/pull/1330): set the right version for tests. Thanks to [@shwetha-manvinkurke](https://github.com/shwetha-manvinkurke)!
+- [PR #1327](https://github.com/sendgrid/sendgrid-nodejs/pull/1327): get the integration tests running again. Thanks to [@shwetha-manvinkurke](https://github.com/shwetha-manvinkurke)!
+
+**Library - Fix**
+- [PR #1326](https://github.com/sendgrid/sendgrid-nodejs/pull/1326): Revert "chore: adjust 'packages/mail/src/mail.d.ts' (#1320)". Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+**Library - Docs**
+- [PR #1324](https://github.com/sendgrid/sendgrid-nodejs/pull/1324): fix npm docs link. Thanks to [@arvindell](https://github.com/arvindell)!
+
+
 [2021-11-03] Version 7.6.0
 --------------------------
 **Library - Docs**
