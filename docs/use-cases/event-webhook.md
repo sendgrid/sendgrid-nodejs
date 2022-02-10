@@ -2,7 +2,6 @@ First, follow the guide to [set up signature verification for event webhooks](ht
 
 An example of a server to process incoming event webhooks:
 ```javascript
-const bodyParser = require("body-parser");
 const express = require('express');
 const functions = require("firebase-functions");
 const app = express();
@@ -15,9 +14,6 @@ const verifyRequest = function (publicKey, payload, signature, timestamp) {
   return eventWebhook.verifySignature(ecPublicKey, payload, signature, timestamp);
 }
 
-// Using bodyParser middleware to process the body
-app.use(bodyParser.text({ type: 'application/json' }));
-
 app.post("/sendgrid/webhook", async (req, resp) => {
   try {
     const key = '<your_public_key>';
@@ -28,7 +24,7 @@ app.post("/sendgrid/webhook", async (req, resp) => {
     const timestamp = req.get(EventWebhookHeader.TIMESTAMP());
 
     // Be sure to _not_ remove any leading/trailing whitespace characters (e.g., '\r\n').
-    const requestBody = req.body;
+    const requestBody = JSON.stringify(req.body).split("},{").join("},\r\n{") + "\r\n";;
     // Alternatively, if using firebase cloud functions, remove the middleware and use:
     // const requestBody = (req as functions.https.Request).rawBody;
 
