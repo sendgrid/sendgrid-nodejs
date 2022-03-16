@@ -1,4 +1,10 @@
-import {PublicKey} from "starkbank-ecdsa";
+// From starkbank-ecdsa, minimal interface of PublicKey
+declare class PublicKey {
+  toString(encode?: boolean): string;
+  static fromPem(pem: string): PublicKey;
+  static fromDer(der: string): PublicKey;
+  static fromString(key: string): PublicKey;
+}
 
 declare class EventWebhook {
     /**
