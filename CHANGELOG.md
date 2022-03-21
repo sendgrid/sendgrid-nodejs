@@ -1,6 +1,17 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2022-03-09] Version 7.6.2
+--------------------------
+**Library - Chore**
+- [PR #1347](https://github.com/sendgrid/sendgrid-nodejs/pull/1347): update Axios dependency. Thanks to [@JenniferMah](https://github.com/JenniferMah)!
+- [PR #1341](https://github.com/sendgrid/sendgrid-nodejs/pull/1341): push Datadog Release Metric upon deploy success. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+**Library - Docs**
+- [PR #1342](https://github.com/sendgrid/sendgrid-nodejs/pull/1342): fix broken image links on npm. Thanks to [@IObert](https://github.com/IObert)!
+- [PR #1340](https://github.com/sendgrid/sendgrid-nodejs/pull/1340): Update docs with bodyParser exclusion for webhook signature verification. Thanks to [@danmana](https://github.com/danmana)!
+
+
 [2022-02-09] Version 7.6.1
 --------------------------
 **Library - Chore**

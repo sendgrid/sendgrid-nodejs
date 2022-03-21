@@ -64,6 +64,11 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+      - name: Submit metric to Datadog
+        uses: sendgrid/dx-automator/actions/datadog-release-metric@main
+        env:
+          DD_API_KEY: ${{ secrets.DATADOG_API_KEY }}
+
   notify-on-failure:
     name: Slack notify on failure
     if: failure() && github.event_name != 'pull_request' && (github.ref == 'refs/heads/main' || github.ref_type == 'tag')

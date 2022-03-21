@@ -45,4 +45,4 @@ If you need help installing or using the library, please check the [Twilio SendG
 
 If you've instead found a bug in the library or would like new features added, go ahead and open issues or pull requests against this repo!
 
-![Twilio SendGrid Logo](../../twilio_sendgrid_logo.png)
+![Twilio SendGrid Logo](https://github.com/sendgrid/sendgrid-nodejs/blob/main/twilio_sendgrid_logo.png?raw=true)
