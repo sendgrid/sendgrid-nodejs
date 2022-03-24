@@ -15,6 +15,7 @@ If you can't find a solution below, please open an [issue](https://github.com/se
 * [Using the Package Manager](#package-manager)
 * [Viewing the Request Body](#request-body)
 * [Wrapping Text](#wrapping-text)
+* [Verifying Event Webhooks](#signed-webhooks)
 
 <a name="migrating"></a>
 ## Migrating from v2 to v3
@@ -158,3 +159,15 @@ You can also wrap the text in the HTML to make a multi-line blog post:
     int d = 10;
   </code>
 </div>
+```
+
+<a name="signed-webhooks"></a>
+## Signed Webhook Verification
+
+Twilio SendGrid's Event Webhook will notify a URL via HTTP POST with information about events that occur as your mail is processed. [This](https://docs.sendgrid.com/for-developers/tracking-events/getting-started-event-webhook-security-features) article covers all you need to know to secure the Event Webhook, allowing you to verify that incoming requests originate from Twilio SendGrid. The sendgrid-nodejs library can help you verify these Signed Event Webhooks.
+
+You can find the end-to-end usage example [here](docs/use-cases/event-webhook.md) and the tests [here](packages/eventwebhook/src/eventwebhook.spec.js). 
+If you are still having trouble getting the validation to work, follow the following instructions:
+- Be sure to use the *raw* payload for validation
+- Be sure to include a trailing carriage return and newline in your payload
+- In case of multi-event webhooks, make sure you include the trailing newline and carriage return after *each* event

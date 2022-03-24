@@ -246,4 +246,62 @@ describe('Mail', function() {
       expect(logSpy.calledWith(DYNAMIC_TEMPLATE_CHAR_WARNING)).to.equal(true);
     });
   });
+
+  describe('set replyToList to set multiple reply-to', () => {
+    let data;
+
+    this.beforeEach(() => {
+      data = {
+        to: 'send-to@example.org',
+        from: 'sender@example.org',
+        subject: 'test replyToList',
+        category: 'test',
+        text: 'Testing replyToList settings',
+        html: '<p>Testing replyToList settings</p>',
+      };
+    });
+
+    it('should set the replyToList', () => {
+      let replyToList = [
+        {
+          'name': 'Test User1',
+          'email': 'test_user1@example.org'
+        },
+        {
+          'email': 'test_user2@example.org'
+        }
+      ];
+      data.replyToList = replyToList;
+
+      const mail = new Mail(data);
+
+      expect(mail.replyToList)
+        .to.be.deep.equal(replyToList);
+    });
+
+    it('should throw error for incorrect replyToList format', () => {
+      let replyToList = [
+        {
+          'name': 'Test User1'
+        },
+        {
+          'email_data': 'test_user2@example.org'
+        }
+      ];
+      data.replyToList = replyToList;
+
+      expect(() => new Mail(data))
+        .to.throw('Expected each replyTo to contain an `email` string');
+    });
+
+    it('should throw error for as replyToList is not an array', () => {
+      let replyToList = {
+        'name': 'Test User1',
+        'email': 'test_user1@example.org'
+      };
+      data.replyToList = replyToList;
+      expect(() => new Mail(data))
+        .to.throw('Array expected for`replyToList`');
+    });
+  });
 });
