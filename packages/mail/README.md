@@ -1,13 +1,10 @@
 [![BuildStatus](https://travis-ci.com/sendgrid/sendgrid-nodejs.svg?branch=main)](https://travis-ci.com/sendgrid/sendgrid-nodejs)
 [![npm version](https://badge.fury.io/js/%40sendgrid%2Fclient.svg)](https://www.npmjs.com/org/sendgrid)
-[![Email Notifications Badge](https://dx.sendgrid.com/badge/nodejs)](https://dx.sendgrid.com/newsletter/nodejs)
 
 **This package is part of a monorepo, please see [this README](../../README.md) for details.**
 
 # Mail Service for the SendGrid v3 Web API
 This is a dedicated service for interaction with the mail endpoint of the [SendGrid v3 API](https://sendgrid.com/docs/api-reference/).
-
-To be notified when this package is updated, please subscribe to email [notifications](https://dx.sendgrid.com/newsletter/nodejs) for releases and breaking changes.
 
 # Installation
 
@@ -91,7 +88,7 @@ After executing the above code, you should have an email in the inbox of the rec
 Please see our [troubleshooting guide](../../TROUBLESHOOTING.md) for common library issues.
 
 # Announcements
-All updates to this library are documented in our [CHANGELOG](../../CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases). You may also subscribe to email [release notifications](https://dx.sendgrid.com/newsletter/nodejs) for releases and breaking changes.
+All updates to this library are documented in our [CHANGELOG](../../CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases).
 
 <a name="contribute"></a>
 # How to Contribute
