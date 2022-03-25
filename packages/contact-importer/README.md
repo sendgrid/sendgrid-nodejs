@@ -1,10 +1,7 @@
 [![Test and Deploy](https://github.com/sendgrid/sendgrid-nodejs/actions/workflows/test-and-deploy.yml/badge.svg)](https://github.com/sendgrid/sendgrid-nodejs/actions/workflows/test-and-deploy.yml)
 [![npm version](https://badge.fury.io/js/%40sendgrid%2Fclient.svg)](https://www.npmjs.com/org/sendgrid)
-[![Email Notifications Badge](https://dx.sendgrid.com/badge/nodejs)](https://dx.sendgrid.com/newsletter/nodejs)
 
 **This package is part of a monorepo, please see [this README](../../README.md) for details.**
-
-To be notified when this package is updated, please subscribe to email [notifications](https://dx.sendgrid.com/newsletter/nodejs) for releases and breaking changes.
 
 <a name="contribute"></a>
 # How to Contribute
