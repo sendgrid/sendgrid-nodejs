@@ -1,6 +1,57 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2022-03-09] Version 7.6.2
+--------------------------
+**Library - Chore**
+- [PR #1347](https://github.com/sendgrid/sendgrid-nodejs/pull/1347): update Axios dependency. Thanks to [@JenniferMah](https://github.com/JenniferMah)!
+- [PR #1341](https://github.com/sendgrid/sendgrid-nodejs/pull/1341): push Datadog Release Metric upon deploy success. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+**Library - Docs**
+- [PR #1342](https://github.com/sendgrid/sendgrid-nodejs/pull/1342): fix broken image links on npm. Thanks to [@IObert](https://github.com/IObert)!
+- [PR #1340](https://github.com/sendgrid/sendgrid-nodejs/pull/1340): Update docs with bodyParser exclusion for webhook signature verification. Thanks to [@danmana](https://github.com/danmana)!
+
+
+[2022-02-09] Version 7.6.1
+--------------------------
+**Library - Chore**
+- [PR #1334](https://github.com/sendgrid/sendgrid-nodejs/pull/1334): upgrade supported language versions. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #1329](https://github.com/sendgrid/sendgrid-nodejs/pull/1329): migrate to gh actions. Thanks to [@shwetha-manvinkurke](https://github.com/shwetha-manvinkurke)!
+- [PR #1320](https://github.com/sendgrid/sendgrid-nodejs/pull/1320): adjust 'packages/mail/src/mail.d.ts'. Thanks to [@collierrgbsitisfise](https://github.com/collierrgbsitisfise)!
+- [PR #1325](https://github.com/sendgrid/sendgrid-nodejs/pull/1325): update license year. Thanks to [@JenniferMah](https://github.com/JenniferMah)!
+
+**Library - Test**
+- [PR #1330](https://github.com/sendgrid/sendgrid-nodejs/pull/1330): set the right version for tests. Thanks to [@shwetha-manvinkurke](https://github.com/shwetha-manvinkurke)!
+- [PR #1327](https://github.com/sendgrid/sendgrid-nodejs/pull/1327): get the integration tests running again. Thanks to [@shwetha-manvinkurke](https://github.com/shwetha-manvinkurke)!
+
+**Library - Fix**
+- [PR #1326](https://github.com/sendgrid/sendgrid-nodejs/pull/1326): Revert "chore: adjust 'packages/mail/src/mail.d.ts' (#1320)". Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+**Library - Docs**
+- [PR #1324](https://github.com/sendgrid/sendgrid-nodejs/pull/1324): fix npm docs link. Thanks to [@arvindell](https://github.com/arvindell)!
+
+
+[2021-11-03] Version 7.6.0
+--------------------------
+**Library - Docs**
+- [PR #1314](https://github.com/sendgrid/sendgrid-nodejs/pull/1314): Fix example of creating a transactional template in usage.md. Thanks to [@robbieaverill](https://github.com/robbieaverill)!
+
+**Library - Feature**
+- [PR #1312](https://github.com/sendgrid/sendgrid-nodejs/pull/1312): allow personalization of the From name & email for each email recipient. Thanks to [@beebzz](https://github.com/beebzz)!
+
+
+[2021-10-18] Version 7.5.0
+--------------------------
+**Library - Feature**
+- [PR #1303](https://github.com/sendgrid/sendgrid-nodejs/pull/1303): Added support of replyToList in the library, #339:. Thanks to [@subinoy7](https://github.com/subinoy7)!
+
+**Library - Docs**
+- [PR #1308](https://github.com/sendgrid/sendgrid-nodejs/pull/1308): improve signed webhook validation instruction. Thanks to [@shwetha-manvinkurke](https://github.com/shwetha-manvinkurke)!
+
+**Library - Test**
+- [PR #1305](https://github.com/sendgrid/sendgrid-nodejs/pull/1305): fix issue with new client overriding previously set api key. Thanks to [@seantcanavan](https://github.com/seantcanavan)!
+
+
 [2021-09-22] Version 7.4.7
 --------------------------
 **Library - Chore**

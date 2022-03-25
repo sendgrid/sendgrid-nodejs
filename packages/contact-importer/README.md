@@ -1,10 +1,7 @@
-[![BuildStatus](https://travis-ci.com/sendgrid/sendgrid-nodejs.svg?branch=main)](https://travis-ci.com/sendgrid/sendgrid-nodejs)
+[![Test and Deploy](https://github.com/sendgrid/sendgrid-nodejs/actions/workflows/test-and-deploy.yml/badge.svg)](https://github.com/sendgrid/sendgrid-nodejs/actions/workflows/test-and-deploy.yml)
 [![npm version](https://badge.fury.io/js/%40sendgrid%2Fclient.svg)](https://www.npmjs.com/org/sendgrid)
-[![Email Notifications Badge](https://dx.sendgrid.com/badge/nodejs)](https://dx.sendgrid.com/newsletter/nodejs)
 
 **This package is part of a monorepo, please see [this README](../../README.md) for details.**
-
-To be notified when this package is updated, please subscribe to email [notifications](https://dx.sendgrid.com/newsletter/nodejs) for releases and breaking changes.
 
 <a name="contribute"></a>
 # How to Contribute
@@ -29,4 +26,4 @@ If you need help installing or using the library, please check the [Twilio SendG
 
 If you've instead found a bug in the library or would like new features added, go ahead and open issues or pull requests against this repo!
 
-![Twilio SendGrid Logo](../../twilio_sendgrid_logo.png)
+![Twilio SendGrid Logo](https://github.com/sendgrid/sendgrid-nodejs/blob/main/twilio_sendgrid_logo.png?raw=true)

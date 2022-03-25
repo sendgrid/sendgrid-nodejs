@@ -1,13 +1,10 @@
 [![BuildStatus](https://travis-ci.com/sendgrid/sendgrid-nodejs.svg?branch=main)](https://travis-ci.com/sendgrid/sendgrid-nodejs)
 [![npm version](https://badge.fury.io/js/%40sendgrid%2Fclient.svg)](https://www.npmjs.com/org/sendgrid)
-[![Email Notifications Badge](https://dx.sendgrid.com/badge/nodejs)](https://dx.sendgrid.com/newsletter/nodejs)
 
 **This package is part of a monorepo, please see [this README](../../README.md) for details.**
 
 # Mail Service for the SendGrid v3 Web API
 This is a dedicated service for interaction with the mail endpoint of the [SendGrid v3 API](https://sendgrid.com/docs/api-reference/).
-
-To be notified when this package is updated, please subscribe to email [notifications](https://dx.sendgrid.com/newsletter/nodejs) for releases and breaking changes.
 
 # Installation
 
@@ -30,7 +27,7 @@ source ./sendgrid.env
 ```
 
 ## Install Package
-The following recommended installation requires [npm](https://npmjs.org/). If you are unfamiliar with npm, see the [npm docs](https://npmjs.org/doc/). Npm comes installed with Node.js since node version 0.8.x, therefore, you likely already have it.
+The following recommended installation requires [npm](https://npmjs.org/). If you are unfamiliar with npm, see the [npm docs](https://docs.npmjs.com/). Npm comes installed with Node.js since node version 0.8.x, therefore, you likely already have it.
 
 ```sh
 npm install --save @sendgrid/mail
@@ -91,7 +88,7 @@ After executing the above code, you should have an email in the inbox of the rec
 Please see our [troubleshooting guide](../../TROUBLESHOOTING.md) for common library issues.
 
 # Announcements
-All updates to this library are documented in our [CHANGELOG](../../CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases). You may also subscribe to email [release notifications](https://dx.sendgrid.com/newsletter/nodejs) for releases and breaking changes.
+All updates to this library are documented in our [CHANGELOG](../../CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases).
 
 <a name="contribute"></a>
 # How to Contribute
@@ -108,4 +105,4 @@ If you need help installing or using the library, please check the [Twilio SendG
 
 If you've instead found a bug in the library or would like new features added, go ahead and open issues or pull requests against this repo!
 
-![Twilio SendGrid Logo](../../twilio_sendgrid_logo.png)
+![Twilio SendGrid Logo](https://github.com/sendgrid/sendgrid-nodejs/blob/main/twilio_sendgrid_logo.png?raw=true)
