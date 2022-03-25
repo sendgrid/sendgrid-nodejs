@@ -4,6 +4,7 @@ This documentation provides examples for specific Twilio SendGrid v3 API use cas
 * [Send a Single Email to a Single Recipient](single-email-single-recipient.md)
 * [Send a Single Email to Multiple Recipients](single-email-multiple-recipients.md)
 * [Send Multiple Emails to Multiple Recipients](multiple-emails-multiple-recipients.md)
+* [Send Multiple Emails with Personalizations](multiple-emails-personalizations.md)
 * [CC, BCC and Reply To](cc-bcc-reply-to.md)
 * [Flexible Email Address Fields](flexible-address-fields.md)
 * [Handling Success/Failure/Errors](success-failure-errors.md)

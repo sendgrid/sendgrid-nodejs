@@ -18,13 +18,52 @@ describe('EventWebhook', () => {
     ]
   ) + '\r\n'; // Be sure to include the trailing carriage return and newline!
 
+  const PUBLIC_KEY_MULTIPLE = 'MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEQ4LIFtWztlsF7skFqOncjD1lun4H5w8XOhyOArHW9RcIx/FfEzx6cikC/yPfUvwaX/JScE7Fc9CJD2afQ9Ok3Q==';
+  const SIGNATURE_MULTIPLE = 'MEYCIQC/I4o6vCgqRYrTljjoVWB/GRWNtxeePlLMHr3x9ETeRQIhAIpV+03nREPTTHWSW0wIOA0EoMPdcNgXa70yCaqDJlu5';
+  const TIMESTAMP_MULTIPLE = 1619651159;
+  const eventsPayloadMultiple = [
+    {
+      email: 'invalid@gmail.com',
+      event: 'processed',
+      send_at: 0,
+      sg_event_id: 'cHJvY2Vzc2VkLTE5OTQyMTEyLXFOd0JMZ1BRUWpXNkRKdktRd1NBYnctMA',
+      sg_message_id: 'qNwBLgPQQjW6DJvKQwSAbw.filterdrecv-canary-547b64655b-cw6zx-1-6089EA4A-56.0',
+      'smtp-id': '<qNwBLgPQQjW6DJvKQwSAbw@ismtpd0178p1mdw1.sendgrid.net>',
+      timestamp: 1619651146,
+    },
+    {
+      email: 'invalid@gmail.com',
+      event: 'bounce',
+      ip: '167.89.101.76',
+      reason: '552 5.2.2 The email account that you tried to reach is over quota and inactive. Please direct the recipient to https://support.google.com/mail/?p=OverQuotaPerm c17si1130468pgv.34 - gsmtp',
+      sg_event_id: 'Ym91bmNlLTAtMTk5NDIxMTItcU53QkxnUFFRalc2REp2S1F3U0Fidy0w',
+      sg_message_id: 'qNwBLgPQQjW6DJvKQwSAbw.filterdrecv-canary-547b64655b-cw6zx-1-6089EA4A-56.0',
+      'smtp-id': '<qNwBLgPQQjW6DJvKQwSAbw@ismtpd0178p1mdw1.sendgrid.net>',
+      status: '5.2.2',
+      timestamp: 1619651147,
+      tls: 1,
+      type: 'blocked',
+    },
+  ];
+  const PAYLOAD_MULTIPLE_EVENTS = JSON.stringify(eventsPayloadMultiple).split('},{').join('},\r\n{') + '\r\n'; // Be sure to include the trailing carriage return and newline after each event
+
+
   describe('#verifySignature()', () => {
-    it('should verify a valid signature', () => {
+    it('should verify a valid single event signature', () => {
       expect(verify(
         PUBLIC_KEY,
         PAYLOAD,
         SIGNATURE,
         TIMESTAMP
+      )).to.equal(true);
+    });
+
+    it('should verify a valid multi event signature', () => {
+      expect(verify(
+        PUBLIC_KEY_MULTIPLE,
+        PAYLOAD_MULTIPLE_EVENTS,
+        SIGNATURE_MULTIPLE,
+        TIMESTAMP_MULTIPLE
       )).to.equal(true);
     });
 

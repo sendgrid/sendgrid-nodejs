@@ -1,13 +1,10 @@
 [![BuildStatus](https://travis-ci.com/sendgrid/sendgrid-nodejs.svg?branch=main)](https://travis-ci.com/sendgrid/sendgrid-nodejs)
 [![npm version](https://badge.fury.io/js/%40sendgrid%2Fclient.svg)](https://www.npmjs.com/org/sendgrid)
-[![Email Notifications Badge](https://dx.sendgrid.com/badge/nodejs)](https://dx.sendgrid.com/newsletter/nodejs)
 
 **This package is part of a monorepo, please see [this README](../../README.md) for details.**
 
 # Client for the SendGrid v3 Web API
 This client library is used by the other [Twilio SendGrid service packages](https://www.npmjs.com/org/sendgrid) to make requests to the [Twilio SendGrid v3 Web API](https://sendgrid.com/docs/api-reference/). You can also use it independently to make custom requests to the Twilio SendGrid v3 Web API and other HTTP APIs.
-
-To be notified when this package is updated, please subscribe to email [notifications](https://dx.sendgrid.com/newsletter/nodejs) for releases and breaking changes.
 
 # Installation
 
@@ -98,7 +95,7 @@ sgClient2.setApiKey('KEY2');
 <a name="announcements"></a>
 # Announcements
 
-All updates to this library are documented in our [CHANGELOG](../../CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases). You may also subscribe to email [release notifications](https://dx.sendgrid.com/newsletter/nodejs) for releases and breaking changes.
+All updates to this library are documented in our [CHANGELOG](../../CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases).
 
 <a name="contribute"></a>
 # How to Contribute
@@ -123,4 +120,4 @@ If you need help installing or using the library, please check the [Twilio SendG
 
 If you've instead found a bug in the library or would like new features added, go ahead and open issues or pull requests against this repo!
 
-![Twilio SendGrid Logo](../../twilio_sendgrid_logo.png)
+![Twilio SendGrid Logo](https://github.com/sendgrid/sendgrid-nodejs/blob/main/twilio_sendgrid_logo.png?raw=true)

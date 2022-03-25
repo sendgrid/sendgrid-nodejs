@@ -3,6 +3,7 @@
 - setSubject() - set-subject.spec.js
 - setSendAt()  - set-send-at.spec.js
 - setTo() - set-to.spec.js
+- setFrom() - set-from.spec.js
 - addTo() - add-to.spec.js
 - setCc() - set-cc.spec.js
 - addCc() - add-cc.spec.js

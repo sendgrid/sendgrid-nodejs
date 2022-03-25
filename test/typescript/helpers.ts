@@ -10,6 +10,7 @@ new helpers.classes.EmailAddress({ name: "Some One", email: "someone@example.org
 
 new helpers.classes.Personalization({
     to: "someone@example.org",
+    from: "somebody@example.org",
     subject: "Hello Some One",
     dynamicTemplateData: {
         translations: {
