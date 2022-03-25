@@ -9,15 +9,11 @@
 
 [Twilio SendGrid Docs](https://docs.sendgrid.com/)
 
-**The default branch name for this repository has been changed to `main` as of 07/27/2020.**
-
 **This library allows you to quickly and easily use the Twilio SendGrid Web API v3 via Node.js.**
 
 We want this library to be community-driven, and Twilio SendGrid led. We need your help to realize this goal. To help make sure we are building the right things in the right order, we ask that you create [issues](https://github.com/sendgrid/sendgrid-nodejs/issues) and [pull requests](CONTRIBUTING.md) or merely upvote or comment on existing issues or pull requests.
 
 For updates to this library, see our [CHANGELOG](CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases).
-
-Subscribe to our email [release notifications](https://dx.sendgrid.com/newsletter/nodejs) to receive emails about releases and breaking changes.
 
 We appreciate your continued support, thank you!
 
@@ -50,7 +46,7 @@ This library is broken up into several packages as a monorepo so that you only n
 
 **BREAKING CHANGE:** Please see the [Twilio SendGrid Node.js Migration Guide 6.X.X -> 7.X.X](docs/migration-guides/migrating-from-version-6-to-7.md) for details.
 
-All updates to this library are documented in our [CHANGELOG](CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases). You may also subscribe to email [release notifications](https://dx.sendgrid.com/newsletter/nodejs) for releases and breaking changes.
+All updates to this library are documented in our [CHANGELOG](CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases).
 
 <a name="contribute"></a>
 # How to Contribute
