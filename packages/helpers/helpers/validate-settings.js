@@ -17,6 +17,9 @@ module.exports = {
     const {
       bcc,
       bypassListManagement,
+      bypassSpamManagement,
+      bypassBounceManagement,
+      bypassUnsubscribeManagement,
       footer,
       sandboxMode,
       spamCheck,
@@ -24,6 +27,9 @@ module.exports = {
     validate(bcc, 'bcc', 'enable', 'boolean');
     validate(bcc, 'bcc', 'email', 'string');
     validate(bypassListManagement, 'bypassListManagement', 'enable', 'boolean');
+    validate(bypassSpamManagement, 'bypassSpamManagement', 'enable', 'boolean');
+    validate(bypassBounceManagement, 'bypassBounceManagement', 'enable', 'boolean');
+    validate(bypassUnsubscribeManagement, 'bypassUnsubscribeManagement', 'enable', 'boolean');
     validate(footer, 'footer', 'enable', 'boolean');
     validate(footer, 'footer', 'text', 'string');
     validate(footer, 'footer', 'html', 'string');
