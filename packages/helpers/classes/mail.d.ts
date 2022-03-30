@@ -26,6 +26,15 @@ export interface MailSettings {
   bypassListManagement?: {
     enable?: boolean;
   };
+  bypassSpamManagement?: {
+    enable?: boolean;
+  };
+  bypassBounceManagement?: {
+    enable?: boolean;
+  };
+  bypassUnsubscribeManagement?: {
+    enable?: boolean;
+  };
   footer?: {
     enable?: boolean;
     text?: string;
