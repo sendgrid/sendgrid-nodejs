@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@sendgrid/helpers": "^7.6.2",
-    "mailparser": "^3.3.0"
+    "mailparser": "^3.4.0"
   },
   "tags": [
     "sendgrid"
