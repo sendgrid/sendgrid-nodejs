@@ -46,7 +46,7 @@ yarn add @sendgrid/client
 <a name="general"></a>
 ## General v3 Web API Usage Example
 
-Please see [USAGE.md](USAGE.md) for all endpoint examples for the [Twilio SendGrid v3 Web API](https://sendgrid.com/docs/API_Reference/api_v3.html).
+Please see [USAGE.md](USAGE.md) for all endpoint examples for the [Twilio SendGrid v3 Web API](https://sendgrid.com/docs/api-reference/).
 
 ```js
 const client = require('@sendgrid/client');
