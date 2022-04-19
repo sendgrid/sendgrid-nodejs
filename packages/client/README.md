@@ -55,11 +55,18 @@ const request = {
   method: 'GET',
   url: '/v3/api_keys'
 };
+//ES6
 client.request(request)
 .then(([response, body]) => {
   console.log(response.statusCode);
   console.log(body);
 })
+//ES8
+(async () => {
+  let [response, body] = await client.request(request);
+  console.log(response.statusCode);
+  console.log(body);
+})();
 ```
 
 ## Add a Custom Default Header
