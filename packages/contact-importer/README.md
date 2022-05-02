@@ -15,7 +15,7 @@ We encourage contribution to our libraries (you might even score some nifty swag
 <a name="troubleshooting"></a>
 # Troubleshooting
 
-Please see our [troubleshooting guide](../../TROUBLESHOOTING.md) for common library issues.
+Please see our [troubleshooting guide](https://github.com/sendgrid/sendgrid-nodejs/blob/main/TROUBLESHOOTING.md) for common library issues.
 
 <a name="about"></a>
 # About

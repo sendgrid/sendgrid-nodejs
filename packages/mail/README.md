@@ -85,7 +85,7 @@ sgMail
 After executing the above code, you should have an email in the inbox of the recipient. You can check the status of your email [in the UI](https://app.sendgrid.com/email_activity?). Alternatively, we can post events to a URL of your choice using our [Event Webhook](https://sendgrid.com/docs/API_Reference/Webhooks/event.html). This gives you data about the events that occur as Twilio SendGrid processes your email.
 
 # Troubleshooting
-Please see our [troubleshooting guide](../../TROUBLESHOOTING.md) for common library issues.
+Please see our [troubleshooting guide](https://github.com/sendgrid/sendgrid-nodejs/blob/main/TROUBLESHOOTING.md) for common library issues.
 
 # Announcements
 All updates to this library are documented in our [CHANGELOG](../../CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases).
