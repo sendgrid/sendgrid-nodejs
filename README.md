@@ -15,7 +15,7 @@ We want this library to be community-driven, and Twilio SendGrid led. We need yo
 
 For updates to this library, see our [CHANGELOG](CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases).
 
-We appreciate your continued support, thank you!
+**If you need support using Sendgrid, please check the [Twilio SendGrid Support Help Center](https://support.sendgrid.com).**
 
 # Table of Contents
 
@@ -68,9 +68,10 @@ Please see our [troubleshooting guide](TROUBLESHOOTING.md) for common library is
 
 sendgrid-nodejs is maintained and funded by Twilio SendGrid, Inc. The names and logos for sendgrid-nodejs are trademarks of Twilio SendGrid, Inc.
 
-If you need help installing or using the library, please check the [Twilio SendGrid Support Help Center](https://support.sendgrid.com).
+<a name="support"></a>
+# Support
 
-If you've instead found a bug in the library or would like new features added, go ahead and open issues or pull requests against this repo!
+If you need help using SendGrid, please check the [Twilio SendGrid Support Help Center](https://support.sendgrid.com).
 
 <a name="license"></a>
 # License

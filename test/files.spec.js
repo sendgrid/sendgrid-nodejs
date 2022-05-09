@@ -36,10 +36,6 @@ describe('sendgrid-nodejs repo', function() {
     assert(fileExists('CONTRIBUTING.md'));
   });
 
-  it('should have ./ISSUE_TEMPLATE.md file', function() {
-    assert(fileExists('ISSUE_TEMPLATE.md'));
-  });
-
   it('should have ./LICENSE file', function() {
     assert(fileExists('LICENSE'));
   });
