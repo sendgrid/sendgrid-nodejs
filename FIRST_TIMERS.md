@@ -51,29 +51,3 @@ git push origin <topic-branch-name>
 ## Important notice
 
 Before creating a pull request, make sure that you respect the repository's constraints regarding contributions. You can find them in the [CONTRIBUTING.md](CONTRIBUTING.md) file.
-
-## Repositories with Open, Easy, Help Wanted, Issue Filters
-
-* [Python SDK](https://github.com/sendgrid/sendgrid-python/issues?utf8=%E2%9C%93&q=is%3Aopen+label%3A%22difficulty%3A+easy%22+label%3A%22status%3A+help+wanted%22)
-* [PHP SDK](https://github.com/sendgrid/sendgrid-php/issues?utf8=%E2%9C%93&q=is%3Aopen+label%3A%22difficulty%3A+easy%22+label%3A%22status%3A+help+wanted%22)
-* [C# SDK](https://github.com/sendgrid/sendgrid-csharp/issues?utf8=%E2%9C%93&q=is%3Aopen+label%3A%22difficulty%3A+easy%22+label%3A%22status%3A+help+wanted%22)
-* [Ruby SDK](https://github.com/sendgrid/sendgrid-ruby/issues?utf8=%E2%9C%93&q=is%3Aopen+label%3A%22difficulty%3A+easy%22+label%3A%22status%3A+help+wanted%22)
-* [Node.js SDK](https://github.com/sendgrid/sendgrid-nodejs/issues?utf8=%E2%9C%93&q=is%3Aopen+label%3A%22difficulty%3A+easy%22+label%3A%22status%3A+help+wanted%22)
-* [Java SDK](https://github.com/sendgrid/sendgrid-java/issues?utf8=%E2%9C%93&q=is%3Aopen+label%3A%22difficulty%3A+easy%22+label%3A%22status%3A+help+wanted%22)
-* [Go SDK](https://github.com/sendgrid/sendgrid-go/issues?utf8=%E2%9C%93&q=is%3Aopen+label%3A%22difficulty%3A+easy%22+label%3A%22status%3A+help+wanted%22)
-* [Python SMTPAPI Client](https://github.com/sendgrid/smtpapi-python/issues?utf8=%E2%9C%93&q=is%3Aopen+label%3A%22difficulty%3A+easy%22+label%3A%22status%3A+help+wanted%22)
-* [PHP SMTPAPI Client](https://github.com/sendgrid/smtpapi-php/issues?utf8=%E2%9C%93&q=is%3Aopen+label%3A%22difficulty%3A+easy%22+label%3A%22status%3A+help+wanted%22)
-* [C# SMTPAPI Client](https://github.com/sendgrid/smtpapi-csharp/issues?utf8=%E2%9C%93&q=is%3Aopen+label%3A%22difficulty%3A+easy%22+label%3A%22status%3A+help+wanted%22)
-* [Ruby SMTPAPI Client](https://github.com/sendgrid/smtpapi-ruby/issues?utf8=%E2%9C%93&q=is%3Aopen+label%3A%22difficulty%3A+easy%22+label%3A%22status%3A+help+wanted%22)
-* [Node.js SMTPAPI Client](https://github.com/sendgrid/smtpapi-nodejs/issues?utf8=%E2%9C%93&q=is%3Aopen+label%3A%22difficulty%3A+easy%22+label%3A%22status%3A+help+wanted%22)
-* [Java SMTPAPI Client](https://github.com/sendgrid/smtpapi-java/issues?utf8=%E2%9C%93&q=is%3Aopen+label%3A%22difficulty%3A+easy%22+label%3A%22status%3A+help+wanted%22)
-* [Go SMTPAPI Client](https://github.com/sendgrid/smtpapi-go/issues?utf8=%E2%9C%93&q=is%3Aopen+label%3A%22difficulty%3A+easy%22+label%3A%22status%3A+help+wanted%22)
-* [Python HTTP Client](https://github.com/sendgrid/python-http-client/issues?utf8=%E2%9C%93&q=is%3Aopen+label%3A%22difficulty%3A+easy%22+label%3A%22status%3A+help+wanted%22)
-* [PHP HTTP Client](https://github.com/sendgrid/php-http-client/issues?utf8=%E2%9C%93&q=is%3Aopen+label%3A%22difficulty%3A+easy%22+label%3A%22status%3A+help+wanted%22)
-* [C# HTTP Client](https://github.com/sendgrid/csharp-http-client/issues?utf8=%E2%9C%93&q=is%3Aopen+label%3A%22difficulty%3A+easy%22+label%3A%22status%3A+help+wanted%22)
-* [Java HTTP Client](https://github.com/sendgrid/java-http-client/issues?utf8=%E2%9C%93&q=is%3Aopen+label%3A%22difficulty%3A+easy%22+label%3A%22status%3A+help+wanted%22)
-* [Ruby HTTP Client](https://github.com/sendgrid/ruby-http-client/issues?utf8=%E2%9C%93&q=is%3Aopen+label%3A%22difficulty%3A+easy%22+label%3A%22status%3A+help+wanted%22)
-* [Go HTTP Client](https://github.com/sendgrid/rest/issues?utf8=%E2%9C%93&q=is%3Aopen+label%3A%22difficulty%3A+easy%22+label%3A%22status%3A+help+wanted%22)
-* [Open API Definition](https://github.com/sendgrid/sendgrid-oai/issues?utf8=%E2%9C%93&q=is%3Aopen+label%3A%22difficulty%3A+easy%22+label%3A%22status%3A+help+wanted%22)
-* [DX Automator](https://github.com/sendgrid/dx-automator/issues?utf8=%E2%9C%93&q=is%3Aopen+label%3A%22difficulty%3A+easy%22+label%3A%22status%3A+help+wanted%22)
-* [Documentation](https://github.com/sendgrid/docs/issues?utf8=%E2%9C%93&q=is%3Aopen+label%3A%22difficulty%3A+easy%22+label%3A%22status%3A+help+wanted%22)
