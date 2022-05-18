@@ -1,6 +1,19 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2022-05-18] Version 7.7.0
+--------------------------
+**Library - Docs**
+- [PR #1360](https://github.com/sendgrid/sendgrid-nodejs/pull/1360): Modify README.md in alignment with SendGrid Support. Thanks to [@garethpaul](https://github.com/garethpaul)!
+- [PR #1359](https://github.com/sendgrid/sendgrid-nodejs/pull/1359): Fix troubleshooting in readme. Thanks to [@MarcusHSmith](https://github.com/MarcusHSmith)!
+
+**Library - Feature**
+- [PR #1352](https://github.com/sendgrid/sendgrid-nodejs/pull/1352): allow use of bypass options. Thanks to [@acanimal](https://github.com/acanimal)!
+
+**Library - Fix**
+- [PR #1351](https://github.com/sendgrid/sendgrid-nodejs/pull/1351): Fix typings for eventwebhook.d.ts PublicKey. Thanks to [@Cellule](https://github.com/Cellule)!
+
+
 [2022-03-09] Version 7.6.2
 --------------------------
 **Library - Chore**
