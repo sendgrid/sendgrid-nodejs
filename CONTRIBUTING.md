@@ -1,9 +1,6 @@
 Hello! Thank you for choosing to help contribute to one of the Twilio SendGrid open source libraries. There are many ways you can contribute and help is always welcome.  We simply ask that you follow the following contribution policies.
 
 **All third party contributors acknowledge that any contributions they provide will be made under the same open source license that the open source project is provided under.**
-- [Feature Request](#feature-request)
-- [Submit a Bug Report](#submit-a-bug-report)
-  - [Please use our Bug Report Template](#please-use-our-bug-report-template)
 - [Improvements to the Codebase](#improvements-to-the-codebase)
   - [Development Environment](#development-environment)
     - [Install and Run Locally](#install-and-run-locally)
@@ -20,33 +17,6 @@ Hello! Thank you for choosing to help contribute to one of the Twilio SendGrid o
 - [Code Reviews](#code-reviews)
 
 There are a few ways to contribute, which we'll enumerate below:
-
-<a name="feature-request"></a>
-## Feature Request
-
-If you'd like to make a feature request, please read this section.
-
-The GitHub [issue tracker](https://github.com/sendgrid/sendgrid-nodejs/issues) is the preferred channel for library feature requests, but please respect the following restrictions:
-
-- Please [**search for existing issues**](https://github.com/search?utf8=%E2%9C%93&q=repo%3Asendgrid%2Fsendgrid-nodejs&type=Issues) to ensure we don't have duplicate bugs/feature requests.
-- Please be respectful and considerate of others when commenting on issues
-
-<a name="submit-a-bug-report"></a>
-## Submit a Bug Report
-
-Note: DO NOT include your credentials in ANY code examples, descriptions, or media you make public.
-
-A software bug is a demonstrable issue in the code base. For us to diagnose the issue and respond as quickly as possible, please add as much detail as possible into your bug report.
-
-Before you decide to create a new issue, please try the following:
-
-1. [Check the GitHub issues tab](https://github.com/sendgrid/sendgrid-nodejs/issues) if the identified issue has already been reported, if so, please add a +1 to the existing post.
-2. Update to the latest version of this code and check if the issue has already been fixed
-3. Copy and fill in the Bug Report Template we have provided below
-
-### Please use our Bug Report Template
-
-In order to make the process easier, we've included a [sample bug report template](ISSUE_TEMPLATE.md).
 
 <a name="improvements-to-the-codebase"></a>
 ## Improvements to the Codebase
