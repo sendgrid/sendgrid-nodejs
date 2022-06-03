@@ -74,4 +74,4 @@ mail.addPersonalization(personalization3);
 sgMail.send(mail);
 ```
 
-Refer to [the Sendgrid documentation](https://docs.sendgrid.com/for-developers/sending-email/personalizations) for more details about personalizations.
+Refer to [the SendGrid documentation](https://docs.sendgrid.com/for-developers/sending-email/personalizations) for more details about personalizations.
