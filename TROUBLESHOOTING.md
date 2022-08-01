@@ -27,7 +27,7 @@ Please review [our guide](https://sendgrid.com/docs/Classroom/Send/v3_Mail_Send/
 
 [Here](https://github.com/sendgrid/sendgrid-nodejs/tree/b57b32caa47608a15d23940a0dedc82a91e7b6aa) is the last working version with v2 support.
 
-The following recommended installation requires [npm](https://npmjs.org/). If you are unfamiliar with npm, see the [npm docs](https://npmjs.org/doc/). Npm comes installed with Node.js since node version 0.8.x, therefore, you likely already have it.
+The following recommended installation requires [npm](https://npmjs.org/).
 
 Add the following to your `package.json` file:
 

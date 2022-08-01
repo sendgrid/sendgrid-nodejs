@@ -17,7 +17,7 @@
   },
   "main": "src/eventwebhook.js",
   "engines": {
-    "node": "6.* || 8.* || >=10.*"
+    "node": ">= 8.0.0"
   },
   "dependencies": {
     "starkbank-ecdsa": "^1.1.1"

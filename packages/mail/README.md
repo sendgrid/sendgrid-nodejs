@@ -9,7 +9,7 @@ This is a dedicated service for interaction with the mail endpoint of the [SendG
 # Installation
 
 ## Prerequisites
-- Node.js version 6, 8 or >=10
+- Node.js version >=8
 - A Twilio SendGrid account, [sign up for free](https://sendgrid.com/free?source=sendgrid-nodejs) to send up to 40,000 emails for the first 30 days or check out [our pricing](https://sendgrid.com/pricing?source=sendgrid-nodejs).
 
 ## Obtain an API Key
@@ -27,7 +27,7 @@ source ./sendgrid.env
 ```
 
 ## Install Package
-The following recommended installation requires [npm](https://npmjs.org/). If you are unfamiliar with npm, see the [npm docs](https://docs.npmjs.com/). Npm comes installed with Node.js since node version 0.8.x, therefore, you likely already have it.
+The following recommended installation requires [npm](https://npmjs.org/).
 
 ```sh
 npm install --save @sendgrid/mail
