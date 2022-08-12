@@ -37,4 +37,5 @@ declare class EventWebhookHeader {
 export {
     EventWebhook,
     EventWebhookHeader,
+    PublicKey,
 };
