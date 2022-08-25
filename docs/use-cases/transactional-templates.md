@@ -86,7 +86,7 @@ const msg = {
   text: 'Hello plain world!',
   html: '<p>Hello HTML world!</p>',
   templateId: 'd-f43daeeaef504760851f727007e0b5d0',
-  dynamic_template_data: {
+  dynamicTemplateData: {
     subject: 'Testing Templates & Stuff',
     name: 'Some "Testing" One',
     city: '<b>Denver<b>',
