@@ -5,6 +5,7 @@
  */
 const classes = require('./classes');
 const helpers = require('./helpers');
+const helpers = require('./stdio');
 
 /**
  * Export
