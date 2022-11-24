@@ -1,5 +1,5 @@
 import { Client } from "@sendgrid/client";
-import sgMail = require("@sendgrid/mail");
+import sgMail from "@sendgrid/mail";
 
 // Test setClient() method
 sgMail.setClient(new Client());
