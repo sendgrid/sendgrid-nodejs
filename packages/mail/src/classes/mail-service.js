@@ -202,6 +202,7 @@ class MailService {
         method: 'POST',
         url: '/v3/mail/send',
         headers: mail.headers,
+        baseUrl: data.baseUrl,
         body,
       };
 
