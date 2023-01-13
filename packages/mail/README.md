@@ -1,7 +1,7 @@
 [![BuildStatus](https://travis-ci.com/sendgrid/sendgrid-nodejs.svg?branch=main)](https://travis-ci.com/sendgrid/sendgrid-nodejs)
 [![npm version](https://badge.fury.io/js/%40sendgrid%2Fclient.svg)](https://www.npmjs.com/org/sendgrid)
 
-**This package is part of a monorepo, please see [this README](../../README.md) for details.**
+**This package is part of a monorepo, please see [this README](https://github.com/sendgrid/sendgrid-nodejs/blob/main/README.md) for details.**
 
 # Mail Service for the SendGrid v3 Web API
 This is a dedicated service for interaction with the mail endpoint of the [SendGrid v3 API](https://sendgrid.com/docs/api-reference/).
@@ -46,7 +46,7 @@ Verify an email address or domain in the [Sender Authentication tab](https://app
 # Quick Start, Hello Email
 The following is the minimum needed code to send a simple email. Use this example, and modify the `to` and `from` variables:
 
-For more complex use cases, please see [USE_CASES.md](../../docs/use-cases/README.md#email-use-cases).
+For more complex use cases, please see [USE_CASES.md](https://github.com/sendgrid/sendgrid-nodejs/blob/main/docs/use-cases/README.md#email-use-cases).
 
 ```js
 const sgMail = require('@sendgrid/mail');
@@ -94,9 +94,9 @@ All updates to this library are documented in our [CHANGELOG](../../CHANGELOG.md
 # How to Contribute
 We encourage contribution to our libraries (you might even score some nifty swag), please see our [CONTRIBUTING](https://github.com/sendgrid/sendgrid-nodejs/blob/HEAD/CONTRIBUTING.md) guide for details.
 
-* [Feature Request](../../CONTRIBUTING.md#feature-request)
-* [Bug Reports](../../CONTRIBUTING.md#submit-a-bug-report)
-* [Improvements to the Codebase](../../CONTRIBUTING.md#improvements-to-the-codebase)
+* [Feature Request](https://github.com/sendgrid/sendgrid-nodejs/blob/main/CONTRIBUTING.md#feature-request)
+* [Bug Reports](https://github.com/sendgrid/sendgrid-nodejs/blob/main/CONTRIBUTING.md#submit-a-bug-report)
+* [Improvements to the Codebase](https://github.com/sendgrid/sendgrid-nodejs/blob/main/CONTRIBUTING.md#improvements-to-the-codebase)
 
 # About
 @sendgrid/mail is maintained and funded by Twilio SendGrid, Inc. The names and logos for @sendgrid/mail are trademarks of Twilio SendGrid, Inc.
