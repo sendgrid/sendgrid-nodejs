@@ -3,7 +3,7 @@ We appreciate the effort for this pull request but before that please make sure 
 
 Please format the PR title appropriately based on the type of change:
   <type>[!]: <description>
-Where <type> is one of: docs, chore, feat, fix, test.
+Where <type> is one of: docs, chore, feat, fix, test, misc.
 Add a '!' after the type for breaking changes (e.g. feat!: new breaking feature).
 
 **All third-party contributors acknowledge that any contributions they provide will be made under the same open-source license that the open-source project is provided under.**

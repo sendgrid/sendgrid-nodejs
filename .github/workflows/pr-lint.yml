@@ -10,6 +10,6 @@ jobs:
     steps:
       - uses: amannn/action-semantic-pull-request@v4
         with:
-          types: chore docs fix feat test
+          types: chore docs fix feat test misc
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
