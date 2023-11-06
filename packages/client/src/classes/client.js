@@ -38,7 +38,6 @@ class Client {
 
   setApiKey(apiKey) {
     this.auth = 'Bearer ' + apiKey;
-    this.setDefaultRequest('baseUrl', SENDGRID_BASE_URL);
 
     if (!this.isValidApiKey(apiKey)) {
       console.warn(`API key does not start with "${API_KEY_PREFIX}".`);
@@ -48,7 +47,9 @@ class Client {
   setTwilioEmailAuth(username, password) {
     const b64Auth = Buffer.from(username + ':' + password).toString('base64');
     this.auth = 'Basic ' + b64Auth;
-    this.setDefaultRequest('baseUrl', TWILIO_BASE_URL);
+    if (this.defaultRequest.baseUrl === SENDGRID_BASE_URL) {
+      this.setDefaultRequest('baseUrl', TWILIO_BASE_URL);
+    }
 
     if (!this.isValidTwilioAuth(username, password)) {
       console.warn('Twilio Email credentials must be non-empty strings.');
