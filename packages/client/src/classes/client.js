@@ -17,8 +17,8 @@ const TWILIO_BASE_URL = 'https://email.twilio.com/';
 
 // Initialize the allowed regions and their corresponding hosts
 const REGION_HOST_MAP = {
-  eu: 'api.eu.sendgrid.com',
-  global: 'api.sendgrid.com',
+  eu: 'https://api.eu.sendgrid.com/',
+  global: 'https://api.sendgrid.com/',
 };
 class Client {
   constructor() {
@@ -105,6 +105,7 @@ class Client {
     } else {
       this.setDefaultRequest('baseUrl', REGION_HOST_MAP[region]);
     }
+    return this;
   }
 
   createHeaders(data) {

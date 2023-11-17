@@ -1,7 +1,7 @@
 'use strict';
 const nock = require('nock');
 const sgClient = require('./client');
-
+const testClient = require('./client');
 const testRequest = (request, statusCode) => {
   const sgClient = require('./client');
   sgClient.setApiKey('SG.API Key');
@@ -3094,10 +3094,44 @@ describe('test_whitelabel_links__link_id__subuser_post', () => {
 });
 
 describe('setDataResidency', () => {
-  const sgClient = require('./client');
-  sgClient.setDataResidency('eu');
+  const testClient = require('./client');
+  let consoleWarnSpy;
 
-  it('should have host as eu', () => {
-    expect(sgClient.baseUrl).to.equal('api.eu.sendgrid.com');
+  beforeEach(() => {
+    consoleWarnSpy = sinon.spy(console, 'warn');
+  });
+  afterEach(() => {
+    console.warn.restore();
+  });
+
+  it('should send to host EU', () => {
+    testClient.setDataResidency('eu');
+    expect(testClient.defaultRequest.baseUrl).to.equal('https://api.eu.sendgrid.com/');
+  });
+  it('should send to host Global/default', () => {
+    testClient.setDataResidency('global');
+    expect(testClient.defaultRequest.baseUrl).to.equal('https://api.sendgrid.com/');
+  });
+  it('should override the existing set hostname, if data residency setter is called after', () => {
+    testClient.setApiKey('SG.1234567890');
+    testClient.setDataResidency('eu');
+    expect(testClient.defaultRequest.baseUrl).to.equal('https://api.eu.sendgrid.com/');
+  });
+  it('should give a warning if the provided value is not allowed', () => {
+    testClient.setDataResidency('');
+    expect(consoleWarnSpy.calledOnce).to.equal(true);
+  });
+  it('should give a warning if the provided value is null', () => {
+    testClient.setDataResidency(null);
+    expect(consoleWarnSpy.calledOnce).to.equal(true);
+  });
+  it('should give precedence to the order of execution', () => {
+    testClient.setDataResidency('eu');
+    testClient.setApiKey('SG.1234567890');
+    expect(testClient.defaultRequest.baseUrl).to.equal('https://api.sendgrid.com/');
+  });
+  it('should have default value of hostname as https://api.sendgrid.com/', () => {
+    expect(testClient.defaultRequest.baseUrl).to.equal('https://api.sendgrid.com/');
   });
 });
+
