@@ -1,5 +1,6 @@
 'use strict';
 const nock = require('nock');
+const sgClient = require('./client');
 
 const testRequest = (request, statusCode) => {
   const sgClient = require('./client');
@@ -3089,5 +3090,14 @@ describe('test_whitelabel_links__link_id__subuser_post', () => {
   request.url = '/v3/whitelabel/links/{link_id}/subuser';
   it('should have the correct response code', () => {
     return testRequest(request, 200);
+  });
+});
+
+describe('setDataResidency', () => {
+  const sgClient = require('./client');
+  sgClient.setDataResidency('eu');
+
+  it('should have host as eu', () => {
+    expect(sgClient.baseUrl).to.equal('api.eu.sendgrid.com');
   });
 });

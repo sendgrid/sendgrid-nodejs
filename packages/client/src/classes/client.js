@@ -15,6 +15,11 @@ const API_KEY_PREFIX = 'SG.';
 const SENDGRID_BASE_URL = 'https://api.sendgrid.com/';
 const TWILIO_BASE_URL = 'https://email.twilio.com/';
 
+// Initialize the allowed regions and their corresponding hosts
+const REGION_HOST_MAP = {
+  eu: 'api.eu.sendgrid.com',
+  global: 'api.sendgrid.com',
+};
 class Client {
   constructor() {
     this.auth = '';
@@ -92,6 +97,14 @@ class Client {
 
     this.defaultRequest[key] = value;
     return this;
+  }
+
+  setDataResidency(region) {
+    if (!REGION_HOST_MAP.hasOwnProperty(region)) {
+      console.warn('Region can only be "global" or "eu".');
+    } else {
+      this.setDefaultRequest('baseUrl', REGION_HOST_MAP[region]);
+    }
   }
 
   createHeaders(data) {
