@@ -99,6 +99,11 @@ class Client {
     return this;
   }
 
+  /**
+   * Global is the default residency (or region)
+   * Global region means the message will be sent through https://api.sendgrid.com
+   * EU region means the message will be sent through https://api.eu.sendgrid.com
+   **/
   setDataResidency(region) {
     if (!REGION_HOST_MAP.hasOwnProperty(region)) {
       console.warn('Region can only be "global" or "eu".');
