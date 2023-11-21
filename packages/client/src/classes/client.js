@@ -43,6 +43,8 @@ class Client {
 
   setApiKey(apiKey) {
     this.auth = 'Bearer ' + apiKey;
+    console.log('baseUrl: ');
+    console.log(this.request.baseUrl);
     this.setDefaultRequest('baseUrl', SENDGRID_BASE_URL);
 
     if (!this.isValidApiKey(apiKey)) {
