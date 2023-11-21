@@ -32,6 +32,7 @@ sgMail.send(msg);
 
 ## Limitations
 
-1. Emails can only be sent to two hosts for now; 'eu' (https://api.eu.sendgrid.com/) and 'global' (https://api.eu.sendgrid.com/)
+1. Setting the API Key (via `client.setApiKey()`) or Twilio Authentication (via `client.setTwilioEmailAuth()`) will override the hostname to default value. Use the setter call after this set-up.
+2. Emails can only be sent to two hosts for now; 'eu' (https://api.eu.sendgrid.com/) and 'global' (https://api.eu.sendgrid.com/)
 2. The default hostname is https://api.sendgrid.com/
 3. The valid values for `region` in `client.setDataResidency(region)` are only `eu` and `global`. Case-sensitive.
