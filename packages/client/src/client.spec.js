@@ -1,7 +1,7 @@
 'use strict';
 const nock = require('nock');
 const sgClient = require('./client');
-const testClient = require('./client');
+let testClient = require('./client');
 const testRequest = (request, statusCode) => {
   const sgClient = require('./client');
   sgClient.setApiKey('SG.API Key');
@@ -3095,7 +3095,7 @@ describe('test_whitelabel_links__link_id__subuser_post', () => {
 
 describe('setDataResidency', () => {
   let consoleWarnSpy;
-  let testClient = require('./client');
+  let Client = require('./client');
   beforeEach(() => {
     testClient = new Client();
     consoleWarnSpy = sinon.spy(console, 'warn');
