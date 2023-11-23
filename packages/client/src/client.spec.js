@@ -3095,9 +3095,8 @@ describe('test_whitelabel_links__link_id__subuser_post', () => {
 
 describe('setDataResidency', () => {
   let consoleWarnSpy;
-  let Client = require('./client');
   beforeEach(() => {
-    testClient = new Client();
+    testClient = require('./client');
     consoleWarnSpy = sinon.spy(console, 'warn');
   });
   afterEach(() => {
