@@ -3126,21 +3126,21 @@ describe('setDataResidency', () => {
     testClient.setDataResidency(null);
     expect(consoleWarnSpy.calledOnce).to.equal(true);
   });
+  it('should have default value of hostname as https://api.sendgrid.com/', () => {
+    expect(testClient.defaultRequest.baseUrl).to.equal('https://api.sendgrid.com/');
+    expect(testClient.region).to.equal('');
+  });
   it('setting the API Key wont reset the region set', () => {
     testClient.setDataResidency('eu');
     testClient.setApiKey('SG.1234567890');
     expect(testClient.defaultRequest.baseUrl).to.equal('https://api.eu.sendgrid.com/');
-    expect(testClient.region).to.equal('eu');
-  });
-  it('should have default value of hostname as https://api.sendgrid.com/', () => {
-    expect(testClient.defaultRequest.baseUrl).to.equal('https://api.sendgrid.com/');
-    expect(testClient.region).to.equal('');
+    expect(testClient.sendgrid_region).to.equal('eu');
   });
   it('should send to host global and then call setApiKey', () => {
     testClient.setDataResidency('global');
     testClient.setApiKey('SG.1234567890');
     expect(testClient.defaultRequest.baseUrl).to.equal('https://api.sendgrid.com/');
-    expect(testClient.region).to.equal('global');
+    expect(testClient.sendgrid_region).to.equal('global');
 
 
   });
