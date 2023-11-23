@@ -24,6 +24,7 @@ class Client {
   constructor() {
     this.auth = '';
     this.impersonateSubuser = '';
+    this.sendgrid_region = '';
 
     this.defaultHeaders = {
       Accept: 'application/json',
@@ -43,8 +44,10 @@ class Client {
 
   setApiKey(apiKey) {
     this.auth = 'Bearer ' + apiKey;
-    this.setDefaultRequest('baseUrl', SENDGRID_BASE_URL);
-
+    // this means that region was never set before
+    if (this.sendgrid_region == '') {
+      this.setDefaultRequest('baseUrl', SENDGRID_BASE_URL);
+    }
     if (!this.isValidApiKey(apiKey)) {
       console.warn(`API key does not start with "${API_KEY_PREFIX}".`);
     }
@@ -108,6 +111,7 @@ class Client {
     if (!REGION_HOST_MAP.hasOwnProperty(region)) {
       console.warn('Region can only be "global" or "eu".');
     } else {
+      this.sendgrid_region = region;
       this.setDefaultRequest('baseUrl', REGION_HOST_MAP[region]);
     }
     return this;
