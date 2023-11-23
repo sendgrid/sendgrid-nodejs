@@ -44,7 +44,7 @@ class Client {
 
   setApiKey(apiKey) {
     this.auth = 'Bearer ' + apiKey;
-    // this means that region based setter was not called
+    // this means that region was never set before
     if (this.sendgrid_region == '') {
       this.setDefaultRequest('baseUrl', SENDGRID_BASE_URL);
     }
