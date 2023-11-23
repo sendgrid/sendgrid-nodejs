@@ -3095,9 +3095,9 @@ describe('test_whitelabel_links__link_id__subuser_post', () => {
 
 describe('setDataResidency', () => {
   let consoleWarnSpy;
-
+  let testClient = require('./client');
   beforeEach(() => {
-    const testClient = require('./client');
+    testClient = new Client();
     consoleWarnSpy = sinon.spy(console, 'warn');
   });
   afterEach(() => {
@@ -3111,7 +3111,7 @@ describe('setDataResidency', () => {
   it('should send to host Global/default', () => {
     testClient.setDataResidency('global');
     expect(testClient.defaultRequest.baseUrl).to.equal('https://api.sendgrid.com/');
-    expect(testClient.region).to.equal('global');
+    expect(testClient.sendgrid_region).to.equal('global');
   });
   it('should override the existing set hostname, if data residency setter is called after', () => {
     testClient.setApiKey('SG.1234567890');
