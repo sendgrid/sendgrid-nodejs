@@ -47,6 +47,7 @@ class Client {
   setTwilioEmailAuth(username, password) {
     const b64Auth = Buffer.from(username + ':' + password).toString('base64');
     this.auth = 'Basic ' + b64Auth;
+    // Prevent implicit overwriting if baseUrl is not the default value
     if (this.defaultRequest.baseUrl === SENDGRID_BASE_URL) {
       this.setDefaultRequest('baseUrl', TWILIO_BASE_URL);
     }
