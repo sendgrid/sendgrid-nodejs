@@ -20,7 +20,7 @@
   },
   "main": "src/importer.js",
   "engines": {
-    "node": "6.* || 8.* || >=10.*"
+    "node": ">=12.*"
   },
   "publishConfig": {
     "access": "public"

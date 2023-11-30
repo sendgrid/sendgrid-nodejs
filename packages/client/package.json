@@ -24,11 +24,11 @@
   },
   "main": "index.js",
   "engines": {
-    "node": "6.* || 8.* || >=10.*"
+    "node": ">=12.*"
   },
   "dependencies": {
     "@sendgrid/helpers": "^7.7.0",
-    "axios": "^0.26.0"
+    "axios": "^1.6.0"
   },
   "devDependencies": {
     "chai": "4.2.0",

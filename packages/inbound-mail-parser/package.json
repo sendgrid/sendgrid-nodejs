@@ -23,7 +23,7 @@
   },
   "main": "src/parser.js",
   "engines": {
-    "node": "6.* || 8.* || >=10.*"
+    "node": ">=12.*"
   },
   "dependencies": {
     "@sendgrid/helpers": "^7.7.0",
