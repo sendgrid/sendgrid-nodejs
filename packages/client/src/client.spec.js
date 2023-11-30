@@ -106,6 +106,23 @@ describe('setImpersonateSubuser', () => {
   });
 });
 
+describe('setDefaultRequest', () => {
+  const customBaseUrl = 'localhost:3030';
+  const sgClient = require('./client');
+
+  it('should set the custom base URL without being overwritten by setApiKey', () => {
+    sgClient.setDefaultRequest('baseUrl', customBaseUrl);
+    sgClient.setApiKey('SG\.1234567890');
+    expect(sgClient.defaultRequest.baseUrl).to.equal(customBaseUrl);
+  });
+
+  it('should set the custom base URL without being overwritten by setTwilioEmailAuth', () => {
+    sgClient.setDefaultRequest('baseUrl', customBaseUrl);
+    sgClient.setTwilioEmailAuth('username', 'password');
+    expect(sgClient.defaultRequest.baseUrl).to.equal(customBaseUrl);
+  });
+});
+
 describe('test_access_settings_activity_get', () => {
   const request = {};
   request.qs = {
