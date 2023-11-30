@@ -3104,7 +3104,7 @@ describe('setDataResidency', () => {
   });
   it('should have default value of hostname as https://api.sendgrid.com/', () => {
     expect(testClient.defaultRequest.baseUrl).to.equal('https://api.sendgrid.com/');
-    expect(testClient.sendgrid_region).to.equal('');
+    expect(testClient.sendgrid_region).to.equal('global');
   });
   it('should send to host EU', () => {
     testClient.setDataResidency('eu');

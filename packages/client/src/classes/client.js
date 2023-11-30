@@ -14,7 +14,7 @@ const {
 const API_KEY_PREFIX = 'SG.';
 const SENDGRID_BASE_URL = 'https://api.sendgrid.com/';
 const TWILIO_BASE_URL = 'https://email.twilio.com/';
-
+const SENDGRID_REGION = 'global';
 // Initialize the allowed regions and their corresponding hosts
 const REGION_HOST_MAP = {
   eu: 'https://api.eu.sendgrid.com/',
@@ -24,7 +24,7 @@ class Client {
   constructor() {
     this.auth = '';
     this.impersonateSubuser = '';
-    this.sendgrid_region = '';
+    this.sendgrid_region = SENDGRID_REGION;
 
     this.defaultHeaders = {
       Accept: 'application/json',
@@ -44,10 +44,8 @@ class Client {
 
   setApiKey(apiKey) {
     this.auth = 'Bearer ' + apiKey;
-    // this means that region was never set before
-    if (this.sendgrid_region == '') {
-      this.setDefaultRequest('baseUrl', SENDGRID_BASE_URL);
-    }
+    this.setDefaultRequest('baseUrl', REGION_HOST_MAP[this.sendgrid_region]);
+
     if (!this.isValidApiKey(apiKey)) {
       console.warn(`API key does not start with "${API_KEY_PREFIX}".`);
     }
