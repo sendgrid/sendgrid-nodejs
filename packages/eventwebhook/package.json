@@ -1,7 +1,7 @@
 {
   "name": "@sendgrid/eventwebhook",
   "description": "Twilio SendGrid NodeJS Event Webhook",
-  "version": "7.7.0",
+  "version": "8.0.0",
   "author": "Twilio SendGrid <help@twilio.com> (sendgrid.com)",
   "contributors": [
     "Elise Shanholtz <eshanholtz@twilio.com>"
