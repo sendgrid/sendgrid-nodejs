@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2023-12-06] Version 8.1.0
+--------------------------
+**Library - Feature**
+- [PR #1390](https://github.com/sendgrid/sendgrid-nodejs/pull/1390): Add data residency for eu and global regions. Thanks to [@shrutiburman](https://github.com/shrutiburman)!
+
+
 [2023-12-05] Version 8.0.0
 --------------------------
 **Note:** This release contains breaking changes, check our [upgrade guide](./UPGRADE.md###-2023-12-05-7xx-to-8xx) for detailed migration notes.
