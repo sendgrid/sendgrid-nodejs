@@ -31,6 +31,11 @@ declare class Client {
   setDefaultRequest<K extends keyof ClientRequest>(key: K | ClientRequest, value ?: ClientRequest[K]): this;
 
   /**
+   * Sets the data residency as per region provided
+   */
+  setDataResidency(region: string): this;
+
+  /**
    * Create headers for request
    */
   createHeaders(data: { [key: string]: string }): { [key: string]: string };
