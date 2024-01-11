@@ -4,8 +4,9 @@ Use the `setDataResidency` setter to specify which host to send to:
 
 Send to EU (data-residency: `https://api.eu.sendgrid.com/`)
 ```js
+const client = require('@sendgrid/client');
 const sgMail = require('@sendgrid/mail');
-sgMail.setDataResidency('eu');
+client.setDataResidency('eu');
 const msg = {
   to: 'recipient@example.org',
   from: 'sender@example.org',
@@ -13,13 +14,15 @@ const msg = {
   text: 'Hello plain world!',
   html: '<p>Hello HTML world!</p>',
 };
+sgMail.setClient(client);
 sgMail.send(msg);
 ```
 Send to Global region, this is also the default host, if the setter is not used
 (data-residency: `https://api.sendgrid.com/`)
 ```js
+const client = require('@sendgrid/client');
 const sgMail = require('@sendgrid/mail');
-sgMail.setDataResidency('global');
+client.setDataResidency('global');
 const msg = {
   to: 'recipient@example.org',
   from: 'sender@example.org',
@@ -27,6 +30,7 @@ const msg = {
   text: 'Hello plain world!',
   html: '<p>Hello HTML world!</p>',
 };
+sgMail.setClient(client);
 sgMail.send(msg);
 ```
 
