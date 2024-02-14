@@ -3,7 +3,7 @@
   "packages": [
     "packages/*"
   ],
-  "version": "8.1.0",
+  "version": "8.1.1",
   "tagVersionPrefix": "",
   "lerna": "2.0.0"
 }
