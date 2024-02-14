@@ -1,6 +1,13 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2024-02-14] Version 8.1.1
+--------------------------
+**Library - Chore**
+- [PR #1394](https://github.com/sendgrid/sendgrid-nodejs/pull/1394): fixed axios vulnerability. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+- [PR #1392](https://github.com/sendgrid/sendgrid-nodejs/pull/1392): update use-case & license year. Thanks to [@shrutiburman](https://github.com/shrutiburman)!
+
+
 [2023-12-06] Version 8.1.0
 --------------------------
 **Library - Feature**
