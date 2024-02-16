@@ -3,7 +3,7 @@ export interface AttachmentData {
   filename: string;
   type?: string;
   disposition?: string;
-  contentId?: string;
+  content_id?: string;
 }
 
 export interface AttachmentJSON {
@@ -19,7 +19,7 @@ export default class Attachment implements AttachmentData {
   filename: string;
   type?: string;
   disposition?: string;
-  contentId?: string;
+  content_id?: string;
   
   constructor(data?: AttachmentData);
 
