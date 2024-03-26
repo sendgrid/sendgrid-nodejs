@@ -10,9 +10,14 @@ Client.setDefaultHeader({
 }).setDefaultHeader("X-Testing", "yes");
 
 // Test setDefaultRequest() method
-Client.setDefaultRequest({
-  url: "/test",
-}).setDefaultRequest("method", "POST")
+Client
+  .setDefaultRequest({
+    url: "/test",
+  })
+  .setDefaultRequest({
+    httpsAgent: new https.Agent(),
+  })
+  .setDefaultRequest("method", "POST")
   .setDefaultRequest('httpsAgent', new https.Agent())
 
 // Test createHeaders() method
