@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2024-04-02] Version 8.1.2
+--------------------------
+**Library - Chore**
+- No Change. Manual release.
+
 [2024-02-14] Version 8.1.1
 --------------------------
 **Library - Chore**
