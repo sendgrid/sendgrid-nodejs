@@ -5,6 +5,7 @@
  */
 const EmailAddress = require('./email-address');
 const Personalization = require('./personalization');
+const Attachment = require('./attachment');
 const toCamelCase = require('../helpers/to-camel-case');
 const toSnakeCase = require('../helpers/to-snake-case');
 const deepClone = require('../helpers/deep-clone');
@@ -388,7 +389,7 @@ class Mail {
       if (!attachments.every(attachment => !attachment.disposition || typeof attachment.disposition === 'string')) {
         throw new Error('Expected the attachment\'s `disposition` field to be a string');
       }
-      this.attachments = attachments;
+      this.attachments = Attachment.create(attachments);
     }
   }
 

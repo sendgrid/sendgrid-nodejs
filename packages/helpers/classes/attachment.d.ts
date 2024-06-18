@@ -30,4 +30,6 @@ export default class Attachment implements AttachmentData {
   setDisposition(disposition: string): void;
   setContentId(contentId: string): void;
   toJSON(): AttachmentJSON;
+  static create(data: AttachmentData | Attachment): Attachment;
+  static create(data: AttachmentData[] | Attachment[]): Attachment[];
 }
