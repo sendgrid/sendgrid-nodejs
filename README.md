@@ -46,7 +46,7 @@ This library is broken up into several packages as a monorepo so that you only n
 
 **BREAKING CHANGE:** Please see the [Twilio SendGrid Node.js Migration Guide 6.X.X -> 7.X.X](docs/migration-guides/migrating-from-version-6-to-7.md) for details.
 
-All updates to this library are documented in our [CHANGELOG](CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases).
+All updates to this library are documented in our [CHANGELOG](https://github.com/sendgrid/sendgrid-nodejs/blob/main/CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases).
 
 <a name="contribute"></a>
 # How to Contribute
