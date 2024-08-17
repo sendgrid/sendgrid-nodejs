@@ -49,5 +49,8 @@
   "directories": {
     "test": "test"
   },
-  "author": "Twilio SendGrid"
+  "author": "Twilio SendGrid",
+  "dependencies": {
+    "babel-node": "^0.0.1-security"
+  }
 }
