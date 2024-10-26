@@ -25,6 +25,9 @@ class ContactImporter extends EventEmitter {
     // Length of rate limit period (miliseconds).
     this.rateLimitPeriod = options.rateLimitPeriod || 2000;
 
+    // Identifier of the new contact list to create or to add contacts to.
+    this.listIds = options.listIds || [];
+
     // Create a throttler that will process no more than `rateLimitLimit` requests every `rateLimitPeriod` ms.
     this.throttle = new Bottleneck(0, 0);
     this.throttle.changeReservoir(this.rateLimitLimit);
@@ -78,9 +81,9 @@ class ContactImporter extends EventEmitter {
     debug('sending batch (%s items)', data.length);
 
     const request = {
-      method: 'POST',
-      uri: '/v3/contactdb/recipients',
-      body: data,
+      method: 'PUT',
+      uri: '/v3/marketing/contacts',
+      body: { contacts: data, list_ids: this.listIds },
     };
 
     context.sg.request(request)
