@@ -11,7 +11,7 @@
 
 **This library allows you to quickly and easily use the Twilio SendGrid Web API v3 via Node.js.**
 
-We want this library to be community-driven, and Twilio SendGrid led. We need your help to realize this goal. To help make sure we are building the right things in the right order, we ask that you create [issues](https://github.com/sendgrid/sendgrid-nodejs/issues) and [pull requests](CONTRIBUTING.md) or merely upvote or comment on existing issues or pull requests.
+We want this library to be community-driven, and Twilio SendGrid led. We need your help to realize this goal. To help make sure we are building the right things in the right order, we ask that you create [pull requests](CONTRIBUTING.md) to track issues or merely upvote or comment on existing pull requests.
 
 For updates to this library, see our [CHANGELOG](CHANGELOG.md) and [releases](https://github.com/sendgrid/sendgrid-nodejs/releases).
 
