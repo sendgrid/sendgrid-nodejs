@@ -1,5 +1,5 @@
 import { Client } from "@sendgrid/client";
-import sgMail = require("@sendgrid/mail");
+import sgMail from "@sendgrid/mail";
 
 // Test setClient() method
 sgMail.setClient(new Client());
@@ -277,3 +277,14 @@ sgMail.send({
   mailSettings: {},
   trackingSettings: {},
 });
+
+//supports chaining with ts
+sgMail.setClient(new Client())
+  .setApiKey("MY_SENDGRID_API_KEY")
+  .send({
+    to: 'recipient@example.org',
+    from: 'sender@example.org',
+    subject: 'Hello email with categories',
+    html: '<p>Some email content</p>',
+    category: 'transactional',
+  });
