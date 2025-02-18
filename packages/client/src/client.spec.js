@@ -152,7 +152,7 @@ describe('test_access_settings_whitelist_delete', () => {
   };
   request.method = 'DELETE';
   request.url = '/v3/access_settings/whitelist';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
