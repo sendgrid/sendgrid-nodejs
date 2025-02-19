@@ -16,7 +16,7 @@ const msg = {
       filename: 'some-attachment.txt',
       type: 'plain/text',
       disposition: 'attachment',
-      content_id: 'mytext'
+      contentId: 'mytext'
     },
   ],
 };
@@ -43,7 +43,7 @@ fs.readFile(('Document.pdf'), (err, data) => {
           filename: 'some-attachment.pdf',
           type: 'application/pdf',
           disposition: 'attachment',
-          content_id: 'mytext',
+          contentId: 'mytext',
         },
       ],
     };
@@ -72,7 +72,7 @@ request(fileURl, { encoding: null }, (err, res, body) => {
           filename: 'some-attachment.pdf',
           type: 'application/pdf',
           disposition: 'attachment',
-          content_id: 'mytext',
+          contentId: 'mytext',
         },
       ],
     };
