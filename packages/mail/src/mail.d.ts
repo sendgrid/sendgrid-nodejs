@@ -7,12 +7,12 @@ declare class MailService {
   /**
    * SendGrid API key passthrough for convenience.
    */
-  setApiKey(apiKey: string): void;
+  setApiKey(apiKey: string): this;
 
   /**
    * Client to use for invoking underlying API
    */
-  setClient(client: Client): void;
+  setClient(client: Client): this;
 
   /**
    * Twilio Email Auth passthrough for convenience.
@@ -27,7 +27,7 @@ declare class MailService {
   /**
    * Set substitution wrappers
    */
-  setSubstitutionWrappers(left: string, right: string): void;
+  setSubstitutionWrappers(left: string, right: string): this;
 
   /**
    * Send email
