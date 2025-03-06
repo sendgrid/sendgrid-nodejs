@@ -180,20 +180,21 @@ class MailService {
     //Send mail
     try {
 
+      // copy object to avoid mutating original
+      const args = { ...data };
       //Append multiple flag to data if not set
       if (typeof data.isMultiple === 'undefined') {
-        data.isMultiple = isMultiple;
+        args.isMultiple = isMultiple;
       }
 
       //Append global substitution wrappers if not set in data
       if (typeof data.substitutionWrappers === 'undefined') {
-        data.substitutionWrappers = this.substitutionWrappers;
+        args.substitutionWrappers = this.substitutionWrappers;
       }
-
       //Create Mail instance from data and get JSON body for request
-      const mail = Mail.create(data);
+      const mail = Mail.create(args);
       const body = mail.toJSON();
-
+      
       //Filters the Mail body to avoid sensitive content leakage
       this.filterSecrets(body);
 
