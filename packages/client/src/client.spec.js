@@ -3081,6 +3081,16 @@ describe('test_whitelabel_links__id__validate_post', () => {
   });
 });
 
+describe.only('test_marketing_integrations__array_query_params__delete', () => {
+  const request = {};
+  request.method = 'DELETE';
+  request.url = '/v3/marketing/integrations';
+  request.qs = { ids: ['id1', 'id2'] };
+  it('should have the correct response code', () => {
+    return testRequest(request, 204);
+  });
+});
+
 describe('test_whitelabel_links__link_id__subuser_post', () => {
   const request = {};
   request.body = {

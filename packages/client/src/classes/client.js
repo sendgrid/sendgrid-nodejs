@@ -139,6 +139,7 @@ class Client {
       data: data.body,
       params: data.qs,
       headers: data.headers,
+      paramsSerializer: { indexes: null },
     };
 
     // Merge data with default request.
