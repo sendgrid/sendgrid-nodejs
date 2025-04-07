@@ -28,7 +28,7 @@ declare class Client {
   /**
    * Set default request
    */
-  setDefaultRequest<K extends keyof ClientRequest>(key: K | ClientRequest, value ?: ClientRequest[K]): this;
+  setDefaultRequest<K extends keyof ClientRequest>(key: K | Partial<ClientRequest>, value ?: ClientRequest[K]): this;
 
   /**
    * Sets the data residency as per region provided
