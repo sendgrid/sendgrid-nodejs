@@ -1,6 +1,15 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2025-04-07] Version 8.1.5
+--------------------------
+**Library - Chore**
+- [PR #1432](https://github.com/sendgrid/sendgrid-nodejs/pull/1432): fixed axios vulnerability by upgrading 1.7.4 to 1.8.2. Thanks to [@sujay-neglur](https://github.com/sujay-neglur)!
+- [PR #1429](https://github.com/sendgrid/sendgrid-nodejs/pull/1429): update licence year. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+- [PR #1415](https://github.com/sendgrid/sendgrid-nodejs/pull/1415): fixed axios vulnerability by upgrading 1.6.8 to 1.7.4. Thanks to [@jl-yang](https://github.com/jl-yang)!
+- [PR #1418](https://github.com/sendgrid/sendgrid-nodejs/pull/1418): install docker-compose. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+
 [2024-10-17] Version 8.1.4
 --------------------------
 **Library - Chore**
