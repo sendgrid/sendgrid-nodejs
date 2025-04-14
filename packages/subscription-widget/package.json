@@ -13,7 +13,7 @@
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "morgan": "^1.9.1",
-    "nodemon": "^1.9.2",
+    "nodemon": "^3.0.0",
     "sendgrid": "^4.0.2",
     "sendgrid-rest": "^2.5.0"
   },
