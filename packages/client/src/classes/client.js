@@ -154,7 +154,11 @@ class Client {
     data = this.createRequest(data);
 
     const promise = new Promise((resolve, reject) => {
-      axios(data)
+      axios(data, {
+        validateStatus: function (status) {
+          return status >= 200 && status < 300;
+        },
+      })
         .then(response => {
           return resolve([
             new Response(response.status, response.data, response.headers),

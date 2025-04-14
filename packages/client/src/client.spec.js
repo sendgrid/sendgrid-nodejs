@@ -152,7 +152,7 @@ describe('test_access_settings_whitelist_delete', () => {
   };
   request.method = 'DELETE';
   request.url = '/v3/access_settings/whitelist';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -170,7 +170,7 @@ describe('test_access_settings_whitelist__rule_id__delete', () => {
   const request = {};
   request.method = 'DELETE';
   request.url = '/v3/access_settings/whitelist/{rule_id}';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -223,7 +223,7 @@ describe('test_alerts__alert_id__delete', () => {
   const request = {};
   request.method = 'DELETE';
   request.url = '/v3/alerts/{alert_id}';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -299,7 +299,7 @@ describe('test_api_keys__api_key_id__delete', () => {
   const request = {};
   request.method = 'DELETE';
   request.url = '/v3/api_keys/{api_key_id}';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -343,7 +343,7 @@ describe('test_asm_groups__group_id__delete', () => {
   const request = {};
   request.method = 'DELETE';
   request.url = '/v3/asm/groups/{group_id}';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -415,7 +415,7 @@ describe('test_asm_groups__group_id__suppressions__email__delete', () => {
   const request = {};
   request.method = 'DELETE';
   request.url = '/v3/asm/groups/{group_id}/suppressions/{email}';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -448,7 +448,7 @@ describe('test_asm_suppressions_global__email__delete', () => {
   const request = {};
   request.method = 'DELETE';
   request.url = '/v3/asm/suppressions/global/{email}';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -552,7 +552,7 @@ describe('test_campaigns__campaign_id__delete', () => {
   const request = {};
   request.method = 'DELETE';
   request.url = '/v3/campaigns/{campaign_id}';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -570,7 +570,7 @@ describe('test_campaigns__campaign_id__schedules_delete', () => {
   const request = {};
   request.method = 'DELETE';
   request.url = '/v3/campaigns/{campaign_id}/schedules';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -624,7 +624,7 @@ describe('test_campaigns__campaign_id__schedules_test_post', () => {
   };
   request.method = 'POST';
   request.url = '/v3/campaigns/{campaign_id}/schedules/test';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -768,7 +768,7 @@ describe('test_contactdb_lists_delete', () => {
   ];
   request.method = 'DELETE';
   request.url = '/v3/contactdb/lists';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -865,7 +865,7 @@ describe('test_contactdb_lists__list_id__recipients__recipient_id__delete', () =
   };
   request.method = 'DELETE';
   request.url = '/v3/contactdb/lists/{list_id}/recipients/{recipient_id}';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -969,7 +969,7 @@ describe('test_contactdb_recipients__recipient_id__delete', () => {
   const request = {};
   request.method = 'DELETE';
   request.url = '/v3/contactdb/recipients/{recipient_id}';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -1050,7 +1050,7 @@ describe('test_contactdb_segments__segment_id__delete', () => {
   };
   request.method = 'DELETE';
   request.url = '/v3/contactdb/segments/{segment_id}';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -1227,7 +1227,7 @@ describe('test_ips_pools__pool_name__delete', () => {
   const request = {};
   request.method = 'DELETE';
   request.url = '/v3/ips/pools/{pool_name}';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -1257,7 +1257,7 @@ describe('test_ips_pools__pool_name__ips__ip__delete', () => {
   const request = {};
   request.method = 'DELETE';
   request.url = '/v3/ips/pools/{pool_name}/ips/{ip}';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -1296,7 +1296,7 @@ describe('test_ips_warmup__ip_address__delete', () => {
   const request = {};
   request.method = 'DELETE';
   request.url = '/v3/ips/warmup/{ip_address}';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -1669,7 +1669,7 @@ describe('test_scopes_requests__request_id__delete', () => {
   const request = {};
   request.method = 'DELETE';
   request.url = '/v3/scopes/requests/{request_id}';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -1731,7 +1731,7 @@ describe('test_senders__sender_id__delete', () => {
   const request = {};
   request.method = 'DELETE';
   request.url = '/v3/senders/{sender_id}';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -1766,7 +1766,7 @@ describe('test_senders__sender_id__resend_verification_post', () => {
   const request = {};
   request.method = 'POST';
   request.url = '/v3/senders/{sender_id}/resend_verification';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -1887,7 +1887,7 @@ describe('test_subusers__subuser_name__delete', () => {
   const request = {};
   request.method = 'DELETE';
   request.url = '/v3/subusers/{subuser_name}';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -1899,7 +1899,7 @@ describe('test_subusers__subuser_name__patch', () => {
   };
   request.method = 'PATCH';
   request.url = '/v3/subusers/{subuser_name}';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -1946,7 +1946,7 @@ describe('test_subusers__subuser_name__monitor_delete', () => {
   const request = {};
   request.method = 'DELETE';
   request.url = '/v3/subusers/{subuser_name}/monitor';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -1987,7 +1987,7 @@ describe('test_suppression_blocks_delete', () => {
   };
   request.method = 'DELETE';
   request.url = '/v3/suppression/blocks';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -2011,7 +2011,7 @@ describe('test_suppression_blocks__email__delete', () => {
   const request = {};
   request.method = 'DELETE';
   request.url = '/v3/suppression/blocks/{email}';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -2036,7 +2036,7 @@ describe('test_suppression_bounces_delete', () => {
   };
   request.method = 'DELETE';
   request.url = '/v3/suppression/bounces';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -2061,7 +2061,7 @@ describe('test_suppression_bounces__email__delete', () => {
   };
   request.method = 'DELETE';
   request.url = '/v3/suppression/bounces/{email}';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -2086,7 +2086,7 @@ describe('test_suppression_invalid_emails_delete', () => {
   };
   request.method = 'DELETE';
   request.url = '/v3/suppression/invalid_emails';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -2110,7 +2110,7 @@ describe('test_suppression_invalid_emails__email__delete', () => {
   const request = {};
   request.method = 'DELETE';
   request.url = '/v3/suppression/invalid_emails/{email}';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -2135,7 +2135,7 @@ describe('test_suppression_spam_reports_delete', () => {
   };
   request.method = 'DELETE';
   request.url = '/v3/suppression/spam_reports';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -2159,7 +2159,7 @@ describe('test_suppression_spam_reports__email__delete', () => {
   const request = {};
   request.method = 'DELETE';
   request.url = '/v3/suppression/spam_reports/{email}';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -2231,7 +2231,7 @@ describe('test_teammates_pending__token__delete', () => {
   const request = {};
   request.method = 'DELETE';
   request.url = '/v3/teammates/pending/{token}';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -2249,7 +2249,7 @@ describe('test_teammates__username__delete', () => {
   const request = {};
   request.method = 'DELETE';
   request.url = '/v3/teammates/{username}';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -2304,7 +2304,7 @@ describe('test_templates__template_id__delete', () => {
   const request = {};
   request.method = 'DELETE';
   request.url = '/v3/templates/{template_id}';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -2351,7 +2351,7 @@ describe('test_templates__template_id__versions__version_id__delete', () => {
   const request = {};
   request.method = 'DELETE';
   request.url = '/v3/templates/{template_id}/versions/{version_id}';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -2598,7 +2598,7 @@ describe('test_user_scheduled_sends__batch_id__delete', () => {
   const request = {};
   request.method = 'DELETE';
   request.url = '/v3/user/scheduled_sends/{batch_id}';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -2610,7 +2610,7 @@ describe('test_user_scheduled_sends__batch_id__patch', () => {
   };
   request.method = 'PATCH';
   request.url = '/v3/user/scheduled_sends/{batch_id}';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -2707,7 +2707,7 @@ describe('test_user_webhooks_event_test_post', () => {
   };
   request.method = 'POST';
   request.url = '/v3/user/webhooks/event/test';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -2740,7 +2740,7 @@ describe('test_user_webhooks_parse_settings__hostname__delete', () => {
   const request = {};
   request.method = 'DELETE';
   request.url = '/v3/user/webhooks/parse/settings/{hostname}';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -2834,7 +2834,7 @@ describe('test_whitelabel_domains_subuser_delete', () => {
   const request = {};
   request.method = 'DELETE';
   request.url = '/v3/whitelabel/domains/subuser';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -2852,7 +2852,7 @@ describe('test_whitelabel_domains__domain_id__delete', () => {
   const request = {};
   request.method = 'DELETE';
   request.url = '/v3/whitelabel/domains/{domain_id}';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -2953,7 +2953,7 @@ describe('test_whitelabel_ips__id__delete', () => {
   const request = {};
   request.method = 'DELETE';
   request.url = '/v3/whitelabel/ips/{id}';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -3025,7 +3025,7 @@ describe('test_whitelabel_links_subuser_delete', () => {
   };
   request.method = 'DELETE';
   request.url = '/v3/whitelabel/links/subuser';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
@@ -3046,7 +3046,7 @@ describe('test_whitelabel_links__id__delete', () => {
   const request = {};
   request.method = 'DELETE';
   request.url = '/v3/whitelabel/links/{id}';
-  xit('should have the correct response code', () => {
+  it('should have the correct response code', () => {
     return testRequest(request, 204);
   });
 });
