@@ -37,7 +37,7 @@ declare class MailService {
   /**
    * Send multiple emails (shortcut)
    */
-  sendMultiple(data: MailDataRequired, cb?: (error: Error | ResponseError, result: [ClientResponse, {}]) => void): Promise<[ClientResponse, {}]>;
+  sendMultiple(data: MailDataRequired[], cb?: (error: Error | ResponseError, result: [ClientResponse, {}]) => void): Promise<[ClientResponse, {}]>;
 }
 
 declare const mail: MailService;
