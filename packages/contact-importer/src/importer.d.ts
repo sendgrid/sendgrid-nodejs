@@ -1,20 +1,22 @@
+import * as sendgrid from "@sendgrid/client";
+
 declare interface ContactImporterOptions {
     batchSize?: number;
     rateLimitLimit?: number;
     rateLimitPeriod?: number;
+    listIds?: number[];
 }
 
 declare interface Contact {
     email: string;
     first_name?: string;
     last_name?: string;
-    age?: number;
 }
 
 declare class ContactImporter {
-    constructor(sg, options?: ContactImporterOptions);
+    constructor(sg: typeof sendgrid, options?: ContactImporterOptions);
 
-    push(data: Contact|Contact[])
+    push(data: Contact|Contact[]): void;
 
     on(event: "success", cb: (result: any, batch: Contact[]) => void): void;
     on(event: "error", cb: (err: Error, batch?: Contact[]) => void): void;
