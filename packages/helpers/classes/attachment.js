@@ -181,6 +181,19 @@ class Attachment {
     //Return
     return toSnakeCase(json);
   }
+
+  static create(data) {
+    if(Array.isArray(data)) {
+      return data.filter(Boolean).map(item => this.create(item));
+    }
+    //Already instance of Attachment class?
+    if (data instanceof Attachment) {
+      return data;
+    }
+
+    //Create instance
+    return new Attachment(data);
+  }
 }
 
 //Export class

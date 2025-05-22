@@ -185,6 +185,23 @@ describe('Mail', function() {
           }],
         })).to.throw('filename');
       });
+
+      it('properly handles attachment contentId', () => {
+        const contentId = 'test-content-id';
+        const mail = new Mail({
+          to: 'recipient@example.org',
+          attachments: [{
+            disposition: 'inline',
+            content: 'test-content',
+            filename: 'name-that-file',
+            type: 'file-type',
+            contentId,
+          }],
+        });
+        const mainJSON = mail.toJSON();
+        const firstAttachment = mainJSON.attachments[0];
+        expect(firstAttachment.content_id).to.equal(contentId);
+      });
     });
   });
 
