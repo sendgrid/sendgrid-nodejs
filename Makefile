@@ -6,6 +6,7 @@ clean:
 install: clean
 	npm install --quiet
 	./node_modules/.bin/lerna bootstrap
+	yarn add --dev @types/minimatch
 
 test:
 	yarn test:files
