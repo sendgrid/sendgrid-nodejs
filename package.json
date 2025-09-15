@@ -23,7 +23,7 @@
     "moment": "^2.19.3",
     "sinon": "^2.3.2",
     "sinon-chai": "^2.10.0",
-    "typescript": "^4.0.0"
+    "typescript": "^5.9.2"
   },
   "scripts": {
     "lint": "if [ `node --version | cut -d'.' -f1 | cut -c 2` -ge \"8\" ]; then eslint . --fix; else echo \"eslint is not available for node < 8.0\"; fi",
