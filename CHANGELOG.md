@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+[2025-09-19] Version 8.1.6
+--------------------------
+**Library - Chore**
+- [PR #1445](https://github.com/sendgrid/sendgrid-nodejs/pull/1445): Update axios dependency version to 1.12.0 in client. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+
 [2025-04-07] Version 8.1.5
 --------------------------
 **Library - Chore**
