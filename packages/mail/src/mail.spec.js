@@ -132,5 +132,16 @@ describe('sgMail.send()', () => {
       sgMail.send(data, false, {});
     }).to.throw(Error);
   });
+
+  it("can be chained", () => {
+    const sgMailChain = require('./mail');
+    sgMailChain.client.setDefaultHeader('X-Mock', 202)
+    sgMailChain
+      .setApiKey('SendGrid API Key')
+      .send(data)
+      .then(([response, body]) => {
+        expect(response.statusCode).to.equal(202);
+      });
+  })
 });
 
