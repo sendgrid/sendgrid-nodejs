@@ -1,3 +1,3 @@
 import Response from "@sendgrid/helpers/classes/response";
 
-export type ClientResponse = Response;
+export type ClientResponse<T = object> = Response<T>;
