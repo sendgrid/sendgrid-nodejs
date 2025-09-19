@@ -1208,7 +1208,8 @@ client
 
 ```javascript
 const client = require('@sendgrid/client')
-client.setDefaultRequest('qsStringifyOptions', {arrayFormat: 'repeat'});
+const qs = require('qs')
+client.setDefaultRequest('paramsSerializer', (params) => qs.stringify(params, {arrayFormat: 'repeat'}));
 
 const request = {}
 const queryParams = {
