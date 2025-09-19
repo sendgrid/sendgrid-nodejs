@@ -6,10 +6,16 @@ All other options from the [API definition](https://sendgrid.com/docs/API_Refere
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const msg = {
-  to: 'recipient@example.org',
+  to: {
+    name: "Recipient Name",
+    email: 'recipient@example.org',
+  },
   cc: 'someone@example.org',
   bcc: ['me@example.org', 'you@example.org'],
-  from: 'sender@example.org',
+  from: {
+    name: "Sender Name",
+    email: 'sender@example.org',
+  },
   replyTo: 'othersender@example.org',
   subject: 'Hello world',
   text: 'Hello plain world!',
