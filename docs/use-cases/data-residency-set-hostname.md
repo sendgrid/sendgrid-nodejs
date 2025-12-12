@@ -36,6 +36,6 @@ sgMail.send(msg);
 
 ## Limitations
 
-1. Emails can only be sent to two hosts for now; 'eu' (https://api.eu.sendgrid.com/) and 'global' (https://api.eu.sendgrid.com/)
+1. Emails can only be sent to two hosts for now; 'eu' (https://api.eu.sendgrid.com/) and 'global' (https://api.sendgrid.com/)
 2. The default data-residency is https://api.sendgrid.com/
 3. The valid values for `region` in `client.setDataResidency(region)` are only `eu` and `global`. Case-sensitive.
