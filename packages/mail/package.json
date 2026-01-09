@@ -27,7 +27,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@sendgrid/client": "^8.1.5",
+    "@sendgrid/client": "^8.1.6",
     "@sendgrid/helpers": "^8.0.0"
   },
   "tags": [
