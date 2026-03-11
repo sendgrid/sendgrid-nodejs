@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@sendgrid/helpers": "^8.0.0",
-    "axios": "^1.12.0"
+    "axios": "^1.13.5"
   },
   "devDependencies": {
     "chai": "4.2.0",
