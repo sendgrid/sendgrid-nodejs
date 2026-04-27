@@ -1,9 +1,16 @@
-import {Client} from "@sendgrid/client";
+import sgClient = require("@sendgrid/client");
 import {ClientResponse} from "@sendgrid/client/src/response";
 import {ResponseError} from "@sendgrid/helpers/classes";
 import {MailDataRequired} from "@sendgrid/helpers/classes/mail";
 
+type Client = InstanceType<typeof sgClient.Client>;
+
 declare class MailService {
+  /**
+   * Class itself, attached at runtime via `module.exports.MailService = MailService`.
+   */
+  MailService: typeof MailService;
+
   /**
    * SendGrid API key passthrough for convenience.
    */
@@ -41,10 +48,4 @@ declare class MailService {
 }
 
 declare const mail: MailService;
-// @ts-ignore
 export = mail;
-
-export {MailService};
-export {MailDataRequired};
-export {ClientResponse};
-export {ResponseError};

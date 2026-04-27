@@ -3,9 +3,9 @@
         "noEmit": true,
         "module": "commonjs",
         "target": "es6",
-        "baseUrl": ".",
+        "types": ["node"],
         "paths": {
-            "@sendgrid/*": ["packages/*"]
+            "@sendgrid/*": ["./packages/*"]
         }
     },
     "include": [

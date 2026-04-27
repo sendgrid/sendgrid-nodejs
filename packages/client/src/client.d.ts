@@ -6,6 +6,13 @@ declare class Client {
   constructor();
 
   /**
+   * Class itself, attached at runtime via `module.exports.Client = Client`.
+   * Lets `import client = require("@sendgrid/client")` consumers reach the
+   * class via `client.Client`.
+   */
+  Client: typeof Client;
+
+  /**
    * Set the SendGrid API key.
    */
   setApiKey(apiKey: string): void;
@@ -52,7 +59,4 @@ declare class Client {
 }
 
 declare const client: Client;
-// @ts-ignore
-export = client
-
-export {Client};
+export = client;
