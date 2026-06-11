@@ -15,6 +15,9 @@
   ],
   "license": "MIT",
   "homepage": "https://sendgrid.com",
+  "bugs": {
+    "url": "https://github.com/sendgrid/sendgrid-nodejs/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/sendgrid/sendgrid-nodejs.git"
