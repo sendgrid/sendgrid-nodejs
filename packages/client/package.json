@@ -19,6 +19,9 @@
     "type": "git",
     "url": "git://github.com/sendgrid/sendgrid-nodejs.git"
   },
+  "bugs": {
+    "url": "https://github.com/sendgrid/sendgrid-nodejs/issues"
+  },
   "publishConfig": {
     "access": "public"
   },
