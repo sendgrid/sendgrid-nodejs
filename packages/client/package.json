@@ -14,6 +14,9 @@
     "Adam Reis <adam@reis.nz>"
   ],
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sendgrid/sendgrid-nodejs/issues"
+  },
   "homepage": "https://sendgrid.com",
   "repository": {
     "type": "git",
