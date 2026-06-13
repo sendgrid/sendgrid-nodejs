@@ -2,6 +2,9 @@
   "name": "@sendgrid/client",
   "description": "Twilio SendGrid NodeJS API client",
   "version": "8.1.6",
+  "bugs": {
+    "url": "https://github.com/sendgrid/sendgrid-nodejs/issues"
+  },
   "author": "Twilio SendGrid <help@twilio.com> (sendgrid.com)",
   "contributors": [
     "Kyle Partridge <kyle.partridge@sendgrid.com>",
