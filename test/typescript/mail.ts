@@ -1,8 +1,18 @@
 import { Client } from "@sendgrid/client";
+import { MailDataRequired, ClientResponse, ResponseError } from "@sendgrid/mail";
 import sgMail = require("@sendgrid/mail");
 
 // Test setClient() method
 sgMail.setClient(new Client());
+
+// Test Client used as a type
+const client: Client = new Client();
+sgMail.setClient(client);
+
+// Test types re-exported from the package root
+declare const data: MailDataRequired;
+declare const onSent: (err: Error | ResponseError, result: [ClientResponse, {}]) => void;
+sgMail.send(data, false, onSent);
 
 // Test setApiKey() method
 sgMail.setApiKey("MY_SENDGRID_API_KEY");

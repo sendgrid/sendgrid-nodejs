@@ -1,16 +1,9 @@
-import sgClient = require("@sendgrid/client");
+import {Client} from "@sendgrid/client";
 import {ClientResponse} from "@sendgrid/client/src/response";
 import {ResponseError} from "@sendgrid/helpers/classes";
 import {MailDataRequired} from "@sendgrid/helpers/classes/mail";
 
-type Client = InstanceType<typeof sgClient.Client>;
-
 declare class MailService {
-  /**
-   * Class itself, attached at runtime via `module.exports.MailService = MailService`.
-   */
-  MailService: typeof MailService;
-
   /**
    * SendGrid API key passthrough for convenience.
    */
@@ -47,5 +40,23 @@ declare class MailService {
   sendMultiple(data: MailDataRequired, cb?: (error: Error | ResponseError, result: [ClientResponse, {}]) => void): Promise<[ClientResponse, {}]>;
 }
 
-declare const mail: MailService;
+/**
+ * The module exports the singleton, with the class attached as
+ * `module.exports.MailService` (see index.js).
+ */
+declare namespace mail {
+  export {MailService};
+  export {MailDataRequired};
+  export {ClientResponse};
+  export {ResponseError};
+
+  export function setApiKey(apiKey: string): void;
+  export function setClient(client: Client): void;
+  export function setTwilioEmailAuth(username: string, password: string): void;
+  export function setTimeout(timeout: number): void;
+  export function setSubstitutionWrappers(left: string, right: string): void;
+  export function send(data: MailDataRequired | MailDataRequired[], isMultiple?: boolean, cb?: (err: Error | ResponseError, result: [ClientResponse, {}]) => void): Promise<[ClientResponse, {}]>;
+  export function sendMultiple(data: MailDataRequired, cb?: (error: Error | ResponseError, result: [ClientResponse, {}]) => void): Promise<[ClientResponse, {}]>;
+}
+
 export = mail;
