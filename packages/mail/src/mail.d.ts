@@ -40,11 +40,23 @@ declare class MailService {
   sendMultiple(data: MailDataRequired, cb?: (error: Error | ResponseError, result: [ClientResponse, {}]) => void): Promise<[ClientResponse, {}]>;
 }
 
-declare const mail: MailService;
-// @ts-ignore
-export = mail;
+/**
+ * The module exports the singleton, with the class attached as
+ * `module.exports.MailService` (see index.js).
+ */
+declare namespace mail {
+  export {MailService};
+  export {MailDataRequired};
+  export {ClientResponse};
+  export {ResponseError};
 
-export {MailService};
-export {MailDataRequired};
-export {ClientResponse};
-export {ResponseError};
+  export function setApiKey(apiKey: string): void;
+  export function setClient(client: Client): void;
+  export function setTwilioEmailAuth(username: string, password: string): void;
+  export function setTimeout(timeout: number): void;
+  export function setSubstitutionWrappers(left: string, right: string): void;
+  export function send(data: MailDataRequired | MailDataRequired[], isMultiple?: boolean, cb?: (err: Error | ResponseError, result: [ClientResponse, {}]) => void): Promise<[ClientResponse, {}]>;
+  export function sendMultiple(data: MailDataRequired, cb?: (error: Error | ResponseError, result: [ClientResponse, {}]) => void): Promise<[ClientResponse, {}]>;
+}
+
+export = mail;

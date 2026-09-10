@@ -51,8 +51,23 @@ declare class Client {
   request(data: ClientRequest, cb?: (err: ResponseError, response: [ClientResponse, any]) => void): Promise<[ClientResponse, any]>;
 }
 
-declare const client: Client;
-// @ts-ignore
-export = client
+/**
+ * The module exports the singleton, with the class attached as
+ * `module.exports.Client` (see index.js), so both meanings of `Client` —
+ * the value and the instance type — stay importable by name.
+ */
+declare namespace client {
+  export {Client};
 
-export {Client};
+  export function setApiKey(apiKey: string): void;
+  export function setTwilioEmailAuth(username: string, password: string): void;
+  export function setImpersonateSubuser(subuser: string): void;
+  export function setDefaultHeader(key: string | { [s: string]: string }, value ?: string): Client;
+  export function setDefaultRequest<K extends keyof ClientRequest>(key: K | ClientRequest, value ?: ClientRequest[K]): Client;
+  export function setDataResidency(region: string): Client;
+  export function createHeaders(data: { [key: string]: string }): { [key: string]: string };
+  export function createRequest(data: ClientRequest): ClientRequest;
+  export function request(data: ClientRequest, cb?: (err: ResponseError, response: [ClientResponse, any]) => void): Promise<[ClientResponse, any]>;
+}
+
+export = client;

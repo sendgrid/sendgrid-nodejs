@@ -31,3 +31,7 @@ Client.request({
 }).then(res => {
   res[0].statusCode;
 });
+
+// Test Client class attached to the module
+const instance: Client.Client = new Client.Client();
+instance.setApiKey("MY_SENDGRID_API_KEY");
