@@ -3,13 +3,22 @@ on:
   pull_request_target:
     types: [ opened, edited, synchronize, reopened ]
 
+permissions:
+  contents: read
+  pull-requests: read
+
 jobs:
   validate:
     name: Validate title
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-x64
     steps:
-      - uses: amannn/action-semantic-pull-request@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - uses: twilio/sdk-actions/semantic-pr-title@09631bfa50f14d276170d45bc4f49a80da201cc6 # main @ 09631bf — sdk-actions#10; repin to the v1.1.0 tag once cut
         with:
-          types: chore docs fix feat test misc
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          types: |
+            chore
+            docs
+            fix
+            feat
+            misc
+            test

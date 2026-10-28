@@ -10,7 +10,7 @@ This client library is used by the other [Twilio SendGrid service packages](http
 
 ## Prerequisites
 
-- Node.js version 6, 8 or >=10
+- Node.js version 22 or above
 - A Twilio SendGrid account, [sign up for free](https://sendgrid.com/free?source=sendgrid-nodejs) to send up to 40,000 emails for the first 30 days or check out [our pricing](https://sendgrid.com/pricing?source=sendgrid-nodejs).
 
 ## Obtain an API Key
