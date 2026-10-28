@@ -10,84 +10,98 @@ on:
     - cron: '0 15 * * 1-5'
   workflow_dispatch:
 
+env:
+  ARTIFACTORY_URL: ${{ vars.ARTIFACTORY_URL }}
+
 jobs:
   test:
-    name: Test
-    runs-on: ubuntu-latest
+    name: Test - Node ${{ matrix.node }}
+    runs-on: ubuntu-x64
+    if: github.repository_owner == 'sendgrid'
     timeout-minutes: 20
+    permissions:
+      contents: read
+      id-token: write
     strategy:
+      fail-fast: false
       matrix:
-        node: [12, 14, 16, lts]
-    env:
-      version: ${{ matrix.node }}
-      DOCKER_LOGIN: ${{ secrets.DOCKER_USERNAME && secrets.DOCKER_AUTH_TOKEN }}
+        node: [ 20, 22, 24 ]
     steps:
       - name: Checkout sendgrid-nodejs
-        uses: actions/checkout@v2
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
 
-      - name: Login to Docker Hub
-        if: env.DOCKER_LOGIN
-        uses: docker/login-action@v1
+      - name: Artifactory OIDC Auth
+        uses: twilio/sdk-actions/artifactory-oidc@0375437914d535a5fb178bdbfdb5d51bdde2616e # v1
+
+      - name: Set up Node
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_AUTH_TOKEN }}
-
-      - name: Install Docker Compose
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y docker-compose
+          node-version: ${{ matrix.node }}
 
       - name: Run Tests
         run: make install && make test
 
   deploy:
     name: Deploy
-    if: success() && github.ref_type == 'tag'
+    if: success() && github.ref_type == 'tag' && github.repository_owner == 'sendgrid'
     needs: [ test ]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-x64
+    environment:
+      name: production
+      url: https://www.npmjs.com/package/@sendgrid/mail/v/${{ github.ref_name }}
+    permissions:
+      contents: write          # required for creating GitHub Release
+      id-token: write          # required for npm OIDC trusted publishing
     steps:
       - name: Checkout sendgrid-nodejs
-        uses: actions/checkout@v2
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
         with:
+          # The release action verifies refs/tags/<tag> in the local clone.
           fetch-depth: 0
 
+      - name: Artifactory OIDC Auth
+        uses: twilio/sdk-actions/artifactory-oidc@0375437914d535a5fb178bdbfdb5d51bdde2616e # v1
+
+      # Node 24+ required for npm OIDC trusted publisher support (npm >= 11.5.1)
       - name: Set up Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
         with:
-          node-version: 16
+          node-version: 24
 
       - name: Create GitHub Release
-        uses: sendgrid/dx-automator/actions/release@main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: twilio/sdk-actions/github-release@9b1c3222c9ffe38aadedb11c5b9f5a172b5e9951 # v1
+        with:
+          changelog-file: CHANGELOG.md
+          footer: '**[npm](https://www.npmjs.com/package/@sendgrid/mail/v/${{ github.ref_name }})**'
 
       - run: npm install
-      - name: Publish
-        run: |
-          npm config set //registry.npmjs.org/:_authToken ${NODE_AUTH_TOKEN}
-          lerna publish from-package --yes --no-verify-access
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Submit metric to Datadog
-        uses: sendgrid/dx-automator/actions/datadog-release-metric@main
+      # Lerna monorepo: publish every package whose version isn't on npm yet, via OIDC trusted publishing.
+      # Each @sendgrid/* package needs a trusted publisher configured on npmjs.com for this repo and workflow.
+      - name: Publish to npm
+        run: ./node_modules/.bin/lerna publish from-package --yes --no-verify-access
         env:
-          DD_API_KEY: ${{ secrets.DATADOG_API_KEY }}
+          npm_config_provenance: 'true'
 
-  notify-on-failure:
-    name: Slack notify on failure
-    if: failure() && github.event_name != 'pull_request' && (github.ref == 'refs/heads/main' || github.ref_type == 'tag')
-    needs: [ test, deploy ]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_COLOR: failure
-          SLACK_ICON_EMOJI: ':github:'
-          SLACK_MESSAGE: ${{ format('Test *{0}*, Deploy *{1}*, {2}/{3}/actions/runs/{4}', needs.test.result, needs.deploy.result, github.server_url, github.repository, github.run_id) }}
-          SLACK_TITLE: Action Failure - ${{ github.repository }}
-          SLACK_USERNAME: GitHub Actions
-          SLACK_MSG_AUTHOR: twilio-dx
-          SLACK_FOOTER: Posted automatically using GitHub Actions
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          MSG_MINIMAL: true
+#      - name: Submit metric to Datadog
+#        uses: sendgrid/dx-automator/actions/datadog-release-metric@08b601b726671445abc798ed59881766ec8fefc6 # main
+#        env:
+#          DD_API_KEY: ${{ secrets.DATADOG_API_KEY }}
+
+#  notify-on-failure:
+#    name: Slack notify on failure
+#    if: failure() && github.event_name != 'pull_request' && (github.ref == 'refs/heads/main' || github.ref_type == 'tag')
+#    needs: [ test, deploy ]
+#    runs-on: ubuntu-x64
+#    steps:
+#      - uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2.3.3
+#        env:
+#          SLACK_COLOR: failure
+#          SLACK_ICON_EMOJI: ':github:'
+#          SLACK_MESSAGE: ${{ format('Test *{0}*, Deploy *{1}*, {2}/{3}/actions/runs/{4}', needs.test.result, needs.deploy.result, github.server_url, github.repository, github.run_id) }}
+#          SLACK_TITLE: Action Failure - ${{ github.repository }}
+#          SLACK_USERNAME: GitHub Actions
+#          SLACK_MSG_AUTHOR: twilio-dx
+#          SLACK_FOOTER: Posted automatically using GitHub Actions
+#          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+#          MSG_MINIMAL: true
