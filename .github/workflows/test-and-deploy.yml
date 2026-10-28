@@ -25,7 +25,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node: [ 20, 22, 24 ]
+        node: [ 22, 24 ]
     steps:
       - name: Checkout sendgrid-nodejs
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4

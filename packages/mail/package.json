@@ -21,7 +21,7 @@
   },
   "main": "index.js",
   "engines": {
-    "node": ">=12.*"
+    "node": ">=22"
   },
   "publishConfig": {
     "access": "public"

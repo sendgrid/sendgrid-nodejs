@@ -24,7 +24,7 @@
   },
   "main": "index.js",
   "engines": {
-    "node": ">=12.*"
+    "node": ">=22"
   },
   "dependencies": {
     "@sendgrid/helpers": "^8.0.0",
